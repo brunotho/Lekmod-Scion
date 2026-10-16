@@ -1608,6 +1608,8 @@ Tags: game mechanics
 - Added: capturing a Cultured City-State in the Medieval Era or later gives you 1 Great Work (if you have a free slot), the first time you take the city
 - Added: the City-State tooltip, the City-State screen (Great Work icon next to its type) and its Civilopedia page say so
 - DLL: LEKMOD_CULTURED_CS_CAPTURE_GREAT_WORK (reuses DoGreatWorkFromCityConquer)
+- Added: from the Medieval Era you can buy that Great Work in the City-State screen for 200 Gold per era of yours (Medieval: 600); each Cultured City-State sells it once, and after that capturing it gives no Great Work
+- DLL: CvMinorCivAI::LekmodGetGreatWorkBuyState / LekmodDoBuyGreatWork (saved m_iLekmodGreatWorkSold, appended to the City-State save data), network code -25, Lua Player:LekmodGetGreatWorkBuyState(iMajor) / LekmodGetGreatWorkPrice(iMajor); define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200
 
 TRADITION (POLICY_BRANCH_TRADITION)
 ----------------------------------
@@ -2967,3 +2969,9 @@ Tags: civs, units, buildings, art
 - Added: Water Puppet Theatre, a unique Amphitheater: the Amphitheater's effects plus +1 Culture and +1 Gold on Flood Plains, Marsh and Lake tiles next to the city, and +1 Food on them while a Festival is next to the city
 - Changed: start bias: Jungle only (was Jungle and Wetlands)
 - DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303
+
+GREAT WORKS SCREEN: MOVE TO OLDEST CITIES
+----------------------------------------
+Tags: ui
+- Added: a button on the Your Culture tab moves every Great Work into a free slot in an older city (your own cities by founding, then captured cities by when you took them); full wonders in your own cities keep their works, full wonders in captured cities are emptied
+- Dev: Lua only (CultureOverview: LekmodPlanMovesToOldest plans on a copy, then sends Network.SendMoveGreatWorks per move)

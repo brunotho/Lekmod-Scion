@@ -1261,7 +1261,9 @@
           <RadioButton ID="radClickToMove" String="TXT_KEY_CO_CLICK_TO_MOVE" ButtonTexture="Assets/UI/Art/Controls/CheckBox.dds" Font="TwCenMT16" FontStyle="Shadow" ColorLayer0="Beige" ColorLayer1="Black" TextAnchor="R,C" TextAnchorSide="O,O" IsChecked="1" RadioGroup="ClickToGroup" ToolTip="TXT_KEY_CO_CLICK_TO_MOVE_TT"/>
           <RadioButton ID="radClickToView" String="TXT_KEY_CO_CLICK_TO_VIEW" ButtonTexture="Assets/UI/Art/Controls/CheckBox.dds" Font="TwCenMT16" FontStyle="Shadow" ColorLayer0="Beige" ColorLayer1="Black" TextAnchor="R,C" TextAnchorSide="O,O" IsChecked="0" RadioGroup="ClickToGroup" ToolTip="TXT_KEY_CO_CLICK_TO_VIEW_TT"/>
         </Stack>
-      </Box>
+        <!-- LEKMOD: move all great works towards the oldest cities (POST 2026-10-11) -->
+        <GridButton Anchor="L,T" Offset="12,470" Size="300,30" Style="BaseButton" ID="LekmodMoveToOldestButton" String="TXT_KEY_LEKMOD_GW_MOVE_TO_OLDEST" ToolTip="TXT_KEY_LEKMOD_GW_MOVE_TO_OLDEST_TT" Font="TwCenMT18"/>
+</Box>
       <!--Swap Great Works Content-->
       <Box Size="956,459" Color="0,0,0,0" ID="SwapGreatWorksPanel" Hidden="1">
 
