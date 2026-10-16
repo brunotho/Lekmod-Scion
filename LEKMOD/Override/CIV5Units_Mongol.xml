@@ -147985,6 +147985,18 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_GW_MOVE_TO_OLDEST_TT">
 			<Text>Moves every Great Work into a free slot in an older city, as far up as possible.[NEWLINE]Order: your own cities by founding, then captured cities by the turn you took them.[NEWLINE][NEWLINE]A wonder in one of your own cities whose slots are all filled keeps its Great Works.[NEWLINE]Full wonders in captured cities are emptied like any other building.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS">
+			<Text>Show promotion hotkeys on the buttons</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT">
+			<Text>When a unit can be promoted, each promotion button shows the key that picks it (the key you set in the hotkey settings).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_MUTE_CHAT">
+			<Text>Mute the chat message sound</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT">
+			<Text>No sound when a multiplayer chat message arrives. The message still shows.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE">
 			<Text>Water Puppet Theatre</Text>
 		</Row>

@@ -2975,3 +2975,10 @@ GREAT WORKS SCREEN: MOVE TO OLDEST CITIES
 Tags: ui
 - Added: a button on the Your Culture tab moves every Great Work into a free slot in an older city (your own cities by founding, then captured cities by when you took them); full wonders in your own cities keep their works, full wonders in captured cities are emptied
 - Dev: Lua only (CultureOverview: LekmodPlanMovesToOldest plans on a copy, then sends Network.SendMoveGreatWorks per move)
+
+GAME OPTIONS: PROMOTION HOTKEYS AND CHAT SOUND
+---------------------------------------------
+Tags: ui
+- Added: option "Show promotion hotkeys on the buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
+- Added: option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
+- Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)

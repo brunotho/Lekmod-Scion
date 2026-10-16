@@ -8,6 +8,9 @@ g_needsUpdate = true;
 include( "IconSupport" );
 include( "InstanceManager" );
 
+-- LEKMOD: Lekmod's settings live next to the EUI ones (OptionsMenu writes them)
+g_LekmodOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+
 local g_PrimaryIM    = InstanceManager:new( "UnitAction",  "UnitActionButton", Controls.PrimaryStack );
 local g_SecondaryIM  = InstanceManager:new( "UnitAction",  "UnitActionButton", Controls.SecondaryStack );
 local g_BuildIM      = InstanceManager:new( "UnitAction",  "UnitActionButton", Controls.WorkerActionPanel );
@@ -256,6 +259,11 @@ function UpdateUnitActions( unit )
             elseif( action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION ) then
 				bPromotion = true;
                 instance = g_PromotionIM:GetInstance();
+				-- LEKMOD: the promotion's current hotkey on the button (option, default on)
+				if instance.LekmodHotKeyLabel ~= nil then
+					local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
+					instance.LekmodHotKeyLabel:SetText( ( bShowKeys and action.HotKey and action.HotKey ~= "" ) and tostring( action.HotKey ) or "" );
+				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
 				instance.UnitActionButton:SetOffsetVal( (numBuildActions % numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
                 numBuildActions = numBuildActions + 1;

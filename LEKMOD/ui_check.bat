@@ -218,6 +218,7 @@ FIND %text% "%euifolder%\UnitPanel\UnitPanel.lua" > nul 2>&1 && (
   copy /y "%patchfolder%\Lua\tmp\eui\UnitPanel\UnitPanel.lua.ignore" "%patchfolder%\Lua\UI\UnitPanel.lua" > nul
 ) || (
   copy /y "%patchfolder%\Lua\tmp\ui\UnitPanel\UnitPanel.lua.ignore" "%patchfolder%\Lua\UI\UnitPanel.lua" > nul
+  copy /y "%patchfolder%\Lua\tmp\ui\UnitPanel\UnitPanel.xml.ignore" "%patchfolder%\Lua\UI\UnitPanel.xml" > nul
 )
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\VotingSystem\CCVotePopup.lua.ignore" "%patchfolder%\Lua\UI\CCVotePopup.lua" > nul
