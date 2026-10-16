@@ -2408,9 +2408,10 @@ Tags: civs, units
 - Changed: Slinger: available at Agriculture (was Archery), costs 22 (was 26), Range 1 (was 2), 4 Strength and 6 Ranged Strength (was 5 and 7)
 - Removed: Slinger: withdrawing before melee attacks
 - Changed: Terrace Farms can only be built next to a mountain
-- Changed: new UA: military land units start with Altitude Training; only civilians still ignore movement costs into Hills; cities with a Quarry +20% Production towards Ancient Era buildings
+- Changed: new UA: land units, military and civilian, start with Altitude Training; cities with a Quarry +20% Production towards Ancient Era buildings
+- Removed: units ignoring movement costs into Hills
 - Removed: no maintenance for improvements on Hills and half maintenance elsewhere
-- DLL: Traits.LekmodFasterInHillsCiviliansOnly, LekmodEarlyBuildingImprovement/ProductionMod/Era
+- DLL: Traits.LekmodEarlyBuildingImprovement/ProductionMod/Era (Traits.LekmodFasterInHillsCiviliansOnly exists but is unused since 2026-10-16)
 - DLL: Improvements.RequiresAdjacentMountain
 
 TIBET (CIVILIZATION_TIBET)
@@ -2854,16 +2855,16 @@ City-States are back to the four personalities of LEKMOD v34.11: Friendly, Neutr
 MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE (MINOR_CIV_TRAIT_MILITARISTIC)
 ----------------------------------------------------------------------------------
 Tags: game mechanics, units
-- Added: while you hold a city founded by a Militaristic City-State, all your cities can train its unique unit; when you lose the city, that unit can no longer be built and Production on it is lost (the normal version stays available)
-- DLL: CvPlayer::LekmodHasCapturedMilitaristicUU, checked in CvPlayer::canTrain
+- Added: a city founded by a Militaristic City-State can train that City-State's unique unit while you hold it; when you lose the city, the unit and the Production on it are lost (the normal version stays available)
+- DLL: CvPlayer::LekmodHasCapturedMilitaristicUU, checked in CvPlayer::canTrain and (for the city itself) CvCity::canTrain
 
 EXPANDED ZOC (PROMOTION_LEKMOD_EXPANDED_ZOC)
 --------------------------------------------
-Tags: promotions, movement, combat
+Tags: promotions, movement, combat, art
 NEW. An enemy unit that moves away from a tile next to this unit loses its remaining movement. Attacks don't count as moves.
-- Added: can be picked by gunpowder, mounted, armored and naval melee units
+- Added: can be picked by melee, gunpowder and naval melee units that have the second level of a promotion line (Shock, Drill, Cover, Ambush Formation, Boarding Party, Coastal Raider or naval Interception II)
 - DLL: UnitPromotions.LekmodExpandedZOC (CvUnitMovement::IsSlowedByZOC); promotion ID 393
-- Note: uses a placeholder icon (ABILITY_ATLAS 59)
+- Dev: icon from the user's art (art_sources/promotions/user_art/expanded_zoc_shield_waves_v1.png)
 
 TOURISM BUILDING TOOLTIPS (BUILDING_HOTEL, BUILDING_AIRPORT, BUILDING_TOURIST_CENTER)
 -------------------------------------------------------------------------------------
@@ -2895,9 +2896,16 @@ CITY-STATE IMPROVEMENTS (Lekmod_MinorCivImprovements)
 -----------------------------------------------------
 Tags: game mechanics
 One in five City-States builds a special improvement of its type inside its borders.
-- Added: each City-State has a 20% chance to get one improvement type of its kind, picked at random; it then builds one on a fitting tile every 5 turns, from the listed era (the City-State's own era), up to the maximum
+- Added: each City-State has a 20% chance to get one improvement type of its kind, picked at random; from the listed era (the City-State's own era) it then has a 5% chance each turn to build one on a fitting tile, up to the maximum
 - Added: Maritime (up to 2): Terrace Farm (needs 2+ mountains within 2 tiles), Tipi or Pa from the Classical Era; Polder from the Medieval Era
 - Added: Militaristic (up to 2): Caer or Motte and Bailey from the Medieval Era
 - Added: Mercantile (up to 2): Chateau, Kasbah or Brazilwood Camp from the Medieval Era
 - Added: Religious (1, Medieval): Holy Site next to the city
-- DLL: CvMinorCivAI::LekmodDoBuildImprovements (LEKMOD_POST_CHANGES; defines LEKMOD_CS_IMPROVEMENT_CHANCE 20, LEKMOD_CS_IMPROVEMENT_TURNS 5); saved fields m_iLekmodImprovementRow / m_iLekmodImprovementNextTurn (appended to the City-State save data); the improvement is placed directly, not by a Worker; the usual placement rules of the improvement apply
+- DLL: CvMinorCivAI::LekmodDoBuildImprovements (LEKMOD_POST_CHANGES; defines LEKMOD_CS_IMPROVEMENT_CHANCE 20, LEKMOD_CS_IMPROVEMENT_TURN_CHANCE 5); saved fields m_iLekmodImprovementRow / m_iLekmodImprovementNextTurn (appended to the City-State save data; the second is unused since 2026-10-16); the improvement is placed directly, not by a Worker; the usual placement rules of the improvement apply
+
+RANGED DEFENSE OF SHIPS (COMBAT)
+-------------------------------
+Tags: combat, naval
+Ships with a Ranged Strength now defend against ranged attacks (archers, ships, cities, bombers) with their Ranged Strength, like land ranged units always did.
+- Changed: a ranged ship hit by a ranged attack defends with its Ranged Strength instead of its melee Strength; against melee attacks it still uses its Strength
+- DLL: CvUnit::GetMaxDefenseStrength (CombatInfo path; LEKMOD_POST_CHANGES)

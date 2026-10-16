@@ -139137,6 +139137,11 @@
 		<Row><Atlas>LEKMOD_SITTING_DUCKS_PROMOTION_ATLAS</Atlas><IconSize>64</IconSize><Filename>sitting_ducks_64.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
 		<Row><Atlas>LEKMOD_SITTING_DUCKS_PROMOTION_ATLAS</Atlas><IconSize>45</IconSize><Filename>sitting_ducks_45.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
 		<Row><Atlas>LEKMOD_SITTING_DUCKS_PROMOTION_ATLAS</Atlas><IconSize>32</IconSize><Filename>sitting_ducks_32.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+		<!-- EXPANDED_ZOC promotion -->
+		<Row><Atlas>LEKMOD_EXPANDED_ZOC_PROMOTION_ATLAS</Atlas><IconSize>256</IconSize><Filename>expanded_zoc_256.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+		<Row><Atlas>LEKMOD_EXPANDED_ZOC_PROMOTION_ATLAS</Atlas><IconSize>64</IconSize><Filename>expanded_zoc_64.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+		<Row><Atlas>LEKMOD_EXPANDED_ZOC_PROMOTION_ATLAS</Atlas><IconSize>45</IconSize><Filename>expanded_zoc_45.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+		<Row><Atlas>LEKMOD_EXPANDED_ZOC_PROMOTION_ATLAS</Atlas><IconSize>32</IconSize><Filename>expanded_zoc_32.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
 	</IconTextureAtlases>
 
 	<Table name="Improvement_EraYieldChanges">
@@ -287606,7 +287611,7 @@
 	<Traits>
 		<Update>
 			<Where Type="TRAIT_GREAT_ANDEAN_ROAD"/>
-			<Set ImprovementMaintenanceModifier="0" NoHillsImprovementMaintenance="false" LekmodFasterInHillsCiviliansOnly="true" LekmodEarlyBuildingImprovement="IMPROVEMENT_QUARRY" LekmodEarlyBuildingProductionMod="20" LekmodEarlyBuildingEra="ERA_CLASSICAL"/>
+			<Set ImprovementMaintenanceModifier="0" NoHillsImprovementMaintenance="false" FasterInHills="false" LekmodFasterInHillsCiviliansOnly="false" LekmodEarlyBuildingImprovement="IMPROVEMENT_QUARRY" LekmodEarlyBuildingProductionMod="20" LekmodEarlyBuildingEra="ERA_CLASSICAL"/>
 		</Update>
 	</Traits>
 	<Trait_FreePromotionUnitCombats>
@@ -291422,7 +291427,7 @@
 			<UnitType>UNIT_SWEDISH_HAKKAPELIITTA</UnitType>
 		</Row>
 	</Civilization_UnitClassOverrides>
-	<!-- POST (2026-10-15): NEW promotion Expanded ZOC (393): enemy units next to this unit lose all their moves when they move; pickable for gunpowder, mounted, armor, naval melee -->
+	<!-- POST (2026-10-15): NEW promotion Expanded ZOC (393): enemy units next to this unit lose all their moves when they move; pickable for melee, gunpowder, naval melee with tier 2 of a promotion line (user, 2026-10-16) -->
 	<UnitPromotions>
 		<Row>
 			<ID>393</ID>
@@ -291430,8 +291435,8 @@
 			<Description>TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC</Description>
 			<Help>TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC_HELP</Help>
 			<Sound>AS2D_IF_LEVELUP</Sound>
-			<PortraitIndex>59</PortraitIndex>
-			<IconAtlas>ABILITY_ATLAS</IconAtlas>
+			<PortraitIndex>0</PortraitIndex>
+			<IconAtlas>LEKMOD_EXPANDED_ZOC_PROMOTION_ATLAS</IconAtlas>
 			<LekmodExpandedZOC>true</LekmodExpandedZOC>
 			<PediaType>PEDIA_SHARED</PediaType>
 			<PediaEntry>TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC</PediaEntry>
@@ -291440,21 +291445,47 @@
 	<UnitPromotions_UnitCombats>
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<UnitCombatType>UNITCOMBAT_MELEE</UnitCombatType>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
 			<UnitCombatType>UNITCOMBAT_GUN</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
-			<UnitCombatType>UNITCOMBAT_MOUNTED</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
-			<UnitCombatType>UNITCOMBAT_ARMOR</UnitCombatType>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
 			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType>
 		</Row>
 	</UnitPromotions_UnitCombats>
+	<UnitPromotions_PromotionPrereqOrs>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_SHOCK_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_DRILL_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_COVER_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_AMBUSH_FORMATION_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_BOARDING_PARTY_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_COASTAL_RAIDER_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
+			<PrerequisitePromotion>PROMOTION_INTERCEPTION_NAVAL_2</PrerequisitePromotion>
+		</Row>
+	</UnitPromotions_PromotionPrereqOrs>
 	<!-- POST (2026-10-15): Altitude Training also for land civilians (Inca trait, Swiss Reislaeufer Post, Tibet, Kilimanjaro) -->
 	<UnitPromotions>
 		<Update>

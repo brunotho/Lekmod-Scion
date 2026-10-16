@@ -2555,8 +2555,8 @@ const std::vector<LekmodCSImprovementRow>& LekmodCSImprovementRows()
 }
 }
 
-/// A City-State may build one improvement type of its kind: rolled once (LEKMOD_CS_IMPROVEMENT_CHANCE %), then it places one
-/// on a fitting tile inside its borders every few turns from the row's era, up to the row's maximum
+/// A City-State may build one improvement type of its kind: rolled once (LEKMOD_CS_IMPROVEMENT_CHANCE %), then from the row's era
+/// it places one on a fitting tile inside its borders with LEKMOD_CS_IMPROVEMENT_TURN_CHANCE % each turn, up to the row's maximum
 void CvMinorCivAI::LekmodDoBuildImprovements()
 {
 	const std::vector<LekmodCSImprovementRow>& aRows = LekmodCSImprovementRows();
@@ -2571,8 +2571,6 @@ void CvMinorCivAI::LekmodDoBuildImprovements()
 			m_iLekmodImprovementRow = aiCandidates[GC.getGame().getJonRandNum((int)aiCandidates.size(), "Lekmod: City-State improvement pick")];
 	}
 	if (m_iLekmodImprovementRow < 0 || m_iLekmodImprovementRow >= (int)aRows.size())
-		return;
-	if (GC.getGame().getGameTurn() < m_iLekmodImprovementNextTurn)
 		return;
 	const LekmodCSImprovementRow& kRow = aRows[m_iLekmodImprovementRow];
 	if (kRow.iEra != -1 && GetPlayer()->GetCurrentEra() < kRow.iEra)
@@ -2625,8 +2623,9 @@ void CvMinorCivAI::LekmodDoBuildImprovements()
 	}
 	if (iCount >= kRow.iMax || pBest == NULL)
 		return;
+	if (GC.getGame().getJonRandNum(100, "Lekmod: City-State improvement this turn") >= LEKMOD_CS_IMPROVEMENT_TURN_CHANCE)
+		return;
 	pBest->setImprovementType(eImprovement, GetPlayer()->GetID());
-	m_iLekmodImprovementNextTurn = GC.getGame().getGameTurn() + LEKMOD_CS_IMPROVEMENT_TURNS;
 }
 #endif
 

@@ -3406,6 +3406,13 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 	{
 		return false;
 	}
+#ifdef LEKMOD_POST_CHANGES
+	// a captured Militaristic City-State's unique unit: only the captured city trains it
+	if ((UnitTypes)getCivilizationInfo().getCivilizationUnits(pkUnitEntry->GetUnitClassType()) != eUnit && !GET_PLAYER(getOwner()).LekmodHasCapturedMilitaristicUU(eUnit, this))
+	{
+		return false;
+	}
+#endif
 
 	if (!bWillPurchase && pkUnitEntry->IsPurchaseOnly())
 	{

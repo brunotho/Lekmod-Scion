@@ -29568,8 +29568,9 @@ int CvPlayer::GetLekmodAllyUUPurchaseMod() const
 	return iValue;
 }
 #ifdef LEKMOD_POST_CHANGES
-/// Do we hold a city founded by a Militaristic City-State whose unique unit this is? Then we may train it (POST list)
-bool CvPlayer::LekmodHasCapturedMilitaristicUU(UnitTypes eUnit) const
+/// Do we hold a city founded by a Militaristic City-State whose unique unit this is? Then that city may train it (POST list).
+/// With pOnlyCity: is it this city?
+bool CvPlayer::LekmodHasCapturedMilitaristicUU(UnitTypes eUnit, const CvCity* pOnlyCity) const
 {
 	if (eUnit == NO_UNIT || isMinorCiv() || isBarbarian())
 		return false;
@@ -29577,6 +29578,8 @@ bool CvPlayer::LekmodHasCapturedMilitaristicUU(UnitTypes eUnit) const
 	int iLoop;
 	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
 	{
+		if (pOnlyCity != NULL && pLoopCity != pOnlyCity)
+			continue;
 		const PlayerTypes eOriginal = pLoopCity->getOriginalOwner();
 		if (eOriginal < MAX_MAJOR_CIVS || eOriginal >= MAX_CIV_PLAYERS || eOriginal == GetID())
 			continue;

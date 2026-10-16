@@ -288,7 +288,7 @@ public:
 #endif
 	bool LekmodIsAllyMilitaristicUU(UnitTypes eUnit) const;
 #ifdef LEKMOD_POST_CHANGES
-	bool LekmodHasCapturedMilitaristicUU(UnitTypes eUnit) const;
+	bool LekmodHasCapturedMilitaristicUU(UnitTypes eUnit, const CvCity* pOnlyCity = NULL) const;
 #endif
 	bool LekmodCanGoldPurchaseGreatPerson(UnitTypes eUnit) const;
 	int GetLekmodGreatPersonGoldCost() const;

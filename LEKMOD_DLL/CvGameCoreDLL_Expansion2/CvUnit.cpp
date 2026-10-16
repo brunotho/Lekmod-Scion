@@ -15331,7 +15331,12 @@ int CvUnit::GetMaxDefenseStrength(const CvCombatInfo& kInfo, CvCombatModifierLis
 			iBaseCombat = iBaseRangedCombat;
 		}
 	}
+#ifdef LEKMOD_POST_CHANGES
+	// ranged units defend against ranged attacks with their Ranged Strength, ships too (the base game kept ships on melee Strength)
+	else if (bRangedAttack && iBaseRangedCombat > 0)
+#else
 	else if (bRangedAttack && getDomainType() != DOMAIN_SEA && iBaseRangedCombat > 0)
+#endif
 	{
 		iBaseCombat = iBaseRangedCombat;
 	}

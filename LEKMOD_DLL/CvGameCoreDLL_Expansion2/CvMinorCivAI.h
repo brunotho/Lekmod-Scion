@@ -646,7 +646,7 @@ private:
 	int m_iTurnsSinceThreatenedByBarbarians;
 #ifdef LEKMOD_POST_CHANGES
 	int m_iLekmodImprovementRow;      // row of Lekmod_MinorCivImprovements this City-State builds; -2 not rolled yet, -1 none
-	int m_iLekmodImprovementNextTurn; // earliest turn for its next one
+	int m_iLekmodImprovementNextTurn; // unused since 2026-10-16 (5% per turn instead), kept for saves
 #endif
 	int m_iGlobalQuestCountdown;
 

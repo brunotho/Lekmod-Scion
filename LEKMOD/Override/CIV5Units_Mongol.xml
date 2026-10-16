@@ -24267,7 +24267,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_MILITARISTIC_HEADING3_BODY"> 
-			<Text>A Militaristic City-State gives a free military unit to its Friends and its Ally.[NEWLINE][NEWLINE]As Friends: a unit every 13 turns, plus a few random turns.[NEWLINE]As Allies: a unit every 9 turns, plus a few random turns.[NEWLINE][NEWLINE]Some policies and civilization abilities shorten the time.[NEWLINE]You can stop the gifts on the City-State screen.[NEWLINE][NEWLINE]If you take a Militaristic City-State's city, you can train its unique unit in all your cities while you hold that city.[NEWLINE]Production on that unit is lost when you lose the city.</Text>
+			<Text>A Militaristic City-State gives a free military unit to its Friends and its Ally.[NEWLINE][NEWLINE]As Friends: a unit every 13 turns, plus a few random turns.[NEWLINE]As Allies: a unit every 9 turns, plus a few random turns.[NEWLINE][NEWLINE]Some policies and civilization abilities shorten the time.[NEWLINE]You can stop the gifts on the City-State screen.[NEWLINE][NEWLINE]If you take a Militaristic City-State's city, that city can train its unique unit while you hold it.[NEWLINE]Production on that unit is lost when you lose the city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_MILITARISTIC_HEADING3_TITLE"> 
 			<Text>
@@ -24709,7 +24709,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_TYPES_HEADING2_BODY"> 
-			<Text>There are five types of City-States.[NEWLINE]Friends get the bonus of the type; Allies get a stronger version (or the same, plus the Ally benefits).[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Cultured[ENDCOLOR]: [ICON_CULTURE] Culture per turn, growing with your era.[NEWLINE][COLOR_POSITIVE_TEXT]Maritime[ENDCOLOR]: Food in your capital and in all other cities, growing with your era.[NEWLINE][COLOR_POSITIVE_TEXT]Mercantile[ENDCOLOR]: [ICON_HAPPINESS_1] Happiness, and a special luxury resource for their Ally.[NEWLINE][COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR]: a free military unit every few turns.[NEWLINE][COLOR_POSITIVE_TEXT]Religious[ENDCOLOR]: [ICON_PEACE] Faith per turn, growing with your era.[NEWLINE][NEWLINE]The exact numbers are on the page of each type and on "City-State Bonuses by Era".[NEWLINE][NEWLINE]One in five City-States also builds a special improvement of its type inside its borders, one every 5 turns:[NEWLINE]Maritime: up to 2 Terrace Farms (needs 2+ mountains within 2 tiles), Tipis or Pas from the Classical Era, or Polders from the Medieval Era.[NEWLINE]Militaristic: up to 2 Caers or Motte and Baileys from the Medieval Era.[NEWLINE]Mercantile: up to 2 Chateaus, Kasbahs or Brazilwood Camps from the Medieval Era.[NEWLINE]Religious: 1 Holy Site next to the city (Medieval Era).[NEWLINE]The era is the City-State's own.</Text>
+			<Text>There are five types of City-States.[NEWLINE]Friends get the bonus of the type; Allies get a stronger version (or the same, plus the Ally benefits).[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Cultured[ENDCOLOR]: [ICON_CULTURE] Culture per turn, growing with your era.[NEWLINE][COLOR_POSITIVE_TEXT]Maritime[ENDCOLOR]: Food in your capital and in all other cities, growing with your era.[NEWLINE][COLOR_POSITIVE_TEXT]Mercantile[ENDCOLOR]: [ICON_HAPPINESS_1] Happiness, and a special luxury resource for their Ally.[NEWLINE][COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR]: a free military unit every few turns.[NEWLINE][COLOR_POSITIVE_TEXT]Religious[ENDCOLOR]: [ICON_PEACE] Faith per turn, growing with your era.[NEWLINE][NEWLINE]The exact numbers are on the page of each type and on "City-State Bonuses by Era".[NEWLINE][NEWLINE]One in five City-States also builds a special improvement of its type inside its borders: once its era is reached, a 5% chance each turn to place one, until the maximum:[NEWLINE]Maritime: up to 2 Terrace Farms (needs 2+ mountains within 2 tiles), Tipis or Pas from the Classical Era, or Polders from the Medieval Era.[NEWLINE]Militaristic: up to 2 Caers or Motte and Baileys from the Medieval Era.[NEWLINE]Mercantile: up to 2 Chateaus, Kasbahs or Brazilwood Camps from the Medieval Era.[NEWLINE]Religious: 1 Holy Site next to the city (Medieval Era).[NEWLINE]The era is the City-State's own.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_TYPES_HEADING2_TITLE"> 
 			<Text>
@@ -147921,7 +147921,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE]Your first Expand receives +1 [ICON_CITIZEN] Population.[NEWLINE]Land units start with Amphibious I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GREAT_ANDEAN_ROAD">
-			<Text>Military land units start with Altitude Training (10% movement discount in Hills).[NEWLINE]Civilian units ignore terrain costs when moving into Hills.[NEWLINE][NEWLINE]Cities with a Quarry get +20% [ICON_PRODUCTION] Production towards Ancient Era buildings.</Text>
+			<Text>Land units, military and civilian, start with Altitude Training (10% movement discount in Hills).[NEWLINE][NEWLINE]Cities with a Quarry get +20% [ICON_PRODUCTION] Production towards Ancient Era buildings.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_WIRR">
 			<Text>+10% [ICON_STRENGTH] [COLOR_GREEN]Combat Strength[ENDCOLOR] while fighting outside of friendly territory.[NEWLINE][NEWLINE]+25% [ICON_PRODUCTION] Production towards Walls, Castles, Arsenals and Military Bases.[NEWLINE]They also give the city +2 [ICON_STRENGTH] Defense each.</Text>
@@ -148299,7 +148299,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Expanded ZOC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC_HELP">
-			<Text>Enemy units next to this unit lose all their remaining [ICON_MOVES] Movement when they move.[NEWLINE]Attacking is not a move.</Text>
+			<Text>Enemy units next to this unit lose all their remaining [ICON_MOVES] Movement when they move.[NEWLINE]Attacking is not a move.[NEWLINE][NEWLINE]Requires the second level of a promotion line (e.g. Drill II or Boarding Party II).</Text>
 		</Row>
 		<!-- POST: Altitude Training for civilians (2026-10-15) -->
 		<Replace Tag="TXT_KEY_PROMOTION_ALTITUDE_TRAINING_HELP">
