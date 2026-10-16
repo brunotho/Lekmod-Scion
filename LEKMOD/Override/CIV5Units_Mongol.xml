@@ -139561,7 +139561,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TAMGIAO"> 
-			<Text>+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production from Marsh and +1 [ICON_PEACE] Faith from Jungle.[NEWLINE][NEWLINE]All Units receive double [ICON_MOVES] movement and a [ICON_STRENGTH] combat bonus on Marsh and Jungle tiles.</Text>
+			<Text>Marsh tiles yield +2 [ICON_FOOD] Food.[NEWLINE]Flood Plains yield +1 [ICON_FOOD] Food.[NEWLINE][NEWLINE]Improvements are built on Marsh without removing it (each improvement's own rules still apply; e.g. a Farm on a flat Marsh without a resource).[NEWLINE][NEWLINE]All units have double [ICON_MOVES] Movement and a [ICON_STRENGTH] Combat bonus on Marsh and Jungle tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TAMGIAO_SHORT"> 
 			<Text>
@@ -143330,9 +143330,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_VIETNAM_INFANTRY_HELP"> 
-			<Text>
-				Unique unit for Vietnam. Replaces the Infantry. Has 1 additional [ICON_MOVES] Movement and performs a ranged attack before it performes a melee one. Also has a [ICON_STRENGTH] Combat bonus against Gunpowder Units.
-			</Text>
+			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack before each melee attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VOORTREKKER"> 
 			<Text>
@@ -147965,6 +147963,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_JAEGYE">
 			<Text>Jaegye</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE">
+			<Text>Water Puppet Theatre</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE_HELP">
+			<Text>Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains, Marsh and Lake tiles next to the city yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]While a Festival (Great Musician) is next to the city, these tiles also yield +1 [ICON_FOOD] Food.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MAHAMATRAS_OFFICE">
 			<Text>Mahamatras' Office</Text>

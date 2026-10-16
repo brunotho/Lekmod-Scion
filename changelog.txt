@@ -2953,3 +2953,15 @@ CIVILIZATION SELECTION LIST (SINGLE PLAYER)
 Tags: ui
 - Fixed: long ability texts no longer run into the next civilization's box and the hover highlight matches every box: the text is shortened to fit (with "..."), and the full text plus the start bias show in the tooltip
 - Dev: replaces the 2026-10-10 row growth (the highlight in the base XML has no ID, so it could not grow with the row)
+
+VIETNAM (CIVILIZATION_VIETNAM)
+------------------------------
+Tags: civs, units, buildings, art
+- Changed: UA: Marsh +2 Food (no longer +1 Production), Flood Plains +1 Food; improvements are built on Marsh without removing it (no clearing time or tech; the plain "Remove Marsh" build still clears it)
+- Removed: UA: +1 Faith from Jungle
+- Changed: Vietnamese Infantry costs the same as the Infantry (290, was 242)
+- Removed: Vietnamese Infantry: bonus against gunpowder units
+- Removed: Vo Khi (unique Armory)
+- Added: Water Puppet Theatre, a unique Amphitheater: the Amphitheater's effects plus +1 Culture and +1 Gold on Flood Plains, Marsh and Lake tiles next to the city, and +1 Food on them while a Festival is next to the city
+- Changed: start bias: Jungle only (was Jungle and Wetlands)
+- DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303

@@ -110207,6 +110207,8 @@
 		<Column name="FeatureType" type="text" reference="Features(Type)" default="NULL"/>
 		<Column name="YieldType" type="text" reference="Yields(Type)"/>
 		<Column name="Yield" type="integer" default="0"/>
+		<Column name="LakeOnly" type="boolean" default="false"/>
+		<Column name="CityAdjacentImprovementType" type="text" reference="Improvements(Type)" default="NULL"/>
 	</Table>
 	<Table name="Feature_AdjacentPlotYieldChanges">
 		<Column name="FeatureType" type="text" reference="Features(Type)"/>
@@ -211633,6 +211635,7 @@
 		<Column name="LekmodPassedProposalExtraVotes" type="integer" default="0"/>
 		<Column name="LekmodNoUnitCostAtPeace" type="integer" default="0"/>
 		<Column name="LekmodAllPantheons" type="integer" default="0"/>
+		<Column name="LekmodKeepFeatureOnBuild" type="text" reference="Features(Type)" default="NULL"/>
 		<Column name="LekmodHiddenGold" type="integer" default="0"/> <!-- Lua only: Demographics and the trade screen hide this player's Gold from others -->
 		<Column name="LekmodOceanWithoutAstronomy" type="integer" default="0"/>
 		<Column name="LekmodFoundClaimResource" type="text" reference="Resources(Type)" default="NULL"/>
@@ -291889,4 +291892,209 @@
 			<Set OrderPriority="160"/>
 		</Update>
 	</Missions>
+	<!-- POST (2026-10-16): Vietnam. UA: Marsh +2 Food (no Production), Flood Plains +1 Food, no Jungle Faith, improvements keep the Marsh;
+	     UU: no bonus vs gunpowder, Infantry cost; Vo Khi removed; NEW UB Water Puppet Theatre (Amphitheater): Flood Plains/Marsh/Lakes next to the city
+	     +1 Culture +1 Gold, +1 Food while a Festival is next to the city; start bias Jungle only -->
+	<Traits>
+		<Update>
+			<Where Type="TRAIT_TAMGIAO"/>
+			<Set LekmodKeepFeatureOnBuild="FEATURE_MARSH"/>
+		</Update>
+	</Traits>
+	<Trait_FeatureYieldChanges>
+		<Delete TraitType="TRAIT_TAMGIAO"/>
+		<Row>
+			<TraitType>TRAIT_TAMGIAO</TraitType>
+			<FeatureType>FEATURE_MARSH</FeatureType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>2</Yield>
+			<AllowImprovement>true</AllowImprovement>
+		</Row>
+		<Row>
+			<TraitType>TRAIT_TAMGIAO</TraitType>
+			<FeatureType>FEATURE_FLOOD_PLAINS</FeatureType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+			<AllowImprovement>true</AllowImprovement>
+		</Row>
+	</Trait_FeatureYieldChanges>
+	<Unit_FreePromotions>
+		<Delete UnitType="UNIT_VIETNAM_INFANTRY" PromotionType="PROMOTION_ANTI_GUNPOWDER"/>
+	</Unit_FreePromotions>
+	<Units>
+		<Update>
+			<Where Type="UNIT_VIETNAM_INFANTRY"/>
+			<Set Cost="433"/>
+		</Update>
+	</Units>
+	<Civilization_Start_Region_Priority>
+		<Delete CivilizationType="CIVILIZATION_VIETNAM" RegionType="REGION_WETLANDS"/>
+	</Civilization_Start_Region_Priority>
+	<Civilization_BuildingClassOverrides>
+		<Delete CivilizationType="CIVILIZATION_VIETNAM" BuildingClassType="BUILDINGCLASS_ARMORY"/>
+		<Row>
+			<CivilizationType>CIVILIZATION_VIETNAM</CivilizationType>
+			<BuildingClassType>BUILDINGCLASS_AMPHITHEATER</BuildingClassType>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+		</Row>
+	</Civilization_BuildingClassOverrides>
+	<IconTextureAtlases>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>256</IconSize>
+			<Filename>water_puppet_theatre_256.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>214</IconSize>
+			<Filename>water_puppet_theatre_214.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>128</IconSize>
+			<Filename>water_puppet_theatre_128.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>80</IconSize>
+			<Filename>water_puppet_theatre_80.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>64</IconSize>
+			<Filename>water_puppet_theatre_64.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>45</IconSize>
+			<Filename>water_puppet_theatre_45.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+		<Row>
+			<Atlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</Atlas>
+			<IconSize>32</IconSize>
+			<Filename>water_puppet_theatre_32.dds</Filename>
+			<IconsPerRow>1</IconsPerRow>
+			<IconsPerColumn>1</IconsPerColumn>
+		</Row>
+	</IconTextureAtlases>
+	<Buildings>
+		<Row>
+			<ID>303</ID>
+			<Type>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</Type>
+			<BuildingClass>BUILDINGCLASS_AMPHITHEATER</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE</Description>
+			<Civilopedia>TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE_HELP</Civilopedia>
+			<Strategy>TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE_HELP</Strategy>
+			<Help>TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE_HELP</Help>
+			<GoldMaintenance>1</GoldMaintenance>
+			<Cost>100</Cost>
+			<HurryCostModifier>25</HurryCostModifier>
+			<MinAreaSize>-1</MinAreaSize>
+			<ConquestProb>66</ConquestProb>
+			<ArtDefineTag>COLESSEUM</ArtDefineTag>
+			<PrereqTech>TECH_DRAMA</PrereqTech>
+			<FreeStartEra>ERA_INDUSTRIAL</FreeStartEra>
+			<GreatWorkSlotType>GREAT_WORK_SLOT_ART_ARTIFACT</GreatWorkSlotType>
+			<GreatWorkCount>1</GreatWorkCount>
+			<PortraitIndex>0</PortraitIndex>
+			<IconAtlas>LEKMOD_WATER_PUPPET_THEATRE_ATLAS</IconAtlas>
+		</Row>
+	</Buildings>
+	<Building_YieldChanges>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>2</Yield>
+		</Row>
+	</Building_YieldChanges>
+	<Building_GreatWorkYieldChanges>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<YieldType>YIELD_TOURISM</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+	</Building_GreatWorkYieldChanges>
+	<Building_Flavors>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FlavorType>FLAVOR_CULTURE</FlavorType>
+			<Flavor>30</Flavor>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FlavorType>FLAVOR_GOLD</FlavorType>
+			<Flavor>10</Flavor>
+		</Row>
+	</Building_Flavors>
+	<Building_AdjacentCityPlotYieldChanges>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_FLOOD_PLAINS</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_FLOOD_PLAINS</FeatureType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_FLOOD_PLAINS</FeatureType>
+			<CityAdjacentImprovementType>IMPROVEMENT_CONCERT</CityAdjacentImprovementType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_MARSH</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_MARSH</FeatureType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<FeatureType>FEATURE_MARSH</FeatureType>
+			<CityAdjacentImprovementType>IMPROVEMENT_CONCERT</CityAdjacentImprovementType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<LakeOnly>true</LakeOnly>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<LakeOnly>true</LakeOnly>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WATER_PUPPET_THEATRE</BuildingType>
+			<LakeOnly>true</LakeOnly>
+			<CityAdjacentImprovementType>IMPROVEMENT_CONCERT</CityAdjacentImprovementType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+	</Building_AdjacentCityPlotYieldChanges>
 </GameData>

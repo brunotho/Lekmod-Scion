@@ -16324,6 +16324,19 @@ int CvCity::GetLekmodAdjacentCityPlotYield(const CvPlot* pPlot, YieldTypes eYiel
 				continue;
 			if (kEntry.m_eFeature != NO_FEATURE && kEntry.m_eFeature != pPlot->getFeatureType())
 				continue;
+			if (kEntry.m_bLake && !pPlot->isLake())
+				continue;
+			if (kEntry.m_eCityAdjacentImprovement != NO_IMPROVEMENT)
+			{
+				bool bFound = false;
+				for (int iDirection = 0; iDirection < NUM_DIRECTION_TYPES && !bFound; iDirection++)
+				{
+					const CvPlot* pNear = plotDirection(getX(), getY(), (DirectionTypes)iDirection);
+					bFound = pNear != NULL && pNear->getImprovementType() == kEntry.m_eCityAdjacentImprovement && !pNear->IsImprovementPillaged();
+				}
+				if (!bFound)
+					continue;
+			}
 			iYield += kEntry.m_iYield;
 		}
 	}

@@ -624,6 +624,7 @@ public:
 	int calculateYield(YieldTypes eIndex, bool bDisplay = false);
 #ifdef LEKMOD_BUILDING_ADJACENT_CITY_YIELDS
 	int GetLekmodAdjacentCityBuildingYield(YieldTypes eYield, PlayerTypes ePlayer, ImprovementTypes eImprovement) const;
+	void LekmodRefreshAdjacentCities();
 #endif
 	bool hasYield() const;
 	void updateYield();

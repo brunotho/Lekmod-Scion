@@ -1390,14 +1390,16 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 		if(pResults == NULL)
 		{
 			pResults = kUtility.PrepareResults(strKey,
-				"select coalesce(Improvements.ID, -1), coalesce(Resources.ID, -1), coalesce(Terrains.ID, -1), coalesce(Features.ID, -1), Yields.ID, Yield "
+				"select coalesce(Improvements.ID, -1), coalesce(Resources.ID, -1), coalesce(Terrains.ID, -1), coalesce(Features.ID, -1), Yields.ID, "
+				"Building_AdjacentCityPlotYieldChanges.Yield, Building_AdjacentCityPlotYieldChanges.LakeOnly, coalesce(CityImp.ID, -1) "
 				"from Building_AdjacentCityPlotYieldChanges "
-				"left join Improvements on Improvements.Type = ImprovementType "
-				"left join Resources on Resources.Type = ResourceType "
-				"left join Terrains on Terrains.Type = TerrainType "
-				"left join Features on Features.Type = FeatureType "
-				"inner join Yields on Yields.Type = YieldType "
-				"where BuildingType = ?");
+				"left join Improvements on Improvements.Type = Building_AdjacentCityPlotYieldChanges.ImprovementType "
+				"left join Resources on Resources.Type = Building_AdjacentCityPlotYieldChanges.ResourceType "
+				"left join Terrains on Terrains.Type = Building_AdjacentCityPlotYieldChanges.TerrainType "
+				"left join Features on Features.Type = Building_AdjacentCityPlotYieldChanges.FeatureType "
+				"left join Improvements as CityImp on CityImp.Type = Building_AdjacentCityPlotYieldChanges.CityAdjacentImprovementType "
+				"inner join Yields on Yields.Type = Building_AdjacentCityPlotYieldChanges.YieldType "
+				"where Building_AdjacentCityPlotYieldChanges.BuildingType = ?");
 		}
 		pResults->Bind(1, szBuildingType);
 		while(pResults->Step())
@@ -1409,6 +1411,8 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 			kEntry.m_eFeature = (FeatureTypes)pResults->GetInt(3);
 			kEntry.m_eYield = (YieldTypes)pResults->GetInt(4);
 			kEntry.m_iYield = pResults->GetInt(5);
+			kEntry.m_bLake = pResults->GetBool(6);
+			kEntry.m_eCityAdjacentImprovement = (ImprovementTypes)pResults->GetInt(7);
 			m_aLekmodAdjacentCityYields.push_back(kEntry);
 		}
 	}

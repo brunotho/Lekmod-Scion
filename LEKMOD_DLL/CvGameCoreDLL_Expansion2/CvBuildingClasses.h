@@ -89,13 +89,15 @@ struct LekmodBuildingPlotYield
 // Building_AdjacentCityPlotYieldChanges: yield on plots next to the city; each condition is optional (-1 = any)
 struct LekmodBuildingAdjacentYield
 {
-	LekmodBuildingAdjacentYield() : m_eImprovement(NO_IMPROVEMENT), m_eResource(NO_RESOURCE), m_eTerrain(NO_TERRAIN), m_eFeature(NO_FEATURE), m_eYield(NO_YIELD), m_iYield(0) {};
+	LekmodBuildingAdjacentYield() : m_eImprovement(NO_IMPROVEMENT), m_eResource(NO_RESOURCE), m_eTerrain(NO_TERRAIN), m_eFeature(NO_FEATURE), m_eYield(NO_YIELD), m_iYield(0), m_bLake(false), m_eCityAdjacentImprovement(NO_IMPROVEMENT) {};
 	ImprovementTypes m_eImprovement;
 	ResourceTypes m_eResource;
 	TerrainTypes m_eTerrain;
 	FeatureTypes m_eFeature;
 	YieldTypes m_eYield;
 	int m_iYield;
+	bool m_bLake;							// the plot must be a lake
+	ImprovementTypes m_eCityAdjacentImprovement;	// an unpillaged one must be next to the city (Vietnam: Festival)
 };
 #endif
 #ifdef LEKMOD_BUILDING_TECH_TERRAIN_YIELDS

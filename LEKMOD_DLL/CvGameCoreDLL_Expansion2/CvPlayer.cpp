@@ -12743,6 +12743,13 @@ bool CvPlayer::IsBuildBlockedByFeature(BuildTypes eBuild, FeatureTypes eFeature)
 	{
 		return false;
 	}
+#ifdef LEKMOD_POST_CHANGES
+	// the feature stays for this player (Vietnam: Marsh), so no clearing tech is needed
+	if (LekmodKeepsFeatureOnBuild(eFeature))
+	{
+		return false;
+	}
+#endif
 
 	TechTypes ePrereqTech = (TechTypes) GC.getBuildInfo(eBuild)->getFeatureTech(eFeature);
 
@@ -29568,6 +29575,15 @@ int CvPlayer::GetLekmodAllyUUPurchaseMod() const
 	return iValue;
 }
 #ifdef LEKMOD_POST_CHANGES
+/// Do our builds keep this feature instead of removing it (Traits.LekmodKeepFeatureOnBuild, Vietnam: Marsh)?
+bool CvPlayer::LekmodKeepsFeatureOnBuild(FeatureTypes eFeature) const
+{
+#ifdef LEKMOD_CIV_TRAIT_FLAGS
+	return eFeature != NO_FEATURE && GetPlayerTraits()->GetLekmodTraitType(LTI_KEEP_FEATURE_ON_BUILD) == (int)eFeature;
+#else
+	return false;
+#endif
+}
 /// Do we hold a city founded by a Militaristic City-State whose unique unit this is? Then that city may train it (POST list).
 /// With pOnlyCity: is it this city?
 bool CvPlayer::LekmodHasCapturedMilitaristicUU(UnitTypes eUnit, const CvCity* pOnlyCity) const

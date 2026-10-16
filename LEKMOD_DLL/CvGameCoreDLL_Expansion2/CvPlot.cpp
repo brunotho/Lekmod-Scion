@@ -2909,7 +2909,11 @@ int CvPlot::getBuildTime(BuildTypes eBuild, PlayerTypes ePlayer) const
 	// End Repair time mod
 
 
+#ifdef LEKMOD_POST_CHANGES
+	if(getFeatureType() != NO_FEATURE && !(ePlayer != NO_PLAYER && GET_PLAYER(ePlayer).LekmodKeepsFeatureOnBuild(getFeatureType())))
+#else
 	if(getFeatureType() != NO_FEATURE)
+#endif
 	{
 		CvBuildInfo* pkBuildInfo = GC.getBuildInfo(eBuild);
 		if(pkBuildInfo)
@@ -7521,6 +7525,9 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 		}
 #endif
 		updateYield();
+#if defined(LEKMOD_POST_CHANGES) && defined(LEKMOD_BUILDING_ADJACENT_CITY_YIELDS)
+		LekmodRefreshAdjacentCities();
+#endif
 
 		// Update the amount of a Resource used up by this Improvement
 		if(isOwned() && eNewValue != NO_IMPROVEMENT)
@@ -7607,6 +7614,9 @@ void CvPlot::SetImprovementPillaged(bool bPillaged)
 #endif
 		m_bImprovementPillaged = bPillaged;
 		updateYield();
+#if defined(LEKMOD_POST_CHANGES) && defined(LEKMOD_BUILDING_ADJACENT_CITY_YIELDS)
+		LekmodRefreshAdjacentCities();
+#endif
 #if defined(LEKMOD_WATER_WALK_IMPROVEMENT_RULES)
 		if (bWalkWaterImprovement)
 		{
@@ -9401,6 +9411,16 @@ int CvPlot::GetLekmodAdjacentFeatureYield(YieldTypes eYield, ImprovementTypes eI
 //	--------------------------------------------------------------------------------
 #ifdef LEKMOD_BUILDING_ADJACENT_CITY_YIELDS
 //	--------------------------------------------------------------------------------
+/// An improvement next to a city changed: its buildings' adjacent-tile yields may depend on it (Water Puppet Theatre + Festival)
+void CvPlot::LekmodRefreshAdjacentCities()
+{
+	for (int iDirection = 0; iDirection < NUM_DIRECTION_TYPES; iDirection++)
+	{
+		CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), (DirectionTypes)iDirection);
+		if (pAdjacentPlot != NULL && pAdjacentPlot->isCity())
+			pAdjacentPlot->getPlotCity()->updateYield();
+	}
+}
 /// Yield from buildings of ePlayer's cities next to this plot (Building_AdjacentCityPlotYieldChanges)
 int CvPlot::GetLekmodAdjacentCityBuildingYield(YieldTypes eYield, PlayerTypes ePlayer, ImprovementTypes eImprovement) const
 {
@@ -11374,7 +11394,12 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 			// Remove Feature
 			if(getFeatureType() != NO_FEATURE)
 			{
+#ifdef LEKMOD_POST_CHANGES
+				// an improvement build keeps a feature the builder's civ keeps (Vietnam: Marsh); the plain "Remove" build still clears it
+				if(pkBuildInfo->isFeatureRemove(getFeatureType()) && !(pkBuildInfo->getImprovement() != NO_IMPROVEMENT && GET_PLAYER(ePlayer).LekmodKeepsFeatureOnBuild(getFeatureType())))
+#else
 				if(pkBuildInfo->isFeatureRemove(getFeatureType()))
+#endif
 				{
 					CvAssertMsg(ePlayer != NO_PLAYER, "ePlayer should be valid");
 
