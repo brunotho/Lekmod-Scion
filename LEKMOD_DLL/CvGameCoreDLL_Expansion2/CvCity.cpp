@@ -2308,7 +2308,20 @@ void CvCity::doTurn()
 		iBuildingDefense /= 100;
 		iHitsHealed += iBuildingDefense / 500;
 #endif
+#ifdef LEKMOD_POST_CHANGES
+		const int iLekmodDamageBefore = getDamage();
+#endif
 		changeDamage(-iHitsHealed);
+#ifdef LEKMOD_POST_CHANGES
+		// floating green HP number over the healed city (POST 2026-10-16), for whoever can see it
+		const int iLekmodHealed = iLekmodDamageBefore - std::max(getDamage(), 0);
+		if (iLekmodHealed > 0 && GC.getGame().getActivePlayer() != NO_PLAYER && plot()->isVisible(GC.getGame().getActiveTeam()))
+		{
+			char text[64] = { 0 };
+			sprintf_s(text, "[COLOR_POSITIVE_TEXT]+%d HP[ENDCOLOR]", iLekmodHealed);
+			GC.GetEngineUserInterface()->AddPopupText(getX(), getY(), text, GC.getPOST_COMBAT_TEXT_DELAY() * 2);
+		}
+#endif
 	}
 	if(getDamage() < 0)
 	{

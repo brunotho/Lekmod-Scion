@@ -291882,4 +291882,11 @@
 			<Set LekmodYieldsOnCityTile="true"/>
 		</Update>
 	</Buildings>
+	<!-- POST (2026-10-16): Fortify on the main unit action panel (the panel shows missions with OrderPriority over 100 there) -->
+	<Missions>
+		<Update>
+			<Where Type="MISSION_FORTIFY"/>
+			<Set OrderPriority="160"/>
+		</Update>
+	</Missions>
 </GameData>

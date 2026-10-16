@@ -2935,3 +2935,15 @@ CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 Tags: civs, ui
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
+
+CITY HEALING (FLOATING TEXT)
+----------------------------
+Tags: ui
+- Added: when a city heals at the start of a turn, a green "+N HP" floats over it (for every player who can see the city)
+- DLL: CvCity::doTurn (LEKMOD_POST_CHANGES)
+
+FORTIFY BUTTON (MISSION_FORTIFY)
+-------------------------------
+Tags: ui
+- Changed: Fortify is on the main unit action panel instead of the extra actions list
+- Dev: Missions.OrderPriority 99 -> 160 (the unit panel puts missions over 100 on the main panel)
