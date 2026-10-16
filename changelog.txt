@@ -2929,3 +2929,9 @@ City yields from civilization abilities now show on the city's own tile instead 
 - Changed: Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile; the amounts are unchanged
 - Note: the Mughals' Golden Age points stay a city yield (tiles can't hold them)
 - DLL: Buildings.LekmodYieldsOnCityTile on the UA dummy buildings; CvCity::GetLekmodConditionalBuildingYield(eYield, bCityTile) split, added in CvPlot::calculateYield; the city tile refreshes every turn, when such a building changes and when a tech is learned
+
+CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
+--------------------------------------------
+Tags: civs, ui
+- Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
+- Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")

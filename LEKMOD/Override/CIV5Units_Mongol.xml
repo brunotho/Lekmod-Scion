@@ -580,9 +580,7 @@
 		<!-- New Civs -->
 		<!-- Mali Trait -->
 		<Row Tag="TXT_KEY_TRAIT_MALI_DESC">
-			<Text>
-				+3 [ICON_GOLD] Gold and +3 [ICON_HAPPINESS_1] Global Happiness from the [ICON_BUILDING_PALACE] [COLOR_YELLOW]Palace[ENDCOLOR]. +1 [ICON_PEACE] Faith to tiles with at least 1 [ICON_GOLD] Gold while in a [ICON_GOLDEN_AGE] Golden Age.
-			</Text>
+			<Text>+3 [ICON_GOLD] Gold and +3 [ICON_HAPPINESS_1] Global Happiness from the [ICON_BUILDING_PALACE] [COLOR_YELLOW]Palace[ENDCOLOR].[NEWLINE][NEWLINE]+1 [ICON_PEACE] Faith to tiles with at least 1 [ICON_GOLD] Gold while in a [ICON_GOLDEN_AGE] Golden Age.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_MALI_SHORT_DESC">
 			<Text>
@@ -840,9 +838,7 @@
 		</Row>
 		<!-- Buganda -->
 		<Row Tag="TXT_KEY_TRAIT_BUGANDA_DESC">
-			<Text>
-				[ICON_MISSION_EMBARK] Embarked Military units fight as if they are on land and may perform most actions as if they are not embarked. Units heal an additional [ICON_MISSION_HEAL] [COLOR_GREEN]+10[ENDCOLOR] HP and gain +100% more [ICON_GOLD] Gold when [ICON_MISSION_PILLAGE] Pillaging.
-			</Text>
+			<Text>[ICON_MISSION_EMBARK] Embarked Military units fight as if they are on land and may perform most actions as if they are not embarked.[NEWLINE][NEWLINE]Units heal an additional [ICON_MISSION_HEAL] [COLOR_GREEN]+10[ENDCOLOR] HP and gain +100% more [ICON_GOLD] Gold when [ICON_MISSION_PILLAGE] Pillaging.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_BUGANDA_SHORT_DESC">
 			<Text>
@@ -1586,7 +1582,7 @@
 		</Row>
 		
 		<Row Tag="TXT_KEY_TRAIT_CZECHIA_DESC">			
-			<Text>+100% [COLOR_POSITIVE_TEXT]Religious Pressure[ENDCOLOR] towards your own cities. Choose a [COLOR_POSITIVE_TEXT]Reformation[ENDCOLOR] belief upon [COLOR_POSITIVE_TEXT]Founding[ENDCOLOR] a [ICON_RELIGION] Religion (if not picked already).</Text>
+			<Text>+100% [COLOR_POSITIVE_TEXT]Religious Pressure[ENDCOLOR] towards your own cities.[NEWLINE]Choose a [COLOR_POSITIVE_TEXT]Reformation[ENDCOLOR] belief upon [COLOR_POSITIVE_TEXT]Founding[ENDCOLOR] a [ICON_RELIGION] Religion (if not picked already).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_CZECHIA_SHORT_DESC">			
 			<Text>Hussite Fervor</Text>
@@ -2980,7 +2976,7 @@
 	</Row>
 
 	<Row Tag="TXT_KEY_TRAIT_NONALIGNED_DESC">			
-		<Text>Pick a free Ideology Tenet when adopting or switching Ideologies and receive bonuses corresponding to both rival Ideologies. If not Freedom, Specialists provide +1 [ICON_GOLD] Gold. If not Autocracy, receive +15% [ICON_PRODUCTION] Production towards land Units. If not Order, receive +2 [ICON_PRODUCTION] Production and [ICON_RESEARCH] Science in all Cities.</Text>
+		<Text>Pick a free Ideology Tenet when adopting or switching Ideologies and receive bonuses corresponding to both rival Ideologies.[NEWLINE]If not Freedom, Specialists provide +1 [ICON_GOLD] Gold.[NEWLINE]If not Autocracy, receive +15% [ICON_PRODUCTION] Production towards land Units.[NEWLINE]If not Order, receive +2 [ICON_PRODUCTION] Production and [ICON_RESEARCH] Science in all Cities.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_TRAIT_NONALIGNED_SHORT_DESC">			
 		<Text>Non-aligned Doctrine</Text>
@@ -3370,7 +3366,7 @@
 	</Row>
 
 	<Row Tag="TXT_KEY_TRAIT_PEARL_OF_THE_DESERT_DESC">			
-		<Text>Cities provide [COLOR_GREEN]freshwater[ENDCOLOR] to all adjacent tiles. [ICON_BUILDING_GARDEN] Gardens, [ICON_BUILDING_WATERMILL] Watermills and [ICON_BUILDING_HYDRO_PLANT] Hydro Plants do not have terrain requirements.</Text>
+		<Text>Cities provide [COLOR_GREEN]freshwater[ENDCOLOR] to all adjacent tiles.[NEWLINE][ICON_BUILDING_GARDEN] Gardens, [ICON_BUILDING_WATERMILL] Watermills and [ICON_BUILDING_HYDRO_PLANT] Hydro Plants do not have terrain requirements.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_TRAIT_PEARL_OF_THE_DESERT_SHORT_DESC">			
 		<Text>Pearl of the Desert</Text>
@@ -3584,7 +3580,7 @@
 	</Row>
 	
 	<Row Tag="TXT_KEY_TRAIT_ECCLESIASTICAL_ARCHITECTURE_DESC">			
-		<Text>Buildings unlocked by religious beliefs (with the exception of Art Houses) can only be built using [ICON_PRODUCTION] Production (cost equal to half of the otherwise required [ICON_PEACE] Faith); these buildings provide +2 [ICON_PRODUCTION] Production.</Text>
+		<Text>Buildings unlocked by religious beliefs (with the exception of Art Houses) can only be built using [ICON_PRODUCTION] Production (cost equal to half of the otherwise required [ICON_PEACE] Faith).[NEWLINE]These buildings provide +2 [ICON_PRODUCTION] Production.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_TRAIT_ECCLESIASTICAL_ARCHITECTURE_SHORT_DESC">			
 		<Text>Ecclesiastical Architecture</Text>
@@ -6605,7 +6601,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		<!-- UA -->
 	
 	<Row Tag="TXT_KEY_TRAIT_MANA">
-		<Text>During the first 5 turns, all non-recon and non-air units receive +2 [ICON_MOVES] Movement and +1 Sight. After this, they receive +2 [ICON_MOVES] Movement during the first turn they appear.</Text>
+		<Text>During the first 5 turns, all non-recon and non-air units receive +2 [ICON_MOVES] Movement and +1 Sight.[NEWLINE]After this, they receive +2 [ICON_MOVES] Movement during the first turn they appear.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_TRAIT_MANA_SHORT">
 		<Text>Mana of Tumatauenga</Text>
@@ -8059,7 +8055,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Replaces the Warrior. This unit is slightly stronger and may build farms and quarries</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_GREAT_ZIMBABWE">
-			<Text>+25% [ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] and [COLOR_GREEN]military units[ENDCOLOR] in the [ICON_CAPITAL] Capital</Text>
+			<Text>+25% [ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] and [COLOR_GREEN]military units[ENDCOLOR] in the [ICON_CAPITAL] Capital.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_GREAT_ZIMBABWE_SHORT">
 			<Text>Great Zimbabwe</Text>
@@ -8318,7 +8314,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Merchant Economy</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_MERCHANTS">
-			<Text>+5% [ICON_FOOD] Food for every [ICON_INTERNATIONAL_TRADE] International Trade Route departing the city. +4 [ICON_GOLD] Gold from [COLOR_GREEN]Internal[ENDCOLOR] Trade Routes</Text>
+			<Text>+5% [ICON_FOOD] Food for every [ICON_INTERNATIONAL_TRADE] International Trade Route departing the city.[NEWLINE][NEWLINE]+4 [ICON_GOLD] Gold from [COLOR_GREEN]Internal[ENDCOLOR] Trade Routes</Text>
 		</Row>
 		<!--Spy Names-->
 		<Row Tag="TXT_KEY_SPY_NAME_MC_KILWA_0">
@@ -8758,7 +8754,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Westernization</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_WESTERNIZATION">
-			<Text>[ICON_BUILDING_AMPHITHEATER] Amphitheaters, [ICON_BUILDING_OPERA_HOUSE] Opera Houses, [ICON_BUILDING_MUSEUM] Museums and [ICON_BUILDING_BROADCAST_TOWER] Broadcast Towers are built 50% faster. These [COLOR_GREEN]buildings[ENDCOLOR] and [ICON_GREAT_WORK] Great works each provide +1 [ICON_RESEARCH] Science, +1 [ICON_PRODUCTION] Production, and +1 [ICON_GOLD] Gold.</Text>
+			<Text>[ICON_BUILDING_AMPHITHEATER] Amphitheaters, [ICON_BUILDING_OPERA_HOUSE] Opera Houses, [ICON_BUILDING_MUSEUM] Museums and [ICON_BUILDING_BROADCAST_TOWER] Broadcast Towers are built 50% faster.[NEWLINE]These [COLOR_GREEN]buildings[ENDCOLOR] and [ICON_GREAT_WORK] Great works each provide +1 [ICON_RESEARCH] Science, +1 [ICON_PRODUCTION] Production, and +1 [ICON_GOLD] Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEADER_UC_ATATURK_DESC">
 			<Text>Ataturk</Text>
@@ -9379,7 +9375,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Flower of Scotland</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_LAST_OF_THE_FREE">
-			<Text>+3 [ICON_PRODUCTION] Production, +3 [ICON_RESEARCH] Science and +3 [ICON_CULTURE] Culture from Writer's, Artist's and Musician's Guilds. +33% [ICON_GREAT_PEOPLE] Great person generation in the [ICON_CAPITAL] Capital.</Text>
+			<Text>+3 [ICON_PRODUCTION] Production, +3 [ICON_RESEARCH] Science and +3 [ICON_CULTURE] Culture from Writer's, Artist's and Musician's Guilds.[NEWLINE][NEWLINE]+33% [ICON_GREAT_PEOPLE] Great person generation in the [ICON_CAPITAL] Capital.</Text>
 		</Row>
 		<!-- Wales civ v24 -->
 		<!-- Improvement -->
@@ -10842,7 +10838,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Colonizers of the Mediterranean</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LEADER_HIRAM">
-			<Text>Upon the discovery of [ICON_TECH_SAILING] Sailing, receive a free Square Sail Ship. After the Discovery of [ICON_TECH_OPTICS] Optics, newly found cities start with +1 [ICON_CITIZEN] Population and award 50 [ICON_GOLD] Gold.</Text>
+			<Text>Upon the discovery of [ICON_TECH_SAILING] Sailing, receive a free Square Sail Ship.[NEWLINE][NEWLINE]After the discovery of [ICON_TECH_OPTICS] Optics, newly founded cities start with +1 [ICON_CITIZEN] Population and award 50 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<!-- Diplo FirstGreeting tags -->
 		<Replace Tag="TXT_KEY_LEADER_HIRAM_FIRSTGREETING_1">
@@ -11178,7 +11174,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Nihil Sine Deo</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MC_NIHIL_SINE_DEO">
-			<Text>All units have a +10% [ICON_STRENGTH] [COLOR_GREEN]Combat bonus[ENDCOLOR] against [COLOR_GREEN]wounded[ENDCOLOR] units. Cities generate 25% [ICON_CULTURE] more Culture during [ICON_GOLDEN_AGE] Golden Ages. Gain a burst of [ICON_GOLDEN_AGE] Golden Age Points when capturing or liberating cities.</Text>
+			<Text>All units have a +10% [ICON_STRENGTH] [COLOR_GREEN]Combat bonus[ENDCOLOR] against [COLOR_GREEN]wounded[ENDCOLOR] units.[NEWLINE][NEWLINE]Cities generate 25% [ICON_CULTURE] more Culture during [ICON_GOLDEN_AGE] Golden Ages.[NEWLINE]Gain a burst of [ICON_GOLDEN_AGE] Golden Age Points when capturing or liberating cities.</Text>
 		</Replace>
 		<!--City State Changes-->
 		<Replace Tag="TXT_KEY_CITYSTATE_MC_SUCEAVA">
@@ -11986,7 +11982,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>The Great Unification</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_AKKAD">
-			<Text>+3 [ICON_CULTURE] Culture, +2 [ICON_HAPPINESS_1] Happiness and +1 [ICON_PRODUCTION] Production from [ICON_OCCUPIED] Conquered cities. [ICON_GREAT_GENERAL] Great Generals grant nearby [COLOR_POSITIVE_TEXT]Military[ENDCOLOR] units from any domain a +15% [ICON_STRENGTH] combat bonus when initiating combat with enemy cities.</Text>
+			<Text>+3 [ICON_CULTURE] Culture, +2 [ICON_HAPPINESS_1] Happiness and +1 [ICON_PRODUCTION] Production from [ICON_OCCUPIED] Conquered cities.[NEWLINE][NEWLINE][ICON_GREAT_GENERAL] Great Generals grant nearby [COLOR_POSITIVE_TEXT]Military[ENDCOLOR] units from any domain a +15% [ICON_STRENGTH] combat bonus when initiating combat with enemy cities.</Text>
 		</Replace>
 		<!-- -->
 		<Replace Tag="TXT_KEY_LITE_AKKAD_DESC">
@@ -138775,9 +138771,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BALTIC"> 
-			<Text>
-				Cost of the first [ICON_PROPHET] Great Prophet earned or bought with [ICON_PEACE] Faith is reduced by 50%. [ICON_PROPHET] Great Prophets may not be used to [ICON_MISSION_FOUND_RELIGION] [COLOR_WARNING_TEXT]Found or [ICON_MISSION_ENHANCE_RELIGION] Enhance[ENDCOLOR] a [ICON_RELIGION] Religion and may not [COLOR_WARNING_TEXT]Create [ICON_BUILD_HOLY_SITE] Holy Sites[ENDCOLOR]. Instead they may Create [COLOR_POSITIVE_TEXT]Sacred Groves[ENDCOLOR].  
-			</Text>
+			<Text>Cost of the first [ICON_PROPHET] Great Prophet earned or bought with [ICON_PEACE] Faith is reduced by 50%.[NEWLINE][NEWLINE][ICON_PROPHET] Great Prophets may not be used to [ICON_MISSION_FOUND_RELIGION] [COLOR_WARNING_TEXT]Found or [ICON_MISSION_ENHANCE_RELIGION] Enhance[ENDCOLOR] a [ICON_RELIGION] Religion and may not [COLOR_WARNING_TEXT]Create [ICON_BUILD_HOLY_SITE] Holy Sites[ENDCOLOR].[NEWLINE]Instead they may Create [COLOR_POSITIVE_TEXT]Sacred Groves[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TREASURY_RESOURCE_FOUND"> 
 			<Text>
@@ -138790,9 +138784,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BOERS"> 
-			<Text>
-				[ICON_BUILD_FARM] Farms yield +1 [ICON_FOOD] Food when adjacent to at least 2 other [ICON_BUILD_FARM] Farms. This bonus increases by +1 [ICON_GOLD] Gold at 3, +1 [ICON_PRODUCTION] Production at 4, and +1 [ICON_RESEARCH] Science and [ICON_CULTURE] Culture at 5 adjacent [ICON_BUILD_FARM] Farms.
-			</Text>
+			<Text>[ICON_BUILD_FARM] Farms yield +1 [ICON_FOOD] Food when adjacent to at least 2 other [ICON_BUILD_FARM] Farms.[NEWLINE]This bonus increases by +1 [ICON_GOLD] Gold at 3, +1 [ICON_PRODUCTION] Production at 4, and +1 [ICON_RESEARCH] Science and [ICON_CULTURE] Culture at 5 adjacent [ICON_BUILD_FARM] Farms.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BOERS_SHORT"> 
 			<Text>
@@ -138810,7 +138802,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BRUNEI"> 
-			<Text>Your first Nelayan comes with a second one.[NEWLINE][NEWLINE]Every time a city reaches 5, 10, 15... [ICON_CITIZEN] Population, a Kampong Ayer is built on its closest water tile (the capital: up to 4 tiles away, other cities: next to the city). Drydocks and Offshore Platforms are never replaced.[NEWLINE][NEWLINE]Cities connected to the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture; the [ICON_CAPITAL] Capital yields +1 [ICON_GOLD] Gold for each of them.</Text>
+			<Text>Your first Nelayan comes with a second one.[NEWLINE][NEWLINE]Every time a city reaches 5, 10, 15... [ICON_CITIZEN] Population, a Kampong Ayer is built on its closest water tile (the capital: up to 4 tiles away, other cities: next to the city).[NEWLINE]Drydocks and Offshore Platforms are never replaced.[NEWLINE][NEWLINE]Cities connected to the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture; the [ICON_CAPITAL] Capital yields +1 [ICON_GOLD] Gold for each of them.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BRUNEI_SHORT"> 
 			<Text>Abode of Peace</Text>
@@ -138972,9 +138964,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_EIGHT_BANNERS"> 
-			<Text>
-				+50% [ICON_PRODUCTION] Production towards constructing [ICON_BUILDING_STABLE] Stables. All Mounted, Armored and Bomber Units receive the [ICON_PROMOTION_VOLLEY] Volley promotion (+50% [ICON_STRENGTH] Combat strength vs fortified units and cities) and cost no maintenance.
-			</Text>
+			<Text>+50% [ICON_PRODUCTION] Production towards constructing [ICON_BUILDING_STABLE] Stables.[NEWLINE]All Mounted, Armored and Bomber Units receive the [ICON_PROMOTION_VOLLEY] Volley promotion (+50% [ICON_STRENGTH] Combat strength vs fortified units and cities) and cost no maintenance.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_EIGHT_BANNERS_SHORT"> 
 			<Text>
@@ -138992,9 +138982,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ENHANCED_GOLDEN_AGES"> 
-			<Text>
-				[ICON_GOLDEN_AGE] Golden Ages last 50% longer. During a Golden Age, units receive +1 [ICON_MOVES] Movement.
-			</Text>
+			<Text>[ICON_GOLDEN_AGE] Golden Ages last 50% longer.[NEWLINE]During a Golden Age, units receive +1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ENHANCED_GOLDEN_AGES_SHORT"> 
 			<Text>
@@ -139163,9 +139151,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HOLY_ROMAN_EMPIRE"> 
-			<Text>
-				+1 [ICON_PEACE] Faith from [ICON_BUILD_FARM] Farms. All units move faster through [ICON_BUILD_ROAD] Roads and [ICON_BUILD_RAILROAD] Railroads.
-			</Text>
+			<Text>+1 [ICON_PEACE] Faith from [ICON_BUILD_FARM] Farms.[NEWLINE][NEWLINE]All units move faster through [ICON_BUILD_ROAD] Roads and [ICON_BUILD_RAILROAD] Railroads.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HOLY_ROMAN_EMPIRE_SHORT"> 
 			<Text>
@@ -139183,9 +139169,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_IGNORE_TERRAIN_IN_FOREST"> 
-			<Text>
-				Units move through Forest and Jungle in friendly territory as if they were [ICON_BUILD_ROAD] Roads. These tiles can be used to establish [ICON_CONNECTED] City Connections upon researching The Wheel. Caravans move along Forest and Jungle as if they were [ICON_BUILD_ROAD] Roads.
-			</Text>
+			<Text>Units move through Forest and Jungle in friendly territory as if they were [ICON_BUILD_ROAD] Roads.[NEWLINE]These tiles can be used to establish [ICON_CONNECTED] City Connections upon researching The Wheel.[NEWLINE]Caravans move along Forest and Jungle as if they were [ICON_BUILD_ROAD] Roads.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_IGNORE_TERRAIN_IN_FOREST_SHORT"> 
 			<Text>
@@ -139223,9 +139207,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_JUSTICE_OF_SALADIN"> 
-			<Text>
-				Receive a free [ICON_BUILDING_BURIAL_TOMB] Burial Tomb in [ICON_OCCUPIED] [COLOR_GREEN]Conquered Cities[ENDCOLOR]. +25% [ICON_UNIT_WORKER] Worker Improvement Rates.
-			</Text>
+			<Text>Receive a free [ICON_BUILDING_BURIAL_TOMB] Burial Tomb in [ICON_OCCUPIED] [COLOR_GREEN]Conquered Cities[ENDCOLOR].[NEWLINE][NEWLINE]+25% [ICON_UNIT_WORKER] Worker Improvement Rates.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_JUSTICE_OF_SALADIN_SHORT"> 
 			<Text>
@@ -139341,9 +139323,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MASTERS_OF_IRON_DESC"> 
-			<Text>
-				+1 [ICON_GOLD] Gold from [ICON_BUILD_MINE] Mines, increasing by +2 [ICON_GOLD] when adjacent to at least 3 other [ICON_BUILD_MINE] Mines. Starts with [ICON_TECH_MINING] Mining.
-			</Text>
+			<Text>+1 [ICON_GOLD] Gold from [ICON_BUILD_MINE] Mines, increasing by +2 [ICON_GOLD] when adjacent to at least 3 other [ICON_BUILD_MINE] Mines.[NEWLINE]Starts with [ICON_TECH_MINING] Mining.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MASTERS_OF_IRON_SHORT"> 
 			<Text>
@@ -139421,9 +139401,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PHOENICIAN_HERITAGE"> 
-			<Text>
-				Coastal Cities get a [COLOR_GREEN]free [ICON_BUILDING_HARBOR] Harbor[ENDCOLOR]. Units may cross mountains, taking 50 HP damage if they end a turn on a mountain.
-			</Text>
+			<Text>Coastal Cities get a [COLOR_GREEN]free [ICON_BUILDING_HARBOR] Harbor[ENDCOLOR].[NEWLINE][NEWLINE]Units may cross mountains, taking 50 HP damage if they end a turn on a mountain.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PHOENICIAN_HERITAGE_SHORT"> 
 			<Text>
@@ -139431,9 +139409,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_POPULATION_GROWTH"> 
-			<Text>
-				[ICON_HAPPINESS_4] Unhappiness from number of Cities increased by 100%, [ICON_HAPPINESS_4] Unhappiness from number of [ICON_CITIZEN] Citizens decreased by 50%
-			</Text>
+			<Text>[ICON_HAPPINESS_4] Unhappiness from number of Cities increased by 100%.[NEWLINE][ICON_HAPPINESS_4] Unhappiness from number of [ICON_CITIZEN] Citizens decreased by 50%.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_POPULATION_GROWTH_SHORT"> 
 			<Text>
@@ -139461,9 +139437,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PRUSSIA"> 
-			<Text>
-				All Prussian-trained land units may choose Prussian Virtue promotions upon leveling up. +50% [ICON_FOOD] Food and [ICON_PRODUCTION] Production from Internal Trade Routes.
-			</Text>
+			<Text>All Prussian-trained land units may choose Prussian Virtue promotions upon leveling up.[NEWLINE][NEWLINE]+50% [ICON_FOOD] Food and [ICON_PRODUCTION] Production from Internal Trade Routes.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PRUSSIA_SHORT"> 
 			<Text>
@@ -139471,9 +139445,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RAZE_AND_HORSES"> 
-			<Text>
-				Raze Cities at double speed. Borrow City names from other in-game Civs. +1 [ICON_PRODUCTION] Production per [ICON_BUILD_PASTURE] Pasture.
-			</Text>
+			<Text>Raze Cities at double speed.[NEWLINE][NEWLINE]Borrow City names from other in-game Civs.[NEWLINE][NEWLINE]+1 [ICON_PRODUCTION] Production per [ICON_BUILD_PASTURE] Pasture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RAZE_AND_HORSES_SHORT"> 
 			<Text>
@@ -139481,9 +139453,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RINASCIMENTO"> 
-			<Text>
-				+1 [ICON_CULTURE] Culture from Specialists. Upon completing a policy tree, receive a burst of [ICON_GOLDEN_AGE] Golden Age Points. If already in a [ICON_GOLDEN_AGE] Golden Age, extend it instead.
-			</Text>
+			<Text>+1 [ICON_CULTURE] Culture from Specialists.[NEWLINE][NEWLINE]Upon completing a policy tree, receive a burst of [ICON_GOLDEN_AGE] Golden Age Points.[NEWLINE]If already in a [ICON_GOLDEN_AGE] Golden Age, extend it instead.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RINASCIMENTO_SHORT"> 
 			<Text>
@@ -139491,9 +139461,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RIVER_EXPANSION"> 
-			<Text>
-				All [COLOR_POSITIVE_TEXT]Military Land[ENDCOLOR] units have +1 [ICON_PROMOTION_SENTRY] sight. Cost of purchasing tiles with [ICON_GOLD] Gold is reduced by 50%.
-			</Text>
+			<Text>All [COLOR_POSITIVE_TEXT]Military Land[ENDCOLOR] units have +1 [ICON_PROMOTION_SENTRY] sight.[NEWLINE][NEWLINE]Cost of purchasing tiles with [ICON_GOLD] Gold is reduced by 50%.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RIVER_EXPANSION_SHORT"> 
 			<Text>
@@ -139501,9 +139469,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RUS"> 
-			<Text>
-				Upon the discovery of [ICON_TECH_THE_WHEEL] The Wheel, your Cities will receive +1 [ICON_FOOD] Food from [ICON_RES_WHEAT] Wheat, [ICON_RES_MAIZE] Maize and [ICON_RES_SALT] Salt. +2 [ICON_GOLD] Gold from [ICON_CONNECTED] City Connections.
-			</Text>
+			<Text>Upon the discovery of [ICON_TECH_THE_WHEEL] The Wheel, your Cities will receive +1 [ICON_FOOD] Food from [ICON_RES_WHEAT] Wheat, [ICON_RES_MAIZE] Maize and [ICON_RES_SALT] Salt.[NEWLINE][NEWLINE]+2 [ICON_GOLD] Gold from [ICON_CONNECTED] City Connections.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_RUS_SHORT"> 
 			<Text>
@@ -139511,9 +139477,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_SCHOLARS_JADE_HALL"> 
-			<Text>
-				+1 [ICON_RESEARCH] Science for all specialists and +2 [ICON_RESEARCH] Science for all Great Person tile improvements. +1 [ICON_RESEARCH] Science in the [ICON_CAPITAL] Capital.
-			</Text>
+			<Text>+1 [ICON_RESEARCH] Science for all specialists and +2 [ICON_RESEARCH] Science for all Great Person tile improvements.[NEWLINE]+1 [ICON_RESEARCH] Science in the [ICON_CAPITAL] Capital.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_SCHOLARS_JADE_HALL_SHORT"> 
 			<Text>
@@ -139531,9 +139495,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_SIEGE"> 
-			<Text>
-				Siege units receive +1 [ICON_MOVES] Movement. Receive a free [ICON_GREAT_WRITER] Great Writer upon the discovery of [ICON_TECH_PHILOSOPHY] Philosophy.
-			</Text>
+			<Text>Siege units receive +1 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Receive a free [ICON_GREAT_WRITER] Great Writer upon the discovery of [ICON_TECH_PHILOSOPHY] Philosophy.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_SIEGE_SHORT"> 
 			<Text>
@@ -139599,9 +139561,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TAMGIAO"> 
-			<Text>
-				+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production from Marsh and +1 [ICON_PEACE] Faith from Jungle. All Units receive double [ICON_MOVES] movement and a [ICON_STRENGTH] combat bonus on Marsh and Jungle tiles.
-			</Text>
+			<Text>+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production from Marsh and +1 [ICON_PEACE] Faith from Jungle.[NEWLINE][NEWLINE]All Units receive double [ICON_MOVES] movement and a [ICON_STRENGTH] combat bonus on Marsh and Jungle tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TAMGIAO_SHORT"> 
 			<Text>
@@ -139729,9 +139689,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_VENEZ"> 
-			<Text>
-				Sea [ICON_INTERNATIONAL_TRADE] Trade Routes cannot be plundered. Upon the discovery of [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR], receive a free [ICON_INTERNATIONAL_TRADE] trade route and a Cargo Ship appears in the [ICON_CAPITAL] Capital.
-			</Text>
+			<Text>Sea [ICON_INTERNATIONAL_TRADE] Trade Routes cannot be plundered.[NEWLINE]Upon the discovery of [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR], receive a free [ICON_INTERNATIONAL_TRADE] trade route and a Cargo Ship appears in the [ICON_CAPITAL] Capital.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_VENEZ_SHORT"> 
 			<Text>
@@ -147415,13 +147373,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the [ICON_BUILDING_BARRACKS] Barracks. Available with Mining.[NEWLINE]+15 XP for all Units trained in this city.[NEWLINE][ICON_CULTURE] Culture and [ICON_GOLD] Gold costs of acquiring new tiles reduced by 25% in this city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_NORDIC_BOUNTY">
-			<Text>+1 [ICON_PEACE] Faith from Coastal Resources.[NEWLINE]Snow tiles yield +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production and +1 [ICON_PEACE] Faith.</Text>
+			<Text>+1 [ICON_PEACE] Faith from Coastal Resources.[NEWLINE][NEWLINE]Snow tiles yield +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production and +1 [ICON_PEACE] Faith.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STAVE_HELP">
 			<Text>Replaces the Temple. Needs no Shrine.[NEWLINE]+1 [ICON_PRODUCTION] Production from Tundra tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GAULS">
-			<Text>Receive a [COLOR_YELLOW]Murus Gallicus[ENDCOLOR] in the [ICON_CAPITAL] Capital upon the discovery of [ICON_TECH_MINING] Mining.[NEWLINE]All land units have Woodsman (double movement in Forest and Jungle).</Text>
+			<Text>Receive a [COLOR_YELLOW]Murus Gallicus[ENDCOLOR] in the [ICON_CAPITAL] Capital upon the discovery of [ICON_TECH_MINING] Mining.[NEWLINE][NEWLINE]All land units have Woodsman (double movement in Forest and Jungle).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NOBLE_SWORDSMAN_HELP">
 			<Text>Replaces the Swordsman. Stronger, but needs more Iron.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).</Text>
@@ -147503,7 +147461,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Knight. Slower, but much stronger, with a bonus against other Mounted units.[NEWLINE]Starts with Feared Elephant.[NEWLINE]Costs more and needs 3 [ICON_RES_IRON] Iron.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TERROR">
-			<Text>Upon discovering [ICON_TECH_CHIVALRY] Chivalry, in each owned City, a [ICON_RES_HORSE] Horse tile is revealed nearby and all [ICON_RES_HORSE] Horse tiles yield +1 [ICON_FOOD] Food.[NEWLINE]The revealed Horse sources are small (2 Horses).[NEWLINE]Start the game with [ICON_TECH_ANIMAL_HUSBANDRY] Animal Husbandry.[NEWLINE]Cannot pledge to protect [ICON_CITY_STATE] City-States.[NEWLINE][NEWLINE]+30% [ICON_STRENGTH] Combat Strength when fighting a [ICON_CITY_STATE] City-State.[NEWLINE]All mounted and armor units receive +1 [ICON_MOVES] Movement.</Text>
+			<Text>Upon discovering [ICON_TECH_CHIVALRY] Chivalry, in each owned City, a [ICON_RES_HORSE] Horse tile is revealed nearby and all [ICON_RES_HORSE] Horse tiles yield +1 [ICON_FOOD] Food.[NEWLINE]The revealed Horse sources are small (2 Horses).[NEWLINE]Start the game with [ICON_TECH_ANIMAL_HUSBANDRY] Animal Husbandry.[NEWLINE][NEWLINE]Cannot pledge to protect [ICON_CITY_STATE] City-States.[NEWLINE]+30% [ICON_STRENGTH] Combat Strength when fighting a [ICON_CITY_STATE] City-State.[NEWLINE][NEWLINE]All mounted and armor units receive +1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_MONGOLIA_KESHIK_HELP">
 			<Text>Replaces the Knight. A fast mounted unit with a strong [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Its battles give double the points towards Great Generals.</Text>
@@ -147603,7 +147561,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Castle. Provides extra [ICON_CULTURE] Culture and [ICON_HAPPINESS_1] Happiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BY_REASON">
-			<Text>[ICON_BUILD_FISHING_BOATS] Fishing Boats instantly claim all surrounding Neutral Tiles.[NEWLINE]Receive a free [ICON_GREAT_ADMIRAL] Great Admiral at the [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR] technology.[NEWLINE][NEWLINE]Cities next to the coast and a mountain yield +1 [ICON_CULTURE] Culture.[NEWLINE]Units trained in a city next to a mountain start with Stargazing (+1 Sight).</Text>
+			<Text>[ICON_BUILD_FISHING_BOATS] Fishing Boats instantly claim all surrounding Neutral Tiles.[NEWLINE][NEWLINE]Receive a free [ICON_GREAT_ADMIRAL] Great Admiral at the [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR] technology.[NEWLINE][NEWLINE]Cities next to the coast and a mountain yield +1 [ICON_CULTURE] Culture.[NEWLINE]Units trained in a city next to a mountain start with Stargazing (+1 Sight).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARDOEN">
 			<Text>Unique Unit for Chile. Replaces the Helicopter Gunship.[NEWLINE]Starts with +30 XP.</Text>
@@ -147621,7 +147579,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Archer. Available at Agriculture and 15% cheaper.[NEWLINE]Range 1 and slightly weaker, but can move after attacking.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_AMPHIB_WARLORD">
-			<Text>Receive double [ICON_GOLD] Gold from Barbarian encampments and pillaging Cities.[NEWLINE]Land units ignore terrain costs when traveling along or across rivers.</Text>
+			<Text>Receive double [ICON_GOLD] Gold from Barbarian encampments and pillaging Cities.[NEWLINE][NEWLINE]Land units ignore terrain costs when traveling along or across rivers.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSLIM_CAVALRY">
 			<Text>Replaces the Knight. Needs 3 [ICON_RES_HORSE] Horses and 1 [ICON_RES_IRON] Iron.[NEWLINE]Pillages without spending movement.[NEWLINE]+2 [ICON_MOVES] Movement after killing a unit.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when more than 3 tiles away from your nearest city.</Text>
@@ -147633,13 +147591,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>A Polder can only be built on Flood Plains and Marsh. It boosts food output immediately. It also provides +1 [ICON_GOLD] Gold once Economics is researched, and +1 [ICON_PRODUCTION] Production if no other Polder is next to it.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_FIGHT_WELL_DAMAGED">
-			<Text>Non-Air Units Fight at Full Strength even when Damaged.[NEWLINE]+1 [ICON_CULTURE] Culture from each [ICON_BUILD_FISHING_BOATS] Fishing Boat.</Text>
+			<Text>Non-Air Units Fight at Full Strength even when Damaged.[NEWLINE][NEWLINE]+1 [ICON_CULTURE] Culture from each [ICON_BUILD_FISHING_BOATS] Fishing Boat.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SAMURAI">
 			<Text>Replaces the Longswordsman. Available at Civil Service. Weaker and cheaper, needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Great Generals II, Iaijutsu (attacks again after hitting a unit at full health) and Hatamoto (+1 [ICON_MOVES] Movement next to a Great General).[NEWLINE]Upgrades to the Musketman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HORDE">
-			<Text>Units are 33% more effective at intimidating [ICON_CITY_STATE] City-States, and demanding tribute does not break your own pledge of protection.[NEWLINE][ICON_PUPPET] Puppeted Cities yield 33% more [ICON_GOLD] Gold, [ICON_RESEARCH] Science and [ICON_CULTURE] Culture and 33% less [ICON_HAPPINESS_4] Unhappiness.</Text>
+			<Text>Units are 33% more effective at intimidating [ICON_CITY_STATE] City-States, and demanding tribute does not break your own pledge of protection.[NEWLINE][NEWLINE][ICON_PUPPET] Puppeted Cities yield 33% more [ICON_GOLD] Gold, [ICON_RESEARCH] Science and [ICON_CULTURE] Culture and 33% less [ICON_HAPPINESS_4] Unhappiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
 			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]Heals 25 HP upon killing an enemy unit.[NEWLINE]Starts with Cover I.</Text>
@@ -147661,10 +147619,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+10% [ICON_STRENGTH] [COLOR_GREEN]Combat Strength[ENDCOLOR] while fighting outside of friendly territory.[NEWLINE]+25% [ICON_PRODUCTION] Production towards Walls, Castles, Arsenals and Military Bases.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GERMANY">
-			<Text>+1 [ICON_PRODUCTION] Production and +1 [ICON_RESEARCH] Science from [ICON_BUILDING_WORKSHOP] Workshops, [ICON_BUILDING_WINDMILL] Windmills, [ICON_BUILDING_FACTORY] Factories and [ICON_BUILDING_HYDRO_PLANT] Hydro Plants.[NEWLINE]Earn [ICON_GREAT_ENGINEER] Great Engineers 33% Faster.[NEWLINE][NEWLINE]Upgrading units costs 10% less [ICON_GOLD] Gold.</Text>
+			<Text>+1 [ICON_PRODUCTION] Production and +1 [ICON_RESEARCH] Science from [ICON_BUILDING_WORKSHOP] Workshops, [ICON_BUILDING_WINDMILL] Windmills, [ICON_BUILDING_FACTORY] Factories and [ICON_BUILDING_HYDRO_PLANT] Hydro Plants.[NEWLINE][NEWLINE]Earn [ICON_GREAT_ENGINEER] Great Engineers 33% Faster.[NEWLINE][NEWLINE]Upgrading units costs 10% less [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_FURTRADE">
-			<Text>+2 [ICON_GOLD] Gold from [ICON_BUILD_CAMP] Camps.[NEWLINE]Lake, Snow and Ice tiles yield +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.</Text>
+			<Text>+2 [ICON_GOLD] Gold from [ICON_BUILD_CAMP] Camps.[NEWLINE][NEWLINE]Lake, Snow and Ice tiles yield +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ISLANDS">
 			<Text>Start the game with nearby Coastal tiles and Islands already explored.</Text>
@@ -147709,10 +147667,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Unique to Aksum. Replaces the National Epic. The cost goes up the more cities there are in the empire. Must have built a [ICON_BUILDING_MONUMENT] Monument in all cities.[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]All [ICON_BUILDING_MONUMENT] Monuments in the empire provide an additional +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith, and +1 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ENHANCED_CULTURE">
-			<Text>+1 [ICON_CULTURE] Culture in the [ICON_CAPITAL] Capital. +2 [ICON_CULTURE] Culture from [COLOR_POSITIVE_TEXT]World Wonders[ENDCOLOR].[NEWLINE]Great Works in the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]The Eiffel Tower yields twice as much for France.</Text>
+			<Text>+1 [ICON_CULTURE] Culture in the [ICON_CAPITAL] Capital.[NEWLINE]+2 [ICON_CULTURE] Culture from [COLOR_POSITIVE_TEXT]World Wonders[ENDCOLOR].[NEWLINE]Great Works in the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]The Eiffel Tower yields twice as much for France.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GAELIC">
-			<Text>Great Works yield +3 [ICON_PEACE] Faith.[NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.</Text>
+			<Text>Great Works yield +3 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_HELP">
 			<Text>Unique building for Switzerland. Replaces the Armory. Costs no [ICON_GOLD] Gold maintenance.[NEWLINE]Units trained in this City start with Altitude Training (Hills cost less movement).[NEWLINE]Upon completion, a Reislaeufer appears in the City.</Text>
@@ -147879,7 +147837,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Receive a free [ICON_GREAT_SCIENTIST] Great Scientist once you know both [ICON_TECH_PHILOSOPHY] Philosophy and [ICON_TECH_MATHEMATICS] Mathematics.[NEWLINE]Earn [ICON_GREAT_SCIENTIST] Great Scientists 25% faster.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MEXICO">
-			<Text>Receive a free [ICON_WORKER] Worker upon researching [ICON_TECH_POTTERY] Pottery.[NEWLINE]+10 [ICON_GOLD] Gold when meeting a [ICON_CITY_STATE] City-State.[NEWLINE][NEWLINE]Demanding tribute does not break your own pledge of protection.[NEWLINE]When demanding tribute you may take +30 [ICON_INFLUENCE] Influence instead of [ICON_GOLD] Gold (counts as a tribute).</Text>
+			<Text>Receive a free [ICON_WORKER] Worker upon researching [ICON_TECH_POTTERY] Pottery.[NEWLINE][NEWLINE]+10 [ICON_GOLD] Gold when meeting a [ICON_CITY_STATE] City-State.[NEWLINE][NEWLINE]Demanding tribute does not break your own pledge of protection.[NEWLINE]When demanding tribute you may take +30 [ICON_INFLUENCE] Influence instead of [ICON_GOLD] Gold (counts as a tribute).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_TERRACE_FARM_HELP">
 			<Text>The Terrace Farm can only be built on hills next to a mountain, and does not need a source of fresh water. It provides additional food next to mountains.</Text>
@@ -147892,7 +147850,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The [ICON_CAPITAL] Capital receives +2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_GOLD] Gold, +2 [ICON_RESEARCH] Science, +2 [ICON_CULTURE] Culture, and +2 [ICON_PEACE] Faith upon the discovery of [ICON_TECH_DRAMA] [COLOR_CYAN]Drama and Poetry[ENDCOLOR], and +1 of those yields for every Era you advance to after the Classical Era.[NEWLINE][NEWLINE]Units trained in a city next to a mountain start with Altitude Training.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_CL_UC_REVOLUTION">
-			<Text>Unaffected by [ICON_HAPPINESS_4] Unhappiness from Ideology pressure.[NEWLINE]Unhappiness never acts worse than 9 (the penalties stop growing there; the shown number is real).[NEWLINE]One [ICON_RES_TOBACCO] Tobacco appears near the [ICON_CAPITAL] Capital when it is founded.</Text>
+			<Text>Unaffected by [ICON_HAPPINESS_4] Unhappiness from Ideology pressure.[NEWLINE]Unhappiness never acts worse than 9 (the penalties stop growing there; the shown number is real).[NEWLINE][NEWLINE]One [ICON_RES_TOBACCO] Tobacco appears near the [ICON_CAPITAL] Capital when it is founded.</Text>
 		</Replace>
 		<!-- Phase 6 C++ batch D -->
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_AUSTRALIA_UB_HELP">
@@ -147918,7 +147876,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[NEWLINE][ICON_BULLET]Filled Great Work slots: {1_Num}%</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_TRAIT_GOOD_FIGHT">
-			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE]Your first Expand receives +1 [ICON_CITIZEN] Population.[NEWLINE]Land units start with Amphibious I.</Text>
+			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE][NEWLINE]Your first Expand receives +1 [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Land units start with Amphibious I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GREAT_ANDEAN_ROAD">
 			<Text>Land units, military and civilian, start with Altitude Training (10% movement discount in Hills).[NEWLINE][NEWLINE]Cities with a Quarry get +20% [ICON_PRODUCTION] Production towards Ancient Era buildings.</Text>
@@ -147930,10 +147888,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_HAPPINESS_1] Happiness, [ICON_FOOD] Food, [ICON_CULTURE] Culture, and [ICON_PEACE] Faith from friendly and allied [ICON_CITY_STATE] City-States increased by 50%.[NEWLINE]Units gifted by [ICON_CITY_STATE] City-States arrive 50% faster.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the [ICON_CITY_STATE] City-State closest to your [ICON_CAPITAL] Capital that you are at peace with.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LUXURY_RETENTION">
-			<Text>Each unique [COLOR_GREEN]Luxury[ENDCOLOR] is worth +1 [ICON_HAPPINESS_1] Happiness for the empire.[NEWLINE]Once you have built the East India Company, [COLOR_GREEN]Luxury Resource[ENDCOLOR] tiles produce +1 [ICON_GOLD] Gold.</Text>
+			<Text>Each unique [COLOR_GREEN]Luxury[ENDCOLOR] is worth +1 [ICON_HAPPINESS_1] Happiness for the empire.[NEWLINE][NEWLINE]Once you have built the East India Company, [COLOR_GREEN]Luxury Resource[ENDCOLOR] tiles produce +1 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BELGIUM">
-			<Text>+1 [ICON_PRODUCTION] Production from [ICON_PLANTATION] Plantations.[NEWLINE]Once you have built the East India Company, [COLOR_POSITIVE_TEXT]Strategic[ENDCOLOR] Resources produce +1 [ICON_GOLD] Gold.</Text>
+			<Text>+1 [ICON_PRODUCTION] Production from [ICON_PLANTATION] Plantations.[NEWLINE][NEWLINE]Once you have built the East India Company, [COLOR_POSITIVE_TEXT]Strategic[ENDCOLOR] Resources produce +1 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
 			<Text>Unique building for Cuba. Replaces the Opera House. It is cheaper.[NEWLINE]+3 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE][NEWLINE]When its Great Work slot is filled: +15% [ICON_PRODUCTION] Military Production and +20% [ICON_TOURISM] Tourism in the city.[NEWLINE][NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.</Text>
@@ -147980,7 +147938,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_GREEN]Natural Wonders[ENDCOLOR] yield +3 [ICON_CULTURE] Culture.[NEWLINE]Discovering a [COLOR_GREEN]Natural Wonder[ENDCOLOR] gives 50 [ICON_GOLD] Gold per Era.[NEWLINE][NEWLINE]+10% [ICON_PRODUCTION] Production towards Settlers and Conquistadors.[NEWLINE]Founding a city (not the capital) reveals the tiles within 6 and gives a free Scout.[NEWLINE][NEWLINE]Cities other than the [ICON_CAPITAL] Capital yield +1 [ICON_PRODUCTION] Production.[NEWLINE]The [ICON_CAPITAL] Capital yields -1 [ICON_PRODUCTION] Production for each other city that is not a puppet (not below 0).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GOTHS">
-			<Text>The first tile purchase of each city is free.[NEWLINE][COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Gunpowder[ENDCOLOR] units that start their turn on a Harjis get +2 [ICON_MOVES] Movement.</Text>
+			<Text>The first tile purchase of each city is free.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Gunpowder[ENDCOLOR] units that start their turn on a Harjis get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
 			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit (lost on upgrade).</Text>
@@ -148021,7 +147979,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Roads can be built from the start of the game.[NEWLINE]Workers that start their turn on a Road or Railroad get +1 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Cities connected to the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MC_CHAIN_OF_THE_EARTH">
-			<Text>Harbors are available at [ICON_TECH_OPTICS] Optics. Seaports are available at [ICON_TECH_COMPASS] Compass and don't need a Harbor.[NEWLINE]+25% [ICON_PRODUCTION] Production towards Harbors and Seaports.[NEWLINE][NEWLINE]Receive a free Worker and a free Baghlah upon researching [ICON_TECH_SAILING] Sailing.</Text>
+			<Text>Harbors are available at [ICON_TECH_OPTICS] Optics.[NEWLINE]Seaports are available at [ICON_TECH_COMPASS] Compass and don't need a Harbor.[NEWLINE]+25% [ICON_PRODUCTION] Production towards Harbors and Seaports.[NEWLINE][NEWLINE]Receive a free Worker and a free Baghlah upon researching [ICON_TECH_SAILING] Sailing.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PRAIRIE">
 			<Text>Your starting Settler has +1 [ICON_MOVES] Movement on the first turn.[NEWLINE]Your starting Warrior and all Recon and Archer units start with Scouting I (+1 Sight).</Text>
@@ -148043,7 +148001,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Land units start with Amphibious I and pillage without spending movement.[NEWLINE]Naval and embarked units may enter Ocean tiles before Astronomy.[NEWLINE][NEWLINE]New cities claim the Fish tiles within 2 tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LAND_TRADE_GOLD2">
-			<Text>Double quantity of [ICON_RES_OIL] Oil.[NEWLINE]Trade routes to your own cities and to [ICON_CITY_STATE] City-States spread the origin city's [ICON_RELIGION] Religion there like a Great Prophet.[NEWLINE]Oases yield +2 [ICON_PEACE] Faith once you know [ICON_TECH_CALENDAR] Calendar.</Text>
+			<Text>Double quantity of [ICON_RES_OIL] Oil.[NEWLINE][NEWLINE]Trade routes to your own cities and to [ICON_CITY_STATE] City-States spread the origin city's [ICON_RELIGION] Religion there like a Great Prophet.[NEWLINE][NEWLINE]Oases yield +2 [ICON_PEACE] Faith once you know [ICON_TECH_CALENDAR] Calendar.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HOLYLAND">
 			<Text>+1 [ICON_PEACE] Faith from [COLOR_GREEN]Luxury Resources[ENDCOLOR].[NEWLINE][NEWLINE]Units get +15% [ICON_STRENGTH] Combat Strength inside the territory of an enemy city that follows the [ICON_RELIGION] Religion you founded.</Text>
@@ -148053,7 +148011,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- LEKMOD: Phase 6 C++ batch I (2026-10-14) -->
 		<Replace Tag="TXT_KEY_TRAIT_ART_OF_WAR">
-			<Text>Earn [ICON_GREAT_GENERAL] Great Generals 50% faster.[NEWLINE]Units move faster on [ICON_BUILD_ROAD] Roads and [ICON_BUILD_RAILROAD] Railroads.[NEWLINE][NEWLINE]May build the Forbidden Palace and the Porcelain Tower without their Social Policy branch.</Text>
+			<Text>Earn [ICON_GREAT_GENERAL] Great Generals 50% faster.[NEWLINE][NEWLINE]Units move faster on [ICON_BUILD_ROAD] Roads and [ICON_BUILD_RAILROAD] Railroads.[NEWLINE][NEWLINE]May build the Forbidden Palace and the Porcelain Tower without their Social Policy branch.</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FRANCE_TRAIT">
 			<Text>Capital of France</Text>
