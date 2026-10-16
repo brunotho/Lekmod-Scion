@@ -1490,6 +1490,7 @@ Diversify Spain and Australia's NW Discovery bonus
 // City-States: chance to build one improvement type of their kind (Lekmod_MinorCivImprovements), turns between two of them
 #define LEKMOD_CS_IMPROVEMENT_CHANCE 20
 #define LEKMOD_CS_IMPROVEMENT_TURN_CHANCE 5 // % per turn that a City-State with a special improvement places one
+#define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200 // Cultured City-States sell their great work: Gold per era of the buyer (Ancient = 1)
 // Improvements.LekmodNoFeature: can't be built on a feature unless Improvement_ValidFeatures lists it (Kasbah: Flood Plains only)
 #define LEKMOD_IMPROVEMENT_NO_FEATURE
 // Building_AdjacentCityPlotYieldChanges: yields on plots next to a city with the building (optional Improvement, Resource,

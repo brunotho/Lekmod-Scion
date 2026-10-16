@@ -2678,6 +2678,9 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bGift, bool bP
 		// Capturing a cultural city-state from the Medieval Era on gives a great work (once per player and city)
 		if (bConquest && GET_PLAYER(pOldCity->getOwner()).isMinorCiv() && !pOldCity->isEverOwned(GetID()) &&
 			GET_PLAYER(pOldCity->getOwner()).GetMinorCivAI()->GetTrait() == MINOR_CIV_TRAIT_CULTURED &&
+#ifdef LEKMOD_POST_CHANGES
+			!GET_PLAYER(pOldCity->getOwner()).GetMinorCivAI()->LekmodIsGreatWorkSold() &&
+#endif
 			GetCurrentEra() >= (EraTypes)GC.getInfoTypeForString("ERA_MEDIEVAL", true))
 		{
 			DoGreatWorkFromCityConquer(pOldCity);

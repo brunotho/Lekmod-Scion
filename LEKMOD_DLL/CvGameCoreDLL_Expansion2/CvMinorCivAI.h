@@ -197,6 +197,10 @@ public:
 	MinorCivTraitTypes GetTrait() const;
 #ifdef LEKMOD_POST_CHANGES
 	void LekmodDoBuildImprovements();
+	int LekmodGetGreatWorkPrice(PlayerTypes eMajor) const;
+	int LekmodGetGreatWorkBuyState(PlayerTypes eMajor) const;
+	void LekmodDoBuyGreatWork(PlayerTypes eMajor);
+	bool LekmodIsGreatWorkSold() const;
 #endif
 
 	bool IsHasUniqueUnit() const;
@@ -647,6 +651,7 @@ private:
 #ifdef LEKMOD_POST_CHANGES
 	int m_iLekmodImprovementRow;      // row of Lekmod_MinorCivImprovements this City-State builds; -2 not rolled yet, -1 none
 	int m_iLekmodImprovementNextTurn; // unused since 2026-10-16 (5% per turn instead), kept for saves
+	int m_iLekmodGreatWorkSold;       // Cultured City-State: its great work was bought (1) or not (0)
 #endif
 	int m_iGlobalQuestCountdown;
 

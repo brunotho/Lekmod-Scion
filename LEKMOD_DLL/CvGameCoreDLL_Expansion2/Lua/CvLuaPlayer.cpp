@@ -1045,6 +1045,8 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 	Method(LekmodGetTributeInfluence);
 #ifdef LEKMOD_PORTUGAL
 	Method(LekmodIsTradePartnerUsed);
+	Method(LekmodGetGreatWorkBuyState);
+	Method(LekmodGetGreatWorkPrice);
 	Method(LekmodHasFirstTradeRouteBonus);
 #endif
 #if !defined(TRADE_REFACTOR)
@@ -3511,6 +3513,22 @@ int CvLuaPlayer::lLekmodGetTributeInfluence(lua_State* L)
 	return 1;
 }
 #ifdef LEKMOD_PORTUGAL
+/// LEKMOD: Cultured City-State great work for sale: -1 not offered, 0 can buy, 1 before Medieval, 2 no slot, 3 not enough Gold, 4 sold, 5 war
+int CvLuaPlayer::lLekmodGetGreatWorkBuyState(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+	const PlayerTypes eMajor = (PlayerTypes)lua_tointeger(L, 2);
+	lua_pushinteger(L, pkPlayer->isMinorCiv() ? pkPlayer->GetMinorCivAI()->LekmodGetGreatWorkBuyState(eMajor) : -1);
+	return 1;
+}
+/// LEKMOD: its price for iMajor (200 Gold per era of the buyer)
+int CvLuaPlayer::lLekmodGetGreatWorkPrice(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+	const PlayerTypes eMajor = (PlayerTypes)lua_tointeger(L, 2);
+	lua_pushinteger(L, pkPlayer->isMinorCiv() ? pkPlayer->GetMinorCivAI()->LekmodGetGreatWorkPrice(eMajor) : 0);
+	return 1;
+}
 /// LEKMOD: did this player already get the first-trade-route bonus for iPlayer (Portugal)?
 int CvLuaPlayer::lLekmodIsTradePartnerUsed(lua_State* L)
 {

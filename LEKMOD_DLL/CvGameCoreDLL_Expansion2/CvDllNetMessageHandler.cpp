@@ -908,6 +908,12 @@ void CvDllNetMessageHandler::ResponseGiftUnit(PlayerTypes ePlayer, PlayerTypes e
 			GET_PLAYER(eMinor).GetMinorCivAI()->LekmodDoMajorTributeInfluence(ePlayer);
 		return;
 #endif
+#ifdef LEKMOD_POST_CHANGES
+	case -25: // Cultured City-State: buy its great work (eMinor = the City-State)
+		if (eMinor >= MAX_MAJOR_CIVS && eMinor < MAX_CIV_PLAYERS && GET_PLAYER(eMinor).isMinorCiv())
+			GET_PLAYER(eMinor).GetMinorCivAI()->LekmodDoBuyGreatWork(ePlayer);
+		return;
+#endif
 	default:
 		break;
 	}

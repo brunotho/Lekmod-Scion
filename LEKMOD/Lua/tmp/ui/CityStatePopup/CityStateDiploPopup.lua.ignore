@@ -671,7 +671,30 @@ function OnDisplay()
 	end
 	Controls.BuyoutLabel:SetText( strButtonLabel )
 	Controls.BuyoutButton:SetToolTipString( strToolTip );
-	
+
+	-- LEKMOD: Cultured City-States sell their great work once, from the Medieval Era (200 Gold per era of the buyer)
+	if (Controls.LekmodGreatWorkButton ~= nil) then
+		local iGWState = (pPlayer.LekmodGetGreatWorkBuyState ~= nil) and pPlayer:LekmodGetGreatWorkBuyState(iActivePlayer) or -1;
+		local bShowGW = (iGWState >= 0 and iGWState <= 3);
+		Controls.LekmodGreatWorkButton:SetHide(not bShowGW);
+		if bShowGW then
+			local iGWPrice = pPlayer:LekmodGetGreatWorkPrice(iActivePlayer);
+			local strGWLabel = Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK", iGWPrice);
+			local strGWTip = Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK_TT", iGWPrice);
+			if iGWState == 0 then
+				strGWLabel = "[COLOR_POSITIVE_TEXT]" .. strGWLabel .. "[ENDCOLOR]";
+				Controls.LekmodGreatWorkAnim:SetHide(false);
+			else
+				strGWLabel = "[COLOR_WARNING_TEXT]" .. strGWLabel .. "[ENDCOLOR]";
+				strGWTip = strGWTip .. "[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK_NO_" .. iGWState) .. "[ENDCOLOR]";
+				Controls.LekmodGreatWorkAnim:SetHide(true);
+			end
+			Controls.LekmodGreatWorkLabel:SetText(strGWLabel);
+			Controls.LekmodGreatWorkButton:SetToolTipString(strGWTip);
+			SetButtonSize(Controls.LekmodGreatWorkLabel, Controls.LekmodGreatWorkButton, Controls.LekmodGreatWorkAnim, Controls.LekmodGreatWorkButtonHL);
+		end
+	end
+
 	Controls.DescriptionLabel:SetText(strText);
 	
 	SetButtonSize(Controls.PeaceLabel, Controls.PeaceButton, Controls.PeaceAnim, Controls.PeaceButtonHL);
@@ -787,6 +810,20 @@ function OnBuyoutButtonClicked()
 	end
 end
 Controls.BuyoutButton:RegisterCallback( Mouse.eLClick, OnBuyoutButtonClicked );
+
+----------------------------------------------------------------
+-- LEKMOD: buy the Cultured City-State's great work (CvMinorCivAI::LekmodDoBuyGreatWork via network code -25)
+----------------------------------------------------------------
+function OnLekmodGreatWorkButtonClicked()
+	local pMinor = Players[g_iMinorCivID];
+	if (pMinor.LekmodGetGreatWorkBuyState ~= nil and pMinor:LekmodGetGreatWorkBuyState(Game.GetActivePlayer()) == 0) then
+		Network.SendGiftUnit(g_iMinorCivID, -25);
+		Controls.LekmodGreatWorkButton:SetHide(true);
+	end
+end
+if (Controls.LekmodGreatWorkButton ~= nil) then
+	Controls.LekmodGreatWorkButton:RegisterCallback( Mouse.eLClick, OnLekmodGreatWorkButtonClicked );
+end
 
 
 ----------------------------------------------------------------

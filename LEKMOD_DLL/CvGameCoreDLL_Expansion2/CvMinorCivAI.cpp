@@ -17,6 +17,7 @@
 #include "CvFlavorManager.h"
 #include <map>
 #endif
+#include "CvTypes.h"
 #include "CvDllInterfaces.h"
 #include "CvDllPlot.h"
 #include "cvStopWatch.h"
@@ -1668,6 +1669,7 @@ void CvMinorCivAI::Reset()
 #ifdef LEKMOD_POST_CHANGES
 	m_iLekmodImprovementRow = -2;
 	m_iLekmodImprovementNextTurn = 0;
+	m_iLekmodGreatWorkSold = 0;
 #endif
 	m_iGlobalQuestCountdown = -1;
 
@@ -1887,6 +1889,7 @@ void CvMinorCivAI::Read(FDataStream& kStream)
 #ifdef LEKMOD_POST_CHANGES
 	kStream >> m_iLekmodImprovementRow;
 	kStream >> m_iLekmodImprovementNextTurn;
+	kStream >> m_iLekmodGreatWorkSold;
 #endif
 }
 
@@ -1980,6 +1983,7 @@ void CvMinorCivAI::Write(FDataStream& kStream) const
 #ifdef LEKMOD_POST_CHANGES
 	kStream << m_iLekmodImprovementRow;
 	kStream << m_iLekmodImprovementNextTurn;
+	kStream << m_iLekmodGreatWorkSold;
 #endif
 }
 
@@ -2555,6 +2559,50 @@ const std::vector<LekmodCSImprovementRow>& LekmodCSImprovementRows()
 }
 }
 
+/// Cultured City-State great work for sale (POST 2026-10-11): 200 Gold per era of the buyer (Ancient = 1, so Medieval = 600)
+int CvMinorCivAI::LekmodGetGreatWorkPrice(PlayerTypes eMajor) const
+{
+	if (eMajor == NO_PLAYER)
+		return 0;
+	return LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA * ((int)GET_PLAYER(eMajor).GetCurrentEra() + 1);
+}
+/// -1 not offered (not Cultured), 0 can buy, 1 before the Medieval Era, 2 no free Great Work slot, 3 not enough Gold, 4 already sold, 5 at war
+int CvMinorCivAI::LekmodGetGreatWorkBuyState(PlayerTypes eMajor) const
+{
+	if (GetTrait() != MINOR_CIV_TRAIT_CULTURED || eMajor == NO_PLAYER || eMajor >= MAX_MAJOR_CIVS)
+		return -1;
+	if (m_iLekmodGreatWorkSold != 0)
+		return 4;
+	CvPlayer& kMajor = GET_PLAYER(eMajor);
+	if (GET_TEAM(kMajor.getTeam()).isAtWar(m_pPlayer->getTeam()))
+		return 5;
+	if (kMajor.GetCurrentEra() < (EraTypes)GC.getInfoTypeForString("ERA_MEDIEVAL", true))
+		return 1;
+	if (kMajor.GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_ART_ARTIFACT()) <= 0
+		&& kMajor.GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_LITERATURE()) <= 0
+		&& kMajor.GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_MUSIC()) <= 0)
+		return 2;
+	if (kMajor.GetTreasury()->GetGold() < LekmodGetGreatWorkPrice(eMajor))
+		return 3;
+	return 0;
+}
+/// Buy the City-State's great work: it goes into the buyer's slot closest to the City-State (like the one from capturing it)
+void CvMinorCivAI::LekmodDoBuyGreatWork(PlayerTypes eMajor)
+{
+	if (LekmodGetGreatWorkBuyState(eMajor) != 0)
+		return;
+	CvCity* pCapital = GetPlayer()->getCapitalCity();
+	if (pCapital == NULL)
+		return;
+	CvPlayer& kMajor = GET_PLAYER(eMajor);
+	kMajor.GetTreasury()->ChangeGold(-LekmodGetGreatWorkPrice(eMajor));
+	kMajor.DoGreatWorkFromCityConquer(pCapital);
+	m_iLekmodGreatWorkSold = 1;
+}
+bool CvMinorCivAI::LekmodIsGreatWorkSold() const
+{
+	return m_iLekmodGreatWorkSold != 0;
+}
 /// A City-State may build one improvement type of its kind: rolled once (LEKMOD_CS_IMPROVEMENT_CHANCE %), then from the row's era
 /// it places one on a fitting tile inside its borders with LEKMOD_CS_IMPROVEMENT_TURN_CHANCE % each turn, up to the row's maximum
 void CvMinorCivAI::LekmodDoBuildImprovements()
