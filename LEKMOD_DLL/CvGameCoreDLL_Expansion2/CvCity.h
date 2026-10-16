@@ -919,6 +919,7 @@ public:
 #endif
 #ifdef LEKMOD_PORTUGAL
 	bool LekmodIsBuildingEffectActive(const CvBuildingEntry& kBuilding) const;
+	void LekmodRefreshFeitoriaEffects(const CvBuildingEntry& kChanged);
 #endif
 	static bool LekmodHasBuildingPlotYields(const CvPlayer& kPlayer);
 #endif

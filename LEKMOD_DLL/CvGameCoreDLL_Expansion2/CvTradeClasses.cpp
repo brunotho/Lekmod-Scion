@@ -2595,6 +2595,17 @@ int CvPlayerTrade::GetTradeConnectionYourBuildingValueTimes100(const TradeConnec
 			if (kTradeConnection.m_eDomain == DOMAIN_SEA)
 				iBonus += pDestCity->GetIncomingTradeConnectionSeaExtraYield(kTradeConnection.m_eConnectionType, eYield);
 		}
+#ifdef LEKMOD_PORTUGAL
+		// Feitoria: a route to the capital gives its origin Gold per era; a route from the capital gives its destination Food
+		if (bAsOriginPlayer && eYield == YIELD_GOLD && pDestCity->isCapital())
+		{
+			const int iPerEra = pOriginCity->GetLekmodBuildingStat(10, false);
+			if (iPerEra != 0)
+				iBonus += iPerEra * (GET_PLAYER(kTradeConnection.m_eOriginOwner).GetCurrentEra() + 1) * 100;
+		}
+		if (!bAsOriginPlayer && eYield == YIELD_FOOD && pOriginCity->isCapital())
+			iBonus += pDestCity->GetLekmodBuildingStat(11, false) * 100;
+#endif
 	}
 
 	if (bAsOriginPlayer)
@@ -3050,25 +3061,6 @@ int CvPlayerTrade::GetTradeConnectionValueTimes100(const TradeConnection& kTrade
 		const int iPerEra = pHanseCity ? pHanseCity->GetLekmodBuildingStat(8, false) : 0;
 		if (iPerEra != 0)
 			iTotalValue += iPerEra * (GET_PLAYER(kTradeConnection.m_eOriginOwner).GetCurrentEra() + 1) * 100;
-	}
-#endif
-#ifdef LEKMOD_PORTUGAL
-	// Feitoria: an internal route to the capital gives its origin Gold per era; a route from the capital gives its destination Food
-	if (!GC.getGame().GetGameTrade()->IsConnectionInternational(kTradeConnection) && (eYield == YIELD_GOLD || eYield == YIELD_FOOD))
-	{
-		CvCity* pFeitoriaOrigin = CvGameTrade::GetOriginCity(kTradeConnection);
-		CvCity* pFeitoriaDest = CvGameTrade::GetDestCity(kTradeConnection);
-		if (pFeitoriaOrigin != NULL && pFeitoriaDest != NULL)
-		{
-			if (bAsOriginPlayer && eYield == YIELD_GOLD && pFeitoriaDest->isCapital())
-			{
-				const int iPerEra = pFeitoriaOrigin->GetLekmodBuildingStat(10, false);
-				if (iPerEra != 0)
-					iTotalValue += iPerEra * (GET_PLAYER(kTradeConnection.m_eOriginOwner).GetCurrentEra() + 1) * 100;
-			}
-			if (!bAsOriginPlayer && eYield == YIELD_FOOD && pFeitoriaOrigin->isCapital())
-				iTotalValue += pFeitoriaDest->GetLekmodBuildingStat(11, false) * 100;
-		}
 	}
 #endif
 	// Modifiers

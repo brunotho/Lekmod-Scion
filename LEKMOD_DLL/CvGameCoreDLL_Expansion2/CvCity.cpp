@@ -7916,6 +7916,10 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 	}
 #endif
 
+#ifdef LEKMOD_PORTUGAL
+	if (iChange != 0)
+		LekmodRefreshFeitoriaEffects(*pBuildingInfo);
+#endif
 	CvPlayer& owningPlayer = GET_PLAYER(getOwner());
 	CvTeam& owningTeam = GET_TEAM(getTeam());
 #ifdef LEKMOD_GREAT_WORK_WONDER_EFFECTS
@@ -13630,10 +13634,6 @@ int CvCity::GetBaseYieldRateFromBuildings(YieldTypes eIndex) const
 #ifdef LEKMOD_CONDITIONAL_BUILDING_YIELDS
 	iLekmodConditional = GetLekmodConditionalBuildingYield(eIndex);
 #endif
-#ifdef LEKMOD_PORTUGAL
-	if (isCapital())
-		iLekmodConditional += GET_PLAYER(getOwner()).GetLekmodCapitalBuildingYield(eIndex);
-#endif
 #ifdef LEKMOD_POLICY_REWORK
 	if (eIndex == YIELD_GOLD)
 	{
@@ -15943,6 +15943,36 @@ bool CvCity::LekmodHasBuildingPlotYields(const CvPlayer& kPlayer)
 	return false;
 }
 #ifdef LEKMOD_PORTUGAL
+/// Feitoria: after a building change, refresh the capital tile (capital yield per Feitoria) and the trade route values (route bonuses),
+/// so both count from this turn on, not from the next turn's update
+void CvCity::LekmodRefreshFeitoriaEffects(const CvBuildingEntry& kChanged)
+{
+	CvPlayer& kOwner = GET_PLAYER(getOwner());
+	bool bCapitalTile = (kChanged.GetLekmodCapitalYield() != 0);
+	bool bTrade = (kChanged.GetLekmodTradeToCapitalGoldPerEra() != 0 || kChanged.GetLekmodTradeFromCapitalFood() != 0);
+	for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)iBuilding);
+		if (pkBuilding == NULL || m_pCityBuildings->GetNumBuilding((BuildingTypes)iBuilding) <= 0)
+			continue;
+		if (pkBuilding->GetLekmodTradeToCapitalGoldPerEra() == 0 && pkBuilding->GetLekmodTradeFromCapitalFood() == 0)
+			continue;
+		// a Courthouse or Crown Office switches this city's Feitoria effects on or off; a new Palace moves the capital
+		if (pkBuilding->GetLekmodEffectsNeedClass1() == kChanged.GetBuildingClassType() || pkBuilding->GetLekmodEffectsNeedClass2() == kChanged.GetBuildingClassType() || kChanged.IsCapital())
+			bTrade = true;
+	}
+	if (kChanged.IsCapital() && kOwner.GetLekmodCapitalBuildingYield(YIELD_GOLD) != 0)
+		bCapitalTile = true;
+	if (bCapitalTile)
+	{
+		// every city tile: a moved capital has to lose the yield on its old tile
+		int iLoop;
+		for (CvCity* pLoopCity = kOwner.firstCity(&iLoop); pLoopCity != NULL; pLoopCity = kOwner.nextCity(&iLoop))
+			pLoopCity->plot()->updateYield();
+	}
+	if (bTrade)
+		kOwner.GetTrade()->UpdateTradeConnectionValues();
+}
 /// Buildings.LekmodEffectsNeedClass1/2: the building's Lekmod plot yields and trade effects need one of these classes in the city (Feitoria)
 bool CvCity::LekmodIsBuildingEffectActive(const CvBuildingEntry& kBuilding) const
 {

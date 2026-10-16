@@ -148227,7 +148227,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Your first trade route there brought {@2_WorkName} to your empire.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_FIRST_ROUTE_AVAILABLE">
-			<Text>[ICON_INTERNATIONAL_TRADE] First route here: {1_Bonus}</Text>
+			<Text>[ICON_INTERNATIONAL_TRADE] First route here:{1_Bonus}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_FIRST_ROUTE_USED">
 			<Text>[COLOR_LEKMOD_INACTIVE][ICON_INTERNATIONAL_TRADE] First-route bonus already received[ENDCOLOR]</Text>
@@ -148242,7 +148242,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The first [ICON_INTERNATIONAL_TRADE] trade route to each civilization and [ICON_CITY_STATE] City-State gives a one-time bonus that depends on your era:[NEWLINE]Ancient: +10 [ICON_PEACE] Faith, +20 [ICON_CULTURE] Culture, +30 [ICON_RESEARCH] Science.[NEWLINE]Classical: +20 [ICON_PEACE] Faith, +40 [ICON_CULTURE] Culture, +60 [ICON_RESEARCH] Science.[NEWLINE]Medieval: +40 [ICON_PEACE] Faith, +80 [ICON_CULTURE] Culture, +120 [ICON_RESEARCH] Science.[NEWLINE]Renaissance and Industrial: a [ICON_GREAT_WORK] Great Work in a free slot.[NEWLINE]Modern: +700 [ICON_GOLD] Gold.[NEWLINE]Atomic: +700 [ICON_CULTURE] Culture.[NEWLINE]Information: +700 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FEITORIA_HELP">
-			<Text>Replaces the Harbor. Needs no coast and no Lighthouse; no maintenance.[NEWLINE]In a coastal city it forms a [ICON_CONNECTED] City Connection over water and gives sea trade routes from this city +50% range, like the Harbor.[NEWLINE][NEWLINE]+1 [ICON_GOLD] Gold in your [ICON_CAPITAL] Capital.[NEWLINE][NEWLINE]With a Courthouse or Crown Office in the city:[NEWLINE]Luxury resources worked by the city +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city +3 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Harbor. Needs no coast and no Lighthouse; no maintenance.[NEWLINE]In a coastal city it forms a [ICON_CONNECTED] City Connection over water and gives sea trade routes from this city +50% range, like the Harbor.[NEWLINE][NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE][NEWLINE]With a Courthouse or Crown Office in the city:[NEWLINE]Luxury resources worked by the city +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city +3 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PORTUGUESE_NAU">
 			<Text>Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Friendly non-air units on its tile or next to it heal every turn, even after acting.[NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>

@@ -130,7 +130,8 @@ function LekmodFirstRouteBonusText(pPlayer, iTarget)
 	if #parts == 0 then
 		return nil;
 	end
-	return Locale.ConvertTextKey("TXT_KEY_LEKMOD_FIRST_ROUTE_AVAILABLE", table.concat(parts, ", "));
+	-- one bonus per line: the row is narrow
+	return Locale.ConvertTextKey("TXT_KEY_LEKMOD_FIRST_ROUTE_AVAILABLE", "[NEWLINE]  " .. table.concat(parts, "[NEWLINE]  "));
 end
 
 function RefreshData()

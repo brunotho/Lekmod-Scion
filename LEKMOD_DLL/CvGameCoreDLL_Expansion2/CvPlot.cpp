@@ -8714,6 +8714,11 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	if (pWorkingCity != NULL && pWorkingCity->plot() == this && pWorkingCity->isCapital())
 		iYield += pWorkingCity->LekmodCapitalYieldFromExpands(eYield);
 #endif
+#ifdef LEKMOD_PORTUGAL
+	// Feitoria: the capital's tile gets yields per such building anywhere in the empire
+	if (pWorkingCity != NULL && pWorkingCity->plot() == this && pWorkingCity->isCapital())
+		iYield += GET_PLAYER(pWorkingCity->getOwner()).GetLekmodCapitalBuildingYield(eYield);
+#endif
 	// GJS - this was moved after the Feature terrain yield replacement if statement (just above this) to allow yield changes from religion based on terrain with replacement features
 	// Extra yield for religion on this terrain
 	if(pWorkingCity != NULL && eMajority != NO_RELIGION && !isMountain())
