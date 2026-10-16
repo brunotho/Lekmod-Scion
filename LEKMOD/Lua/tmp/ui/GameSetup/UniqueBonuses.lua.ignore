@@ -105,7 +105,7 @@ end
 ------------------------------------------------------------------
 function PopulateUniqueBonuses( controlTable, civ, _, extendedTooltip, noTooltip)
 
-	local maxSmallButtons = 2;
+	local maxSmallButtons = 5; -- LEKMOD: was 2; screens with fewer slots (B1..Bn) just skip the rest
 	local BonusText = {};
 
 	function PopulateButton(button, buttonFrame)
@@ -119,10 +119,11 @@ function PopulateUniqueBonuses( controlTable, civ, _, extendedTooltip, noTooltip
  			button, buttonFrame = coroutine.yield(row.Description);	
 		end
 		
-		for row in DB.Query([[SELECT ID, Description, PortraitIndex, IconAtlas from Buildings INNER JOIN 
-							Civilization_BuildingClassOverrides ON Buildings.Type = Civilization_BuildingClassOverrides.BuildingType 
+		for row in DB.Query([[SELECT ID, Description, PortraitIndex, IconAtlas from Buildings INNER JOIN
+							Civilization_BuildingClassOverrides ON Buildings.Type = Civilization_BuildingClassOverrides.BuildingType
 							WHERE Civilization_BuildingClassOverrides.CivilizationType = ? AND
-							Civilization_BuildingClassOverrides.BuildingType IS NOT NULL]], civ.Type) do
+							Civilization_BuildingClassOverrides.BuildingType IS NOT NULL
+							UNION SELECT ID, Description, PortraitIndex, IconAtlas from Buildings WHERE Buildings.RequiredCivilization = ?]], civ.Type, civ.Type) do
 			AdjustArtOnUniqueBuildingButton(button, buttonFrame, row, textureSize, extendedTooltip, noTooltip);
  			button, buttonFrame = coroutine.yield(row.Description);	
 		end
@@ -165,15 +166,17 @@ function PopulateUniqueBonuses_CreateCached()
 								WHERE Civilization_UnitClassOverrides.CivilizationType = ? AND
 								Civilization_UnitClassOverrides.UnitType IS NOT NULL]]);
 								
-	local uniqueBuildingsQuery = DB.CreateQuery([[SELECT ID, Description, PortraitIndex, IconAtlas from Buildings INNER JOIN 
-								Civilization_BuildingClassOverrides ON Buildings.Type = Civilization_BuildingClassOverrides.BuildingType 
+	-- LEKMOD: civ-only buildings in their own class (Buildings.RequiredCivilization: Dojo, Ziggurat...) are unique items too
+	local uniqueBuildingsQuery = DB.CreateQuery([[SELECT ID, Description, PortraitIndex, IconAtlas from Buildings INNER JOIN
+								Civilization_BuildingClassOverrides ON Buildings.Type = Civilization_BuildingClassOverrides.BuildingType
 								WHERE Civilization_BuildingClassOverrides.CivilizationType = ? AND
-								Civilization_BuildingClassOverrides.BuildingType IS NOT NULL]]);
+								Civilization_BuildingClassOverrides.BuildingType IS NOT NULL
+								UNION SELECT ID, Description, PortraitIndex, IconAtlas from Buildings WHERE Buildings.RequiredCivilization = ?]]);
 								
 	local uniqueImprovementsQuery = DB.CreateQuery([[SELECT ID, Description, PortraitIndex, IconAtlas from Improvements where CivilizationType = ?]]);
 	
 	return function(controlTable, civType, extendedTooltip, noTooltip) 
-		local maxSmallButtons = 2;
+		local maxSmallButtons = 5; -- LEKMOD: was 2; screens with fewer slots (B1..Bn) just skip the rest
 		local BonusText = {};
 
 		local textureSize = 64;
@@ -188,7 +191,7 @@ function PopulateUniqueBonuses_CreateCached()
 		end
 		
 		if(#buttonFuncs < maxSmallButtons) then
-			for row in uniqueBuildingsQuery(civType) do
+			for row in uniqueBuildingsQuery(civType, civType) do
 				table.insert(buttonFuncs, function(button, buttonFrame)
 					AdjustArtOnUniqueBuildingButton(button, buttonFrame, row, textureSize, extendedTooltip, noTooltip);
 					return row.Description;

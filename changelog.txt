@@ -2953,6 +2953,8 @@ CIVILIZATION SELECTION LIST (SINGLE PLAYER)
 Tags: ui
 - Fixed: long ability texts no longer run into the next civilization's box and the hover highlight matches every box: the text is shortened to fit (with "..."), and the full text plus the start bias show in the tooltip
 - Dev: replaces the 2026-10-10 row growth (the highlight in the base XML has no ID, so it could not grow with the row)
+- Added: every unique unit, building and improvement of a civilization is shown (up to 5; was 2), including buildings only that civilization has (Dojo, Ziggurat, Convict Penitentiary...)
+- Dev: Lekmod's own SelectCivilization.xml (5 slots, standard UI); UniqueBonuses lists Buildings.RequiredCivilization too; the ability text narrows to leave room for the icons
 
 VIETNAM (CIVILIZATION_VIETNAM)
 ------------------------------

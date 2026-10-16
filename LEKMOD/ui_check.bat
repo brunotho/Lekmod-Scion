@@ -99,6 +99,7 @@ REM ----------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\UniqueBonuses.lua.ignore" "%patchfolder%\Lua\UI\UniqueBonuses.lua" > nul
 IF NOT EXIST "%euifolder%\GameSetup\SelectCivilization.lua" (
   copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\SelectCivilization.lua.ignore" "%patchfolder%\Lua\UI\SelectCivilization.lua" > nul
+  copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\SelectCivilization.xml.ignore" "%patchfolder%\Lua\UI\SelectCivilization.xml" > nul
 ) ELSE (
   copy /y "%patchfolder%\Lua\tmp\eui\GameSetup\SelectCivilization.lua.ignore" "%patchfolder%\Lua\UI\SelectCivilization.lua" > nul
 )
