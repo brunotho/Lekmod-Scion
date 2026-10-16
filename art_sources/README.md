@@ -78,6 +78,14 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   (user screenshot, Fulling Mill vs a base icon). All icons were rebuilt.
 - Atlases: one 1x1 atlas per icon.
 
+## Unit action icons
+- Sources: `unit_actions/` (2026-10-16: `buy_city_state_heart_v1.png`, the Merchant of Venice's buy-City-State button; a
+  white heart on a baked checkerboard).
+- `python art_sources/tools/build_action_icon.py <source> <name>`: keeps only near-white pixels as the glyph, fits it to 72%
+  of the cell with a soft shadow, writes 64/45 px uncompressed to `LEKMOD/Art/Lekmod (v 1)/Art/UnitActions/`.
+- The base action icons are packed sprites in `Expansion2UITextures.fpk` (with `-index.dds` files), so they can't be used as
+  templates directly; our replacements are plain square textures in a 1x1 atlas (`Missions.IconAtlas`).
+
 ## Espionage screen icons
 - `python art_sources/tools/build_levelup_icon.py [--preview out.png]` draws the framed 45 px level-up arrow for the diplomat
   progress bar (`lekmod_esp_levelup45.dds`): gold ring, glossy black-to-blue disc and pale cyan double chevron, matching the

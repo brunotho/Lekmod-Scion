@@ -2360,6 +2360,7 @@ Tags: civs, units
 - Changed: Merchant of Venice: 6 Movement (was 4), Trade Missions give +20% Gold and Influence (was +100%)
 - Changed: new UA Masks and Mirrors: Great Merchants, Writers, Artists and Musicians 20% faster; the Merchant of Venice appears at Currency (was Optics); Great Works +2 Gold +1 Tourism; one extra Spy in the Renaissance
 - Removed: double trade routes, no Settlers, no annexing, buying in puppets and full puppet yields
+- Changed: the Merchant of Venice's "buy City-State" button has a new icon (a heart)
 - DLL: Traits.LekmodGreatArtsRateModifier (Writer/Artist/Musician rate)
 
 INDIA (CIVILIZATION_INDIA)
