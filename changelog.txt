@@ -2947,3 +2947,9 @@ FORTIFY BUTTON (MISSION_FORTIFY)
 Tags: ui
 - Changed: Fortify is on the main unit action panel instead of the extra actions list
 - Dev: Missions.OrderPriority 99 -> 160 (the unit panel puts missions over 100 on the main panel)
+
+CIVILIZATION SELECTION LIST (SINGLE PLAYER)
+-------------------------------------------
+Tags: ui
+- Fixed: long ability texts no longer run into the next civilization's box and the hover highlight matches every box: the text is shortened to fit (with "..."), and the full text plus the start bias show in the tooltip
+- Dev: replaces the 2026-10-10 row growth (the highlight in the base XML has no ID, so it could not grow with the row)

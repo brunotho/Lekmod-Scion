@@ -113,6 +113,36 @@ function AddRandomCivilizationEntry()
 	end
 end
 
+-- LEKMOD: puts text into a label, cut at a word with "..." so that it is at most iMaxHeight pixels tall.
+-- Empty lines are dropped first (this list has little room).
+function LekmodSetFittedText( label, strText, iMaxHeight )
+	local str = strText:gsub( "%[NEWLINE%]%[NEWLINE%]", "[NEWLINE]" );
+	label:SetText( str );
+	if label:GetSizeY() <= iMaxHeight then
+		return;
+	end
+	-- words, split at spaces and line breaks (markup like [ICON_GOLD] has no spaces, so it is never cut)
+	local words = {};
+	for w in str:gsub( "%[NEWLINE%]", " [NEWLINE] " ):gmatch( "%S+" ) do
+		table.insert( words, w );
+	end
+	local function build( n )
+		local s = table.concat( words, " ", 1, n ):gsub( " %[NEWLINE%] ", "[NEWLINE]" ):gsub( " ?%[NEWLINE%]$", "" );
+		return s .. "...";
+	end
+	local lo, hi = 1, #words;
+	while lo < hi do
+		local mid = math.floor( ( lo + hi + 1 ) / 2 );
+		label:SetText( build( mid ) );
+		if label:GetSizeY() <= iMaxHeight then
+			lo = mid;
+		else
+			hi = mid - 1;
+		end
+	end
+	label:SetText( build( lo ) );
+end
+
 function AddCivilizationEntry(traitsQuery, populateUniqueBonuses, civ, leaderType, leaderDescription, leaderPortraitIndex, leaderIconAtlas, scenarioCivID)
 
 	local controlTable = {};
@@ -133,18 +163,11 @@ function AddCivilizationEntry(traitsQuery, populateUniqueBonuses, civ, leaderTyp
 	local shortDescription = "";
 	
 	for row in traitsQuery(leaderType) do
-		controlTable.BonusDescription:LocalizeAndSetText(row.Description);
-		-- LEKMOD: a long ability text makes the row taller instead of running into the next row
-		-- (text starts 38 px below the row top: 4 offset + 28 title + 6 stack padding; 8 px margin below)
-		local iNeeded = 38 + controlTable.BonusDescription:GetSizeY() + 8;
-		if iNeeded > controlTable.Button:GetSizeY() then
-			controlTable.Button:SetSizeY( iNeeded );
-		end
-		-- LEKMOD: the start bias goes into the tooltip
-		local strBias = LekmodStartBiasText( civ.Type ):gsub( "^%[NEWLINE%]%[NEWLINE%]", "" );
-		if strBias ~= "" then
-			controlTable.Button:SetToolTipString( strBias );
-		end
+		-- LEKMOD: the row keeps its size (the hover highlight is fixed); the ability text is shortened to fit,
+		-- and the full text plus the start bias are in the tooltip (POST 2026-10-16)
+		local strFull = Locale.ConvertTextKey( row.Description );
+		LekmodSetFittedText( controlTable.BonusDescription, strFull, controlTable.Button:GetSizeY() - 38 - 6 );
+		controlTable.Button:SetToolTipString( strFull .. LekmodStartBiasText( civ.Type ) );
 		shortDescription = row.ShortDescription;
 	end
 	
