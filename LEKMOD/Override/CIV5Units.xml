@@ -43428,6 +43428,7 @@
     	<Column name="LekmodTradeFromCapitalFood" type="integer" default="0"/>
     	<Column name="LekmodBuildingProductionPerCity" type="integer" default="0"/>
     	<Column name="LekmodInstantSciencePerPop" type="integer" default="0"/>
+	<Column name="LekmodYieldsOnCityTile" type="boolean" default="false"/>
     	<Column name="GreatWorkFilledTourismModifier" type="integer" default="0"/>
     	<Column name="FreePlotPurchase" type="boolean" default="false"/>
     	<Column name="LekmodTimedBuilding" type="text" reference="Buildings(Type)" default="NULL"/>
@@ -291858,4 +291859,27 @@
 			<Set IconAtlas="LEKMOD_BUY_CITY_STATE_ACTION_ATLAS" IconIndex="0"/>
 		</Update>
 	</Missions>
+	<!-- POST (2026-10-16): UA city yields of Chile, Maurya, Khmer, Mughals (not the Golden Age points) and Greece show on the city tile -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_CHILE_TRAIT"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_MAURYA_TRAIT"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_KHMER_TRAIT"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_MUGHALS_TRAIT"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_GREECE_TRAIT"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+	</Buildings>
 </GameData>

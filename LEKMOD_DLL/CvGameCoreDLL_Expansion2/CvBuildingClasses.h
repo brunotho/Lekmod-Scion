@@ -309,6 +309,7 @@ public:
 #ifdef LEKMOD_POST_CHANGES
 	int GetLekmodBuildingProductionPerCity() const;
 	int GetLekmodInstantSciencePerPop() const;
+	bool IsLekmodYieldsOnCityTile() const;
 #endif
 	bool IsNearRiver() const;
 	bool IsNoMaintenanceOnRiver() const;
@@ -735,6 +736,7 @@ private:
 #ifdef LEKMOD_POST_CHANGES
 	int m_iLekmodBuildingProductionPerCity;
 	int m_iLekmodInstantSciencePerPop;
+	bool m_bLekmodYieldsOnCityTile;
 #endif
 	bool m_bNearRiver;
 	bool m_bNoMaintenanceOnRiver;

@@ -924,7 +924,8 @@ public:
 	static bool LekmodHasBuildingPlotYields(const CvPlayer& kPlayer);
 #endif
 #ifdef LEKMOD_CONDITIONAL_BUILDING_YIELDS
-	int GetLekmodConditionalBuildingYield(YieldTypes eYield) const;
+	int GetLekmodConditionalBuildingYield(YieldTypes eYield, bool bCityTile = false) const;
+	bool LekmodHasCityTileBuildingYields() const;
 	bool LekmodHasBuildingClass(BuildingClassTypes eClass) const;
 #endif
 #ifdef LEKMOD_BUILDING_ADJACENT_CITY_YIELDS

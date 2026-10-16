@@ -2921,3 +2921,11 @@ Tags: combat, naval
 Ships with a Ranged Strength now defend against ranged attacks (archers, ships, cities, bombers) with their Ranged Strength, like land ranged units always did.
 - Changed: a ranged ship hit by a ranged attack defends with its Ranged Strength instead of its melee Strength; against melee attacks it still uses its Strength
 - DLL: CvUnit::GetMaxDefenseStrength (CombatInfo path; LEKMOD_POST_CHANGES)
+
+UA CITY YIELDS ON THE CITY TILE (Buildings.LekmodYieldsOnCityTile)
+------------------------------------------------------------------
+Tags: civs, ui
+City yields from civilization abilities now show on the city's own tile instead of under "from buildings".
+- Changed: Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile; the amounts are unchanged
+- Note: the Mughals' Golden Age points stay a city yield (tiles can't hold them)
+- DLL: Buildings.LekmodYieldsOnCityTile on the UA dummy buildings; CvCity::GetLekmodConditionalBuildingYield(eYield, bCityTile) split, added in CvPlot::calculateYield; the city tile refreshes every turn, when such a building changes and when a tech is learned

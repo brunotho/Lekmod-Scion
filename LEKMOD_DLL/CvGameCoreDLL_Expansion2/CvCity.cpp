@@ -2266,6 +2266,11 @@ void CvCity::doTurn()
 #endif
 
 	doUpdateCacheOnTurn();
+#ifdef LEKMOD_CONDITIONAL_BUILDING_YIELDS
+	// conditional yields on the city tile (borders, connections, religions next door) change without a plot event
+	if (LekmodHasCityTileBuildingYields())
+		plot()->updateYield();
+#endif
 
 	VALIDATE_OBJECT
 	CvPlot* pLoopPlot;
@@ -7926,6 +7931,10 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 #ifdef LEKMOD_PORTUGAL
 	if (iChange != 0)
 		LekmodRefreshFeitoriaEffects(*pBuildingInfo);
+#endif
+#ifdef LEKMOD_POST_CHANGES
+	if (iChange != 0 && pBuildingInfo->IsLekmodYieldsOnCityTile())
+		plot()->updateYield();
 #endif
 	CvPlayer& owningPlayer = GET_PLAYER(getOwner());
 	CvTeam& owningTeam = GET_TEAM(getTeam());
@@ -16078,7 +16087,20 @@ bool CvCity::LekmodHasBuildingClass(BuildingClassTypes eClass) const
 }
 //	--------------------------------------------------------------------------------
 /// City yield from this city's buildings with conditions (Building_LekmodConditionalYields)
-int CvCity::GetLekmodConditionalBuildingYield(YieldTypes eYield) const
+/// Does this city have a building whose conditional yields sit on the city tile? (its tile is refreshed every turn)
+bool CvCity::LekmodHasCityTileBuildingYields() const
+{
+#ifdef LEKMOD_POST_CHANGES
+	for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)iBuilding);
+		if (pkBuilding && pkBuilding->IsLekmodYieldsOnCityTile() && m_pCityBuildings->GetNumBuilding((BuildingTypes)iBuilding) > 0)
+			return true;
+	}
+#endif
+	return false;
+}
+int CvCity::GetLekmodConditionalBuildingYield(YieldTypes eYield, bool bCityTile) const
 {
 	static std::vector<int> s_aiBuildings;
 	static bool s_bInit = false;
@@ -16101,6 +16123,12 @@ int CvCity::GetLekmodConditionalBuildingYield(YieldTypes eYield) const
 		const BuildingTypes eBuilding = (BuildingTypes)s_aiBuildings[i];
 		if (m_pCityBuildings->GetNumBuilding(eBuilding) <= 0)
 			continue;
+#ifdef LEKMOD_POST_CHANGES
+		// tile yields (Food to Faith) of LekmodYieldsOnCityTile buildings count on the city tile (CvPlot::calculateYield), the rest in the city
+		const bool bOnTile = GC.getBuildingInfo(eBuilding)->IsLekmodYieldsOnCityTile() && eYield <= YIELD_FAITH;
+		if (bOnTile != bCityTile)
+			continue;
+#endif
 		const std::vector<LekmodBuildingConditionalYield>& aRows = GC.getBuildingInfo(eBuilding)->GetLekmodConditionalYields();
 		for (uint j = 0; j < aRows.size(); j++)
 		{

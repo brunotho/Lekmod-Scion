@@ -115,6 +115,7 @@ CvBuildingEntry::CvBuildingEntry(void):
 #ifdef LEKMOD_POST_CHANGES
 	m_iLekmodBuildingProductionPerCity(0),
 	m_iLekmodInstantSciencePerPop(0),
+	m_bLekmodYieldsOnCityTile(false),
 #endif
 	m_bNearRiver(false),
 	m_bNoMaintenanceOnRiver(false),
@@ -563,6 +564,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 #ifdef LEKMOD_POST_CHANGES
 	m_iLekmodBuildingProductionPerCity = kResults.GetInt("LekmodBuildingProductionPerCity");
 	m_iLekmodInstantSciencePerPop = kResults.GetInt("LekmodInstantSciencePerPop");
+	m_bLekmodYieldsOnCityTile = kResults.GetBool("LekmodYieldsOnCityTile");
 #endif
 	m_bNearRiver = kResults.GetBool("NearRiver");
 	m_bNoMaintenanceOnRiver = kResults.GetBool("NoMaintenanceOnRiver");
@@ -2243,6 +2245,11 @@ int CvBuildingEntry::GetLekmodBuildingProductionPerCity() const
 int CvBuildingEntry::GetLekmodInstantSciencePerPop() const
 {
 	return m_iLekmodInstantSciencePerPop;
+}
+/// Buildings.LekmodYieldsOnCityTile: the building's conditional yields (Food to Faith) show on the city's own tile, not as building yields
+bool CvBuildingEntry::IsLekmodYieldsOnCityTile() const
+{
+	return m_bLekmodYieldsOnCityTile;
 }
 #endif
 

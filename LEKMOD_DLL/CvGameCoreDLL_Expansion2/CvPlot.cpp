@@ -8714,6 +8714,11 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	if (pWorkingCity != NULL && pWorkingCity->plot() == this && pWorkingCity->isCapital())
 		iYield += pWorkingCity->LekmodCapitalYieldFromExpands(eYield);
 #endif
+#if defined(LEKMOD_POST_CHANGES) && defined(LEKMOD_CONDITIONAL_BUILDING_YIELDS)
+	// UA dummy buildings with LekmodYieldsOnCityTile: their conditional yields show on the city tile (user, 2026-10-16)
+	if (pWorkingCity != NULL && pWorkingCity->plot() == this)
+		iYield += pWorkingCity->GetLekmodConditionalBuildingYield(eYield, true);
+#endif
 #ifdef LEKMOD_PORTUGAL
 	// Feitoria: the capital's tile gets yields per such building anywhere in the empire
 	if (pWorkingCity != NULL && pWorkingCity->plot() == this && pWorkingCity->isCapital())

@@ -6011,6 +6011,19 @@ void CvTeam::setHasTech(TechTypes eIndex, bool bNewValue, PlayerTypes ePlayer, b
 		}
 #endif
 		processTech(eIndex, ((bNewValue) ? 1 : -1));
+#ifdef LEKMOD_POST_CHANGES
+		// city tile yields that need all techs of an era (Khmer)
+		for (int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
+		{
+			CvPlayer& kMember = GET_PLAYER((PlayerTypes)iPlayer);
+			if (!kMember.isAlive() || kMember.getTeam() != GetID())
+				continue;
+			int iCityLoop;
+			for (CvCity* pLoopCity = kMember.firstCity(&iCityLoop); pLoopCity != NULL; pLoopCity = kMember.nextCity(&iCityLoop))
+				if (pLoopCity->LekmodHasCityTileBuildingYields())
+					pLoopCity->plot()->updateYield();
+		}
+#endif
 
 		//Antiquity site notifications.
 		//Notifications for Artifacts and Hidden Artifacts have to come AFTER processTech because they may not have been spawned yet.
