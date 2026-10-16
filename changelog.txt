@@ -2982,3 +2982,9 @@ Tags: ui
 - Added: option "Show promotion hotkeys on the buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
 - Added: option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
+
+IDEOLOGY TENET TEXTS (POLICY_BRANCH_FREEDOM, POLICY_BRANCH_ORDER, POLICY_BRANCH_AUTOCRACY)
+------------------------------------------------------------------------------------
+Tags: policies, ui
+- Changed: tenet tooltips with several effects show one effect per line (Economic Union, Universal Suffrage, Socialist Realism, Workers' Faculties, Spaceflight Pioneers)
+- Dev: the other policy tooltips already follow the bullet layout (Phase 5); 2026-10-16 POST item
