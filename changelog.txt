@@ -853,7 +853,7 @@ Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshon
 - Changed: Gold: 45 + 5 x (1-10) x era gold; 80 or more also spawns an era-appropriate barbarian next to the ruin
 - Changed: Mobility: ancient era only; scouts (including the Shoshone Pathfinder) can now get it
 - Removed: the Prophet faith ruin
-- Changed: short choice texts with the exact numbers, "Gain" marked green and "Lose" red (e.g. "Lose 40 Gold - Gain 30 Science"), and new result texts
+- Changed: short choice texts with the exact numbers: what you gain first, in its yield color (Food green), then what you lose, in red (e.g. "Gain 30 Science - Lose 40 Gold"); new result texts
 - Changed: Civilopedia ruin pages rewritten with the current rewards and numbers
 - Dev: new GoodyHuts columns (BeforeEra, UnitDamage, GoldEraFactor, EraBarbarianSpawn, ScienceEraRuin, CultureEraTurn, FaithEraTurn, FoodEraScale, FaithZeroOnly); ruin data moved out of the unloaded Art/No Quitters Mod XML. The popup shows the DLL-computed amount (Data2).
 - Dev: LEKMOD_RUIN_CHOICE: offers rolled with the synced RNG in CvPlayer::doGoody (one roll 0-999 per offer sets all its numbers), stored per plot in CvPlayer (saved), chosen via Network.SendGoodyChoice, AIs pick at random, leftovers resolved in CvPlayer::doTurn. New GoodyHuts columns LekmodTrade / LekmodAncientTech, rows GOODY_LEKMOD_TRADE (pool weight 2) and GOODY_LEKMOD_ANCIENT_TECH (weight 1). Lua: Player:GetLekmodRuinOffers(plotIndex); ChooseGoodyHutReward.lua override

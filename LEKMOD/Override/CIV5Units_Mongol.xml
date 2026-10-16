@@ -101750,13 +101750,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>{1_Num} [ICON_CULTURE] Culture</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_RUIN_GAIN_GOLD">
-			<Text>{1_Num} [ICON_GOLD] Gold</Text>
+			<Text>[COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_RUIN_GAIN_SCIENCE">
-			<Text>{1_Num} [ICON_RESEARCH] Science</Text>
+			<Text>[COLOR_RESEARCH_STORED]{1_Num} [ICON_RESEARCH] Science[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_RUIN_GAIN_CULTURE">
-			<Text>{1_Num} [ICON_CULTURE] Culture</Text>
+			<Text>[COLOR_CULTURE_STORED]{1_Num} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_RUIN_GAIN_CITY_STATES">
 			<Text>the location of the 3 nearest city-states</Text>
@@ -148207,40 +148207,40 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: simpler ruin choice texts, Gain/Lose marks (2026-10-15) -->
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_TRADE">
-			<Text>[COLOR_NEGATIVE_TEXT]Lose[ENDCOLOR] {1_Pay}  -  [COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] {2_Gain}</Text>
+			<Text>Gain {2_Gain}  -  [COLOR_NEGATIVE_TEXT]Lose {1_Pay}[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_TECH">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_RESEARCH_STORED]{1_Tech}[ENDCOLOR] (free technology)</Text>
+			<Text>Gain [COLOR_RESEARCH_STORED]{1_Tech}[ENDCOLOR] (free technology)</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_FOOD">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_YIELD_FOOD]{1_Num} [ICON_FOOD] Food[ENDCOLOR] in your capital  -  [COLOR_NEGATIVE_TEXT]Glutton[ENDCOLOR] for this unit</Text>
+			<Text>Gain [COLOR_POSITIVE_TEXT]{1_Num} [ICON_FOOD] Food[ENDCOLOR] in your capital  -  [COLOR_NEGATIVE_TEXT]Glutton for this unit[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_CULTURE">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_CULTURE_STORED]{1_Num} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
+			<Text>Gain [COLOR_CULTURE_STORED]{1_Num} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_FAITH_HEAL">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] {1_Num} [ICON_PEACE] Faith and a full heal</Text>
+			<Text>Gain {1_Num} [ICON_PEACE] Faith and a full heal</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_FAITH">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] {1_Num} [ICON_PEACE] Faith</Text>
+			<Text>Gain {1_Num} [ICON_PEACE] Faith</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_GOLD">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]</Text>
+			<Text>Gain [COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_GOLD_BARBARIAN">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]a barbarian appears[ENDCOLOR]</Text>
+			<Text>Gain [COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]A barbarian appears[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] [COLOR_RESEARCH_STORED]{1_Num} [ICON_RESEARCH] Science[ENDCOLOR] and [COLOR_YIELD_GOLD]{2_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]Lose[ENDCOLOR] {3_Num} HP</Text>
+			<Text>Gain [COLOR_RESEARCH_STORED]{1_Num} [ICON_RESEARCH] Science[ENDCOLOR] and [COLOR_YIELD_GOLD]{2_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]Lose {3_Num} HP[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_UPGRADE">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] upgrade to {1_Unit}  -  [COLOR_NEGATIVE_TEXT]Lose[ENDCOLOR] {2_Num} HP</Text>
+			<Text>Gain an upgrade to {1_Unit}  -  [COLOR_NEGATIVE_TEXT]Lose {2_Num} HP[ENDCOLOR]</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_TILES">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] {1_Num} tiles for your nearest city</Text>
+			<Text>Gain {1_Num} tiles for your nearest city</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_PROMOTION">
-			<Text>[COLOR_POSITIVE_TEXT]Gain[ENDCOLOR] {1_Promotion} for this unit</Text>
+			<Text>Gain {1_Promotion} for this unit</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_GAIN_CITY_STATES">
 			<Text>the 3 nearest City-States revealed</Text>
