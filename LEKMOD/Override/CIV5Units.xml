@@ -69499,10 +69499,6 @@
 			<BuildingClassType>BUILDINGCLASS_PALACE</BuildingClassType> 
 		</Row>
 		<Row> 
-			<CivilizationType>CIVILIZATION_KHMER</CivilizationType> 
-			<BuildingClassType>BUILDINGCLASS_GARDEN</BuildingClassType> 
-		</Row>
-		<Row> 
 			<CivilizationType>CIVILIZATION_VENEZ</CivilizationType> 
 			<BuildingClassType>BUILDINGCLASS_PALACE</BuildingClassType> 
 		</Row>
@@ -141112,12 +141108,6 @@
 			<Yield>2</Yield> 
 		</Row>
 		<Row> 
-			<ImprovementType>IMPROVEMENT_ACADEMY</ImprovementType> 
-			<TechType>TECH_ATOMIC_THEORY</TechType> 
-			<YieldType>YIELD_SCIENCE</YieldType> 
-			<Yield>2</Yield> 
-		</Row>
-		<Row> 
 			<ImprovementType>IMPROVEMENT_BRAZILWOOD_CAMP</ImprovementType> 
 			<TechType>TECH_ACOUSTICS</TechType> 
 			<YieldType>YIELD_CULTURE</YieldType> 
@@ -141428,12 +141418,6 @@
 			<TechType>TECH_FLIGHT</TechType> 
 			<YieldType>YIELD_GOLD</YieldType> 
 			<Yield>1</Yield> 
-		</Row>
-		<Row> 
-			<ImprovementType>IMPROVEMENT_DOCK</ImprovementType> 
-			<TechType>TECH_PENICILIN</TechType> 
-			<YieldType>YIELD_PRODUCTION</YieldType> 
-			<Yield>3</Yield> 
 		</Row>
 		<Row>
 			<ImprovementType>IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE</ImprovementType>
@@ -272917,16 +272901,6 @@
 	<Unit_YieldFromKills>
 		<Delete />
 
-		<Row> 
-			<UnitType>UNIT_MC_OMANI_BAGHLAH</UnitType> 
-			<YieldType>YIELD_FAITH</YieldType> 
-			<Yield>100</Yield> 
-		</Row>
-			<Row> 
-			<UnitType>UNIT_MC_OMANI_BAGHLAH</UnitType> 
-			<YieldType>YIELD_GOLD</YieldType> 
-			<Yield>100</Yield> 
-		</Row>
 		<Row> 
 			<UnitType>UNIT_UPGRADED_SWORD_NO_IRON</UnitType> 
 			<YieldType>YIELD_FAITH</YieldType> 

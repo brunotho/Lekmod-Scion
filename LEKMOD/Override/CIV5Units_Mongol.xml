@@ -101607,7 +101607,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Cannot attack while inside a city.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_IMPROVEMENT_DOCK_TEXT">
-			<Text>Built by a Great Admiral on a coast tile next to land, inside your territory or directly next to it (the Great Admiral is consumed).[NEWLINE]Its tile and all tiles around it join your territory (claiming another civilization's tiles angers it).[NEWLINE][NEWLINE]Yields 4 [ICON_PRODUCTION] Production (+3 with Penicillin).[NEWLINE][NEWLINE]Units in the Drydock get +25% defense.</Text>
+			<Text>Built by a Great Admiral on a coast tile next to land, inside your territory or directly next to it (the Great Admiral is consumed).[NEWLINE]Its tile and all tiles around it join your territory (claiming another civilization's tiles angers it).[NEWLINE][NEWLINE]Yields 4 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]Units in the Drydock get +25% defense.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_NUKE_RESISTANCE">
 			<Text>Nuke Resistance</Text>
@@ -128673,7 +128673,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_SPECIALISTSANDGP_ACADEMY_HEADING4_BODY"> 
 			<Text>
-				A Great Scientist can build an Academy on a tile in your territory. A worked Academy yields 8 [ICON_RESEARCH] Science.[NEWLINE]+4 [ICON_RESEARCH] Science with Scientific Theory, +2 with Atomic Theory.[NEWLINE]+4 [ICON_RESEARCH] Science each from the Free Thought and New Deal policies.
+				A Great Scientist can build an Academy on a tile in your territory. A worked Academy yields 8 [ICON_RESEARCH] Science.[NEWLINE]+4 [ICON_RESEARCH] Science with Scientific Theory.[NEWLINE]+4 [ICON_RESEARCH] Science each from the Free Thought and New Deal policies.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_SPECIALISTSANDGP_ACADEMY_HEADING4_TITLE"> 
@@ -147588,7 +147588,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Longswordsman. Available at Guilds, cheaper and needs no [ICON_RES_IRON] Iron, but weaker.[NEWLINE]Starts with Amphibious I and Amphibious II.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MACEDON">
-			<Text>Great Generals give +30% [ICON_STRENGTH] Combat Strength (instead of +15%).[NEWLINE][ICON_BUILDING_BARRACKS] Barracks, [ICON_BUILDING_ARMORY] Armories and Military Academies provide +1 [ICON_CULTURE] Culture.[NEWLINE]Units trained in a city get +5 XP each for a Monument, an Amphitheater and an Opera House there.</Text>
+			<Text>Great Generals give +30% [ICON_STRENGTH] Combat Strength (instead of +15%).[NEWLINE][NEWLINE][ICON_BUILDING_BARRACKS] Barracks, [ICON_BUILDING_ARMORY] Armories and [ICON_BUILDING_MILITARY_ACADEMY] Military Academies provide +1 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]Units trained in a city get +5 XP each for a [ICON_BUILDING_MONUMENT] Monument, an [ICON_BUILDING_AMPHITHEATER] Amphitheater and an [ICON_BUILDING_OPERA_HOUSE] Opera House there.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SARISSO">
 			<Text>Replaces the Pikeman.[NEWLINE]Starts with Envelopment and Mobility.[NEWLINE]Needs 2 [ICON_RES_IRON] Iron.</Text>
@@ -147679,7 +147679,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Knight. Stronger, but costs more and needs 3 [ICON_RES_HORSE] Horses and 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Blitz (attacks more than once per turn).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_HELP">
-			<Text>Replaces the Galley. Slightly stronger, and its kills yield [ICON_PEACE] Faith and [ICON_GOLD] Gold.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.</Text>
+			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP">
 			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Ironworks and is available earlier. Must have built a Workshop in all Cities. The cost goes up the more cities there are in the empire.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron and +8 [ICON_PRODUCTION] Production.[NEWLINE]+2 [ICON_PRODUCTION] Production from Mountains worked by this City.</Text>
@@ -147779,16 +147779,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Can take the Buffalo promotions (Horns, Loins, Chest).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BARCID_ELEPHANT">
-			<Text>Barcid Elephant</Text>
+			<Text>Punic War Elephant</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BARCID_ELEPHANT_HELP">
-			<Text>Carthaginian elephant cavalry. Cannot be trained: Numidian Elephants upgrade into it from Chivalry.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Cavalry, which loses Feared Elephant.</Text>
+			<Text>Carthaginian elephant cavalry. Cannot be trained: African Elephants upgrade into it from Chivalry.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Cavalry, which loses Feared Elephant.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_GAJASENA">
-			<Text>Gajasena</Text>
+			<Text>Gajarohi</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_GAJASENA_HELP">
-			<Text>Indian elephant cavalry. Cannot be trained: Gajaratas upgrade into it from Chivalry.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Cavalry, which loses Feared Elephant.</Text>
+			<Text>Indian elephant cavalry. Cannot be trained: Gajasenas upgrade into it from Chivalry.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Cavalry, which loses Feared Elephant.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FULLING_MILL">
 			<Text>Fulling Mill</Text>
@@ -147797,22 +147797,22 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Water Mill. +2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE][ICON_RES_SHEEP] Sheep, [ICON_RES_COTTON] Cotton, [ICON_RES_DYE] Dyes and [ICON_RES_SILK] Silk next to the city yield +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]City must be next to a river.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_UNIT_CARTHAGINIAN_FOREST_ELEPHANT">
-			<Text>Numidian Elephant</Text>
+			<Text>African Elephant</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARTHAGINIAN_FOREST_ELEPHANT">
-			<Text>Replaces the Horseman. Stronger but slower, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker), deals more damage when attacking downhill and earns Great General points faster.[NEWLINE]Upgrades to the Barcid Elephant, keeping these.</Text>
+			<Text>Replaces the Horseman. Stronger but slower, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker), deals more damage when attacking downhill and earns Great General points faster.[NEWLINE]Upgrades to the Punic War Elephant, keeping these.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_CARTHAGINIAN_FOREST_ELEPHANT_STRATEGY">
-			<Text>The Numidian Elephant is a Carthaginian unique unit, replacing the Horseman. It is slower but more powerful than the Horseman, can move after attacking, and weakens adjacent enemies. Success in combat with an Elephant earns Great Generals faster. It later upgrades to the Barcid Elephant.</Text>
+			<Text>The African Elephant is a Carthaginian unique unit, replacing the Horseman. It is slower but more powerful than the Horseman, can move after attacking, and weakens adjacent enemies. Success in combat with an Elephant earns Great Generals faster. It later upgrades to the Punic War Elephant.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_INDIAN_WARELEPHANT">
-			<Text>Gajarata</Text>
+			<Text>Gajasena</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDIAN_WAR_ELEPHANT">
-			<Text>Replaces the Chariot Archer. Stronger [ICON_STRENGTH] Combat and [ICON_RANGE_STRENGTH] Ranged Strength, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Gajasena.</Text>
+			<Text>Replaces the Chariot Archer. Stronger [ICON_STRENGTH] Combat and [ICON_RANGE_STRENGTH] Ranged Strength, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_INDIAN_WARELEPHANT_STRATEGY">
-			<Text>The Gajarata is the Indian unique unit, replacing the Chariot Archer. It is more powerful than the Chariot Archer and weakens adjacent enemies. As a mounted unit it is vulnerable to Spearmen. It later upgrades to the Gajasena.</Text>
+			<Text>The Gajasena is the Indian unique unit, replacing the Chariot Archer. It is more powerful than the Chariot Archer and weakens adjacent enemies. As a mounted unit it is vulnerable to Spearmen. It later upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI">
 			<Text>Unique Unit that replaces the Pikemen. Only the Zulu may build it. Performs a first-strike ranged attack (60% of its [ICON_STRENGTH] Strength) before combat.</Text>
@@ -148012,7 +148012,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Mahamatras' Office</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MAHAMATRAS_OFFICE_HELP">
-			<Text>Replaces the Amphitheater. Cheaper.[NEWLINE]+2 [ICON_CULTURE] Culture and 1 slot for a Great Work of Art or an Artifact, like the Amphitheater.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]Also +2 [ICON_FOOD] Food and +1 [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]When built, the city starts an 8-turn 'We Love the King Day'.</Text>
+			<Text>Replaces the Amphitheater. Costs more.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_HAPPINESS_1] Happiness.[NEWLINE]When built, the city starts an 8-turn 'We Love the King Day'.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_BUILDING_DOJO_HELP">
 			<Text>Unique to Japan; does not replace a building.[NEWLINE][NEWLINE]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith in the city for each military unit trained here after it is built (not recon units), up to 3.[NEWLINE][NEWLINE]Always destroyed when the city is captured.</Text>

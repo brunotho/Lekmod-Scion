@@ -1063,10 +1063,16 @@ Drydocks work like naval Citadels; Repair Fleet heals less.
 - Added: Drydocks can be built directly next to your territory, not only inside it
 - Added: units in a Drydock get +25% defense
 - Changed: Drydock: 4 Production (was 5)
+- Removed: Drydock: +3 Production with Penicillin
 - Changed: Repair Fleet heals 25 HP (was a full heal)
 - Changed: Chile: only Fishing Boats claim the surrounding tiles in its unique ability (Drydocks now do this for everyone)
 - Fixed: the Drydock's Civilopedia page showed the Manufactory's text
 - DLL: LEKMOD_REPAIR_FLEET_HP 25 (CvUnit::repairFleet)
+
+ACADEMY (IMPROVEMENT_ACADEMY)
+-----------------------------
+Tags: game mechanics
+- Removed: Academy: +2 Science with Atomic Theory
 
 GREAT MERCHANT: CUSTOMS HOUSE (IMPROVEMENT_CUSTOMS_HOUSE)
 --------------------------------------------------------
@@ -2159,6 +2165,7 @@ Tags: civs, units, buildings
 - Changed: Baray gives its +2 Food and +2 Faith right away (the Drama and Poetry step is gone; it is built at Drama anyway)
 - Changed: new UA: once every Ancient Era technology is known, the capital yields +3 Food and +3 Faith
 - Dev: capital dummy building 287 (class 190) with a Building_LekmodConditionalYields row (RequiresAllTechsOfEra)
+- Removed: the free Baray in the capital at the start of the game
 
 MAYA (CIVILIZATION_MAYA)
 ------------------------
@@ -2339,6 +2346,7 @@ MACEDONIA (CIVILIZATION_MACEDONIA)
 Tags: civs, units
 - Removed: Hetairoi (unique Great General)
 - Changed: Great Generals give +30% (was +15%); Barracks, Armories and Military Academies give +1 Culture
+- Dev: the UA text shows the icons of all six buildings it names (2026-10-16)
 - Removed: +1 Food and +1 Happiness from Barracks and Armories
 - Changed: Sarissophoroi: available at Civil Service (was Philosophy), 16 Strength (was 14), costs 60 (was 58), the Pikeman's bonus against mounted units (was +100%), needs 2 Iron, starts with Envelopment and Mobility
 - Added: units trained in a city get +5 XP each for a Monument, an Amphitheater and an Opera House there
@@ -2358,9 +2366,10 @@ INDIA (CIVILIZATION_INDIA)
 --------------------------
 Tags: civs, buildings
 - Removed: Mughal Fort: +2 Tourism with Flight
-- Changed: War Elephant renamed Gajarata: costs 50 (was 46), needs 3 Iron, starts with Feared Elephant, upgrades to the Gajasena
-- Added: Gajasena, elephant cavalry that can only be reached by upgrading a Gajarata (Chivalry): 22 Strength, 3 Movement, costs 90, needs 3 Iron, Feared Elephant and Swift Charge (kept from the Gajarata); upgrades to the Cavalry, which loses Feared Elephant
-- Dev: the Gajasena and the Barcid Elephant showed in every civ's tech tree; now only for the civ whose unit upgrades into them
+- Changed: War Elephant renamed Gajasena: costs 50 (was 46), needs 3 Iron, starts with Feared Elephant, upgrades to the Gajarohi
+- Added: Gajarohi, elephant cavalry that can only be reached by upgrading a Gajasena (Chivalry): 22 Strength, 3 Movement, costs 90, needs 3 Iron, Feared Elephant and Swift Charge (kept from the Gajasena); upgrades to the Cavalry, which loses Feared Elephant
+- Dev: the Gajarohi and the Punic War Elephant showed in every civ's tech tree; now only for the civ whose unit upgrades into them
+- Dev: names changed 2026-10-16 (user): the chariot unit was Gajarata and the cavalry Gajasena; Carthage's were Numidian Elephant and Barcid Elephant (types unchanged: UNIT_LEKMOD_GAJASENA, UNIT_LEKMOD_BARCID_ELEPHANT)
 - DLL: Units.UpgradeOnly (unit ID 274, class 119)
 
 CHILE (CIVILIZATION_CHILE)
@@ -2576,6 +2585,7 @@ OMAN (CIVILIZATION_OMAN)
 ------------------------
 Tags: civs, units, naval
 - Changed: Baghlah: 7 Strength and 9 Ranged Strength (was 8 and 12; the Galley +1 each), starts with Supply Ship and Swift Transport
+- Removed: Baghlah: Faith and Gold from kills
 - Changed: Minaa now replaces the Caravansary (was the Harbor): the Wheel, costs 60, +2 Food when connected to the capital, +4 Culture while a Caravan's route ends there, +4 Gold while a Cargo Ship's route ends there
 - Changed: new UA: Harbors at Optics; Seaports at Compass without a Harbor; +25% Production towards both; a free Worker and Baghlah at Sailing
 - Removed: a free Seaport in captured cities, the naval promotion, and the Minaa's 30 damage to enemy ships next to the city
@@ -2600,6 +2610,7 @@ Tags: civs, units
 - Removed: +20% defense for most land and naval units
 - Added: Mahamatras' Office, a unique Amphitheater: costs 80; the Amphitheater's effects (+2 Culture, a Great Work of Art or Artifact slot, +1 Tourism from Great Works in the city) plus +2 Food, +1 Happiness and an 8-turn We Love the King Day when built
 - Note: no own icon yet (uses the Amphitheater's)
+- Dev: the tooltip said "Cheaper" (it costs more: 80 vs 67); now lists the Amphitheater's effects apart from its own (2026-10-16)
 - DLL: Traits.LekmodNoTechBuild, LekmodStartMovesRouteWorker; Buildings.LekmodWLTKDTurnsOnBuild (building 294)
 - Dev: per-city dummy building 286 (class 189)
 - Dev: fixed: Roads from the start never worked (the tech check sat in a compiled-out AUI_WARNING_FIXES branch of CvPlayer::canBuild)
@@ -2708,8 +2719,8 @@ Tags: civs, promotions
 CARTHAGE (CIVILIZATION_CARTHAGE)
 --------------------------------
 Tags: civs, units, buildings
-- Changed: African Forest Elephant renamed Numidian Elephant: needs 3 Iron, upgrades to the Barcid Elephant (keeping Feared Elephant, Hannibal's charge and the Great General bonus)
-- Added: Barcid Elephant, elephant cavalry that can only be reached by upgrading a Numidian Elephant (Chivalry): 21 Strength, 3 Movement, costs 90, needs 3 Iron, Feared Elephant; upgrades to the Cavalry, which loses Feared Elephant
+- Changed: African Forest Elephant renamed African Elephant: needs 3 Iron, upgrades to the Punic War Elephant (keeping Feared Elephant, Hannibal's charge and the Great General bonus)
+- Added: Punic War Elephant, elephant cavalry that can only be reached by upgrading an African Elephant (Chivalry): 21 Strength, 3 Movement, costs 90, needs 3 Iron, Feared Elephant; upgrades to the Cavalry, which loses Feared Elephant
 - Changed: Cothon costs 40 (was 50); its Coast Production no longer needs Construction
 - Removed: Cothon: +1 Food and +1 Production
 - Added: the Cothon can also be built in a city next to a lake
