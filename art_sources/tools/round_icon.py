@@ -37,6 +37,7 @@ RADIUS = {
     'barlas_cavalry': 0.435,  # gold ring painted on from radius 0.455
     'bajoras': 0.435,         # gold ring painted on from radius 0.455
     'vanguard_corps': 0.5,    # soldier on black, shown whole
+    'mahamatras_office': 0.5, # full-bleed scene, shown whole
 }
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
 WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24)}

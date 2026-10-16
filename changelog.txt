@@ -2609,7 +2609,7 @@ Tags: civs, units
 - Changed: new UA: Roads can be built from the start; Workers starting their turn on a Road or Railroad +1 Movement; cities connected to the capital +1 Culture
 - Removed: +20% defense for most land and naval units
 - Added: Mahamatras' Office, a unique Amphitheater: costs 80; the Amphitheater's effects (+2 Culture, a Great Work of Art or Artifact slot, +1 Tourism from Great Works in the city) plus +2 Food, +1 Happiness and an 8-turn We Love the King Day when built
-- Note: no own icon yet (uses the Amphitheater's)
+- Dev: own icon from the user's art since 2026-10-16 (art_sources/buildings/mahamatras_office/)
 - Dev: the tooltip said "Cheaper" (it costs more: 80 vs 67); now lists the Amphitheater's effects apart from its own (2026-10-16)
 - DLL: Traits.LekmodNoTechBuild, LekmodStartMovesRouteWorker; Buildings.LekmodWLTKDTurnsOnBuild (building 294)
 - Dev: per-city dummy building 286 (class 189)
