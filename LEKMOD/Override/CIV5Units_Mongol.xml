@@ -147895,10 +147895,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Not enough Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS">
-			<Text>Show hotkeys on the unit buttons</Text>
+			<Text>Show hotkeys on the promotion buttons</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT">
-			<Text>Each unit action, worker build and promotion button shows the key that uses it (the key you set in the hotkey settings).[NEWLINE]Promotions without a key of their own get the number keys 1-9.</Text>
+			<Text>When a unit can be promoted, each promotion button shows the key that picks it (the key you set in the hotkey settings).[NEWLINE]Promotions without a key of their own get the number keys 1-9.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS">
+			<Text>Show hotkeys on the worker build buttons</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT">
+			<Text>Each worker build button shows the key that starts it (the key you set in the hotkey settings).[NEWLINE]The buttons get more space between them, so fewer fit in a row.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_MUTE_CHAT">
 			<Text>Mute the chat message sound</Text>

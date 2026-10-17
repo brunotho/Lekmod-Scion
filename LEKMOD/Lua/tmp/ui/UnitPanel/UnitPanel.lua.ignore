@@ -41,7 +41,6 @@ end
 --------------------------------------------------------------------------------
 local g_BuildCityControlMap = {
     UnitActionButton    = Controls.BuildCityButton,
-    LekmodHotKeyLabel   = Controls.BuildCityHotKeyLabel,
     --UnitActionMouseover = Controls.BuildCityMouseover,
     --UnitActionText      = Controls.BuildCityText,
     --UnitActionHotKey    = Controls.BuildCityHotKey,
@@ -315,12 +314,13 @@ function UpdateUnitActions( unit )
 		workerPanelSizeOffsetY = 86;
 	end
 	-- LEKMOD: promotion buttons get extra room to their right for the hotkey letter (fewer per row);
-	-- worker builds too while hotkeys are shown (option "Show hotkeys", default on)
+	-- worker builds too while their hotkeys are shown (two options, both default on)
 	local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
+	local bShowBuildKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_BuildHotkeys" ) ~= 0;
 	local promoStep = buttonSize + ((numberOfButtonsPerRow == 6) and 14 or 16);
 	local promosPerRow = math.max( 1, math.floor( numberOfButtonsPerRow * buttonSize / promoStep ) );
-	local buildStep = bShowKeys and promoStep or buttonSize;
-	local buildsPerRow = bShowKeys and promosPerRow or numberOfButtonsPerRow;
+	local buildStep = bShowBuildKeys and promoStep or buttonSize;
+	local buildsPerRow = bShowBuildKeys and promosPerRow or numberOfButtonsPerRow;
 
     local recommendedBuild = nil;
     
@@ -431,9 +431,10 @@ function UpdateUnitActions( unit )
                 numSecondaryActions = numSecondaryActions + 1;
             end
 
-			-- LEKMOD: the hotkey next to every other action button (promotions set theirs above)
+			-- LEKMOD: the hotkey next to worker builds (promotions set theirs above); the action stacks on the left
+			-- stay without (keys like "Shift+E" don't fit there)
 			if not bPromotion then
-				if bShowKeys then
+				if bBuild and bShowBuildKeys then
 					LekmodSetHotKeyLabel( instance, LekmodShortHotKey( action.HotKey ) );
 				else
 					LekmodSetHotKeyLabel( instance, "", "" );

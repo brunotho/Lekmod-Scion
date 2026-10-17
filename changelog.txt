@@ -3000,8 +3000,9 @@ Tags: civs, units, buildings, art
 GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
 ------------------------------------------------
 Tags: ui
-- Added: option "Show hotkeys on the unit buttons" (on by default): every unit action button (fortify, sleep, pillage, found city...), worker build and promotion shows the key that uses it, following your own hotkey settings. Alt/Shift/Ctrl show in small letters above the key; long key names are shortened (Spc, Del, Bksp)
-- Changed: while the option is on, worker build buttons have more space between them (fewer per row), like the promotions
+- Added: option "Show hotkeys on the promotion buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
+- Added: option "Show hotkeys on the worker build buttons" (on by default): each worker build button shows the key that starts it; Alt/Shift/Ctrl show in small letters above the key. While it is on, the build buttons have more space between them (fewer per row)
+- Dev: the unit action stacks on the left had the labels for one build (e36c6c38); removed again, since keys like "Shift+E" don't fit there
 - Added: promotions without a key of their own can be picked with 1-9 (top row or numpad), numbered by their place in the panel; the number shows next to them. Keys you set yourself keep working
 - Changed: promotion buttons have more space between them; the key sits to the right of each icon
 - Changed: promotions are sorted by when they become available: lines without prerequisites (Shock, Drill...) on the left, later ones further right, Heal Instantly last; all levels of a line keep their place, so the numbers stay as stable as possible
