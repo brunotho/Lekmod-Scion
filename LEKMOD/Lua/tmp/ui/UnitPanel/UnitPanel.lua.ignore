@@ -39,8 +39,9 @@ end
 -- this maps from the normal instance names to the build city control names
 -- so we can use the same code to set it up
 --------------------------------------------------------------------------------
-local g_BuildCityControlMap = { 
+local g_BuildCityControlMap = {
     UnitActionButton    = Controls.BuildCityButton,
+    LekmodHotKeyLabel   = Controls.BuildCityHotKeyLabel,
     --UnitActionMouseover = Controls.BuildCityMouseover,
     --UnitActionText      = Controls.BuildCityText,
     --UnitActionHotKey    = Controls.BuildCityHotKey,
@@ -226,6 +227,37 @@ function LekmodGetActionOrder()
 	return order;
 end
 
+-- LEKMOD: an action's hotkey as shown next to its button: modifiers ("Alt", "Shift+Alt") and the key, long key names shortened
+local g_LekmodShortKeyNames = { SPACE = "Spc", BACKSPACE = "Bksp", DELETE = "Del", INSERT = "Ins", RETURN = "Ent", ENTER = "Ent", ESCAPE = "Esc", TAB = "Tab", HOME = "Home", END = "End" };
+local g_LekmodModifierNames = { alt = "Alt", shift = "Shift", ctrl = "Ctrl", control = "Ctrl" };
+function LekmodShortHotKey( strHotKey )
+	if strHotKey == nil or strHotKey == "" then
+		return "", "";
+	end
+	local mods = {};
+	local key = "";
+	for token in string.gmatch( tostring( strHotKey ), "[^%+%s]+" ) do
+		local mod = g_LekmodModifierNames[string.lower( token )];
+		if mod ~= nil then
+			table.insert( mods, mod );
+		else
+			key = token;
+		end
+	end
+	key = string.gsub( key, "^KB_", "" );
+	key = g_LekmodShortKeyNames[string.upper( key )] or key;
+	return table.concat( mods, "+" ), key;
+end
+
+function LekmodSetHotKeyLabel( instance, strMods, strKey )
+	if instance.LekmodHotKeyLabel ~= nil then
+		instance.LekmodHotKeyLabel:SetText( strKey );
+	end
+	if instance.LekmodHotKeyModLabel ~= nil then
+		instance.LekmodHotKeyModLabel:SetText( strMods );
+	end
+end
+
 function UpdateUnitActions( unit )
 
     g_PrimaryIM:ResetInstances();
@@ -282,9 +314,13 @@ function UpdateUnitActions( unit )
 		buttonPadding = 6;
 		workerPanelSizeOffsetY = 86;
 	end
-	-- LEKMOD: promotion buttons get extra room to their right for the hotkey letter (fewer per row)
+	-- LEKMOD: promotion buttons get extra room to their right for the hotkey letter (fewer per row);
+	-- worker builds too while hotkeys are shown (option "Show hotkeys", default on)
+	local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
 	local promoStep = buttonSize + ((numberOfButtonsPerRow == 6) and 14 or 16);
 	local promosPerRow = math.max( 1, math.floor( numberOfButtonsPerRow * buttonSize / promoStep ) );
+	local buildStep = bShowKeys and promoStep or buttonSize;
+	local buildsPerRow = bShowKeys and promosPerRow or numberOfButtonsPerRow;
 
     local recommendedBuild = nil;
     
@@ -337,9 +373,8 @@ function UpdateUnitActions( unit )
                 instance = g_PromotionIM:GetInstance();
 				-- LEKMOD: the promotion's current hotkey on the button (option, default on)
 				if instance.LekmodHotKeyLabel ~= nil then
-					local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
-					local strKey = action.HotKey;
-					if strKey == nil or strKey == "" then
+					local strMods, strKey = LekmodShortHotKey( action.HotKey );
+					if strKey == "" then
 						-- the action's Type is the promotion's type; CommandData only as a fallback
 						local promotion = GameInfo.UnitPromotions[action.Type] or GameInfo.UnitPromotions[action.CommandData];
 						strKey = "";
@@ -352,7 +387,11 @@ function UpdateUnitActions( unit )
 						table.insert( g_LekmodPromoNumberActions, iAction );
 						strKey = tostring( #g_LekmodPromoNumberActions );
 					end
-					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
+					if bShowKeys then
+						LekmodSetHotKeyLabel( instance, strMods, tostring( strKey ) );
+					else
+						LekmodSetHotKeyLabel( instance, "", "" );
+					end
 				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
 				instance.UnitActionButton:SetOffsetVal( (numBuildActions % promosPerRow) * promoStep + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / promosPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
@@ -364,7 +403,7 @@ function UpdateUnitActions( unit )
 				iBuildID = action.MissionData;
 				instance = g_BuildIM:GetInstance();
 				instance.UnitActionButton:SetAnchor( "L,B" );
-				instance.UnitActionButton:SetOffsetVal( (numBuildActions % numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
+				instance.UnitActionButton:SetOffsetVal( (numBuildActions % buildsPerRow) * buildStep + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / buildsPerRow) * buttonSize + buttonPadding + buttonOffsetY );
 				numBuildActions = numBuildActions + 1;
 				if recommendedBuild == nil and unit:IsActionRecommended( iAction ) then
 				
@@ -391,6 +430,15 @@ function UpdateUnitActions( unit )
                 instance = g_SecondaryIM:GetInstance();
                 numSecondaryActions = numSecondaryActions + 1;
             end
+
+			-- LEKMOD: the hotkey next to every other action button (promotions set theirs above)
+			if not bPromotion then
+				if bShowKeys then
+					LekmodSetHotKeyLabel( instance, LekmodShortHotKey( action.HotKey ) );
+				else
+					LekmodSetHotKeyLabel( instance, "", "" );
+				end
+			end
             
 			-- test w/o visible flag (ie can train right now)
 			if not Game.CanHandleAction( iAction ) then
@@ -489,7 +537,7 @@ function UpdateUnitActions( unit )
 			Controls.PromotionAnimation:SetHide(true);
 			Controls.EditButton:SetHide(true);
 		end
-		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, math.floor((numBuildActions-1) / (hasPromotion and promosPerRow or numberOfButtonsPerRow)) * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
+		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, math.floor((numBuildActions-1) / (hasPromotion and promosPerRow or buildsPerRow)) * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
     else
 		Controls.WorkerActionPanel:SetHide( true );
 		g_bWorkerActionPanelOpen = false;

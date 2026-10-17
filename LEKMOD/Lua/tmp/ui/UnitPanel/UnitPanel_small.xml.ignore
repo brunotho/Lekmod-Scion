@@ -140,8 +140,9 @@
   <Instance Name="UnitAction" >
     <GridButton Anchor="R,T" ID="UnitActionButton" Size="36,36" Offset="0,0"  Style="SmallButton2"  Hidden="0" ToolTipType="TypeUnitAction">
       <Image Anchor="C,C" Offset="0,0" Size="45,45" Texture="UnitActions360.dds" ID="UnitActionIcon" />
-      <!-- LEKMOD: the promotion's hotkey (option "Show promotion hotkeys", default on) -->
+      <!-- LEKMOD: the action's hotkey right of the button, a modifier (Alt/Shift/Ctrl) above it (option "Show hotkeys", default on) -->
       <Label Anchor="R,B" AnchorSide="O.I" Offset="2,2" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
+      <Label Anchor="R,T" AnchorSide="O.I" Offset="2,1" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyModLabel" String="" />
     </GridButton>
   </Instance>
 
@@ -177,6 +178,8 @@
     <Button Anchor="R,T" Size="36,36" StateOffsetIncrement="0,0" AnchorSide="I.O" Offset="0,0" Hidden="1" Texture="Assets/UI/Art/Icons/BuildCity36.dds" ID="BuildCityButton" ToolTipType="TypeUnitAction">
 
       <AlphaAnim  Anchor="C,C" Offset="0,0" Texture="Assets/UI/Art/Icons/BuildCityGlow36.dds"  Size="36,36"  Pause="0" Cycle="Bounce" Speed="1" AlphaStart="1" AlphaEnd="0" Hidden="0"/>
+      <!-- LEKMOD: hotkey, as on the other action buttons -->
+      <Label Anchor="R,B" AnchorSide="O.I" Offset="2,2" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="BuildCityHotKeyLabel" String="" />
 
       <ShowOnMouseOver>
         <Image Size="36,36" Anchor="C,C"  Texture="Assets/UI/Art/Icons/BuildCityGold36.dds" />
