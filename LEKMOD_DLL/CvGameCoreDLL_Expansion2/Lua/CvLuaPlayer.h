@@ -1047,6 +1047,9 @@ protected:
 	static int lLekmodGetTributeInfluence(lua_State* L);
 #ifdef LEKMOD_PORTUGAL
 	static int lLekmodIsTradePartnerUsed(lua_State* L);
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	static int lLekmodGetQuestOverTime(lua_State* L);
+#endif
 	static int lLekmodGetGreatWorkBuyState(lua_State* L);
 	static int lLekmodGetGreatWorkPrice(lua_State* L);
 	static int lLekmodHasFirstTradeRouteBonus(lua_State* L);

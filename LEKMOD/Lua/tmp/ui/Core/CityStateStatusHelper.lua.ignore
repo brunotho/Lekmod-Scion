@@ -611,6 +611,26 @@ function GetGreatPersonQuestIconText(iUnitType)
 	return sIconText;
 end
 
+-- Lekmod: per-turn Influence from a completed trade route (slot 0) or resource (slot 1) quest, one line each
+function LekmodQuestOverTimeLines(iMajor, pMinor)
+	local tLines = {};
+	if (pMinor == nil or pMinor.LekmodGetQuestOverTime == nil) then
+		return tLines;
+	end
+	local iPerTurn = 2; -- LEKMOD_CS_QUEST_OVER_TIME_PER_TURN (DLL define)
+	for iSlot = 0, 1 do
+		local iTurns, bPaying = pMinor:LekmodGetQuestOverTime(iMajor, iSlot);
+		if (iTurns ~= nil and iTurns > 0) then
+			local sKey = (iSlot == 0) and "TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_ROUTE" or "TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_RESOURCE";
+			if (not bPaying) then
+				sKey = sKey .. "_ENDS";
+			end
+			table.insert(tLines, Locale.Lookup(sKey, iPerTurn, iTurns));
+		end
+	end
+	return tLines;
+end
+
 function GetActiveQuestToolTip(iMajor, iMinor)
 	local iMajor = Game.GetActivePlayer();
 	local pMinor = Players[iMinor];
@@ -697,7 +717,16 @@ function GetActiveQuestToolTip(iMajor, iMinor)
 			end
 		end
 	end
-	
+
+	-- Completed trade route / resource quests that still pay Influence per turn (LEKMOD_CS_QUESTS_OVER_TIME)
+	for _, sLine in ipairs(LekmodQuestOverTimeLines(iMajor, pMinor)) do
+		iNumQuests = iNumQuests + 1;
+		if (sToolTipText ~= "") then
+			sToolTipText = sToolTipText .. "[NEWLINE]";
+		end
+		sToolTipText = sToolTipText .. "[ICON_BULLET]" .. sLine;
+	end
+
 	-- Threatening Barbarians event
 	if (pMinor:IsThreateningBarbariansEventActiveForPlayer(iMajor)) then
 		iNumQuests = iNumQuests + 1;

@@ -2850,10 +2850,15 @@ Tags: civs, buildings, religion
 CITY-STATE QUEST TYPES (MINOR_CIV_QUEST_*)
 -------------------------------------------
 Tags: game mechanics
-City-States no longer ask you to demand tribute from another City-State or to connect a strategic resource.
+City-States no longer ask you to demand tribute from another City-State or to connect a strategic resource, and the trade route and resource quests pay part of their Influence over time.
 - Removed: the "demand tribute from a City-State" quest
 - Removed: the "connect a resource" quest no longer asks for strategic resources (luxuries only)
 - Dev: QUEST_DISABLED_BULLY_CITY_STATE = 1; CvMinorCivAI::GetNearbyResourceForQuest skips strategic resources (LEKMOD_POST_CHANGES)
+- Changed: the trade route quest (35 Influence) gives 15 at once, then +2 Influence per turn for 10 turns while a trade route between you and the City-State runs
+- Changed: the resource quest (30 Influence) gives 10 at once, then +2 Influence per turn for 10 turns while the resource stays connected
+- Added: the per-turn part shows in the City-State's quest tooltip (with the turns left) and in its Influence per turn; it stops for good once the route or the resource is gone
+- Dev: LEKMOD_CS_QUESTS_OVER_TIME (defines LEKMOD_CS_QUEST_OVER_TIME_TURNS 10 / _PER_TURN 2): CvMinorCivQuest::GetInfluenceReward takes the per-turn part off; DoFinishQuest starts it (CvMinorCivAI::LekmodStartQuestOverTime); paid through GetFriendshipChangePerTurnTimes100 (after game speed, with the quest Influence modifier), counted down in LekmodDoQuestsOverTime after DoFriendship; saved arrays m_aiLekmodRouteQuestTurns / m_aiLekmodResourceQuestTurns / m_aiLekmodResourceQuestType; Lua Player:LekmodGetQuestOverTime(iMajor, iSlot) -> turns, paying
+- Dev: the quest rewards Civilopedia page no longer claims Friendly City-States give 25% more (they don't since the v34.11 personalities)
 
 CITY-STATE PERSONALITIES (MINOR_CIV_PERSONALITY_*)
 --------------------------------------------------

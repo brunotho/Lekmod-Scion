@@ -684,6 +684,18 @@ if gk_mode then
 				end
 			end
 
+			-- Completed trade route / resource quests that still pay Influence per turn (LEKMOD_CS_QUESTS_OVER_TIME)
+			if minorPlayer.LekmodGetQuestOverTime then
+				for iSlot = 0, 1 do
+					local iTurns, bPaying = minorPlayer:LekmodGetQuestOverTime(majorPlayerID, iSlot)
+					if iTurns and iTurns > 0 then
+						local sKey = (iSlot == 0) and "TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_ROUTE" or "TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_RESOURCE"
+						if not bPaying then sKey = sKey .. "_ENDS" end
+						table_insert( tips, "[ICON_INFLUENCE] " .. L( sKey, 2, iTurns ) )
+					end
+				end
+			end
+
 			-- Threatening Barbarians event
 			if minorPlayer:IsThreateningBarbariansEventActiveForPlayer(majorPlayerID) then
 				table_insert( tips,"[ICON_RAZING]" .. L("TXT_KEY_CITY_STATE_QUEST_INVADING_BARBS_FORMAL") )

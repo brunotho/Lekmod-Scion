@@ -203,6 +203,14 @@ public:
 	bool LekmodIsGreatWorkSold() const;
 	void LekmodSetGreatWorkSold();
 #endif
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	// slot 0 = trade route quest, 1 = resource quest
+	void LekmodStartQuestOverTime(PlayerTypes eMajor, int iSlot, int iResource);
+	int LekmodGetQuestOverTimeTurns(PlayerTypes eMajor, int iSlot) const;
+	bool LekmodIsQuestOverTimePaying(PlayerTypes eMajor, int iSlot);
+	int LekmodGetQuestOverTimeTimes100(PlayerTypes eMajor);
+	void LekmodDoQuestsOverTime();
+#endif
 
 	bool IsHasUniqueUnit() const;
 	UnitTypes GetUniqueUnit() const;
@@ -709,6 +717,11 @@ private:
 #endif
 #ifdef LEKMOD_PLEDGE_REWORK
 	int m_aiTurnTributedWhilePledged[MAX_MAJOR_CIVS]; // last turn this major tributed us while another major had pledged to protect us; -1 = never
+#endif
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	int m_aiLekmodRouteQuestTurns[MAX_MAJOR_CIVS];    // turns of per-turn Influence left from a completed trade route quest
+	int m_aiLekmodResourceQuestTurns[MAX_MAJOR_CIVS]; // same for a completed resource quest
+	int m_aiLekmodResourceQuestType[MAX_MAJOR_CIVS];  // the resource of that quest
 #endif
 #ifdef LEKMOD_CS_WAR_DECLARATION_PENALTIES
 	int m_aiWaryLevel[MAX_MAJOR_CIVS]; // 0-3, each level lowers the resting influence

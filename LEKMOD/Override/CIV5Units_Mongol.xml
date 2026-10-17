@@ -39645,9 +39645,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_QUEST_CONNECT_RESOURCE_FORMAL"> 
-			<Text>
-				They want you to connect {1_ResourceName:textkey} to your trade network.
-			</Text>
+			<Text>They want you to connect {1_ResourceName:textkey} to your trade network (10 [ICON_INFLUENCE] Influence at once, then +2 per turn for 10 turns while it stays connected).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_QUEST_CONSTRUCT_WONDER"> 
 			<Text>
@@ -39870,9 +39868,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_QUEST_TRADE_ROUTE_FORMAL"> 
-			<Text>
-				They want you to complete a land or sea trade route to their city.
-			</Text>
+			<Text>They want you to complete a land or sea trade route to their city (15 [ICON_INFLUENCE] Influence at once, then +2 per turn for 10 turns while the route runs).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_QUEST_TURNS_REMAINING_FORMAL"> 
 			<Text>
@@ -101404,11 +101400,23 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_CONCEPT_LEKMOD_CS_PLEDGE_SUMMARY">
 			<Text>Pledging to protect a City-State tells everyone that you will defend it from attacks and tribute demands.[NEWLINE][NEWLINE]While you protect it:[NEWLINE]Your resting [ICON_INFLUENCE] Influence with it is 10 higher.[NEWLINE]Your [ICON_INFLUENCE] Influence recovers 50% faster while below the resting point.[NEWLINE][NEWLINE]Your obligations:[NEWLINE]For 10 turns after another player demands tribute from it, you lose 3 [ICON_INFLUENCE] Influence per turn with it.[NEWLINE]The same happens every turn another player is at war with it.[NEWLINE]If you are at war with that player yourself, you gain 1 [ICON_INFLUENCE] Influence per turn instead.[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]Demanding tribute from a City-State you protect breaks your pledge.[ENDCOLOR][NEWLINE]You cannot pledge to it again for 20 turns.[NEWLINE][NEWLINE]Every tribute demand is announced to all players who know the City-State.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_ROUTE">
+			<Text>Trade route quest done: +{1_Num} [ICON_INFLUENCE] Influence per turn for {2_Num} more turns while a trade route between you runs.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_ROUTE_ENDS">
+			<Text>Trade route quest done: [COLOR_NEGATIVE_TEXT]no trade route between you any more, the +{1_Num} [ICON_INFLUENCE] Influence per turn ends.[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_RESOURCE">
+			<Text>Resource quest done: +{1_Num} [ICON_INFLUENCE] Influence per turn for {2_Num} more turns while the resource stays connected.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_RESOURCE_ENDS">
+			<Text>Resource quest done: [COLOR_NEGATIVE_TEXT]the resource is no longer connected, the +{1_Num} [ICON_INFLUENCE] Influence per turn ends.[ENDCOLOR]</Text>
+		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_LEKMOD_CS_QUESTS_DESCRIPTION">
 			<Text>Quests and Rewards</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_LEKMOD_CS_QUESTS_SUMMARY">
-			<Text>[ICON_INFLUENCE] Influence for completing a quest:[NEWLINE]Kill a rival City-State: 75[NEWLINE]Bully a City-State: 45[NEWLINE]Build a road to it: 40[NEWLINE]Destroy a Barbarian camp: 35[NEWLINE]Build a Wonder: 35[NEWLINE]Denounce a player: 35[NEWLINE]Spread your religion: 35[NEWLINE]Send a Trade Route: 35[NEWLINE]Win a Culture, Faith or Technology contest: 35[NEWLINE]Connect a resource: 30[NEWLINE]Find a player: 30[NEWLINE]Find a Natural Wonder: 30[NEWLINE]Earn a Great Person: 30[NEWLINE]Give Gold: 15[NEWLINE]Pledge to Protect: 15[NEWLINE][NEWLINE]City-State personalities can change these rewards (Friendly City-States give 25% more).[NEWLINE][NEWLINE]A City-State gives you at most 2 personal quests at a time.[NEWLINE]A personal quest you have not completed after 15 turns is replaced by a new one.</Text>
+			<Text>[ICON_INFLUENCE] Influence for completing a quest:[NEWLINE]Kill a rival City-State: 75[NEWLINE]Bully a City-State: 45[NEWLINE]Build a road to it: 40[NEWLINE]Destroy a Barbarian camp: 35[NEWLINE]Build a Wonder: 35[NEWLINE]Denounce a player: 35[NEWLINE]Spread your religion: 35[NEWLINE]Win a Culture, Faith or Technology contest: 35[NEWLINE]Find a player: 30[NEWLINE]Find a Natural Wonder: 30[NEWLINE]Earn a Great Person: 30[NEWLINE]Give Gold: 15[NEWLINE]Pledge to Protect: 15[NEWLINE][NEWLINE]Paid over time:[NEWLINE]Send a Trade Route: 15 at once, then +2 per turn for 10 turns while a trade route between you runs (35 in total)[NEWLINE]Connect a resource: 10 at once, then +2 per turn for 10 turns while it stays connected (30 in total)[NEWLINE]The per-turn part stops for good once the route or the resource is gone.[NEWLINE][NEWLINE]A City-State gives you at most 2 personal quests at a time.[NEWLINE]A personal quest you have not completed after 15 turns is replaced by a new one.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_LEKMOD_CS_WAR_DESCRIPTION">
 			<Text>Declaring War on City-States</Text>
@@ -111286,9 +111294,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_NOTIFICATION_QUEST_COMPLETE_CONNECT_RESOURCE"> 
-			<Text>
-				As {2_MinorCivName:textkey} requested, you have successfully connected {1_ResourceName} to your trade network! Their merchants are pleased, and your [ICON_INFLUENCE] Influence with them has increased by [COLOR_POSITIVE_TEXT]{3_InfluenceReward}[ENDCOLOR].
-			</Text>
+			<Text>As {2_MinorCivName:textkey} requested, you have connected {1_ResourceName} to your trade network.[NEWLINE]Your [ICON_INFLUENCE] Influence with them has increased by [COLOR_POSITIVE_TEXT]{3_InfluenceReward}[ENDCOLOR].[NEWLINE]For the next 10 turns it rises by 2 more per turn while the resource stays connected.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_NOTIFICATION_QUEST_COMPLETE_CONSTRUCT_WONDER"> 
 			<Text>
@@ -111361,9 +111367,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_NOTIFICATION_QUEST_COMPLETE_TRADE_ROUTE"> 
-			<Text>
-				Citizens of {@1_MinorCivName} are glad to see a connected trade route.  Your [ICON_INFLUENCE] Influence over them has increased by [COLOR_POSITIVE_TEXT]{2_InfluenceReward}[ENDCOLOR]!
-			</Text>
+			<Text>Citizens of {@1_MinorCivName} are glad to see a connected trade route.[NEWLINE]Your [ICON_INFLUENCE] Influence over them has increased by [COLOR_POSITIVE_TEXT]{2_InfluenceReward}[ENDCOLOR].[NEWLINE]For the next 10 turns it rises by 2 more per turn while a trade route between you runs.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_NOTIFICATION_QUEST_CONNECT_RESOURCE"> 
 			<Text>

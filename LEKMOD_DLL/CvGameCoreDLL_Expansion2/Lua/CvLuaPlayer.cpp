@@ -1045,6 +1045,9 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 	Method(LekmodGetTributeInfluence);
 #ifdef LEKMOD_PORTUGAL
 	Method(LekmodIsTradePartnerUsed);
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	Method(LekmodGetQuestOverTime);
+#endif
 	Method(LekmodGetGreatWorkBuyState);
 	Method(LekmodGetGreatWorkPrice);
 	Method(LekmodHasFirstTradeRouteBonus);
@@ -3513,6 +3516,24 @@ int CvLuaPlayer::lLekmodGetTributeInfluence(lua_State* L)
 	return 1;
 }
 #ifdef LEKMOD_PORTUGAL
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+/// LEKMOD: a City-State's per-turn Influence from a completed quest (slot 0 trade route, 1 resource): turns left, pays this turn
+int CvLuaPlayer::lLekmodGetQuestOverTime(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+	const PlayerTypes eMajor = (PlayerTypes)lua_tointeger(L, 2);
+	const int iSlot = lua_tointeger(L, 3);
+	if (!pkPlayer->isMinorCiv() || eMajor < 0 || eMajor >= MAX_MAJOR_CIVS)
+	{
+		lua_pushinteger(L, 0);
+		lua_pushboolean(L, false);
+		return 2;
+	}
+	lua_pushinteger(L, pkPlayer->GetMinorCivAI()->LekmodGetQuestOverTimeTurns(eMajor, iSlot));
+	lua_pushboolean(L, pkPlayer->GetMinorCivAI()->LekmodIsQuestOverTimePaying(eMajor, iSlot));
+	return 2;
+}
+#endif
 /// LEKMOD: Cultured City-State great work for sale: -1 not offered, 0 can buy, 1 before Medieval, 2 no slot, 3 not enough Gold, 4 sold, 5 war
 int CvLuaPlayer::lLekmodGetGreatWorkBuyState(lua_State* L)
 {

@@ -235,6 +235,10 @@ int CvMinorCivQuest::GetInfluenceReward() const
 		iReward = 0;
 		break;
 	}
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	if (m_eType == MINOR_CIV_QUEST_TRADE_ROUTE || m_eType == MINOR_CIV_QUEST_CONNECT_RESOURCE)
+		iReward = std::max(0, iReward - LEKMOD_CS_QUEST_OVER_TIME_TURNS * LEKMOD_CS_QUEST_OVER_TIME_PER_TURN);
+#endif
 
 	return iReward;
 }
@@ -1246,6 +1250,12 @@ bool CvMinorCivQuest::DoFinishQuest()
 
 
 	pMinor->GetMinorCivAI()->ChangeFriendshipWithMajor(m_eAssignedPlayer, GetInfluenceReward(), /*bFromQuest*/ true);
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	if (m_eType == MINOR_CIV_QUEST_TRADE_ROUTE)
+		pMinor->GetMinorCivAI()->LekmodStartQuestOverTime(m_eAssignedPlayer, 0, -1);
+	else if (m_eType == MINOR_CIV_QUEST_CONNECT_RESOURCE)
+		pMinor->GetMinorCivAI()->LekmodStartQuestOverTime(m_eAssignedPlayer, 1, GetPrimaryData());
+#endif
 	
 	bool bNowFriends = pMinor->GetMinorCivAI()->IsFriends(m_eAssignedPlayer);
 	bool bNowAllies = pMinor->GetMinorCivAI()->IsAllies(m_eAssignedPlayer);
@@ -1731,6 +1741,11 @@ void CvMinorCivAI::Reset()
 #ifdef LEKMOD_PLEDGE_REWORK
 		m_aiTurnTributedWhilePledged[iI] = -1;
 #endif
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+		m_aiLekmodRouteQuestTurns[iI] = 0;
+		m_aiLekmodResourceQuestTurns[iI] = 0;
+		m_aiLekmodResourceQuestType[iI] = -1;
+#endif
 #ifdef LEKMOD_CS_WAR_DECLARATION_PENALTIES
 		m_aiWaryLevel[iI] = 0;
 		m_aiAlienatedLevel[iI] = 0;
@@ -1891,6 +1906,11 @@ void CvMinorCivAI::Read(FDataStream& kStream)
 	kStream >> m_iLekmodImprovementNextTurn;
 	kStream >> m_iLekmodGreatWorkSold;
 #endif
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	kStream >> m_aiLekmodRouteQuestTurns;
+	kStream >> m_aiLekmodResourceQuestTurns;
+	kStream >> m_aiLekmodResourceQuestType;
+#endif
 }
 
 /// Serialization write
@@ -1984,6 +2004,11 @@ void CvMinorCivAI::Write(FDataStream& kStream) const
 	kStream << m_iLekmodImprovementRow;
 	kStream << m_iLekmodImprovementNextTurn;
 	kStream << m_iLekmodGreatWorkSold;
+#endif
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	kStream << m_aiLekmodRouteQuestTurns;
+	kStream << m_aiLekmodResourceQuestTurns;
+	kStream << m_aiLekmodResourceQuestType;
 #endif
 }
 
@@ -2492,6 +2517,9 @@ void CvMinorCivAI::DoTurn()
 
 		DoElection();
 		DoFriendship();
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+		LekmodDoQuestsOverTime();
+#endif
 #if defined(LEKMOD_MERCHANT_BUYOUT_NOT_NOANNEXING)
 		PlayerTypes eAlly = GetAlly();
 		if (eAlly != NO_PLAYER)
@@ -2607,6 +2635,67 @@ void CvMinorCivAI::LekmodSetGreatWorkSold()
 {
 	m_iLekmodGreatWorkSold = 1;
 }
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+/// A completed trade route (slot 0) or resource (slot 1) quest pays LEKMOD_CS_QUEST_OVER_TIME_PER_TURN Influence per turn for
+/// LEKMOD_CS_QUEST_OVER_TIME_TURNS turns; a new completion of the same quest starts the count again
+void CvMinorCivAI::LekmodStartQuestOverTime(PlayerTypes eMajor, int iSlot, int iResource)
+{
+	if (eMajor < 0 || eMajor >= MAX_MAJOR_CIVS)
+		return;
+	if (iSlot == 0)
+		m_aiLekmodRouteQuestTurns[eMajor] = LEKMOD_CS_QUEST_OVER_TIME_TURNS;
+	else
+	{
+		m_aiLekmodResourceQuestTurns[eMajor] = LEKMOD_CS_QUEST_OVER_TIME_TURNS;
+		m_aiLekmodResourceQuestType[eMajor] = iResource;
+	}
+}
+int CvMinorCivAI::LekmodGetQuestOverTimeTurns(PlayerTypes eMajor, int iSlot) const
+{
+	if (eMajor < 0 || eMajor >= MAX_MAJOR_CIVS)
+		return 0;
+	return iSlot == 0 ? m_aiLekmodRouteQuestTurns[eMajor] : m_aiLekmodResourceQuestTurns[eMajor];
+}
+/// Pays this turn: turns left, no war, and the trade route to us exists / the resource is still connected
+bool CvMinorCivAI::LekmodIsQuestOverTimePaying(PlayerTypes eMajor, int iSlot)
+{
+	if (LekmodGetQuestOverTimeTurns(eMajor, iSlot) <= 0 || IsAtWarWithPlayersTeam(eMajor))
+		return false;
+	if (iSlot == 0)
+		return GC.getGame().GetGameTrade()->IsPlayerConnectedToPlayer(GetPlayer()->GetID(), eMajor);
+	const ResourceTypes eResource = (ResourceTypes)m_aiLekmodResourceQuestType[eMajor];
+	return eResource != NO_RESOURCE && GET_PLAYER(eMajor).getNumResourceTotal(eResource, /*bIncludeImport*/ true) > 0;
+}
+/// Influence x100 this turn from both, with the quest Influence modifiers (policies)
+int CvMinorCivAI::LekmodGetQuestOverTimeTimes100(PlayerTypes eMajor)
+{
+	int iTotal = 0;
+	for (int iSlot = 0; iSlot < 2; iSlot++)
+		if (LekmodIsQuestOverTimePaying(eMajor, iSlot))
+			iTotal += 100 * LEKMOD_CS_QUEST_OVER_TIME_PER_TURN;
+	if (iTotal > 0 && GET_PLAYER(eMajor).getMinorQuestFriendshipMod() != 0)
+		iTotal = iTotal * (100 + GET_PLAYER(eMajor).getMinorQuestFriendshipMod()) / 100;
+	return iTotal;
+}
+/// After DoFriendship paid this turn: count down; the bonus ends as soon as the route or resource is gone
+void CvMinorCivAI::LekmodDoQuestsOverTime()
+{
+	for (int iMajor = 0; iMajor < MAX_MAJOR_CIVS; iMajor++)
+	{
+		const PlayerTypes eMajor = (PlayerTypes)iMajor;
+		for (int iSlot = 0; iSlot < 2; iSlot++)
+		{
+			int& iTurns = iSlot == 0 ? m_aiLekmodRouteQuestTurns[iMajor] : m_aiLekmodResourceQuestTurns[iMajor];
+			if (iTurns <= 0)
+				continue;
+			if (GET_PLAYER(eMajor).isAlive() && LekmodIsQuestOverTimePaying(eMajor, iSlot))
+				iTurns--;
+			else
+				iTurns = 0;
+		}
+	}
+}
+#endif
 /// A City-State may build one improvement type of its kind: rolled once (LEKMOD_CS_IMPROVEMENT_CHANCE %), then from the row's era
 /// it places one on a fitting tile inside its borders with LEKMOD_CS_IMPROVEMENT_TURN_CHANCE % each turn, up to the row's maximum
 void CvMinorCivAI::LekmodDoBuildImprovements()
@@ -6486,6 +6575,9 @@ int CvMinorCivAI::GetFriendshipChangePerTurnTimes100(PlayerTypes ePlayer)
 	// Mod everything by game speed
 	iChangeThisTurn *= GC.getGame().getGameSpeedInfo().getGoldGiftMod();
 	iChangeThisTurn /= 100;
+#ifdef LEKMOD_CS_QUESTS_OVER_TIME
+	iChangeThisTurn += LekmodGetQuestOverTimeTimes100(ePlayer);
+#endif
 
 	return iChangeThisTurn;
 }

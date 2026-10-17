@@ -1491,6 +1491,12 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_CS_IMPROVEMENT_CHANCE 20
 #define LEKMOD_CS_IMPROVEMENT_TURN_CHANCE 5 // % per turn that a City-State with a special improvement places one
 #define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200 // Cultured City-States sell their great work: Gold per era of the buyer (Ancient = 1)
+// City-State trade route and resource quests pay part of their Influence over time (POST, Nova style, 2026-10-17): on completion
+// the reward minus TURNS x PER_TURN at once, then PER_TURN each turn for up to TURNS turns while the route / the resource stays
+// (saved per major in CvMinorCivAI; the per-turn amount is part of GetFriendshipChangePerTurnTimes100, so the UI rate shows it)
+#define LEKMOD_CS_QUESTS_OVER_TIME
+#define LEKMOD_CS_QUEST_OVER_TIME_TURNS 10
+#define LEKMOD_CS_QUEST_OVER_TIME_PER_TURN 2
 // Improvements.LekmodNoFeature: can't be built on a feature unless Improvement_ValidFeatures lists it (Kasbah: Flood Plains only)
 #define LEKMOD_IMPROVEMENT_NO_FEATURE
 // Building_AdjacentCityPlotYieldChanges: yields on plots next to a city with the building (optional Improvement, Resource,
