@@ -1052,7 +1052,7 @@ function Draft_GetCivBonusTooltip(civID)
 			if trait ~= nil then
 				local traitShort = Locale.ConvertTextKey(trait.ShortDescription);
 				local traitDesc = Locale.ConvertTextKey(trait.Description);
-				table.insert(parts, string.format("[COLOR_POSITIVE_TEXT]%s:[ENDCOLOR] %s", traitShort, traitDesc));
+				table.insert(parts, string.format("[COLOR_CYAN]%s[ENDCOLOR][NEWLINE]%s", traitShort, traitDesc));
 			end
 		end
 	end
@@ -1074,9 +1074,9 @@ function Draft_GetCivBonusTooltip(civID)
 			end
 		end
 		if help ~= nil and help ~= "" then
-			table.insert(parts, string.format("[COLOR_POSITIVE_TEXT]%s:[ENDCOLOR] %s", name, help));
+			table.insert(parts, string.format("[COLOR_CYAN]%s[ENDCOLOR][NEWLINE]%s", name, help));
 		else
-			table.insert(parts, string.format("[COLOR_POSITIVE_TEXT]%s[ENDCOLOR]", name));
+			table.insert(parts, string.format("[COLOR_CYAN]%s[ENDCOLOR]", name));
 		end
 	end
 
@@ -1259,6 +1259,11 @@ function Draft_HideCivInfoPanel()
 	end
 end
 
+-- Which hovered item shows the panel. Moving between pull-down entries can deliver the next entry's
+-- "enter" before the previous entry's "leave"; the leave must then not hide the new entry's panel.
+local g_CivInfoOwner = nil;
+local g_CivInfoNextToken = 0;
+
 -- Hover help for anything that stands for a civ: the panel when it fits, else the old tooltip.
 -- hint = extra lines (click actions) shown under the civ text.
 function Draft_SetCivHoverHelp(button, civID, hint, fallbackTip)
@@ -1272,9 +1277,19 @@ function Draft_SetCivHoverHelp(button, civID, hint, fallbackTip)
 			text = text .. "[NEWLINE][NEWLINE]" .. hint;
 		end
 		local title = Draft_GetCivInfoTitle(civID);
+		g_CivInfoNextToken = g_CivInfoNextToken + 1;
+		local token = g_CivInfoNextToken;
 		button:SetToolTipString("");
-		button:RegisterCallback(Mouse.eMouseEnter, function() Draft_ShowCivInfoPanel(title, text); end);
-		button:RegisterCallback(Mouse.eMouseExit, Draft_HideCivInfoPanel);
+		button:RegisterCallback(Mouse.eMouseEnter, function()
+			g_CivInfoOwner = token;
+			Draft_ShowCivInfoPanel(title, text);
+		end);
+		button:RegisterCallback(Mouse.eMouseExit, function()
+			if g_CivInfoOwner == token then
+				g_CivInfoOwner = nil;
+				Draft_HideCivInfoPanel();
+			end
+		end);
 	else
 		button:SetToolTipString(fallbackTip or "");
 		button:RegisterCallback(Mouse.eMouseEnter, Draft_HideCivInfoPanel);
@@ -1304,7 +1319,7 @@ function Draft_ApplyLeaderPortraitHelp(portraitButton, civID, hoverAnim)
 		else
 			tip = "Right-click: Civilopedia";
 		end
-		Draft_SetCivHoverHelp(portraitButton, civID, "Right-click: Civilopedia", tip);
+		Draft_SetCivHoverHelp(portraitButton, civID, nil, tip);
 		portraitButton:SetVoid1(civID);
 		portraitButton:SetDisabled(false);
 		portraitButton:SetHide(false);
@@ -1618,7 +1633,7 @@ local function RefreshBanIconsForPlayer(playerID, stackControl)
 			tip = canEdit and "Click to ban a civilization" or "No ban selected";
 		end
 		Draft_SetCivHoverHelp(inst.BanButton, civID,
-			"Right-click: Civilopedia" .. (canEdit and "[NEWLINE]Left-click: change ban" or ""), tip);
+			canEdit and "Left-click: change ban" or nil, tip);
 		-- Glow is ShowOnMouseOver (SetDisabled does not suppress it). Only editable bans glow.
 		local allowHover = canEdit;
 		inst.BanButton:SetDisabled(not allowHover);

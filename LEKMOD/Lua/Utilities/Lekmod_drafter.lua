@@ -207,8 +207,9 @@ function LekmodDrafter.DefaultRules()
 	return {
 		bansPerPlayer = LekmodDrafter.DEFAULT_BANS,
 		picksPerPlayer = LekmodDrafter.DEFAULT_PICKS,
-		guaranteedCoastals = LekmodDrafter.GUARANTEE_RANDOM,
-		guaranteedInlands = LekmodDrafter.GUARANTEE_RANDOM,
+		-- LEKMOD 2026-10-17 (user): every draft pool has at least 1 coastal and 2 inland civs by default
+		guaranteedCoastals = 1,
+		guaranteedInlands = 2,
 		vanillaOnly = false,
 		seasonalBans = false,
 	}
