@@ -141,7 +141,7 @@
     <GridButton Anchor="R,T" ID="UnitActionButton" Size="36,36" Offset="0,0"  Style="SmallButton2"  Hidden="0" ToolTipType="TypeUnitAction">
       <Image Anchor="C,C" Offset="0,0" Size="45,45" Texture="UnitActions360.dds" ID="UnitActionIcon" />
       <!-- LEKMOD: the promotion's hotkey (option "Show promotion hotkeys", default on) -->
-      <Label Anchor="R,B" Offset="2,1" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
+      <Label Anchor="R,B" AnchorSide="O.I" Offset="2,0" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
     </GridButton>
   </Instance>
 

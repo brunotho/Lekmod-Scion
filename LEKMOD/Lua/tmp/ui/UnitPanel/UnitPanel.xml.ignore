@@ -6,7 +6,7 @@
     <GridButton Anchor="R,T" ID="UnitActionButton" Size="50,50" Offset="0,0"  Style="BaseButton"  Hidden="0" ToolTipType="TypeUnitAction">
       <Image Anchor="C,C" Offset="0,0" Size="64,64" Texture="UnitActions.dds" ID="UnitActionIcon" />
       <!-- LEKMOD: the promotion's hotkey (option "Show promotion hotkeys", default on) -->
-      <Label Anchor="R,B" Offset="4,2" Font="TwCenMT20" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
+      <Label Anchor="R,B" AnchorSide="O.I" Offset="2,0" Font="TwCenMT20" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
     </GridButton>
   </Instance>
 

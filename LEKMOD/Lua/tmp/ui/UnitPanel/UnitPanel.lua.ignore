@@ -209,6 +209,9 @@ function UpdateUnitActions( unit )
 		buttonPadding = 6;
 		workerPanelSizeOffsetY = 86;
 	end
+	-- LEKMOD: promotion buttons get extra room to their right for the hotkey letter (fewer per row)
+	local promoStep = buttonSize + ((numberOfButtonsPerRow == 6) and 14 or 16);
+	local promosPerRow = math.max( 1, math.floor( numberOfButtonsPerRow * buttonSize / promoStep ) );
 
     local recommendedBuild = nil;
     
@@ -274,7 +277,7 @@ function UpdateUnitActions( unit )
 					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
 				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
-				instance.UnitActionButton:SetOffsetVal( (numBuildActions % numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
+				instance.UnitActionButton:SetOffsetVal( (numBuildActions % promosPerRow) * promoStep + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / promosPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
                 numBuildActions = numBuildActions + 1;
                 
             elseif( (action.SubType == ActionSubTypes.ACTIONSUBTYPE_BUILD or action.Type == "INTERFACEMODE_ROUTE_TO") and hasPromotion == false) then
@@ -408,7 +411,7 @@ function UpdateUnitActions( unit )
 			Controls.PromotionAnimation:SetHide(true);
 			Controls.EditButton:SetHide(true);
 		end
-		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, math.floor((numBuildActions-1) / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
+		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, math.floor((numBuildActions-1) / (hasPromotion and promosPerRow or numberOfButtonsPerRow)) * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
     else
 		Controls.WorkerActionPanel:SetHide( true );
 		g_bWorkerActionPanelOpen = false;
