@@ -7090,8 +7090,41 @@ void CvTeam::processTech(TechTypes eTech, int iChange)
 				for (uint iFree = 0; iFree < aiLekmodFreeClasses.size(); iFree++)
 				{
 					const UnitTypes eFreeUnit = (UnitTypes)kPlayer.getCivilizationInfo().getCivilizationUnits(aiLekmodFreeClasses[iFree]);
-					if (eFreeUnit != NO_UNIT && kPlayer.getCapitalCity() != NULL)
-						kPlayer.addFreeUnit(eFreeUnit, (UnitAITypes)GC.GetGameUnits()->GetEntry(eFreeUnit)->GetDefaultUnitAIType());
+					CvCity* pLekmodCapital = kPlayer.getCapitalCity();
+					if (eFreeUnit == NO_UNIT || pLekmodCapital == NULL)
+						continue;
+					CvUnitEntry* pkFreeUnitInfo = GC.GetGameUnits()->GetEntry(eFreeUnit);
+					const UnitAITypes eFreeAI = (UnitAITypes)pkFreeUnitInfo->GetDefaultUnitAIType();
+					// ships go on the water tile closest to the capital (no lakes, no tiles with other players' units)
+					CvPlot* pLekmodShipPlot = NULL;
+					if (pkFreeUnitInfo->GetDomainType() == DOMAIN_SEA)
+					{
+						int iBestDistance = MAX_INT;
+						for (int iPlot = 0; iPlot < GC.getMap().numPlots(); iPlot++)
+						{
+							CvPlot* pLoopPlot = GC.getMap().plotByIndexUnchecked(iPlot);
+							if (!pLoopPlot->isWater() || pLoopPlot->isLake() || pLoopPlot->isImpassable() || pLoopPlot->isCity())
+								continue;
+							const int iDistance = plotDistance(pLekmodCapital->getX(), pLekmodCapital->getY(), pLoopPlot->getX(), pLoopPlot->getY());
+							if (iDistance >= iBestDistance)
+								continue;
+							bool bForeignUnit = false;
+							for (int iUnit = 0; iUnit < pLoopPlot->getNumUnits(); iUnit++)
+							{
+								CvUnit* pLoopUnit = pLoopPlot->getUnitByIndex(iUnit);
+								if (pLoopUnit != NULL && pLoopUnit->getOwner() != kPlayer.GetID())
+									bForeignUnit = true;
+							}
+							if (bForeignUnit)
+								continue;
+							iBestDistance = iDistance;
+							pLekmodShipPlot = pLoopPlot;
+						}
+					}
+					if (pLekmodShipPlot != NULL)
+						kPlayer.initUnit(eFreeUnit, pLekmodShipPlot->getX(), pLekmodShipPlot->getY(), eFreeAI);
+					else
+						kPlayer.addFreeUnit(eFreeUnit, eFreeAI);
 				}
 			}
 #endif

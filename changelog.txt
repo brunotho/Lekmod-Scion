@@ -2615,7 +2615,7 @@ Tags: civs, units, naval
 - Changed: Baghlah: 7 Strength and 9 Ranged Strength (was 8 and 12; the Galley +1 each), starts with Supply Ship and Swift Transport
 - Removed: Baghlah: Faith and Gold from kills
 - Changed: Minaa now replaces the Caravansary (was the Harbor): the Wheel, costs 60, +2 Food when connected to the capital, +4 Culture while a Caravan's route ends there, +4 Gold while a Cargo Ship's route ends there
-- Changed: new UA: Harbors at Optics; Seaports at Compass without a Harbor; +25% Production towards both; a free Worker and Baghlah at Sailing
+- Changed: new UA: Harbors at Optics; Seaports at Compass without a Harbor; +25% Production towards both; a free Worker and Baghlah at Sailing (the Baghlah appears on the sea or coast tile closest to the capital, never on a lake)
 - Removed: a free Seaport in captured cities, the naval promotion, and the Minaa's 30 damage to enemy ships next to the city
 - DLL: Trait_LekmodBuildingClassOverrides, Trait_LekmodFreeUnits; the old UB Lua (Lekmod_oman.lua) is switched off
 
