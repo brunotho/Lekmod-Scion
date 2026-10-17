@@ -480,6 +480,7 @@ LOBBY: CIV COLORS (HIGH CONTRAST)
 Tags: ui
 A new lobby option gives the players six easy-to-tell-apart color schemes.
 - Added: lobby setting "Civ Colors" (Original by default, or High Contrast). With High Contrast, the players get the color schemes of England, Russia, Greece, Jerusalem, Arabia and Babylon in random order instead of their own civilization's colors. With more than six players, the others keep their own colors
+- Added: single player: the same choice as the checkbox "Civ Colors: High Contrast" in Advanced Setup
 - Dev: LEKMOD_HIGH_CONTRAST_CIV_COLORS in CvGame::InitPlayers; GameOptions ID 68 GAMEOPTION_HIGH_CONTRAST_CIV_COLORS. Deterministic shuffle seeded by CvPreGame::syncRandomSeed() (same on every client)
 
 CITY AIRCRAFT COUNT (UNIT FLAGS)

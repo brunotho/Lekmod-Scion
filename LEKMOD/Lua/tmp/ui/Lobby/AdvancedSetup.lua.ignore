@@ -165,7 +165,10 @@ function RefreshCheckBoxGameOptions()
 	-- General Game Options
 	local options = {};
 	-- First, Gather a list of all options
-	for option in GameInfo.GameOptions{Visible = 1} do
+	-- LEKMOD: "Civ Colors: High Contrast" is hidden in the multiplayer lobby (it has its own Civ Colors drop-down there)
+	-- but shows as a checkbox here
+	for option in GameInfo.GameOptions() do
+	if option.Visible == true or option.Visible == 1 or option.Type == "GAMEOPTION_HIGH_CONTRAST_CIV_COLORS" then
 		local option = {
 			Type = option.Type,
 			Name = Locale.ConvertTextKey(option.Description),
@@ -186,6 +189,7 @@ function RefreshCheckBoxGameOptions()
 		if( option.SupportsSinglePlayer ) then
 			table.insert(options, option);
 		end
+	end
 	end
 	
 	for option in DB.Query("select * from MapScriptOptions where not exists (select 1 from MapScriptOptionPossibleValues where FileName = MapScriptOptions.FileName and OptionID = MapScriptOptions.OptionID) and Hidden = 0 and FileName = ?", PreGame.GetMapScript()) do
