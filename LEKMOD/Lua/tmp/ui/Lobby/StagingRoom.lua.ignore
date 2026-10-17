@@ -2045,19 +2045,9 @@ function PopulateCivPulldown( pullDown, playerID )
 				end
 			end
 		end
-		-- LEKMOD: the civ info shows in a panel at the left screen edge while the mouse is over the entry
-		entry.Button:SetToolTipString("");
-		if Controls.LekmodCivInfoPanel ~= nil then
-			entry.Button:RegisterCallback(Mouse.eMouseEnter, function()
-				Controls.LekmodCivInfoTitle:SetText(title or "");
-				Controls.LekmodCivInfoText:SetText(tooltip or "");
-				Controls.LekmodCivInfoStack:CalculateSize();
-				Controls.LekmodCivInfoPanel:SetSizeY(Controls.LekmodCivInfoStack:GetSizeY() + 30);
-				Controls.LekmodCivInfoPanel:SetHide(false);
-			end);
-			entry.Button:RegisterCallback(Mouse.eMouseExit, function()
-				Controls.LekmodCivInfoPanel:SetHide(true);
-			end);
+		-- LEKMOD: the civ info shows in the panel left of the lobby (Draft_SetCivHoverHelp), else as a tooltip
+		if Draft_SetCivHoverHelp ~= nil then
+			Draft_SetCivHoverHelp(entry.Button, civID, nil, tooltip);
 		else
 			entry.Button:SetToolTipString(tooltip or "");
 		end
@@ -2107,14 +2097,8 @@ function PopulateCivPulldown( pullDown, playerID )
 		if allowSet == nil or allowSet[row.CivID] then
 			local title = Locale.Lookup("TXT_KEY_RANDOM_LEADER_CIV", Locale.Lookup(row.LeaderDescription), Locale.Lookup(row.CivShortDescription)); 
 
-			-- LEKMOD: tooltip shows the civilization's ability and start bias
-			local tooltip = Locale.Lookup(row.CivDescription);
-			local leaderTrait = GameInfo.Leader_Traits{ LeaderType = row.LeaderType }();
-			local trait = leaderTrait and GameInfo.Traits[leaderTrait.TraitType];
-			if trait then
-				tooltip = "[COLOR_POSITIVE_TEXT]" .. Locale.Lookup(trait.ShortDescription) .. "[ENDCOLOR][NEWLINE]" .. Locale.Lookup(trait.Description);
-			end
-			tooltip = tooltip .. LekmodStartBiasText(row.CivType);
+			-- LEKMOD: the civilization's ability, uniques and start bias (same text as the portraits)
+			local tooltip = Draft_GetCivInfoText ~= nil and Draft_GetCivInfoText(row.CivID) or Locale.Lookup(row.CivDescription);
 			table.insert(civEntries, {ID = row.CivID, Title = title, Description = tooltip, ShortDescription = Locale.Lookup(row.CivShortDescription)});
 		end
 	end

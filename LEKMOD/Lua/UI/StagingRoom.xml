@@ -1101,9 +1101,9 @@
   <LuaContext FileName="Assets/UI/FrontEnd/GameSetup/SetCivNames" ID="SetCivNames" Hidden="1" />
   <LuaContext FileName="Assets/DLC/Shared/UI/InGame/Popups/ConfirmKick" ID="ConfirmKick" Hidden="1" />
   <LuaContext FileName="Assets/UI/InGame/Menus/SaveMenu" ID="SaveMenu" Hidden="1" />
-  <!-- LEKMOD: civ info while hovering an entry of a civ pull-down, at the left screen edge on a solid background -->
+  <!-- LEKMOD: civ info while hovering a civ (portraits, bans, draft icons, pull-down entries), left of the lobby; sized and placed by Draft_ShowCivInfoPanel -->
   <Grid Anchor="L,C" Offset="16,0" Size="400,200" Padding="0,0" Style="Grid9DetailFive140" ID="LekmodCivInfoPanel" Hidden="1" ConsumeMouse="0">
-    <Box Anchor="C,C" Offset="0,0" Size="380,10000" Color="0,0,0,235" />
+    <Box Anchor="C,C" Offset="0,0" Size="392,192" Color="0,0,0,235" ID="LekmodCivInfoBack" />
     <Stack Anchor="L,T" Offset="14,14" StackGrowth="Bottom" Padding="8" ID="LekmodCivInfoStack">
       <Label ID="LekmodCivInfoTitle" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" WrapWidth="370" />
       <Label ID="LekmodCivInfoText" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" WrapWidth="370" LeadingOffset="-2" />

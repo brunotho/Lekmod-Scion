@@ -1195,6 +1195,93 @@ function Draft_IsCivilopediaOpen()
 	return open;
 end
 
+-- LEKMOD: civ info panel to the left of the lobby. Shows the full civ text (ability, uniques,
+-- start bias) instead of a floating tooltip over the lobby. Falls back to the tooltip when the
+-- screen leaves too little room left of the lobby.
+local LEKMOD_CIV_INFO_MIN_WIDTH = 260;
+local LEKMOD_CIV_INFO_MAX_WIDTH = 420;
+
+local function Draft_CivInfoGeometry()
+	if Controls.LekmodCivInfoPanel == nil or Controls.MainGrid == nil then
+		return nil;
+	end
+	local screenX = UIManager:GetScreenSizeVal();
+	local lobbyLeft = math.floor((screenX - Controls.MainGrid:GetSizeX()) / 2);
+	local width = math.min(lobbyLeft - 16, LEKMOD_CIV_INFO_MAX_WIDTH);
+	if width < LEKMOD_CIV_INFO_MIN_WIDTH then
+		return nil;
+	end
+	return width, lobbyLeft - width - 8;
+end
+
+function Draft_GetCivInfoTitle(civID)
+	local civ, leader = GetLeaderForCivID(civID);
+	if civ == nil then
+		return "";
+	end
+	if leader ~= nil then
+		return Locale.Lookup("TXT_KEY_RANDOM_LEADER_CIV", Locale.Lookup(leader.Description), Locale.Lookup(civ.ShortDescription));
+	end
+	return Locale.Lookup(civ.Description);
+end
+
+function Draft_GetCivInfoText(civID)
+	local civ = GameInfo.Civilizations[civID];
+	local text = Draft_GetCivBonusTooltip(civID);
+	if civ ~= nil and LekmodStartBiasText ~= nil then
+		text = text .. LekmodStartBiasText(civ.Type);
+	end
+	return text;
+end
+
+function Draft_ShowCivInfoPanel(title, text)
+	local width, x = Draft_CivInfoGeometry();
+	if width == nil then
+		return false;
+	end
+	local wrap = width - 30;
+	Controls.LekmodCivInfoTitle:SetWrapWidth(wrap);
+	Controls.LekmodCivInfoText:SetWrapWidth(wrap);
+	Controls.LekmodCivInfoTitle:SetText(title or "");
+	Controls.LekmodCivInfoText:SetText(text or "");
+	Controls.LekmodCivInfoStack:CalculateSize();
+	local height = Controls.LekmodCivInfoStack:GetSizeY() + 30;
+	Controls.LekmodCivInfoPanel:SetSizeVal(width, height);
+	Controls.LekmodCivInfoBack:SetSizeVal(width - 8, height - 8);
+	Controls.LekmodCivInfoPanel:SetOffsetVal(x, 0);
+	Controls.LekmodCivInfoPanel:SetHide(false);
+	return true;
+end
+
+function Draft_HideCivInfoPanel()
+	if Controls.LekmodCivInfoPanel ~= nil then
+		Controls.LekmodCivInfoPanel:SetHide(true);
+	end
+end
+
+-- Hover help for anything that stands for a civ: the panel when it fits, else the old tooltip.
+-- hint = extra lines (click actions) shown under the civ text.
+function Draft_SetCivHoverHelp(button, civID, hint, fallbackTip)
+	if button == nil then
+		return;
+	end
+	local hasCiv = civID ~= nil and civID >= 0 and GameInfo.Civilizations[civID] ~= nil;
+	if hasCiv and Draft_CivInfoGeometry() ~= nil then
+		local text = Draft_GetCivInfoText(civID);
+		if hint ~= nil and hint ~= "" then
+			text = text .. "[NEWLINE][NEWLINE]" .. hint;
+		end
+		local title = Draft_GetCivInfoTitle(civID);
+		button:SetToolTipString("");
+		button:RegisterCallback(Mouse.eMouseEnter, function() Draft_ShowCivInfoPanel(title, text); end);
+		button:RegisterCallback(Mouse.eMouseExit, Draft_HideCivInfoPanel);
+	else
+		button:SetToolTipString(fallbackTip or "");
+		button:RegisterCallback(Mouse.eMouseEnter, Draft_HideCivInfoPanel);
+		button:RegisterCallback(Mouse.eMouseExit, Draft_HideCivInfoPanel);
+	end
+end
+
 function Draft_OpenCivPediaByCivID(civID)
 	local civ, leader = GetLeaderForCivID(civID);
 	if leader ~= nil then
@@ -1217,7 +1304,7 @@ function Draft_ApplyLeaderPortraitHelp(portraitButton, civID, hoverAnim)
 		else
 			tip = "Right-click: Civilopedia";
 		end
-		portraitButton:SetToolTipString(tip);
+		Draft_SetCivHoverHelp(portraitButton, civID, "Right-click: Civilopedia", tip);
 		portraitButton:SetVoid1(civID);
 		portraitButton:SetDisabled(false);
 		portraitButton:SetHide(false);
@@ -1225,7 +1312,7 @@ function Draft_ApplyLeaderPortraitHelp(portraitButton, civID, hoverAnim)
 		if hoverAnim ~= nil then hoverAnim:SetHide(false); end
 	else
 		-- Random / no civ: no hover, tooltip, or pedia.
-		portraitButton:SetToolTipString("");
+		Draft_SetCivHoverHelp(portraitButton, -1, nil, "");
 		portraitButton:SetVoid1(-1);
 		portraitButton:SetDisabled(true);
 		if hoverAnim ~= nil then hoverAnim:SetHide(true); end
@@ -1530,7 +1617,8 @@ local function RefreshBanIconsForPlayer(playerID, stackControl)
 		else
 			tip = canEdit and "Click to ban a civilization" or "No ban selected";
 		end
-		inst.BanButton:SetToolTipString(tip);
+		Draft_SetCivHoverHelp(inst.BanButton, civID,
+			"Right-click: Civilopedia" .. (canEdit and "[NEWLINE]Left-click: change ban" or ""), tip);
 		-- Glow is ShowOnMouseOver (SetDisabled does not suppress it). Only editable bans glow.
 		local allowHover = canEdit;
 		inst.BanButton:SetDisabled(not allowHover);
@@ -1648,7 +1736,7 @@ local function RefreshDraftIcons(playerID, stackControl)
 		end
 		local btn = inst.Button or inst.Root;
 		if btn ~= nil then
-			btn:SetToolTipString(tip);
+			Draft_SetCivHoverHelp(btn, civID, canPick and "Click to play as this civilization" or nil, tip);
 			btn:SetDisabled(not canPick);
 			local pid, cid = playerID, civID;
 			btn:RegisterCallback(Mouse.eLClick, function()

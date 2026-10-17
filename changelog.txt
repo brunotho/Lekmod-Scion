@@ -2988,8 +2988,8 @@ Tags: ui
 MULTIPLAYER LOBBY: CIVILIZATION INFO (STAGING ROOM)
 ---------------------------------------------------
 Tags: ui
-- Changed: hovering a civilization in the lobby's civilization list shows its ability and start bias in a panel at the left edge of the screen on a dark background (was a tooltip on top of the lobby)
-- Dev: StagingRoom.lua/.xml (standard UI): LekmodCivInfoPanel, shown on mouse enter of a pull-down entry
+- Changed: hovering a civilization (a player's leader portrait, a ban, a draft icon or an entry of the civilization list) shows its ability, unique items and start bias in one panel left of the lobby, instead of a tooltip on top of the lobby; on screens too narrow for the panel it stays a tooltip
+- Dev: Lekmod_staging_draft.lua Draft_SetCivHoverHelp / Draft_ShowCivInfoPanel (width and position from the space left of MainGrid, 260-420 px); StagingRoom.xml LekmodCivInfoPanel (standard UI)
 
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 ---------------------------------------------------------------
