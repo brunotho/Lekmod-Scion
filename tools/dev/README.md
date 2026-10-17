@@ -16,6 +16,10 @@ Run them from this folder (`python tools/dev/q.py ...` also works for the standa
 | `txt.py TAG [TAG%]` | Text lookup in `Localization-Merged.db` (also stale until a game starts; the newest `<Replace>` in `CIV5Units_Mongol.xml` wins). |
 | `sqlcheck.py` | Prepares every SQL query of the DLL against the schema of `CIV5Units.xml` (plus the cache for other tables). Run after any C++ query change: an invalid live query (e.g. an ambiguous column after a new JOIN) crashes the game before the main menu. The 4 known failures are compiled out. |
 | `dbcheck.py <commit>...` | After a game start: checks that every `<Row>`/`<Update>` a commit added to `CIV5Units.xml` is in the loaded DB (Civ5DebugDatabase.db). Mismatches are either data that never loaded or rows changed by a later commit (check with `git log -S`). |
+| `civtexts.py [ua\|ub\|uu\|ui\|all] [CIV...]` | Every civ's effective UA/UU/UB/UI texts, read from the Override files (no game DB needed). |
+| `xmlrefs.py <TYPE>` | All rows in `CIV5Units.xml` that mention a type name, with their table and line. |
+| `ubdiff.py [filter...]` | Each unique building against the building it replaces, from the loaded DB: differing columns, sub-table rows only one of them has, both Help texts. |
+| `ub_texts_2026_10_17.py` | The UB tooltip texts of the 2026-10-17 audit ("Like the X:" / "In addition:"); rerunnable, sets every definition of each Help tag. Edit a text there and rerun, or edit the text file directly and stop using the script. |
 | `examples/` | The batch H scripts as a pattern: C++ edits, data + texts appended at the end of the Override files, changelog edits inside a civ's section. |
 
 Batch routine: C++ script → `balance` + `ifstack` + `sqlcheck` → build in the background (CLAUDE.md §5) → data script → `xmlcheck` + `refcheck` → changelog → check Civ V is closed → back up and install the DLL → commit code/data, then the DLL separately → next game start: `dbcheck <commit>` → tracker rows, "Specs to refine" defaults, "Civ tests (Phase 6)" items → CLAUDE.md.
