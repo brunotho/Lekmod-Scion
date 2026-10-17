@@ -315,7 +315,7 @@ public:
 #endif
 #if defined(LEKMOD_RUIN_CHOICE)
 	int LekmodGoodyRand(int iRange, const char* szLog);
-	int LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll) const;
+	int LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll, int iGainForPay = -1) const;
 	bool LekmodCanPayRuinTrade(int iPay, int iAmount) const;
 	bool LekmodCanGainRuinTrade(int iGain, CvPlot* pPlot, CvUnit* pUnit) const;
 	void LekmodGetUnseenCityStates(CvPlot* pPlot, std::vector<PlayerTypes>& aeCityStates) const;

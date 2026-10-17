@@ -7975,6 +7975,31 @@ bool CvPlayer::canReceiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit) 
 
 
 //	--------------------------------------------------------------------------------
+// LEKMOD 2026-10-17 (user): plain ruin rewards a bit smaller than trades.
+// Food ruin: 5 + 2.2 x era x capital population (was 7 + ...)
+static int LekmodRuinFood(int iEra, int iCapitalPop)
+{
+	return 5 + (int)(2.0 * iEra * 1.1 * iCapitalPop);
+}
+
+// Culture ruin: turn x era - 2 (at least 1)
+static int LekmodRuinCulture(int iEra)
+{
+	return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 2);
+}
+
+// Gold of the science ruin: not always there and not tied to the Science. A second value is mixed from the
+// offer's roll (so popup and result match): 40% no Gold, else 8-33 x era (rounded to 5, at most 60).
+// Average about 12 x era, as the old half-of-the-Science Gold.
+static int LekmodScienceRuinGold(int iRoll, int iEra)
+{
+	const int iRoll2 = (iRoll * 613 + 271) % 1000;
+	if (iRoll2 < 400)
+		return 0;
+	const int iGold = (8 + (iRoll2 - 400) * 26 / 600) * iEra;
+	return std::min(60, ((iGold + 2) / 5) * 5);
+}
+
 void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 {
 	CvPlot* pLoopPlot;
@@ -8282,13 +8307,13 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 	// Amount shown in the reward popup for the era-scaled ruins below
 	int iEraRuinValue = 0;
 
-	// Food era scale: 7 + floor(2 * era * 1.1 * capital_pop)
+	// Food era scale: 5 + floor(2 * era * 1.1 * capital_pop)
 	if(kGoodyInfo.isFoodEraScale())
 	{
 		CvCity* pCapital = getCapitalCity();
 		if(pCapital != NULL)
 		{
-			int iFood = 7 + (int)(2.0 * iEra * 1.1 * pCapital->getPopulation());
+			int iFood = LekmodRuinFood(iEra, pCapital->getPopulation());
 			pCapital->changeFood(iFood);
 			iEraRuinValue = iFood;
 			// Grant Glutton promotion if a FreePromotion is set (LEKMOD: only when the ruin's unit still exists)
@@ -8308,10 +8333,10 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 		}
 	}
 
-	// Culture era-turn: culture = turn * era
+	// Culture era-turn: culture = turn * era - 2
 	if(kGoodyInfo.isCultureEraTurn())
 	{
-		int iCultureAmount = GC.getGame().getElapsedGameTurns() * iEra;
+		int iCultureAmount = LekmodRuinCulture(iEra);
 		if(iCultureAmount > 0)
 		{
 			changeJONSCulture(iCultureAmount);
@@ -8360,8 +8385,8 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 			strBuffer = GetLocalizedText(kGoodyInfo.GetDescriptionKey(), iTotalGold);
 		}
 
-		// Era barb spawn when total gold >= 80
-		if(kGoodyInfo.isEraBarbarianSpawn() && iTotalGold >= 80)
+		// Era barb spawn when total gold >= 70 (was 80 with a 10 higher base: same share of rolls)
+		if(kGoodyInfo.isEraBarbarianSpawn() && iTotalGold >= 70)
 		{
 			UnitClassTypes eBarbClass = NO_UNITCLASS;
 			int iCurrentEra = (int)GetCurrentEra();
@@ -8391,10 +8416,11 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 		}
 	}
 
-	// Science era ruin: X = rand(20..30) * era, capped at 90; unit loses 3X HP (keeps at least 1); X/2 gold (rounded to 5)
+	// Science era ruin: X = rand(20..30) * era, capped at 90; unit loses 3X HP (keeps at least 1); sometimes Gold (LekmodScienceRuinGold)
 	if(kGoodyInfo.isScienceEraRuin())
 	{
-		int iX = (20 + LekmodGoodyRand(11, "Goody Science Era Rand")) * iEra;
+		const int iScienceRoll = LekmodGoodyRand(1000, "Goody Science Era Rand");
+		int iX = (20 + iScienceRoll * 11 / 1000) * iEra;
 		iX = std::min(iX, 90);
 		iEraRuinValue = iX;
 		// Science yield
@@ -8406,8 +8432,10 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 		// HP damage (leave at least 1 HP)
 		int iDamage = (pUnit != NULL) ? std::min(3 * iX, pUnit->GetMaxHitPoints() - pUnit->getDamage() - 1) : 0;
 		if(iDamage > 0) pUnit->changeDamage(iDamage);
-		// A little gold: half the science, rounded to 5
-		GetTreasury()->ChangeGold(((iX / 2) + 2) / 5 * 5);
+		// Sometimes some Gold, not tied to the Science
+		const int iScienceGold = LekmodScienceRuinGold(iScienceRoll, iEra);
+		if(iScienceGold > 0)
+			GetTreasury()->ChangeGold(iScienceGold);
 		if(GetID() == GC.getGame().getActivePlayer())
 		{
 			strBuffer = GetLocalizedText(kGoodyInfo.GetDescriptionKey(), iX);
@@ -8426,7 +8454,7 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 	if(kGoodyInfo.isLekmodTrade() && m_iLekmodGoodyPay >= 0 && m_iLekmodGoodyGain >= 0)
 	{
 		const int iRoll = std::max(0, m_iLekmodGoodyForcedRoll);
-		const int iPayAmount = LekmodGetRuinTradeAmount(m_iLekmodGoodyPay, false, iRoll);
+		const int iPayAmount = LekmodGetRuinTradeAmount(m_iLekmodGoodyPay, false, iRoll, m_iLekmodGoodyGain);
 		const int iGainAmount = LekmodGetRuinTradeAmount(m_iLekmodGoodyGain, true, iRoll);
 		strBuffer = LekmodGetRuinTradeText(m_iLekmodGoodyPay, m_iLekmodGoodyGain, iRoll);
 
@@ -9306,26 +9334,28 @@ static int LekmodRoundTo5(int iValue)
 }
 
 // Pay kinds: 0 Food (capital), 1 Gold, 2 Culture. Gain kinds: 0 Gold, 1 Science, 2 Culture, 3 reveal city-states, 4 Mobility.
-int CvPlayer::LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll) const
+// iGainForPay: the gain bought with a payment; revealing city-states and Mobility cost 25% less (user 2026-10-17).
+int CvPlayer::LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll, int iGainForPay) const
 {
 	const int iEra = (int)GetCurrentEra() + 1;
 	if (!bGain)
 	{
+		const bool bCheap = (iGainForPay == 3 || iGainForPay == 4);
 		switch (iKind)
 		{
-		case 0: return (5 + iRoll * 4 / 1000) * iEra;
-		case 1: return LekmodRoundTo5((40 + iRoll * 31 / 1000) * iEra);
-		case 2: return (5 + iRoll * 4 / 1000) * iEra;
+		case 0: return (5 + iRoll * 4 / 1000) * iEra * (bCheap ? 3 : 4) / 4;
+		case 1: return LekmodRoundTo5((40 + iRoll * 31 / 1000) * iEra * (bCheap ? 3 : 4) / 4);
+		case 2: return (5 + iRoll * 4 / 1000) * iEra * (bCheap ? 3 : 4) / 4;
 		}
 	}
 	else
 	{
 		switch (iKind)
 		{
-		case 0: return LekmodRoundTo5((70 + iRoll * 31 / 1000) * iEra);
-		case 1: return (25 + iRoll * 11 / 1000) * iEra;
-		// Always more than the free Culture ruin (turn x era), so the trade is never strictly worse
-		case 2: return GC.getGame().getElapsedGameTurns() * iEra + (8 + iRoll * 5 / 1000) * iEra;
+		case 0: return LekmodRoundTo5((75 + iRoll * 31 / 1000) * iEra);
+		case 1: return (27 + iRoll * 11 / 1000) * iEra;
+		// Always more than the free Culture ruin, so the trade is never strictly worse
+		case 2: return GC.getGame().getElapsedGameTurns() * iEra + (10 + iRoll * 5 / 1000) * iEra;
 		}
 	}
 	return 0;
@@ -9422,11 +9452,11 @@ void CvPlayer::LekmodGetRuinTradePairs(CvPlot* pPlot, CvUnit* pUnit, int iRoll, 
 {
 	for (int iPay = 0; iPay < 3; iPay++)
 	{
-		if (!LekmodCanPayRuinTrade(iPay, LekmodGetRuinTradeAmount(iPay, false, iRoll)))
-			continue;
 		for (int iGain = 0; iGain < 5; iGain++)
 		{
 			if ((iPay == 1 && iGain == 0) || (iPay == 2 && iGain == 2))
+				continue;
+			if (!LekmodCanPayRuinTrade(iPay, LekmodGetRuinTradeAmount(iPay, false, iRoll, iGain)))
 				continue;
 			if (LekmodCanGainRuinTrade(iGain, pPlot, pUnit))
 				aiPairs.push_back(iPay * 10 + iGain);
@@ -9487,7 +9517,7 @@ CvString CvPlayer::LekmodGetRuinTradeText(int iPay, int iGain, int iRoll) const
 {
 	const char* aszPay[] = { "TXT_KEY_LEKMOD_RUIN_PAY_FOOD", "TXT_KEY_LEKMOD_RUIN_PAY_GOLD", "TXT_KEY_LEKMOD_RUIN_PAY_CULTURE" };
 	const char* aszGain[] = { "TXT_KEY_LEKMOD_RUIN_GAIN_GOLD", "TXT_KEY_LEKMOD_RUIN_GAIN_SCIENCE", "TXT_KEY_LEKMOD_RUIN_GAIN_CULTURE", "TXT_KEY_LEKMOD_RUIN_GAIN_CITY_STATES", "TXT_KEY_LEKMOD_RUIN_GAIN_MOBILITY" };
-	CvString strPay = GetLocalizedText(aszPay[iPay], LekmodGetRuinTradeAmount(iPay, false, iRoll));
+	CvString strPay = GetLocalizedText(aszPay[iPay], LekmodGetRuinTradeAmount(iPay, false, iRoll, iGain));
 	CvString strGain = GetLocalizedText(aszGain[iGain], LekmodGetRuinTradeAmount(iGain, true, iRoll));
 	return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_TRADE", strPay.c_str(), strGain.c_str());
 }
@@ -9515,12 +9545,12 @@ CvString CvPlayer::LekmodGetRuinOfferText(GoodyTypes eGoody, int iRoll, int iPay
 	}
 	if (kGoodyInfo.isFoodEraScale() && getCapitalCity() != NULL)
 	{
-		int iFood = 7 + (int)(2.0 * iEra * 1.1 * getCapitalCity()->getPopulation());
+		int iFood = LekmodRuinFood(iEra, getCapitalCity()->getPopulation());
 		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_FOOD", iFood);
 	}
 	if (kGoodyInfo.isCultureEraTurn())
 	{
-		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_CULTURE", iTurn * iEra);
+		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_CULTURE", LekmodRuinCulture(iEra));
 	}
 	if (kGoodyInfo.isFaithEraTurn())
 	{
@@ -9529,14 +9559,17 @@ CvString CvPlayer::LekmodGetRuinOfferText(GoodyTypes eGoody, int iRoll, int iPay
 	if (kGoodyInfo.getGoldEraFactor() > 0)
 	{
 		int iGold = kGoodyInfo.getGold() + (1 + iRoll * 10 / 1000) * kGoodyInfo.getGoldEraFactor() * iEra;
-		if (kGoodyInfo.isEraBarbarianSpawn() && iGold >= 80)
+		if (kGoodyInfo.isEraBarbarianSpawn() && iGold >= 70)
 			return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_GOLD_BARBARIAN", iGold);
 		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_GOLD", iGold);
 	}
 	if (kGoodyInfo.isScienceEraRuin())
 	{
 		int iX = std::min((20 + iRoll * 11 / 1000) * iEra, 90);
-		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE", iX, ((iX / 2) + 2) / 5 * 5, 3 * iX);
+		const int iScienceGold = LekmodScienceRuinGold(iRoll, iEra);
+		if (iScienceGold <= 0)
+			return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE_NO_GOLD", iX, 3 * iX);
+		return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE", iX, iScienceGold, 3 * iX);
 	}
 	if (kGoodyInfo.isUpgradeUnit() && pUnit != NULL)
 	{

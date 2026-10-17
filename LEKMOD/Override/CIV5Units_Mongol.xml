@@ -16432,7 +16432,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_CULTURE_HEADING4_BODY"> 
-			<Text>Turn x era [ICON_CULTURE] Culture, from turn 6.[NEWLINE]A ruin trade can give (turn + 8 to 12) x era Culture: always more than this reward.</Text>
+			<Text>Turn x era - 2 [ICON_CULTURE] Culture, from turn 6.[NEWLINE]A ruin trade can give (turn + 10 to 14) x era Culture: always more than this reward.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_CULTURE_HEADING4_TITLE"> 
 			<Text>
@@ -16556,7 +16556,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_RUINBENEFITS_HEADING3_BODY"> 
-			<Text>[ICON_CULTURE] Culture: turn x era Culture (from turn 6).[NEWLINE][ICON_GOLD] Gold: 45 + 5 x (1 to 10) x era Gold. 80 Gold or more also brings a barbarian next to the ruin.[NEWLINE][ICON_RESEARCH] Science: 20-30 x era Science (at most 90). Also half as much Gold (rounded to 5). The unit loses three times that much health (keeps at least 1 HP).[NEWLINE][ICON_FOOD] Food: 7 + 2.2 x era x capital population Food in your capital. The unit gets Glutton (-30% combat strength until it upgrades).[NEWLINE][ICON_PEACE] Faith: 9 Faith while you have no pantheon and no Faith (from turn 6). With a pantheon (and no religion): turn x 2 x era Faith, and the unit is fully healed.[NEWLINE]Upgrade: the unit upgrades (once per unit, from turn 6) and loses 20 HP.[NEWLINE]Map: reveals a patchy area around the ruin (radius 6) and gives 6 experience. Until turn 10.[NEWLINE]Borders: your nearest city gains 2 tiles.[NEWLINE]Mobility: the unit gets the Mobility promotion (Ancient Era only, combat units).[NEWLINE]Free technology: a random Ancient Era technology you can research.[NEWLINE]Trade: pay Food, Gold or Culture for another reward (see Trade).</Text>
+			<Text>[ICON_CULTURE] Culture: turn x era - 2 Culture (from turn 6).[NEWLINE][ICON_GOLD] Gold: 35 + 5 x (1 to 10) x era Gold. 70 Gold or more also brings a barbarian next to the ruin.[NEWLINE][ICON_RESEARCH] Science: 20-30 x era Science (at most 90). Sometimes (3 in 5) also 10-35 x era Gold (at most 60), not tied to the Science. The unit loses three times the Science in health (keeps at least 1 HP).[NEWLINE][ICON_FOOD] Food: 5 + 2.2 x era x capital population Food in your capital. The unit gets Glutton (-30% combat strength until it upgrades).[NEWLINE][ICON_PEACE] Faith: 9 Faith while you have no pantheon and no Faith (from turn 6). With a pantheon (and no religion): turn x 2 x era Faith, and the unit is fully healed.[NEWLINE]Upgrade: the unit upgrades (once per unit, from turn 6) and loses 20 HP.[NEWLINE]Map: reveals a patchy area around the ruin (radius 6) and gives 6 experience. Until turn 10.[NEWLINE]Borders: your nearest city gains 2 tiles.[NEWLINE]Free technology: a random Ancient Era technology you can research.[NEWLINE]Trade: pay Food, Gold or Culture for another reward (see Trade).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_RUINBENEFITS_HEADING3_TITLE"> 
 			<Text>
@@ -16569,7 +16569,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_SURVIVORS_HEADING4_BODY"> 
-			<Text>Pay one thing for another.[NEWLINE][NEWLINE]Price: 5-8 [ICON_FOOD] Food from your capital, 40-70 [ICON_GOLD] Gold, or 5-8 [ICON_CULTURE] Culture.[NEWLINE]Reward: 70-100 [ICON_GOLD] Gold, 25-35 [ICON_RESEARCH] Science, (turn + 8 to 12) [ICON_CULTURE] Culture, the location of the 3 nearest city-states you haven't seen yet, or Mobility for the unit.[NEWLINE][NEWLINE]All amounts are multiplied by the era. A bigger price comes with a bigger reward.[NEWLINE]Only offered when you can pay. Gold for Gold and Culture for Culture never come up.</Text>
+			<Text>Pay one thing for another.[NEWLINE][NEWLINE]Price: 5-8 [ICON_FOOD] Food from your capital, 40-70 [ICON_GOLD] Gold, or 5-8 [ICON_CULTURE] Culture. A quarter less for the city-states or Mobility.[NEWLINE]Reward: 75-105 [ICON_GOLD] Gold, 27-37 [ICON_RESEARCH] Science, (turn + 10 to 14) [ICON_CULTURE] Culture, the location of the 3 nearest city-states you haven't seen yet, or Mobility for the unit (Mobility only comes from trades).[NEWLINE][NEWLINE]All amounts are multiplied by the era. A bigger price comes with a bigger reward.[NEWLINE]Only offered when you can pay. Gold for Gold and Culture for Culture never come up.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_SURVIVORS_HEADING4_TITLE"> 
 			<Text>Trade</Text>
@@ -16595,7 +16595,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_TREASURE_HEADING4_BODY"> 
-			<Text>45 + 5 x (1 to 10) x era [ICON_GOLD] Gold. 80 Gold or more also brings a barbarian (of your era) next to the ruin.</Text>
+			<Text>35 + 5 x (1 to 10) x era [ICON_GOLD] Gold. 70 Gold or more also brings a barbarian (of your era) next to the ruin.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_TREASURE_HEADING4_TITLE"> 
 			<Text>
@@ -71736,7 +71736,7 @@ The second sack of Ulundi is considered by historians to be the definitive end o
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GOLD_ANCIENTRUINS_HEADING3_BODY"> 
-			<Text>Ruins can offer 45 + 5 x (1 to 10) x era [ICON_GOLD] Gold. 80 Gold or more also brings a barbarian next to the ruin.[NEWLINE]A ruin trade can also give 70-100 x era Gold, or cost 40-70 x era Gold.</Text>
+			<Text>Ruins can offer 35 + 5 x (1 to 10) x era [ICON_GOLD] Gold. 70 Gold or more also brings a barbarian next to the ruin.[NEWLINE]A ruin trade can also give 75-105 x era Gold, or cost 40-70 x era Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GOLD_ANCIENTRUINS_HEADING3_TITLE"> 
 			<Text>
@@ -72300,7 +72300,7 @@ The second sack of Ulundi is considered by historians to be the definitive end o
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GOODY_TECH"> 
-			<Text>Your unit braves the treacherous depths of the ruins and returns with fragments of ancient knowledge.[NEWLINE]You gain {1_Num} [ICON_RESEARCH] Science and some [ICON_GOLD] Gold.[NEWLINE]The expedition left it badly wounded.</Text>
+			<Text>Your unit braves the treacherous depths of the ruins and returns with fragments of ancient knowledge.[NEWLINE]You gain {1_Num} [ICON_RESEARCH] Science, sometimes with some [ICON_GOLD] Gold.[NEWLINE]The expedition left it badly wounded.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GOODY_UPGRADE_UNIT"> 
 			<Text>Your unit overpowers the inhabitants of the ruins and takes up their weapons![NEWLINE]It was wounded in the fight.</Text>
@@ -134585,7 +134585,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_ANCIENTRUINS_HEADING4_BODY"> 
-			<Text>Ruins can offer a free Ancient Era technology, or 20-30 x era [ICON_RESEARCH] Science at the cost of the unit's health.[NEWLINE]A ruin trade can also give 25-35 x era [ICON_RESEARCH] Science.</Text>
+			<Text>Ruins can offer a free Ancient Era technology, or 20-30 x era [ICON_RESEARCH] Science at the cost of the unit's health.[NEWLINE]A ruin trade can also give 27-37 x era [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_ANCIENTRUINS_HEADING4_TITLE"> 
 			<Text>
@@ -148176,6 +148176,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_GOLD_BARBARIAN">
 			<Text>Gain [COLOR_YIELD_GOLD]{1_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]A barbarian appears[ENDCOLOR]</Text>
 		</Replace>
+		<Row Tag="TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE_NO_GOLD">
+			<Text>Gain [COLOR_RESEARCH_STORED]{1_Num} [ICON_RESEARCH] Science[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]Lose {2_Num} HP[ENDCOLOR]</Text>
+		</Row>
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_SCIENCE">
 			<Text>Gain [COLOR_RESEARCH_STORED]{1_Num} [ICON_RESEARCH] Science[ENDCOLOR] and [COLOR_YIELD_GOLD]{2_Num} [ICON_GOLD] Gold[ENDCOLOR]  -  [COLOR_NEGATIVE_TEXT]Lose {3_Num} HP[ENDCOLOR]</Text>
 		</Replace>

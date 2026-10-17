@@ -111866,7 +111866,7 @@
 			<Description>TXT_KEY_GOODY_GOLD</Description> 
 			<ChooseDescription>TXT_KEY_GOODY_CHOOSE_GOLD</ChooseDescription> 
 			<Sound>AS2D_GOODY_GOLD</Sound> 
-			<Gold>45</Gold> 
+			<Gold>35</Gold> 
 			<NumGoldRandRolls>0</NumGoldRandRolls> 
 			<GoldRandAmount>0</GoldRandAmount> 
 			<MapOffset>0</MapOffset> 
@@ -115951,42 +115951,6 @@
 			<GoodyType>GOODY_IMPROVEMENT</GoodyType> 
 		</Row>
 -->
-		<Row> 
-			<HandicapType>HANDICAP_AI_DEFAULT</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_SETTLER</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_CHIEFTAIN</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_WARLORD</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_PRINCE</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_KING</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_EMPEROR</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_IMMORTAL</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
-		<Row> 
-			<HandicapType>HANDICAP_DEITY</HandicapType> 
-			<GoodyType>GOODY_EXPERIENCE_MOVE</GoodyType> 
-		</Row>
 		
 		<!-- LEKMOD: pantheon faith ruin re-enabled (only without a pantheon; GOODY_RANDOM_FAITH needs one) -->
 		<Row>

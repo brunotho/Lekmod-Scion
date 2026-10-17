@@ -854,18 +854,18 @@ Tags: ruins, religion, game mechanics
 Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshone ability), with the exact amounts shown. Rewards scale with the era (ancient = 1, classical = 2, ...) and the turn.
 - Added: popping a ruin offers 2 different random rewards to choose from (3 with Native Tongue); rewards of your previous 3 ruins are not offered again (counted by what they give: a Food ruin also blocks trades that gain Food), and rewards you can't use right now are left out
 - Changed: the choices show Food, Culture, Gold and Science amounts in their yield colors
-- Added: new reward "Trade": pay 5-8 Food from your capital, 40-70 Gold or 5-8 Culture for 70-100 Gold, 25-35 Science, (turn + 8-12) Culture, the location of the 3 nearest city-states you haven't seen, or Mobility for the unit; a bigger price comes with a bigger reward; only offered when you can pay. Gold for Gold and Culture for Culture never come up. All amounts x era
+- Added: new reward "Trade": pay 5-8 Food from your capital, 40-70 Gold or 5-8 Culture for 75-105 Gold, 27-37 Science, (turn + 10-14) Culture, the location of the 3 nearest city-states you haven't seen, or Mobility for the unit (city-states and Mobility cost a quarter less); a bigger price comes with a bigger reward; only offered when you can pay. Gold for Gold and Culture for Culture never come up. All amounts x era
 - Changed: a Trade offer never pays or gains something another offer of the same ruin gives (no "Mobility" next to "Trade 50 Gold for Mobility", no "+13 Food" next to a trade paying Food); if no such trade fits, another reward is offered instead
 - Added: new reward "Free technology": a random ancient era technology you can research
 - Changed: if you don't choose before the turn ends, one of the offers is picked at random
-- Changed: Food: 7 + 2.2 x era x capital population food in the capital; the unit gets Glutton (-30% combat strength, lost on upgrade)
+- Changed: Food: 5 + 2.2 x era x capital population food in the capital; the unit gets Glutton (-30% combat strength, lost on upgrade)
 - Changed: Upgrade: from turn 6; the unit loses 20 HP
-- Changed: Tech: no more free tech; 20-30 x era science instead (max 90); plus half as much gold (rounded to 5); the unit loses three times that much HP (keeps at least 1)
+- Changed: Tech: no more free tech; 20-30 x era science instead (max 90); 3 in 5 times also 10-35 x era gold (at most 60, not tied to the science); the unit loses three times the science in HP (keeps at least 1)
 - Changed: Map: reveals a patchy area of radius 6 and gives 6 experience; until turn 10
-- Changed: Culture: turn x era culture, from turn 6
+- Changed: Culture: turn x era - 2 culture, from turn 6
 - Changed: Faith: 9 faith from turn 6 while you have no pantheon and 0 faith; turn x 2 x era faith plus a full heal once you have a pantheon (and no religion)
-- Changed: Gold: 45 + 5 x (1-10) x era gold; 80 or more also spawns an era-appropriate barbarian next to the ruin
-- Changed: Mobility: ancient era only; scouts (including the Shoshone Pathfinder) can now get it
+- Changed: Gold: 35 + 5 x (1-10) x era gold; 70 or more also spawns an era-appropriate barbarian next to the ruin
+- Changed: Mobility is no longer a ruin reward of its own; it only comes from a Trade
 - Removed: the Prophet faith ruin
 - Changed: short choice texts with the exact numbers: what you gain first, in its yield color (Food green), then what you lose, in red (e.g. "Gain 30 Science - Lose 40 Gold"); new result texts
 - Changed: Civilopedia ruin pages rewritten with the current rewards and numbers
@@ -874,6 +874,7 @@ Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshon
 - Dev: the food, faith and science ruins gave nothing when no unit was involved (e.g. a ruin inside a new city's borders); now only the unit part (promotion, healing, damage) is skipped
 - Dev: choosing a ruin reward crashed the game when the ruin's unit no longer existed (a Conquistador or Settler that founded the city and so popped the ruin); receiveGoody now checks the unit (crash dump 2026-10-10 16:03, traced with a relinked map file)
 - Dev: 3-ruin cooldown (LEKMOD_POST_CHANGES): saved m_iLekmodRecentRuinMasks (yield masks of the last 3 rewards, 8 bits each) and m_iLekmodLastRuinGoody now packs their goody types; recorded after receiveGoody in LekmodChooseRuinOffer
+- Dev: 2026-10-17 balance (user): plain rewards smaller, trades a bit better: LekmodRuinFood/LekmodRuinCulture/LekmodScienceRuinGold (second value mixed from the offer roll), LekmodGetRuinTradeAmount pay discount for gains 3/4; GOODY_EXPERIENCE_MOVE removed from HandicapInfo_Goodies
 
 
 GLUTTON (PROMOTION_GLUTTON)
