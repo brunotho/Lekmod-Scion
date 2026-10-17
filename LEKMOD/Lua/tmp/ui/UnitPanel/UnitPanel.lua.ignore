@@ -160,6 +160,7 @@ function UpdateUnitActions( unit )
     g_SecondaryIM:ResetInstances();
     g_BuildIM:ResetInstances();
     g_PromotionIM:ResetInstances();
+    g_LekmodPromoNumberActions = {};
     Controls.BuildCityButton:SetHide( true );
     Controls.WorkerActionPanel:SetHide(true);
     local pActivePlayer = Players[Game.GetActivePlayer()];
@@ -273,6 +274,11 @@ function UpdateUnitActions( unit )
 						if promotion ~= nil and promotion.HotKey ~= nil then
 							strKey = string.gsub( promotion.HotKey, "^KB_", "" );
 						end
+					end
+					-- promotions without a key of their own get 1-9 by their place in the panel (LekmodPromoNumberInput)
+					if strKey == "" and bShowKeys and #g_LekmodPromoNumberActions < 9 then
+						table.insert( g_LekmodPromoNumberActions, iAction );
+						strKey = tostring( #g_LekmodPromoNumberActions );
 					end
 					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
 				end
@@ -931,6 +937,31 @@ end
 function OnActivePlayerTurnEnd()
 	bOkayToProcess = false;
 end
+
+-- LEKMOD: number keys 1-9 (top row or numpad) pick the promotions that have no hotkey of their own,
+-- in the order the panel numbers them (option "Show promotion hotkeys")
+g_LekmodPromoNumberActions = {};
+function LekmodPromoNumberInput( uiMsg, wParam, lParam )
+	if uiMsg ~= KeyEvents.KeyDown or #g_LekmodPromoNumberActions == 0 or Controls.WorkerActionPanel:IsHidden() then
+		return false;
+	end
+	if UI.CtrlKeyDown() or UI.ShiftKeyDown() or UI.AltKeyDown() then
+		return false;
+	end
+	local n = nil;
+	if wParam >= 49 and wParam <= 57 then
+		n = wParam - 48;          -- 1-9
+	elseif wParam >= 97 and wParam <= 105 then
+		n = wParam - 96;          -- numpad 1-9
+	end
+	local iAction = n and g_LekmodPromoNumberActions[n];
+	if iAction == nil or not Game.CanHandleAction( iAction ) then
+		return false;
+	end
+	OnUnitActionClicked( iAction );
+	return true;
+end
+ContextPtr:SetInputHandler( LekmodPromoNumberInput );
 Events.ActivePlayerTurnEnd.Add( OnActivePlayerTurnEnd );
 
 function OnActivePlayerTurnStart()

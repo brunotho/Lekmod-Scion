@@ -3001,6 +3001,8 @@ GAME OPTIONS: PROMOTION HOTKEYS AND CHAT SOUND
 ---------------------------------------------
 Tags: ui
 - Added: option "Show promotion hotkeys on the buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
+- Added: promotions without a key of their own can be picked with 1-9 (top row or numpad), numbered by their place in the panel; the number shows next to them. Keys you set yourself keep working
+- Changed: promotion buttons have more space between them; the key sits to the right of each icon
 - Dev: the label sits in UnitPanel.xml and UnitPanel_small.xml; with the small UI the game loads the _small layout, which first had no label (Lua.log: label missing, keys present)
 - Added: audio option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
