@@ -124,6 +124,28 @@ function GatherInfoAboutUniqueStuff( civType )
 end
 
 
+-- LEKMOD: the buildings a tech unlocks (PrereqTech or the alternative Buildings.LekmodPrereqTechOr),
+-- buildings before wonders and each group in database order, like the base screen shows them
+function LekmodGetTechBuildings( techType )
+	local list = {};
+	for row in GameInfo.Buildings{ PrereqTech = techType } do
+		table.insert( list, row );
+	end
+	for row in GameInfo.Buildings{ LekmodPrereqTechOr = techType } do
+		table.insert( list, row );
+	end
+	local function isWonder( row )
+		local class = GameInfo.BuildingClasses[ row.BuildingClass ];
+		return class ~= nil and ( class.MaxGlobalInstances > 0 or class.MaxPlayerInstances == 1 or class.MaxTeamInstances > 0 );
+	end
+	table.sort( list, function( a, b )
+		local wa, wb = isWonder( a ), isWonder( b );
+		if wa ~= wb then return wb; end
+		return a.ID < b.ID;
+	end );
+	return list;
+end
+
 function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButtons, textureSize )
 	-- This has a few assumptions, the main one being that the small buttons are named "B1", "B2", "B3"... and that GatherInfoAboutUniqueStuff() has been called before this
 
@@ -163,7 +185,7 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 		end
  	end
  	
- 	for thisBuildingInfo in GameInfo.Buildings(string.format("PreReqTech = '%s'", techType)) do
+ 	for _, thisBuildingInfo in ipairs( LekmodGetTechBuildings( techType ) ) do
  		-- if this tech grants this player the ability to construct this building
 		if validBuildingBuilds[thisBuildingInfo.BuildingClass] == thisBuildingInfo.Type then
 			local buttonName = "B"..tostring(buttonNum);
@@ -176,17 +198,6 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 		end
  	end
 
-	-- LEKMOD: buildings that this tech unlocks as their alternative tech (Buildings.LekmodPrereqTechOr, e.g. Tonga's Fale Koloa)
-	for thisBuildingInfo in GameInfo.Buildings(string.format("LekmodPrereqTechOr = '%s'", techType)) do
-		if validBuildingBuilds[thisBuildingInfo.BuildingClass] == thisBuildingInfo.Type then
-			local thisButton = thisTechButtonInstance["B"..tostring(buttonNum)];
-			if thisButton then
-				AdjustArtOnGrantedBuildingButton( thisButton, thisBuildingInfo, textureSize );
-				setCircularHover( buttonNum, true );
-				buttonNum = buttonNum + 1;
-			end
-		end
-	end
 
  	for thisResourceInfo in GameInfo.Resources(string.format("TechReveal = '%s'", techType)) do
  		-- if this tech grants this player the ability to reveal this resource

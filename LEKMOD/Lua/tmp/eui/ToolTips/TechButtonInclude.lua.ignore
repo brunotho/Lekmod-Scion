@@ -157,6 +157,28 @@ function GetTechPedia( techID, void2, button )
 end
 local GetTechPedia = GetTechPedia
 
+-- LEKMOD: the buildings a tech unlocks (PrereqTech or the alternative Buildings.LekmodPrereqTechOr),
+-- buildings before wonders and each group in database order, like the base screen shows them
+function LekmodGetTechBuildings( techType )
+	local list = {};
+	for row in GameInfo.Buildings{ PrereqTech = techType } do
+		table.insert( list, row );
+	end
+	for row in GameInfo.Buildings{ LekmodPrereqTechOr = techType } do
+		table.insert( list, row );
+	end
+	local function isWonder( row )
+		local class = GameInfo.BuildingClasses[ row.BuildingClass ];
+		return class ~= nil and ( class.MaxGlobalInstances > 0 or class.MaxPlayerInstances == 1 or class.MaxTeamInstances > 0 );
+	end
+	table.sort( list, function( a, b )
+		local wa, wb = isWonder( a ), isWonder( b );
+		if wa ~= wb then return wb; end
+		return a.ID < b.ID;
+	end );
+	return list;
+end
+
 function GatherInfoAboutUniqueStuff( civType )
 
 	validUnitBuilds = {}
@@ -482,14 +504,8 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 		end
 	end
 
-	-- buildings and wonders unlocked by this tech
-	for row in GameInfo.Buildings( thisPrereqTech ) do
-		if validBuildingBuilds[row.BuildingClass] == row.Type and not addSmallArtButton( AdjustArtOnGrantedBuildingButton, row ) then
-			break
-		end
-	end
-	-- LEKMOD: buildings that this tech unlocks as their alternative tech (Buildings.LekmodPrereqTechOr, e.g. Tonga's Fale Koloa)
-	for row in GameInfo.Buildings{ LekmodPrereqTechOr = techType } do
+	-- buildings and wonders unlocked by this tech (LEKMOD: also via Buildings.LekmodPrereqTechOr, buildings before wonders)
+	for _, row in ipairs( LekmodGetTechBuildings( techType ) ) do
 		if validBuildingBuilds[row.BuildingClass] == row.Type and not addSmallArtButton( AdjustArtOnGrantedBuildingButton, row ) then
 			break
 		end

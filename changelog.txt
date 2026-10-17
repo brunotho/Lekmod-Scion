@@ -484,7 +484,7 @@ TECH TREE: BUILDINGS WITH TWO TECHS
 -----------------------------------
 Tags: ui
 A building that either of two techs unlocks is shown under both in the tech tree.
-- Fixed: Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
+- Fixed: Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing; it sits with the other buildings, before the wonders
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
 UNIT FLAGS: ATTACKED THIS TURN
