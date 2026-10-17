@@ -141,10 +141,8 @@ function AddCivilizationEntry(traitsQuery, populateUniqueBonuses, civ, leaderTyp
 		controlTable.LekmodUniqueStack:CalculateSize();
 		controlTable.LekmodUniqueStack:ReprocessAnchoring();
 	end
-	-- LEKMOD: the row shows only the name and the icons (2026-10-17, user: cleaner); the ability text and
-	-- the start bias are in the row's tooltip
-	controlTable.BonusDescription:SetText( "" );
-	controlTable.BonusDescription:SetHide( true );
+	-- LEKMOD: the row shows the leader and civ, the ability's name below it, and the icons (2026-10-17, user);
+	-- the ability text and the start bias are in the row's tooltip
 	for row in traitsQuery(leaderType) do
 		local strFull = Locale.ConvertTextKey( row.Description );
 		controlTable.Button:SetToolTipString( strFull .. LekmodStartBiasText( civ.Type ) );
@@ -152,7 +150,8 @@ function AddCivilizationEntry(traitsQuery, populateUniqueBonuses, civ, leaderTyp
 	end
 	
 	local title = Locale.ConvertTextKey("TXT_KEY_RANDOM_LEADER_CIV", leaderDescription, civ.ShortDescription);
-	title = string.format("%s (%s)", title, Locale.ConvertTextKey( shortDescription ));
+	controlTable.BonusDescription:SetText( "[COLOR_CYAN]" .. Locale.ConvertTextKey( shortDescription ) .. "[ENDCOLOR]" );
+	controlTable.BonusDescription:SetHide( false );
 	
 	controlTable.Title:SetText(title);			
 	controlTable.Description:LocalizeAndSetText(civ.Description);
