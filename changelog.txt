@@ -2557,7 +2557,7 @@ Tags: civs
 - Changed: the coast and islands explored at the start reach 6 tiles (was 12)
 - Changed: Fale Koloa (rebuilt, replaces the Granary): available with Sailing or Bronze Working, +2 Food and +1 Culture, the Granary's resource Food; with 3+ Coast tiles next to the city Fish +1 Gold +1 Culture +1 Faith; with 3+ Jungle tiles next to the city Jungle +1 Production
 - Removed: Malae: +1 Faith and the coast Food/Culture
-- Added: +20 resting Influence with the first City-State you pledge to protect, lost for good once that pledge ends for any reason (it runs out, tribute, war)
+- Added: +20 resting Influence with the first City-State you pledge to protect, lost for good once that pledge ends (you revoke it, demand tribute from that City-State, or war between you)
 - DLL: Traits.LekmodFirstPledgeAnchor; saved player field m_iLekmodFirstPledgeMinor
 - DLL: Building_LekmodPlotYields (CityAdjacent conditions), Buildings.LekmodPrereqTechOr (alternative tech)
 

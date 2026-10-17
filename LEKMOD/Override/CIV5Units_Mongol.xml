@@ -147873,7 +147873,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Granary. Available with Sailing or Bronze Working (instead of Pottery).[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_CULTURE] Culture.[NEWLINE]If 3 or more Coast tiles are next to the city: [ICON_RES_FISH] Fish yield +1 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith.[NEWLINE]If 3 or more Jungle tiles are next to the city: Jungle yields +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ISLANDS">
-			<Text>Start the game with Coast tiles and Islands within 6 tiles already explored.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the first [ICON_CITY_STATE] City-State you pledge to protect.[NEWLINE]Lost for good once that pledge ends for any reason (it runs out, you demand tribute, or war).</Text>
+			<Text>Start the game with Coast tiles and Islands within 6 tiles already explored.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the first [ICON_CITY_STATE] City-State you pledge to protect.[NEWLINE]Lost for good once that pledge ends: you revoke it, demand tribute from that City-State, or one of you declares war.</Text>
 		</Replace>
 		<!-- Phase 6 C++ batch G -->
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_GYMNASIUM">
