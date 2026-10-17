@@ -473,6 +473,13 @@ A new lobby option gives the players six easy-to-tell-apart color schemes.
 - Added: lobby setting "Civ Colors" (Original by default, or High Contrast). With High Contrast, the players get the color schemes of England, Russia, Greece, Jerusalem, Arabia and Babylon in random order instead of their own civilization's colors. With more than six players, the others keep their own colors
 - Dev: LEKMOD_HIGH_CONTRAST_CIV_COLORS in CvGame::InitPlayers; GameOptions ID 68 GAMEOPTION_HIGH_CONTRAST_CIV_COLORS. Deterministic shuffle seeded by CvPreGame::syncRandomSeed() (same on every client)
 
+CITY AIRCRAFT COUNT (UNIT FLAGS)
+--------------------------------
+Tags: ui, air, bugfix
+The number of aircraft stationed in a city no longer goes missing on other players' cities.
+- Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war were not counted on its banner (or an old count stayed) until another plane moved there in view; the count is now rebuilt when the city comes into view and at the start of every turn
+- Note: standard UI only; EUI draws aircraft differently and is unchanged
+
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------
 Tags: ui, combat

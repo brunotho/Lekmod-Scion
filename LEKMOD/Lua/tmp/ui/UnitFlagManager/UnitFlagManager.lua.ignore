@@ -1364,17 +1364,30 @@ function OnHexFogEvent( hexPos, fogState, bWholeMap )
             end
         end
 
-		-- Do the city flags        
+		-- Do the city flags
 		local bInvisible = fogState ~= WhiteFog;
+		-- LEKMOD: recount the aircraft of every city before showing the flags (see LekmodRefreshAllCityCargo)
+		if( not bInvisible ) then
+			LekmodRefreshAllCityCargo();
+		end
 		for cityIndex, pCityFlag in pairs(g_CityFlags) do
 			pCityFlag.Anchor:SetHide( bInvisible );
 		end
     else
         local gridVecX, gridVecY = ToGridFromHex( hexPos.x, hexPos.y );
         local plot = Map.GetPlot( gridVecX, gridVecY );
-        
+
         if( plot ~= nil ) then
-        
+            -- LEKMOD: a city coming into view gets its aircraft recounted; planes that arrived or left
+            -- while the city was in the fog never triggered UpdateCityCargo for us
+            if( fogState == WhiteFog and plot:IsCity() ) then
+                local pCargoFlag = UpdateCityCargo( plot );
+                if( pCargoFlag ~= nil ) then
+                    -- the fog event says the plot is in view, whatever IsVisible reports at this moment
+                    pCargoFlag.PullDown:SetHide( false );
+                end
+            end
+
             local unitCount = plot:GetNumLayerUnits();	-- Get all layers, so we update the trade units as well
             
             for i = 0, unitCount - 1, 1
@@ -1407,6 +1420,30 @@ function OnHexFogEvent( hexPos, fogState, bWholeMap )
     end
 end
 Events.HexFOWStateChanged.Add( OnHexFogEvent );
+
+
+------------------------------------------------------------
+-- LEKMOD: recount the stationed aircraft of every city.
+-- The count was only rebuilt when an aircraft moved, was created or died in view, so planes that
+-- rebased into (or out of) a city while it was in the fog left a missing or stale count until
+-- another plane moved there in view. Runs at the start of every turn and when the whole map's fog changes.
+------------------------------------------------------------
+function LekmodRefreshAllCityCargo()
+    local iActiveTeam = Game.GetActiveTeam();
+    for iPlayer = 0, GameDefines.MAX_PLAYERS - 1 do
+        local pPlayer = Players[ iPlayer ];
+        if( pPlayer ~= nil and pPlayer:IsAlive() ) then
+            for pCity in pPlayer:Cities() do
+                local pPlot = pCity:Plot();
+                local pCityFlag = UpdateCityCargo( pPlot );
+                if( pCityFlag ~= nil ) then
+                    pCityFlag.Anchor:SetHide( not pPlot:IsVisible( iActiveTeam, true ) );
+                end
+            end
+        end
+    end
+end
+Events.ActivePlayerTurnStart.Add( LekmodRefreshAllCityCargo );
 
 
 
