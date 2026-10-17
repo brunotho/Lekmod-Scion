@@ -291502,11 +291502,11 @@
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
-			<PrerequisitePromotion>PROMOTION_COVER_2</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_AMPHIBIOUS_2</PrerequisitePromotion>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
-			<PrerequisitePromotion>PROMOTION_AMBUSH_FORMATION_2</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
@@ -291515,10 +291515,6 @@
 		<Row>
 			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
 			<PrerequisitePromotion>PROMOTION_COASTAL_RAIDER_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_LEKMOD_EXPANDED_ZOC</PromotionType>
-			<PrerequisitePromotion>PROMOTION_INTERCEPTION_NAVAL_2</PrerequisitePromotion>
 		</Row>
 	</UnitPromotions_PromotionPrereqOrs>
 	<!-- POST (2026-10-15): Altitude Training also for land civilians (Inca trait, Swiss Reislaeufer Post, Tibet, Kilimanjaro) -->

@@ -2895,7 +2895,7 @@ EXPANDED ZOC (PROMOTION_LEKMOD_EXPANDED_ZOC)
 --------------------------------------------
 Tags: promotions, movement, combat, art
 NEW. An enemy unit that moves away from a tile next to this unit loses its remaining movement. Attacks don't count as moves.
-- Added: can be picked by melee, gunpowder and naval melee units that have the second level of a promotion line (Shock, Drill, Cover, Ambush Formation, Boarding Party, Coastal Raider or naval Interception II)
+- Added: can be picked by melee, gunpowder and naval melee units that have the second level of a promotion line (Shock, Drill, Amphibious, Boarding Party, Coastal Raider or Armor Plating II)
 - DLL: UnitPromotions.LekmodExpandedZOC (CvUnitMovement::IsSlowedByZOC); promotion ID 393
 - Dev: icon from the user's art (art_sources/promotions/user_art/expanded_zoc_shield_waves_v1.png)
 
