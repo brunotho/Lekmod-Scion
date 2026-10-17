@@ -10,7 +10,6 @@ include( "InstanceManager" );
 
 -- LEKMOD: Lekmod's settings live next to the EUI ones (OptionsMenu writes them)
 g_LekmodOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
-LEKMOD_HOTKEY_TEST = true; -- LEKMOD TEMP: promotion hotkey label test (2026-10-17), remove after the test
 
 local g_PrimaryIM    = InstanceManager:new( "UnitAction",  "UnitActionButton", Controls.PrimaryStack );
 local g_SecondaryIM  = InstanceManager:new( "UnitAction",  "UnitActionButton", Controls.SecondaryStack );
@@ -273,19 +272,6 @@ function UpdateUnitActions( unit )
 						end
 					end
 					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
-				end
-				-- LEKMOD TEMP (2026-10-17, hotkey label test): obvious marks + a Lua.log line. Remove after the test.
-				if LEKMOD_HOTKEY_TEST then
-					print( "LEKHOTKEY", action.Type, "label:", tostring( instance.LekmodHotKeyLabel ~= nil ),
-						"action.HotKey:", tostring( action.HotKey ), "option:", tostring( g_LekmodOptions and g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ) );
-					if instance.LekmodHotKeyLabel ~= nil then
-						-- label exists: huge red text over the button
-						instance.LekmodHotKeyLabel:SetText( "[COLOR_RED]KEY " .. tostring( instance.LekmodHotKeyLabel:GetText() ) .. "[ENDCOLOR]" );
-						instance.LekmodHotKeyLabel:SetFontByName( "TwCenMT24" );
-					else
-						-- no label: the game uses another UnitPanel.xml; fade the promotion icons instead
-						instance.UnitActionIcon:SetAlpha( 0.2 );
-					end
 				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
 				instance.UnitActionButton:SetOffsetVal( (numBuildActions % numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
