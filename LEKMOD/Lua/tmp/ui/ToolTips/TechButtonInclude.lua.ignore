@@ -176,6 +176,18 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 		end
  	end
 
+	-- LEKMOD: buildings that this tech unlocks as their alternative tech (Buildings.LekmodPrereqTechOr, e.g. Tonga's Fale Koloa)
+	for thisBuildingInfo in GameInfo.Buildings(string.format("LekmodPrereqTechOr = '%s'", techType)) do
+		if validBuildingBuilds[thisBuildingInfo.BuildingClass] == thisBuildingInfo.Type then
+			local thisButton = thisTechButtonInstance["B"..tostring(buttonNum)];
+			if thisButton then
+				AdjustArtOnGrantedBuildingButton( thisButton, thisBuildingInfo, textureSize );
+				setCircularHover( buttonNum, true );
+				buttonNum = buttonNum + 1;
+			end
+		end
+	end
+
  	for thisResourceInfo in GameInfo.Resources(string.format("TechReveal = '%s'", techType)) do
  		-- if this tech grants this player the ability to reveal this resource
 		local buttonName = "B"..tostring(buttonNum);

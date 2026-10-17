@@ -480,6 +480,13 @@ The number of aircraft stationed in a city no longer goes missing on other playe
 - Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war were not counted on its banner (or an old count stayed) until another plane moved there in view; the count is now rebuilt when the city comes into view and at the start of every turn
 - Note: standard UI only; EUI draws aircraft differently and is unchanged
 
+TECH TREE: BUILDINGS WITH TWO TECHS
+-----------------------------------
+Tags: ui
+A building that either of two techs unlocks is shown under both in the tech tree.
+- Fixed: Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
+- Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
+
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------
 Tags: ui, combat
