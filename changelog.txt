@@ -533,6 +533,7 @@ Tags: ui, art
 A new main menu background.
 - Changed: the main menu shows Thomas Cole's The Course of Empire: Destruction
 - Dev: replaces the earlier random rotation of 12 paintings and drops an unused 12 MB texture (about 33 MB less to download)
+- Dev: 2026-10-17: removed two more unused old menu backgrounds (oracle/pyramids, about 12 MB), the stale debug-symbol file of the upstream DLL (23 MB) and the base-game menu picture that was loaded and immediately replaced; the old paintings are gone from art_sources too
 
 BARBARIAN KILL BONUSES
 ----------------------

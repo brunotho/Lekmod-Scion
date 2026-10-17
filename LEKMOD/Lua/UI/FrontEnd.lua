@@ -44,7 +44,6 @@ function ShowHideHandler( bIsHide, bIsInit )
 		UI:CheckForCommandLineInvitation();
 
     if not bIsHide then
-        Controls.AtlasLogo:SetTexture( "CivilzationVAtlas.dds" );
         Controls.AtlasLogo:SetTexture( "lekmod_menu_background.dds" ); -- LEKMOD: main menu background
     	UIManager:SetUICursor( 0 );
 		if not IsUiCheckConfigured() then

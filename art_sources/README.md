@@ -13,7 +13,7 @@ game files. It is not part of the mod download (players only get `LEKMOD/`). The
 | `promotions/user_art/` | Art the user supplied later: Envelopment and Bunker Busting (2026-10-05, 256 px), Sitting Ducks (64 px), Amphibious I-III and Nuke Resistance (45 px PNG, 2026-10-10). |
 | `promotions/superseded/` | Earlier user versions that were replaced (kept for reference). |
 | `units/<name>/` | Unit portrait sources: Vanguard Corps (square, 256 px, plus the map flag source `flag/vanguard_corps_watchtower_flag_v1.png`), Barlas Cavalry and Bajoras (ringed 1254 px pictures). |
-| `menu_backgrounds/` | The 11 main menu paintings (PNG) and the original Great Wall background (already a DDS). |
+| `menu_backgrounds/` | The source of the one main menu background (`course_of_empire_destruction_v1.jpg`). |
 | `tools/` | `build_promotion_icons.py` (the whole promotion pipeline), `reshape_icons.py` (background key-out), `round_icon.py` (building and unit portraits). |
 
 ## Promotion icons
@@ -96,8 +96,8 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
 Since 2026-10-13 there is one background: `course_of_empire_destruction_v1.jpg` (1920x1200), written as BC1 (no alpha)
 with one mip to `LEKMOD/Art/Lekmod (v 1)/UI/lekmod_menu_background.dds` (1.2 MB):
 `texconv -f BC1_UNORM -m 1` on a PNG copy. `FrontEnd.lua` sets it directly.
-The other files here (11 paintings, the Great Wall DDS) were the earlier random rotation; they are no longer in the mod
-(removed with the unused 12 MB `civilzationvatlas_vanilla.dds` to cut the download size).
+The earlier random rotation (11 paintings, the Great Wall DDS) and the old upstream backgrounds (`oracle_background`, `pyramids_background`)
+were deleted on 2026-10-17 (user: one image only); they are in the git history if ever needed.
 
 ## Policy branch pictures
 - The policy screen loads one 192x292 picture per branch by file name (`PolicyBranch_<Branch>.dds` in
