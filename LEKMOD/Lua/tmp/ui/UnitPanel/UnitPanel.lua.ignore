@@ -264,8 +264,12 @@ function UpdateUnitActions( unit )
 					local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
 					local strKey = action.HotKey;
 					if strKey == nil or strKey == "" then
-						local promotion = GameInfo.UnitPromotions[action.CommandData];
-						strKey = promotion and promotion.HotKey and promotion.HotKey:gsub( "^KB_", "" ) or "";
+						-- the action's Type is the promotion's type; CommandData only as a fallback
+						local promotion = GameInfo.UnitPromotions[action.Type] or GameInfo.UnitPromotions[action.CommandData];
+						strKey = "";
+						if promotion ~= nil and promotion.HotKey ~= nil then
+							strKey = string.gsub( promotion.HotKey, "^KB_", "" );
+						end
 					end
 					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
 				end
