@@ -5,15 +5,15 @@
 	<Container Anchor="C,C" Size="Full,Full" ID="MainMenuScreenUI" >
 		<Image Anchor="R,T" Offset="0,0"  Size="630,200" Texture="CivilzationV_Logo.dds" ID="Civ5Logo" Hidden="0" />
 
-		<Grid Size="484,504" Anchor="C,C" Offset="0.32" Padding="0,0" Style="Grid9Detail162" >
+		<Grid Size="480,480" Anchor="C,C" Offset="0.32" Padding="0,0" Style="Grid9Detail140" >
 
-			<Box Color="Black,200" Anchor="C,T" Offset="0,47" Size="360,394" />
-			<Image Anchor="C,T" Offset="0,-29" AnchorSide="O.O"  Texture="Assets/DLC/Expansion/UI/Art/Controls/topframe.dds" Size="512,128" />
-			<Image Anchor="C,B" Offset="0,-113" AnchorSide="O.O"  Texture="Assets/DLC/Expansion/UI/Art/Controls/bottomframe.dds" Size="512,128" />
-			<Image Anchor="C,T" Offset="-23,-42" AnchorSide="O.O"  Texture="Assets/DLC/Expansion/UI/Art/Controls/topframe_MainMenu_Detail.dds" Size="464,32" />
+			<Box Color="Black.200" Anchor="C,T" Offset="0.44" Size="320.393" Hidden="0" >
+				<Grid Size="48,393" Anchor="L,T" AnchorSide="O.I" Offset="0.0" Padding="0,0" Style="WindowGrid" />
+				<Grid Size="48,393" Anchor="R,T" AnchorSide="O.I" Offset="0.0" Padding="0,0" Style="WindowGrid" />
+			</Box>
 
-			<Image Anchor="C,T" Offset="-183,45"  Texture="Assets/DLC/Expansion/UI/Art/Controls/WindowTrimLeft.dds" Size="82,396" />
-			<Image Anchor="C,T" Offset="184,45"  Texture="Assets/DLC/Expansion/UI/Art/Controls/WindowTrimRight.dds" Size="82,396" />
+			<Image Anchor="C,T" Offset="0,-33" AnchorSide="O.O"  Texture="Assets/UI/Art/Controls/topframe.dds" Size="512,128" />
+			<Image Anchor="C,B" Offset="0,-109" AnchorSide="O.O"  Texture="Assets/UI/Art/Controls/bottomframe.dds" Size="512,128" />
 
 			<Stack Anchor="C,T" Offset="0,54" Padding="0" StackGrowth="Bottom" ID="MainStack" >
 				<GridButton Anchor="C,T" ID="LatestNewsButton"  Size="320,45"    Style="ZoomButton" String="TXT_KEY_LATEST_NEWS" ToolTip="TXT_KEY_LATEST_NEWS_TT"  >
@@ -131,7 +131,14 @@
 
 				<Image Anchor="C,T" AnchorSide="I.O" Offset="0,0" Texture="bar300x2.dds" Size="300.1" />
 			</GridButton>
+
+
+			<Image Anchor="C,T" Offset="-184,44"  Texture="Assets/UI/Art/WorldView/WindowTrimLeft.dds" Size="98,394" />
+			<Image Anchor="C,T" Offset="184,44"  Texture="Assets/UI/Art/WorldView/WindowTrimRight.dds" Size="98,394" />
+
+
 		</Grid>
+
 	</Container>
 
 	<!-- Child Screens -->
