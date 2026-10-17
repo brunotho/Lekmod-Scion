@@ -95,6 +95,8 @@ copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\EULA.lua.ignore" "%patchfolder%\Lua\U
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\FrontEnd.lua.ignore" "%patchfolder%\Lua\UI\FrontEnd.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MainMenu.lua.ignore" "%patchfolder%\Lua\UI\MainMenu.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MainMenu.xml.ignore" "%patchfolder%\Lua\UI\MainMenu.xml" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MultiplayerSelect.lua.ignore" "%patchfolder%\Lua\UI\MultiplayerSelect.lua" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MultiplayerSelect.xml.ignore" "%patchfolder%\Lua\UI\MultiplayerSelect.xml" > nul
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\UniqueBonuses.lua.ignore" "%patchfolder%\Lua\UI\UniqueBonuses.lua" > nul
 IF NOT EXIST "%euifolder%\GameSetup\SelectCivilization.lua" (
