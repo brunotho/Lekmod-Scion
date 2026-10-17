@@ -13,14 +13,14 @@ local displayNetworkModes = false;	-- Are we displaying the network mode buttons
 -------------------------------------------------
 -- Helper Functions
 -------------------------------------------------
--- LEKMOD: the menu opens on New Game / Load Game / Join a Game / Other Modes; "Other Modes" shows the base buttons
+-- LEKMOD: Multiplayer opens on New Game / Load Game only. The base buttons (Standard with the online
+-- game list, Hot Seat, Pitboss) open from Main Menu > Other > "Multiplayer: Other Modes" (LuaEvent below).
 local g_bLekmodSimple = not bIsModding;
+local g_bLekmodOpenedFull = false;
 function LekmodShowSimpleMenu(bSimple)
 	g_bLekmodSimple = bSimple and not bIsModding;
 	Controls.LekmodNewGameButton:SetHide(not g_bLekmodSimple);
 	Controls.LekmodLoadGameButton:SetHide(not g_bLekmodSimple);
-	Controls.LekmodJoinGameButton:SetHide(not g_bLekmodSimple);
-	Controls.LekmodOtherModesButton:SetHide(not g_bLekmodSimple);
 	Controls.StandardButton:SetHide(g_bLekmodSimple);
 	Controls.HotSeatButton:SetHide(g_bLekmodSimple);
 	Controls.PitbossButton:SetHide(g_bLekmodSimple);
@@ -104,13 +104,17 @@ function LekmodLoadGameClick()
 end
 Controls.LekmodLoadGameButton:RegisterCallback( Mouse.eLClick, LekmodLoadGameClick );
 
-function LekmodJoinGameClick()
-	pitbossToggle = false;
-	InternetButtonClick();
+-- Main Menu > Other > "Multiplayer: Other Modes" opens this screen with the base buttons
+if not bIsModding then
+	LuaEvents.LekmodOpenMultiplayerOtherModes.Add( function()
+		g_bLekmodOpenedFull = true;
+		if ContextPtr:IsHidden() then
+			UIManager:QueuePopup( ContextPtr, PopupPriority.MultiplayerSelectScreen );
+		else
+			LekmodShowSimpleMenu(false);
+		end
+	end );
 end
-Controls.LekmodJoinGameButton:RegisterCallback( Mouse.eLClick, LekmodJoinGameClick );
-
-Controls.LekmodOtherModesButton:RegisterCallback( Mouse.eLClick, function() LekmodShowSimpleMenu(false); end );
 
 function ToggleNetworkModeDisplay(showNetworkMode)
 		Controls.StandardButton:SetHide(showNetworkMode);
@@ -214,9 +218,8 @@ Controls.ReconnectButton:RegisterCallback( Mouse.eLClick, ReconnectButtonClick )
 function BackButtonClick()
 	if(displayNetworkModes) then
 		ToggleNetworkModeDisplay(false);
-	elseif (not g_bLekmodSimple and not bIsModding) then
-		LekmodShowSimpleMenu(true);
 	else
+		g_bLekmodOpenedFull = false;
 		PreGame.SetInternetGame( false );
 		PreGame.SetGameType( GAME_SINGLE_PLAYER );
 		PreGame.ResetSlots();
@@ -255,7 +258,7 @@ function ShowHideHandler( bIsHide )
 	if( not Network.IsConnectedToSteam() ) then
 		Controls.InternetButton:SetDisabled( true );
 		Controls.InternetButton:LocalizeAndSetToolTip("TXT_KEY_STEAM_CONNECTED_NO");
-		for _, button in ipairs({ Controls.LekmodNewGameButton, Controls.LekmodLoadGameButton, Controls.LekmodJoinGameButton }) do
+		for _, button in ipairs({ Controls.LekmodNewGameButton, Controls.LekmodLoadGameButton }) do
 			button:SetDisabled( true );
 			button:LocalizeAndSetToolTip("TXT_KEY_STEAM_CONNECTED_NO");
 		end
@@ -263,7 +266,7 @@ function ShowHideHandler( bIsHide )
 
 	if not bIsHide then
 		
-		LekmodShowSimpleMenu(true);
+		LekmodShowSimpleMenu(not g_bLekmodOpenedFull);
 		
 		if Network.HasReconnectCache() then
 			Controls.ReconnectButton:SetHide( false);

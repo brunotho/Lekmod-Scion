@@ -101315,17 +101315,11 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_MP_LOAD_GAME_TT">
 			<Text>Opens an online lobby for a saved multiplayer game.</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_MP_JOIN_GAME">
-			<Text>Join a Game</Text>
-		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_MP_JOIN_GAME_TT">
-			<Text>Shows the list of online games you can join.[NEWLINE]Invites from Steam friends work without it.</Text>
-		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MP_OTHER_MODES">
-			<Text>Other Modes</Text>
+			<Text>Multiplayer: Other Modes</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MP_OTHER_MODES_TT">
-			<Text>Local network, Hot Seat and Pitboss games, with the full game setup screen.</Text>
+			<Text>Hot Seat, Pitboss and local network games, online games with the full setup screen, and the list of public online games to join.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_QUEST_OVER_TIME_ROUTE">
 			<Text>Trade route quest done: +{1_Num} [ICON_INFLUENCE] Influence per turn for {2_Num} more turns while a trade route between you runs.</Text>

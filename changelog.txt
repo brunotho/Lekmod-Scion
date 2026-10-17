@@ -3009,7 +3009,8 @@ Every unique building's tooltip now says what it shares with the building it rep
 MULTIPLAYER MENU (MAIN MENU)
 ----------------------------
 Tags: ui
-"Multiplayer" in the main menu goes straight to New Game, Load Game and Join a Game.
-- Changed: the Multiplayer menu shows New Game (opens an online lobby at once, with the Tournament settings, quick speed and the Lekmap map), Load Game (pick a save, then the lobby opens), Join a Game (the list of online games) and Other Modes (local network, Hot Seat, Pitboss and the full setup screen, as before)
+"Multiplayer" in the main menu goes straight to New Game and Load Game.
+- Changed: the Multiplayer menu shows only New Game (opens an online lobby at once, with the Tournament settings, quick speed and the Lekmap map) and Load Game (pick a save, then the lobby opens)
+- Added: Main Menu > Other > "Multiplayer: Other Modes" opens the full multiplayer choices as before (online games with the full setup screen and the list of public games, local network, Hot Seat, Pitboss)
 - Note: the map is the main Lekmap script found by its file name: LekmapPangaeaFractal.lua (the Lekmap repository) if installed, otherwise the highest LekmapPangaeaFractalvX.Y.lua; without either the game's default map stays
-- Dev: Lua/tmp/ui/FrontEnd/MultiplayerSelect.lua/.xml (copies of the base files, both UIs via ui_check.bat): LekmodShowSimpleMenu, LekmodFindDefaultMapScript, LekmodNewGameClick (Matchmaking.HostInternetGame like the setup screen's Host button), LoadMenu child context LekmodLoadGameScreen (DeferLoad, so it starts as a network game)
+- Dev: Lua/tmp/ui/FrontEnd/MultiplayerSelect.lua/.xml (copies of the base files, both UIs via ui_check.bat): LekmodShowSimpleMenu, LekmodFindDefaultMapScript, LekmodNewGameClick (Matchmaking.HostInternetGame like the setup screen's Host button), LoadMenu child context LekmodLoadGameScreen (DeferLoad, so it starts as a network game); Lekmod's own OtherMenu.lua/.xml (both UIs) fires LuaEvents.LekmodOpenMultiplayerOtherModes
