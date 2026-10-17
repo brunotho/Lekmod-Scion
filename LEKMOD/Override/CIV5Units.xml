@@ -292091,4 +292091,15 @@
 			<Yield>1</Yield>
 		</Row>
 	</Building_AdjacentCityPlotYieldChanges>
+	<!-- LEKMOD: UB tooltip audit (2026-10-17): own Help texts for unique buildings that shared the base building's -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_HIPPODROME"/>
+			<Set Help="TXT_KEY_LEKMOD_BUILDING_HIPPODROME_HELP"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_CANTON"/>
+			<Set Help="TXT_KEY_LEKMOD_BUILDING_CANTON_HELP"/>
+		</Update>
+	</Buildings>
 </GameData>
