@@ -2979,6 +2979,7 @@ CIVILIZATION SELECTION LIST (SINGLE PLAYER)
 -------------------------------------------
 Tags: ui
 - Changed: each row shows only the leader, the civilization and the unique item icons; hovering it shows the ability's name (light blue), its text and the start bias (long ability texts used to run into the next row)
+- Changed: the single-player setup screen shows the chosen civilization without the ability text and without the ability's name after the leader; hovering the box shows both
 - Dev: replaces the 2026-10-10 row growth and the shortened "..." text of 2026-10-16
 - Added: every unique unit, building and improvement of a civilization is shown (up to 5; was 2), including buildings only that civilization has (Dojo, Ziggurat, Convict Penitentiary...)
 - Dev: Lekmod's own SelectCivilization.xml (5 slots, name centered in the row, standard UI); UniqueBonuses lists Buildings.RequiredCivilization too
