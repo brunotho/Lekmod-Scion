@@ -101,6 +101,9 @@ copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\OtherMenu.lua.ignore" "%patchfolder%\
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\OtherMenu.xml.ignore" "%patchfolder%\Lua\UI\OtherMenu.xml" > nul
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\UniqueBonuses.lua.ignore" "%patchfolder%\Lua\UI\UniqueBonuses.lua" > nul
+IF NOT EXIST "%euifolder%\GameSetup\GameSetupScreen.lua" (
+  copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\GameSetupScreen.lua.ignore" "%patchfolder%\Lua\UI\GameSetupScreen.lua" > nul
+)
 IF NOT EXIST "%euifolder%\GameSetup\SelectCivilization.lua" (
   copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\SelectCivilization.lua.ignore" "%patchfolder%\Lua\UI\SelectCivilization.lua" > nul
   copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\SelectCivilization.xml.ignore" "%patchfolder%\Lua\UI\SelectCivilization.xml" > nul
@@ -223,6 +226,7 @@ FIND %text% "%euifolder%\UnitPanel\UnitPanel.lua" > nul 2>&1 && (
 ) || (
   copy /y "%patchfolder%\Lua\tmp\ui\UnitPanel\UnitPanel.lua.ignore" "%patchfolder%\Lua\UI\UnitPanel.lua" > nul
   copy /y "%patchfolder%\Lua\tmp\ui\UnitPanel\UnitPanel.xml.ignore" "%patchfolder%\Lua\UI\UnitPanel.xml" > nul
+  copy /y "%patchfolder%\Lua\tmp\ui\UnitPanel\UnitPanel_small.xml.ignore" "%patchfolder%\Lua\UI\UnitPanel_small.xml" > nul
 )
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\VotingSystem\CCVotePopup.lua.ignore" "%patchfolder%\Lua\UI\CCVotePopup.lua" > nul

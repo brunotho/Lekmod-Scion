@@ -3000,13 +3000,14 @@ GAME OPTIONS: PROMOTION HOTKEYS AND CHAT SOUND
 ---------------------------------------------
 Tags: ui
 - Added: option "Show promotion hotkeys on the buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
+- Dev: the label sits in UnitPanel.xml and UnitPanel_small.xml; with the small UI the game loads the _small layout, which first had no label (Lua.log: label missing, keys present)
 - Added: audio option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
 
 MULTIPLAYER LOBBY: CIVILIZATION INFO (STAGING ROOM)
 ---------------------------------------------------
 Tags: ui
-- Changed: hovering a civilization (a player's leader portrait, a ban, a draft icon or an entry of the civilization list) shows its ability, unique items and start bias in one panel left of the lobby, instead of a tooltip on top of the lobby; on screens too narrow for the panel it stays a tooltip. Each name (light blue) has its own line above its text
+- Changed: hovering a civilization (a player's leader portrait, a ban, a draft icon or an entry of the civilization list) shows its ability, unique items and start bias in one panel left of the lobby, instead of a tooltip on top of the lobby; on screens too narrow for the panel it stays a tooltip. Each name (light blue) has its own line above its text, with an empty line under the leader's name; the civilization icon next to the portrait shows the panel too
 - Changed: new lobbies guarantee 1 coastal and 2 inland civilizations in every draft pool (was random)
 - Dev: Lekmod_staging_draft.lua Draft_SetCivHoverHelp / Draft_ShowCivInfoPanel (width and position from the space left of MainGrid, 260-420 px); StagingRoom.xml LekmodCivInfoPanel (standard UI)
 
