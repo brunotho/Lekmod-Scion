@@ -257854,23 +257854,6 @@
 			<PromotionType>PROMOTION_HELI_SENTRY</PromotionType>
 			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
 		</Row>
-		<!-- Helicopter, Quick Study (no other unit type can choose it) -->
-		<Row>
-			<PromotionType>PROMOTION_GAIN_EXPERIENCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_HELI_AMBUSH_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_GAIN_EXPERIENCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_HELI_MOBILITY_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_GAIN_EXPERIENCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_ANTI_NAVAL_HELI_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_GAIN_EXPERIENCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
-		</Row>
 		<!-- Spaceship parts (2026-10-10): Mobility I is a starting promotion for them (marker promotion), Mobility II/III continue the line -->
 		<Row>
 			<PromotionType>PROMOTION_MOBILITY</PromotionType>
@@ -259795,10 +259778,6 @@
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_HELI_SENTRY</PromotionType>
-			<UnitCombatType>UNITCOMBAT_HELICOPTER</UnitCombatType>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_GAIN_EXPERIENCE</PromotionType>
 			<UnitCombatType>UNITCOMBAT_HELICOPTER</UnitCombatType>
 		</Row>
 		<Row> 

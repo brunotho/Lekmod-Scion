@@ -1063,13 +1063,13 @@ Landing troops embark and land faster instead of fighting better from the water.
 - Changed: Expeditionary Force, Marines and their unique replacements (Gerilya, Buganda Expeditionary Force) start with Amphibious I and II (embarking and disembarking cost only 1 movement) instead of Amphibious and Embarkation with Defense
 - Added: Marines upgrade to Mechanized Infantry and keep their promotions
 
-HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY, PROMOTION_GAIN_EXPERIENCE)
-------------------------------------------------------------------------
+HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
+---------------------------------------------
 Tags: promotions, units, air
-Helicopter Gunships get two more promotion choices.
+Helicopter Gunships get one more promotion choice.
 - Added: Sentry (helicopter): +2 Visibility Range (the normal Sentry gives +1)
-- Added: Quick Study: +50% experience
-- Added: both can be picked once any helicopter promotion line is at level 2, like Repair
+- Added: it can be picked once any helicopter promotion line is at level 2, like Repair
+- Dev: Quick Study (+50% experience) was a helicopter choice too until 2026-10-18 (user: removed)
 
 GREAT GENERAL AND CITADEL (UNIT_GREAT_GENERAL, IMPROVEMENT_CITADEL)
 --------------------------------------------------------------------
