@@ -14,7 +14,7 @@ N = "[NEWLINE]"
 P, F, G, C, S, R, H, TO, GP = ("[ICON_PRODUCTION] Production", "[ICON_FOOD] Food", "[ICON_GOLD] Gold", "[ICON_CULTURE] Culture",
                                "[ICON_RESEARCH] Science", "[ICON_PEACE] Faith", "[ICON_HAPPINESS_1] Happiness", "[ICON_TOURISM] Tourism",
                                "[ICON_GREAT_PEOPLE] Great People generation")
-NW = "[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR]"
+NW = None  # 2026-10-17 (user): no "* Unique National Wonder" line, the colored * in the name is enough
 
 
 def ub(first, like_name, like, extra, header=None):

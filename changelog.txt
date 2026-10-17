@@ -3007,6 +3007,7 @@ Every unique building's tooltip now says what it shares with the building it rep
 - Changed: all 94 unique building tooltips use one layout: "Replaces the X." with cost and availability differences, "Like the X:" with the shared effects, "In addition:" with its own effects (changed numbers as "instead of")
 - Fixed: tooltips that missed or misstated effects, among them Aksum's Stele (the National Epic's Great Work slots), Armenia's Darbas (+4 Culture), Byzantium's Hippodrome (+3 Culture, +3 Faith), Manchuria's Canton Factory (+35% Gold, 2 Merchant slots), Korea's Jongmyo Shrine (+4 Culture and +4 Faith for 7 turns when built), Lithuania's Grand Cathedral (any city, not only the Holy City), Oman's Minaa' and the Timurid Serai (not cheaper), Hittite Lion's Gate (Walls never had maintenance), Indonesia's Candi (no +2 Food of its own) and the Mughal Mansabdari Estate (+5 Defense with a garrison, was "+10")
 - Dev: tools/dev/ubdiff.py (unique vs. base building from the loaded DB) and tools/dev/ub_texts_2026_10_17.py (the texts; rerunnable); Hippodrome and Canton Factory get their own Help tags (they used the Amphitheater's and the Bank's)
+- Changed: unique national wonders no longer start with "* Unique National Wonder (only a specific civ may build one)"; the colored * in the name marks them
 
 MULTIPLAYER MENU (MAIN MENU)
 ----------------------------

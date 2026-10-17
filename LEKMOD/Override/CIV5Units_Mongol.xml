@@ -811,7 +811,7 @@
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MALI_NATIONAL_TREASURY_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the East India Company. Needs a Market only in this city (not in all cities).[NEWLINE][NEWLINE]Like the East India Company:[NEWLINE]+4 [ICON_GOLD] Gold and +10% [ICON_GOLD] Gold.[NEWLINE]1 more trade route.[NEWLINE]Trade routes other players make to this city give you +4 [ICON_GOLD] Gold and the route's owner +2 [ICON_GOLD] Gold.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5 [ICON_PEACE] Faith.[NEWLINE]The first unit or building bought in this city each turn with [ICON_GOLD] Gold or [ICON_PEACE] Faith costs 25% less.</Text>
+			<Text>Replaces the East India Company. Needs a Market only in this city (not in all cities).[NEWLINE][NEWLINE]Like the East India Company:[NEWLINE]+4 [ICON_GOLD] Gold and +10% [ICON_GOLD] Gold.[NEWLINE]1 more trade route.[NEWLINE]Trade routes other players make to this city give you +4 [ICON_GOLD] Gold and the route's owner +2 [ICON_GOLD] Gold.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5 [ICON_PEACE] Faith.[NEWLINE]The first unit or building bought in this city each turn with [ICON_GOLD] Gold or [ICON_PEACE] Faith costs 25% less.</Text>
 		</Row>
 		<!-- Mali Composite Bowman -->
 		<Row Tag="TXT_KEY_UNIT_MALI_COMPOSITE_BOWMAN">
@@ -8073,7 +8073,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>King Ezana's Stele[COLOR_CULTURE_STORED]*[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ASKUM_NATIONAL_EPIC_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the National Epic.[NEWLINE][NEWLINE]Like the National Epic:[NEWLINE][ICON_GREAT_WORK] 3 Great Work slots, 2 of them come filled.[NEWLINE]All 3 slots filled: +25% [ICON_GREAT_PEOPLE] Great People generation in this city.[NEWLINE]Must have built a Monument in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]Every Monument in the empire yields +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith and +1 [ICON_GOLD] Gold.</Text>
+			<Text>Replaces the National Epic.[NEWLINE][NEWLINE]Like the National Epic:[NEWLINE][ICON_GREAT_WORK] 3 Great Work slots, 2 of them come filled.[NEWLINE]All 3 slots filled: +25% [ICON_GREAT_PEOPLE] Great People generation in this city.[NEWLINE]Must have built a Monument in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]Every Monument in the empire yields +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith and +1 [ICON_GOLD] Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_AKSUM_HELP">
 			<Text>Replaces the Quarry for Aksum and is available at Mining. Improves Stone, Marble and Obsidian like a Quarry.[NEWLINE]Yields +2 [ICON_PEACE] Faith in addition to the Quarry's yields.</Text>
@@ -11726,7 +11726,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		</Replace>
 		<!-- Israel Text -->
 		<Replace Tag="TXT_KEY_ISRAEL_NATIONAL_COLLEGE_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the National College. Cannot be built with [ICON_PRODUCTION] Production: buy it with [ICON_GOLD] Gold or [ICON_PEACE] Faith. Its cost does not go up with more cities.[NEWLINE][NEWLINE]Like the National College:[NEWLINE]+3 [ICON_RESEARCH] Science, +1 [ICON_CULTURE] Culture and +50% [ICON_RESEARCH] Science.[NEWLINE]Must have built a Library in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whenever you expend a [ICON_GREAT_PEOPLE] Great Person: 50 [ICON_RESEARCH] Science.</Text>
+			<Text>Replaces the National College. Cannot be built with [ICON_PRODUCTION] Production: buy it with [ICON_GOLD] Gold or [ICON_PEACE] Faith. Its cost does not go up with more cities.[NEWLINE][NEWLINE]Like the National College:[NEWLINE]+3 [ICON_RESEARCH] Science, +1 [ICON_CULTURE] Culture and +50% [ICON_RESEARCH] Science.[NEWLINE]Must have built a Library in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whenever you expend a [ICON_GREAT_PEOPLE] Great Person: 50 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_ISRAEL_NATIONAL_COLLEGE">
 			<Text>King Solomon's Temple[COLOR_CULTURE_STORED]*[ENDCOLOR]</Text>
@@ -19096,7 +19096,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP"> 
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
+			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_PEDIA"> 
 			<Text>
@@ -19262,7 +19262,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_GRANDCANAL_HELP"> 
 			<Text>
-				[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]The cost goes up the more cities there are in the empire. Gain 2 additional trade route slots and +25% [ICON_GOLD] Gold in the city in which it is built. Trade routes other players make to a city with the Grand Canal will generate an extra 4 [ICON_GOLD] Gold for the city owner and the trade route owner gains an additional 2 [ICON_GOLD] Gold.
+				The cost goes up the more cities there are in the empire. Gain 2 additional trade route slots and +25% [ICON_GOLD] Gold in the city in which it is built. Trade routes other players make to a city with the Grand Canal will generate an extra 4 [ICON_GOLD] Gold for the city owner and the trade route owner gains an additional 2 [ICON_GOLD] Gold.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_GRANDSTAND"> 
@@ -19535,7 +19535,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MYSORE_HELP"> 
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Hermitage. Only the Mysore may build it. Available with Chivalry (instead of Architecture); needs Walls in all cities (instead of Opera Houses).[NEWLINE][NEWLINE]Like the Hermitage:[NEWLINE]+2 [ICON_CULTURE] Culture and +50% [ICON_CULTURE] Culture in this city.[NEWLINE][ICON_GREAT_WORK] 3 slots for Great Works of Art or Artifacts.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_RESEARCH] Science.[NEWLINE]Starts a [ICON_GOLDEN_AGE] Golden Age when built.</Text>
+			<Text>Replaces the Hermitage. Only the Mysore may build it. Available with Chivalry (instead of Architecture); needs Walls in all cities (instead of Opera Houses).[NEWLINE][NEWLINE]Like the Hermitage:[NEWLINE]+2 [ICON_CULTURE] Culture and +50% [ICON_CULTURE] Culture in this city.[NEWLINE][ICON_GREAT_WORK] 3 slots for Great Works of Art or Artifacts.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_RESEARCH] Science.[NEWLINE]Starts a [ICON_GOLDEN_AGE] Golden Age when built.</Text>
 		</Replace>
 		
 		<Replace Tag="TXT_KEY_BUILDING_HEROIC_EPIC"> 
@@ -21402,7 +21402,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_VILNIUS_HELP"> 
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Grand Temple. Costs less and can be built in any city (not only the Holy City).[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must have built a Temple in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
+			<Text>Replaces the Grand Temple. Costs less and can be built in any city (not only the Holy City).[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must have built a Temple in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_VOKHI"> 
 			<Text>
@@ -147365,7 +147365,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Gibborim is Israel's unique unit, replacing the Swordsman. It is cheap to train, and its kills yield [ICON_PEACE] Faith.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_ISRAEL_NATIONAL_COLLEGE_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the National College. Cannot be built with [ICON_PRODUCTION] Production: buy it with [ICON_GOLD] Gold or [ICON_PEACE] Faith. Its cost does not go up with more cities.[NEWLINE][NEWLINE]Like the National College:[NEWLINE]+3 [ICON_RESEARCH] Science, +1 [ICON_CULTURE] Culture and +50% [ICON_RESEARCH] Science.[NEWLINE]Must have built a Library in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whenever you expend a [ICON_GREAT_PEOPLE] Great Person: 50 [ICON_RESEARCH] Science.</Text>
+			<Text>Replaces the National College. Cannot be built with [ICON_PRODUCTION] Production: buy it with [ICON_GOLD] Gold or [ICON_PEACE] Faith. Its cost does not go up with more cities.[NEWLINE][NEWLINE]Like the National College:[NEWLINE]+3 [ICON_RESEARCH] Science, +1 [ICON_CULTURE] Culture and +50% [ICON_RESEARCH] Science.[NEWLINE]Must have built a Library in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whenever you expend a [ICON_GREAT_PEOPLE] Great Person: 50 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_CITY_STATE_BONUSES">
 			<Text>[ICON_HAPPINESS_1] Happiness, [ICON_FOOD] Food, [ICON_CULTURE] Culture, and [ICON_PEACE] Faith from friendly and allied [ICON_CITY_STATE] City-States increased by 50%.[NEWLINE]Units gifted by [ICON_CITY_STATE] City-States arrive 50% faster.</Text>
@@ -147553,7 +147553,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
+			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
 			<Text>Replaces the Ironclad. May only be trained by New Zealand. 50 Strength (vs. 45).[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].[NEWLINE]Needs 1 [ICON_RES_COAL] Coal.</Text>
@@ -147577,7 +147577,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ASKUM_NATIONAL_EPIC_HELP">
-			<Text>[COLOR_CULTURE_STORED]* Unique National Wonder (only a specific civ may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the National Epic.[NEWLINE][NEWLINE]Like the National Epic:[NEWLINE][ICON_GREAT_WORK] 3 Great Work slots, 2 of them come filled.[NEWLINE]All 3 slots filled: +25% [ICON_GREAT_PEOPLE] Great People generation in this city.[NEWLINE]Must have built a Monument in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]Every Monument in the empire yields +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith and +1 [ICON_GOLD] Gold.</Text>
+			<Text>Replaces the National Epic.[NEWLINE][NEWLINE]Like the National Epic:[NEWLINE][ICON_GREAT_WORK] 3 Great Work slots, 2 of them come filled.[NEWLINE]All 3 slots filled: +25% [ICON_GREAT_PEOPLE] Great People generation in this city.[NEWLINE]Must have built a Monument in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]Every Monument in the empire yields +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith and +1 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ENHANCED_CULTURE">
 			<Text>+1 [ICON_CULTURE] Culture in the [ICON_CAPITAL] Capital.[NEWLINE]+2 [ICON_CULTURE] Culture from [COLOR_POSITIVE_TEXT]World Wonders[ENDCOLOR].[NEWLINE]Great Works in the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]The Eiffel Tower yields twice as much for France.</Text>
