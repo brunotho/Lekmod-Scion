@@ -154,6 +154,78 @@ end
 --------------------------------------------------------------------------------
 -- Refresh unit actions
 --------------------------------------------------------------------------------
+-- LEKMOD: action order for the panel. Promotions go last, sorted so that lines available early (Drill, Shock...)
+-- sit on the left and later ones further right; all tiers of a line share their line's place. This keeps the
+-- numbers of the keyless promotions (1-9) as stable as possible while a unit levels up.
+local g_LekmodActionOrder = nil;
+local function LekmodPromotionLine( promoType )
+	local line = string.gsub( promoType, "_%d+$", "" );
+	line = string.gsub( line, "_[IV]+$", "" );
+	return line;
+end
+function LekmodGetActionOrder()
+	if g_LekmodActionOrder ~= nil then
+		return g_LekmodActionOrder;
+	end
+	local prereqs = {};
+	pcall( function()
+		for row in DB.Query( "SELECT PromotionType, PrerequisitePromotion FROM UnitPromotions_PromotionPrereqOrs" ) do
+			prereqs[row.PromotionType] = prereqs[row.PromotionType] or {};
+			table.insert( prereqs[row.PromotionType], row.PrerequisitePromotion );
+		end
+	end );
+	-- earliest availability: 0 without prerequisites, else 1 + the earliest prerequisite
+	local depth, visiting = {}, {};
+	local function Depth( promoType )
+		if depth[promoType] ~= nil then return depth[promoType]; end
+		if visiting[promoType] then return 0; end
+		visiting[promoType] = true;
+		local d = 0;
+		if prereqs[promoType] ~= nil then
+			d = nil;
+			for _, pre in ipairs( prereqs[promoType] ) do
+				local dp = Depth( pre ) + 1;
+				if d == nil or dp < d then d = dp; end
+			end
+		end
+		visiting[promoType] = nil;
+		depth[promoType] = d or 0;
+		return depth[promoType];
+	end
+	local lineDepth, lineID = {}, {};
+	for promo in GameInfo.UnitPromotions() do
+		local line = LekmodPromotionLine( promo.Type );
+		local d = Depth( promo.Type );
+		if lineDepth[line] == nil or d < lineDepth[line] then lineDepth[line] = d; end
+		if lineID[line] == nil or promo.ID < lineID[line] then lineID[line] = promo.ID; end
+	end
+	local order, promos = {}, {};
+	for iAction = 0, #GameInfoActions, 1 do
+		local action = GameInfoActions[iAction];
+		if action ~= nil and action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION and GameInfo.UnitPromotions[action.Type] ~= nil then
+			local promo = GameInfo.UnitPromotions[action.Type];
+			local line = LekmodPromotionLine( promo.Type );
+			local d = lineDepth[line] or 0;
+			if promo.Type == "PROMOTION_INSTA_HEAL" then
+				d = 1000; -- only shows while the unit is damaged: last, so it doesn't push the others around
+			end
+			table.insert( promos, { iAction = iAction, d = d, line = lineID[line] or promo.ID, id = promo.ID } );
+		else
+			table.insert( order, iAction );
+		end
+	end
+	table.sort( promos, function( a, b )
+		if a.d ~= b.d then return a.d < b.d; end
+		if a.line ~= b.line then return a.line < b.line; end
+		return a.id < b.id;
+	end );
+	for _, p in ipairs( promos ) do
+		table.insert( order, p.iAction );
+	end
+	g_LekmodActionOrder = order;
+	return order;
+end
+
 function UpdateUnitActions( unit )
 
     g_PrimaryIM:ResetInstances();
@@ -231,8 +303,8 @@ function UpdateUnitActions( unit )
     end
 
 
-    -- loop over all the game actions
-    for iAction = 0, #GameInfoActions, 1 
+    -- loop over all the game actions (LEKMOD: promotions in the order of LekmodGetActionOrder)
+    for _, iAction in ipairs( LekmodGetActionOrder() )
     do
         local action = GameInfoActions[iAction];
         
