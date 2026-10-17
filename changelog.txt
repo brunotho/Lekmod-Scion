@@ -231,7 +231,6 @@ CITY-STATE TRIBUTE RANGE (MINOR_CIV_TRIBUTE_RANGE)
 Tags: game mechanics
 When you demand tribute, only military units within 5 tiles of the city-state count, on every map size.
 - Changed: the tribute range is 5 tiles on all map sizes (it grew with the map width before)
-- Added: hovering a city-state's city outlines its tribute range in red
 - Dev: new define MINOR_CIV_TRIBUTE_RANGE (5), LEKMOD_TRIBUTE_RANGE_FIXED in CvMinorCivAI::CalculateBullyMetric
 
 
@@ -1199,6 +1198,7 @@ Tags: units
 The Festival grows with the eras.
 - Changed: the Festival yields 1 Culture and 1 Gold per era of its owner (Ancient Era 1, Classical Era 2, Renaissance Era 4...) instead of 4 Culture
 - DLL: Improvement_YieldPerOwnerEra; plot yields refresh when a team enters a new era (LEKMOD_IMPROVEMENT_YIELD_PER_OWNER_ERA)
+- Removed: the Festival's +2 Culture with Radio
 
 NAVAL REWORK
 ------------
@@ -1602,14 +1602,12 @@ Tags: ui
 - DLL: Lua Player:LekmodGetTradeRangePreview(unit) (LEKMOD_CANAL_RULES); Colors row COLOR_LEKMOD_INACTIVE
 - Changed: the route tooltip names the sender and the receiver block, says that each side gets its own share, splits the base into route and era parts, explains the city Gold (5% of each city's Gold) and the resource bonus (resources only one of the two cities has), names the coastal city and the river city behind those bonuses, and grays out headings whose entries are all inactive
 
-CULTURAL CITY-STATES: GREAT WORK ON CAPTURE (MINOR_CIV_TRAIT_CULTURED)
----------------------------------------------------------------------
+CULTURAL CITY-STATES: ONE GREAT WORK (MINOR_CIV_TRAIT_CULTURED)
+---------------------------------------------------------------
 Tags: game mechanics
-- Added: capturing a Cultured City-State in the Medieval Era or later gives you 1 Great Work (if you have a free slot), the first time you take the city
-- Added: the City-State tooltip, the City-State screen (Great Work icon next to its type) and its Civilopedia page say so
-- DLL: LEKMOD_CULTURED_CS_CAPTURE_GREAT_WORK (reuses DoGreatWorkFromCityConquer)
-- Added: from the Medieval Era you can buy that Great Work in the City-State screen for 200 Gold per era of yours (Medieval: 600); each Cultured City-State sells it once, and after that capturing it gives no Great Work
-- DLL: CvMinorCivAI::LekmodGetGreatWorkBuyState / LekmodDoBuyGreatWork (saved m_iLekmodGreatWorkSold, appended to the City-State save data), network code -25, Lua Player:LekmodGetGreatWorkBuyState(iMajor) / LekmodGetGreatWorkPrice(iMajor); define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200
+- Added: each Cultured City-State owns 1 Great Work; from the Medieval Era you can buy it in the City-State screen for 200 Gold per era of yours (Medieval: 600) or get it by capturing the City-State (with a free Great Work slot); once it is taken either way it is gone
+- Added: the City-State tooltip, the City-State screen (a Great Work symbol next to its type, shown while it still has the work) and its Civilopedia page explain it
+- DLL: LEKMOD_CULTURED_CS_CAPTURE_GREAT_WORK (reuses DoGreatWorkFromCityConquer); CvMinorCivAI::LekmodGetGreatWorkBuyState / LekmodDoBuyGreatWork / LekmodSetGreatWorkSold (saved m_iLekmodGreatWorkSold, appended to the City-State save data), network code -25, Lua Player:LekmodGetGreatWorkBuyState(iMajor) (4 = gone) / LekmodGetGreatWorkPrice(iMajor); define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200
 
 TRADITION (POLICY_BRANCH_TRADITION)
 ----------------------------------
@@ -2939,11 +2937,6 @@ Tags: civs, ui
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
-CITY HEALING (FLOATING TEXT)
-----------------------------
-Tags: ui
-- Added: when a city heals at the start of a turn, a green "+N HP" floats over it (for every player who can see the city)
-- DLL: CvCity::doTurn (LEKMOD_POST_CHANGES)
 
 FORTIFY BUTTON (MISSION_FORTIFY)
 -------------------------------
@@ -2957,7 +2950,7 @@ Tags: ui
 - Fixed: long ability texts no longer run into the next civilization's box and the hover highlight matches every box: the text is shortened to fit (with "..."), and the full text plus the start bias show in the tooltip
 - Dev: replaces the 2026-10-10 row growth (the highlight in the base XML has no ID, so it could not grow with the row)
 - Added: every unique unit, building and improvement of a civilization is shown (up to 5; was 2), including buildings only that civilization has (Dojo, Ziggurat, Convict Penitentiary...)
-- Dev: Lekmod's own SelectCivilization.xml (5 slots, standard UI); UniqueBonuses lists Buildings.RequiredCivilization too; the ability text narrows to leave room for the icons
+- Dev: Lekmod's own SelectCivilization.xml (5 slots, standard UI); UniqueBonuses lists Buildings.RequiredCivilization too; the icons sit at the right edge and the ability text has its own column that always leaves room for 5 icons
 
 VIETNAM (CIVILIZATION_VIETNAM)
 ------------------------------
@@ -2971,15 +2964,16 @@ Tags: civs, units, buildings, art
 - Changed: start bias: Jungle only (was Jungle and Wetlands)
 - DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303
 
-GREAT WORKS SCREEN: MOVE TO OLDEST CITIES
-----------------------------------------
-Tags: ui
-- Added: a button on the Your Culture tab moves every Great Work into a free slot in an older city (your own cities by founding, then captured cities by when you took them); full wonders in your own cities keep their works, full wonders in captured cities are emptied
-- Dev: Lua only (CultureOverview: LekmodPlanMovesToOldest plans on a copy, then sends Network.SendMoveGreatWorks per move)
 
 GAME OPTIONS: PROMOTION HOTKEYS AND CHAT SOUND
 ---------------------------------------------
 Tags: ui
 - Added: option "Show promotion hotkeys on the buttons" (on by default): each promotion button shows the key that picks it, following your own hotkey settings
-- Added: option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
+- Added: audio option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
+
+MULTIPLAYER LOBBY: CIVILIZATION INFO (STAGING ROOM)
+---------------------------------------------------
+Tags: ui
+- Changed: hovering a civilization in the lobby's civilization list shows its ability and start bias in a panel at the left edge of the screen on a dark background (was a tooltip on top of the lobby)
+- Dev: StagingRoom.lua/.xml (standard UI): LekmodCivInfoPanel, shown on mouse enter of a pull-down entry

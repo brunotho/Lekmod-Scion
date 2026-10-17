@@ -1456,5 +1456,4 @@ if( ContextPtr:IsHotLoad() ) then
 end
 	
 
--- LEKMOD: tribute range outline when hovering a city-state's city
-Events.SerialEventMouseOverHex.Add( LekmodTributeRangeOnMouseOverHex );
+

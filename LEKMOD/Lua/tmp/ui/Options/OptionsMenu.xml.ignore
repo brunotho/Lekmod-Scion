@@ -134,8 +134,7 @@
         <CheckBox String="TXT_KEY_OPSCREEN_QUICK_SELECTION_ADVANCE" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="QuickSelectionAdvCheckbox" ToolTip="TXT_KEY_OPSCREEN_QUICK_SELECTION_ADVANCE_TT"  />
         <!-- LEKMOD -->
         <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT"  />
-      </Stack>
+</Stack>
     </Container>
 
     <!-- Interface Options -->
@@ -289,6 +288,8 @@
 
         <Label Anchor="L,C" Offset="0,20" ID="SpeechVolumeSliderValue" />
         <Slider Length="500" Style="Slider" ID="SpeechVolumeSlider" WheelSteps="1" />
+        <!-- LEKMOD -->
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="C,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
       </Stack>
 
     </Container>

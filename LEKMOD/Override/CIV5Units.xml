@@ -141075,12 +141075,6 @@
 			<Yield>3</Yield> 
 		</Row>
 		<Row> 
-			<ImprovementType>IMPROVEMENT_CONCERT</ImprovementType> 
-			<TechType>TECH_RADIO</TechType> 
-			<YieldType>YIELD_CULTURE</YieldType> 
-			<Yield>2</Yield> 
-		</Row>
-		<Row> 
 			<ImprovementType>IMPROVEMENT_MOAI</ImprovementType> 
 			<TechType>TECH_FLIGHT</TechType> 
 			<YieldType>YIELD_GOLD</YieldType> 

@@ -2683,6 +2683,13 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bGift, bool bP
 #endif
 			GetCurrentEra() >= (EraTypes)GC.getInfoTypeForString("ERA_MEDIEVAL", true))
 		{
+#ifdef LEKMOD_POST_CHANGES
+			// the City-State owns one great work: taken by capture (with a free slot) or bought, then it is gone
+			if (GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_ART_ARTIFACT()) > 0
+				|| GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_LITERATURE()) > 0
+				|| GetCulture()->GetNumAvailableGreatWorkSlots(CvTypes::getGREAT_WORK_SLOT_MUSIC()) > 0)
+				GET_PLAYER(pOldCity->getOwner()).GetMinorCivAI()->LekmodSetGreatWorkSold();
+#endif
 			DoGreatWorkFromCityConquer(pOldCity);
 		}
 #endif

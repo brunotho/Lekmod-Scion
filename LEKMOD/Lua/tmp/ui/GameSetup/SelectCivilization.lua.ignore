@@ -164,9 +164,15 @@ function AddCivilizationEntry(traitsQuery, populateUniqueBonuses, civ, leaderTyp
 	
 	-- LEKMOD: up to 5 unique items plus the civ symbol sit at the right edge (64 px icons, -8 padding, 4 px offset);
 	-- the ability text ends 8 px before the leftmost one (row width 902, text starts at 116, base wrap width 565)
-	local iUniques = #populateUniqueBonuses( controlTable, civ.Type);
-	local iIconsLeft = 902 - 4 - ( iUniques + 1 ) * 56 - 8;
-	controlTable.BonusDescription:SetWrapWidth( math.min( 565, iIconsLeft - 8 - 116 ) );
+	populateUniqueBonuses( controlTable, civ.Type);
+	-- hidden slots take no room once the stack is recalculated, so the icons stay at the right edge
+	if controlTable.LekmodUniqueStack ~= nil then
+		controlTable.LekmodUniqueStack:CalculateSize();
+		controlTable.LekmodUniqueStack:ReprocessAnchoring();
+	end
+	-- the text has its own column: it always ends before the room the most icons (5 + civ symbol) can take
+	local iIconsLeft = 902 - 4 - 6 * 56 - 8;
+	controlTable.BonusDescription:SetWrapWidth( iIconsLeft - 8 - 116 );
 	for row in traitsQuery(leaderType) do
 		-- LEKMOD: the row keeps its size (the hover highlight is fixed); the ability text is shortened to fit,
 		-- and the full text plus the start bias are in the tooltip (POST 2026-10-16)

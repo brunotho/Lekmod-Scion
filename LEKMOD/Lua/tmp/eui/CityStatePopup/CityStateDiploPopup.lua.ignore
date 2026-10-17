@@ -271,7 +271,7 @@ function OnDisplay()
 
 	strTraitText = "[COLOR_POSITIVE_TEXT]" .. strTraitText .. "[ENDCOLOR]"
 	-- LEKMOD: cultural city-states give a great work when captured (explained in the trait tooltip)
-	if Players[minorPlayerID]:GetMinorCivTrait() == MinorCivTraitTypes.MINOR_CIV_TRAIT_CULTURED then
+	if Players[minorPlayerID]:GetMinorCivTrait() == MinorCivTraitTypes.MINOR_CIV_TRAIT_CULTURED and (Players[minorPlayerID].LekmodGetGreatWorkBuyState == nil or Players[minorPlayerID]:LekmodGetGreatWorkBuyState(Game.GetActivePlayer()) ~= 4) then
 		strTraitText = strTraitText .. " [ICON_GREAT_WORK]"
 	end
 

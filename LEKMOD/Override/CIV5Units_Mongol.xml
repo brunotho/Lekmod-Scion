@@ -23676,7 +23676,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_CULTURED_HEADING3_BODY"> 
-			<Text>A Cultured City-State gives [ICON_CULTURE] Culture per turn to its Friends and its Ally.[NEWLINE]The amount depends on your current era.[NEWLINE][NEWLINE]As Allies:[NEWLINE]Ancient: 4 (Friends: 2)[NEWLINE]Classical: 8 (Friends: 4)[NEWLINE]Medieval: 12 (Friends: 6)[NEWLINE]Renaissance: 16 (Friends: 8)[NEWLINE]Industrial: 20 (Friends: 10)[NEWLINE]Modern: 24 (Friends: 12)[NEWLINE]Atomic: 28 (Friends: 14)[NEWLINE]Information: 32 (Friends: 16)[NEWLINE][NEWLINE]Capturing a Cultured City-State in the Medieval Era or later gives you 1 [ICON_GREAT_WORK] Great Work, if you have a free Great Work slot. This happens only the first time you take the city.[NEWLINE][NEWLINE]From the Medieval Era you can also buy that Great Work in the City-State screen: 200 [ICON_GOLD] Gold per era of yours (Medieval: 600). Each Cultured City-State sells it only once; afterwards capturing it gives no Great Work.</Text>
+			<Text>A Cultured City-State gives [ICON_CULTURE] Culture per turn to its Friends and its Ally.[NEWLINE]The amount depends on your current era.[NEWLINE][NEWLINE]As Allies:[NEWLINE]Ancient: 4 (Friends: 2)[NEWLINE]Classical: 8 (Friends: 4)[NEWLINE]Medieval: 12 (Friends: 6)[NEWLINE]Renaissance: 16 (Friends: 8)[NEWLINE]Industrial: 20 (Friends: 10)[NEWLINE]Modern: 24 (Friends: 12)[NEWLINE]Atomic: 28 (Friends: 14)[NEWLINE]Information: 32 (Friends: 16)[NEWLINE][NEWLINE]Each Cultured City-State owns 1 [ICON_GREAT_WORK] Great Work. From the Medieval Era you can get it in one of two ways:[NEWLINE]Buy it in the City-State screen for 200 [ICON_GOLD] Gold per era of yours (Medieval: 600).[NEWLINE]Capture the City-State while you have a free Great Work slot.[NEWLINE][NEWLINE]Once it is taken either way, it is gone. Its symbol next to the City-State's type disappears.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITYSTATE_CULTURED_HEADING3_TITLE"> 
 			<Text>
@@ -121083,7 +121083,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[NEWLINE][ICON_BULLET]Settlers outside the capital: {1_Num}%</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_CULTURED_CAPTURE_GREAT_WORK">
-			<Text>[ICON_GREAT_WORK] Capturing this City-State in the Medieval Era or later gives you 1 Great Work (if you have a free Great Work slot).</Text>
+			<Text>[ICON_GREAT_WORK] This City-State owns 1 Great Work.[NEWLINE]From the Medieval Era you can buy it in the City-State screen, or get it by capturing the City-State (with a free Great Work slot).[NEWLINE]Once it is taken either way, it is gone.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILD_BLOCKED_CANAL">
 			<Text>A Canal needs flat land in your territory, next to water, connecting two separate bodies of water (two seas, or a sea and a lake). A city next to the tile counts as part of the water it touches.</Text>
@@ -147958,7 +147958,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Buy their Great Work ({1_Num} [ICON_GOLD] Gold)</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK_TT">
-			<Text>This City-State sells its [ICON_GREAT_WORK] Great Work once.[NEWLINE]It goes into your free Great Work slot closest to the City-State.[NEWLINE][NEWLINE]Price: {1_Num} [ICON_GOLD] Gold (200 per era).[NEWLINE]Afterwards, capturing the City-State gives no Great Work.</Text>
+			<Text>This City-State owns 1 [ICON_GREAT_WORK] Great Work.[NEWLINE]Buying it puts it into your free Great Work slot closest to the City-State.[NEWLINE][NEWLINE]Price: {1_Num} [ICON_GOLD] Gold (200 per era).[NEWLINE]Once it is bought or captured, it is gone.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK_NO_1">
 			<Text>Available from the Medieval Era.</Text>
@@ -147968,12 +147968,6 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_BUY_GREAT_WORK_NO_3">
 			<Text>Not enough Gold.</Text>
-		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_GW_MOVE_TO_OLDEST">
-			<Text>Move Great Works to the oldest cities</Text>
-		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_GW_MOVE_TO_OLDEST_TT">
-			<Text>Moves every Great Work into a free slot in an older city, as far up as possible.[NEWLINE]Order: your own cities by founding, then captured cities by the turn you took them.[NEWLINE][NEWLINE]A wonder in one of your own cities whose slots are all filled keeps its Great Works.[NEWLINE]Full wonders in captured cities are emptied like any other building.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS">
 			<Text>Show promotion hotkeys on the buttons</Text>

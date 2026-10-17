@@ -2045,7 +2045,22 @@ function PopulateCivPulldown( pullDown, playerID )
 				end
 			end
 		end
-		entry.Button:SetToolTipString(tooltip or "");
+		-- LEKMOD: the civ info shows in a panel at the left screen edge while the mouse is over the entry
+		entry.Button:SetToolTipString("");
+		if Controls.LekmodCivInfoPanel ~= nil then
+			entry.Button:RegisterCallback(Mouse.eMouseEnter, function()
+				Controls.LekmodCivInfoTitle:SetText(title or "");
+				Controls.LekmodCivInfoText:SetText(tooltip or "");
+				Controls.LekmodCivInfoStack:CalculateSize();
+				Controls.LekmodCivInfoPanel:SetSizeY(Controls.LekmodCivInfoStack:GetSizeY() + 30);
+				Controls.LekmodCivInfoPanel:SetHide(false);
+			end);
+			entry.Button:RegisterCallback(Mouse.eMouseExit, function()
+				Controls.LekmodCivInfoPanel:SetHide(true);
+			end);
+		else
+			entry.Button:SetToolTipString(tooltip or "");
+		end
 		local bw = entry.Button:GetSizeVal() - 50;
 		if entry.CivName ~= nil and entry.CivName.SetTruncateWidth ~= nil then
 			entry.CivName:SetTruncateWidth(bw);

@@ -2603,6 +2603,10 @@ bool CvMinorCivAI::LekmodIsGreatWorkSold() const
 {
 	return m_iLekmodGreatWorkSold != 0;
 }
+void CvMinorCivAI::LekmodSetGreatWorkSold()
+{
+	m_iLekmodGreatWorkSold = 1;
+}
 /// A City-State may build one improvement type of its kind: rolled once (LEKMOD_CS_IMPROVEMENT_CHANCE %), then from the row's era
 /// it places one on a fitting tile inside its borders with LEKMOD_CS_IMPROVEMENT_TURN_CHANCE % each turn, up to the row's maximum
 void CvMinorCivAI::LekmodDoBuildImprovements()

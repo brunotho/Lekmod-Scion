@@ -428,8 +428,8 @@ function GetCityStateStatusToolTip(iMajor, iMinor, bFullInfo)
 	end
 
 	-- LEKMOD: capturing a cultural city-state from the Medieval Era on gives a great work
-	if (pMinor ~= nil and pMinor:GetMinorCivTrait() == MinorCivTraitTypes.MINOR_CIV_TRAIT_CULTURED) then
-		strStatusTT = strStatusTT .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_CULTURED_CAPTURE_GREAT_WORK");
+	if (pMinor ~= nil and pMinor:GetMinorCivTrait() == MinorCivTraitTypes.MINOR_CIV_TRAIT_CULTURED and (pMinor.LekmodGetGreatWorkBuyState == nil or pMinor:LekmodGetGreatWorkBuyState(Game.GetActivePlayer()) ~= 4)) then
+		strStatusTT = strStatusTT.. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_CULTURED_CAPTURE_GREAT_WORK");
 	end
 
 	return strStatusTT;
@@ -752,7 +752,10 @@ function GetCityStateTraitToolTip(iMinor)
 	if (pMinor ~= nil) then
 		local iTrait = pMinor:GetMinorCivTrait();
 		if (iTrait == MinorCivTraitTypes.MINOR_CIV_TRAIT_CULTURED) then
-			strTraitTT = Locale.ConvertTextKey("TXT_KEY_CITY_STATE_CULTURED_TT") .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_CULTURED_CAPTURE_GREAT_WORK");
+			strTraitTT = Locale.ConvertTextKey("TXT_KEY_CITY_STATE_CULTURED_TT");
+			if (pMinor.LekmodGetGreatWorkBuyState == nil or pMinor:LekmodGetGreatWorkBuyState(Game.GetActivePlayer()) ~= 4) then
+				strTraitTT = strTraitTT .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_CULTURED_CAPTURE_GREAT_WORK");
+			end
 		elseif (iTrait == MinorCivTraitTypes.MINOR_CIV_TRAIT_MILITARISTIC) then
 			strTraitTT = Locale.ConvertTextKey("TXT_KEY_CITY_STATE_MILITARISTIC_NO_UU_TT");
 			if (pMinor:IsMinorCivHasUniqueUnit()) then
@@ -846,47 +849,3 @@ function GetCityStateWarPreviewToolTip(iMajor, iMinor)
 end
 -- LEKMOD_CS_WAR_DECLARATION_PENALTIES end
 
--- LEKMOD: tribute range outline (military units within this range count when demanding tribute)
-local LEKMOD_TRIBUTE_RANGE_STYLE = "FireRangeBorder";
-function LekmodShowTributeRange( iMinor )
-	Events.ClearHexHighlightStyle( LEKMOD_TRIBUTE_RANGE_STYLE );
-	local pMinor = Players[iMinor];
-	if pMinor == nil or not pMinor:IsMinorCiv() then return; end
-	local pCity = pMinor:GetCapitalCity();
-	if pCity == nil then return; end
-	local iRange = GameDefines["MINOR_CIV_TRIBUTE_RANGE"] or 5;
-	local iX, iY = pCity:GetX(), pCity:GetY();
-	for iDX = -iRange, iRange do
-		for iDY = -iRange, iRange do
-			local pPlot = Map.GetPlotXY( iX, iY, iDX, iDY );
-			if pPlot ~= nil and Map.PlotDistance( iX, iY, pPlot:GetX(), pPlot:GetY() ) <= iRange then
-				Events.SerialEventHexHighlight( ToHexFromGrid( Vector2( pPlot:GetX(), pPlot:GetY() ) ), true, Vector4( 0.7, 0, 0, 1 ), LEKMOD_TRIBUTE_RANGE_STYLE );
-			end
-		end
-	end
-end
-
-function LekmodClearTributeRange()
-	Events.ClearHexHighlightStyle( LEKMOD_TRIBUTE_RANGE_STYLE );
-end
-
--- LEKMOD: show the tribute range while the mouse is over a city-state's city (registered by the city banner managers)
-local g_LekmodTributeRangeMinor = -1;
-function LekmodTributeRangeOnMouseOverHex( hexX, hexY )
-	local iMinor = -1;
-	if UI.GetInterfaceMode() == InterfaceModeTypes.INTERFACEMODE_SELECTION then
-		local gridX, gridY = ToGridFromHex( hexX, hexY );
-		local pPlot = Map.GetPlot( gridX, gridY );
-		local pCity = pPlot and pPlot:GetPlotCity();
-		if pCity ~= nil and pPlot:IsRevealed( Game.GetActiveTeam(), false ) and Players[ pCity:GetOwner() ]:IsMinorCiv() then
-			iMinor = pCity:GetOwner();
-		end
-	end
-	if iMinor == g_LekmodTributeRangeMinor then return; end
-	g_LekmodTributeRangeMinor = iMinor;
-	if iMinor >= 0 then
-		LekmodShowTributeRange( iMinor );
-	else
-		LekmodClearTributeRange();
-	end
-end

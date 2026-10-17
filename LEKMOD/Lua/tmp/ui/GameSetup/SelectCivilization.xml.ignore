@@ -25,7 +25,7 @@
       </Stack>
 
       <!-- Civ specific bonuses -->
-      <Stack Anchor="R,C"  Size="128,128" StackGrowth="Right" Padding="-8" Offset="4,12" >
+      <Stack Anchor="R,C"  Size="128,128" StackGrowth="Right" Padding="-8" Offset="4,12" ID="LekmodUniqueStack" >
 
         <Image Anchor="L,C" Texture="IconFrame64.dds" Size="64.64" Hidden="0"  ID="BF1">
           <Image Anchor="C,C" Size="64,64"   Texture="WonderAtlas512.dds" ID="B1"   />

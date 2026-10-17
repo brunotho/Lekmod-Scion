@@ -201,6 +201,7 @@ public:
 	int LekmodGetGreatWorkBuyState(PlayerTypes eMajor) const;
 	void LekmodDoBuyGreatWork(PlayerTypes eMajor);
 	bool LekmodIsGreatWorkSold() const;
+	void LekmodSetGreatWorkSold();
 #endif
 
 	bool IsHasUniqueUnit() const;

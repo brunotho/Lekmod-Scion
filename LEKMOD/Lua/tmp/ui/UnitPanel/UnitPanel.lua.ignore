@@ -262,7 +262,12 @@ function UpdateUnitActions( unit )
 				-- LEKMOD: the promotion's current hotkey on the button (option, default on)
 				if instance.LekmodHotKeyLabel ~= nil then
 					local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
-					instance.LekmodHotKeyLabel:SetText( ( bShowKeys and action.HotKey and action.HotKey ~= "" ) and tostring( action.HotKey ) or "" );
+					local strKey = action.HotKey;
+					if strKey == nil or strKey == "" then
+						local promotion = GameInfo.UnitPromotions[action.CommandData];
+						strKey = promotion and promotion.HotKey and promotion.HotKey:gsub( "^KB_", "" ) or "";
+					end
+					instance.LekmodHotKeyLabel:SetText( bShowKeys and tostring( strKey ) or "" );
 				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
 				instance.UnitActionButton:SetOffsetVal( (numBuildActions % numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / numberOfButtonsPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
