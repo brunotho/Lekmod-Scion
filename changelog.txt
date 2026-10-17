@@ -13,11 +13,20 @@ Format (also the source for player patch notes on the website):
   game mechanics, world congress, ui, art, bugfix.
 
 
-## UNRELEASED (based on LEKMOD v35.4)
+## UNRELEASED (Lekmod Rosebranch 1.0.0, based on LEKMOD v35.4)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
 - Dev: the April promotions were only defined in Art/Promotions/LekmodPromotions.xml, which the game never loads; they now live in the Override files.
 
+
+LEKMOD ROSEBRANCH (NAME)
+------------------------
+Tags: ui
+This version of Lekmod has its own name: Lekmod Rosebranch, numbered from 1.0.0. Its map is Lekmap Rosebranch.
+- Changed: the main menu, lobby titles and the default game name say "LEKMOD ROSEBRANCH v1.0.0"
+- Changed: the update check in the main menu reads Lekmod Rosebranch's own version list
+- Changed: Multiplayer > New Game picks the Lekmap Rosebranch Fractal Pangaea map (file LekmapRosebranch_FractalPangaea.lua); older Lekmap versions are not picked
+- Dev: Lekmod_version.lua LOCAL_VERSION v1.0.0; version list LekmodInstaller/github_setup/rosebranch_versions.json on branch dev of brunotho/Lekmod-Rosebranch (upstream's versions.json untouched); GitHub repos renamed to Lekmod-Rosebranch and lekmap-rosebranch
 
 ALTITUDE TRAINING (PROMOTION_ALTITUDE_TRAINING)
 ------------------------------------------------
@@ -3013,7 +3022,7 @@ MULTIPLAYER MENU (MAIN MENU)
 ----------------------------
 Tags: ui
 "Multiplayer" in the main menu goes straight to New Game and Load Game.
-- Changed: the Multiplayer menu shows only New Game (opens an online lobby at once, with the Tournament settings, quick speed and the Lekmap map) and Load Game (pick a save, then the lobby opens)
+- Changed: the Multiplayer menu shows only New Game (opens an online lobby at once, with the Tournament settings, quick speed and the Lekmap Rosebranch map) and Load Game (pick a save, then the lobby opens)
 - Added: Main Menu > Other > "Multiplayer: Other Modes" opens the full multiplayer choices as before (online games with the full setup screen and the list of public games, local network, Hot Seat, Pitboss)
-- Note: the map is the main Lekmap script found by its file name: LekmapPangaeaFractal.lua (the Lekmap repository) if installed, otherwise the highest LekmapPangaeaFractalvX.Y.lua; without either the game's default map stays
+- Note: the map is Lekmap Rosebranch's Fractal Pangaea, found by its file name (LekmapRosebranch_FractalPangaea.lua); without it the game's default map stays
 - Dev: Lua/tmp/ui/FrontEnd/MultiplayerSelect.lua/.xml (copies of the base files, both UIs via ui_check.bat): LekmodShowSimpleMenu, LekmodFindDefaultMapScript, LekmodNewGameClick (Matchmaking.HostInternetGame like the setup screen's Host button), LoadMenu child context LekmodLoadGameScreen (DeferLoad, so it starts as a network game); Lekmod's own OtherMenu.lua/.xml (both UIs) fires LuaEvents.LekmodOpenMultiplayerOtherModes

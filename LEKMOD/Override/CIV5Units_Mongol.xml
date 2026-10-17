@@ -12,21 +12,21 @@
 	<Language_en_US>
 		<!-- Version Number, Leave at top -->
 		<Row Tag="TXT_KEY_LEKMOD_VERSION">
-			<Text>LEKMOD v35.4.003</Text>
+			<Text>LEKMOD ROSEBRANCH v1.0.0</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_MULTIPLAYER_STAGING_ROOM">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD v35.4[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD ROSEBRANCH v1.0.0[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_AD_SETUP_ADVANCED_OPTIONS">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD v35.4[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD ROSEBRANCH v1.0.0[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GAME_SELECTION_SCREEN">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD v35.4[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD ROSEBRANCH v1.0.0[ENDCOLOR]
 			</Text>
 		</Replace>
 		<!-- END VERSION -->
@@ -88,7 +88,7 @@
   			<Text>GITHUB</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_UNREACHABLE">
-			<Text>Running Lekmod {1_Version} - [COLOR_WARNING_TEXT]Cannot reach update server[ENDCOLOR]</Text>
+			<Text>Running Lekmod Rosebranch {1_Version} - [COLOR_WARNING_TEXT]Cannot reach update server[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_TT_UNREACHABLE">
 			<Text>Could not reach the online version list. Check your internet connection.</Text>
@@ -103,16 +103,16 @@
   			<Text>Open the Lekmod GitHub repository</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_CHECKING">
-  			<Text>Running Lekmod {1_Version} - [COLOR_YELLOW]Checking for updates...[ENDCOLOR]</Text>
+  			<Text>Running Lekmod Rosebranch {1_Version} - [COLOR_YELLOW]Checking for updates...[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_UPTODATE">
-  			<Text>Running Lekmod {1_Version} - [COLOR_POSITIVE_TEXT]Up to date![ENDCOLOR]</Text>
+  			<Text>Running Lekmod Rosebranch {1_Version} - [COLOR_POSITIVE_TEXT]Up to date![ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_OUTDATED">
-  			<Text>Running Lekmod {1_Version} - [COLOR_WARNING_TEXT] Newer version detected ({2_Latest})[ENDCOLOR] [COLOR_CYAN](CLICK TO DOWNLOAD)[ENDCOLOR]</Text>
+  			<Text>Running Lekmod Rosebranch {1_Version} - [COLOR_WARNING_TEXT] Newer version detected ({2_Latest})[ENDCOLOR] [COLOR_CYAN](CLICK TO DOWNLOAD)[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MENU_VERSION_UNKNOWN">
-  			<Text>Running Lekmod {1_Version}</Text>
+  			<Text>Running Lekmod Rosebranch {1_Version}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MP_VERSION_MISMATCH_KICK">
   			<Text>{1_Name} was removed: Lekmod version mismatch (expected {2_Version}).</Text>
@@ -101307,7 +101307,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>New Game</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MP_NEW_GAME_TT">
-			<Text>Opens a new online lobby with the Lekmod settings: Tournament mode, quick speed and the Lekmap map.[NEWLINE]You can still change the settings in the lobby.</Text>
+			<Text>Opens a new online lobby with the Lekmod settings: Tournament mode, quick speed and the Lekmap Rosebranch map.[NEWLINE]You can still change the settings in the lobby.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MP_LOAD_GAME">
 			<Text>Load Game</Text>

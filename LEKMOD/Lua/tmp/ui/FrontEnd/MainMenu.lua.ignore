@@ -41,7 +41,7 @@ local function ApplyLekmodVersionInfo(info)
 	if info ~= nil and info.Success and info.IsNewer then
 		local label = Locale.ConvertTextKey("TXT_KEY_LEKMOD_MENU_VERSION_OUTDATED", localVersion, info.Latest);
 		if label == "TXT_KEY_LEKMOD_MENU_VERSION_OUTDATED" then
-			label = "Running Lekmod " .. localVersion .. " - Newer version detected (" .. tostring(info.Latest) .. ") [CLICK TO DOWNLOAD]";
+			label = "Running Lekmod Rosebranch " .. localVersion .. " - Newer version detected (" .. tostring(info.Latest) .. ") [CLICK TO DOWNLOAD]";
 		end
 		Controls.LekmodVersionLabel:SetText(label);
 		local tip = LookupOrFallback("TXT_KEY_LEKMOD_MENU_VERSION_TT_OUTDATED", "A newer Lekmod build is available. Click to download.");
@@ -49,7 +49,7 @@ local function ApplyLekmodVersionInfo(info)
 	elseif info ~= nil and info.Success then
 		local label = Locale.ConvertTextKey("TXT_KEY_LEKMOD_MENU_VERSION_UPTODATE", localVersion);
 		if label == "TXT_KEY_LEKMOD_MENU_VERSION_UPTODATE" then
-			label = "Running Lekmod " .. localVersion .. " - Up to date!";
+			label = "Running Lekmod Rosebranch " .. localVersion .. " - Up to date!";
 		end
 		Controls.LekmodVersionLabel:SetText(label);
 		local tip = LookupOrFallback("TXT_KEY_LEKMOD_MENU_VERSION_TT_UPTODATE", "Your Lekmod install matches the latest installer version.");
@@ -59,7 +59,7 @@ local function ApplyLekmodVersionInfo(info)
 		local err = tostring((info and info.Error) or "unreachable");
 		local label = Locale.ConvertTextKey("TXT_KEY_LEKMOD_MENU_VERSION_UNREACHABLE", localVersion);
 		if label == "TXT_KEY_LEKMOD_MENU_VERSION_UNREACHABLE" then
-			label = "Running Lekmod " .. localVersion .. " - Cannot reach update server";
+			label = "Running Lekmod Rosebranch " .. localVersion .. " - Cannot reach update server";
 		end
 		Controls.LekmodVersionLabel:SetText(label);
 		local tip = LookupOrFallback("TXT_KEY_LEKMOD_MENU_VERSION_TT_UNREACHABLE", "Could not reach the online version list. Check your internet connection.");
@@ -140,7 +140,7 @@ local function UpdateLekmodVersionLabel()
 	local localVersion = LekmodVersion.GetLocal() or "unknown";
 	Controls.LekmodVersionLabel:SetText(Locale.ConvertTextKey("TXT_KEY_LEKMOD_MENU_VERSION_CHECKING", localVersion));
 	if Controls.LekmodVersionLabel:GetText() == "TXT_KEY_LEKMOD_MENU_VERSION_CHECKING" then
-		Controls.LekmodVersionLabel:SetText("Running Lekmod " .. localVersion .. " - Checking for updates...");
+		Controls.LekmodVersionLabel:SetText("Running Lekmod Rosebranch " .. localVersion .. " - Checking for updates...");
 	end
 
 	g_LekmodVersionCheckActive = true;

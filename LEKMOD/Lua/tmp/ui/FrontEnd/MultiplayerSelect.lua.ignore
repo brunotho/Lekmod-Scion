@@ -36,36 +36,20 @@ function LekmodShowSimpleMenu(bSimple)
 	end
 end
 
--- The Lekmod map: the main Lekmap script, found by its file name wherever the map folder is.
--- "LekmapPangaeaFractal.lua" (the Lekmap repository's name) wins; otherwise the highest "LekmapPangaeaFractalvX.Y.lua".
-local function LekmodVersionLess(a, b)
-	local ta, tb = {}, {};
-	for n in string.gmatch(a, "%d+") do table.insert(ta, tonumber(n)); end
-	for n in string.gmatch(b, "%d+") do table.insert(tb, tonumber(n)); end
-	for i = 1, math.max(#ta, #tb) do
-		local x, y = ta[i] or 0, tb[i] or 0;
-		if x ~= y then return x < y; end
-	end
-	return false;
-end
+-- The map: Lekmap Rosebranch's Fractal Pangaea script, found by its file name wherever the map folder is.
+-- Older Lekmap versions (other names) are never picked, so players can't start on the wrong one by accident.
+local LEKMOD_MAP_SCRIPT_NAME = "lekmaprosebranch_fractalpangaea";
 function LekmodFindDefaultMapScript()
-	local exact, best, bestVersion = nil, nil, nil;
 	for row in GameInfo.MapScripts{SupportsMultiplayer = 1} do
-		local file = string.lower(row.FileName or "");
-		local base = string.match(file, "([^\\/]+)%.lua$") or "";
-		if base == "lekmappangaeafractal" then
-			exact = exact or row.FileName;
-		else
-			local version = string.match(base, "^lekmappangaeafractalv([%d%.]+)$");
-			if version ~= nil and (bestVersion == nil or LekmodVersionLess(bestVersion, version)) then
-				best, bestVersion = row.FileName, version;
-			end
+		local fileName = string.lower(row.FileName or "");
+		local base = string.match(fileName, "([^\\/]+)%.lua$");
+		if base == LEKMOD_MAP_SCRIPT_NAME then
+			return row.FileName;
 		end
 	end
-	return exact or best;
+	return nil;
 end
 
--- Online game with the multiplayer defaults (the staging room then applies the Tournament preset)
 local function LekmodPrepareInternetGame()
 	UI.SetMultiplayerLobbyMode(MultiplayerLobbyMode.LOBBYMODE_STANDARD_INTERNET);
 	PreGame.SetInternetGame( true );

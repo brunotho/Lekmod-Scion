@@ -1,4 +1,10 @@
-# Lekmod
+# Lekmod Rosebranch
+
+Lekmod Rosebranch is a continuation of [Lekmod](https://github.com/EnormousApplePie/Lekmod) (based on LEKMOD v35.4), with its own balance work and numbering from 1.0.0. Its map is [Lekmap Rosebranch](https://github.com/brunotho/lekmap-rosebranch). Changes since v35.4: see `changelog.txt`.
+
+The original Lekmod description follows.
+
+## About Lekmod
 
 Lekmod is a comprehensive community-driven balance/content mod for Sid Meier's Civilization V. It introduces new civilizations, balance changes, bugfixes, QoL changes, and enhanced gameplay features for both singleplayer and multiplayer. The project is primarely focused for multiplayer, some content may be missing in singleplayer games.
 
