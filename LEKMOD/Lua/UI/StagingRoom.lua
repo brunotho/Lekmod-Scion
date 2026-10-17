@@ -730,7 +730,7 @@ function UpdatePlayer( slotInstance, playerInfo )
 			IconHookup( leader.PortraitIndex, 64, leader.IconAtlas, slotInstance.Portrait );
 			SimpleCivIconHookup( playerID, 64, slotInstance.Icon);
 			if Draft_ApplyLeaderPortraitHelp ~= nil then
-				Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, civIndex, slotInstance.PortraitHoverAnim);
+				Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, civIndex, slotInstance.PortraitHoverAnim, slotInstance.CivIconButton);
 			end
 		else   
 			if ( not activeCivSlot or PreGame.IsCivilizationKeyAvailable( playerID ) ) then
@@ -742,7 +742,7 @@ function UpdatePlayer( slotInstance, playerInfo )
 				IconHookup( 22, 64, "LEADER_ATLAS", slotInstance.Portrait );
 				SimpleCivIconHookup(-1, 64, slotInstance.Icon);
 				if Draft_ApplyLeaderPortraitHelp ~= nil then
-					Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, -1, slotInstance.PortraitHoverAnim);
+					Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, -1, slotInstance.PortraitHoverAnim, slotInstance.CivIconButton);
 				end
 			else
 				--------------------------------------------------------------
@@ -753,7 +753,7 @@ function UpdatePlayer( slotInstance, playerInfo )
 				IconHookup( 22, 64, "LEADER_ATLAS", slotInstance.Portrait );
 				SimpleCivIconHookup(-1, 64, slotInstance.Icon);
 				if Draft_ApplyLeaderPortraitHelp ~= nil then
-					Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, -1, slotInstance.PortraitHoverAnim);
+					Draft_ApplyLeaderPortraitHelp(slotInstance.PortraitButton, -1, slotInstance.PortraitHoverAnim, slotInstance.CivIconButton);
 				end
 			end
 		end
@@ -1044,7 +1044,7 @@ function UpdateLocalPlayer( playerInfo )
 		IconHookup( leader.PortraitIndex, 64, leader.IconAtlas, Controls.Portrait );
 		SimpleCivIconHookup( Matchmaking.GetLocalID(), 64, Controls.Icon);
 		if Draft_ApplyLeaderPortraitHelp ~= nil then
-			Draft_ApplyLeaderPortraitHelp(Controls.PortraitButton, civIndex, Controls.PortraitHoverAnim);
+			Draft_ApplyLeaderPortraitHelp(Controls.PortraitButton, civIndex, Controls.PortraitHoverAnim, Controls.CivIconButton);
 		end
 	else   
 		--------------------------------------------------------------
@@ -1054,7 +1054,7 @@ function UpdateLocalPlayer( playerInfo )
 		IconHookup( 22, 64, "LEADER_ATLAS", Controls.Portrait );
 		SimpleCivIconHookup(-1, 64, Controls.Icon);
 		if Draft_ApplyLeaderPortraitHelp ~= nil then
-			Draft_ApplyLeaderPortraitHelp(Controls.PortraitButton, -1, Controls.PortraitHoverAnim);
+			Draft_ApplyLeaderPortraitHelp(Controls.PortraitButton, -1, Controls.PortraitHoverAnim, Controls.CivIconButton);
 		end
 	end
 	--------------------------------------------------------------

@@ -1240,6 +1240,8 @@ function Draft_ShowCivInfoPanel(title, text)
 		return false;
 	end
 	local wrap = width - 30;
+	-- one empty line between the leader's name and the ability
+	text = "[NEWLINE]" .. (text or "");
 	Controls.LekmodCivInfoTitle:SetWrapWidth(wrap);
 	Controls.LekmodCivInfoText:SetWrapWidth(wrap);
 	Controls.LekmodCivInfoTitle:SetText(title or "");
@@ -1308,9 +1310,21 @@ function Draft_OpenCivPediaByCivID(civID)
 	end
 end
 
-function Draft_ApplyLeaderPortraitHelp(portraitButton, civID, hoverAnim)
+function Draft_ApplyLeaderPortraitHelp(portraitButton, civID, hoverAnim, civIconButton)
 	if portraitButton == nil then
 		return;
+	end
+	-- LEKMOD: the civ icon next to the portrait shows the same panel and opens the same Civilopedia page
+	if civIconButton ~= nil then
+		local hasCiv = civID ~= nil and civID >= 0;
+		Draft_SetCivHoverHelp(civIconButton, hasCiv and civID or -1, nil, "");
+		civIconButton:SetVoid1(hasCiv and civID or -1);
+		civIconButton:RegisterCallback(Mouse.eRClick, function()
+			local id = civIconButton:GetVoid1();
+			if id ~= nil and id >= 0 then
+				Draft_OpenCivPediaByCivID(id);
+			end
+		end);
 	end
 	if civID ~= nil and civID >= 0 then
 		local tip = Draft_GetCivBonusTooltip(civID);

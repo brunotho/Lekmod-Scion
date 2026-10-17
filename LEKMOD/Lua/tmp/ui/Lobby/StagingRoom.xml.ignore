@@ -34,6 +34,8 @@
             <Image Size="64,64" Anchor="C,C"  Texture="Assets/UI/Art/Icons/Units/CivSymbolsColor2048.dds" Hidden="0" ID="Icon" />
           </Image>
         </AlphaAnim>
+        <!-- LEKMOD: hovering the civ icon shows the civ info panel too (like the leader portrait) -->
+        <Button Anchor="C,C" Size="64,64" Color="255,255,255,0" ID="CivIconButton" ConsumeMouse="1" />
       </Box>
 
       <!-- WaitOnPlayer -->
@@ -312,6 +314,8 @@
             <Image Size="64,64" Anchor="C,C"  Texture="Assets/UI/Art/Icons/Units/CivSymbolsColor512.dds" Hidden="0" ID="Icon" />
           </Image>
         </AlphaAnim>
+        <!-- LEKMOD: hovering the civ icon shows the civ info panel too (like the leader portrait) -->
+        <Button Anchor="C,C" Size="64,64" Color="255,255,255,0" ID="CivIconButton" ConsumeMouse="1" />
       </Box>
       
       <!-- Top→bottom: Name, Draft icons (optional), Civ select -->
