@@ -13,7 +13,10 @@ Format (also the source for player patch notes on the website):
   game mechanics, world congress, ui, art, bugfix.
 
 
-## UNRELEASED (Lekmod Rosebranch 1.0.0, based on LEKMOD v35.4)
+## UNRELEASED (next version)
+
+
+## 1.0.0 (2026-10-18)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
 - Dev: the April promotions were only defined in Art/Promotions/LekmodPromotions.xml, which the game never loads; they now live in the Override files.
