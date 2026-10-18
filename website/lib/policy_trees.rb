@@ -41,15 +41,16 @@ module PolicyTrees
     end.to_h { |t| [t.name.upcase, t] }
   end
 
-  # "{TXT_KEY_X}" inside a text stands for that text; the branch helps are pre-wrapped for the game's
-  # tooltip ("[NEWLINE]" + 5 spaces continues a bullet), which the site undoes.
+  # "{TXT_KEY_X}" inside a text stands for that text.
   def resolve(text, texts)
     return nil if text.nil?
-    text.gsub(/\{(TXT_KEY_[A-Z0-9_]+)\}/) { texts[Regexp.last_match(1)] || "" }.gsub(/\[NEWLINE\] {5}/, " ")
+    text.gsub(/\{(TXT_KEY_[A-Z0-9_]+)\}/) { texts[Regexp.last_match(1)] || "" }
   end
 
   def split_branch_help(text)
     return [nil, nil] if text.nil?
+    # The text reader squeezes the wrap marker ("[NEWLINE]" + 5 spaces) to one space.
+    text = text.gsub(/\[NEWLINE\] +/, " ")
     adopt, complete = text.split(/(?:\[NEWLINE\]){2}(?=Completing)/, 2)
     [adopt, complete]
   end
