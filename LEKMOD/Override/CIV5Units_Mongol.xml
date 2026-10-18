@@ -101837,6 +101837,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_FUTURE_TECH">
 			<Text>Future Tech</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLO_TURNS_SUFFIX">
+			<Text>({1_Num} TURNS)</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_DIPLO_GPT_TT">
 			<Text>Paid every turn for {1_Num} turns.</Text>
 		</Row>

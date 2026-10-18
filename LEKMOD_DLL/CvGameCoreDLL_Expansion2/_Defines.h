@@ -887,7 +887,8 @@
 #define LEKMOD_PUPPET_PRODUCTION_FOCUS
 // Lump-sum gold can't be traded in deals (declarations of friendship no longer unlock it); gold per turn can
 #define LEKMOD_NO_GOLD_TRADE
-// Gold per turn trades last GOLD_PER_TURN_DEAL_DURATION turns (not scaled by game speed)
+// Gold per turn trades last GOLD_PER_TURN_DEAL_DURATION turns (not scaled by game speed), or GOLD_PER_TURN_DEAL_DURATION_LONG
+// when the trade screen asks for exactly that length (the second Gold per Turn button)
 #define LEKMOD_GPT_DEAL_FIXED_DURATION
 // Spoils of war also trigger for former city-state cities captured from a major civ (non-puppet)
 #define LEKMOD_SPOILS_OF_WAR_FROM_CAPTURED_CITY_STATES

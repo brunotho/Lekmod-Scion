@@ -1266,6 +1266,7 @@ function DisplayDeal(...)
 	end
 
 	LekmodSyncOpenBordersIndef()
+	LekmodSyncGoldPerTurnLong()
 	ResizeStacks()
 end
 local DisplayDeal = DisplayDeal
@@ -1894,7 +1895,7 @@ do
 		local goldPerTurn = math_min( tonumber( string ) or 0, goldRate )
 		control:SetText( goldPerTurn )
 
-		g_Deal:ChangeGoldPerTurnTrade( playerID, goldPerTurn, g_iDealDuration )
+		g_Deal:ChangeGoldPerTurnTrade( playerID, goldPerTurn, LekmodGetGoldPerTurnDuration( playerID ) )
 		parentControl:LocalizeAndSetToolTip( "TXT_KEY_DIPLO_CURRENT_GPT", goldRate - goldPerTurn )
 	end
 	Controls.UsGoldPerTurnAmount:RegisterCallback( function( string, control ) ChangeGoldPerTurnTrade( string, control, g_iUs, g_pUs, Controls.UsTableGoldPerTurn ) end )
@@ -2425,3 +2426,60 @@ Controls.UsTablePeaceTreaty:LocalizeAndSetText( "TXT_KEY_DIPLO_PEACE_TREATY", g_
 Controls.ThemTablePeaceTreaty:LocalizeAndSetText( "TXT_KEY_DIPLO_PEACE_TREATY", g_iPeaceDuration )
 
 DisplayDeal()
+
+-----------------------------------------------------------------------------------------------------------------------
+-- LEKMOD_GPT_DEAL_FIXED_DURATION: two Gold per Turn items, paid for GOLD_PER_TURN_DEAL_DURATION (10) or
+-- GOLD_PER_TURN_DEAL_DURATION_LONG (20) turns. Both are TRADE_ITEM_GOLD_PER_TURN; the DLL keeps the long length only
+-- when asked for exactly that. The long buttons exist in SimpleDiploTrade.xml (trades between humans).
+-----------------------------------------------------------------------------------------------------------------------
+-- Duration of the Gold per Turn item that playerID gives in the current deal (the short length if there is none)
+function LekmodGetGoldPerTurnDuration( playerID )
+	local duration = GameDefines.GOLD_PER_TURN_DEAL_DURATION or g_iDealDuration;
+	g_Deal:ResetIterator();
+	repeat
+		local item = { g_Deal:GetNextItem() };
+		if item[1] == nil then break; end
+		local fromPlayerID = item[8] or item[6];
+		if item[1] == TradeableItems.TRADE_ITEM_GOLD_PER_TURN and fromPlayerID == playerID then
+			duration = item[2];
+		end
+	until false;
+	return duration;
+end
+
+-- End of DisplayDeal: both pocket buttons name their length; the long one follows the short one's state
+function LekmodSyncGoldPerTurnLong()
+	if Controls.UsPocketGoldPerTurnLong == nil or GameDefines.GOLD_PER_TURN_DEAL_DURATION_LONG == nil then return; end
+	local iShort = GameDefines.GOLD_PER_TURN_DEAL_DURATION or g_iDealDuration;
+	local iLong = GameDefines.GOLD_PER_TURN_DEAL_DURATION_LONG;
+	local sides = { { "Us", g_iUs, g_pUs }, { "Them", g_iThem, g_pThem } };
+	for _, side in ipairs( sides ) do
+		local pocket = Controls[ side[1] .. "PocketGoldPerTurn" ];
+		local pocketLong = Controls[ side[1] .. "PocketGoldPerTurnLong" ];
+		local strGold = LekmodGoldText( side[2], side[3]:CalculateGoldRate() ) .. " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_GOLD_PER_TURN" );
+		pocket:SetText( strGold .. " " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_TURNS_SUFFIX", iShort ) );
+		pocketLong:SetText( strGold .. " " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_TURNS_SUFFIX", iLong ) );
+		local bDisabled = pocket:IsDisabled();
+		pocketLong:SetHide( pocket:IsHidden() );
+		pocketLong:SetDisabled( bDisabled );
+		pocketLong:GetTextControl():SetColorByName( bDisabled and "Gray_Black" or "Beige_Black" );
+		pocketLong:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_GPT_TT", iLong ) );
+	end
+end
+
+function PocketGoldPerTurnLongHandler( isUs )
+	local playerID = ( isUs == 1 ) and g_iUs or g_iThem;
+	local iGoldPerTurn = math.min( 5, Players[ playerID ]:CalculateGoldRate() );
+	g_Deal:AddGoldPerTurnTrade( playerID, iGoldPerTurn, GameDefines.GOLD_PER_TURN_DEAL_DURATION_LONG );
+	DoUIDealChangedByHuman();
+end
+
+if Controls.UsPocketGoldPerTurnLong ~= nil and GameDefines.GOLD_PER_TURN_DEAL_DURATION_LONG ~= nil then
+	Controls.UsPocketGoldPerTurnLong:RegisterCallback( Mouse.eLClick, PocketGoldPerTurnLongHandler );
+	Controls.ThemPocketGoldPerTurnLong:RegisterCallback( Mouse.eLClick, PocketGoldPerTurnLongHandler );
+	Controls.UsPocketGoldPerTurnLong:SetVoid1( 1 );
+	Controls.ThemPocketGoldPerTurnLong:SetVoid1( 0 );
+elseif Controls.UsPocketGoldPerTurnLong ~= nil then
+	Controls.UsPocketGoldPerTurnLong:SetHide( true );
+	Controls.ThemPocketGoldPerTurnLong:SetHide( true );
+end

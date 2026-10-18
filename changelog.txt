@@ -50,6 +50,13 @@ Tags: tiles and resources, combat
 - DLL: Improvements.LekmodCountsAsFort (LEKMOD_IMPROVEMENT_FORT_GROUP, CvPlot::canBuild next to NoTwoAdjacent); all six get DefenseModifier 50, NoTwoAdjacent 1
 - Dev: improvement and build texts and the Fort's Civilopedia page updated
 
+GOLD PER TURN TRADES (GOLD_PER_TURN_DEAL_DURATION)
+--------------------------------------------------
+Tags: diplomacy and trade
+- Added: a second Gold per Turn trade item that is paid for 20 turns, next to the one paid for 10 turns (each side can offer one of the two in a deal)
+- DLL: define GOLD_PER_TURN_DEAL_DURATION_LONG (20); CvDeal::AddGoldPerTurnTrade / ChangeGoldPerTurnTrade keep 20 only when asked for exactly 20, everything else (AI deals too) stays 10
+- Dev: SimpleDiploTrade.xml buttons *PocketGoldPerTurnLong; TradeLogic (ui and eui) LekmodSyncGoldPerTurnLong labels both pockets "(10 TURNS)" / "(20 TURNS)"; changing the amount keeps the item's length (LekmodGetGoldPerTurnDuration). The AI trade screen has no long button
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings
