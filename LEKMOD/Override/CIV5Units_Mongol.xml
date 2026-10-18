@@ -121673,7 +121673,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_ANTI_GUNPOWDER_HELP"> 
 			<Text>
-				Before engaging in melee combat, this unit performs a Ranged Attack at [COLOR_RED]half[ENDCOLOR] [ICON_STRENGTH] Strength. +25% [ICON_STRENGTH] Strength VS Gunpowder and Paradropper Units.
+				Before engaging in melee combat, this unit performs a Ranged Attack at 60% of its [ICON_STRENGTH] Strength.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_ANTI_HELICOPTER"> 
@@ -142279,7 +142279,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KONNITSA_HELP"> 
 			<Text>
-				Unique unit which replaces the Knight. Only Bulgaria may build it. This units peforms a [ICON_RANGE_STRENGTH] Ranged attack before attacking.
+				Replaces the Knight.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KRIVIS"> 
@@ -143251,7 +143251,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_VIETNAM_INFANTRY_HELP"> 
-			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack before each melee attack.</Text>
+			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VOORTREKKER"> 
 			<Text>

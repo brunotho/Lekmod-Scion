@@ -90,6 +90,13 @@ Tags: units
 - Changed: the Self-Propelled Artillery has its own 3D model, a tracked heavy howitzer (it used the Rocket Artillery's)
 - Dev: model "Ha-to artillery" by Herdyn (CC BY 4.0; credit on its Civilopedia page, TXT_KEY_LEKMOD_SPA_PEDIA), reduced to 3,280 triangles and one baked 256 texture, on the Modern Armor skeleton and animations (all on tank_bone_body: the gun does not traverse or recoil); ArtDefine ART_DEF_UNIT_LEKMOD_SPA with the Artillery's combat effects; sources and scripts in art_sources/units/self_propelled_artillery and art_sources/tools/3d
 
+SPEAR THROW (PROMOTION_ANTI_GUNPOWDER)
+--------------------------------------
+Tags: promotions, bugfix, combat
+- Fixed: the Zulu Impi and the Vietnamese Infantry have their Spear Throw again (before each melee attack, a ranged attack at 60% of their Strength); they had lost it together with their bonus against gunpowder units
+- Changed: Spear Throw no longer gives +25% against gunpowder units and paratroopers (Bulgaria's Konnitsa)
+- Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Phase 6 Deletes of it for the Impi and the Vietnamese Infantry are gone, its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

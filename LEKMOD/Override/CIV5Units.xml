@@ -286612,9 +286612,6 @@
 			<PrerequisitePromotion>PROMOTION_BUFFALO_LOINS</PrerequisitePromotion>
 		</Row>
 	</UnitPromotions_PromotionPrereqOrs>
-	<Unit_FreePromotions>
-		<Delete UnitType="UNIT_ZULU_IMPI" PromotionType="PROMOTION_ANTI_GUNPOWDER"/>
-	</Unit_FreePromotions>
 	<IconTextureAtlases>
 		<Row>
 			<Atlas>LEKMOD_BUY_CITY_STATE_ACTION_ATLAS</Atlas>
@@ -291883,9 +291880,6 @@
 			<AllowImprovement>true</AllowImprovement>
 		</Row>
 	</Trait_FeatureYieldChanges>
-	<Unit_FreePromotions>
-		<Delete UnitType="UNIT_VIETNAM_INFANTRY" PromotionType="PROMOTION_ANTI_GUNPOWDER"/>
-	</Unit_FreePromotions>
 	<Units>
 		<Update>
 			<Where Type="UNIT_VIETNAM_INFANTRY"/>
@@ -292165,4 +292159,8 @@
 			<Asset>SV_MobileRocketArtillery.dds</Asset>
 		</Row>
 	</ArtDefine_StrategicView>
+	<!-- LEKMOD: Spear Throw (PROMOTION_ANTI_GUNPOWDER) is the first strike only (spec: Zulu UU, 60% via LEKMOD_SUPPORT_FIRE_PERCENT); Impi and Vietnamese Infantry keep it (2026-10-19) -->
+	<UnitPromotions_UnitCombatMods>
+		<Delete PromotionType="PROMOTION_ANTI_GUNPOWDER"/>
+	</UnitPromotions_UnitCombatMods>
 </GameData>
