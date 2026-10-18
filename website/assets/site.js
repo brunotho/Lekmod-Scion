@@ -145,6 +145,22 @@
     });
   }
 
+  // Download buttons: point straight at the newest release's zip (GitHub API); without it they open the release page.
+  var latest = {};
+  $$("[data-latest-asset]").forEach(function (a) {
+    var repo = a.dataset.latestAsset;
+    if (!latest[repo]) {
+      latest[repo] = fetch("https://api.github.com/repos/" + repo + "/releases/latest")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (rel) {
+          var zip = rel && (rel.assets || []).filter(function (x) { return /\.zip$/i.test(x.name); })[0];
+          return zip ? zip.browser_download_url : null;
+        })
+        .catch(function () { return null; });
+    }
+    latest[repo].then(function (url) { if (url) a.href = url; });
+  });
+
   // Close the page menu when clicking elsewhere.
   document.addEventListener("click", function (e) {
     $$(".page-menu[open]").forEach(function (d) { if (!d.contains(e.target)) d.removeAttribute("open"); });

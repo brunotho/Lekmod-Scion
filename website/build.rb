@@ -34,7 +34,6 @@ module Helpers
     ["map.html", "Map changelog"],
     ["install.html", "Installation"],
     ["civs.html", "Civ list"],
-    ["bugs.html", "Known issues"],
   ].freeze
 
   def h(text)
@@ -96,12 +95,13 @@ map_text = File.exist?(options[:map]) ? File.read(options[:map], encoding: "UTF-
 warn "map changelog not found: #{options[:map]}" unless map_text
 write_page(out, "map.html", "Map changelog", render("map", map_html: map_text ? LooseList.to_html(map_text) : nil))
 
-# Installation, civ list, known issues
+# Installation, civ list
 write_page(out, "install.html", "Installation", render("install"))
 civs = Civs.load(File.join(ROOT, "LEKMOD", "Override"))
 write_page(out, "civs.html", "Civ list", render("civs", civs: civs), page_class: "with-sidebar")
-bugs = File.read(File.join(SITE, "data", "known_issues.txt"), encoding: "UTF-8")
-write_page(out, "bugs.html", "Known issues", render("bugs", bugs_html: LooseList.to_html(bugs)))
+# Known issues page: switched off for now (user, 2026-10-18). To bring it back, re-add it to PAGES and:
+# write_page(out, "bugs.html", "Known issues",
+#            render("bugs", bugs_html: LooseList.to_html(File.read(File.join(SITE, "data", "known_issues.txt"), encoding: "UTF-8"))))
 
 puts "built #{out}: #{cards.size} changelog items in #{groups.size} sections, #{releases.size} release(s), #{civs.size} civs" \
      "#{options[:preview] ? ' (preview)' : ''}"

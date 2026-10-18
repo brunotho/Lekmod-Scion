@@ -29,7 +29,10 @@ This file records what has been **verified** about how this mod works, and how t
        - A new item gets `(NEW)` right after its name, `NAME (NEW) (TYPE_KEY)`, not "NEW." in the summary.
        - Small items get a `Weight: minor` line after Tags; the site lists them under "Minor changes" at the end of their section. Otherwise cards are alphabetical, except policies, which follow the game's branch order (`GAME_ORDER` in `website/build.rb`).
        - One card per thing: fold small changes into the card they belong to (a policy into its branch, a civ's building into the civ card), and split batch-shaped cards ("Research Lab, Caravansary, Hotel").
-       - No developer words in titles or lines: file names, pixel sizes, "(FORMULA CHANGE)", standard-speed numbers.
+       - No developer words in titles or lines: file names, pixel sizes, "(FORMULA CHANGE)". Numbers are always quick-speed, as in the specs (the game data holds standard values; players only care about quick).
+       - A fix that isn't confirmed in game is worded as an attempt ("An attempted fix, not yet confirmed…", "should now…"), e.g. the aircraft count.
+       - Fixes to things that are new in the same release (e.g. their icons) never reached players: `Dev:` lines.
+       - Filter tags group across sections, e.g. `wonders` on every wonder card wherever its section is.
      - Tags belong to changelog items, not to commits. The website reads `changelog.txt`, and the git history is for developers.
      - Update an item's existing section rather than adding a duplicate. When a later change alters an item, rewrite its player lines to the new net state.
      - Rewritten to these rules on 2026-10-07; the earlier entries mixed in internal names and intermediate steps.

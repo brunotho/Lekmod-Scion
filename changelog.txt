@@ -11,8 +11,8 @@ Format (also the source for player patch notes on the website):
 - Developer-only lines (skipped for patch notes): "- Note:", "- DLL:", "- Dev:".
 - Tags: world congress, espionage, tourism, policies, civs, buildings, units, promotions, religion,
   city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix,
-  combat, movement, naval, air, ruins, art.
-- The tag order is the website's section order; the last six tags are filters only (never a first tag).
+  combat, movement, naval, air, wonders, ruins, art.
+- The tag order is the website's section order; the last seven tags are filters only (never a first tag).
 - "Weight: minor" (optional line after Tags) lists the item under "Minor changes" at the end of its section.
 - "(NEW)" after the name marks an item that did not exist in the previous release: NAME (NEW) (TYPE_KEY).
 - The summary line is optional: only a gist the lines don't already say (no restating, no praise).
@@ -398,7 +398,7 @@ Tags: ui, game mechanics
 
 SAME-TURN WONDERS
 -----------------
-Tags: ui, game mechanics
+Tags: ui, game mechanics, wonders
 - Added: the lobby Mode decides what happens: Tournament = nobody gets it, everyone gets Gold for their production; Casual = everyone who finished it gets it
 - Added: a player never owns the same World Wonder twice: capturing a city with a wonder you already have destroys the captured copy
 - Dev: LEKMOD_WONDER_TIE_RULES: CvGame::isBuildingClassMaxedOut exception while cities process production (Both); look-ahead over other players' cities and a per-turn tie marker in CvCity::doProduction (Neither); duplicate check in CvPlayer::acquireCity. GameOptions IDs 69/70 (hidden, set by the lobby dropdown), 72 mode (hidden)
@@ -414,7 +414,8 @@ A new lobby option gives the players six easy-to-tell-apart color schemes.
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air
-- Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war were not counted on its banner (or an old count stayed) until another plane moved there in view; the count is now rebuilt when the city comes into view and at the start of every turn
+An attempted fix, not yet confirmed in multiplayer games. Please report it if a count is still wrong.
+- Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war could be missing from its banner count (or an old count stayed); the count should now be rebuilt when the city comes into view and at the start of every turn
 - Note: standard UI only; EUI draws aircraft differently and is unchanged
 
 TECH TREE: BUILDINGS WITH TWO TECHS
@@ -737,7 +738,7 @@ Weight: minor
 
 TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
 -------------------------------------------
-Tags: buildings
+Tags: buildings, wonders
 - Changed: needs Honor (the Statue of Zeus no longer does)
 - Changed: +3 Production, +3 Gold, +3 Culture (was +1 Culture) and +1 Great Engineer point
 - Changed: +15% Production and +15 XP for ranged units now also covers naval ranged units and submarines
@@ -952,7 +953,11 @@ Tags: units, combat
 - Changed: XCOM Squad: 120 Strength (was 110)
 - Changed: Rocket Artillery: 3 movement (was 2)
 - Changed: Submarine and Nuclear Submarine can no longer move after attacking
-- Changed: all other Modern-era units cost 3% more, all other Atomic-era units 5% more
+
+LATE-GAME UNIT COSTS
+--------------------
+Tags: units
+- Changed: Modern-era units cost 3% more and Atomic-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes)
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
 -----------------------------------------------------------------------
@@ -1263,7 +1268,7 @@ Weight: minor
 
 URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
 ----------------------------------------------------------------
-Tags: buildings
+Tags: buildings, wonders
 - Added: Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
@@ -1416,7 +1421,7 @@ Tags: tourism, units
 
 TOURISM WONDERS (BUILDING_GREAT_LIBRARY, BUILDING_MOSQUE_OF_DJENNE, BUILDING_HAGIA_SOPHIA, BUILDING_STATUE_ZEUS, BUILDING_COLOSSUS, BUILDING_HANGING_GARDEN, BUILDING_PARTHENON, BUILDING_NOTRE_DAME, BUILDING_GLOBE_THEATER, BUILDING_BROADWAY, BUILDING_RED_FORT, BUILDING_CN_TOWER, BUILDING_EIFFEL_TOWER, BUILDING_CRISTO_REDENTOR, BUILDING_SISTINE_CHAPEL)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: tourism, buildings
+Tags: tourism, buildings, wonders
 Many wonders get Great Work slots, some come with Great Works already inside, and filling the slots unlocks bonuses.
 - Changed: Great Library: no Science of its own; each Great Work in it gives +3 Science and +3 Tourism (2 slots)
 - Changed: Great Mosque of Djenne: no Culture or Faith; 2 Happiness (was 3); a free Mosque in the city; 3 slots, 1 comes filled; all filled: +10 Tourism
@@ -1441,7 +1446,7 @@ Many wonders get Great Work slots, some come with Great Works already inside, an
 
 NATIONAL EPIC (BUILDING_NATIONAL_EPIC)
 --------------------------------------
-Tags: tourism, buildings
+Tags: tourism, buildings, wonders
 - Changed: 3 Great Work slots, 2 come filled; with all 3 filled, +25% Great People in the city (was always +25%)
 - Removed: its Culture
 - Changed: 4 Gold maintenance (was 0)
@@ -1450,7 +1455,7 @@ Tags: tourism, buildings
 
 WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, BUILDING_CHICHEN_ITZA, BUILDING_ALTHING, BUILDING_ARSENAL_OF_VENICE)
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: buildings
+Tags: buildings, wonders
 - Changed: Hubble Space Telescope: costs 1050 (was 837); 5 Scientist points (was 3); no Science and no free Recycling Center; keeps +100% Production toward Spaceship Parts; Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
 - Changed: Great Lighthouse: naval units trained in the city start with +15 XP; when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one. Removed: +1 movement and +1 sight for naval units, the free Quinquereme. Keeps the free Lighthouse and +1 Gold on water tiles
 - Changed: Angkor Wat (rebuilt): 1 Culture, 1 Engineer point, a free Garden, farms with fresh water worked by the city yield +1 Faith, 2 Great Work slots that come filled. Removed: the free University, 5 Culture and 5 Science, the Scientist point
@@ -1463,7 +1468,7 @@ Tags: buildings
 
 TOWER OF BELEM (BUILDING_TOWER_OF_BELEM)
 ----------------------------------------
-Tags: buildings, naval
+Tags: buildings, naval, wonders
 Rebuilt as a launch pad for overseas settling.
 - Changed: costs 400 (was 300); must be built on the coast; 1 Merchant point; +5 City Strength
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
@@ -1482,7 +1487,7 @@ Holding a civ's capital and being culturally Influential over it now stand in fo
 
 CANAL PROJECT (BUILDING_PANAMA)
 -------------------------------
-Tags: buildings, naval
+Tags: buildings, naval, wonders
 The Panama Canal is now the Canal Project, a national wonder. Its Great Engineers dig canals that ships can sail through.
 - Changed: national wonder (was a world wonder); requires Electronics (was Railroad); costs the same as Cristo Redentor; no longer has to be on the coast
 - Added: +33% to all yields you get from trade routes that start in its city (internal and external)
@@ -1633,7 +1638,7 @@ BUILDING AND UNIT ICONS
 -----------------------
 Tags: ui, art
 Weight: minor
-- Changed: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
+- Dev: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
 
 TOURISM ON TILES (ui)
@@ -1894,7 +1899,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 
 KREMLIN (BUILDING_KREMLIN)
 --------------------------
-Tags: espionage, buildings
+Tags: espionage, buildings, wonders
 Now a counter-espionage wonder.
 - Added: enemy spies take 30% longer per steal in all your cities
 - Added: your guarding spies count 1 level higher
@@ -1904,14 +1909,14 @@ Now a counter-espionage wonder.
 
 GREAT FIREWALL (BUILDING_GREAT_FIREWALL)
 ----------------------------------------
-Tags: espionage, buildings
+Tags: espionage, buildings, wonders
 - Added: other civilizations' spies and diplomats are sent home from its city and can't be placed there
 - Changed: enemy spies take 25% longer per steal in your other cities (was 25% weaker spies in the old spy system)
 - DLL: Buildings.BlockForeignSpies; the old EspionageModifier and GlobalEspionageModifier are set to 0 (unused by the spy rework)
 
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
 -----------------------------------------------------------
-Tags: espionage, buildings
+Tags: espionage, buildings, wonders
 - Added: World Wonder at Telecommunications, 2000 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
@@ -1921,7 +1926,7 @@ Tags: espionage, buildings
 
 EXTRAORDINARY SESSION (NEW) (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
 -------------------------------------------------------------------
-Tags: world congress, buildings
+Tags: world congress, buildings, wonders
 - Added: World Wonder at Globalization, 1600 Production
 - Added: +2 Delegates in the World Congress
 - Added: an extra World Leader vote 2 turns after it is built (3 turns if a regular vote falls on that turn); the regular votes keep their schedule

@@ -10,7 +10,7 @@ A static site (plain HTML, CSS, a little JavaScript) built by a Ruby script with
 | Map changelog (`map.html`) | `CHANGELOG.txt` in the map repo (`brunotho/lekmap-rosebranch`), loosely written: `#` headings, `-` bullets, tab-indented sub-bullets |
 | Installation (`install.html`) | `templates/install.html.erb` (written by hand) |
 | Civ list (`civs.html`) | the mod's `LEKMOD/Override/CIV5Units.xml` and `CIV5Units_Mongol.xml`, read directly |
-| Known issues (`bugs.html`) | `data/known_issues.txt` (same loose format as the map changelog) |
+| Known issues (`bugs.html`) | switched off for now (2026-10-18); `data/known_issues.txt` and `templates/bugs.html.erb` stay, see the comment in `build.rb` |
 
 ## Build and preview locally
 
@@ -30,6 +30,10 @@ Tests (also check that `changelog.txt` stays readable for the site): `ruby websi
 - Sections are the item's first tag, in the order of the tag list in the changelog header. Further tags are filter buttons (several = any of them); the search box matches names and lines. The filter state is kept in the URL.
 - Inside a section, cards are alphabetical (policies follow the game's order, `GAME_ORDER` in `build.rb`); items with a `Weight: minor` line come last under "Minor changes". `(NEW)` after an item's name shows as a badge.
 - Developer lines (`Note`, `DLL`, `Dev`) and items with only such lines are never shown.
+
+## Download buttons
+
+The "Download mod/map" buttons and the links on the Installation page point at the repos' latest release page. When the page loads, `site.js` asks the GitHub API (`/repos/<repo>/releases/latest`) for the release's `.zip` and points the link straight at it, so one click downloads it. If the API can't be reached (or its hourly limit of 60 requests per visitor is used up), the link stays on the release page. Each release must have exactly one `.zip` asset.
 
 ## Publishing
 

@@ -53,11 +53,28 @@ module Civs
       improvements.values.select { |i| i["SpecificCivRequired"] == "true" && i["CivilizationType"] == type }.each do |i|
         uniques << Unique.new(kind: "Improvement", name: t.(i["Description"]), text: help.(i), replaces: nil)
       end
-      uniques.each { |u| u.replaces = nil if u.replaces == u.name }
+      uniques.each do |u|
+        u.name = clean_name(u.name)
+        u.replaces = clean_name(u.replaces)
+        u.replaces = nil if u.replaces == u.name
+        u.text = drop_replaces_sentence(u.text, u.replaces)
+      end
       Civ.new(type: type, name: t.(c["ShortDescription"]) || type, leader: t.(leaders.dig(leader, "Description")),
               ability_name: t.(trait["ShortDescription"]), ability: t.(trait["Description"]),
               uniques: uniques.select { |u| u.name })
     end.sort_by { |c| c.name.to_s }
+  end
+
+  # In-game names mark unique national wonders with a colored "*"; the site shows plain names.
+  def clean_name(name)
+    return nil if name.nil?
+    name.gsub(/\[COLOR_[A-Z_]+\]\s*\*\s*\[ENDCOLOR\]/, "").gsub(/\[[A-Z_0-9]+\]/, "").strip
+  end
+
+  # The site prints "replaces X" next to the name, so a text that opens with just "Replaces the X." repeats it.
+  def drop_replaces_sentence(text, replaces)
+    return text if text.nil? || replaces.nil?
+    text.sub(/\AReplaces the (?:\[[A-Z_]+\])?#{Regexp.escape(replaces)}(?:\[ENDCOLOR\])?\.\s*(?:\[NEWLINE\]\s*)*/, "")
   end
 
   def strip_comments(s)
