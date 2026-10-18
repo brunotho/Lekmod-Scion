@@ -11,8 +11,8 @@ Format (also the source for player patch notes on the website):
 - Developer-only lines (skipped for patch notes): "- Note:", "- DLL:", "- Dev:".
 - Tags: tourism, world congress, espionage, policies, civs, buildings, units, promotions, religion,
   city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix,
-  combat, movement, naval, air, wonders, ruins, art.
-- The tag order is the website's section order; the last seven tags are filters only (never a first tag).
+  combat, movement, naval, air, wonders, ruins.
+- The tag order is the website's section order; the last six tags are filters only (never a first tag).
 - "Weight: minor" (optional line after Tags) lists the item under "Minor changes" at the end of its section.
 - "(NEW)" after the name marks an item that did not exist in the previous release: NAME (NEW) (TYPE_KEY).
 - The summary line is optional: only a gist the lines don't already say (no restating, no praise).
@@ -641,7 +641,7 @@ Tags: ui
 
 MAIN MENU BACKGROUND
 --------------------
-Tags: ui, art
+Tags: ui
 - Dev: not on the website (user, 2026-10-18). A new main menu background
 - Dev: replaces the earlier random rotation of 12 paintings and drops an unused 12 MB texture (about 33 MB less to download)
 - Dev: 2026-10-17: removed two more unused old menu backgrounds (oracle/pyramids, about 12 MB), the stale debug-symbol file of the upstream DLL (23 MB) and the base-game menu picture that was loaded and immediately replaced; the old paintings are gone from art_sources too
@@ -981,7 +981,7 @@ The bomber promotions "Siege I-III" are renamed "Air Siege I-III", so they are n
 
 FEARED ELEPHANT (PROMOTION_FEARED_ELEPHANT)
 -------------------------------------------
-Tags: promotions, art
+Tags: promotions
 - Changed: new icon
 
 DEMOGRAPHICS SCREEN
@@ -2010,7 +2010,7 @@ Tags: policies
 
 COMMERCE (POLICY_BRANCH_COMMERCE)
 ---------------------------------
-Tags: policies, art
+Tags: policies
 - Changed: new branch picture
 - Changed: Silk Road: +50% range for trade routes to other civilizations and City-States
 - Changed: Protectionism requires Silk Road (was Mercantilism); Mercenary Army requires Protectionism; the tree is rearranged (Silk Road on top; Entrepreneurship, Mercantilism and Protectionism below it; Mercenary Army below Protectionism)
@@ -2133,13 +2133,13 @@ Tags: diplomacy and trade, ui
 
 BUILDING AND UNIT ICONS
 -----------------------
-Tags: ui, art
+Tags: ui
 - Dev: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
 
 TOURISM ON TILES (ui)
 ---------------------
-Tags: bugfix, ui, art
+Tags: bugfix, ui
 - Fixed: the improvement build tooltip showed a lone "+" for Tourism; it now shows the Tourism change
 - Changed: tiles with 5 or more Tourism show a large suitcase instead of a camera
 
@@ -3503,7 +3503,7 @@ Tags: city-states, units
 
 EXPANDED ZOC (NEW) (PROMOTION_LEKMOD_EXPANDED_ZOC)
 --------------------------------------------------
-Tags: promotions, movement, combat, art
+Tags: promotions, movement, combat
 An enemy unit that moves away from a tile next to this unit loses its remaining movement. Attacks don't count as moves.
 - Added: can be picked by melee, gunpowder and naval melee units that have the second level of a promotion line (Shock, Drill, Amphibious, Boarding Party, Coastal Raider or Armor Plating II)
 - DLL: UnitPromotions.LekmodExpandedZOC (CvUnitMovement::IsSlowedByZOC); promotion ID 393
@@ -3580,7 +3580,7 @@ Tags: ui
 
 VIETNAM (CIVILIZATION_VIETNAM)
 ------------------------------
-Tags: civs, units, buildings, art
+Tags: civs, units, buildings
 - Changed: UA:
   - Marsh +2 Food (no longer +1 Production), Flood Plains +1 Food; improvements are built on Marsh without removing it (no clearing time or tech; the plain "Remove Marsh" build still clears it)
   - no longer: +1 Faith from Jungle
