@@ -90,11 +90,18 @@ module Civs
     out
   end
 
+  # Rows of a table in file order; <Delete/> clears the table so far, <Delete Col="v"/> removes matching rows
+  # (removed uniques, e.g. Maurya's Missionary, are deleted this way).
   def rows(data, table)
     out = []
     data.scan(%r{<#{table}>(.*?)</#{table}>}m) do |(block)|
-      block.scan(%r{<Row>(.*?)</Row>}m) do |(row)|
-        out << row.scan(%r{<(\w+)>([^<]*)</\1>}).to_h { |k, v| [k, v.strip] }
+      block.scan(%r{<Row>(.*?)</Row>|<Delete\b([^>]*?)/>}m) do |row, del|
+        if row
+          out << row.scan(%r{<(\w+)>([^<]*)</\1>}).to_h { |k, v| [k, v.strip] }
+        else
+          cond = del.scan(/(\w+)="([^"]*)"/).to_h
+          cond.empty? ? out.clear : out.reject! { |r| cond.all? { |k, v| r[k] == v } }
+        end
       end
     end
     out
