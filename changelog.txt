@@ -107,6 +107,7 @@ KOREA (CIVILIZATION_KOREA)
 --------------------------
 Tags: civs, buildings
 - Changed: Jongmyo Shrine: 1 Musician specialist slot instead of the Great Work of Music slot
+- Changed: Turtle Ship starts with Sambuca instead of Sapper
 - Dev: BUILDING_LEKMOD_JONGMYO SpecialistType SPECIALIST_MUSICIAN, SpecialistCount 1 (GreatWorkSlotType/Count removed); help text updated
 
 PIETY (POLICY_BRANCH_PIETY)

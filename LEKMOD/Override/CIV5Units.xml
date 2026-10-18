@@ -284569,7 +284569,7 @@
 		</Row>
 		<Row>
 			<UnitType>UNIT_KOREAN_TURTLE_SHIP</UnitType>
-			<PromotionType>PROMOTION_SAPPER</PromotionType>
+			<PromotionType>PROMOTION_SAMBUCA</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
 	<Buildings>

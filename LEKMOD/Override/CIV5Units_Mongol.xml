@@ -147432,7 +147432,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Shrine. Costs more.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith (instead of +1).[NEWLINE]Units trained in this city start with +5 XP.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_TURTLESHIP_HELP">
-			<Text>Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sapper.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.</Text>
+			<Text>Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NGAO">
 			<Text>Replaces the Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle.[NEWLINE]Starts with Cover I, Amphibious I, Woodsman and Native Tongue.</Text>
