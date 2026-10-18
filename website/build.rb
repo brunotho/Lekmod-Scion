@@ -89,6 +89,17 @@ SECTION_LAYOUT = {
                                                 "TOURISM WONDERS"]],
     ["Policies and ideologies", ["TOURISM IN POLICIES AND IDEOLOGIES"]],
   ],
+  # Split by the game data (2026-10-18): pickable = CannotBeChosen 0 and some unit combat may take it.
+  "promotions" => [
+    ["Promotions you can pick", ["AMPHIBIOUS LINE", "ENVELOPMENT", "EXPANDED ZOC", "MOUNTAINEERING", "WOODSMAN",
+                                 "AMBUSH FORMATION", "MOBILITY", "HEAL INSTANTLY", "COASTAL RAIDER LINE",
+                                 "BOARDING PARTY LINE", "ARMOR PLATING LINE", "SAMBUCA", "SUPPLY SHIP", "REPAIR CREW",
+                                 "BUNKER BUSTING", "CARPET BOMBING", "AIR SIEGE LINE", "SORTIE", "HELICOPTER PROMOTIONS"]],
+    ["Promotions that come with units, policies or abilities (never offered as a pick)",
+     ["DISCIPLINE", "FEAR AURA", "ZEALOT", "ALTITUDE TRAINING", "SITTING DUCKS", "SWIFT TRANSPORT", "MARAUDER",
+      "IAIJUTSU", "HATAMOTO", "ONE GOOD EYE / STARGAZING", "FAST SWIMMER", "SKYRANGER / EXTENDED PARADROP",
+      "FEARED ELEPHANT", "GLUTTON", "EMBARKATION WITH DEFENSE"]],
+  ],
   "tiles and resources" => [
     [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],
   ],
@@ -101,14 +112,14 @@ Block = Struct.new(:heading, :minor, :cards)
 groups = cards.group_by(&:group).sort_by { |g, _| [order.index(g) || order.size, g.to_s] }
 groups = groups.map do |g, list|
   layout = SECTION_LAYOUT.fetch(g, [])
-  major, minor = list.partition { |c| !c.minor }
+  # A listed card stays in its block even when minor (after the block's major cards).
   blocks = layout.map do |heading, names|
-    Block.new(heading, false, names.filter_map { |n| major.find { |c| c.name == n } })
+    Block.new(heading, false, names.filter_map { |n| list.find { |c| c.name == n } }.sort_by.with_index { |c, i| [c.minor ? 1 : 0, i] })
   end
   listed = layout.flat_map(&:last)
   (listed - list.map(&:name)).each { |n| warn "SECTION_LAYOUT: no card named #{n.inspect} in #{g}" }
-  rest = major.reject { |c| listed.include?(c.name) }.sort_by { |c| c.name.downcase }
-  blocks << Block.new(layout.any?(&:first) ? "Other" : nil, false, rest)
+  major, minor = list.reject { |c| listed.include?(c.name) }.partition { |c| !c.minor }
+  blocks << Block.new(layout.any?(&:first) ? "Other" : nil, false, major.sort_by { |c| c.name.downcase })
   blocks << Block.new("Minor changes", true, minor.sort_by { |c| c.name.downcase })
   [g, blocks.reject { |b| b.cards.empty? }]
 end
