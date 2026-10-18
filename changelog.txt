@@ -48,13 +48,11 @@ Hills cost 10% less movement (1.8 instead of 2).
 FAST SWIMMER (PROMOTION_PHIL_MARINE)
 ------------------------------------
 Tags: promotions, movement, naval
-Weight: minor
 - Changed: embarked movement bonus 3 -> 2
 
 SKYRANGER / EXTENDED PARADROP (PROMOTION_EXTENDED_PARADROP)
 -----------------------------------------------------------
 Tags: promotions, air
-Weight: minor
 - Changed: paradrop range 40 -> 100
 
 HEAL INSTANTLY (PROMOTION_INSTA_HEAL)
@@ -182,7 +180,6 @@ Weight: minor
 MARSH CLEARING (FEATURE_MARSH)
 ------------------------------
 Tags: tiles and resources
-Weight: minor
 - Changed: clearing a marsh gives up to 13 Food instead of 13 Production (less the farther the marsh is from the city)
 - Dev: the Worker's build tooltip shows how much Food clearing the marsh gives
 - Dev: BuildFeatures for FEATURE_MARSH: Production 20 -> 0, Food 20 (NQ_FOOD_FROM_CHOPS, same scaling as chop production). Added the missing text TXT_KEY_MISC_CLEARING_FEATURE_FOOD.
@@ -190,7 +187,6 @@ Weight: minor
 GREAT PROPHETS (UNITCLASS_PROPHET)
 ----------------------------------
 Tags: units, religion
-Weight: minor
 - Changed: a captured Great Prophet (including Tibet's Dalai Lama) is destroyed instead of changing sides
 - Dev: removed Capture=UNITCLASS_PROPHET from UNIT_PROPHET, UNIT_FAKEPROPHET, UNIT_MABA, UNIT_DALAILAMA. Missionaries can still be captured.
 
@@ -205,7 +201,6 @@ Weight: minor
 CITY-STATE TRIBUTE RANGE (MINOR_CIV_TRIBUTE_RANGE)
 --------------------------------------------------
 Tags: city-states
-Weight: minor
 - Changed: the tribute range is 5 tiles on all map sizes (it grew with the map width before)
 - Dev: new define MINOR_CIV_TRIBUTE_RANGE (5), LEKMOD_TRIBUTE_RANGE_FIXED in CvMinorCivAI::CalculateBullyMetric
 
@@ -226,7 +221,6 @@ Tags: diplomacy and trade
 FORTS (IMPROVEMENT_FORT)
 ------------------------
 Tags: tiles and resources
-Weight: minor
 - Changed: a Fort cannot be built on a tile next to another Fort (or next to one under construction)
 - Dev: IMPROVEMENT_FORT NoTwoAdjacent=true (existing column)
 
@@ -286,7 +280,6 @@ Maritime, Cultured and Religious city-states give bonuses that grow with every e
 MARITIME CITY-STATE FOOD
 ------------------------
 Tags: city-states, ui
-Weight: minor
 Food from Maritime city-states is added to the city itself instead of the city tile, so it can have decimals and percentage bonuses apply in full.
 - Changed: Maritime food is a city yield; bonuses such as Siam's +50% are no longer rounded down
 - Dev: the city food tooltip shows "from City-States"
@@ -302,7 +295,6 @@ City-state borders show their type at a glance: one color per type, matching the
 CITY-STATE QUEST REWARDS (MINOR_QUEST_FRIENDSHIP_*)
 ---------------------------------------------------
 Tags: city-states
-Weight: minor
 - Changed: all quest Influence rewards -5
 - Changed: clear a barbarian camp 50 -> 35, trade route 50 -> 35, road connection 50 -> 40, culture/faith/tech contests 40 -> 35
 - Dev: Defines MINOR_QUEST_FRIENDSHIP_* (INVEST stays 0)
@@ -310,7 +302,6 @@ Weight: minor
 CITY-STATE QUEST TIMING (MINOR_CIV_*_QUEST_*)
 ---------------------------------------------
 Tags: city-states
-Weight: minor
 - Changed: the random part of the waiting time between quests is much smaller (about 0-3 turns instead of 0-16 at quick speed); the average pace stays the same
 - Added: a personal quest still open after 15 turns is withdrawn and replaced by a new one
 - Dev: defines GLOBAL/PERSONAL_QUEST_RAND_TURNS_BETWEEN 25 -> 5 with MIN_TURNS_BETWEEN +10 (40 / 27); FIRST_POSSIBLE_TURN_RAND 20 -> 5 with FIRST_POSSIBLE_TURN +5 (35 / 30). New define MINOR_CIV_PERSONAL_QUEST_RECYCLE_TURNS (15, flat); LEKMOD_PERSONAL_QUEST_RECYCLE (CvMinorCivAI::DoRecyclePersonalQuestsForPlayer); quest picking moved into DoStartRandomPersonalQuest
@@ -318,7 +309,6 @@ Weight: minor
 CITY-STATE ROADS
 ----------------
 Tags: city-states
-Weight: minor
 - Added: city-state workers road the first ring around their cities, as their lowest-priority job
 - Dev: LEKMOD_MINOR_CIV_RING_ROADS in CvBuilderTaskingAI::UpdateMinorCivFirstRingRoutePlots (route plots flagged with value 1)
 
@@ -523,13 +513,11 @@ Tags: tiles and resources
 TECH TREE ICONS
 ---------------
 Tags: ui
-Weight: minor
 - Changed: clearer icons for embarking and trade route effects in the tech tree
 
 MAIN MENU BACKGROUND
 --------------------
 Tags: ui, art
-Weight: minor
 - Changed: a new main menu background
 - Dev: replaces the earlier random rotation of 12 paintings and drops an unused 12 MB texture (about 33 MB less to download)
 - Dev: 2026-10-17: removed two more unused old menu backgrounds (oracle/pyramids, about 12 MB), the stale debug-symbol file of the upstream DLL (23 MB) and the base-game menu picture that was loaded and immediately replaced; the old paintings are gone from art_sources too
@@ -572,7 +560,6 @@ Tags: game mechanics
 CITY-STATE PLEDGE ICONS
 -----------------------
 Tags: ui, city-states
-Weight: minor
 - Added: City-State banners show who has pledged to protect them
 - Note: standard UI only for now (EUI has its own city banners)
 
@@ -589,7 +576,6 @@ Tags: bugfix, ui, tourism
 CHAT EMOJI PICKER
 -----------------
 Tags: ui
-Weight: minor
 - Changed: the chat emoji picker shows a short list of favourites instead of every icon
 - Note: any other icon still works when typed into the chat (e.g. [ICON_POG])
 
@@ -602,7 +588,6 @@ Tags: ui, air
 CITY SCREEN: GREAT PEOPLE POINTS
 --------------------------------
 Tags: ui
-Weight: minor
 - Changed: Great People points in the city screen show decimals
 
 START BIAS SHOWN
@@ -620,7 +605,6 @@ Tags: ui, policies, religion
 CITY NAMES (Civilization_CityNames)
 -----------------------------------
 Tags: civs, ui
-Weight: minor
 - Changed: your capital keeps its name; every later city takes the next name from a shuffled list that differs each game
 - Changed: America, Russia, Aksum and the Timurids also keep their second city name
 - Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
@@ -630,7 +614,6 @@ Weight: minor
 PROMOTION TOOLTIPS (UPGRADES)
 -----------------------------
 Tags: ui, promotions
-Weight: minor
 - Added: promotion tooltips say whether the promotion is kept when the unit is upgraded
 
 DEMOGRAPHICS SCREEN (TURN END)
@@ -642,14 +625,12 @@ Tags: bugfix, ui
 LOBBY: DEFAULT DIFFICULTY
 -------------------------
 Tags: ui
-Weight: minor
 - Changed: human players start at Immortal difficulty in the lobby (was Prince)
 - Note: city-state yields scale with difficulty, so Immortal is the Lekmod standard
 
 CITY BANNER TOOLTIP (WARMONGER PREVIEW)
 ---------------------------------------
 Tags: ui
-Weight: minor
 - Removed: the warmonger penalty warning in the tooltip of enemy cities
 
 CIVILOPEDIA
@@ -709,7 +690,6 @@ Doubles the flanking bonus: +20% per adjacent friendly unit instead of +10%.
 SORTIE (PROMOTION_SORTIE)
 -------------------------
 Tags: promotions, air
-Weight: minor
 - Added: -10% damage taken from air sweeps
 - Dev: InterceptionDefenseDamageModifier=-10; the sweep path in CvGame::getCombatDamage now applies it (it only applied to interceptions)
 
@@ -747,7 +727,6 @@ Adjacent ships can heal outside friendly territory. Adjacent units (except aircr
 WOODSMAN (PROMOTION_WOODSMAN)
 -----------------------------
 Tags: promotions, movement
-Weight: minor
 Double movement and +15% combat strength in forest and jungle.
 - Changed: requirement was Shock II or Drill II, now Drill I
 
@@ -760,13 +739,11 @@ Tags: ui
 AMBUSH FORMATION (PROMOTION_AMBUSH_FORMATION_1, PROMOTION_AMBUSH_FORMATION_2)
 -----------------------------------------------------------------------------
 Tags: promotions, combat
-Weight: minor
 - Changed: +25% against Mounted and Armor units (was +33%)
 
 WHALES (RESOURCE_WHALE)
 -----------------------
 Tags: tiles and resources, naval
-Weight: minor
 - Changed: Whales: -1 Food, +1 Production on the tile (the base tile now yields 0 Food, 2 Production, 1 Gold before improvements)
 
 TEMPLE AND SHRINE (BUILDING_TEMPLE, BUILDING_SHRINE)
@@ -796,14 +773,12 @@ Tags: civs, buildings
 MAIZE (RESOURCE_MAIZE)
 ----------------------
 Tags: tiles and resources
-Weight: minor
 - Changed: Farms can be built on Maize on Hills without fresh water
 - DLL: Resources.ImprovementIgnoresFreshWater (LEKMOD_RESOURCE_CITY_EFFECTS, CvPlot::canHaveImprovement)
 
 EMBARKATION WITH DEFENSE (PROMOTION_DEFENSIVE_EMBARKATION)
 ----------------------------------------------------------
 Tags: promotions, units
-Weight: minor
 - Removed: no unit starts with it (Conquistadors) and it can no longer be picked
 
 ANCIENT RUINS OVERHAUL (GOODY_*)
@@ -837,7 +812,6 @@ Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshon
 GLUTTON (NEW) (PROMOTION_GLUTTON)
 ---------------------------------
 Tags: promotions, ruins
-Weight: minor
 Given by the food ruin. -30% combat strength. Lost on upgrade.
 - Dev: icon ABILITY_ATLAS 57 (same as "May Not Melee Attack")
 
@@ -858,7 +832,6 @@ Tags: promotions, movement
 ONE GOOD EYE / STARGAZING (NEW) (PROMOTION_ONE_GOOD_EYE / PROMOTION_STARGAZING)
 -------------------------------------------------------------------------------
 Tags: promotions
-Weight: minor
 +1 sight.
 - Note: not granted to any unit yet (planned: Expansionism opener, Chile)
 - Dev: VisibilityChange=1
@@ -866,14 +839,12 @@ Weight: minor
 AIR SIEGE LINE (PROMOTION_AIR_SIEGE_1/2/3)
 ------------------------------------------
 Tags: promotions, air
-Weight: minor
 The bomber promotions "Siege I-III" are renamed "Air Siege I-III", so they are no longer confused with the land unit promotion "Siege".
 - Changed: renamed "Siege I-III" -> "Air Siege I-III"
 
 FEARED ELEPHANT (PROMOTION_FEARED_ELEPHANT)
 -------------------------------------------
 Tags: promotions, art
-Weight: minor
 - Changed: new icon
 
 DEMOGRAPHICS SCREEN
@@ -1008,7 +979,6 @@ Landing troops embark and land faster instead of fighting better from the water.
 HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
 ---------------------------------------------
 Tags: promotions, units, air
-Weight: minor
 - Added: Sentry (helicopter): +2 Visibility Range (the normal Sentry gives +1)
 - Added: it can be picked once any helicopter promotion line is at level 2, like Repair
 - Dev: Quick Study (+50% experience) was a helicopter choice too until 2026-10-18 (user: removed)
@@ -1038,13 +1008,11 @@ Drydocks work like naval Citadels; Repair Fleet heals less.
 ACADEMY (IMPROVEMENT_ACADEMY)
 -----------------------------
 Tags: tiles and resources
-Weight: minor
 - Removed: Academy: +2 Science with Atomic Theory
 
 GREAT MERCHANT: CUSTOMS HOUSE (IMPROVEMENT_CUSTOMS_HOUSE)
 ---------------------------------------------------------
 Tags: units, tiles and resources
-Weight: minor
 - Added: a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
 - DLL: Improvements.ResourceExtractionMod is now read for strategic resources (LEKMOD_IMPROVEMENT_STRATEGIC_EXTRACTION); setImprovementType removes the old improvement's amount with that improvement's modifier
 
@@ -1156,13 +1124,11 @@ Spears are a bit weaker against horses, but stronger when they charge horse arch
 WORKER (UNIT_WORKER)
 --------------------
 Tags: units
-Weight: minor
 - Added: Workers can be upgraded to Archaeologists
 
 GREAT MUSICIAN FESTIVAL (IMPROVEMENT_CONCERT)
 ---------------------------------------------
 Tags: units
-Weight: minor
 - Changed: the Festival yields 1 Culture and 1 Gold per era of its owner (Ancient Era 1, Classical Era 2, Renaissance Era 4...) instead of 4 Culture
 - DLL: Improvement_YieldPerOwnerEra; plot yields refresh when a team enters a new era (LEKMOD_IMPROVEMENT_YIELD_PER_OWNER_ERA)
 - Removed: the Festival's +2 Culture with Radio
@@ -1845,7 +1811,6 @@ Tags: policies, religion
 POLICY TEXTS (POLICY_BRANCH_*)
 ------------------------------
 Tags: policies, ui
-Weight: minor
 - Changed: policy and ideology tooltips list their effects as bullet points, one effect per line
 - Fixed: some unit and building texts showed a gap where an icon was missing
 
@@ -1890,14 +1855,12 @@ Tags: bugfix, ui, policies
 TRADE SCREEN TEXTS (ui)
 -----------------------
 Tags: diplomacy and trade, ui
-Weight: minor
 - Dev: Gold's hover says only that it cannot be traded
 - Fixed: the trade screen no longer suggests that strategic resources can be traded
 
 BUILDING AND UNIT ICONS
 -----------------------
 Tags: ui, art
-Weight: minor
 - Dev: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
 
@@ -1974,7 +1937,6 @@ Tags: policies, game mechanics, ui
 POLICY RESOURCES (Policy_ResourceQuantity)
 ------------------------------------------
 Tags: policies, game mechanics
-Weight: minor
 - Changed: strategic resources granted by policies (e.g. Oil) only count once you know the technology that reveals them; they are added when you research it
 - DLL: CvPlayer::processPolicies skips them before the tech, CvTeam::processTech adds them (LEKMOD_POLICY_REWORK)
 
@@ -2094,13 +2056,11 @@ Tags: world congress
 ADDITIONAL INFORMATION MENU (ui)
 --------------------------------
 Tags: ui
-Weight: minor
 - Changed: the Additional Information menu shows each screen's hotkey
 
 WORLD CONGRESS SCREEN (ui)
 --------------------------
 Tags: world congress, ui
-Weight: minor
 - Changed: the proposal lists are sorted alphabetically
 - Removed: Choose Host and World Leader no longer appear among the proposals (they are never proposed)
 - Added: timed proposals show how many turns they have left
@@ -2111,7 +2071,6 @@ Weight: minor
 NUCLEAR FUSION (TECH_NUCLEAR_FUSION)
 ------------------------------------
 Tags: ui
-Weight: minor
 - Dev: moved up one row in the tech tree, level with Advanced Ballistics
 
 SPIES AND DIPLOMATS (ESPIONAGE)
@@ -3057,14 +3016,12 @@ Tags: bugfix, tourism, buildings, ui
 PRODUCTION OVERFLOW TO GOLD (FLOATING TEXT)
 -------------------------------------------
 Tags: ui
-Weight: minor
 - Added: when a city's extra Production is turned into Gold, the Gold gained and the Production spent float over the city
 - DLL: CvCity::LekmodShowOverflowGold, called from popOrder for units, buildings and projects
 
 QUICK SPEED CALENDAR (GAMESPEED_QUICK)
 --------------------------------------
 Tags: ui
-Weight: minor
 The year shown on quick speed now follows the usual pace of the tech tree: about 500 AD at turn 55, 1750 AD at turn 90, 1900 AD at turn 105, 1945 AD at turn 135 and 2025 AD at turn 160.
 - Changed: only the displayed year; turns, costs and the turn limit are unchanged
 - Dev: GameSpeed_Turns quick rows (months per turn x turns): 900x40, 1200x15, 400x15, 480x15, 360x5, 120x15, 15x20, 24x10, 30x10, 48x10, 36x10, 12x165 (330 turns as before)
@@ -3072,7 +3029,6 @@ The year shown on quick speed now follows the usual pace of the tech tree: about
 MERCANTILE CITY-STATE LUXURIES (RESOURCE_JEWELRY, RESOURCE_PORCELAIN, RESOURCE_GLASS)
 -------------------------------------------------------------------------------------
 Tags: city-states, tiles and resources
-Weight: minor
 - Changed: Jewelry, Porcelain and Glass give 2 Happiness (was 4); still +2 Gold on the city tile
 - Changed: conquering a Mercantile City-State keeps its luxury on the city tile (it used to disappear)
 - Dev: define MINOR_CIV_MERCANTILE_RESOURCES_KEEP_ON_CAPTURE_DISABLED 1 -> 0; the luxury was already placed on the city tile by the base game
@@ -3097,7 +3053,6 @@ Tags: game mechanics, combat, naval
 UA CITY YIELDS ON THE CITY TILE (Buildings.LekmodYieldsOnCityTile)
 ------------------------------------------------------------------
 Tags: civs, ui
-Weight: minor
 City yields from civilization abilities now show on the city's own tile instead of under "from buildings".
 - Changed: Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile; the amounts are unchanged
 - Note: the Mughals' Golden Age points stay a city yield (tiles can't hold them)
@@ -3106,14 +3061,12 @@ City yields from civilization abilities now show on the city's own tile instead 
 CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 --------------------------------------------
 Tags: civs, ui
-Weight: minor
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
 FORTIFY BUTTON (MISSION_FORTIFY)
 --------------------------------
 Tags: ui
-Weight: minor
 - Changed: Fortify is on the main unit action panel instead of the extra actions list
 - Dev: Missions.OrderPriority 99 -> 160 (the unit panel puts missions over 100 on the main panel)
 
