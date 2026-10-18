@@ -79,9 +79,10 @@ Subsection: Reformation beliefs
 GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
 ------------------------------------------------
 Tags: ui
-- Fixed: long hotkeys (like Shift+Ctrl+R) no longer run into the next button: the buttons move to further rows and the panel grows
+- Fixed: long hotkeys (like Shift+Ctrl+R) no longer run into the next button: worker builds and promotions sit in fixed columns, take two columns when their hotkey needs it, and the panel grows by rows
+- Changed: Route To sits with the other unit actions on the left instead of among the worker builds
 - Removed: the "Recommended" build suggestion in the worker panel
-- Dev: UnitPanel (standard UI) places worker builds and promotions with LekmodFlowPlace (button + measured label width, new row when full); hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
+- Dev: UnitPanel (standard UI) places worker builds and promotions with LekmodFlowPlace (fixed columns: button + room for a one-letter key; a wider label takes more columns; new row when full); the panel moved left (small UI x 106 -> 72, normal 200 -> 90) so it ends inside the unit panel below; hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
 
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
