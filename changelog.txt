@@ -9,7 +9,7 @@ Format (also the source for player patch notes on the website):
   in quick-speed numbers, for players with no development knowledge. Bugs we introduced and fixed
   before a release are not player-facing.
 - Developer-only lines (skipped for patch notes): "- Note:", "- DLL:", "- Dev:".
-- Tags: world congress, espionage, tourism, policies, civs, buildings, units, promotions, religion,
+- Tags: tourism, world congress, espionage, policies, civs, buildings, units, promotions, religion,
   city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix,
   combat, movement, naval, air, wonders, ruins, art.
 - The tag order is the website's section order; the last seven tags are filters only (never a first tag).
@@ -1765,7 +1765,9 @@ Tags: tourism, units
 TOURISM WONDERS (BUILDING_GREAT_LIBRARY, BUILDING_MOSQUE_OF_DJENNE, BUILDING_HAGIA_SOPHIA, BUILDING_STATUE_ZEUS, BUILDING_COLOSSUS, BUILDING_HANGING_GARDEN, BUILDING_PARTHENON, BUILDING_NOTRE_DAME, BUILDING_GLOBE_THEATER, BUILDING_BROADWAY, BUILDING_RED_FORT, BUILDING_CN_TOWER, BUILDING_EIFFEL_TOWER, BUILDING_CRISTO_REDENTOR, BUILDING_SISTINE_CHAPEL)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: tourism, buildings, wonders
-- Changed: Great Library: no Science of its own; each Great Work in it gives +3 Science and +3 Tourism (2 slots)
+- Changed: Great Library:
+  - no Science of its own
+  - each Great Work in it gives +3 Science and +3 Tourism (2 slots)
 - Changed: Great Mosque of Djenne:
   - no Culture or Faith
   - 2 Happiness (was 3)
@@ -1776,7 +1778,12 @@ Tags: tourism, buildings, wonders
   - no free Temple and no Faith
   - 3 slots, 1 comes filled
   - all filled: +10 Faith
-- Changed: Statue of Zeus (rebuilt): no longer needs Honor; +10 resting Influence with city-states within 8 tiles; enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura); 1 slot that comes filled. Removed: its yields, Engineer points, +10% military production and the +15% against cities for all units
+- Changed: Statue of Zeus (rebuilt):
+  - no longer needs Honor
+  - +10 resting Influence with city-states within 8 tiles
+  - enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
+  - 1 slot that comes filled
+  - no longer: its yields, Engineer points, +10% military production and the +15% against cities for all units
 - Changed: Colossus:
   - costs 250 (like the Oracle, was 185)
   - 1 slot, filled: +4 Gold
@@ -1791,12 +1798,26 @@ Tags: tourism, buildings, wonders
   - no Culture and no Writer points
   - 2 slots, 1 comes filled
   - each Great Work in it gives +1 Culture and +1 Tourism per era (Renaissance Era 4)
-- Changed: Broadway (rebuilt): a free Great Musician; 3 slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18). Removed: its Culture
-- Changed: Red Fort: no Tourism from Flight; 3 slots, each Great Work in it gives +6 Tourism
-- Changed: CN Tower: 3 slots; all filled: +50% Tourism toward civs with territory within 10 tiles of the city
-- Changed: Eiffel Tower: +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness); no Merchant points
-- Changed: Cristo Redentor: 3 slots; all filled: +40 Faith
-- Changed: Sistine Chapel: +20% Culture in all cities (was 25%); Great Works in it yield double
+- Changed: Broadway (rebuilt):
+  - a free Great Musician
+  - 3 slots, 1 comes filled
+  - each Great Work in it gives +3 Tourism per era (Modern Era 18)
+  - no longer: its Culture
+- Changed: Red Fort:
+  - no Tourism from Flight
+  - 3 slots, each Great Work in it gives +6 Tourism
+- Changed: CN Tower:
+  - 3 slots
+  - all filled: +50% Tourism toward civs with territory within 10 tiles of the city
+- Changed: Eiffel Tower:
+  - +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
+  - no Merchant points
+- Changed: Cristo Redentor:
+  - 3 slots
+  - all filled: +40 Faith
+- Changed: Sistine Chapel:
+  - +20% Culture in all cities (was 25%)
+  - Great Works in it yield double
 - Dev: the combat preview calls every enemy aura "Fear Aura" with its source in brackets, e.g. "Fear Aura (Zeus)" (was "Nearby Reverse Great General"); auras don't stack, only the strongest counts
 - Dev: in the Great Works screen, hovering a building or wonder icon shows what Great Works inside it do
 - Note: Petra had no Tourism to remove. Colossus trade texts were already right (+2 Gold to you, +1 to the route owner)
@@ -1822,9 +1843,22 @@ Subsection: Wonders and projects
   - no Science and no free Recycling Center
   - keeps +100% Production toward Spaceship Parts
   - Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
-- Changed: Great Lighthouse: naval units trained in the city start with +15 XP; when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one. Removed: +1 movement and +1 sight for naval units, the free Quinquereme. Keeps the free Lighthouse and +1 Gold on water tiles
-- Changed: Angkor Wat (rebuilt): 1 Culture, 1 Engineer point, a free Garden, farms with fresh water worked by the city yield +1 Faith, 2 Great Work slots that come filled. Removed: the free University, 5 Culture and 5 Science, the Scientist point
-- Changed: Chichen Itza: its city loses 1 Population whenever you enter a Golden Age; 1 Scientist point instead of 1 Engineer point. Removed: its 4 Happiness
+- Changed: Great Lighthouse:
+  - naval units trained in the city start with +15 XP
+  - when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one
+  - no longer: +1 movement and +1 sight for naval units, the free Quinquereme
+  - keeps the free Lighthouse and +1 Gold on water tiles
+- Changed: Angkor Wat (rebuilt):
+  - 1 Culture
+  - 1 Engineer point
+  - a free Garden
+  - farms with fresh water worked by the city yield +1 Faith
+  - 2 Great Work slots that come filled
+  - no longer: the free University, 5 Culture and 5 Science, the Scientist point
+- Changed: Chichen Itza:
+  - its city loses 1 Population whenever you enter a Golden Age
+  - 1 Scientist point instead of 1 Engineer point
+  - no longer: its 4 Happiness
 - Changed: Althing: its +1 Production and +1 Culture also apply to snow tiles
 - Removed: Arsenal of Venice (can no longer be built)
 - Note: Althing had no Tourism to remove
@@ -2218,11 +2252,11 @@ The World Congress runs on a fixed cycle: host election, proposals, and the vote
 WORLD CONGRESS DELEGATES (LEAGUE_VOTES)
 ---------------------------------------
 Tags: world congress, game mechanics
-Delegates now depend on the Congress era and on what you hold, not on special sessions.
-- Changed: membership 1/2/3/4/5 Delegates in the Renaissance/Industrial/Modern/Atomic/Information Era (was 1-4 by special session)
+Delegates now depend on the Congress era and on what you hold.
+- Changed: membership 1/2/3/4/5 Delegates in the Renaissance/Industrial/Modern/Atomic/Information Era (was 1 to 4)
 - Added: each other civilization's original capital you hold: 0/1/1/2/3 Delegates
 - Changed: host 1 Delegate, 2 from the Modern Era
-- Changed: each allied City-State 0/1/1/1/2 Delegates (was 0-2 by special session)
+- Changed: each allied City-State 0/1/1/1/2 Delegates (was 0 to 2)
 - Added: +1 permanent Delegate for each of your proposals that passes
 - Added: +1 Delegate per civilization you are Influential (or more) over, -1 per civilization Influential over you
 - Changed: Forbidden Palace 3 Delegates from the Atomic Era (2 before)
@@ -2275,7 +2309,14 @@ Tags: world congress
 - Added: Pariah (Atomic Era): nobody can trade with the chosen civilization (peace still possible), its deals and foreign Trade Routes end, it has 2 Delegates less and +15% Combat Strength
 - Added: Brain Trust: the first civilization with a technology gets 10% of its cost in Gold; technologies other civilizations know are 5% faster per civilization that knows them
 - Added: Climate Change Reparations (every civilization in the Modern Era): 200 Gold per Factory paid once (not below 0); +1 Happiness per Factory; +30% Production toward Hydro, Nuclear and Solar Plants
-- Added: Charter of Civil Liberties (Modern Era): public opinion returns while it is active; a civilization under other ideologies' cultural pressure gets Unhappiness = dissatisfaction (1-5) / 2 per city + population / (20 - 2 x dissatisfaction); influence still never forces an ideology switch; the five levels are named Dissidents, Unrest, Civil Resistance, Revolutionary Wave and System Collapse
+- Added: Charter of Civil Liberties (Modern Era):
+  - public opinion returns while it is active; influence still never forces an ideology switch
+  - dissatisfaction: for each civilization of another ideology, the influence levels it is ahead of you (its level over you minus yours over it), minus the same for civilizations of your own ideology; counted from 1 to 5 (0 or less: no unhappiness)
+  - 1 Dissidents: 0.5 Unhappiness per city, +1 per 18 citizens
+  - 2 Unrest: 1 per city, +1 per 16 citizens
+  - 3 Civil Resistance: 1.5 per city, +1 per 14 citizens
+  - 4 Revolutionary Wave: 2 per city, +1 per 12 citizens
+  - 5 System Collapse: 2.5 per city, +1 per 10 citizens
 - Dev: proposals with only Lekmod effects (Blackout, Import Tariffs, the new Non-Proliferation, ...) were dropped right after passing because the base game keeps only resolutions with base-game effects; fixed
 - DLL: Resolutions.Lekmod* columns (LekmodResolutionColumn, read at runtime), Resolution_LekmodBuildingClassProductionModifiers, timed resolutions end in CvLeague::LekmodDoExpiry; Lua Game.LekmodIsBlackout (Demographics); Resolutions.LekmodStealSlower (Transparency)
 
@@ -2363,7 +2404,7 @@ Tags: espionage, buildings, wonders
 - Added: World Wonder at Telecommunications, 2000 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
-- Added: all other players see only BLACKOUT on their Demographics screen
+- Added: other players' Demographics screens are blacked out
 - DLL: Buildings.FastSpyEstablish, DemographicsBlackout (LEKMOD_SPY_WONDERS); Lua Game.LekmodIsBlackout(iObserver)
 - Dev: building 276, class 183; icon from the user's art (white background replaced, art_sources/tools/round_building_icon.py)
 
