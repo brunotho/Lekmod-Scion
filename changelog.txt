@@ -84,6 +84,12 @@ Tags: ui
 - Removed: the "Recommended" build suggestion in the worker panel
 - Dev: UnitPanel (standard UI) places worker builds and promotions with LekmodFlowPlace (fixed columns: button + room for a one-letter key; a wider label takes more columns; new row when full); the panel moved left (small UI x 106 -> 72, normal 200 -> 90) so it ends inside the unit panel below; hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
 
+SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
+------------------------------------------------------
+Tags: units
+- Changed: the Self-Propelled Artillery has its own 3D model, a tracked heavy howitzer (it used the Rocket Artillery's)
+- Dev: model "Ha-to artillery" by Herdyn (CC BY 4.0; credit on its Civilopedia page, TXT_KEY_LEKMOD_SPA_PEDIA), reduced to 3,280 triangles and one baked 256 texture, on the Modern Armor skeleton and animations (all on tank_bone_body: the gun does not traverse or recoil); ArtDefine ART_DEF_UNIT_LEKMOD_SPA with the Artillery's combat effects; sources and scripts in art_sources/units/self_propelled_artillery and art_sources/tools/3d
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

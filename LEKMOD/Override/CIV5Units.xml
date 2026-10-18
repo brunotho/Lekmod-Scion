@@ -280425,7 +280425,7 @@
 			<ID>270</ID>
 			<Type>UNIT_SELF_PROPELLED_ARTILLERY</Type>
 			<Description>TXT_KEY_UNIT_SELF_PROPELLED_ARTILLERY</Description>
-			<Civilopedia>TXT_KEY_UNIT_SELF_PROPELLED_ARTILLERY_STRATEGY</Civilopedia>
+			<Civilopedia>TXT_KEY_LEKMOD_SPA_PEDIA</Civilopedia>
 			<Strategy>TXT_KEY_UNIT_SELF_PROPELLED_ARTILLERY_STRATEGY</Strategy>
 			<Help>TXT_KEY_UNIT_HELP_SELF_PROPELLED_ARTILLERY</Help>
 			<Combat>30</Combat>
@@ -280450,7 +280450,7 @@
 			<CombatLimit>100</CombatLimit>
 			<XPValueAttack>3</XPValueAttack>
 			<XPValueDefense>3</XPValueDefense>
-			<UnitArtInfo>ART_DEF_UNIT_ROCKET_ARTILLERY</UnitArtInfo>
+			<UnitArtInfo>ART_DEF_UNIT_LEKMOD_SPA</UnitArtInfo>
 			<ShowInPedia>true</ShowInPedia>
 			<MoveRate>ARTILLERY</MoveRate>
 			<UnitFlagIconOffset>72</UnitFlagIconOffset>
@@ -292110,4 +292110,59 @@
 	<Unit_FreePromotions>
 		<Delete PromotionType="PROMOTION_AMPHIBIOUS"/>
 	</Unit_FreePromotions>
+	<!-- LEKMOD: Self-Propelled Artillery 3D model (2026-10-19): "Ha-to artillery" by Herdyn (CC-BY 4.0), modified; Modern Armor skeleton and animations, Artillery combat effects -->
+	<ArtDefine_UnitInfos>
+		<Row>
+			<Type>ART_DEF_UNIT_LEKMOD_SPA</Type>
+			<DamageStates>1</DamageStates>
+			<Formation>TwoBigGuns</Formation>
+		</Row>
+	</ArtDefine_UnitInfos>
+	<ArtDefine_UnitInfoMemberInfos>
+		<Row>
+			<UnitInfoType>ART_DEF_UNIT_LEKMOD_SPA</UnitInfoType>
+			<UnitMemberInfoType>ART_DEF_UNIT_MEMBER_LEKMOD_SPA</UnitMemberInfoType>
+			<NumMembers>2</NumMembers>
+		</Row>
+	</ArtDefine_UnitInfoMemberInfos>
+	<ArtDefine_UnitMemberInfos>
+		<Row>
+			<Type>ART_DEF_UNIT_MEMBER_LEKMOD_SPA</Type>
+			<Scale>0.1</Scale>
+			<Model>lekmodspa.fxsxml</Model>
+			<MaterialTypeTag>METAL</MaterialTypeTag>
+			<MaterialTypeSoundOverrideTag>METALSM</MaterialTypeSoundOverrideTag>
+		</Row>
+	</ArtDefine_UnitMemberInfos>
+	<ArtDefine_UnitMemberCombats>
+		<Row>
+			<UnitMemberType>ART_DEF_UNIT_MEMBER_LEKMOD_SPA</UnitMemberType>
+			<EnableActions>Idle Attack RunCharge AttackCity Bombard Death BombardDefend Run Fortify CombatReady</EnableActions>
+			<HasShortRangedAttack>1</HasShortRangedAttack>
+			<HasLongRangedAttack>1</HasLongRangedAttack>
+			<HasStationaryMelee>1</HasStationaryMelee>
+			<HasRefaceAfterCombat>1</HasRefaceAfterCombat>
+			<ReformBeforeCombat>1</ReformBeforeCombat>
+		</Row>
+	</ArtDefine_UnitMemberCombats>
+	<ArtDefine_UnitMemberCombatWeapons>
+		<Row>
+			<UnitMemberType>ART_DEF_UNIT_MEMBER_LEKMOD_SPA</UnitMemberType>
+			<Index>0</Index>
+			<SubIndex>0</SubIndex>
+			<VisKillStrengthMin>25</VisKillStrengthMin>
+			<VisKillStrengthMax>50</VisKillStrengthMax>
+			<ProjectileSpeed>7</ProjectileSpeed>
+			<HitEffect>ART_DEF_VEFFECT_ARTILLERY_IMPACT_$(TERRAIN)</HitEffect>
+			<WeaponTypeTag>EXPLOSIVE</WeaponTypeTag>
+			<WeaponTypeSoundOverrideTag>EXPLOSION20POUND</WeaponTypeSoundOverrideTag>
+		</Row>
+	</ArtDefine_UnitMemberCombatWeapons>
+	<ArtDefine_StrategicView>
+		<Row>
+			<StrategicViewType>ART_DEF_UNIT_LEKMOD_SPA</StrategicViewType>
+			<TileType>Unit</TileType>
+			<Asset>SV_MobileRocketArtillery.dds</Asset>
+		</Row>
+	</ArtDefine_StrategicView>
 </GameData>

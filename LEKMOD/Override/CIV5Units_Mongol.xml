@@ -101570,6 +101570,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_UNIT_SELF_PROPELLED_ARTILLERY_STRATEGY">
 			<Text>The Self-Propelled Artillery arrives with Ballistics and needs 1 Iron and 1 Oil.[NEWLINE]It has 30 [ICON_STRENGTH] Combat Strength, 40 [ICON_RANGE_STRENGTH] Ranged Combat Strength, 2 [ICON_MOVES] Movement and a range of 3.[NEWLINE][NEWLINE]Unlike the Artillery it does not need to set up before firing.[NEWLINE]It can fire over obstacles (Indirect Fire) and has +200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Sitting Ducks: +33% when attacking Naval Melee, Naval Ranged and embarked units.[NEWLINE][NEWLINE]It cannot melee attack, gets no defensive terrain bonuses and has limited sight, so protect it with other units.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPA_PEDIA">
+			<Text>The Self-Propelled Artillery arrives with Ballistics and needs 1 Iron and 1 Oil.[NEWLINE]It has 30 [ICON_STRENGTH] Combat Strength, 40 [ICON_RANGE_STRENGTH] Ranged Combat Strength, 2 [ICON_MOVES] Movement and a range of 3.[NEWLINE][NEWLINE]Unlike the Artillery it does not need to set up before firing.[NEWLINE]It can fire over obstacles (Indirect Fire) and has +200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Sitting Ducks: +33% when attacking Naval Melee, Naval Ranged and embarked units.[NEWLINE][NEWLINE]It cannot melee attack, gets no defensive terrain bonuses and has limited sight, so protect it with other units.[NEWLINE][NEWLINE]3D model: "Ha-to artillery" by Herdyn (sketchfab.com, CC BY 4.0), reduced and retextured for the game.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_DISMISS_ALL">
 			<Text>Dismiss all</Text>
 		</Row>
