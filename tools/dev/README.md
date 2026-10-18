@@ -20,6 +20,10 @@ Run them from this folder (`python tools/dev/q.py ...` also works for the standa
 | `xmlrefs.py <TYPE>` | All rows in `CIV5Units.xml` that mention a type name, with their table and line. |
 | `ubdiff.py [filter...]` | Each unique building against the building it replaces, from the loaded DB: differing columns, sub-table rows only one of them has, both Help texts. |
 | `ub_texts_2026_10_17.py` | The UB tooltip texts of the 2026-10-17 audit ("Like the X:" / "In addition:"); rerunnable, sets every definition of each Help tag. Edit a text there and rerun, or edit the text file directly and stop using the script. |
+| `changelog_cards.py "<first tag>"` / `"<TITLE>" --title` | Dumps changelog cards (player lines only). Its `load()` / `items()` are the item parser the other changelog scripts use; keeps the file's line endings. |
+| `changelog_resync.py` | Re-copies every line of a collection card (`Collects:`, `{Source}` prefix) from its source card after you changed the source. The website test fails until copies match. |
+| `changelog_unitaudit.py` | Checks unit "(was X)" values in `changelog.txt` (strength, ranged strength, movement, cost in quick) against upstream v35.4 data. Known false positive: Hittite "War Chariot" (Egypt has a unit of the same name). |
+| `v354rows.py <Table> <text>` | Prints the rows (and Delete/Update ops) of a table in upstream v35.4's `CIV5Units.xml` that contain a text, e.g. `v354rows.py Resource_YieldChanges RESOURCE_WHALE`. For "(was X)" values: always the v35.4 value. |
 | `examples/` | The batch H scripts as a pattern: C++ edits, data + texts appended at the end of the Override files, changelog edits inside a civ's section. |
 
 Batch routine: C++ script → `balance` + `ifstack` + `sqlcheck` → build in the background (CLAUDE.md §5) → data script → `xmlcheck` + `refcheck` → changelog → check Civ V is closed → back up and install the DLL → commit code/data, then the DLL separately → next game start: `dbcheck <commit>` → tracker rows, "Specs to refine" defaults, "Civ tests (Phase 6)" items → CLAUDE.md.
