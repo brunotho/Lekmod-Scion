@@ -43,7 +43,7 @@ module Changelog
 
   Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :collects, :subsection, :entries, keyword_init: true) do
     def search_text
-      ([name] + entries.flat_map { |e| [e.summary] + e.lines.map { |l| l[:text] } }).join(" ").downcase
+      ([name] + entries.flat_map { |e| [e.summary] + e.lines.flat_map { |l| [l[:text], *l[:items]] } }).join(" ").downcase
     end
   end
 
@@ -77,6 +77,8 @@ module Changelog
   # (a tag-like note such as "(ui)"). Only real type keys identify an item across releases; otherwise the name does.
   TRAILING_BRACKET = /\A(.*?)\s*\(([^()]*)\)\s*\z/
   LINE = /\A- (\w+): (.*)\z/
+  # "  - item" under a line: one entry of a list that belongs to that line (shown as sub-bullets).
+  SUB_LINE = /\A\s{2,}- (.*)\z/
 
   def self.split_title(title)
     m = TRAILING_BRACKET.match(title)
@@ -169,6 +171,8 @@ module Changelog
       break if i + 1 < lines.size && lines[i + 1] =~ /\A-{3,}\s*\z/ && !l.strip.empty? && !l.start_with?("- ")
       if (m = LINE.match(l))
         entries << { kind: m[1], text: m[2].strip }
+      elsif (m = SUB_LINE.match(l)) && entries.any?
+        (entries.last[:items] ||= []) << m[1].strip
       elsif !l.strip.empty? && entries.empty?
         summary << l.strip
       end

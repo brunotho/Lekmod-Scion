@@ -137,7 +137,7 @@ class RealChangelogTest < Minitest::Test
         coll.player_lines.each do |line|
           source, text = Changelog.split_source(line[:text])
           src = source && rel.items.find { |it| it.name.casecmp?(source) && !it.collects }
-          ok = src&.player_lines&.any? { |l| l[:kind] == line[:kind] && l[:text] == text }
+          ok = src&.player_lines&.any? { |l| l[:kind] == line[:kind] && l[:text] == text && l[:items] == line[:items] }
           problems << "#{coll.name}: no matching line on #{source.inspect}: #{text[0, 80]}" unless ok
         end
       end

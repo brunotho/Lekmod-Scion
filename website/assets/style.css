@@ -111,6 +111,8 @@ input[type="search"] { width: 100%; }
 .changed .kind { color: var(--changed); }
 .removed .kind { color: var(--removed); }
 .fixed .kind { color: var(--fixed); }
+.lines .sub { list-style: disc; margin: 2px 0 0; padding-left: 18px; }
+.lines .sub li { display: list-item; margin: 0; }
 [hidden] { display: none !important; }
 
 /* Civ list */
