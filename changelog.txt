@@ -760,7 +760,8 @@ Tags: promotions, movement, combat
   - at most 2 movement left after embarking or disembarking
   - can heal while embarked
 - Added: Amphibious II also unlocks Mobility and Envelopment
-- Removed: the old Amphibious promotion (units that had it keep it, without effect)
+- Removed: the old Amphibious promotion
+- Dev: 2026-10-18: until then Songhai's land units still got the old promotion (without effect); every grant removed (Trait_FreePromotionUnitCombats, UnitPromotions_UnitCombats, Unit_FreePromotions), the row stays
 - Dev: new columns EmbarkFlatCost, DisembarkFlatCost, MaxMovesAfterDomainChange, HealWhileEmbarked. Walk-water tiles (pontoons, shallows) count as land for the flat cost.
 - Dev: after the v35.4 port, v35.4's water-walk rules in CvUnitMovement::ConsumesAllMoves returned before the Amphibious check; fixed in f1706839
 

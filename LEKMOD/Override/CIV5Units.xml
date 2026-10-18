@@ -292055,4 +292055,14 @@
 			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
 		</Update>
 	</Improvements>
+	<!-- LEKMOD: old Amphibious (PROMOTION_AMPHIBIOUS) removed from every unit (2026-10-18): no free grants left; the row stays (IDs) -->
+	<Trait_FreePromotionUnitCombats>
+		<Delete PromotionType="PROMOTION_AMPHIBIOUS"/>
+	</Trait_FreePromotionUnitCombats>
+	<UnitPromotions_UnitCombats>
+		<Delete PromotionType="PROMOTION_AMPHIBIOUS"/>
+	</UnitPromotions_UnitCombats>
+	<Unit_FreePromotions>
+		<Delete PromotionType="PROMOTION_AMPHIBIOUS"/>
+	</Unit_FreePromotions>
 </GameData>
