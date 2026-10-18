@@ -25,14 +25,15 @@ Format (also the source for player patch notes on the website):
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
 - Dev: the April promotions were only defined in Art/Promotions/LekmodPromotions.xml, which the game never loads; they now live in the Override files.
 
-LEKMOD ROSEBRANCH (NAME)
-------------------------
+LEKMOD SCION (NAME)
+-------------------
 Tags: ui
-- Dev: summary: This version of Lekmod has its own name: Lekmod Rosebranch, numbered from 1.0.0. Its map is Lekmap Rosebranch.
-- Dev: the main menu, lobby titles and the default game name say "LEKMOD ROSEBRANCH v1.0.0"
-- Dev: the update check in the main menu reads Lekmod Rosebranch's own version list
-- Dev: Multiplayer > New Game picks the Lekmap Rosebranch Fractal Pangaea map; older Lekmap versions are not picked
-- Dev: Lekmod_version.lua LOCAL_VERSION v1.0.0; version list LekmodInstaller/github_setup/rosebranch_versions.json on branch dev of brunotho/Lekmod-Rosebranch (upstream's versions.json untouched); GitHub repos renamed to Lekmod-Rosebranch and lekmap-rosebranch
+- Dev: summary: This version of Lekmod has its own name: Lekmod Scion, numbered from 1.0.0. Its map is Lekmap Scion.
+- Dev: the main menu, lobby titles and the default game name say "LEKMOD SCION v1.0.0"
+- Dev: the update check in the main menu reads Lekmod Scion's own version list
+- Dev: Multiplayer > New Game picks the Lekmap Scion Fractal Pangaea map; older Lekmap versions are not picked
+- Dev: Lekmod_version.lua LOCAL_VERSION v1.0.0; version list LekmodInstaller/github_setup/scion_versions.json on branch dev of brunotho/Lekmod-Scion (upstream's versions.json untouched); GitHub repos renamed to Lekmod-Scion and lekmap-rosebranch
+- Dev: the name was Lekmod/Lekmap Rosebranch from 2026-10-17 and became Scion on 2026-10-18 (repos renamed to Lekmod-Scion and lekmap-scion; release v1.0.0 re-published as Scion). LekmodInstaller/github_setup/rosebranch_versions.json stays in sync with scion_versions.json for copies downloaded as Rosebranch
 
 ALTITUDE TRAINING (PROMOTION_ALTITUDE_TRAINING)
 -----------------------------------------------
@@ -3156,5 +3157,5 @@ MULTIPLAYER MENU (MAIN MENU)
 ----------------------------
 Tags: ui
 - Changed: Multiplayer goes straight to New Game (an online lobby with the Tournament settings) and Load Game; the other multiplayer modes are under Main Menu > Other
-- Note: the map is Lekmap Rosebranch's Fractal Pangaea, found by its file name (LekmapRosebranch_FractalPangaea.lua); without it the game's default map stays
+- Note: the map is Lekmap Scion's Fractal Pangaea, found by its file name (LekmapScion_FractalPangaea.lua); without it the game's default map stays
 - Dev: Lua/tmp/ui/FrontEnd/MultiplayerSelect.lua/.xml (copies of the base files, both UIs via ui_check.bat): LekmodShowSimpleMenu, LekmodFindDefaultMapScript, LekmodNewGameClick (Matchmaking.HostInternetGame like the setup screen's Host button), LoadMenu child context LekmodLoadGameScreen (DeferLoad, so it starts as a network game); Lekmod's own OtherMenu.lua/.xml (both UIs) fires LuaEvents.LekmodOpenMultiplayerOtherModes

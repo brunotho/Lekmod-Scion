@@ -1,6 +1,6 @@
 name: Website
 
-# Builds the Lekmod Rosebranch website (website/) and publishes it on GitHub Pages.
+# Builds the Lekmod Scion website (website/) and publishes it on GitHub Pages.
 # Runs when a release is published, or by hand (Actions > Website > Run workflow).
 # One-time setup: repo Settings > Pages > Source = "GitHub Actions".
 
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout map (for its changelog)
         uses: actions/checkout@v4
         with:
-          repository: brunotho/lekmap-rosebranch
+          repository: brunotho/lekmap-scion
           ref: dev
           path: lekmap
           sparse-checkout: CHANGELOG.txt

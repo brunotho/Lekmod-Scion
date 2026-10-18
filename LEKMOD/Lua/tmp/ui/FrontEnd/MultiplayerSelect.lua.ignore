@@ -36,9 +36,9 @@ function LekmodShowSimpleMenu(bSimple)
 	end
 end
 
--- The map: Lekmap Rosebranch's Fractal Pangaea script, found by its file name wherever the map folder is.
+-- The map: Lekmap Scion's Fractal Pangaea script, found by its file name wherever the map folder is.
 -- Older Lekmap versions (other names) are never picked, so players can't start on the wrong one by accident.
-local LEKMOD_MAP_SCRIPT_NAME = "lekmaprosebranch_fractalpangaea";
+local LEKMOD_MAP_SCRIPT_NAME = "lekmapscion_fractalpangaea";
 function LekmodFindDefaultMapScript()
 	for row in GameInfo.MapScripts{SupportsMultiplayer = 1} do
 		local fileName = string.lower(row.FileName or "");

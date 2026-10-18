@@ -1,6 +1,6 @@
-# Lekmod Rosebranch
+# Lekmod Scion
 
-Lekmod Rosebranch is a continuation of [Lekmod](https://github.com/EnormousApplePie/Lekmod) (based on LEKMOD v35.4), with its own balance work and numbering from 1.0.0. Its map is [Lekmap Rosebranch](https://github.com/brunotho/lekmap-rosebranch). Changes since v35.4: see `changelog.txt`.
+Lekmod Scion is a continuation of [Lekmod](https://github.com/EnormousApplePie/Lekmod) (based on LEKMOD v35.4), with its own balance work and numbering from 1.0.0. Its map is [Lekmap Scion](https://github.com/brunotho/lekmap-scion). Changes since v35.4: see `changelog.txt`.
 
 The original Lekmod description follows.
 

@@ -12,7 +12,7 @@ module Changelog
       unreleased ? "#{version_from_label || 'Next'} (unreleased)" : version
     end
 
-    # "UNRELEASED (Lekmod Rosebranch 1.0.0, based on LEKMOD v35.4)" -> "1.0.0"
+    # "UNRELEASED (Lekmod Scion 1.0.0, based on LEKMOD v35.4)" -> "1.0.0"
     def version_from_label
       label.to_s[/\b(\d+\.\d+\.\d+)\b/, 1]
     end

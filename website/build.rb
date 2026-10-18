@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Builds the Lekmod Rosebranch website into website/_site (plain HTML, CSS and JS for GitHub Pages).
+# Builds the Lekmod Scion website into website/_site (plain HTML, CSS and JS for GitHub Pages).
 #
 #   ruby website/build.rb                       public build: released versions only
 #   ruby website/build.rb --preview             also shows the UNRELEASED block (local preview)
@@ -27,8 +27,8 @@ OptionParser.new do |o|
 end.parse!
 
 module Helpers
-  MOD_RELEASES = "https://github.com/brunotho/Lekmod-Rosebranch/releases/latest".freeze
-  MAP_RELEASES = "https://github.com/brunotho/lekmap-rosebranch/releases/latest".freeze
+  MOD_RELEASES = "https://github.com/brunotho/Lekmod-Scion/releases/latest".freeze
+  MAP_RELEASES = "https://github.com/brunotho/lekmap-scion/releases/latest".freeze
   PAGES = [
     ["index.html", "Mod changelog"],
     ["map.html", "Map changelog"],

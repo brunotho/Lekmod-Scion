@@ -74,7 +74,7 @@ class ChangelogTest < Minitest::Test
   end
 
   def test_unreleased_block_only_in_preview
-    doc = Changelog.parse("## UNRELEASED (Lekmod Rosebranch 1.2.0)\n\nX (X_Y)\n-------\nTags: ui\n- Added: a\n" + SAMPLE.split("\n", 6).last)
+    doc = Changelog.parse("## UNRELEASED (Lekmod Scion 1.2.0)\n\nX (X_Y)\n-------\nTags: ui\n- Added: a\n" + SAMPLE.split("\n", 6).last)
     assert_equal "1.2.0 (unreleased)", doc.releases.last.title
     refute(doc.cards.any? { |c| c.key == "X_Y" })
     assert(doc.cards(include_unreleased: true).any? { |c| c.key == "X_Y" })

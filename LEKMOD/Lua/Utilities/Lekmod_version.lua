@@ -5,7 +5,7 @@
 LekmodVersion = LekmodVersion or {}
 
 -- Technical version for MP lobby name / update checks (display titles live in TXT_KEY_LEKMOD_*).
--- Lekmod Rosebranch (2026-10-17): our own line, numbered from 1.0.0 (based on upstream LEKMOD v35.4)
+-- Lekmod Scion (2026-10-17): our own line, numbered from 1.0.0 (based on upstream LEKMOD v35.4)
 LekmodVersion.LOCAL_VERSION = "v1.0.0"
 
 -- Plain lobby chat posted by clients that skipped ui_check.bat (Steam invite bypasses the legal screen).
@@ -19,11 +19,11 @@ LekmodVersion.LOBBY_CHAT_REQ = "#LCHREQ#"
 LekmodVersion.LOBBY_CHAT_CLEAR = "#LCHCLEAR#"
 LekmodVersion.LOBBY_CHAT_PREFIX = "#LCH#"
 LekmodVersion.DRAFT_PREFIX = "#LDRAFT#"
-LekmodVersion.VERSIONS_PAGE_URL = "https://github.com/brunotho/Lekmod-Rosebranch/blob/dev/LekmodInstaller/github_setup/rosebranch_versions.json"
+LekmodVersion.VERSIONS_PAGE_URL = "https://github.com/brunotho/Lekmod-Scion/blob/dev/LekmodInstaller/github_setup/scion_versions.json"
 -- FrontEnd fetches these via undocumented vanilla Network.HttpRequest (Civ5-Patch pattern).
 LekmodVersion.VERSIONS_RAW_URLS = {
-	"https://raw.githubusercontent.com/brunotho/Lekmod-Rosebranch/dev/LekmodInstaller/github_setup/rosebranch_versions.json",
-	"https://cdn.jsdelivr.net/gh/brunotho/Lekmod-Rosebranch@dev/LekmodInstaller/github_setup/rosebranch_versions.json",
+	"https://raw.githubusercontent.com/brunotho/Lekmod-Scion/dev/LekmodInstaller/github_setup/scion_versions.json",
+	"https://cdn.jsdelivr.net/gh/brunotho/Lekmod-Scion@dev/LekmodInstaller/github_setup/scion_versions.json",
 }
 LekmodVersion.HTTP_TIMEOUT = 10 -- seconds
 

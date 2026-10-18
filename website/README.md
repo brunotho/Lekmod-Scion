@@ -1,4 +1,4 @@
-# Lekmod Rosebranch website
+# Lekmod Scion website
 
 A static site (plain HTML, CSS, a little JavaScript) built by a Ruby script with ERB templates and published on GitHub Pages. No server, no database, no gems: only Ruby's standard library.
 
@@ -7,7 +7,7 @@ A static site (plain HTML, CSS, a little JavaScript) built by a Ruby script with
 | Page | Source |
 |---|---|
 | Mod changelog (`index.html`) | `changelog.txt` at the repo root (format: see its header) |
-| Map changelog (`map.html`) | `CHANGELOG.txt` in the map repo (`brunotho/lekmap-rosebranch`), loosely written: `#` headings, `-` bullets, tab-indented sub-bullets |
+| Map changelog (`map.html`) | `CHANGELOG.txt` in the map repo (`brunotho/lekmap-scion`), loosely written: `#` headings, `-` bullets, tab-indented sub-bullets |
 | Installation (`install.html`) | `templates/install.html.erb` (written by hand) |
 | Civ list (`civs.html`) | the mod's `LEKMOD/Override/CIV5Units.xml` and `CIV5Units_Mongol.xml`, read directly |
 | Known issues (`bugs.html`) | switched off for now (2026-10-18); `data/known_issues.txt` and `templates/bugs.html.erb` stay, see the comment in `build.rb` |
