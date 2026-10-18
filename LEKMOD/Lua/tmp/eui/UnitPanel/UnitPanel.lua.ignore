@@ -1024,7 +1024,7 @@ local function UpdateUnitActions( unit )
 
 			elseif action.isBuild and not hasPromotion then
 				numBuildActions = numBuildActions + 1
-				if hasMovesLeft and not recommendedBuild and unit:IsActionRecommended( action.ID ) then
+				if false and hasMovesLeft and not recommendedBuild and unit:IsActionRecommended( action.ID ) then -- LEKMOD: never recommend a build (user, 2026-10-18)
 					recommendedBuild = action.ID
 					instance = g_recommendedActionButton
 					Controls.RecommendedActionLabel:SetText( (bnw_mode and (L("TXT_KEY_UPANEL_RECOMMENDED") .. "[NEWLINE]") or "") .. L( tostring( action.TextKey or action.Type ) ) )

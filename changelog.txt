@@ -76,6 +76,13 @@ Subsection: Reformation beliefs
 - Fixed: Sanctuaries and Stupas get the +3 Gold and +3 Faith too, like the other buildings unlocked by Religious Beliefs
 - Dev: Belief_BuildingClassYieldChanges rows for BUILDINGCLASS_LEKMOD_SANCTUARY / _STUPA
 
+GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
+------------------------------------------------
+Tags: ui
+- Fixed: long hotkeys (like Shift+Ctrl+R) no longer run into the next button: the buttons move to further rows and the panel grows
+- Removed: the "Recommended" build suggestion in the worker panel
+- Dev: UnitPanel (standard UI) places worker builds and promotions with LekmodFlowPlace (button + measured label width, new row when full); hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

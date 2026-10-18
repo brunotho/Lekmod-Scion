@@ -235,13 +235,16 @@ function LekmodShortHotKey( strHotKey )
 	end
 	local mods = {};
 	local key = "";
-	for token in string.gmatch( tostring( strHotKey ), "[^%+%s]+" ) do
+	for token in string.gmatch( tostring( strHotKey ), "[^%+%s%-]+" ) do
 		local mod = g_LekmodModifierNames[string.lower( token )];
 		if mod ~= nil then
 			table.insert( mods, mod );
 		else
 			key = token;
 		end
+	end
+	if key == "" and string.find( tostring( strHotKey ), "%-$" ) then
+		key = "-";
 	end
 	key = string.gsub( key, "^KB_", "" );
 	key = g_LekmodShortKeyNames[string.upper( key )] or key;
@@ -255,6 +258,26 @@ function LekmodSetHotKeyLabel( instance, strMods, strKey )
 	if instance.LekmodHotKeyModLabel ~= nil then
 		instance.LekmodHotKeyModLabel:SetText( strMods );
 	end
+end
+
+-- LEKMOD: worker builds and promotions flow left to right; each button takes its own width plus the width of
+-- its hotkey labels, and a button that doesn't fit starts a new row (the panel grows by those rows)
+local g_LekmodFlow = { x = 0, row = 0 };
+function LekmodFlowPlace( instance, buttonSize, rowWidth, x0, y0 )
+	local labelW = 0;
+	if instance.LekmodHotKeyLabel ~= nil and instance.LekmodHotKeyLabel:GetText() ~= nil and instance.LekmodHotKeyLabel:GetText() ~= "" then
+		labelW = instance.LekmodHotKeyLabel:GetSizeX();
+	end
+	if instance.LekmodHotKeyModLabel ~= nil and instance.LekmodHotKeyModLabel:GetText() ~= nil and instance.LekmodHotKeyModLabel:GetText() ~= "" then
+		labelW = math.max( labelW, instance.LekmodHotKeyModLabel:GetSizeX() );
+	end
+	local w = buttonSize + ((labelW > 0) and (labelW + 6) or 0);
+	if g_LekmodFlow.x > 0 and g_LekmodFlow.x + w > rowWidth then
+		g_LekmodFlow.x = 0;
+		g_LekmodFlow.row = g_LekmodFlow.row + 1;
+	end
+	instance.UnitActionButton:SetOffsetVal( g_LekmodFlow.x + x0, g_LekmodFlow.row * buttonSize + y0 );
+	g_LekmodFlow.x = g_LekmodFlow.x + w;
 end
 
 function UpdateUnitActions( unit )
@@ -323,6 +346,10 @@ function UpdateUnitActions( unit )
 	local buildsPerRow = bShowBuildKeys and promosPerRow or numberOfButtonsPerRow;
 
     local recommendedBuild = nil;
+	g_LekmodFlow.x = 0;
+	g_LekmodFlow.row = 0;
+	-- the panel's width for buttons and their hotkeys (as many plain buttons as fit before)
+	local lekmodRowWidth = numberOfButtonsPerRow * buttonSize;
     
     local buildCityButtonActive = false;
    
@@ -394,7 +421,7 @@ function UpdateUnitActions( unit )
 					end
 				end
                 instance.UnitActionButton:SetAnchor( "L,B" );
-				instance.UnitActionButton:SetOffsetVal( (numBuildActions % promosPerRow) * promoStep + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / promosPerRow) * buttonSize + buttonPadding + buttonOffsetY );				
+				LekmodFlowPlace( instance, buttonSize, lekmodRowWidth, buttonPadding + buttonOffsetX + extraXOffset, buttonPadding + buttonOffsetY );
                 numBuildActions = numBuildActions + 1;
                 
             elseif( (action.SubType == ActionSubTypes.ACTIONSUBTYPE_BUILD or action.Type == "INTERFACEMODE_ROUTE_TO") and hasPromotion == false) then
@@ -403,9 +430,15 @@ function UpdateUnitActions( unit )
 				iBuildID = action.MissionData;
 				instance = g_BuildIM:GetInstance();
 				instance.UnitActionButton:SetAnchor( "L,B" );
-				instance.UnitActionButton:SetOffsetVal( (numBuildActions % buildsPerRow) * buildStep + buttonPadding + buttonOffsetX + extraXOffset, math.floor(numBuildActions / buildsPerRow) * buttonSize + buttonPadding + buttonOffsetY );
+				if bShowBuildKeys then
+					LekmodSetHotKeyLabel( instance, LekmodShortHotKey( action.HotKey ) );
+				else
+					LekmodSetHotKeyLabel( instance, "", "" );
+				end
+				LekmodFlowPlace( instance, buttonSize, lekmodRowWidth, buttonPadding + buttonOffsetX + extraXOffset, buttonPadding + buttonOffsetY );
 				numBuildActions = numBuildActions + 1;
-				if recommendedBuild == nil and unit:IsActionRecommended( iAction ) then
+				-- LEKMOD: no "Recommended" build (the game's tile advice) for workers, ever (user, 2026-10-18)
+				if false and recommendedBuild == nil and unit:IsActionRecommended( iAction ) then
 				
 					recommendedBuild = iAction;
 					
@@ -433,12 +466,8 @@ function UpdateUnitActions( unit )
 
 			-- LEKMOD: the hotkey next to worker builds (promotions set theirs above); the action stacks on the left
 			-- stay without (keys like "Shift+E" don't fit there)
-			if not bPromotion then
-				if bBuild and bShowBuildKeys then
-					LekmodSetHotKeyLabel( instance, LekmodShortHotKey( action.HotKey ) );
-				else
-					LekmodSetHotKeyLabel( instance, "", "" );
-				end
+			if not bPromotion and not bBuild then
+				LekmodSetHotKeyLabel( instance, "", "" );
 			end
             
 			-- test w/o visible flag (ie can train right now)
@@ -538,7 +567,7 @@ function UpdateUnitActions( unit )
 			Controls.PromotionAnimation:SetHide(true);
 			Controls.EditButton:SetHide(true);
 		end
-		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, math.floor((numBuildActions-1) / (hasPromotion and promosPerRow or buildsPerRow)) * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
+		Controls.WorkerActionPanel:SetSizeVal( stackSize.x, g_LekmodFlow.row * buttonSize + buttonPadding + buttonOffsetY + rbOffset + workerPanelSizeOffsetY );
     else
 		Controls.WorkerActionPanel:SetHide( true );
 		g_bWorkerActionPanelOpen = false;
