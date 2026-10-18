@@ -9,8 +9,14 @@ Format (also the source for player patch notes on the website):
   in quick-speed numbers, for players with no development knowledge. Bugs we introduced and fixed
   before a release are not player-facing.
 - Developer-only lines (skipped for patch notes): "- Note:", "- DLL:", "- Dev:".
-- Tags: promotions, units, buildings, civs, policies, religion, ruins, combat, movement, naval, air,
-  game mechanics, world congress, ui, art, bugfix.
+- Tags: world congress, espionage, tourism, policies, civs, buildings, units, promotions, religion,
+  city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix,
+  combat, movement, naval, air, ruins, art.
+- The tag order is the website's section order; the last six tags are filters only (never a first tag).
+- "Weight: minor" (optional line after Tags) lists the item under "Minor changes" at the end of its section.
+- "(NEW)" after the name marks an item that did not exist in the previous release: NAME (NEW) (TYPE_KEY).
+- The summary line is optional: only a gist the lines don't already say (no restating, no praise).
+  A pure fix gets bugfix as its first tag.
 
 
 ## UNRELEASED (next version)
@@ -28,11 +34,11 @@ Tags: ui
 This version of Lekmod has its own name: Lekmod Rosebranch, numbered from 1.0.0. Its map is Lekmap Rosebranch.
 - Changed: the main menu, lobby titles and the default game name say "LEKMOD ROSEBRANCH v1.0.0"
 - Changed: the update check in the main menu reads Lekmod Rosebranch's own version list
-- Changed: Multiplayer > New Game picks the Lekmap Rosebranch Fractal Pangaea map (file LekmapRosebranch_FractalPangaea.lua); older Lekmap versions are not picked
+- Changed: Multiplayer > New Game picks the Lekmap Rosebranch Fractal Pangaea map; older Lekmap versions are not picked
 - Dev: Lekmod_version.lua LOCAL_VERSION v1.0.0; version list LekmodInstaller/github_setup/rosebranch_versions.json on branch dev of brunotho/Lekmod-Rosebranch (upstream's versions.json untouched); GitHub repos renamed to Lekmod-Rosebranch and lekmap-rosebranch
 
 ALTITUDE TRAINING (PROMOTION_ALTITUDE_TRAINING)
-------------------------------------------------
+-----------------------------------------------
 Tags: promotions, movement
 Hills cost 10% less movement (1.8 instead of 2).
 - Changed: was double movement in hills, now a 10% movement discount in hills
@@ -41,367 +47,294 @@ Hills cost 10% less movement (1.8 instead of 2).
 - Added: civilian units get it too where military units do: all Inca land civilians, civilians trained in a Swiss city with a Reislaeufer Post, Tibetan civilians trained next to a mountain, and civilians passing Mount Kilimanjaro
 - DLL: UnitPromotions.LekmodCiviliansToo (CvUnit::IsLekmodCivilianFor); hooks in CvUnit init (Inca, Kilimanjaro), CvCity trained promotions (Swiss), CvPlayerTraits::LekmodApplyTrainedUnitEffects (Tibet)
 
-
 FAST SWIMMER (PROMOTION_PHIL_MARINE)
--------------------------------------
+------------------------------------
 Tags: promotions, movement, naval
-+2 movement while embarked.
+Weight: minor
 - Changed: embarked movement bonus 3 -> 2
 
-
 SKYRANGER / EXTENDED PARADROP (PROMOTION_EXTENDED_PARADROP)
--------------------------------------------------------------
+-----------------------------------------------------------
 Tags: promotions, air
-Paratroopers can paradrop up to 100 tiles away.
+Weight: minor
 - Changed: paradrop range 40 -> 100
 
-
 HEAL INSTANTLY (PROMOTION_INSTA_HEAL)
---------------------------------------
+-------------------------------------
 Tags: promotions
-Heals the unit for 25 HP.
 - Changed: heal amount 50 -> 25
 - Fixed: the tooltip now shows the actual amount
 - Dev: value is the INSTA_HEAL_RATE define
 
-
 COASTAL RAIDER LINE (PROMOTION_COASTAL_RAIDER_1/2/3)
-------------------------------------------------------
+----------------------------------------------------
 Tags: promotions, naval, combat
-+25% combat strength when attacking cities, per level.
 - Changed: city attack bonus per level 15/15/20% -> 25/25/25%
 - Removed: no more gold stolen when attacking cities
 - Fixed: the tooltips now show the actual values
 
-
 BOARDING PARTY LINE (PROMOTION_BOARDING_PARTY_1/2/3)
-------------------------------------------------------
+----------------------------------------------------
 Tags: promotions, naval, combat
-+25% combat strength when attacking naval units, per level.
 - Changed: bonus per level 15% -> 25%
 - Fixed: the tooltips now show the actual values
 
-
 ARMOR PLATING LINE (PROMOTION_ARMOR_PLATING_1/2/3)
-----------------------------------------------------
+--------------------------------------------------
 Tags: promotions, naval, air
-Now also available to naval melee units and helicopters, as a starting line with no requirements.
 - Changed: was available to carriers only; now also naval melee units and helicopters
 - Added: for naval melee units, Armor Plating unlocks the same later promotions as Coastal Raider and Boarding Party (Sentry and Mobility at I, Supply at II, Logistics at III)
 - Added: for helicopters, Armor Plating II unlocks Repair and Air Logistics
 
-
-DISCIPLINE (PROMOTION_DISCIPLINE / PROMOTION_DISCIPLINE_AIR)
----------------------------------------------------------------
+DISCIPLINE (NEW) (PROMOTION_DISCIPLINE / PROMOTION_DISCIPLINE_AIR)
+------------------------------------------------------------------
 Tags: promotions, policies
-NEW. +50% experience for non-air units, +25% for air units.
++50% experience for non-air units, +25% for air units.
 - Added: granted by policies (cannot be chosen on level-up)
 - Note: the policy grants (Honor finisher, Iron Fist) are not wired yet
 - Dev: two promotions with the same icon; text keys TXT_KEY_PROMOTION_LEKMOD_DISCIPLINE(_HELP), because the old keys belong to another promotion
 
-
-SWIFT TRANSPORT (PROMOTION_SWIFT_TRANSPORT)
--------------------------------------------
+SWIFT TRANSPORT (NEW) (PROMOTION_SWIFT_TRANSPORT)
+-------------------------------------------------
 Tags: promotions, naval, movement
-NEW. An embarked unit that starts its turn on the same tile as this ship moves at the ship's speed that turn (never slower than its own).
+An embarked unit that starts its turn on the same tile as this ship moves at the ship's speed that turn (never slower than its own).
 - Note: not granted to any unit yet (planned: naval units start with it)
 - Dev: EmbarkedUnitReceivesMovement=true
 
-
 MOBILITY (PROMOTION_MOBILITY)
-------------------------------
+-----------------------------
 Tags: promotions, movement
-Easier to reach for land units.
 - Added: also available to melee, gunpowder and paratrooper units
 - Added: can now be taken after Drill II, Shock II, Ambush II or Amphibious II (in addition to the existing requirements)
 - Dev: added UnitCombats MELEE, GUN, PARADROPPER and the four PromotionPrereqOrs
 
-
-FEAR AURA (PROMOTION_FEAR_AURA)
---------------------------------
+FEAR AURA (NEW) (PROMOTION_FEAR_AURA)
+-------------------------------------
 Tags: promotions, combat
-NEW. Enemy units within 1 tile have -15% combat strength.
+Enemy units within 1 tile have -15% combat strength.
 - Note: not granted to any unit yet (planned: GDR, Danish Berserker, Gallic swordsman)
 - Dev: NearbyEnemyCombatMod=-15, NearbyEnemyCombatRange=1; no domain restriction
 
-
-ZEALOT (PROMOTION_ZEALOT)
--------------------------
+ZEALOT (NEW) (PROMOTION_ZEALOT)
+-------------------------------
 Tags: promotions, religion, civs
-NEW. Killing a unit yields Faith equal to its combat strength (max. 40).
+Killing a unit yields Faith equal to its combat strength (max. 40).
 - Changed: the Pictish Warrior and the Maccabee get Zealot instead of their own faith-from-kills ability
 - Changed: the Pictish Warrior's faith from kills is now capped at 40 (was uncapped)
 - Fixed: the Pictish Warrior tooltip now shows the faith icon
 - Dev: UnitPromotions_YieldFromKills (YIELD_FAITH, 100%, max 40) and KillYieldValidEras rows for all eras
 
-
-PROMOTION KILL YIELDS (BUGFIX)
--------------------------------
+PROMOTION KILL YIELDS
+---------------------
 Tags: bugfix, promotions, combat
-Promotions that yield something from kills keep working after the unit gains another promotion.
 - Fixed: yields from kills (e.g. Zealot faith) stopped as soon as the unit gained any other promotion
 - Fixed: killing units of the earliest era (Warriors, Scouts, most barbarians) gave no promotion yields
 - Dev: CvUnit era flags are now an OR over all held promotions; killed units with era -1 count as ancient. Still an upstream bug in v35.4.
 
-
 WE LOVE THE KING DAY (CITY_RESOURCE_WLTKD_TURNS)
--------------------------------------------------
+------------------------------------------------
 Tags: game mechanics
-We Love the King Day lasts 10 turns, and a luxury request that isn't filled is replaced after 10 turns.
 - Changed: We Love the King Day lasts 10 turns (was 13)
 - Changed: an unfilled luxury request switches to a new luxury after 10 turns (was 26)
 - Dev: CITY_RESOURCE_WLTKD_TURNS 20 -> 15 (x67% quick speed = 10); LEKMOD_WLTKD_DEMAND_EXPIRES_AFTER_ONE_LENGTH drops the x2 on the demand expiry. Civilopedia concept text updated.
 
-
 CIRCUMNAVIGATION (CIRCUMNAVIGATE_GOLD)
 --------------------------------------
 Tags: game mechanics, naval
-The first civilization to circumnavigate the globe receives 200 Gold, and every player is notified.
+Weight: minor
 - Added: 200 Gold for the first civilization to circumnavigate the globe
 - Added: a notification for all players when it happens
 - Dev: new define CIRCUMNAVIGATE_GOLD (not scaled by game speed), LEKMOD_CIRCUMNAVIGATION_GOLD in CvTeam::testCircumnavigated. Only on wrapping maps with less than 2/3 land (existing rule).
 
-
-GIANT DEATH ROBOT PILLAGING (UNIT_MECH)
-----------------------------------------
-Tags: units, game mechanics
-The Giant Death Robot can pillage, but it doesn't heal from pillaging.
-- Added: the Giant Death Robot can pillage
-- Added: new promotion "No Healing from Pillage" (Giant Death Robot)
-- Dev: PROMOTION_NO_PILLAGE_HEAL (ID 365) uses upstream's PillageHealChange (-100); CvUnit::pillage clamps the heal at 0 so a negative change never damages
-
-
 GREAT GENERALS (UNITCLASS_GREAT_GENERAL)
 ----------------------------------------
 Tags: game mechanics, units
-Great Generals earned in combat always appear in your capital.
+Weight: minor
 - Changed: Great Generals from combat experience appear in the capital instead of a random city
 - Dev: LEKMOD_GREAT_GENERAL_SPAWN_CAPITAL in CvPlayer::setCombatExperience; the old city ranking is the fallback when there is no capital
 
-
 TILE PURCHASE DISCOUNTS (PLOT_BUY_MAX_DISCOUNT)
-------------------------------------------------
+-----------------------------------------------
 Tags: game mechanics
-Discounts on buying tiles still stack, but a tile never costs less than 25% of its normal price.
+Weight: minor
 - Changed: combined tile purchase discounts (from policies, traits, buildings) are capped at 75%
 - Dev: new define PLOT_BUY_MAX_DISCOUNT (75). Player and city modifiers are combined multiplicatively in CvCity::GetBuyPlotCost and floored at 100 - cap; new CvPlayer::GetBuyPlotCostWithoutMod.
 
-
 CAPTURED CITY RESISTANCE (RESISTANCE TURNS)
---------------------------------------------
+-------------------------------------------
 Tags: game mechanics, combat
-A captured city always resists for at least 1 turn, no matter how much its resistance is reduced.
+Weight: minor
 - Changed: resistance reductions (e.g. from tourism influence) can no longer bring resistance below 1 turn
 - Dev: LEKMOD_RESISTANCE_TURNS_MIN_ONE in CvPlayer::acquireCity; future "resistance half as long" effects must be applied before the clamp
-
 
 CITY STRENGTH (CITY_STRENGTH_DEFAULT / CITY_STRENGTH_HILL_CHANGE)
 -----------------------------------------------------------------
 Tags: game mechanics, combat
-Cities are a bit stronger everywhere, and the hill bonus is smaller.
 - Changed: base city strength +1 (8 -> 9)
 - Changed: city strength bonus for being on a hill 5 -> 3
 - Dev: defines 800 -> 900 and 500 -> 300 (units of 1/100)
 
-
 BARBARIAN ENCAMPMENTS (BarbCampGold)
--------------------------------------
+------------------------------------
 Tags: game mechanics
-Clearing a barbarian encampment gives 40 Gold.
+Weight: minor
 - Changed: gold from clearing an encampment 16 -> 40 (the same on every difficulty)
 - Dev: HandicapInfos BarbCampGold 60 on all difficulties (x67% quick speed = 40)
 
-
 MARSH CLEARING (FEATURE_MARSH)
--------------------------------
-Tags: game mechanics
-Clearing a marsh gives Food to the nearby city instead of Production.
+------------------------------
+Tags: tiles and resources
+Weight: minor
 - Changed: clearing a marsh gives up to 13 Food instead of 13 Production (less the farther the marsh is from the city)
 - Added: the Worker's build tooltip shows how much Food clearing the marsh gives
 - Dev: BuildFeatures for FEATURE_MARSH: Production 20 -> 0, Food 20 (NQ_FOOD_FROM_CHOPS, same scaling as chop production). Added the missing text TXT_KEY_MISC_CLEARING_FEATURE_FOOD.
 
-
 GREAT PROPHETS (UNITCLASS_PROPHET)
------------------------------------
-Tags: religion, units
-Great Prophets are destroyed when an enemy captures them, like other Great People.
+----------------------------------
+Tags: units, religion
+Weight: minor
 - Changed: a captured Great Prophet (including Tibet's Dalai Lama) is destroyed instead of changing sides
 - Dev: removed Capture=UNITCLASS_PROPHET from UNIT_PROPHET, UNIT_FAKEPROPHET, UNIT_MABA, UNIT_DALAILAMA. Missionaries can still be captured.
 
-
 NAVAL ZONE OF CONTROL (ZOC)
-----------------------------
+---------------------------
 Tags: game mechanics, naval, movement
-Ships no longer slow down land units moving on land.
+Weight: minor
 - Changed: enemy ships exert no zone of control on land units moving on land (including pontoons and shallows)
 - Note: embarked units moving on open water are still slowed by enemy ships
 - Dev: LEKMOD_NO_NAVAL_ZOC_VS_LAND in CvUnitMovement::IsSlowedByZOC (destination plot decides)
 
-
 CITY-STATE TRIBUTE RANGE (MINOR_CIV_TRIBUTE_RANGE)
----------------------------------------------------
-Tags: game mechanics
-When you demand tribute, only military units within 5 tiles of the city-state count, on every map size.
+--------------------------------------------------
+Tags: city-states
+Weight: minor
 - Changed: the tribute range is 5 tiles on all map sizes (it grew with the map width before)
 - Dev: new define MINOR_CIV_TRIBUTE_RANGE (5), LEKMOD_TRIBUTE_RANGE_FIXED in CvMinorCivAI::CalculateBullyMetric
 
-
 OPEN BORDERS (OPEN_BORDERS_DURATION)
--------------------------------------
-Tags: game mechanics, ui
-Open borders agreements last 10 turns, or until war.
+------------------------------------
+Tags: diplomacy and trade, ui
 - Changed: open borders last 10 turns (was 25)
 - Added: a second trade item, "Open Borders (until war)", next to "Open Borders (10 turns)". It ends only when the two players go to war. Only one of the two can be in a deal
 - Dev: new define OPEN_BORDERS_DURATION (10, not speed-scaled), LEKMOD_OPEN_BORDERS_FIXED_DURATION in CvDeal::AddOpenBorders (same approach as the defensive pact's fixed 10 turns). TradeLogic templates (ui and eui) read GameDefines.OPEN_BORDERS_DURATION.
 - Dev: LEKMOD_OPEN_BORDERS_INDEFINITE: define OPEN_BORDERS_INDEFINITE_DURATION (1000 turns); CvDeal::AddOpenBorders keeps that duration when requested, everything else stays 10. New buttons *OpenBordersIndef in SimpleDiploTrade.xml (human trades, used by both UIs); TradeLogic (ui and eui) mirrors the 10-turn button's state onto them (LekmodSyncOpenBordersIndef). The AI trade screen (base DiploTrade.xml) has no such buttons and keeps only the 10-turn item
 
-
 TRADE ROUTE DURATION (TRADE_ROUTE_DURATION)
---------------------------------------------
-Tags: game mechanics
-Every trade route lasts exactly 15 turns, however long or short it is.
+-------------------------------------------
+Tags: diplomacy and trade
 - Changed: trade routes last 15 turns (was up to about 20 turns, more on very long routes)
 - Dev: new define TRADE_ROUTE_DURATION (15, not speed-scaled); LEKMOD_TRADE_ROUTE_FIXED_DURATION sets m_iTurnRouteComplete = start + 15 and expires by turn in CvPlayerTrade::MoveUnits (circuits unlimited)
 
-
-CLAUSEWITZ'S LEGACY (POLICY_NEW_ORDER)
---------------------------------------
-Tags: policies, combat
-The +25% attack bonus from Clausewitz's Legacy applies to melee attacks only, and the policy text says so.
-- Changed: fighters' air sweeps no longer get the bonus (ranged attacks and bombing already didn't)
-- Changed: the policy text states that only melee attacks get the bonus
-- Dev: LEKMOD_CLAUSEWITZ_MELEE_ONLY in CvUnit::GetMaxAttackStrength(kInfo) also excludes air sweeps. The combat preview uses the same function (LEKMOD_COMBAT_PREDICTOR_IMPROVEMENTS), so it matches.
-
-
 FORTS (IMPROVEMENT_FORT)
 ------------------------
-Tags: game mechanics
-Forts can't be built next to each other.
+Tags: tiles and resources
+Weight: minor
 - Changed: a Fort cannot be built on a tile next to another Fort (or next to one under construction)
 - Dev: IMPROVEMENT_FORT NoTwoAdjacent=true (existing column)
 
-
 PUPPET CITIES (CITY FOCUS)
----------------------------
+--------------------------
 Tags: game mechanics
-Puppet cities focus on Production instead of Gold when working their tiles.
+Weight: minor
 - Changed: puppet city focus Gold -> Production (a puppet that would starve still switches to the balanced focus, as before)
 - Dev: LEKMOD_PUPPET_PRODUCTION_FOCUS in CvCity::SetPuppet and CvCityCitizens::DoTurn
 
-
 GOLD TRADING (TRADE_ITEM_GOLD)
--------------------------------
-Tags: game mechanics, ui
-Lump sums of Gold can no longer be traded. Gold per Turn still can.
+------------------------------
+Tags: diplomacy and trade, ui
 - Removed: trading lump sums of Gold (a Declaration of Friendship no longer unlocks it, and it can't be part of a peace deal either)
 - Changed: the trade screen tooltip on Gold says to trade Gold per Turn instead
 - Note: declarations of friendship stay in the game
 - Dev: LEKMOD_NO_GOLD_TRADE in CvDeal::IsPossibleToTradeItem; text TXT_KEY_DIPLO_NEED_DOF_TT_ONE_LINE (only used for the gold item)
 
-
 GOLD PER TURN TRADES (GOLD_PER_TURN_DEAL_DURATION)
----------------------------------------------------
-Tags: game mechanics, ui
-Gold per Turn in a deal is paid for 10 turns.
+--------------------------------------------------
+Tags: diplomacy and trade, ui
 - Changed: Gold per Turn deals last 10 turns (was 25)
 - Added: the trade screen tooltip on Gold per Turn shows how many turns it is paid
 - Dev: new define GOLD_PER_TURN_DEAL_DURATION (10, not speed-scaled); LEKMOD_GPT_DEAL_FIXED_DURATION in CvDeal::AddGoldPerTurnTrade and ChangeGoldPerTurnTrade; TradeLogic templates (ui and eui)
 
-
 SPOILS OF WAR (CAPTURED CITY-STATE CITIES)
--------------------------------------------
+------------------------------------------
 Tags: game mechanics, combat
-Spoils of war (science from conquering a city) also count when you capture a former city-state city from another player.
+Weight: minor
 - Changed: capturing a city that was originally a city-state's, from another civilization (not from the city-state itself), now gives spoils of war, as long as it wasn't a puppet
 - Dev: LEKMOD_SPOILS_OF_WAR_FROM_CAPTURED_CITY_STATES in CvPlayer::acquireCity (NQ_SPOILS_OF_WAR condition)
 
-
 FUTURE TECH (TECH_FUTURE_TECH)
--------------------------------
+------------------------------
 Tags: game mechanics, combat
-Every Future Tech you research gives +20% combat strength and +20% food, production, gold, culture and tourism. It stacks.
 - Added: +20% combat strength for all units per Future Tech
 - Added: +20% food, production, gold, culture and tourism in all cities per Future Tech
 - Added: the bonus shows in the combat preview and in the city yield tooltips; the tech's help text explains it
 - Dev: new define FUTURE_TECH_BONUS_PERCENT (20); LEKMOD_FUTURE_TECH_BONUS in CvUnit::GetGenericMaxStrengthModifier(kInfo) and CvCity::getBaseYieldRateModifier; CvPlayer::GetFutureTechBonusModifier counts the team's repeat-tech count
 
-
 DISABLE STRATEGIC RESOURCE TRADING (GAMEOPTION_DISABLE_STRATEGIC_TRADING)
---------------------------------------------------------------------------
-Tags: game mechanics, ui
-New lobby setting: when enabled, strategic resources can't be traded between players. It is on by default.
+-------------------------------------------------------------------------
+Tags: ui, diplomacy and trade
 - Added: lobby setting "Disable Strategic Resource Trading" (on by default)
 - Dev: GameOptions ID 67; LEKMOD_DISABLE_STRATEGIC_TRADING_OPTION in CvDeal::IsPossibleToTradeItem. Upstream's "Disable Unrevealed Strategic Resource Trading" is unchanged.
 
-
 PONTOON BRIDGES (IMPROVEMENT_PONTOON_BRIDGE)
----------------------------------------------
+--------------------------------------------
 Tags: game mechanics, movement, naval
-Pontoon bridges come earlier, build faster and are riskier to stand on.
 - Changed: available at Construction (was Engineering), and count as a road from the start
 - Changed: build time 3 turns, 2 turns after Railroad (was about 5)
 - Changed: units on a pontoon bridge have -20% defense (was -15%); with land and naval units on the same tile, -100% (was -50%)
 - Changed: the improvement and build texts describe all pontoon bridge rules
 - Dev: Builds Time 700 -> 400 and PrereqTech CONSTRUCTION (also the Brunei build), Build_TechTimeChanges RAILROAD -200, ActsAsRouteTech CONSTRUCTION, DefenseModifierGlobal -20, StackedDomainDefensePenalty 80
 
-
 CITY-STATE BONUSES PER ERA (MARITIME / CULTURED / RELIGIOUS)
--------------------------------------------------------------
-Tags: game mechanics, religion
+------------------------------------------------------------
+Tags: city-states, religion
 Maritime, Cultured and Religious city-states give bonuses that grow with every era. Allies get twice as much as friends.
 - Changed: Cultured city-states give 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Culture to friends (Ancient to Information era), double for allies
 - Changed: Religious city-states give 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Faith to friends, double for allies
 - Changed: Maritime city-states give allies 2.2 / 2.6 / 3 / 3.4 / 3.8 / 4.2 / 4.6 / 5 Food in the capital and 0.6 / 0.8 / 1 / 1.2 / 1.4 / 1.6 / 1.8 / 2 Food in every other city; friends get half
 - Dev: new Eras columns CityStateFriend/AllyCapitalFoodTimes100, ...CityFoodTimes100, ...Culture, ...Faith hold the totals per status; LEKMOD_CITY_STATE_ERA_BONUSES derives the friend part and the ally extra in CvMinorCivAI. The era-change handler now passes the new era to the ally food functions too.
 
-
-MARITIME CITY-STATE FOOD (CITY YIELD)
---------------------------------------
-Tags: game mechanics, ui
+MARITIME CITY-STATE FOOD
+------------------------
+Tags: city-states, ui
+Weight: minor
 Food from Maritime city-states is added to the city itself instead of the city tile, so it can have decimals and percentage bonuses apply in full.
 - Changed: Maritime food is a city yield; bonuses such as Siam's +50% are no longer rounded down
 - Added: the city food tooltip shows "from City-States"
 - Dev: LEKMOD_MARITIME_FOOD_CITY_YIELD: CvCity::GetYieldFromMinorCivsTimes100 (sums the friend/ally food of all city-states, read live) is added in getYieldRateTimes100; the player capital/city yield change path is no longer used for it. Lua method City:GetYieldFromMinorCivsTimes100; tooltip in InfoTooltipInclude (ui) and EUI_tooltip_library (eui).
 
-
 CITY-STATE BORDER COLORS (PLAYERCOLOR_CS_*)
---------------------------------------------
-Tags: ui
+-------------------------------------------
+Tags: ui, city-states
 City-state borders show their type at a glance: one color per type, matching the yield it gives, striped with black.
 - Changed: the colors match what the city-state gives: Maritime food green, Cultured culture magenta, Mercantile gold yellow, Religious faith white, Militaristic salmon
 - Dev: new Colors COLOR_CS_TRAIT_* (IDs 377-381) and PlayerColors PLAYERCOLOR_CS_* (184-188; primary COLOR_PLAYER_MINOR_ICON, secondary the type color); every MinorCivilizations row's DefaultPlayerColor set from its MinorCivTrait
 
-
 CITY-STATE QUEST REWARDS (MINOR_QUEST_FRIENDSHIP_*)
-----------------------------------------------------
-Tags: game mechanics
-City-state quests give 5 less Influence, with a few exceptions.
+---------------------------------------------------
+Tags: city-states
+Weight: minor
 - Changed: all quest Influence rewards -5
 - Changed: clear a barbarian camp 50 -> 35, trade route 50 -> 35, road connection 50 -> 40, culture/faith/tech contests 40 -> 35
 - Dev: Defines MINOR_QUEST_FRIENDSHIP_* (INVEST stays 0)
 
-
 CITY-STATE QUEST TIMING (MINOR_CIV_*_QUEST_*)
-----------------------------------------------
-Tags: game mechanics
-City-states give out quests at a steadier pace, and personal quests nobody finishes are replaced after 15 turns.
+---------------------------------------------
+Tags: city-states
+Weight: minor
 - Changed: the random part of the waiting time between quests is much smaller (about 0-3 turns instead of 0-16 at quick speed); the average pace stays the same
 - Added: a personal quest still open after 15 turns is withdrawn and replaced by a new one
 - Dev: defines GLOBAL/PERSONAL_QUEST_RAND_TURNS_BETWEEN 25 -> 5 with MIN_TURNS_BETWEEN +10 (40 / 27); FIRST_POSSIBLE_TURN_RAND 20 -> 5 with FIRST_POSSIBLE_TURN +5 (35 / 30). New define MINOR_CIV_PERSONAL_QUEST_RECYCLE_TURNS (15, flat); LEKMOD_PERSONAL_QUEST_RECYCLE (CvMinorCivAI::DoRecyclePersonalQuestsForPlayer); quest picking moved into DoStartRandomPersonalQuest
 
-
-CITY-STATE ROADS (AI)
----------------------
-Tags: game mechanics
-City-states build roads on the land tiles around their cities once their other work is done.
+CITY-STATE ROADS
+----------------
+Tags: city-states
+Weight: minor
 - Added: city-state workers road the first ring around their cities, as their lowest-priority job
 - Dev: LEKMOD_MINOR_CIV_RING_ROADS in CvBuilderTaskingAI::UpdateMinorCivFirstRingRoutePlots (route plots flagged with value 1)
 
-
 PLEDGE TO PROTECT (CITY-STATES)
---------------------------------
-Tags: game mechanics, ui
-Protecting a city-state is worth more and comes with obligations. Demanding tribute is announced to everyone.
+-------------------------------
+Tags: city-states, ui
 - Changed: a pledge raises your resting Influence by 10 (was 5) and your Influence recovers 50% faster below it
 - Changed: demanding tribute from a city-state you protect breaks your pledge; you cannot pledge again for 20 turns (the pledge button shows the remaining turns)
 - Added: every tribute demand is announced to all players who know the city-state
@@ -409,10 +342,9 @@ Protecting a city-state is worth more and comes with obligations. Demanding trib
 - Changed: the pledge tooltip explains all of this
 - Dev: LEKMOD_PLEDGE_REWORK: CvMinorCivAI::DoPledgeTributeConsequences (gold and worker tribute), DoPledgerInfluenceTicks (in DoFriendship), recovery bonus in GetFriendshipChangePerTurnTimes100; new saved member m_aiTurnTributedWhilePledged. Defines MINOR_FRIENDSHIP_ANCHOR_MOD_PROTECTED 10, MINOR_PLEDGE_RECOVERY_BONUS_PERCENT 50, MINOR_PLEDGE_TRIBUTE_PENALTY_TURNS 10, MINOR_PLEDGE_IDLE_INFLUENCE_LOSS 3, MINOR_PLEDGE_FIGHTING_OFFENDER_INFLUENCE 1
 
-
-WAR ON CITY-STATES (STANDING AND PENALTIES)
--------------------------------------------
-Tags: game mechanics, ui
+WAR ON CITY-STATES
+------------------
+Tags: city-states, ui
 Declaring war on city-states now escalates through four standings, with lasting penalties on Influence.
 - Changed: each declaration of war on a city-state counts (also repeat declarations on the same one). Your standing: 1 Antagonist, 2 Provocateur, 3 Aggressor, 4+ Warmonger
 - Added: Wary city-states have a lower resting Influence with you: -10, -20 or -30
@@ -430,21 +362,18 @@ Declaring war on city-states now escalates through four standings, with lasting 
 
 HELLENIC LEAGUE (TRAIT_CITY_STATE_FRIENDSHIP)
 ---------------------------------------------
-Tags: civs, ui, bugfix
-Greece's ability text now mentions that city-state territory counts as friendly territory.
+Tags: bugfix, civs, ui
 - Fixed: the ability text left out that city-state territory always counts as friendly territory for Greek units (healing, combat bonuses) and that they never trespass there. The effect itself was already active
 
 BASILICA (BUILDING_BASIL)
 -------------------------
-Tags: civs, ui, bugfix
-Italy's Basilica tooltip now lists everything that differs from the Museum.
+Tags: bugfix, civs, ui
 - Fixed: the tooltip didn't mention +15% Culture (instead of +10%), that no Amphitheater is needed, that it is cheaper, or that it unlocks with Industrialization
 - Changed: the Museum's Civilopedia strategy text no longer claims an Opera House is required (it needs an Amphitheater); the Basilica has its own strategy text
 
 SEVERAL TRADE OFFERS AT ONCE
 ----------------------------
-Tags: ui, game mechanics
-You can have open trade offers to several players at the same time.
+Tags: diplomacy and trade, ui
 - Changed: an open offer to one player no longer blocks offering deals to others
 - Added: if an accepted deal can no longer be completed (e.g. the luxury was already traded to someone else, or the Gold per turn can no longer be paid), it fails and both players get a notification
 - Dev: LEKMOD_MULTIPLE_DEAL_PROPOSALS: UI checks removed in TradeLogic (ui), DiploCorner (ui, eui) and an override of DiploList (standard UI); the DLL already keeps one proposal per player pair and re-validates items in CvGameDeals::FinalizeDeal, which now notifies. Untested whether the game executable itself accepts a second open proposal
@@ -461,19 +390,15 @@ The multiplayer lobby has a Mode setting that fills in the agreed settings at on
 - Note: map options (resources, legendary start) are enforced by the map script; map size waits for the 6/7/8-player lobby work
 - Dev: a new lobby applies the Tournament preset once (hidden flag GAMEOPTION_LEKMOD_PRESET_APPLIED, ID 73; an unset option reads as its database default 0, so the mode option itself can't tell)
 
-
 START AT WAR
 ------------
-Tags: game mechanics
-A lobby option puts all players at war with each other from the start.
+Tags: ui, game mechanics
 - Added: game option "Start at War": major civilizations are at war as soon as they meet, and cannot make peace before turn 20 (city-states are not affected)
 - Dev: LEKMOD_WAR_START (CvTeam::makeHasMet, CvDeal::IsPossibleToTradeItem peace treaty); LEKMOD_WAR_START_PEACE_TURN 20; GameOptions ID 71
 
-
 SAME-TURN WONDERS
 -----------------
-Tags: game mechanics, ui
-A lobby setting decides what happens when several players finish the same World Wonder in the same turn.
+Tags: ui, game mechanics
 - Added: the lobby Mode decides what happens: Tournament = nobody gets it, everyone gets Gold for their production; Casual = everyone who finished it gets it
 - Added: a player never owns the same World Wonder twice: capturing a city with a wonder you already have destroys the captured copy
 - Dev: LEKMOD_WONDER_TIE_RULES: CvGame::isBuildingClassMaxedOut exception while cities process production (Both); look-ahead over other players' cities and a per-turn tie marker in CvCity::doProduction (Neither); duplicate check in CvPlayer::acquireCity. GameOptions IDs 69/70 (hidden, set by the lobby dropdown), 72 mode (hidden)
@@ -486,16 +411,15 @@ A new lobby option gives the players six easy-to-tell-apart color schemes.
 - Added: single player: the same choice as the checkbox "Civ Colors: High Contrast" in Advanced Setup
 - Dev: LEKMOD_HIGH_CONTRAST_CIV_COLORS in CvGame::InitPlayers; GameOptions ID 68 GAMEOPTION_HIGH_CONTRAST_CIV_COLORS. Deterministic shuffle seeded by CvPreGame::syncRandomSeed() (same on every client)
 
-CITY AIRCRAFT COUNT (UNIT FLAGS)
---------------------------------
-Tags: ui, air, bugfix
-The number of aircraft stationed in a city no longer goes missing on other players' cities.
+AIRCRAFT COUNT ON CITY BANNERS
+------------------------------
+Tags: bugfix, ui, air
 - Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war were not counted on its banner (or an old count stayed) until another plane moved there in view; the count is now rebuilt when the city comes into view and at the start of every turn
 - Note: standard UI only; EUI draws aircraft differently and is unchanged
 
 TECH TREE: BUILDINGS WITH TWO TECHS
 -----------------------------------
-Tags: ui
+Tags: bugfix, ui
 A building that either of two techs unlocks is shown under both in the tech tree.
 - Fixed: Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing; it sits with the other buildings, before the wonders
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
@@ -503,13 +427,12 @@ A building that either of two techs unlocks is shown under both in the tech tree
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------
 Tags: ui, combat
-Your units that attacked this turn and can still move are marked on the map.
 - Added: crossed swords on the unit flag of your own units that have attacked this turn and still have movement left (other players' units are not marked)
 - Dev: LEKMOD_UNIT_ATTACKED_FLAG_ICON: Lua Unit:GetNumAttacksMadeThisTurn; UnitFlagManager (ui and eui) uses the existing IsOutOfAttacks label, refreshed on SerialEventUnitInfoDirty and ActivePlayerTurnStart
 
 BORDER GROWTH OVER WATER
 ------------------------
-Tags: game mechanics
+Tags: tiles and resources, naval
 Cities claim plain water tiles as readily as plain flat land when their borders grow.
 - Changed: Coast and Ocean count like Grassland and Plains for border growth (they counted as one or two extra tiles of distance before, so cities claimed them very late)
 - Changed: buying a water tile with gold costs the same as buying flat land at the same distance (it was more expensive)
@@ -518,7 +441,6 @@ Cities claim plain water tiles as readily as plain flat land when their borders 
 DISMISS ALL NOTIFICATIONS
 -------------------------
 Tags: ui
-A button clears the notification column in one click.
 - Added: a "Dismiss all" button above the notifications on the right; it removes every notification except the research and production prompts (like right-clicking each one) and only shows when there is something to dismiss
 - Note: standard UI only
 
@@ -529,7 +451,7 @@ Hovering an unimproved resource shows what improving it would give.
 - Added: the improvement that connects the resource, how many turns it takes to build, and the tile's yields with it (e.g. "With a Mine (4 turns to improve):", then "1 Food 3 Production" on the next line)
 - Added: these lines and the resource's special effects show in the tile info box at the bottom right, below the tile's yields, and in the detailed tile tooltip
 - Dev: the lines first only reached the detailed tooltip (GetResourceString long form); the bottom-right box (PlotHelpText.lua) asks for the short form. Lekmod now overrides PlotHelpText.lua and appends LekmodResourceDetailsString
-- Changed: the tile info box sits 16 px from the right screen edge (like the End Turn button), grows to the left, and wraps long lines at a wider width instead of running off the screen
+- Changed: the tile info box lines up with the End Turn button at the right screen edge, grows to the left, and wraps long lines at a wider width instead of running off the screen
 - Dev: on tiles outside anyone's borders, the improved yields left out the resource's own yields (e.g. Lapis showed no Gold), because the game's yield preview counted the resource only for the tile owner's team; fixed in the DLL (LEKMOD_YIELD_WITH_BUILD_VIEWER_TEAM)
 - Dev: the build turns were one too high (the first turn's work counts right away, as on the build button); fixed
 - Added: Fishing Boats show the time for a Worker or Nelayan and the instant alternative, e.g. "4 turns to improve, 1 with a Rowboat"
@@ -537,8 +459,7 @@ Hovering an unimproved resource shows what improving it would give.
 
 LUXURY YIELDS
 -------------
-Tags: game mechanics
-Several luxury resources yield differently.
+Tags: tiles and resources
 - Changed: Sugar: unimproved 1 Food 1 Gold -> 2 Gold
 - Changed: Tea: plantation +2 Gold -> +1 Gold (unimproved stays 1 Gold 1 Production); Wine and Coconut: unimproved 2 Gold -> 1 Gold
 - Note: every luxury keeps at least 1 Gold unimproved
@@ -550,14 +471,14 @@ Several luxury resources yield differently.
 TECH TREE ICONS
 ---------------
 Tags: ui
-Clearer icons for some tech effects.
+Weight: minor
 - Changed: Sailing shows only "allows embarking" (the 2 embarked movement is simply the starting value)
 - Changed: embarking effects show the Embark icon, and extra trade routes and longer trade route range show the trade route icon, instead of the generic star
 
 MAIN MENU BACKGROUND
 --------------------
 Tags: ui, art
-A new main menu background.
+Weight: minor
 - Changed: the main menu shows Thomas Cole's The Course of Empire: Destruction
 - Dev: replaces the earlier random rotation of 12 paintings and drops an unused 12 MB texture (about 33 MB less to download)
 - Dev: 2026-10-17: removed two more unused old menu backgrounds (oracle/pyramids, about 12 MB), the stale debug-symbol file of the upstream DLL (23 MB) and the base-game menu picture that was loaded and immediately replaced; the old paintings are gone from art_sources too
@@ -565,14 +486,12 @@ A new main menu background.
 BARBARIAN KILL BONUSES
 ----------------------
 Tags: game mechanics, combat
-From turn 80 on, farming barbarians stops paying off.
 - Changed: from turn 80, killing barbarians gives no bonus yields any more (Honor culture, gold and science from kills, Iron Fist, Zealot, the Aztec ability and every other kill bonus). Kills of other civilizations' and city-states' units are unaffected
 - DLL: LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN 80 (CvPlayer::DoYieldsFromKill returns early)
 
 TECH TREE CHANGES
 -----------------
 Tags: game mechanics, units
-Some unlocks and prerequisites move in the tech tree.
 - Changed: Trebuchet (and the Korean Hwacha) unlocked at Guilds instead of Physics
 - Changed: the Wealth process (production into gold) unlocked at Banking instead of Guilds
 - Changed: Mobile Tactics no longer needs Ecology (only Nuclear Fission)
@@ -586,56 +505,44 @@ Some unlocks and prerequisites move in the tech tree.
 BUILDING PURCHASE COSTS
 -----------------------
 Tags: game mechanics
-Buying any building with Gold costs the same extra 25% (like the Granary).
+Weight: minor
 - Changed: every building you can buy now costs +25% Gold over the base price. Before: 0% for most late buildings (Factory, Hospital, Stadium, Public School, Museum, Laboratory...), +10% Opera House and Theatre types, +15% University, Bank, Observatory, Stock Exchange, +40% Monument, +50% Courthouse
 - Note: Stone Works and Aqueduct stay at 0%; most other buildings were already at +25%
 
 TECHNOLOGY COSTS
 ----------------
 Tags: game mechanics
-Later technologies cost a bit more, to slow down late-game power creep.
 - Changed: technology cost +1% Classical, +1.5% Medieval, +2% Renaissance, +3.5% Industrial, +5% Modern, +8% Atomic, +11% Information era (Ancient unchanged)
-- Changed: Astronomy and Navigation cost 15% less (after the era increase): Astronomy 780 -> 677, Navigation 1150 -> 997 (standard-speed values; quick is 67%)
+- Changed: Astronomy and Navigation cost 15% less (after the era increase): Astronomy about 520 -> 450, Navigation about 770 -> 670
 - Dev: per-tech Cost updates after the Technologies table in CIV5Units.xml; later per-tech changes (e.g. Astronomy/Navigation) must edit those values
 
 CITY-STATE PLEDGE ICONS
 -----------------------
-Tags: ui
-City-state banners show who has pledged to protect them.
+Tags: ui, city-states
+Weight: minor
 - Added: a shield with a light blue glow on a city-state's banner when you have pledged to protect it, and one with a red glow when other players have; hovering it lists them
 - Note: standard UI only for now (EUI has its own city banners)
 
-MILITARY CASTE (POLICY_MILITARY_CASTE)
---------------------------------------
-Tags: policies
-From turn 80 on, Military Caste's city bonus no longer needs a garrison.
-- Changed: from turn 80, every city gets +2 Culture and +1 Happiness from Military Caste, garrisoned or not (before turn 80 it still needs a garrisoned unit)
-- Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
-- DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
-
 WORKER TURNS REMAINING
 ----------------------
-Tags: ui, bugfix
-The worker's "turns remaining" number is correct.
+Tags: bugfix, ui
 - Fixed: once a worker had worked on its tile this turn, the panel showed one turn too many (e.g. "2" for a build that finishes next turn). It now shows how many more turns of work are needed, matching the number on the build buttons
 
 GREAT WORKS SCREEN SELECTION
 ----------------------------
-Tags: ui, bugfix
-Moving great works no longer gets interrupted by other players.
+Tags: bugfix, ui, tourism
 - Fixed: a great work selected for moving stayed selected only until any player changed a great work; the screen then refreshed and dropped the selection. It now stays selected (unless that great work itself is gone)
 
 CHAT EMOJI PICKER
 -----------------
 Tags: ui
-The in-game chat's emoji picker only lists the favourites.
+Weight: minor
 - Changed: the picker shows the happiness faces, the G12 emotes, saba_ping, HMM, KEKW, KEKWait and Food instead of every icon in the game
 - Note: any other icon still works when typed into the chat (e.g. [ICON_POG])
 
 AIR COMBAT FEEDBACK
 -------------------
 Tags: ui, air
-Air strikes and air sweeps show what happened on the map.
 - Added: with quick combat (no combat animation), the damage dealt and taken floats over both sides as red numbers after a bombing run or a sweep fight
 - Added: a sweep that finds no interceptor shows a red "No resistance" over the target tile
 - Dev: LEKMOD_AIR_COMBAT_FEEDBACK in CvUnitCombat::ResolveCombat (bombing and sweep, only when !getVisualizeCombat) and CvUnitCombat::AttackAirSweep (no interceptors)
@@ -643,7 +550,7 @@ Air strikes and air sweeps show what happened on the map.
 CITY SCREEN: GREAT PEOPLE POINTS
 --------------------------------
 Tags: ui
-Great person points in the city screen show decimals.
+Weight: minor
 - Changed: progress and points per turn show up to two decimals (e.g. 45.6/100, +3.75) instead of being rounded down
 
 START BIAS IN CIVILIZATION ABILITY TEXTS
@@ -658,49 +565,49 @@ The start bias of each civilization is shown with its ability.
 MID-TURN POLICY AND PANTHEON NOTIFICATIONS
 ------------------------------------------
 Tags: ui, policies, religion
-You are told right away when you can pick a policy or a pantheon, not only at the start of the next turn.
 - Added: any gain of Culture during the turn (ruins, kills, gifts...) that makes a policy affordable shows the "choose a policy" notification at once
 - Added: the same for Faith and pantheons
 - Dev: LEKMOD_MIDTURN_PICK_NOTIFICATIONS: hooks in CvPlayer::setJONSCultureTimes100 (upstream's TestMidTurnPolicyNotification) and CvPlayer::SetFaith (same rules as CvGameReligions::DoPlayerTurn). Both notification types are de-duplicated by CvNotifications
 
-
-CITY NAMES
-----------
+CITY NAMES (Civilization_CityNames)
+-----------------------------------
 Tags: civs, ui
-City names after the capital come in a random order.
+Weight: minor
 - Changed: your capital keeps its name; every later city takes the next name from a shuffled list that differs each game
 - Changed: America, Russia, Aksum and the Timurids also keep their second city name
+- Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
+- Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venezuela) no longer show up as raw text keys
 - Dev: LEKMOD_RANDOMIZE_CITY_NAMES in CvPlayer::getCivilizationCityName; deterministic shuffle seeded by player ID and starting plot (no synced RNG, so it is safe wherever the function is called)
 
 PROMOTION TOOLTIPS (UPGRADES)
 -----------------------------
 Tags: ui, promotions
-Promotion tooltips say whether the promotion survives an upgrade.
+Weight: minor
 - Added: "Kept when the unit is upgraded" or "Lost when the unit is upgraded" in the tooltips of a unit's promotions, of the promotion choices, and on the promotion's Civilopedia page
 
 DEMOGRAPHICS SCREEN (TURN END)
 ------------------------------
-Tags: ui, bugfix
-Opening the Demographics screen no longer un-ends your turn in multiplayer.
+Tags: bugfix, ui
 - Fixed: opening Demographics after ending your turn cancelled the turn end. The screen sent a hidden network message (a replay statistic counting how often it is opened), and any network message un-ends a finished turn
 - Dev: Demographics.lua (template Replays): LekmodCountDemographicsOpened skips Network.SendGiftUnit(-1, -8) once Network.HasSentNetTurnComplete(); the open count misses those openings
 
 LOBBY: DEFAULT DIFFICULTY
 -------------------------
 Tags: ui
-Human players start at Immortal difficulty in the multiplayer lobby.
+Weight: minor
 - Changed: the host, every player who joins, and every slot the host opens for a human start at Immortal (was Prince). Players can still change it. Saved games keep their settings
 - Note: city-state yields scale with difficulty, so Immortal is the Lekmod standard
 
 CITY BANNER TOOLTIP (WARMONGER PREVIEW)
 ---------------------------------------
 Tags: ui
-The city banner tooltip of an enemy city no longer warns about a warmonger penalty.
+Weight: minor
 - Removed: the "You will receive a ... Warmonger penalty if you capture this city" line (the liberation line stays)
 
 CITY-STATE CIVILOPEDIA PAGES
 ----------------------------
-Tags: game mechanics, ui
+Tags: ui, city-states
+Weight: minor
 New Civilopedia pages explain the Lekmod city-state rules, at the end of the City-States section.
 - Added: an overview page, and pages on Influence and its resting point, bonuses by era (with the full Maritime, Cultured and Religious tables), Pledge to Protect, quest rewards, and declaring war on city-states
 - Added: one page each for the standings Antagonist, Provocateur, Aggressor and Warmonger, and for Wary, Alienated and Nemesis
@@ -712,18 +619,16 @@ New Civilopedia pages explain the Lekmod city-state rules, at the end of the Cit
 - Dev: Civilopedia script override (Lua/tmp/ui/Civilopedia/CivilopediaScreen.lua.ignore, copied by ui_check.bat for both UIs); only the City-States home page and article changed
 - Note: Concepts IDs 505-518 (CONCEPT_LEKMOD_CS_*); base concept 322 (CONCEPT_CITY_STATE_INFLUENCE_LEVELS_PERMANENT_WAR) and its 3 related-concept rows deleted, chained by InsertAfter after CONCEPT_CITY_STATE_SPREAD_RELIGION. The Civilopedia has no clickable links between game concepts (the related-articles box is unused in the base UI), so the pages sit directly below the overview instead
 
-EMBARKED UNIT DEFENSE (FORMULA CHANGE)
----------------------------------------
+EMBARKED UNIT DEFENSE
+---------------------
 Tags: game mechanics, combat, naval
-Embarked units defend with 40% of their highest combat strength (melee or ranged), instead of a fixed value per era.
-- Changed: embarked defense now scales with the unit's own strength instead of the era
+- Changed: embarked units defend with 40% of their highest combat strength (melee or ranged), instead of a fixed value per era
 - Dev: CvUnit::GetEmbarkedUnitDefense = max(melee, ranged) * 40%, then EmbarkDefenseModifier
 
-
-AMPHIBIOUS LINE (PROMOTION_AMPHIBIOUS_1/2/3)
----------------------------------------------
+AMPHIBIOUS LINE (NEW) (PROMOTION_AMPHIBIOUS_1/2/3)
+--------------------------------------------------
 Tags: promotions, movement, combat
-NEW 3-level line for melee, gunpowder, mounted, armor and ranged land units. Replaces the old Amphibious promotion.
+3-level line for melee, gunpowder, mounted, armor and ranged land units. Replaces the old Amphibious promotion.
 - Added: Amphibious I: no penalty attacking across rivers; embarked defense 70% of the unit's strength; embarking costs only 1 movement, with at most 1 movement left afterwards (enemy zone of control still applies)
 - Added: Amphibious II: +1 embarked movement; disembarking costs only 1 movement, with at most 1 movement left afterwards (enemy zone of control still applies)
 - Added: Amphibious III: no penalty attacking from water; +1 embarked movement; at most 2 movement left after embarking or disembarking; can heal while embarked
@@ -732,138 +637,136 @@ NEW 3-level line for melee, gunpowder, mounted, armor and ranged land units. Rep
 - Dev: new columns EmbarkFlatCost, DisembarkFlatCost, MaxMovesAfterDomainChange, HealWhileEmbarked. Walk-water tiles (pontoons, shallows) count as land for the flat cost.
 - Dev: after the v35.4 port, v35.4's water-walk rules in CvUnitMovement::ConsumesAllMoves returned before the Amphibious check; fixed in f1706839
 
-
-MOUNTAINEERING (PROMOTION_MOUNTAINEERING)
-------------------------------------------
+MOUNTAINEERING (NEW) (PROMOTION_MOUNTAINEERING)
+-----------------------------------------------
 Tags: promotions, movement
-NEW. Lets melee and gunpowder units cross mountains. A unit that ends its turn on a mountain takes 50 damage.
+Lets melee and gunpowder units cross mountains. A unit that ends its turn on a mountain takes 50 damage.
 - Added: available after Drill II or Altitude Training
 - Dev: new column CanCrossMountains; the 50 damage reuses the existing end-of-turn mountain attrition
 
-
-BUNKER BUSTING (PROMOTION_BUNKER_BUSTING)
-------------------------------------------
+BUNKER BUSTING (NEW) (PROMOTION_BUNKER_BUSTING)
+-----------------------------------------------
 Tags: promotions, combat, air
-NEW. +33% combat strength attacking cities. Each attack on a city also deals 10 damage to every unit in it (except aircraft).
++33% combat strength attacking cities. Each attack on a city also deals 10 damage to every unit in it (except aircraft).
 - Added: for siege units after Volley, and for bombers after Air Siege I
 - Dev: new column CitySplashDamage (ResolveRangedUnitVsCombat, ResolveAirUnitVsCombat)
 
-
-MARAUDER (PROMOTION_MARAUDER)
-------------------------------
+MARAUDER (NEW) (PROMOTION_MARAUDER)
+-----------------------------------
 Tags: promotions
-NEW. +50% gold from pillaging.
++50% gold from pillaging.
 - Note: not granted to any unit yet (planned: Privateer, Tunisia)
 - Dev: uses the PillageChange column that v35.4 added for Buganda
 
-
-ENVELOPMENT (PROMOTION_ENVELOPMENT)
-------------------------------------
+ENVELOPMENT (NEW) (PROMOTION_ENVELOPMENT)
+-----------------------------------------
 Tags: promotions, combat
-NEW. Doubles the flanking bonus: +20% per adjacent friendly unit instead of +10%.
+Doubles the flanking bonus: +20% per adjacent friendly unit instead of +10%.
 - Added: for melee, gunpowder, mounted and armor units after Shock II, Drill II or Amphibious II
 - Dev: FlankAttackModifier=100
 
-
 SORTIE (PROMOTION_SORTIE)
----------------------------
+-------------------------
 Tags: promotions, air
-Now also takes 10% less damage from air sweeps.
+Weight: minor
 - Added: -10% damage taken from air sweeps
 - Dev: InterceptionDefenseDamageModifier=-10; the sweep path in CvGame::getCombatDamage now applies it (it only applied to interceptions)
 
-
-REPAIR CREW (PROMOTION_REPAIR_CREW)
---------------------------------------
+REPAIR CREW (NEW) (PROMOTION_REPAIR_CREW)
+-----------------------------------------
 Tags: promotions, naval, air
-NEW. Aircraft on this carrier heal 15 HP more per turn when they skip a turn or use Air Repair.
+Aircraft on this carrier heal 15 HP more per turn when they skip a turn or use Air Repair.
 - Added: for carriers after Flight Deck II or Armor Plating II
 - Dev: SameTileHealChange=15 (existing field, no DLL change)
 
-
-SAMBUCA (PROMOTION_SAMBUCA)
+SAMBUCA (NEW) (PROMOTION_SAMBUCA)
 ---------------------------------
 Tags: promotions, naval, combat
-NEW. A naval version of the Siege Tower's ability: while this ship is next to an enemy city, friendly units within 2 tiles get +50% combat strength attacking that city. The ship itself gets -33% defense and -1 movement.
+A naval version of the Siege Tower's ability: while this ship is next to an enemy city, friendly units within 2 tiles get +50% combat strength attacking that city. The ship itself gets -33% defense and -1 movement.
 - Added: for naval melee units after Coastal Raider I
 - Dev: Sapper=true plus the penalties on the same promotion; the Siege Tower's PROMOTION_SAPPER is unchanged
 
-
-CARPET BOMBING (PROMOTION_CARPET_BOMBING)
-------------------------------------------
+CARPET BOMBING (NEW) (PROMOTION_CARPET_BOMBING)
+-----------------------------------------------
 Tags: promotions, air, combat
-NEW. Each bomber attack also deals 20% of its damage to all enemy and neutral land and naval units next to the target. Units inside a targeted city are not hit, and your own units are never hit.
+Each bomber attack also deals 20% of its damage to all enemy and neutral land and naval units next to the target. Units inside a targeted city are not hit, and your own units are never hit.
 - Added: for bombers after Bombardment II
 - Added: hitting a city-state's unit declares war on it; hitting a major civilization you are not at war with does not
 - Dev: new column CarpetBombing; splash in ResolveAirUnitVsCombat uses the interception-reduced damage. Air units' MISSION_RANGE_ATTACK now goes through CvUnitCombat::AttackAir (the "declare war?" popup skipped all air logic before).
 - Note: the spec includes friendly units; no friendly fire is kept for now (user, 2026-10-07)
 - Dev: tooltip/Civilopedia rewritten to cover every case (unit target, city target, neighbouring cities, interception, City-States, civilizations at peace)
 
-
-SUPPLY SHIP (PROMOTION_SUPPLY_SHIP)
-------------------------------------
+SUPPLY SHIP (NEW) (PROMOTION_SUPPLY_SHIP)
+-----------------------------------------
 Tags: promotions, naval
-NEW. Adjacent ships can heal outside friendly territory. Adjacent units (except aircraft) heal 10 HP more per turn outside friendly territory.
+Adjacent ships can heal outside friendly territory. Adjacent units (except aircraft) heal 10 HP more per turn outside friendly territory.
 - Added: for naval melee and naval ranged units after Coastal Raider II, Boarding Party II or Armor Plating II
 - Dev: new column AdjacentTileHealOutsideFriendly; bypasses the DOMAIN_SEA gates in healRate() and canHeal()
 
-
 WOODSMAN (PROMOTION_WOODSMAN)
-------------------------------
+-----------------------------
 Tags: promotions, movement
+Weight: minor
 Double movement and +15% combat strength in forest and jungle.
 - Changed: requirement was Shock II or Drill II, now Drill I
 
-
 ALWAYS-VISIBLE BUILD BUTTONS (Builds.LekmodAlwaysVisible)
-----------------------------------------------------------
+---------------------------------------------------------
 Tags: ui
 - Added: build buttons of unique improvements (Kasbah, Chateau, Moai, Terrace Farm...) and Great Person improvements (Academy, Holy Site, Citadel...) show on every tile for units that can build them, greyed out where they can't be built; the tooltip says why and shows the improvement's rules
 - DLL: LEKMOD_BUILD_ALWAYS_VISIBLE (CvPlayer::canBuild skips the tile conditions for the visible test)
 
 AMBUSH FORMATION (PROMOTION_AMBUSH_FORMATION_1, PROMOTION_AMBUSH_FORMATION_2)
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 Tags: promotions, combat
-- Changed: Ambush Formation I and II: +25% against Mounted and Armor units (was +33%)
+Weight: minor
+- Changed: +25% against Mounted and Armor units (was +33%)
 
 WHALES (RESOURCE_WHALE)
 -----------------------
-Tags: game mechanics
+Tags: tiles and resources, naval
+Weight: minor
 - Changed: Whales: -1 Food, +1 Production on the tile (the base tile now yields 0 Food, 2 Production, 1 Gold before improvements)
 
 TEMPLE AND SHRINE (BUILDING_TEMPLE, BUILDING_SHRINE)
 ----------------------------------------------------
 Tags: buildings, religion
+Weight: minor
 - Changed: Temple: cost 50 -> 67; Shrine: cost 20 -> 26 (the v34.11 costs)
 - Note: unique Temples and Shrines keep their costs
+
 TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
 -------------------------------------------
 Tags: buildings
-Back to its v34.11 version.
 - Changed: needs Honor (the Statue of Zeus no longer does)
 - Changed: +3 Production, +3 Gold, +3 Culture (was +1 Culture) and +1 Great Engineer point
 - Changed: +15% Production and +15 XP for ranged units now also covers naval ranged units and submarines
 - Removed: +15% Growth in the city; +1 Faith from worked Camps
-ZIMBABWE: STONE MASON (BUILDING_STONE_MASON)
---------------------------------------------
+
+ZIMBABWE (BUILDING_STONE_MASON)
+-------------------------------
 Tags: civs, buildings
-- Changed: needs an improved Stone, Marble or Obsidian, like the Stone Works
-- Added: +2 City Defense; Stone, Marble and Obsidian +2 Culture
-- Removed: +2 Culture with Masonry
-- Added: +1 Happiness, like the Stone Works
+- Changed: Stone Mason: needs an improved Stone, Marble or Obsidian, like the Stone Works
+- Added: Stone Mason: +2 City Defense; Stone, Marble and Obsidian +2 Culture
+- Removed: Stone Mason: +2 Culture with Masonry
+- Added: Stone Mason: +1 Happiness, like the Stone Works
+
 MAIZE (RESOURCE_MAIZE)
 ----------------------
-Tags: game mechanics
+Tags: tiles and resources
+Weight: minor
 - Changed: Farms can be built on Maize on Hills without fresh water
 - DLL: Resources.ImprovementIgnoresFreshWater (LEKMOD_RESOURCE_CITY_EFFECTS, CvPlot::canHaveImprovement)
+
 EMBARKATION WITH DEFENSE (PROMOTION_DEFENSIVE_EMBARKATION)
 ----------------------------------------------------------
 Tags: promotions, units
-- Removed: Embarkation with Defense: no unit starts with it (Conquistadors) and it can no longer be picked
+Weight: minor
+- Removed: no unit starts with it (Conquistadors) and it can no longer be picked
 
 ANCIENT RUINS OVERHAUL (GOODY_*)
----------------------------------
-Tags: ruins, religion, game mechanics
+--------------------------------
+Tags: game mechanics, ruins, religion
 Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshone ability), with the exact amounts shown. Rewards scale with the era (ancient = 1, classical = 2, ...) and the turn.
 - Added: popping a ruin offers 2 different random rewards to choose from (3 with Native Tongue); rewards of your previous 3 ruins are not offered again (counted by what they give: a Food ruin also blocks trades that gain Food), and rewards you can't use right now are left out
 - Changed: the choices show Food, Culture, Gold and Science amounts in their yield colors
@@ -889,53 +792,50 @@ Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshon
 - Dev: 3-ruin cooldown (LEKMOD_POST_CHANGES): saved m_iLekmodRecentRuinMasks (yield masks of the last 3 rewards, 8 bits each) and m_iLekmodLastRuinGoody now packs their goody types; recorded after receiveGoody in LekmodChooseRuinOffer
 - Dev: 2026-10-17 balance (user): plain rewards smaller, trades a bit better: LekmodRuinFood/LekmodRuinCulture/LekmodScienceRuinGold (second value mixed from the offer roll), LekmodGetRuinTradeAmount pay discount for gains 3/4; GOODY_EXPERIENCE_MOVE removed from HandicapInfo_Goodies
 
-
-GLUTTON (PROMOTION_GLUTTON)
-----------------------------
+GLUTTON (NEW) (PROMOTION_GLUTTON)
+---------------------------------
 Tags: promotions, ruins
-NEW. Given by the food ruin. -30% combat strength. Lost on upgrade.
+Weight: minor
+Given by the food ruin. -30% combat strength. Lost on upgrade.
 - Dev: icon ABILITY_ATLAS 57 (same as "May Not Melee Attack")
 
-
-IAIJUTSU (PROMOTION_IAIJUTSU)
-------------------------------
+IAIJUTSU (NEW) (PROMOTION_IAIJUTSU)
+-----------------------------------
 Tags: promotions, combat
-NEW. Attacking a unit at full health lets this unit attack once more this turn (once per turn). Lost on upgrade.
+Attacking a unit at full health lets this unit attack once more this turn (once per turn). Lost on upgrade.
 - Note: not granted to any unit yet (planned: Japanese Samurai)
 - Dev: new column ExtraAttackVsFullHP; ResolveMeleeCombat refunds one attack (CvUnit::RefundAttack); the flag resets in CvPlayer::DoUnitReset
 
-
-HATAMOTO (PROMOTION_HATAMOTO)
-------------------------------
+HATAMOTO (NEW) (PROMOTION_HATAMOTO)
+-----------------------------------
 Tags: promotions, movement
-NEW. +1 movement when starting the turn within 1 tile of a friendly Great General. Lost on upgrade.
++1 movement when starting the turn within 1 tile of a friendly Great General. Lost on upgrade.
 - Note: not granted to any unit yet (planned: Japanese Samurai)
 - Dev: new column MovesNearGeneralChange, applied in CvPlayer::DoUnitReset (CvUnit::IsGreatGeneralWithinOne)
 
-
-ONE GOOD EYE / STARGAZING (PROMOTION_ONE_GOOD_EYE / PROMOTION_STARGAZING)
----------------------------------------------------------------------------
+ONE GOOD EYE / STARGAZING (NEW) (PROMOTION_ONE_GOOD_EYE / PROMOTION_STARGAZING)
+-------------------------------------------------------------------------------
 Tags: promotions
-NEW. +1 sight.
+Weight: minor
++1 sight.
 - Note: not granted to any unit yet (planned: Expansionism opener, Chile)
 - Dev: VisibilityChange=1
 
-
 AIR SIEGE LINE (PROMOTION_AIR_SIEGE_1/2/3)
--------------------------------------------
+------------------------------------------
 Tags: promotions, air
+Weight: minor
 The bomber promotions "Siege I-III" are renamed "Air Siege I-III", so they are no longer confused with the land unit promotion "Siege".
 - Changed: renamed "Siege I-III" -> "Air Siege I-III"
 
-
 FEARED ELEPHANT (PROMOTION_FEARED_ELEPHANT)
---------------------------------------------
+-------------------------------------------
 Tags: promotions, art
+Weight: minor
 - Changed: new icon
 
-
 DEMOGRAPHICS SCREEN
---------------------
+-------------------
 Tags: ui
 The Demographics screen shows plain, comparable numbers with yield icons.
 - Added: yield icons in the value column
@@ -944,7 +844,7 @@ The Demographics screen shows plain, comparable numbers with yield icons.
 
 WATER YIELDS AND SEA RESOURCES
 ------------------------------
-Tags: game mechanics, naval
+Tags: tiles and resources, naval
 Coast tiles give more food, and sea resources lean towards production and their own specialty.
 - Changed: Coast tiles yield 2 Food (was 1). Ocean stays at 1 Food, Lakes stay at 3 Food
 - Changed: Atoll no longer adds +1 Food (still +1 Production)
@@ -958,8 +858,7 @@ Coast tiles give more food, and sea resources lean towards production and their 
 
 RARE LUXURIES: PERFUME, SPICES, GEMS
 ------------------------------------
-Tags: game mechanics
-Three luxuries become special: each pays off in its own way, and two of them take longer to improve.
+Tags: tiles and resources
 - Changed: Perfume: unimproved +1 Gold +1 Culture (was +2 Gold); Plantation +2 Gold +2 Culture (was +2 Culture), so 3 Gold 3 Culture improved
 - Changed: Perfume Plantations take 1 more turn to build
 - Changed: Spices: unimproved +5 Gold (was +2 Gold); a Plantation turns it into a food tile: +3 Food and 4 Gold less (was +1 Food +2 Gold), so 3 Food 1 Gold improved
@@ -971,8 +870,7 @@ Three luxuries become special: each pays off in its own way, and two of them tak
 
 SETTLE-ON EFFECTS: SALT, STONE, CATTLE, RUBBER, MARBLE
 ------------------------------------------------------
-Tags: game mechanics
-Founding a city on some resources gives a bonus.
+Tags: tiles and resources
 - Added: Salt: a city founded on Salt starts with +1 Population, if you know Pottery
 - Added: Stone: a city founded on Stone gets free Walls, if you know Masonry
 - Added: Cattle: a city founded on Cattle starts with +4 Food in storage, if you know Animal Husbandry
@@ -987,7 +885,7 @@ Founding a city on some resources gives a bonus.
 
 NATURAL WONDERS
 ---------------
-Tags: game mechanics
+Tags: tiles and resources
 Most natural wonders were reworked, several of them reward building around them.
 - Changed: King Solomon's Mines: 6 -> 5 Production
 - Changed: Lake Victoria: no longer yields 2 Gold (6 Food)
@@ -1009,15 +907,13 @@ Most natural wonders were reworked, several of them reward building around them.
 
 STRATEGIC RESOURCE NODE SIZES
 -----------------------------
-Tags: game mechanics
-Strategic resource deposits are bigger.
+Tags: tiles and resources
 - Changed: major / minor deposits: Horses 6 / 2 (was 4 / 2), Iron 9 / 3 (was 6 / 2), Coal 18 / 4 (was 7 / 3), Oil 18 / 8 (was 7 / 4), Aluminum 24 / 12 (was 8 / 3), Uranium 6 / 2 (was 2 / 1)
 - Note: these are the mod's Resources.AmountMajor/AmountMinor, read by the map script; the Lekmap copy in this repo still uses its own hardcoded amounts (the user's map folder is the authority)
 
 STRATEGIC RESOURCE REQUIREMENTS
 -------------------------------
 Tags: units
-Most units that need strategic resources need more of them, and some need new ones.
 - Changed: Catapult, Trebuchet, Cannon, Artillery: 1 Iron (was none)
 - Changed: Swordsman, Longswordsman, Frigate: 2 Iron (was 1)
 - Changed: Chariot Archer, Horseman, Lancer: 2 Horses (was 1)
@@ -1039,7 +935,6 @@ Most units that need strategic resources need more of them, and some need new on
 UNIT STAT AND COST CHANGES
 --------------------------
 Tags: units, combat
-Several units get new strength, movement or cost.
 - Changed: Trebuchet: 11 Strength, 13 Ranged Strength (was 12 / 14), cost 80 -> 76
 - Changed: Lancer: 26 Strength (was 25)
 - Changed: Cannon: 21 Ranged Strength (was 20)
@@ -1069,15 +964,14 @@ Landing troops embark and land faster instead of fighting better from the water.
 HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
 ---------------------------------------------
 Tags: promotions, units, air
-Helicopter Gunships get one more promotion choice.
+Weight: minor
 - Added: Sentry (helicopter): +2 Visibility Range (the normal Sentry gives +1)
 - Added: it can be picked once any helicopter promotion line is at level 2, like Repair
 - Dev: Quick Study (+50% experience) was a helicopter choice too until 2026-10-18 (user: removed)
 
 GREAT GENERAL AND CITADEL (UNIT_GREAT_GENERAL, IMPROVEMENT_CITADEL)
---------------------------------------------------------------------
+-------------------------------------------------------------------
 Tags: units, naval
-Citadels yield Culture and hold back enemy ships.
 - Changed: the Great General always looks like the early-era General
 - Added: Citadels yield 3 Culture
 - Added: Citadels exert zone of control on enemy ships: a ship moving from one tile next to an enemy Citadel to another loses its remaining movement, as next to an enemy city
@@ -1099,19 +993,20 @@ Drydocks work like naval Citadels; Repair Fleet heals less.
 
 ACADEMY (IMPROVEMENT_ACADEMY)
 -----------------------------
-Tags: game mechanics
+Tags: tiles and resources
+Weight: minor
 - Removed: Academy: +2 Science with Atomic Theory
 
 GREAT MERCHANT: CUSTOMS HOUSE (IMPROVEMENT_CUSTOMS_HOUSE)
---------------------------------------------------------
-Tags: units, game mechanics
-A Customs House on a strategic resource gives more of it.
+---------------------------------------------------------
+Tags: units, tiles and resources
+Weight: minor
 - Added: a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
 - DLL: Improvements.ResourceExtractionMod is now read for strategic resources (LEKMOD_IMPROVEMENT_STRATEGIC_EXTRACTION); setImprovementType removes the old improvement's amount with that improvement's modifier
 
 CARAVAN AND CARGO SHIP (UNIT_CARAVAN, UNIT_CARGO_SHIP)
------------------------------------------------------
-Tags: units, naval, game mechanics
+------------------------------------------------------
+Tags: diplomacy and trade, units, naval
 Caravans and Cargo Ships are now equal; only where they travel differs.
 - Changed: Cargo Ship costs 50 Production like the Caravan (was 67); Venezuela's Cargo Ship 33 like its Caravan (was 44)
 - Changed: every trade route that starts in a coastal city yields 50% more Gold, Food or Production, whether by Caravan or Cargo Ship (sea routes used to yield 100% more, land routes nothing)
@@ -1124,26 +1019,25 @@ Caravans and Cargo Ships are now equal; only where they travel differs.
 GIANT DEATH ROBOT (UNIT_MECH, PROMOTION_NUKE_RESISTANCE)
 --------------------------------------------------------
 Tags: units, combat, promotions
-The Giant Death Robot is weaker but gets a set of combat promotions, and nukes can hurt it.
 - Changed: 190 Strength (was 240), cost 482 (was 402)
 - Removed: it no longer intercepts aircraft
 - Changed: Nuke Resistance instead of nuke immunity: nuclear weapons deal it 20 damage, wherever it stands (also in the blast center and in cities)
 - Added: starts with Fear Aura, Charge, Armor Plating I and Repair
+- Added: it can pillage, but doesn't heal from pillaging (new promotion No Healing from Pillage)
 - DLL: UnitPromotions.NukeDamageFixed (LEKMOD_NUKE_RESISTANCE, CvUnitCombat nuke damage); promotion ID 373
 - Note: Nuke Resistance has its own icon (radiation shield, user art)
+- Dev: PROMOTION_NO_PILLAGE_HEAL (ID 365) uses upstream's PillageHealChange (-100); CvUnit::pillage clamps the heal at 0 so a negative change never damages
 
 SITTING DUCKS (PROMOTION_SITTING_DUCKS)
 ---------------------------------------
 Tags: promotions, units, combat, naval
-Bombers and artillery are good at hitting ships and embarked troops.
 - Added: Great War Bomber, Bomber, Cannon, Artillery, Rocket Artillery and their unique replacements start with Sitting Ducks: +33% Combat Strength when attacking Naval Melee units, Naval Ranged units and embarked units
 - DLL: UnitPromotions.AttackVsEmbarkedMod (LEKMOD_ATTACK_VS_EMBARKED, both ranged strength paths); naval part via UnitPromotions_UnitCombatMods.Attack; promotion ID 374
 - Note: the 256 px icon is upscaled from the 64 px art (no larger original)
 
-ROWBOAT (UNIT_SKIFF)
---------------------
+ROWBOAT (NEW) (UNIT_SKIFF)
+--------------------------
 Tags: units, naval
-A new early scouting boat that can also place Fishing Boats and Pontoon Bridges.
 - Note: renamed from Skiff to Rowboat on 2026-10-11 (display name only; the type key stays UNIT_SKIFF)
 - Added: Rowboat: available from the start (Agriculture), never obsolete, 21 Production, 3 Combat Strength, 3 movement, 2 sight
 - Added: it gets the same promotions as the Scout and cannot be gifted to City-States
@@ -1160,17 +1054,16 @@ The Nelayan returns as a shared unique Rowboat for seafaring civilizations.
 - Added: unlike the Rowboat it builds Fishing Boats over several turns like a Worker and is not used up; a Pontoon Bridge still uses it up at once
 - Note: art as Lekmod's original Nelayan (Polynesian war canoe model, removed in v31); the user checks the look in game
 
-SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
--------------------------------------------------------
+SELF-PROPELLED ARTILLERY (NEW) (UNIT_SELF_PROPELLED_ARTILLERY)
+--------------------------------------------------------------
 Tags: units, combat
-A new mobile siege unit that does not need to set up.
 - Added: Self-Propelled Artillery: Ballistics, 1 Iron and 1 Oil, 225 Production, 30 Strength, 40 Ranged Strength, range 3, 2 movement
 - Added: Indirect Fire, +200% vs cities, Sitting Ducks; cannot melee attack, no defensive terrain bonuses, limited sight; no set-up needed
 - Changed: the Artillery (and the Rocket Corps) becomes obsolete with Ballistics and upgrades to the Self-Propelled Artillery; the Self-Propelled Artillery becomes obsolete with Rocketry and upgrades to the Rocket Artillery
 - Note: uses the Rocket Artillery's look and icon as a placeholder (user decision)
 
-VANGUARD CORPS (UNIT_VANGUARD_CORPS, BUILDING_LEKMOD_FIELD_HOSPITAL)
---------------------------------------------------------------------
+VANGUARD CORPS (NEW) (UNIT_VANGUARD_CORPS, BUILDING_LEKMOD_FIELD_HOSPITAL)
+--------------------------------------------------------------------------
 Tags: units, game mechanics
 A late-game settler that founds ready-made frontier cities.
 - Added: Vanguard Corps: Railroad, 290 Production, 3 movement, founds cities; building it does not stop the city's growth
@@ -1183,7 +1076,7 @@ A late-game settler that founds ready-made frontier cities.
 - Dev: the 2026-10-14 icon rebuild took the map flag source (the largest picture in the folder) for the portrait, so the tech tree and unit panel showed the flag silhouette; rebuilt from the portrait, flag source moved to a subfolder
 
 CONQUISTADOR (UNIT_SPANISH_CONQUISTADOR, UNIT_CONQUISTADOR_SHARED)
------------------------------------------------------------------
+------------------------------------------------------------------
 Tags: units, civs, policies
 The Conquistador becomes a sturdier colonist and a shared unique unit of the colonial powers.
 - Changed: 17 Strength (was 16), costs 71 Production (was 92), needs 2 Horses and 1 Iron
@@ -1196,7 +1089,7 @@ The Conquistador becomes a sturdier colonist and a shared unique unit of the col
 - DLL: Units.PolicyAlternateTech (LEKMOD_POLICY_ALTERNATE_TECH, CvPlayer::canTrain); shared copy is unit ID 272
 
 SPACESHIP PARTS (UNITCOMBAT_SPACESHIP)
--------------------------------------
+--------------------------------------
 Tags: units, promotions
 Spaceship parts are military units that can defend themselves on the way to the capital.
 - Changed: spaceship parts are military units: 80 Strength, 1 movement (was 2), limited sight, cannot melee attack, need 10 Aluminum (was 1)
@@ -1219,12 +1112,13 @@ Spears are a bit weaker against horses, but stronger when they charge horse arch
 WORKER (UNIT_WORKER)
 --------------------
 Tags: units
+Weight: minor
 - Added: Workers can be upgraded to Archaeologists
 
 GREAT MUSICIAN FESTIVAL (IMPROVEMENT_CONCERT)
 ---------------------------------------------
 Tags: units
-The Festival grows with the eras.
+Weight: minor
 - Changed: the Festival yields 1 Culture and 1 Gold per era of its owner (Ancient Era 1, Classical Era 2, Renaissance Era 4...) instead of 4 Culture
 - DLL: Improvement_YieldPerOwnerEra; plot yields refresh when a team enters a new era (LEKMOD_IMPROVEMENT_YIELD_PER_OWNER_ERA)
 - Removed: the Festival's +2 Culture with Radio
@@ -1252,7 +1146,7 @@ New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, t
 - Dev: the Ship of the Line had Blind Spot, Docked and Swift Transport twice (duplicate rows); the doubles were removed
 
 DEFENSE BUILDINGS (BUILDING_WALLS, BUILDING_CASTLE, BUILDING_ARSENAL, BUILDING_MILITARY_BASE)
---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 Tags: buildings, combat
 Each defense building now has its own role, and its tooltip shows the city's total Hit Points and healing.
 - Changed: Walls (and unique replacements): Defense +1 lower (Walls 5 -> 4; Walls of Babylon and Murus Gallicus 6 -> 5)
@@ -1272,7 +1166,6 @@ Each defense building now has its own role, and its tooltip shows the city's tot
 CITY HEALING (CITY_HIT_POINTS_HEALED_PER_TURN)
 ----------------------------------------------
 Tags: game mechanics, combat
-Cities heal at a flat rate that only defense buildings raise.
 - Changed: cities heal 10 HP per turn (was 20)
 - Changed: Walls 15, Castle 20, Arsenal 30, Command Bunker 50 HP per turn; the highest one counts
 - Removed: capitals no longer heal 1 extra HP per turn
@@ -1280,9 +1173,8 @@ Cities heal at a flat rate that only defense buildings raise.
 - Changed: Civilopedia pages on city Hit Points and healing updated
 
 BUILDING COSTS AND MAINTENANCE (BUILDING_COURTHOUSE, BUILDING_BOMB_SHELTER, BUILDING_STADIUM, BUILDING_FACTORY)
-------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 Tags: buildings
-Several buildings cost more or less to build and keep.
 - Changed: Courthouse (and unique replacements): 2 Gold maintenance (Courthouse was 4)
 - Changed: Bomb Shelter: 5 Gold maintenance (was 1)
 - Added: Bomb Shelter: military units (planes too) in the city take only 50 damage from a nuclear attack
@@ -1294,7 +1186,7 @@ Several buildings cost more or less to build and keep.
 - DLL: Buildings.NukeUnitDamageFixed (LEKMOD_DEFENSE_BUILDINGS); a GDR's Nuke Resistance (20) still wins when lower
 
 RESOURCE BUILDINGS (BUILDING_GROCER, BUILDING_BREWERY, BUILDING_GEMCUTTER, BUILDING_TEXTILE, BUILDING_MINT, BUILDING_FORGE, BUILDING_CENSER)
--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings
 Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains workable.
 - Changed: Grocer: +2 Food on the building (was 1), no Gold maintenance (was 1), Salt gives +1 Food
@@ -1308,12 +1200,22 @@ Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains work
 - Changed: Censer Maker and Gem Cutter: cost 50 -> 67, like the other luxury buildings (Brewery, Grocer, Textile Mill, Mint)
 - Note: unique replacements keep their costs (Silversmith, Czech Mint: 50)
 
-RESEARCH LAB, CARAVANSARY, HOTEL (BUILDING_LABORATORY, BUILDING_CARAVANSARY, BUILDING_HOTEL)
------------------------------------------------------------------------------------------
+RESEARCH LAB (BUILDING_LABORATORY)
+----------------------------------
 Tags: buildings
-- Added: Research Lab: Snow +3 Science
-- Removed: Caravansary (and unique replacements): no longer provides 2 Horses
-- Added: Hotel (and unique replacements): natural wonders worked by the city give +10 Culture (was +1 on Lake Victoria only)
+Weight: minor
+- Added: Snow +3 Science
+
+CARAVANSARY (BUILDING_CARAVANSARY)
+----------------------------------
+Tags: buildings
+Weight: minor
+- Removed: Caravansary and its unique replacements no longer provide 2 Horses
+
+HOTEL (BUILDING_HOTEL)
+----------------------
+Tags: tourism, buildings
+- Added: Hotel and its unique replacements: natural wonders worked by the city give +10 Culture (was +1 on Lake Victoria only)
 
 LIGHTHOUSE (BUILDING_LIGHTHOUSE)
 --------------------------------
@@ -1330,13 +1232,12 @@ Redesigned: the Lighthouse no longer boosts every water tile.
 AIRPORT (BUILDING_AIRPORT)
 --------------------------
 Tags: buildings, air
-Airports let planes move between them and still fight.
 - Added: a plane that rebases from a city with an Airport to another city with an Airport can still attack or act that turn; it can rebase only once per turn
 - Changed: cost 268 -> 321, 15 Gold maintenance (was 5)
 - DLL: Buildings.AirportRebase (LEKMOD_AIRPORT_REBASE); new saved unit field, old saves are incompatible
 
 INDUSTRIAL BUILDINGS (BUILDING_REFINERY, BUILDING_RECYCLING_CENTER, BUILDING_SPACESHIP_FACTORY, BUILDING_NUCLEAR_PLANT, BUILDING_HYDRO_PLANT)
--------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings
 Strategic resource buildings are stronger, rarer and more expensive.
 - Changed: Oil Refinery: no longer needs improved Oil nearby; provides 6 Oil and +3 Production and +3 Gold on the building (Oil tiles keep +3 Production and +3 Gold); cost 134 -> 260, 12 Gold maintenance (was 0); at most 5 per player
@@ -1348,20 +1249,21 @@ Strategic resource buildings are stronger, rarer and more expensive.
 - DLL: Buildings.NearRiver and NoMaintenanceOnRiver (LEKMOD_DEFENSE_BUILDINGS group)
 
 APOLLO PROGRAM (PROJECT_APOLLO_PROGRAM)
---------------------------------------
+---------------------------------------
 Tags: buildings
+Weight: minor
 - Added: the city that completes the Apollo Program gets +20% Science
 - DLL: Projects.FreeBuildingClass (LEKMOD_PROJECT_FREE_BUILDING) gives the hidden building BUILDING_LEKMOD_APOLLO (ID 270, class 177)
 
 IRONWORKS (BUILDING_IRONWORKS)
 ------------------------------
 Tags: buildings
+Weight: minor
 - Added: Ironworks (and Sweden's Falu Gruva): provides 8 Iron, worked Mountains +2 Production (not natural wonders)
 
-URANIUM MAPPING PROJECT (BUILDING_URANIUM_MAPPING_PROJECT)
----------------------------------------------------------
+URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
+----------------------------------------------------------------
 Tags: buildings
-New national wonder.
 - Added: Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
@@ -1369,7 +1271,7 @@ New national wonder.
 - Dev: icon sources in art_sources/buildings/uranium_mapping_project (user art via the Notion page "ART FOR CLAUDE")
 
 REMOVED BELIEFS (BELIEF_SACRED_PATHS, BELIEF_GOD_SEA, BELIEF_WALLS, BELIEF_PROMISED_LAND, BELIEF_GOD_FESTIVALS, BELIEF_DEVOUT_PERFORMERS, BELIEF_RELIGIOUS_FART)
------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: religion
 - Removed: beliefs Devout Performers and Religious Art
 - Removed: pantheons Spirit Trees, God of the Sea, Goddess of Protection and Goddess of Festivals
@@ -1377,7 +1279,7 @@ Tags: religion
 - Note: Initiation Rites was already gone in v35.4 (only its text was left)
 
 BELIEF CHANGES (BELIEF_PEACE_GARDENZ, BELIEF_SACRED_WATERS, BELIEF_SALATT, BELIEF_DIVINE_JUDGEMENT, BELIEF_MYSTIC_RITUALS, BELIEF_WIND, BELIEF_UNITY_OF_PROPHETS, BELIEF_FORMAL_LITURGY, BELIEF_RITUAL_SACRIFICE, BELIEF_TEARS_OF_NOOBS, BELIEF_SEAFOOD, BELIEF_EARTH_MOTHER, BELIEF_PILGRIMAGE)
---------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: religion
 - Changed: Peace Gardens: +2 Food and +2 Culture from Gardens (was +1 Happiness from Gardens, +2 Gold +1 Production from Water Mills)
 - Changed: Sacred Waters: +2 Faith and +2 Gold from Water Mills and Gardens (was +1 Happiness in river cities, +2 Faith +1 Food from Gardens)
@@ -1392,100 +1294,71 @@ Tags: religion
 - Changed: Seafood Rituals: +2 Culture from Fish (was +1 Food +1 Culture +1 Faith)
 - Changed: Earth Mother: +2 Faith from Iron (was +1), and Mines give +1 Faith only on a resource (Iron or any other mined resource; was every Mine)
 - Changed: Pilgrimage: +3 Faith (was +4) and +3 Culture from every foreign city following your religion
-- DLL: Beliefs.ImprovementYieldNeedsResource (LEKMOD_BELIEF_IMPROVEMENT_NEEDS_RESOURCE) for Earth Mother's mines
-- DLL: Belief_HolyCityYieldChanges now also works for Production/Food/Gold/Science in the holy city (LEKMOD_HOLY_CITY_YIELDS)
-
-JUST WAR, CHORAL MUSIC, RELIGIOUS CENTER, DANCE OF THE AURORA, OCEAN'S BOUNTY (BELIEF_JUST_WAR, BELIEF_CHORAL_MUSIQ, BELIEF_RELIGIOUS_CENTER, BELIEF_DANCE_AURORA, BELIEF_OCEANS_BOUNTY)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: religion
 - Changed: Just War: +15% Combat Strength near enemy cities of this religion (was +20%)
 - Added: Just War: Missionaries spread the religion as strongly as Great Prophets and have +1 Movement
 - Added: Choral Music: finishing the Grand Temple gives a free Great Musician
 - Added: Religious Center: finishing the Grand Temple gives 2 free Workers
 - Added: Dance of the Aurora: +1 Food on flat Tundra without forest
 - Changed: Ocean's Bounty: +2 Production from Atolls (was +1), Fishing Boats give +1 Production only in cities with a Lighthouse
-- Note: the Grand Temple units come from the religion the player founded
-- DLL: Beliefs.MissionaryProphetSpread/MissionaryExtraMoves (LEKMOD_JUST_WAR_MISSIONARIES); Belief_BuildingClassFreeUnits, Belief_FlatOpenTerrainYieldChanges, Belief_ImprovementBuildingYieldChanges (LEKMOD_BELIEF_EXTRA_TABLES)
-
-NEW PANTHEONS: MIDAS TOUCH, NECTAR OF THE GODS, SONGS OF THE LEVIATHAN, HARVEST CONFLUENCE, SACRED CRAFTWORK, OFFERING OF PLENTY
---------------------------------------------------------------------------------------------------------------------------------
-Tags: religion
-Six new pantheons.
-- Added: Midas Touch: +1 Gold from all Luxury resources
-- Added: Nectar of the Gods: +1 Food and +1 Gold from Wine, Sugar and Spices
-- Added: Songs of the Leviathan: +2 Faith from Whales
-- Added: Harvest Confluence: +2 Gold from Crabs, Wheat, Bananas and Cattle
-- Added: Sacred Craftwork: +1 Production and +1 Culture from Hardwood; +1 Faith from Forests, Coral and Pearls
-- Added: Offering of Plenty: +1 Culture and +1 Faith from Fish, Wheat, Granaries and Lighthouses; Granaries and Lighthouses -1 Food
-- Note: belief IDs 94-99 (BELIEF_LEKMOD_MIDAS_TOUCH, _NECTAR_GODS, _SONGS_LEVIATHAN, _HARVEST_CONFLUENCE, _SACRED_CRAFTWORK, _OFFERING_PLENTY)
-
-ZAMZAM, PILLARS OF HEAVEN (BELIEF_LEKMOD_ZAMZAM, BELIEF_LEKMOD_PILLARS_HEAVEN)
----------------------------------------------------------------------------
-Tags: religion
-- Added: follower belief Zamzam: +2 Food and +2 Faith in cities without fresh water
-- Added: pantheon Pillars of Heaven: +3 Faith and +1 Food in cities next to a Mountain
-- DLL: Belief_CityConditionYieldChanges (Condition NO_FRESH_WATER / ADJACENT_MOUNTAIN; LEKMOD_BELIEF_EXTRA_TABLES); belief IDs 100-101
-
-KIN FORGED IN BLOOD, SALT AND STARS, THE TIDE'S CALLING (BELIEF_LEKMOD_KIN_BLOOD, BELIEF_LEKMOD_SALT_STARS, BELIEF_LEKMOD_TIDES_CALLING)
------------------------------------------------------------------------------------------------------------------------------------
-Tags: religion
-Three new pantheons.
-- Added: Kin Forged in Blood: clearing a barbarian encampment gives +1 Population in the capital and 30 Faith (shown over the camp); new military units get Zealot while the pantheon is in your capital (units keep it afterwards)
-- Added: Salt and Stars: +2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital (units keep it afterwards)
-- Added: The Tide's Calling: a coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (Brunei: Nelayan)
-- Note: "in your capital" means the capital follows a religion with this pantheon, or has it as its own pantheon
-- DLL: Beliefs.NewUnitPromotion/NewUnitPromotionAllLand/CampClearCapitalPopulation/CampClearFaith/FoundFreeUnitClass, Belief_CoastalCapitalYieldPerInlandCity (LEKMOD_CAPITAL_PANTHEON_EFFECTS); belief IDs 102-104; promotion 378 PROMOTION_LEKMOD_SALT_STARS
-
-MANGROVE MYSTERIES, THE HUNGERING THRONE, ASCETIC DISCIPLINE, RITE OF THE FIRST-BORN (BELIEF_LEKMOD_MANGROVE, BELIEF_LEKMOD_HUNGERING_THRONE, BELIEF_LEKMOD_ASCETIC, BELIEF_LEKMOD_FIRST_BORN)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: religion
-Four new pantheons.
-- Added: Mangrove Mysteries: +1 Faith from Forests and Fish; Coral, Pearls and Atolls next to a city and a Forest yield +1 Production and +2 Science
-- Added: The Hungering Throne: cities other than the capital -1 Food; the capital's tile gets +1 Production, +1 Science and +1 Faith per other city with the pantheon; when such a city starves, the capital claims 2 tiles
-- Added: Ascetic Discipline: Shrines -1 Food, -1 Gold, +2 Production; +20 Faith whenever a city loses a citizen to starvation
-- Added: Rite of the First-Born: when a city first grows to 2 citizens it drops back to 1, you gain 20 Faith, and the city gets a Rite of the First-Born building (+1 Production, +1 Culture, listed in the city screen, kept on capture)
-- Changed: Rite of the First-Born: its pantheon text describes only the effect
-- DLL: Beliefs.StarvationFaith/StarvationCapitalPlots/FirstGrowthBuildingClass/FirstGrowthFaith, Belief_CapitalYieldPerExpand, Belief_CityFeatureAdjacentYieldChanges, condition NOT_CAPITAL; belief IDs 105-108; building BUILDING_LEKMOD_FIRST_BORN (272, class 179)
-
-SACRED SITES, JESUIT EDUCATION, WORK ETHIC (BELIEF_SACRED_SITES, BELIEF_JESUIT_EDUCATION, BELIEF_WORK_ETHIC)
-------------------------------------------------------------------------------------------------------
-Tags: religion
 - Changed: Sacred Sites: +3 Gold and +3 Faith from Pagodas, Mosques, Cathedrals, Gurdwaras, Synagogues, Viharas and Mandirs (was +2 Culture +2 Gold +2 Faith)
 - Added: Sacred Sites: adopting it gives a free Vihara in the capital
 - Added: Jesuit Education: Libraries, Universities, Observatories, Public Schools and Research Labs yield +2 Faith; Academies +10 Faith
 - Added: Work Ethic: Workers can be bought with Faith
 - Changed: Jesuit Education and Work Ethic: buildings and Workers cost 130% of their Production cost in Faith, unique replacements included
 - Changed: Jesuit Education and Work Ethic: Great Prophets no longer appear from Faith (as in the Industrial Era)
+- DLL: Beliefs.ImprovementYieldNeedsResource (LEKMOD_BELIEF_IMPROVEMENT_NEEDS_RESOURCE) for Earth Mother's mines
+- DLL: Belief_HolyCityYieldChanges now also works for Production/Food/Gold/Science in the holy city (LEKMOD_HOLY_CITY_YIELDS)
+- Note: the Grand Temple units come from the religion the player founded
+- DLL: Beliefs.MissionaryProphetSpread/MissionaryExtraMoves (LEKMOD_JUST_WAR_MISSIONARIES); Belief_BuildingClassFreeUnits, Belief_FlatOpenTerrainYieldChanges, Belief_ImprovementBuildingYieldChanges (LEKMOD_BELIEF_EXTRA_TABLES)
 - DLL: Beliefs.NoProphetSpawn/FreeBuildingClassInCapital, Belief_UnitClassFaithPurchase (LEKMOD_CAPITAL_PANTHEON_EFFECTS)
 
-CHARTER OF SETTLEMENT, XIAN, MANDATE OF GOD (BELIEF_LEKMOD_CHARTER, BELIEF_LEKMOD_XIAN, BELIEF_LEKMOD_MANDATE_OF_GOD)
--------------------------------------------------------------------------------------------------------------------
-Tags: religion, world congress
-- Added: founder belief Charter of Settlement: when adopted +150 Culture, +150 Gold and every city claims 2 tiles
-- Added: enhancer belief Xian: +1 Faith from Strategic resources
-- Added: enhancer belief Mandate of God: +1 Delegate in the World Congress for the religion's founder
+NEW PANTHEONS (BELIEF_LEKMOD_PANTHEONS)
+---------------------------------------
+Tags: religion
+- Added: Midas Touch: +1 Gold from all Luxury resources
+- Added: Nectar of the Gods: +1 Food and +1 Gold from Wine, Sugar and Spices
+- Added: Songs of the Leviathan: +2 Faith from Whales
+- Added: Harvest Confluence: +2 Gold from Crabs, Wheat, Bananas and Cattle
+- Added: Sacred Craftwork: +1 Production and +1 Culture from Hardwood; +1 Faith from Forests, Coral and Pearls
+- Added: Offering of Plenty: +1 Culture and +1 Faith from Fish, Wheat, Granaries and Lighthouses; Granaries and Lighthouses -1 Food
+- Added: Pillars of Heaven: +3 Faith and +1 Food in cities next to a Mountain
+- Added: Kin Forged in Blood: clearing a barbarian encampment gives +1 Population in the capital and 30 Faith (shown over the camp); new military units get Zealot while the pantheon is in your capital (units keep it afterwards)
+- Added: Salt and Stars: +2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital (units keep it afterwards)
+- Added: The Tide's Calling: a coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (Brunei: Nelayan)
+- Added: Mangrove Mysteries: +1 Faith from Forests and Fish; Coral, Pearls and Atolls next to a city and a Forest yield +1 Production and +2 Science
+- Added: The Hungering Throne: cities other than the capital -1 Food; the capital's tile gets +1 Production, +1 Science and +1 Faith per other city with the pantheon; when such a city starves, the capital claims 2 tiles
+- Added: Ascetic Discipline: Shrines -1 Food, -1 Gold, +2 Production; +20 Faith whenever a city loses a citizen to starvation
+- Added: Rite of the First-Born: when a city first grows to 2 citizens it drops back to 1, you gain 20 Faith, and the city gets a Rite of the First-Born building (+1 Production, +1 Culture, listed in the city screen, kept on capture)
+- Note: belief IDs 94-99 (BELIEF_LEKMOD_MIDAS_TOUCH, _NECTAR_GODS, _SONGS_LEVIATHAN, _HARVEST_CONFLUENCE, _SACRED_CRAFTWORK, _OFFERING_PLENTY)
+- Note: "in your capital" means the capital follows a religion with this pantheon, or has it as its own pantheon
+- DLL: Beliefs.NewUnitPromotion/NewUnitPromotionAllLand/CampClearCapitalPopulation/CampClearFaith/FoundFreeUnitClass, Belief_CoastalCapitalYieldPerInlandCity (LEKMOD_CAPITAL_PANTHEON_EFFECTS); belief IDs 102-104; promotion 378 PROMOTION_LEKMOD_SALT_STARS
+- DLL: Beliefs.StarvationFaith/StarvationCapitalPlots/FirstGrowthBuildingClass/FirstGrowthFaith, Belief_CapitalYieldPerExpand, Belief_CityFeatureAdjacentYieldChanges, condition NOT_CAPITAL; belief IDs 105-108; building BUILDING_LEKMOD_FIRST_BORN (272, class 179)
+- Dev: merged the pantheon cards (2026-10-18); Rite of the First-Born's pantheon text was cut to its effect before release
+
+NEW BELIEFS (BELIEF_LEKMOD_BELIEFS)
+-----------------------------------
+Tags: religion, world congress, buildings
+- Added: Zamzam (follower): +2 Food and +2 Faith in cities without fresh water
+- Added: Sanctuaries (follower): buy Sanctuaries with 220 Faith (+2 Happiness, +2 Culture)
+- Added: Stupas (follower): buy Stupas with 100 Faith (+2 Food, +1 Happiness)
+- Added: Charter of Settlement (founder): when adopted +150 Culture, +150 Gold and every city claims 2 tiles
+- Added: Xian (enhancer): +1 Faith from Strategic resources
+- Added: Mandate of God (enhancer): +1 Delegate in the World Congress for the religion's founder
+- DLL: Belief_CityConditionYieldChanges (Condition NO_FRESH_WATER / ADJACENT_MOUNTAIN; LEKMOD_BELIEF_EXTRA_TABLES); belief IDs 100-101
+- Note: belief IDs 111-112, buildings 273-274 (classes 180-181); icons from the user, fitted to the base building icon layout (circle 171/256 of the cell at 43,42; art_sources/tools/round_building_icon.py)
 - DLL: Beliefs.OnAdoptCulture/OnAdoptGold/OnAdoptCityPlots, LeagueVotes (counted in CvLeague::CalculateStartingVotesForMember, own line in the Delegates tooltip); belief IDs 109-110, 113
 
 RELIGION SCREEN (ChooseReligionPopup)
-------------------------------------
+-------------------------------------
 Tags: ui, religion
-The screen for founding and enhancing a religion fits long beliefs.
 - Changed: chosen beliefs show their full text and their rows grow to fit (they were cut to one line)
 - Changed: the Bonus belief row only shows for civs that can pick one (Byzantium)
 - Changed: belief texts put separate effects on separate lines
 - Added: a search box above the belief lists (pantheon choice and religion screen) filters by name and effect while you type
 - Dev: ChooseReligionPopup.lua/.xml are now Lekmod overrides (Lua/tmp/ui/Religion, copied by ui_check.bat for both UIs)
 
-SANCTUARIES, STUPAS (BELIEF_LEKMOD_SANCTUARY, BELIEF_LEKMOD_STUPA)
-----------------------------------------------------------------
-Tags: religion, buildings
-Two new follower beliefs with their own buildings.
-- Added: Sanctuaries: buy Sanctuaries with 220 Faith (+2 Happiness, +2 Culture)
-- Added: Stupas: buy Stupas with 100 Faith (+2 Food, +1 Happiness)
-- Note: belief IDs 111-112, buildings 273-274 (classes 180-181); icons from the user, fitted to the base building icon layout (circle 171/256 of the cell at 43,42; art_sources/tools/round_building_icon.py)
-
 HOUSES OF WORSHIP (BELIEF_HOUSES_OF_WORSHIP)
--------------------------------------------
+--------------------------------------------
 Tags: religion, buildings
 The three houses got new yields; Culture now depends on how many a city has.
 - Changed: Art Hall, Writing Auditorium and Vocal Chamber cost 120 Faith (100 with Mandate of Heaven; was 100 for all)
@@ -1497,9 +1370,8 @@ The three houses got new yields; Culture now depends on how many a city has.
 - DLL: Buildings.WorshipHouse, Culture added in CvCity::processBuilding (LEKMOD_DEFENSE_BUILDINGS group)
 
 UNDERGROUND SECT (BELIEF_UNDERGROUND_SECT)
------------------------------------------
+------------------------------------------
 Tags: religion
-Rebuilt from scratch.
 - Changed: +2 Science and +2 Gold for your empire for every city (anyone's) with followers of your religion where it is not the main religion (was +1 Science per 4 followers)
 - Added: your Missionaries are hidden until a unit is next to them (like submarines)
 - Added: one extra Spy when you reach the Renaissance Era (right away if you adopt it later)
@@ -1507,9 +1379,8 @@ Rebuilt from scratch.
 - DLL: Beliefs.ExtraSpyEra/InvisibleMissionaries, Belief_YieldPerMinorityCity (LEKMOD_CAPITAL_PANTHEON_EFFECTS)
 
 GREAT WORKS (GREAT_WORK_SLOT_ART_ARTIFACT)
------------------------------------------
-Tags: game mechanics
-All great works fit in all slots, theming is gone, and great works give Culture only by default.
+------------------------------------------
+Tags: tourism, game mechanics
 - Changed: Great Works of Writing, Art, Music and Artifacts all go into the same kind of slot; every great work slot accepts any of them
 - Removed: theming bonuses
 - Changed: a great work gives 2 Culture and no Tourism (was 2 Culture and 2 Tourism); Tourism now comes from buildings and policies
@@ -1517,8 +1388,8 @@ All great works fit in all slots, theming is gone, and great works give Culture 
 - DLL: LEKMOD_GENERIC_GREAT_WORKS (AI no longer rearranges great works; the Royal Library's free work uses its own slot type)
 
 TOURISM AND INFLUENCE (LEKMOD_NO_PUBLIC_OPINION)
------------------------------------------------
-Tags: game mechanics, combat
+------------------------------------------------
+Tags: tourism, game mechanics, combat
 - Removed: dissidents (no public opinion unhappiness from ideologies)
 - Removed: other civs' influence no longer pushes you to switch ideology; only the World Ideology proposal can change it
 - Removed: open borders, trade routes and diplomats no longer raise Tourism (were +25% each)
@@ -1526,10 +1397,9 @@ Tags: game mechanics, combat
 - Changed: Tourism toward other civs keeps fractions until the end, so small amounts and modifiers no longer get rounded away
 - DLL: LEKMOD_NO_PUBLIC_OPINION, LEKMOD_INFLUENCE_COMBAT_BONUS, LEKMOD_TOURISM_DECIMALS
 
-
 GREAT WORK BUILDINGS (BUILDING_AMPHITHEATER, BUILDING_OPERA_HOUSE, BUILDING_MUSEUM, BUILDING_BROADCAST_TOWER)
-----------------------------------------------------------------------------------------------------------
-Tags: buildings
+-------------------------------------------------------------------------------------------------------------
+Tags: tourism, buildings
 The culture buildings no longer need each other, and two of them are the source of great work Tourism.
 - Added: Amphitheater and Opera House (and their unique replacements): Great Works in their city yield +1 Tourism each (+2 with both)
 - Changed: Museum (and its unique replacements): 1 Great Work slot (was 2); 4 Gold maintenance (was 1)
@@ -1539,14 +1409,14 @@ The culture buildings no longer need each other, and two of them are the source 
 - DLL: Buildings.GreatWorkYieldModifier, great work yields in hundredths, Building_GreatWorkYieldChanges rows without a GreatWorkClassType load now (LEKMOD_GREAT_WORK_YIELD_MODIFIER)
 
 GREAT WRITER, ARTIST AND MUSICIAN (UNIT_WRITER, UNIT_ARTIST, UNIT_MUSICIAN)
---------------------------------------------------------------------------
-Tags: units
+---------------------------------------------------------------------------
+Tags: tourism, units
 - Changed: Great Writers, Artists and Musicians create a Great Work that fits in any empty Great Work slot (was: only slots of their own kind)
 - Note: comes from the shared slot type (GREAT WORKS above); this item updates the mission and unit texts
 
 TOURISM WONDERS (BUILDING_GREAT_LIBRARY, BUILDING_MOSQUE_OF_DJENNE, BUILDING_HAGIA_SOPHIA, BUILDING_STATUE_ZEUS, BUILDING_COLOSSUS, BUILDING_HANGING_GARDEN, BUILDING_PARTHENON, BUILDING_NOTRE_DAME, BUILDING_GLOBE_THEATER, BUILDING_BROADWAY, BUILDING_RED_FORT, BUILDING_CN_TOWER, BUILDING_EIFFEL_TOWER, BUILDING_CRISTO_REDENTOR, BUILDING_SISTINE_CHAPEL)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: buildings
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Tags: tourism, buildings
 Many wonders get Great Work slots, some come with Great Works already inside, and filling the slots unlocks bonuses.
 - Changed: Great Library: no Science of its own; each Great Work in it gives +3 Science and +3 Tourism (2 slots)
 - Changed: Great Mosque of Djenne: no Culture or Faith; 2 Happiness (was 3); a free Mosque in the city; 3 slots, 1 comes filled; all filled: +10 Tourism
@@ -1570,8 +1440,8 @@ Many wonders get Great Work slots, some come with Great Works already inside, an
 - DLL: Building_GreatWorkFilledYields, Building_EraHappiness, Buildings.GreatWorkFilledNearbyTourismMod/Range, NearbyMinorRestingInfluence/Range, NearbyEnemyCombatMod/Range, ClosestCoastalMinorInfluence (LEKMOD_GREAT_WORK_WONDER_EFFECTS); "comes filled" = FreeGreatWorkCount (random Great Works of Art)
 
 NATIONAL EPIC (BUILDING_NATIONAL_EPIC)
--------------------------------------
-Tags: buildings
+--------------------------------------
+Tags: tourism, buildings
 - Changed: 3 Great Work slots, 2 come filled; with all 3 filled, +25% Great People in the city (was always +25%)
 - Removed: its Culture
 - Changed: 4 Gold maintenance (was 0)
@@ -1579,7 +1449,7 @@ Tags: buildings
 - DLL: Buildings.GreatWorkFilledGPRateModifier
 
 WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, BUILDING_CHICHEN_ITZA, BUILDING_ALTHING, BUILDING_ARSENAL_OF_VENICE)
-------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings
 - Changed: Hubble Space Telescope: costs 1050 (was 837); 5 Scientist points (was 3); no Science and no free Recycling Center; keeps +100% Production toward Spaceship Parts; Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
 - Changed: Great Lighthouse: naval units trained in the city start with +15 XP; when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one. Removed: +1 movement and +1 sight for naval units, the free Quinquereme. Keeps the free Lighthouse and +1 Gold on water tiles
@@ -1592,7 +1462,7 @@ Tags: buildings
 - DLL: Building_LekmodGlobalUnitCombatFreeExperiences (LEKMOD_GLOBAL_UNITCOMBAT_XP_BUILDINGS; adds to the player-wide per-unit-type XP that policies use)
 
 TOWER OF BELEM (BUILDING_TOWER_OF_BELEM)
----------------------------------------
+----------------------------------------
 Tags: buildings, naval
 Rebuilt as a launch pad for overseas settling.
 - Changed: costs 400 (was 300); must be built on the coast; 1 Merchant point; +5 City Strength
@@ -1600,8 +1470,8 @@ Rebuilt as a launch pad for overseas settling.
 - Removed: its Culture, Golden Age points and the yields for cities on the same or other landmasses
 
 VICTORY: CAPITALS AND INFLUENCE (VICTORY_DOMINATION, VICTORY_CULTURAL)
----------------------------------------------------------------------
-Tags: game mechanics
+----------------------------------------------------------------------
+Tags: tourism, game mechanics
 Holding a civ's capital and being culturally Influential over it now stand in for each other.
 - Changed: Cultural Victory: holding a civ's original capital counts as being Influential over it
 - Changed: Domination Victory: being Influential over a living civ counts as holding its original capital (you still need your own)
@@ -1611,7 +1481,7 @@ Holding a civ's capital and being culturally Influential over it now stand in fo
 - DLL: LEKMOD_CAPITAL_INFLUENCE_VICTORY (CvGame::LekmodGetCapitalInfluenceVictory, used by testVictory and DoTestConquestVictory)
 
 CANAL PROJECT (BUILDING_PANAMA)
-------------------------------
+-------------------------------
 Tags: buildings, naval
 The Panama Canal is now the Canal Project, a national wonder. Its Great Engineers dig canals that ships can sail through.
 - Changed: national wonder (was a world wonder); requires Electronics (was Railroad); costs the same as Cristo Redentor; no longer has to be on the coast
@@ -1626,8 +1496,8 @@ The Panama Canal is now the Canal Project, a national wonder. Its Great Engineer
 - DLL: Buildings.TradeRouteOriginYieldModifier, Builds.PrereqBuildingClass, canal move cost and no attacks from canal tiles (LEKMOD_CANAL_PROJECT); Improvements.OverridesTileYields, RequiresTwoWaterBodies, visible-everywhere builds (LEKMOD_CANAL_RULES); Lua Player:GetTradeConnectionOriginBuildingValueModifier (trade route tooltip line)
 
 TRADE ROUTE SCREEN (ChooseInternationalTradeRoutePopup)
-------------------------------------------------------
-Tags: ui
+-------------------------------------------------------
+Tags: diplomacy and trade, ui
 - Changed: in trade route tooltips, effects that exist but don't apply to this route are shown in dull gray instead of yellow, so the active (green) ones stand out
 - Added: the destination list also shows cities that would be in range if this city had a range building it lacks (e.g. Harbor, Caravansary); they are grayed out, can't be picked, and name the building
 - DLL: Lua Player:LekmodGetTradeRangePreview(unit) (LEKMOD_CANAL_RULES); Colors row COLOR_LEKMOD_INACTIVE
@@ -1635,13 +1505,13 @@ Tags: ui
 
 CULTURAL CITY-STATES: ONE GREAT WORK (MINOR_CIV_TRAIT_CULTURED)
 ---------------------------------------------------------------
-Tags: game mechanics
+Tags: tourism, city-states
 - Added: each Cultured City-State owns 1 Great Work; from the Medieval Era you can buy it in the City-State screen for 200 Gold per era of yours (Medieval: 600) or get it by capturing the City-State (with a free Great Work slot); once it is taken either way it is gone
 - Added: the City-State tooltip, the City-State screen (a Great Work symbol next to its type, shown while it still has the work) and its Civilopedia page explain it
 - DLL: LEKMOD_CULTURED_CS_CAPTURE_GREAT_WORK (reuses DoGreatWorkFromCityConquer); CvMinorCivAI::LekmodGetGreatWorkBuyState / LekmodDoBuyGreatWork / LekmodSetGreatWorkSold (saved m_iLekmodGreatWorkSold, appended to the City-State save data), network code -25, Lua Player:LekmodGetGreatWorkBuyState(iMajor) (4 = gone) / LekmodGetGreatWorkPrice(iMajor); define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200
 
 TRADITION (POLICY_BRANCH_TRADITION)
-----------------------------------
+-----------------------------------
 Tags: policies
 - Changed: opener: border growth bonus 25% -> 20% (the Culture cost of new tiles rises 20% slower)
 - Changed: Oligarchy: free Walls in your first 2 cities without Walls; 5 units cost no maintenance; cities with a garrison (not Recon) get +1 Gold and +1 Culture (every city from turn 80)
@@ -1649,13 +1519,13 @@ Tags: policies
 - DLL: Policy_GarrisonYieldChanges, NumCitiesFreeWalls only counts cities without walls and gives maintenance-free walls (LEKMOD_POLICY_REWORK)
 
 LIBERTY (POLICY_BRANCH_LIBERTY)
-------------------------------
+-------------------------------
 Tags: policies
 - Added: opener: +10% Production toward Settlers in cities other than the capital
 - DLL: Policies.NonCapitalSettlerProductionModifier
 
 COMMERCE (POLICY_BRANCH_COMMERCE)
---------------------------------
+---------------------------------
 Tags: policies, art
 - Removed: finisher: no more +1 Food from unique improvements (Scottish Caer); Trading Posts keep it
 - Changed: new branch picture
@@ -1665,7 +1535,7 @@ Tags: policies, art
 - DLL: Policies.ExternalTradeRouteRangeModifier (CvGameTrade::IsValidTradeRoutePath)
 
 HONOR (POLICY_BRANCH_HONOR)
---------------------------
+---------------------------
 Tags: policies, combat
 - Changed: opener: Culture from kills is capped at 40 per kill (was 30)
 - Changed: Warrior Code: 10 units cost no maintenance (was 4); Gold from kills capped at 40 per kill (was 30)
@@ -1675,13 +1545,16 @@ Tags: policies, combat
 - Removed: Hero Cult: +50% Experience; Heroic Epic Food, Gold and Culture
 - Changed: Military Tradition: unit upgrades 10% cheaper; +100% Production toward Armories; +30% toward Courthouses (was 50%); cities with a Courthouse get +3 Production +3 Food (doesn't stack with Expansionism's Colonial Administration)
 - Changed: Military Caste: the Courthouse +2 Happiness doesn't stack with Expansionism's Colonial Infrastructure
+- Changed: Military Caste: from turn 80, every city gets its +2 Culture and +1 Happiness, garrisoned or not (before turn 80 it still needs a garrisoned unit)
 - Removed: Military Tradition: Citadel yields; Courthouse Gold
 - Changed: finisher: +1 Food from Barracks and Colosseums; all non-air military units get the Discipline promotion (+50% Experience)
 - Removed: finisher: Science from kills; +1 Food in every city; Armory and National Wonder Food
 - DLL: Policies.CampClearGold, Policies.FreeTilesExistingCities (LEKMOD_POLICY_REWORK); kill caps use Policy_YieldFromKills.Max; Policy_BuildingClassNoMaintenance (Sacred Duty, CvTreasury::GetBuildingGoldMaintenance)
+- Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
+- DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
 
 PIETY (POLICY_BRANCH_PIETY)
---------------------------
+---------------------------
 Tags: policies, religion
 - Changed: opener: +100% Production toward Shrines and Temples (was 50%)
 - Changed: Theocracy is now Sacred Duty: Temples cost no Gold maintenance; 5 units cost no maintenance; clearing a Barbarian Encampment gives +20 Gold; cities with a garrison (not Recon) get +1 Faith and +1 Culture (every city from turn 80); Grand Temple +25% Gold in its city (was +33%)
@@ -1696,8 +1569,9 @@ Tags: policies, religion
 - Removed: Reformation: border growth bonus
 
 POLICY TEXTS (POLICY_BRANCH_*)
------------------------------
+------------------------------
 Tags: policies, ui
+Weight: minor
 - Changed: every policy tooltip (not the ideologies) lists its effects as bullet points; long bullets wrap with the text lined up under the first line
 - Changed: Quinquereme: its texts describe carrying troops instead of pillaging and plundering, and no longer mention the Great Lighthouse
 - Changed: Warrior Code and Zealot texts say that barbarian kills stop giving yields from turn 80 (this already applied to all kill yields)
@@ -1708,7 +1582,7 @@ Tags: policies, ui
 - Changed: ideology tenet tooltips with several effects show one effect per line (Economic Union, Universal Suffrage, Socialist Realism, Workers' Faculties, Spaceflight Pioneers)
 
 RATIONALISM (POLICY_BRANCH_RATIONALISM)
---------------------------------------
+---------------------------------------
 Tags: policies
 - Changed: Humanism: Science buildings (Library, University, Observatory, Public School, Research Lab) cost 20% less Gold to buy
 - Added: Sovereignty: +1 Happiness from Universities until you adopt an Ideology; Banks +1 Gold for each other civ that adopts an Ideology after you take Sovereignty and before you adopt yours (same-turn adoptions don't count)
@@ -1724,7 +1598,7 @@ Tags: policies
 - DLL: Policy_BuildingClassPurchaseCostModifiers, Policy_BuildingClassHappinessUntilIdeology, Policy_BuildingClassGoldPerEarlierIdeology, Policy_ImprovementResourceExtractionMods, Policies.TempScienceModifier/TempScienceTurns; new saved player fields (old saves incompatible)
 
 PATRONAGE (POLICY_BRANCH_PATRONAGE)
-----------------------------------
+-----------------------------------
 Tags: policies
 - Changed: Merchant Confederacy: +2 Influence per turn with every City-State you have a Trade Route with (was +1); Gold gifts give 25% more Influence
 - Removed: Merchant Confederacy: Food and Production from Trade Routes with City-States
@@ -1743,31 +1617,29 @@ Tags: policies
 TENET CHOICE AND TILE BOX (ui)
 ------------------------------
 Tags: ui
+Weight: minor
 - Fixed: the ideology tenet list scrolls when it is longer than the window (standard UI)
 - Changed: the mouse-over highlight of a tenet covers its whole entry
 - Changed: the tile box at the bottom right sits left of the notifications again; base and improved yields use the same layout (icon, then number)
 
 TRADE SCREEN TEXTS (ui)
 -----------------------
-Tags: ui
+Tags: diplomacy and trade, ui
+Weight: minor
 - Changed: Gold's hover says only that it cannot be traded
 - Fixed: strategic resources said both players need the technology to trade them; with strategic trading disabled (the lobby default) the hover now says they cannot be traded
 
-CITY NAMES (Civilization_CityNames)
------------------------------------
-Tags: civs, ui
-- Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
-- Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venezuela) no longer show up as raw text keys
-
-NEW BUILDING AND UNIT ICONS (art)
----------------------------------
-Tags: art, ui
+BUILDING AND UNIT ICONS
+-----------------------
+Tags: ui, art
+Weight: minor
 - Changed: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
 
 TOURISM ON TILES (ui)
 ---------------------
-Tags: ui, art
+Tags: tourism, ui, art
+Weight: minor
 - Fixed: the improvement build tooltip showed a lone "+" for Tourism; it now shows the Tourism change
 - Changed: tiles with 5 or more Tourism show a large suitcase instead of a camera
 
@@ -1785,7 +1657,9 @@ Tags: policies
 - Changed: Gunboat Diplomacy (rebuilt): +2 World Congress votes; tribute costs no Influence, keeps your own pledge of protection and works at any Influence level, once every 10 turns per City-State
 - Removed: Gunboat Diplomacy: +50% intimidation, +50 Influence from tribute
 - Added: Cult of Personality: +2 Happiness from each Great Work
+- Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't), and its text says so
 - DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty) ignores the Influence block and the 10-20 turn tribute penalty (LEKMOD_POLICY_REWORK)
+- Dev: LEKMOD_CLAUSEWITZ_MELEE_ONLY in CvUnit::GetMaxAttackStrength(kInfo) also excludes air sweeps. The combat preview uses the same function (LEKMOD_COMBAT_PREDICTOR_IMPROVEMENTS), so it matches.
 
 FREEDOM (POLICY_BRANCH_FREEDOM)
 -------------------------------
@@ -1826,7 +1700,7 @@ Tags: policies
 
 PENDING POLICY PICK (game mechanics)
 ------------------------------------
-Tags: game mechanics, policies, ui
+Tags: policies, game mechanics, ui
 - Changed: you are never forced to pick a policy, ideology or free tenet before ending the turn, and nothing is picked for you at random
 - Added: while a pick is waiting at the end of a turn, your empire's yields freeze: no growth, Production, Science, Gold income, Culture or Faith (upkeep is still paid, and cities working too little Food still starve); Golden Age progress, Great Person points and Tourism keep running
 - Added: the top panel shows "Pick a policy!" in red while a pick is waiting, with an explanation in its tooltip
@@ -1836,6 +1710,7 @@ Tags: game mechanics, policies, ui
 POLICY RESOURCES (Policy_ResourceQuantity)
 ------------------------------------------
 Tags: policies, game mechanics
+Weight: minor
 - Changed: strategic resources granted by policies (e.g. Oil) only count once you know the technology that reveals them; they are added when you research it
 - DLL: CvPlayer::processPolicies skips them before the tech, CvTeam::processTech adds them (LEKMOD_POLICY_REWORK)
 
@@ -1855,7 +1730,7 @@ Tags: policies
 - DLL: Policies.GreatWorkYieldModifier, Resources.PolicyRevealOr (LEKMOD_POLICY_REWORK)
 
 EXPANSIONISM (POLICY_BRANCH_EXPLORATION)
----------------------------------------
+----------------------------------------
 Tags: policies, naval, units, buildings
 - Changed: Exploration is now Expansionism (rebuilt from scratch), still from the Medieval Era
 - Changed: opener: +1 Sight for all land military units and for naval melee and ranged units; allows Conquistadors; a free Conquistador appears in your city closest to water and a free Galleass on the water tile closest to your cities; every city claims 1 extra tile, including cities founded later; unlocks the Tower of Belem
@@ -1916,7 +1791,6 @@ Delegates now depend on the Congress era and on what you hold, not on special se
 WORLD CONGRESS PROPOSALS (RESOLUTIONS_CHANGED)
 ----------------------------------------------
 Tags: world congress
-Existing proposals reworked for the new Congress.
 - Changed: Embargo City-States: available once the Congress reaches the Industrial Era
 - Changed: Nuclear Non-Proliferation: nuclear weapons cost twice as much Production instead of being banned; available once any civilization discovers Nuclear Fission (was Advanced Ballistics)
 - Added: Nuclear Non-Proliferation: launching a nuclear weapon declares war on every civilization and City-State you have met, except your City-State allies
@@ -1935,7 +1809,6 @@ Existing proposals reworked for the new Congress.
 WORLD CONGRESS: NEW PROPOSALS (RESOLUTIONS_NEW)
 -----------------------------------------------
 Tags: world congress
-Fourteen new proposals.
 - Added: Payload Controls (Information Era): spaceship parts cost 50% more Production (also when hurried with Great Engineers)
 - DLL: Resolutions.LekmodNukeCostModifier (cost of nuclear weapons, like LekmodSpaceshipCostModifier); the old LekmodNukeProductionModifier is unused
 - Added: Clausewitz Book Club (Modern Era): +25% attack strength (melee) for everyone for 8 turns; doesn't stack with Clausewitz's Legacy
@@ -1957,11 +1830,13 @@ Fourteen new proposals.
 ADDITIONAL INFORMATION MENU (ui)
 --------------------------------
 Tags: ui
+Weight: minor
 - Changed: the Additional Information menu (top right) names the hotkey of each screen that has one, e.g. Demographics (F9)
 
 WORLD CONGRESS SCREEN (ui)
 --------------------------
 Tags: world congress, ui
+Weight: minor
 - Changed: the proposal lists are sorted alphabetically
 - Removed: Choose Host and World Leader no longer appear among the proposals (they are never proposed)
 - Added: proposals that last a limited time show their turns left in the list of active proposals; their tooltip names the turn they took effect and the turn they end
@@ -1972,11 +1847,12 @@ Tags: world congress, ui
 NUCLEAR FUSION (TECH_NUCLEAR_FUSION)
 ------------------------------------
 Tags: ui
+Weight: minor
 - Changed: moved up one row in the tech tree, level with Advanced Ballistics
 
 SPIES AND DIPLOMATS (ESPIONAGE)
 -------------------------------
-Tags: game mechanics
+Tags: espionage, game mechanics
 Spies and diplomats are reworked: spies steal on a timer and risk getting caught by hidden guards, diplomats give steady bonuses; the Espionage screen explains it all on a Rules tab.
 - Changed: spies and diplomats have levels 1 to 5 (was Recruit, Agent, Special Agent); a spy gains a level for each successful steal, coup or caught enemy spy
 - Changed: spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
@@ -2018,7 +1894,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 
 KREMLIN (BUILDING_KREMLIN)
 --------------------------
-Tags: buildings, game mechanics
+Tags: espionage, buildings
 Now a counter-espionage wonder.
 - Added: enemy spies take 30% longer per steal in all your cities
 - Added: your guarding spies count 1 level higher
@@ -2028,25 +1904,25 @@ Now a counter-espionage wonder.
 
 GREAT FIREWALL (BUILDING_GREAT_FIREWALL)
 ----------------------------------------
-Tags: buildings, game mechanics
+Tags: espionage, buildings
 - Added: other civilizations' spies and diplomats are sent home from its city and can't be placed there
 - Changed: enemy spies take 25% longer per steal in your other cities (was 25% weaker spies in the old spy system)
 - DLL: Buildings.BlockForeignSpies; the old EspionageModifier and GlobalEspionageModifier are set to 0 (unused by the spy rework)
 
-MINISTRY OF TRUTH (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
------------------------------------------------------
-Tags: buildings, game mechanics
-New World Wonder (Telecommunications, 2000 Production).
+MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
+-----------------------------------------------------------
+Tags: espionage, buildings
+- Added: World Wonder at Telecommunications, 2000 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
 - Added: all other players see only BLACKOUT on their Demographics screen
 - DLL: Buildings.FastSpyEstablish, DemographicsBlackout (LEKMOD_SPY_WONDERS); Lua Game.LekmodIsBlackout(iObserver)
 - Dev: building 276, class 183; icon from the user's art (white background replaced, art_sources/tools/round_building_icon.py)
 
-EXTRAORDINARY SESSION (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
--------------------------------------------------------------
-Tags: buildings, world congress
-New World Wonder (Globalization, 1600 Production).
+EXTRAORDINARY SESSION (NEW) (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
+-------------------------------------------------------------------
+Tags: world congress, buildings
+- Added: World Wonder at Globalization, 1600 Production
 - Added: +2 Delegates in the World Congress
 - Added: an extra World Leader vote 2 turns after it is built (3 turns if a regular vote falls on that turn); the regular votes keep their schedule
 - DLL: Buildings.ExtraWorldLeaderVote, CvLeague::LekmodScheduleExtraLeaderVote (m_iLekmodExtraLeaderVoteTurn, league save version 19)
@@ -2054,7 +1930,7 @@ New World Wonder (Globalization, 1600 Production).
 
 ARSENAL (BUILDING_ARSENAL)
 --------------------------
-Tags: buildings, ui, bugfix
+Tags: bugfix, buildings, ui
 - Fixed: the tooltip named the Mughal Fort as a separate requirement; it only says Castle now (unique Castles like the Mughal Fort still count)
 
 ARGENTINA (CIVILIZATION_ARGENTINA)
@@ -2861,6 +2737,7 @@ Tags: civs
 GARRISON YIELDS FROM BUILDINGS
 ------------------------------
 Tags: game mechanics, buildings
+Weight: minor
 - Changed: from turn 80, building yields that need a garrison (Mughal Caravansary, Tunisian Castle) count in every city, like the policy garrison effects
 
 PAPAL STATES (CIVILIZATION_VATICAN)
@@ -2873,9 +2750,8 @@ Tags: civs, buildings, religion
 - Dev: Trait_GreatWorkYieldChanges, Trait_FreePromotionUnitCombats (all military unit combats)
 
 CITY-STATE QUEST TYPES (MINOR_CIV_QUEST_*)
--------------------------------------------
-Tags: game mechanics
-City-States no longer ask you to demand tribute from another City-State or to connect a strategic resource, and the trade route and resource quests pay part of their Influence over time.
+------------------------------------------
+Tags: city-states
 - Removed: the "demand tribute from a City-State" quest
 - Removed: the "connect a resource" quest no longer asks for strategic resources (luxuries only)
 - Dev: QUEST_DISABLED_BULLY_CITY_STATE = 1; CvMinorCivAI::GetNearbyResourceForQuest skips strategic resources (LEKMOD_POST_CHANGES)
@@ -2887,7 +2763,7 @@ City-States no longer ask you to demand tribute from another City-State or to co
 
 CITY-STATE PERSONALITIES (MINOR_CIV_PERSONALITY_*)
 --------------------------------------------------
-Tags: game mechanics
+Tags: city-states
 City-States are back to the four personalities of LEKMOD v34.11: Friendly, Neutral, Hostile and Irrational.
 - Removed: Wealthy, Impoverished, Pirate Republic, Theocratic, Pacifistic and Isolationist City-States
 - Changed: Friendly City-States never ask you to conquer another City-State and ask for road connections more often; they no longer slow Influence decay or give more quest Influence
@@ -2896,48 +2772,50 @@ City-States are back to the four personalities of LEKMOD v34.11: Friendly, Neutr
 - DLL: LEKMOD_MINOR_CIV_PERSONALITIES switched off (the v35 data-driven personalities); the v34.11 code paths are its #else branches
 
 MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE (MINOR_CIV_TRAIT_MILITARISTIC)
-----------------------------------------------------------------------------------
-Tags: game mechanics, units
+-------------------------------------------------------------------------------
+Tags: city-states, units
 - Added: a city founded by a Militaristic City-State can train that City-State's unique unit while you hold it; when you lose the city, the unit and the Production on it are lost (the normal version stays available)
 - DLL: CvPlayer::LekmodHasCapturedMilitaristicUU, checked in CvPlayer::canTrain and (for the city itself) CvCity::canTrain
 
-EXPANDED ZOC (PROMOTION_LEKMOD_EXPANDED_ZOC)
---------------------------------------------
+EXPANDED ZOC (NEW) (PROMOTION_LEKMOD_EXPANDED_ZOC)
+--------------------------------------------------
 Tags: promotions, movement, combat, art
-NEW. An enemy unit that moves away from a tile next to this unit loses its remaining movement. Attacks don't count as moves.
+An enemy unit that moves away from a tile next to this unit loses its remaining movement. Attacks don't count as moves.
 - Added: can be picked by melee, gunpowder and naval melee units that have the second level of a promotion line (Shock, Drill, Amphibious, Boarding Party, Coastal Raider or Armor Plating II)
 - DLL: UnitPromotions.LekmodExpandedZOC (CvUnitMovement::IsSlowedByZOC); promotion ID 393
 - Dev: icon from the user's art (art_sources/promotions/user_art/expanded_zoc_shield_waves_v1.png)
 
 TOURISM BUILDING TOOLTIPS (BUILDING_HOTEL, BUILDING_AIRPORT, BUILDING_TOURIST_CENTER)
 -------------------------------------------------------------------------------------
-Tags: buildings, ui, bugfix
+Tags: bugfix, tourism, buildings, ui
 - Fixed: the Hotel, Airport and National Visitor Center tooltips now say what their Tourism bonus counts: the Culture from World Wonders, Natural Wonders and all worked tiles with an improvement in the city
 
 PRODUCTION OVERFLOW TO GOLD (FLOATING TEXT)
 -------------------------------------------
 Tags: ui
+Weight: minor
 - Added: when a city's extra Production is turned into Gold, the Gold gained and the Production spent float over the city
 - DLL: CvCity::LekmodShowOverflowGold, called from popOrder for units, buildings and projects
 
 QUICK SPEED CALENDAR (GAMESPEED_QUICK)
 --------------------------------------
-Tags: game mechanics, ui
+Tags: ui
+Weight: minor
 The year shown on quick speed now follows the usual pace of the tech tree: about 500 AD at turn 55, 1750 AD at turn 90, 1900 AD at turn 105, 1945 AD at turn 135 and 2025 AD at turn 160.
 - Changed: only the displayed year; turns, costs and the turn limit are unchanged
 - Dev: GameSpeed_Turns quick rows (months per turn x turns): 900x40, 1200x15, 400x15, 480x15, 360x5, 120x15, 15x20, 24x10, 30x10, 48x10, 36x10, 12x165 (330 turns as before)
 
 MERCANTILE CITY-STATE LUXURIES (RESOURCE_JEWELRY, RESOURCE_PORCELAIN, RESOURCE_GLASS)
---------------------------------------------------------------------------------------
-Tags: game mechanics
-The special luxury of a Mercantile City-State sits on its city tile and stays there when the city is conquered.
+-------------------------------------------------------------------------------------
+Tags: city-states, tiles and resources
+Weight: minor
 - Changed: Jewelry, Porcelain and Glass give 2 Happiness (was 4); still +2 Gold on the city tile
 - Changed: conquering a Mercantile City-State keeps its luxury on the city tile (it used to disappear)
 - Dev: define MINOR_CIV_MERCANTILE_RESOURCES_KEEP_ON_CAPTURE_DISABLED 1 -> 0; the luxury was already placed on the city tile by the base game
 
 CITY-STATE IMPROVEMENTS (Lekmod_MinorCivImprovements)
 -----------------------------------------------------
-Tags: game mechanics
+Tags: city-states, tiles and resources
 One in five City-States builds a special improvement of its type inside its borders.
 - Added: each City-State has a 20% chance to get one improvement type of its kind, picked at random; from the listed era (the City-State's own era) it then has a 5% chance each turn to build one on a fitting tile, up to the maximum
 - Added: Maritime (up to 2): Terrace Farm (needs 2+ mountains within 2 tiles), Tipi or Pa from the Classical Era; Polder from the Medieval Era
@@ -2946,16 +2824,16 @@ One in five City-States builds a special improvement of its type inside its bord
 - Added: Religious (1, Medieval): Holy Site next to the city
 - DLL: CvMinorCivAI::LekmodDoBuildImprovements (LEKMOD_POST_CHANGES; defines LEKMOD_CS_IMPROVEMENT_CHANCE 20, LEKMOD_CS_IMPROVEMENT_TURN_CHANCE 5); saved fields m_iLekmodImprovementRow / m_iLekmodImprovementNextTurn (appended to the City-State save data; the second is unused since 2026-10-16); the improvement is placed directly, not by a Worker; the usual placement rules of the improvement apply
 
-RANGED DEFENSE OF SHIPS (COMBAT)
--------------------------------
-Tags: combat, naval
-Ships with a Ranged Strength now defend against ranged attacks (archers, ships, cities, bombers) with their Ranged Strength, like land ranged units always did.
+RANGED DEFENSE OF SHIPS
+-----------------------
+Tags: game mechanics, combat, naval
 - Changed: a ranged ship hit by a ranged attack defends with its Ranged Strength instead of its melee Strength; against melee attacks it still uses its Strength
 - DLL: CvUnit::GetMaxDefenseStrength (CombatInfo path; LEKMOD_POST_CHANGES)
 
 UA CITY YIELDS ON THE CITY TILE (Buildings.LekmodYieldsOnCityTile)
 ------------------------------------------------------------------
 Tags: civs, ui
+Weight: minor
 City yields from civilization abilities now show on the city's own tile instead of under "from buildings".
 - Changed: Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile; the amounts are unchanged
 - Note: the Mughals' Golden Age points stay a city yield (tiles can't hold them)
@@ -2964,13 +2842,14 @@ City yields from civilization abilities now show on the city's own tile instead 
 CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 --------------------------------------------
 Tags: civs, ui
+Weight: minor
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
-
 FORTIFY BUTTON (MISSION_FORTIFY)
--------------------------------
+--------------------------------
 Tags: ui
+Weight: minor
 - Changed: Fortify is on the main unit action panel instead of the extra actions list
 - Dev: Missions.OrderPriority 99 -> 160 (the unit panel puts missions over 100 on the main panel)
 
@@ -2995,7 +2874,6 @@ Tags: civs, units, buildings, art
 - Changed: start bias: Jungle only (was Jungle and Wetlands)
 - DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303
 
-
 GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
 ------------------------------------------------
 Tags: ui
@@ -3009,16 +2887,17 @@ Tags: ui
 - Added: audio option "Mute the chat message sound" (off by default): multiplayer chat messages arrive without the sound
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
 
-MULTIPLAYER LOBBY: CIVILIZATION INFO (STAGING ROOM)
----------------------------------------------------
+MULTIPLAYER LOBBY: CIVILIZATION INFO
+------------------------------------
 Tags: ui
 - Changed: hovering a civilization (a player's leader portrait, a ban, a draft icon or an entry of the civilization list) shows its ability, unique items and start bias in one panel left of the lobby, instead of a tooltip on top of the lobby; on screens too narrow for the panel it stays a tooltip. Each name (light blue) has its own line above its text, with an empty line under the leader's name; the civilization icon next to the portrait shows the panel too
 - Changed: new lobbies guarantee 1 coastal and 2 inland civilizations in every draft pool (was random)
 - Dev: Lekmod_staging_draft.lua Draft_SetCivHoverHelp / Draft_ShowCivInfoPanel (width and position from the space left of MainGrid, 260-420 px); StagingRoom.xml LekmodCivInfoPanel (standard UI)
 
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
----------------------------------------------------------------
+--------------------------------------------------------------
 Tags: buildings, civs, ui
+Weight: minor
 Every unique building's tooltip now says what it shares with the building it replaces and what it adds.
 - Changed: all 94 unique building tooltips use one layout: "Replaces the X." with cost and availability differences, "Like the X:" with the shared effects, "In addition:" with its own effects (changed numbers as "instead of")
 - Fixed: tooltips that missed or misstated effects, among them Aksum's Stele (the National Epic's Great Work slots), Armenia's Darbas (+4 Culture), Byzantium's Hippodrome (+3 Culture, +3 Faith), Manchuria's Canton Factory (+35% Gold, 2 Merchant slots), Korea's Jongmyo Shrine (+4 Culture and +4 Faith for 7 turns when built), Lithuania's Grand Cathedral (any city, not only the Holy City), Oman's Minaa' and the Timurid Serai (not cheaper), Hittite Lion's Gate (Walls never had maintenance), Indonesia's Candi (no +2 Food of its own) and the Mughal Mansabdari Estate (+5 Defense with a garrison, was "+10")
@@ -3028,7 +2907,6 @@ Every unique building's tooltip now says what it shares with the building it rep
 MULTIPLAYER MENU (MAIN MENU)
 ----------------------------
 Tags: ui
-"Multiplayer" in the main menu goes straight to New Game and Load Game.
 - Changed: the Multiplayer menu shows only New Game (opens an online lobby at once, with the Tournament settings, quick speed and the Lekmap Rosebranch map) and Load Game (pick a save, then the lobby opens)
 - Added: Main Menu > Other > "Multiplayer: Other Modes" opens the full multiplayer choices as before (online games with the full setup screen and the list of public games, local network, Hot Seat, Pitboss)
 - Note: the map is Lekmap Rosebranch's Fractal Pangaea, found by its file name (LekmapRosebranch_FractalPangaea.lua); without it the game's default map stays

@@ -40,9 +40,14 @@
 <% groups.each do |group, list| -%>
   <section class="group" id="<%= slug(group) %>" data-section="<%= slug(group) %>">
     <h2><%= h tag_label(group) %></h2>
-<% list.each do |card| -%>
-    <article class="card" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
-      <h3><%= h card.name %></h3>
+<% list.chunk_while { |a, b| a.minor == b.minor }.each do |part| -%>
+<% if part.first.minor -%>
+    <div class="minor-changes">
+    <h3 class="minor-heading">Minor changes</h3>
+<% end -%>
+<% part.each do |card| -%>
+    <article class="card<%= ' minor' if card.minor %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
+      <h3><%= h card.name %><% if card.fresh %> <span class="new-badge">(NEW)</span><% end %></h3>
 <% card.entries.each do |entry| -%>
       <div class="entry" data-release="<%= entry.release.index %>">
         <p class="release-label"><%= h entry.release.title %></p>
@@ -59,6 +64,10 @@
       </div>
 <% end -%>
     </article>
+<% end -%>
+<% if part.first.minor -%>
+    </div>
+<% end -%>
 <% end -%>
   </section>
 <% end -%>

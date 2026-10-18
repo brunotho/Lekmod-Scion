@@ -80,6 +80,18 @@ class ChangelogTest < Minitest::Test
     assert(doc.cards(include_unreleased: true).any? { |c| c.key == "X_Y" })
   end
 
+  def test_new_marker_and_weight
+    doc = Changelog.parse("## 1.0.0 (2026-10-20)\n\nFEAR AURA (NEW) (PROMOTION_FEAR_AURA)\n---------\nTags: promotions\n" \
+                          "Weight: minor\n- Added: a\n\nSTART AT WAR (NEW)\n---------\nTags: ui\n- Added: b\n")
+    aura = doc.cards.find { |c| c.key == "PROMOTION_FEAR_AURA" }
+    assert_equal "FEAR AURA", aura.name
+    assert aura.fresh
+    assert aura.minor
+    war = doc.cards.find { |c| c.name == "START AT WAR" }
+    assert war.fresh
+    refute war.minor
+  end
+
   def test_game_text
     html = GameText.to_html("[COLOR_GREEN]Wonders[ENDCOLOR] yield +3 [ICON_CULTURE] Culture.[NEWLINE][ICON_BULLET]a & b")
     assert_equal "<strong>Wonders</strong> yield +3 Culture.<br>&bull; a &amp; b", html

@@ -42,7 +42,8 @@ module Helpers
   end
 
   def tag_label(tag)
-    tag.to_s == "ui" ? "UI" : tag.to_s.sub(/\A./, &:upcase)
+    return "UI" if tag.to_s == "ui"
+    tag.to_s.gsub(/[a-z]+/) { |w| w == "and" ? w : w.capitalize }
   end
 
   def slug(text)
@@ -74,8 +75,16 @@ doc = Changelog.parse(File.read(File.join(ROOT, "changelog.txt"), encoding: "UTF
 releases = doc.public_releases(include_unreleased: options[:preview])
 cards = doc.cards(include_unreleased: options[:preview])
 order = doc.tag_order
+# Sections in which cards follow the game's own order instead of the alphabet (matched by card name; others after).
+GAME_ORDER = {
+  "policies" => %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM
+                   AUTOCRACY FREEDOM ORDER],
+}.freeze
 groups = cards.group_by(&:group).sort_by { |g, _| [order.index(g) || order.size, g.to_s] }
-groups = groups.map { |g, list| [g, list.sort_by { |c| c.name.downcase }] }
+groups = groups.map do |g, list|
+  game = GAME_ORDER.fetch(g, [])
+  [g, list.sort_by { |c| [c.minor ? 1 : 0, game.index(c.name) || game.size, c.name.downcase] }]
+end
 all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }
 versions = [["0", "LEKMOD v35.4 (fork point)"]] + releases.map { |r| [r.index.to_s, r.title] }
 write_page(out, "index.html", "Changelog",

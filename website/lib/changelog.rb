@@ -18,9 +18,14 @@ module Changelog
     end
   end
 
-  Item = Struct.new(:key, :name, :tags, :summary, :lines, keyword_init: true) do
+  # weight: "major" (default) or "minor" (from a "Weight: minor" line); fresh: the title carries "(NEW)".
+  Item = Struct.new(:key, :name, :tags, :weight, :fresh, :summary, :lines, keyword_init: true) do
     def group
       tags.first
+    end
+
+    def minor?
+      weight == "minor"
     end
 
     def player_lines
@@ -34,7 +39,7 @@ module Changelog
 
   Entry = Struct.new(:release, :summary, :lines, keyword_init: true)
 
-  Card = Struct.new(:key, :name, :group, :tags, :entries, keyword_init: true) do
+  Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :entries, keyword_init: true) do
     def search_text
       ([name] + entries.flat_map { |e| [e.summary] + e.lines.map { |l| l[:text] } }).join(" ").downcase
     end
@@ -50,6 +55,8 @@ module Changelog
           card = (by_key[item.key] ||= Card.new(key: item.key, entries: [], tags: []))
           card.name = item.name
           card.group = item.group
+          card.minor = item.minor?
+          card.fresh ||= item.fresh
           card.tags = (card.tags + item.tags).uniq
           card.entries.unshift(Entry.new(release: rel, summary: item.summary, lines: item.player_lines))
         end
@@ -123,12 +130,22 @@ module Changelog
     text.split(",").map { |t| t.strip.sub(/\.\z/, "") }.reject(&:empty?)
   end
 
+  # "NAME (NEW) (TYPE_KEY)" or "NAME (NEW)": the marker is shown as a badge, not as part of the name or key.
+  NEW_MARKER = /\s*\(NEW\)(?=\s*(?:\([^()]*\))?\s*\z)/
+
   def parse_item(lines, i)
-    name, key = split_title(lines[i].strip)
+    title = lines[i].strip
+    fresh = !title.match(NEW_MARKER).nil?
+    name, key = split_title(title.sub(NEW_MARKER, ""))
     i += 2
     tags = []
-    if i < lines.size && lines[i].start_with?("Tags:")
-      tags = lines[i].sub("Tags:", "").split(",").map(&:strip).reject(&:empty?)
+    weight = "major"
+    while i < lines.size && (m = /\A(Tags|Weight):(.*)\z/.match(lines[i]))
+      if m[1] == "Tags"
+        tags = m[2].split(",").map(&:strip).reject(&:empty?)
+      else
+        weight = m[2].strip.downcase
+      end
       i += 1
     end
     summary = []
@@ -144,6 +161,6 @@ module Changelog
       end
       i += 1
     end
-    [Item.new(key: key, name: name, tags: tags, summary: summary.join(" "), lines: entries), i]
+    [Item.new(key: key, name: name, tags: tags, weight: weight, fresh: fresh, summary: summary.join(" "), lines: entries), i]
   end
 end

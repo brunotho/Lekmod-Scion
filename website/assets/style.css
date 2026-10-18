@@ -94,6 +94,9 @@ input[type="search"] { width: 100%; }
 /* Cards */
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
 .card h3 { margin: 0 0 6px; font-size: 0.95rem; letter-spacing: 0.04em; }
+.new-badge { color: var(--accent); font-size: 0.8rem; letter-spacing: 0.04em; }
+.minor-heading { margin: 24px 0 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.card.minor { padding: 10px 18px; margin: 8px 0; }
 .entry + .entry { border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 10px; }
 .release-label { display: none; margin: 0 0 4px; font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 .card.multi .release-label { display: block; }

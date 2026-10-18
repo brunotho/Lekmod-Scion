@@ -23,7 +23,13 @@ This file records what has been **verified** about how this mod works, and how t
      - Bugs we introduced and fixed before a release never reached players, so they go on `Dev:` lines. Only bugs that exist in the previous release are `Fixed:`.
      - Every line starts with one of the prefixes; no bare lines. Things that are defined but not yet reachable in game (e.g. ungranted promotions) get a `- Note:`.
      - Developer-only lines: `- Note:`, `- DLL:`, `- Dev:` (skipped by the website).
-     - **Tags:** the first tag is the item's group (the website's section header); further tags are cross-cutting filters. Vocabulary (extend deliberately, and update the file header too): promotions, units, buildings, civs, policies, religion, ruins, combat, movement, naval, air, game mechanics, world congress, ui, art, bugfix.
+     - **Tags:** the first tag is the item's group (the website's section header); further tags are cross-cutting filters. The header's tag order is the site's section order (user, 2026-10-18: the big reworks first): world congress, espionage, tourism, policies, civs, buildings, units, promotions, religion, city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix; filter-only tags: combat, movement, naval, air, ruins, art. Extend deliberately and update the file header too. Lobby settings go under ui. A pure fix gets `bugfix` as its first tag.
+     - **Presentation rules (user, 2026-10-18):**
+       - The summary is optional. Write one only when it gives a gist the lines don't already say, e.g. the net result of several lines ("1.8 instead of 2"). No restating a single line, no vague lines ("Several units get new strength"), no hype ("the changes speak for themselves").
+       - A new item gets `(NEW)` right after its name, `NAME (NEW) (TYPE_KEY)`, not "NEW." in the summary.
+       - Small items get a `Weight: minor` line after Tags; the site lists them under "Minor changes" at the end of their section. Otherwise cards are alphabetical, except policies, which follow the game's branch order (`GAME_ORDER` in `website/build.rb`).
+       - One card per thing: fold small changes into the card they belong to (a policy into its branch, a civ's building into the civ card), and split batch-shaped cards ("Research Lab, Caravansary, Hotel").
+       - No developer words in titles or lines: file names, pixel sizes, "(FORMULA CHANGE)", standard-speed numbers.
      - Tags belong to changelog items, not to commits. The website reads `changelog.txt`, and the git history is for developers.
      - Update an item's existing section rather than adding a duplicate. When a later change alters an item, rewrite its player lines to the new net state.
      - Rewritten to these rules on 2026-10-07; the earlier entries mixed in internal names and intermediate steps.
