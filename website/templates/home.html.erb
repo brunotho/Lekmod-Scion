@@ -1,0 +1,66 @@
+<button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Sections</button>
+<aside class="sidebar" id="sidebar">
+  <ul>
+<% groups.each do |group, list| -%>
+    <li><a href="#<%= slug(group) %>" data-section-link="<%= slug(group) %>"><%= h tag_label(group) %> <span class="count" data-count-for="<%= slug(group) %>"><%= list.size %></span></a></li>
+<% end -%>
+  </ul>
+</aside>
+<main class="content" id="changelog">
+  <h1>Mod changelog</h1>
+<% if releases.empty? -%>
+  <p class="empty-note">No version of Lekmod Rosebranch has been released yet.</p>
+<% else -%>
+  <form class="controls" id="controls" onsubmit="return false">
+    <div class="versions">
+      <label>From
+        <select name="from" id="from">
+<% versions[0...-1].each_with_index do |(value, label), i| -%>
+          <option value="<%= value %>"<%= ' selected' if i == versions.size - 2 %>><%= h label %></option>
+<% end -%>
+        </select>
+      </label>
+      <label>to
+        <select name="to" id="to">
+<% versions[1..].each_with_index do |(value, label), i| -%>
+          <option value="<%= value %>"<%= ' selected' if i == versions.size - 2 %>><%= h label %></option>
+<% end -%>
+        </select>
+      </label>
+    </div>
+    <input type="search" id="search" placeholder="Search the changelog" aria-label="Search the changelog">
+    <div class="tags" id="tags">
+<% all_tags.each do |tag| -%>
+      <button type="button" class="tag" data-tag="<%= h tag %>" aria-pressed="false"><%= h tag_label(tag) %></button>
+<% end -%>
+    </div>
+    <button type="button" class="clear" id="clear" hidden>Clear filters</button>
+  </form>
+  <p class="empty-note" id="no-results" hidden>Nothing matches these filters.</p>
+<% groups.each do |group, list| -%>
+  <section class="group" id="<%= slug(group) %>" data-section="<%= slug(group) %>">
+    <h2><%= h tag_label(group) %></h2>
+<% list.each do |card| -%>
+    <article class="card" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
+      <h3><%= h card.name %></h3>
+<% card.entries.each do |entry| -%>
+      <div class="entry" data-release="<%= entry.release.index %>">
+        <p class="release-label"><%= h entry.release.title %></p>
+<% unless entry.summary.to_s.empty? -%>
+        <p class="summary"><%= GameText.line_html(entry.summary) %></p>
+<% end -%>
+<% unless entry.lines.empty? -%>
+        <ul class="lines">
+<% entry.lines.each do |line| -%>
+          <li class="<%= line[:kind].downcase %>"><span class="kind"><%= line[:kind] %></span> <%= GameText.line_html(line[:text]) %></li>
+<% end -%>
+        </ul>
+<% end -%>
+      </div>
+<% end -%>
+    </article>
+<% end -%>
+  </section>
+<% end -%>
+<% end -%>
+</main>

@@ -1,0 +1,33 @@
+<button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Civilizations</button>
+<aside class="sidebar" id="sidebar">
+  <ul>
+<% civs.each do |civ| -%>
+    <li><a href="#<%= slug(civ.name) %>" data-section-link="<%= slug(civ.name) %>"><%= h civ.name %></a></li>
+<% end -%>
+  </ul>
+</aside>
+<main class="content" id="civlist">
+  <h1>Civ list</h1>
+  <p class="lead"><%= civs.size %> civilizations, as they are in the current version of the mod.</p>
+  <input type="search" id="civ-search" placeholder="Search civilizations, abilities and uniques" aria-label="Search civilizations">
+<% civs.each do |civ| -%>
+  <section class="civ card" id="<%= slug(civ.name) %>" data-section="<%= slug(civ.name) %>"
+           data-search="<%= h([civ.name, civ.leader, civ.ability_name, civ.ability, *civ.uniques.flat_map { |u| [u.name, u.replaces, u.text] }].compact.join(' ').downcase) %>">
+    <h2><%= h civ.name %><% if civ.leader %> <span class="leader"><%= h civ.leader %></span><% end %></h2>
+<% if civ.ability -%>
+    <div class="unique ability">
+      <h3><span class="kind">Ability</span> <%= h civ.ability_name %></h3>
+      <p><%= GameText.to_html(civ.ability) %></p>
+    </div>
+<% end -%>
+<% civ.uniques.each do |u| -%>
+    <div class="unique">
+      <h3><span class="kind"><%= u.kind %></span> <%= h u.name %><% if u.replaces %> <span class="replaces">replaces <%= h u.replaces %></span><% end %></h3>
+<% if u.text -%>
+      <p><%= GameText.to_html(u.text) %></p>
+<% end -%>
+    </div>
+<% end -%>
+  </section>
+<% end -%>
+</main>

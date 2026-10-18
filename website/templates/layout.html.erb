@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= h title %> · Lekmod Rosebranch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="<%= page_class %>">
+<header class="site-header">
+  <a class="brand" href="index.html">Lekmod <span>Rosebranch</span></a>
+  <nav class="downloads">
+    <a class="button" href="<%= MOD_RELEASES %>"><span class="long">Download </span>mod</a>
+    <a class="button" href="<%= MAP_RELEASES %>"><span class="long">Download </span>map</a>
+  </nav>
+  <details class="page-menu">
+    <summary><%= h(PAGES.to_h[current] || "Pages") %></summary>
+    <ul>
+<% PAGES.each do |file, label| -%>
+      <li><a href="<%= file %>"<%= ' aria-current="page"' if file == current %>><%= h label %></a></li>
+<% end -%>
+    </ul>
+  </details>
+</header>
+<%= body %>
+<script src="assets/site.js"></script>
+</body>
+</html>

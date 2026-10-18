@@ -1,0 +1,69 @@
+name: Website
+
+# Builds the Lekmod Rosebranch website (website/) and publishes it on GitHub Pages.
+# Runs when a release is published, or by hand (Actions > Website > Run workflow).
+# One-time setup: repo Settings > Pages > Source = "GitHub Actions".
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mod
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            website/
+            changelog.txt
+            LEKMOD/Override/CIV5Units.xml
+            LEKMOD/Override/CIV5Units_Mongol.xml
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout map (for its changelog)
+        uses: actions/checkout@v4
+        with:
+          repository: brunotho/lekmap-rosebranch
+          ref: dev
+          path: lekmap
+          sparse-checkout: CHANGELOG.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Test
+        run: ruby website/test/changelog_test.rb
+
+      - name: Build
+        run: ruby website/build.rb --map lekmap/CHANGELOG.txt
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

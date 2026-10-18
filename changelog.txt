@@ -1360,7 +1360,9 @@ URANIUM MAPPING PROJECT (BUILDING_URANIUM_MAPPING_PROJECT)
 Tags: buildings
 New national wonder.
 - Added: Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
+- DLL: LEKMOD_BUILDING_OBSOLETE_NO_CONSTRUCT (Buildings.ObsoleteTech blocks construction)
 - Dev: icon sources in art_sources/buildings/uranium_mapping_project (user art via the Notion page "ART FOR CLAUDE")
 
 REMOVED BELIEFS (BELIEF_SACRED_PATHS, BELIEF_GOD_SEA, BELIEF_WALLS, BELIEF_PROMISED_LAND, BELIEF_GOD_FESTIVALS, BELIEF_DEVOUT_PERFORMERS, BELIEF_RELIGIOUS_FART)
@@ -1908,8 +1910,8 @@ Delegates now depend on the Congress era and on what you hold, not on special se
 - Note: World Leader placements (first and second place +1 permanent Delegate) are part of World Congress Sessions; World Religion, World Ideology, Embargo and Mandate of Occupation come with the proposal changes
 - DLL: LEKMOD_CONGRESS_CYCLE vote tables in CvLeague::CalculateStartingVotesForMember; Member::iLekmodPassedProposals (league save version 16); Buildings.ExtraLeagueVotesAtomic, Policies.LeagueVotesPerEraFromIndustrial
 
-WORLD CONGRESS PROPOSALS (RESOLUTIONS)
---------------------------------------
+WORLD CONGRESS PROPOSALS (RESOLUTIONS_CHANGED)
+----------------------------------------------
 Tags: world congress
 Existing proposals reworked for the new Congress.
 - Changed: Embargo City-States: available once the Congress reaches the Industrial Era
@@ -1927,8 +1929,8 @@ Existing proposals reworked for the new Congress.
 - Removed: International Space Station and Natural Heritage Sites proposals
 - DLL: Resolutions.LekmodMinCongressEra, LekmodDisabled, LekmodNukeProductionModifier (LEKMOD_CONGRESS_CYCLE); project tier thresholds rounded to whole Production
 
-WORLD CONGRESS: NEW PROPOSALS (RESOLUTIONS)
--------------------------------------------
+WORLD CONGRESS: NEW PROPOSALS (RESOLUTIONS_NEW)
+-----------------------------------------------
 Tags: world congress
 Fourteen new proposals.
 - Added: Payload Controls (Information Era): spaceship parts cost 50% more Production (also when hurried with Great Engineers)
@@ -1968,12 +1970,6 @@ NUCLEAR FUSION (TECH_NUCLEAR_FUSION)
 ------------------------------------
 Tags: ui
 - Changed: moved up one row in the tech tree, level with Advanced Ballistics
-
-URANIUM MAPPING PROJECT (BUILDING_URANIUM_MAPPING_PROJECT)
-----------------------------------------------------------
-Tags: buildings
-- Changed: can no longer be built once you know Atomic Theory
-- DLL: LEKMOD_BUILDING_OBSOLETE_NO_CONSTRUCT (Buildings.ObsoleteTech blocks construction)
 
 SPIES AND DIPLOMATS (ESPIONAGE)
 -------------------------------

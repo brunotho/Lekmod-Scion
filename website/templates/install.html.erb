@@ -1,0 +1,31 @@
+<main class="content narrow prose">
+  <h1>Installation</h1>
+  <p class="lead">Lekmod Rosebranch runs on Windows with Sid Meier's Civilization V: Brave New World and all DLCs (map packs not needed). Both the standard interface and EUI up to version 1.28 work. Linux (Proton) is untested; macOS is not supported.</p>
+
+  <h2>Find your game folder</h2>
+  <p>In Steam, right-click Civilization V, choose <strong>Properties</strong>, then <strong>Installed Files</strong> (older Steam: <strong>Local Files</strong>) and <strong>Browse</strong>. Usually it is:</p>
+  <p><code>C:\Program Files (x86)\Steam\steamapps\common\Sid Meier's Civilization V</code></p>
+
+  <h2>Install the mod</h2>
+  <ol>
+    <li><a href="<%= MOD_RELEASES %>">Download the newest mod zip</a>.</li>
+    <li>Open <code>Assets\DLC</code> in your game folder. <strong>Delete every older Lekmod folder there</strong> (an older Lekmod Rosebranch, or upstream Lekmod such as <code>LEKMODv35_4</code>). Only one Lekmod may be installed at a time: two of them replace the same game files and the game breaks.</li>
+    <li>Extract the zip into <code>Assets\DLC</code>. You get a folder named after the version, for example <code>Assets\DLC\Lekmod Rosebranch 1.0.0\</code>.</li>
+    <li>Open that folder and run <code>ui_check.bat</code>. It copies the interface files that fit your setup (standard interface or EUI). Run it again whenever you install or remove EUI.</li>
+    <li>Start the game. The main menu shows <strong>LEKMOD ROSEBRANCH</strong> with its version.</li>
+  </ol>
+
+  <h2>Install the map</h2>
+  <ol>
+    <li><a href="<%= MAP_RELEASES %>">Download the newest map zip</a>.</li>
+    <li>Open <code>Assets\Maps</code> in your game folder and delete older Lekmap Rosebranch folders.</li>
+    <li>Extract the zip into <code>Assets\Maps</code>, for example <code>Assets\Maps\Lekmap Rosebranch 1.0.0\</code>.</li>
+    <li>In the game, <strong>Multiplayer &rarr; New Game</strong> picks the map automatically. In the full setup screens it is listed as <strong>Lekmap Rosebranch</strong> with its version, for example <strong>Lekmap Rosebranch 1.0.0</strong>.</li>
+  </ol>
+
+  <h2>If the game crashes before the main menu</h2>
+  <p>Windows 11's <strong>Smart App Control</strong> can block the mod's game file, because it is not signed. The game's log (<code>Documents\My Games\Sid Meier's Civilization 5\Logs\GameCore.log</code>) then says <em>"An Application Control policy has blocked this file"</em>. Turning Smart App Control off (Windows Security &rarr; App &amp; browser control) fixes it; note that Windows does not let you turn it back on without reinstalling.</p>
+
+  <h2>Updating</h2>
+  <p>Every player in a multiplayer game needs the same mod and map version. To update, repeat the steps above: delete the old folder first, then extract the new one and run <code>ui_check.bat</code> again. Saved games from an older version usually don't load in a newer one.</p>
+</main>

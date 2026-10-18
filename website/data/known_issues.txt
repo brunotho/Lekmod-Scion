@@ -1,0 +1,6 @@
+# Art
+- Self-Propelled Artillery uses placeholder art.
+- The Vanguard Corps icon in the unit panel header is not final.
+
+# Texts
+- A few unique improvements have no description text in the game yet: Kabaka's Lake (Buganda), Harjis (Goths), Monastery (Tibet).
