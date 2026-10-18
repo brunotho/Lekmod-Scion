@@ -38,6 +38,18 @@ Tags: civs, tourism
 - Changed: Great Works yield +2 Faith (was +3)
 - Dev: Trait_GreatWorkYieldChanges TRAIT_GAELIC 3 -> 2; UA text updated
 
+FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
+---------------------------------------------------------
+Tags: tiles and resources, combat
+- Changed: units on a Kasbah, Motte and Bailey, Caer or Pa get +50% Defensive Strength, like on a Fort and a Chateau:
+  - Kasbah (was +25%)
+  - Motte and Bailey (was +25%)
+  - Caer (was +25%)
+  - Pa (was +40%)
+- Changed: none of the Fort, Kasbah, Chateau, Motte and Bailey, Caer and Pa can be built next to another one of them (or next to one under construction); before, each only kept away from its own kind, and the Caer had no such rule
+- DLL: Improvements.LekmodCountsAsFort (LEKMOD_IMPROVEMENT_FORT_GROUP, CvPlot::canBuild next to NoTwoAdjacent); all six get DefenseModifier 50, NoTwoAdjacent 1
+- Dev: improvement and build texts and the Fort's Civilopedia page updated
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

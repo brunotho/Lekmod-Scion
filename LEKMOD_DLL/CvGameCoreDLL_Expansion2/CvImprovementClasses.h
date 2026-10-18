@@ -81,6 +81,9 @@ public:
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	bool IsLekmodNoFeature() const;
 #endif
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+	bool IsLekmodCountsAsFort() const;
+#endif
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	const char* GetLekmodReplacesImprovement() const { return m_strLekmodReplacesImprovement.c_str(); }
 #endif
@@ -240,6 +243,9 @@ protected:
 #endif
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	bool m_bLekmodNoFeature;
+#endif
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+	bool m_bLekmodCountsAsFort;
 #endif
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	CvString m_strLekmodReplacesImprovement; // its civ can't build this improvement (resolved late: the replaced one may load later)

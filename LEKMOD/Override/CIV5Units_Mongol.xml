@@ -6578,7 +6578,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Pa</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_MAORI_PA_HELP">
-			<Text>Provides a 40% [ICON_STRENGTH] Defensive bonus to units which are stationed on the tile. May only be built on a hill, and may not be built next to another Pa. Only the Maori can build it.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MC_MAORI_PA_PEDIA">
 			<Text>While almost any Maori village could be called a pa, today the word has come to refer to fortified hilltop villages almost exclusively. Ringed with palisades and terraces, these monumental structures announced the military power of a rangatira and his iwi to the world. Pa were built in strategic places throughout an iwi’s territory, in order to best guard its fertile lands. A simple pa might consist only of a single palisade, while a more complex pa would consist of multiple rings of palisades, earthen ramparts, ditches from which to defenders can mount ambushes, kumara patches, food storage areas, wells, underground passages, and decorative entryways. During the Musket Wars, a new type of pa was developed - the gunfighter pa. These forts were usually simpler than the older varieties, but could be constructed in a matter of days. The Gunfighter pa provided greater defense against attackers wielding firearms, as well as allowing defenders to the full advantage of their own muskets.</Text>
@@ -6587,7 +6587,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text> Construct a [LINK=IMPROVEMENT_MC_MAORI_PA]Pa[\LINK]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_MAORI_PA_HELP">
-			<Text>A Pa boosts the [ICON_STRENGTH] Defensive Strength of a unit stationed on the tile. Must be built on a hill, and may not be built next to an existing Pa</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_MAORI_PA_REC">
 			<Text>It will boost the [ICON_PRODUCTION] Military Unit Production of a city when worked, as well as increasing the [ICON_FOOD] Food yield of the tile and the [ICON_STRENGTH] Defensive Strength of units on it.</Text>
@@ -9378,7 +9378,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Caer</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>Boosts defensive strength of units on the tile. +3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION]. +1 [ICON_CULTURE] Culture with Acoustics. Receives additional yields from certain Policies.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION]. +1 [ICON_CULTURE] Culture with Acoustics. Receives additional yields from certain Policies.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIVILOPEDIA_MC_SCOTTISH_CLAN_CASTLE_PEDIA">
 			<Text>Caer</Text>
@@ -9387,7 +9387,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Construct a [LINK=IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE]Caer[\LINK]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>A Caer increases the [ICON_GOLD] Gold yield of the tile (and [ICON_CULTURE] Culture + [ICON_PRODUCTION] Production yield, after Architecture and Gunpowder are researched). The Caer also boosts the defensive strength of units stationed on the tiles.</Text>
+			<Text>A Caer increases the [ICON_GOLD] Gold yield of the tile (and [ICON_CULTURE] Culture + [ICON_PRODUCTION] Production yield, after Architecture and Gunpowder are researched). [NEWLINE][NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_REC">
 			<Text>It will help with the defense of the tile!</Text>
@@ -21676,12 +21676,12 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CHATEAU_HELP"> 
 			<Text>
-				Constructs a Chateau which increases the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile. Also provides a defensive bonus.
+				Constructs a Chateau which increases the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CHATEAU_REC"> 
 			<Text>
-				A Chateau must be built adjacent to a Luxury resource.  It may not be adjacent to another Chateau.[NEWLINE][NEWLINE]It will increase the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile. Also provides a defensive bonus.
+				A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]It will increase the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile. Also provides a defensive bonus.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CITADEL"> 
@@ -21791,7 +21791,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_FORT_HELP"> 
 			<Text>
-				+50% [ICON_STRENGTH] Defensive Strength for any Unit stationed in this Tile.[NEWLINE][NEWLINE]Cannot be built next to another Fort.
+				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CANAL_HELP"> 
@@ -21900,7 +21900,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_MOTTE_BAILEY_HELP"> 
 			<Text>
-				Constructs a Motte and Bailey which increases the [ICON_FOOD] and [ICON_PRODUCTION] yield of the tile. Also provides +2 [ICON_CULTURE] Culture after [COLOR_CYAN]Flight[ENDCOLOR] is researched. May not be adjacent to another Motte and Bailey.[NEWLINE]25% [ICON_STRENGTH] Defensive Strength for any Unit stationed in this Tile.
+				Constructs a Motte and Bailey which increases the [ICON_FOOD] and [ICON_PRODUCTION] yield of the tile. Also provides +2 [ICON_CULTURE] Culture after [COLOR_CYAN]Flight[ENDCOLOR] is researched. [NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_MOTTE_BAILEY_REC"> 
@@ -44743,13 +44743,13 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CHATEAU_HELP"> 
 			<Text>
-				Unique French Improvement, available at [ICON_TECH_CHIVALRY] [COLOR_CYAN]Chivalry[ENDCOLOR]. May only be contructed adjacent to [COLOR_GREEN]Luxury[ENDCOLOR] Resources and Not adjacent to other Chateaux. Units stationed on a Chateau recieve 50% [ICON_STRENGTH] defense.
+				Unique French Improvement, available at [ICON_TECH_CHIVALRY] [COLOR_CYAN]Chivalry[ENDCOLOR]. Must be built next to a [COLOR_GREEN]Luxury[ENDCOLOR] resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.
 				[NEWLINE][NEWLINE]+2 [ICON_CULTURE] Culture, +2 [ICON_RESEARCH] Science, and +1 [ICON_GOLD] Gold; Upon discovering [ICON_TECH_FLIGHT] [COLOR_CYAN]Flight[ENDCOLOR] provides an additional +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CHATEAU_TEXT"> 
 			<Text>
-				A chateau is a manor house or country home of gentry, usually without fortifications. In the Middle Ages, a chateau was largely self-sufficient, being supported by the lord's demesne (hereditary lands). In the 1600s, the wealthy and aristocratic French lords dotted the countryside with elegant, luxuriant, architecturally refined mansions such as the Chateau de Maisons. Today, the term chateau is loosely used; for instance, it is common for any winery or inn, no matter how humble, to prefix its name with "Chateau."[NEWLINE][NEWLINE]A Chateau must be built adjacent to a Luxury resource.  It may not be adjacent to another Chateau. It provides one additional [ICON_GOLD] Gold and 2 [ICON_CULTURE] Culture. It also provides the same +50% defense bonus as a Fort. When Flight is researched its [ICON_CULTURE] Culture yield increases by 1 and its [ICON_GOLD] Gold output rises by 2. Must be built in French territory.
+				A chateau is a manor house or country home of gentry, usually without fortifications. In the Middle Ages, a chateau was largely self-sufficient, being supported by the lord's demesne (hereditary lands). In the 1600s, the wealthy and aristocratic French lords dotted the countryside with elegant, luxuriant, architecturally refined mansions such as the Chateau de Maisons. Today, the term chateau is loosely used; for instance, it is common for any winery or inn, no matter how humble, to prefix its name with "Chateau."[NEWLINE][NEWLINE]A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa. It provides one additional [ICON_GOLD] Gold and 2 [ICON_CULTURE] Culture. It also provides the same +50% defense bonus as a Fort. When Flight is researched its [ICON_CULTURE] Culture yield increases by 1 and its [ICON_GOLD] Gold output rises by 2. Must be built in French territory.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CITADEL_TEXT">
@@ -44910,7 +44910,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_FORT_TEXT"> 
 			<Text>
-				A fort is a special improvement that doesn't increase a hex's productivity or provide access to a resource. Instead, a fort improves a hex's defensive bonus by 50% for units stationed in that hex. However, they do not provide a defensive bonus to units in enemy territory.
+				A Fort gives no yields and connects no resource.[NEWLINE]Units on it get +50% [ICON_STRENGTH] Defensive Strength (not in enemy territory).[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE]Those unique improvements give the same +50% defense.
 			</Text>
 		</Replace>
 			<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CANAL_TEXT"> 
@@ -44959,7 +44959,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_HELP"> 
-			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+25% defense for units on it.[NEWLINE][NEWLINE]Must be next to a luxury resource and not next to another Kasbah. Not on resources or features (Flood Plains are fine).[NEWLINE]Founding a city on it gives a large bonus (see the Moroccan ability).</Text>
+			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).[NEWLINE]Founding a city on it gives a large bonus (see the Moroccan ability).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_TEXT"> 
 			<Text>
@@ -45048,7 +45048,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_MOTTE_BAILEY_HELP"> 
 			<Text>
-				+25% [ICON_STRENGTH] Defensive Strength for any Unit stationed in this Tile. Requires [ICON_TECH_ENGINEERING] [COLOR_CYAN]Engineering[ENDCOLOR] to build. May not be constructed adjacent to another Motte and Bailey. May be constructed on Resources, but does not Connect them to the Empire's Trade Network.
+				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Requires [ICON_TECH_ENGINEERING] [COLOR_CYAN]Engineering[ENDCOLOR] to build.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] May be constructed on Resources, but does not Connect them to the Empire's Trade Network.
                 [NEWLINE][NEWLINE]+1 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production, upon discovering [ICON_TECH_FLIGHT] [COLOR_CYAN]Flight[ENDCOLOR] the Motte and Bailey gains an additional +2 [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>

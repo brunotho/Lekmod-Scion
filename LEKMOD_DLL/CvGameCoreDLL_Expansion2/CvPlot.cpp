@@ -2625,6 +2625,27 @@ bool CvPlot::canBuild(BuildTypes eBuild, PlayerTypes ePlayer, bool bTestVisible,
 							{
 								return false;
 							}
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+							if (pkImprovement->IsLekmodCountsAsFort())
+							{
+								CvImprovementEntry* pkAdjacentImprovement = (eAdjacentImprovement != NO_IMPROVEMENT) ? GC.getImprovementInfo(eAdjacentImprovement) : NULL;
+								if (pkAdjacentImprovement && pkAdjacentImprovement->IsLekmodCountsAsFort())
+								{
+									return false;
+								}
+								for (int iLekmodBuild = 0; iLekmodBuild < GC.getNumBuildInfos(); iLekmodBuild++)
+								{
+									CvBuildInfo* pkLekmodBuild = GC.getBuildInfo((BuildTypes)iLekmodBuild);
+									if (pkLekmodBuild == NULL || pkLekmodBuild->getImprovement() == NO_IMPROVEMENT)
+										continue;
+									CvImprovementEntry* pkBuildImprovement = GC.getImprovementInfo((ImprovementTypes)pkLekmodBuild->getImprovement());
+									if (pkBuildImprovement && pkBuildImprovement->IsLekmodCountsAsFort() && pAdjacentPlot->getBuildProgress((BuildTypes)iLekmodBuild) > 0)
+									{
+										return false;
+									}
+								}
+							}
+#endif
 						}
 					}
 				}

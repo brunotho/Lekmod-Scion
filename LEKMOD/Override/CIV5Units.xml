@@ -142220,6 +142220,7 @@
 		<Column name="ResourceExtractionMod" type="integer" default="0" />
 		<Column name="RequiresAdjacentMountain" type="boolean" default="false"/>
 		<Column name="LekmodNoFeature" type="boolean" default="false"/>
+		<Column name="LekmodCountsAsFort" type="boolean" default="false"/> <!-- LEKMOD: Fort group for NoTwoAdjacent -->
 		<Column name="LekmodReplacesImprovement" type="text"/> <!-- LEKMOD: its civ can no longer build this improvement (Aksum: Quarry) --> <!-- LEKMOD: not on a feature unless Improvement_ValidFeatures lists it (Kasbah) -->
 		<Column name="LuxuryCopiesSiphonedFromMinor" type="integer" default="0" />
 		<Column name="GoldMaintenance" type="integer" default="0" />
@@ -292023,4 +292024,31 @@
 			<Set Help="TXT_KEY_LEKMOD_BUILDING_CANTON_HELP"/>
 		</Update>
 	</Buildings>
+	<!-- LEKMOD: Fort group (2026-10-18): defensive unique improvements defend like a Fort (+50%) and count as Forts for the no-two-adjacent rule -->
+	<Improvements>
+		<Update>
+			<Where Type="IMPROVEMENT_FORT"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+		<Update>
+			<Where Type="IMPROVEMENT_KASBAH"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+		<Update>
+			<Where Type="IMPROVEMENT_CHATEAU"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+		<Update>
+			<Where Type="IMPROVEMENT_MOTTE"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+		<Update>
+			<Where Type="IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+		<Update>
+			<Where Type="IMPROVEMENT_MC_MAORI_PA"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+		</Update>
+	</Improvements>
 </GameData>

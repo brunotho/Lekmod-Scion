@@ -1499,6 +1499,9 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_CS_QUEST_OVER_TIME_PER_TURN 2
 // Improvements.LekmodNoFeature: can't be built on a feature unless Improvement_ValidFeatures lists it (Kasbah: Flood Plains only)
 #define LEKMOD_IMPROVEMENT_NO_FEATURE
+// Improvements.LekmodCountsAsFort: Forts and the defensive unique improvements count as one group for NoTwoAdjacent
+// (none of them next to another one of the group, built or under construction)
+#define LEKMOD_IMPROVEMENT_FORT_GROUP
 // Building_AdjacentCityPlotYieldChanges: yields on plots next to a city with the building (optional Improvement, Resource,
 // Terrain and Feature conditions; Fulling Mill, Isibaya, Australia)
 #define LEKMOD_BUILDING_ADJACENT_CITY_YIELDS

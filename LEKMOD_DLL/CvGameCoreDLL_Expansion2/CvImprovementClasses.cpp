@@ -88,6 +88,9 @@ CvImprovementEntry::CvImprovementEntry(void):
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	m_bLekmodNoFeature(false),
 #endif
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+	m_bLekmodCountsAsFort(false),
+#endif
 	m_iLuxuryCopiesSiphonedFromMinor(0),
 	m_iImprovementPillage(NO_IMPROVEMENT),
 	m_iImprovementUpgrade(NO_IMPROVEMENT),
@@ -348,6 +351,9 @@ bool CvImprovementEntry::CacheResults(Database::Results& kResults, CvDatabaseUti
 #endif
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	m_bLekmodNoFeature = kResults.GetBool("LekmodNoFeature");
+#endif
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+	m_bLekmodCountsAsFort = kResults.GetBool("LekmodCountsAsFort");
 #endif
 #ifdef LEKMOD_IMPROVEMENT_NO_FEATURE
 	m_strLekmodReplacesImprovement = kResults.GetText("LekmodReplacesImprovement");
@@ -910,6 +916,13 @@ bool CvImprovementEntry::IsLekmodRequiresAdjacentMountain() const
 bool CvImprovementEntry::IsLekmodNoFeature() const
 {
 	return m_bLekmodNoFeature;
+}
+#endif
+#ifdef LEKMOD_IMPROVEMENT_FORT_GROUP
+/// Counts as a Fort for the no-two-adjacent rule
+bool CvImprovementEntry::IsLekmodCountsAsFort() const
+{
+	return m_bLekmodCountsAsFort;
 }
 #endif
 
