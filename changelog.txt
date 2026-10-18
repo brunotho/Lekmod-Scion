@@ -1320,72 +1320,293 @@ Tags: religion
 - Removed: founder belief Promised Land
 - Note: Initiation Rites was already gone in v35.4 (only its text was left)
 
-BELIEF CHANGES (BELIEF_PEACE_GARDENZ, BELIEF_SACRED_WATERS, BELIEF_SALATT, BELIEF_DIVINE_JUDGEMENT, BELIEF_MYSTIC_RITUALS, BELIEF_WIND, BELIEF_UNITY_OF_PROPHETS, BELIEF_FORMAL_LITURGY, BELIEF_RITUAL_SACRIFICE, BELIEF_TEARS_OF_NOOBS, BELIEF_SEAFOOD, BELIEF_EARTH_MOTHER, BELIEF_PILGRIMAGE)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ASCETIC DISCIPLINE (NEW) (BELIEF_LEKMOD_ASCETIC)
+------------------------------------------------
 Tags: religion
-- Changed: Divine Judgement (pantheon): +2 Faith from Barracks only (no longer from Courthouses)
-- Changed: Mystic Rituals (pantheon): Incense also gives +1 Food and +1 Culture
-- Changed: Goddess of the Fields (pantheon): no longer on Sugar
-- Changed: Religious Idols (pantheon): +2 Culture from Gold, Silver and Copper (was +1 Faith +1 Culture)
-- Changed: Ritual Sacrifice (pantheon): +1 Gold, +1 Faith and +1 Culture from Ivory, Furs and Truffles (was +2 Culture +1 Gold)
-- Changed: Tears of the Gods (pantheon): Pearls also give +1 Faith and +2 Gold
-- Changed: Seafood Rituals (pantheon): +2 Culture from Fish (was +1 Food +1 Culture +1 Faith)
-- Changed: Earth Mother (pantheon): +2 Faith from Iron (was +1), and Mines give +1 Faith only on a resource (Iron or any other mined resource; was every Mine)
-- Added: Dance of the Aurora (pantheon): +1 Food on flat Tundra without forest
-- Changed: Ocean's Bounty (pantheon): +2 Production from Atolls (was +1), Fishing Boats give +1 Production only in cities with a Lighthouse
-- Changed: Salat (founder): +4 Production in the Holy City (was in the Palace city)
-- Changed: Peace Gardens (follower): +2 Food and +2 Culture from Gardens (was +1 Happiness from Gardens, +2 Gold +1 Production from Water Mills)
-- Changed: Sacred Waters (follower): +2 Faith and +2 Gold from Water Mills and Gardens (was +1 Happiness in river cities, +2 Faith +1 Food from Gardens)
-- Added: Choral Music (follower): finishing the Grand Temple gives a free Great Musician
-- Added: Religious Center (follower): finishing the Grand Temple gives 2 free Workers
-- Removed: Unity of the Prophets (enhancer): Inquisitors and Prophets remove this religion fully again (no more "half")
-- Changed: Pilgrimage (enhancer): +3 Faith (was +4) and +3 Culture from every foreign city following your religion
-- Changed: Just War (enhancer): +15% Combat Strength near enemy cities of this religion (was +20%)
-- Added: Just War (enhancer): Missionaries spread the religion as strongly as Great Prophets and have +1 Movement
-- Changed: Sacred Sites (reformation): +3 Gold and +3 Faith from Pagodas, Mosques, Cathedrals, Gurdwaras, Synagogues, Viharas and Mandirs (was +2 Culture +2 Gold +2 Faith)
-- Added: Sacred Sites (reformation): adopting it gives a free Vihara in the capital
-- Added: Jesuit Education (reformation): Libraries, Universities, Observatories, Public Schools and Research Labs yield +2 Faith; Academies +10 Faith
-- Added: Work Ethic (reformation): Workers can be bought with Faith
-- Changed: Jesuit Education and Work Ethic (reformations): buildings and Workers cost 130% of their Production cost in Faith, unique replacements included
-- Changed: Jesuit Education and Work Ethic (reformations): Great Prophets no longer appear from Faith (as in the Industrial Era)
+Subsection: Pantheons
+Shrines -1 Food, -1 Gold, +2 Production; +20 Faith whenever a city loses a citizen to starvation.
+
+DANCE OF THE AURORA (BELIEF_DANCE_AURORA)
+-----------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Faith from Tundra. +1 Food from flat Tundra without forest.
+- Added: +1 Food on flat Tundra without forest
+
+DIVINE JUDGEMENT (BELIEF_DIVINE_JUDGEMENT)
+------------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Faith from Barracks. +3 Happiness from the Palace.
+- Changed: +2 Faith from Barracks only (no longer from Courthouses)
+
+EARTH MOTHER (BELIEF_EARTH_MOTHER)
+----------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Faith from Iron. +1 Faith from Mines on a resource.
+- Changed: +2 Faith from Iron (was +1), and Mines give +1 Faith only on a resource (Iron or any other mined resource; was every Mine)
+
+GODDESS OF THE FIELDS (BELIEF_WIND)
+-----------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Faith from Cotton, Tea and Coffee.
+- Changed: no longer on Sugar
+
+HARVEST CONFLUENCE (NEW) (BELIEF_LEKMOD_HARVEST_CONFLUENCE)
+-----------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Gold from Crabs, Wheat, Bananas and Cattle.
+
+KIN FORGED IN BLOOD (NEW) (BELIEF_LEKMOD_KIN_BLOOD)
+---------------------------------------------------
+Tags: religion
+Subsection: Pantheons
+Clearing a barbarian encampment gives +1 Population in the capital and 30 Faith (shown over the camp); new military units get Zealot while the pantheon is in your capital (units keep it afterwards).
+
+MANGROVE MYSTERIES (NEW) (BELIEF_LEKMOD_MANGROVE)
+-------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Faith from Forests and Fish; Coral, Pearls and Atolls next to a city and a Forest yield +1 Production and +2 Science.
+
+MIDAS TOUCH (NEW) (BELIEF_LEKMOD_MIDAS_TOUCH)
+---------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Gold from all Luxury resources.
+
+MYSTIC RITUALS (BELIEF_MYSTIC_RITUALS)
+--------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Food and +1 Culture from Silk, Dyes, Perfume, Tobacco and Incense.
+- Changed: Incense also gives +1 Food and +1 Culture
+
+NECTAR OF THE GODS (NEW) (BELIEF_LEKMOD_NECTAR_GODS)
+----------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Food and +1 Gold from Wine, Sugar and Spices.
+
+OCEAN'S BOUNTY (BELIEF_OCEANS_BOUNTY)
+-------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Production from Atolls. +1 Production from Fishing Boats in cities with a Lighthouse.
+- Changed: +2 Production from Atolls (was +1), Fishing Boats give +1 Production only in cities with a Lighthouse
+
+OFFERING OF PLENTY (NEW) (BELIEF_LEKMOD_OFFERING_PLENTY)
+--------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Culture and +1 Faith from Fish, Wheat, Granaries and Lighthouses; Granaries and Lighthouses -1 Food.
+
+PILLARS OF HEAVEN (NEW) (BELIEF_LEKMOD_PILLARS_HEAVEN)
+------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++3 Faith and +1 Food in cities next to a Mountain.
+
+RELIGIOUS IDOLS (BELIEF_FORMAL_LITURGY)
+---------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Culture from Copper, Silver and Gold.
+- Changed: +2 Culture from Gold, Silver and Copper (was +1 Faith +1 Culture)
+
+RITE OF THE FIRST-BORN (NEW) (BELIEF_LEKMOD_FIRST_BORN)
+-------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
+When a city first grows to 2 citizens it drops back to 1, you gain 20 Faith, and the city gets a Rite of the First-Born building (+1 Production, +1 Culture, listed in the city screen, kept on capture).
+
+RITUAL SACRIFICE (BELIEF_RITUAL_SACRIFICE)
+------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Gold, +1 Faith and +1 Culture from Ivory, Furs and Truffles.
+- Changed: +1 Gold, +1 Faith and +1 Culture from Ivory, Furs and Truffles (was +2 Culture +1 Gold)
+
+SACRED CRAFTWORK (NEW) (BELIEF_LEKMOD_SACRED_CRAFTWORK)
+-------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Production and +1 Culture from Hardwood; +1 Faith from Forests, Coral and Pearls.
+
+SALT AND STARS (NEW) (BELIEF_LEKMOD_SALT_STARS)
+-----------------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital (units keep it afterwards).
+
+SEAFOOD RITUALS (BELIEF_SEAFOOD)
+--------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Culture from Fish.
+- Changed: +2 Culture from Fish (was +1 Food +1 Culture +1 Faith)
+
+SONGS OF THE LEVIATHAN (NEW) (BELIEF_LEKMOD_SONGS_LEVIATHAN)
+------------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
++2 Faith from Whales.
+
+TEARS OF THE GODS (BELIEF_TEARS_OF_NOOBS)
+-----------------------------------------
+Tags: religion
+Subsection: Pantheons
++1 Faith and +2 Gold from Gems, Amber, Lapis Lazuli, Jade and Pearls.
+- Changed: Pearls also give +1 Faith and +2 Gold
+
+THE HUNGERING THRONE (NEW) (BELIEF_LEKMOD_HUNGERING_THRONE)
+-----------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
+Cities other than the capital -1 Food; the capital's tile gets +1 Production, +1 Science and +1 Faith per other city with the pantheon; when such a city starves, the capital claims 2 tiles.
+
+THE TIDE'S CALLING (NEW) (BELIEF_LEKMOD_TIDES_CALLING)
+------------------------------------------------------
+Tags: religion
+Subsection: Pantheons
+A coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (Brunei: Nelayan).
+
+CHARTER OF SETTLEMENT (NEW) (BELIEF_LEKMOD_CHARTER)
+---------------------------------------------------
+Tags: religion
+Subsection: Founder beliefs
+When adopted +150 Culture, +150 Gold and every city claims 2 tiles.
+
+SALAT (BELIEF_SALATT)
+---------------------
+Tags: religion
+Subsection: Founder beliefs
++4 Production in the Holy City.
+- Changed: +4 Production in the Holy City (was in the Palace city)
+
+CHORAL MUSIC (BELIEF_CHORAL_MUSIQ)
+----------------------------------
+Tags: religion
+Subsection: Follower beliefs
++3 Culture from Temples. Finishing the Grand Temple gives a free Great Musician.
+- Added: finishing the Grand Temple gives a free Great Musician
+
+PEACE GARDENS (BELIEF_PEACE_GARDENZ)
+------------------------------------
+Tags: religion
+Subsection: Follower beliefs
++2 Food and +2 Culture from Gardens.
+- Changed: +2 Food and +2 Culture from Gardens (was +1 Happiness from Gardens, +2 Gold +1 Production from Water Mills)
+
+RELIGIOUS CENTER (BELIEF_RELIGIOUS_CENTER)
+------------------------------------------
+Tags: religion
+Subsection: Follower beliefs
+Temples provide +1 Happiness, +1 Gold and +1 Production. Finishing the Grand Temple gives 2 free Workers.
+- Added: finishing the Grand Temple gives 2 free Workers
+
+SACRED WATERS (BELIEF_SACRED_WATERS)
+------------------------------------
+Tags: religion
+Subsection: Follower beliefs
++2 Faith and +2 Gold from Water Mills and Gardens.
+- Changed: +2 Faith and +2 Gold from Water Mills and Gardens (was +1 Happiness in river cities, +2 Faith +1 Food from Gardens)
+
+SANCTUARIES (NEW) (BELIEF_LEKMOD_SANCTUARY)
+-------------------------------------------
+Tags: religion, buildings
+Subsection: Follower beliefs
+Buy Sanctuaries with 220 Faith (+2 Happiness, +2 Culture).
+
+STUPAS (NEW) (BELIEF_LEKMOD_STUPA)
+----------------------------------
+Tags: religion, buildings
+Subsection: Follower beliefs
+Buy Stupas with 100 Faith (+2 Food, +1 Happiness).
+
+ZAMZAM (NEW) (BELIEF_LEKMOD_ZAMZAM)
+-----------------------------------
+Tags: religion
+Subsection: Follower beliefs
++2 Food and +2 Faith in cities without fresh water.
+
+JUST WAR (BELIEF_JUST_WAR)
+--------------------------
+Tags: religion
+Subsection: Enhancer beliefs
++15% Combat Strength near enemy cities that follow this religion. Missionaries spread it as strongly as Great Prophets and have +1 Movement.
+- Changed: +15% Combat Strength near enemy cities of this religion (was +20%)
+- Added: Missionaries spread the religion as strongly as Great Prophets and have +1 Movement
+
+MANDATE OF GOD (NEW) (BELIEF_LEKMOD_MANDATE_OF_GOD)
+---------------------------------------------------
+Tags: religion, world congress
+Subsection: Enhancer beliefs
++1 Delegate in the World Congress for the religion's founder.
+
+PILGRIMAGE (BELIEF_PILGRIMAGE)
+------------------------------
+Tags: religion
+Subsection: Enhancer beliefs
++3 Faith and +3 Culture from every foreign city following your religion.
+- Changed: +3 Faith (was +4) and +3 Culture from every foreign city following your religion
+
+UNITY OF THE PROPHETS (BELIEF_UNITY_OF_PROPHETS)
+------------------------------------------------
+Tags: religion
+Subsection: Enhancer beliefs
++4 Faith and +2 Production from Holy Sites.
+- Removed: Inquisitors and Prophets remove this religion fully again (no more "half")
+
+XIAN (NEW) (BELIEF_LEKMOD_XIAN)
+-------------------------------
+Tags: religion
+Subsection: Enhancer beliefs
++1 Faith from Strategic resources.
+
+JESUIT EDUCATION (BELIEF_JESUIT_EDUCATION)
+------------------------------------------
+Tags: religion
+Subsection: Reformation beliefs
+May buy Libraries, Universities, Observatories, Public Schools and Research Labs with Faith (130% of the Production cost) These buildings yield +2 Faith, Academies +10 Faith. Great Prophets no longer appear from Faith.
+- Added: Libraries, Universities, Observatories, Public Schools and Research Labs yield +2 Faith; Academies +10 Faith
+- Changed: buildings and Workers cost 130% of their Production cost in Faith, unique replacements included
+- Changed: Great Prophets no longer appear from Faith (as in the Industrial Era)
+
+SACRED SITES (BELIEF_SACRED_SITES)
+----------------------------------
+Tags: religion
+Subsection: Reformation beliefs
++3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
+- Changed: +3 Gold and +3 Faith from Pagodas, Mosques, Cathedrals, Gurdwaras, Synagogues, Viharas and Mandirs (was +2 Culture +2 Gold +2 Faith)
+- Added: adopting it gives a free Vihara in the capital
+
+WORK ETHIC (BELIEF_WORK_ETHIC)
+------------------------------
+Tags: religion
+Subsection: Reformation beliefs
+May buy Workshops, Windmills, Factories, Hydro Plants and Workers with Faith (130% of the Production cost) Great Prophets no longer appear from Faith.
+- Added: Workers can be bought with Faith
+- Changed: buildings and Workers cost 130% of their Production cost in Faith, unique replacements included
+- Changed: Great Prophets no longer appear from Faith (as in the Industrial Era)
+
+BELIEF CARDS (DEV)
+------------------
+Tags: religion
+- Dev: one card per belief since 2026-10-18 (were batch cards: Belief Changes, New Beliefs, New Pantheons); their developer lines:
 - DLL: Beliefs.ImprovementYieldNeedsResource (LEKMOD_BELIEF_IMPROVEMENT_NEEDS_RESOURCE) for Earth Mother's mines
 - DLL: Belief_HolyCityYieldChanges now also works for Production/Food/Gold/Science in the holy city (LEKMOD_HOLY_CITY_YIELDS)
 - Note: the Grand Temple units come from the religion the player founded
 - DLL: Beliefs.MissionaryProphetSpread/MissionaryExtraMoves (LEKMOD_JUST_WAR_MISSIONARIES); Belief_BuildingClassFreeUnits, Belief_FlatOpenTerrainYieldChanges, Belief_ImprovementBuildingYieldChanges (LEKMOD_BELIEF_EXTRA_TABLES)
 - DLL: Beliefs.NoProphetSpawn/FreeBuildingClassInCapital, Belief_UnitClassFaithPurchase (LEKMOD_CAPITAL_PANTHEON_EFFECTS)
-
-NEW PANTHEONS (BELIEF_LEKMOD_PANTHEONS)
----------------------------------------
-Tags: religion
-- Added: Midas Touch: +1 Gold from all Luxury resources
-- Added: Nectar of the Gods: +1 Food and +1 Gold from Wine, Sugar and Spices
-- Added: Songs of the Leviathan: +2 Faith from Whales
-- Added: Harvest Confluence: +2 Gold from Crabs, Wheat, Bananas and Cattle
-- Added: Sacred Craftwork: +1 Production and +1 Culture from Hardwood; +1 Faith from Forests, Coral and Pearls
-- Added: Offering of Plenty: +1 Culture and +1 Faith from Fish, Wheat, Granaries and Lighthouses; Granaries and Lighthouses -1 Food
-- Added: Pillars of Heaven: +3 Faith and +1 Food in cities next to a Mountain
-- Added: Kin Forged in Blood: clearing a barbarian encampment gives +1 Population in the capital and 30 Faith (shown over the camp); new military units get Zealot while the pantheon is in your capital (units keep it afterwards)
-- Added: Salt and Stars: +2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital (units keep it afterwards)
-- Added: The Tide's Calling: a coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (Brunei: Nelayan)
-- Added: Mangrove Mysteries: +1 Faith from Forests and Fish; Coral, Pearls and Atolls next to a city and a Forest yield +1 Production and +2 Science
-- Added: The Hungering Throne: cities other than the capital -1 Food; the capital's tile gets +1 Production, +1 Science and +1 Faith per other city with the pantheon; when such a city starves, the capital claims 2 tiles
-- Added: Ascetic Discipline: Shrines -1 Food, -1 Gold, +2 Production; +20 Faith whenever a city loses a citizen to starvation
-- Added: Rite of the First-Born: when a city first grows to 2 citizens it drops back to 1, you gain 20 Faith, and the city gets a Rite of the First-Born building (+1 Production, +1 Culture, listed in the city screen, kept on capture)
 - Note: belief IDs 94-99 (BELIEF_LEKMOD_MIDAS_TOUCH, _NECTAR_GODS, _SONGS_LEVIATHAN, _HARVEST_CONFLUENCE, _SACRED_CRAFTWORK, _OFFERING_PLENTY)
 - Note: "in your capital" means the capital follows a religion with this pantheon, or has it as its own pantheon
 - DLL: Beliefs.NewUnitPromotion/NewUnitPromotionAllLand/CampClearCapitalPopulation/CampClearFaith/FoundFreeUnitClass, Belief_CoastalCapitalYieldPerInlandCity (LEKMOD_CAPITAL_PANTHEON_EFFECTS); belief IDs 102-104; promotion 378 PROMOTION_LEKMOD_SALT_STARS
 - DLL: Beliefs.StarvationFaith/StarvationCapitalPlots/FirstGrowthBuildingClass/FirstGrowthFaith, Belief_CapitalYieldPerExpand, Belief_CityFeatureAdjacentYieldChanges, condition NOT_CAPITAL; belief IDs 105-108; building BUILDING_LEKMOD_FIRST_BORN (272, class 179)
 - Dev: merged the pantheon cards (2026-10-18); Rite of the First-Born's pantheon text was cut to its effect before release
-
-NEW BELIEFS (BELIEF_LEKMOD_BELIEFS)
------------------------------------
-Tags: religion, world congress, buildings
-- Added: Charter of Settlement (founder): when adopted +150 Culture, +150 Gold and every city claims 2 tiles
-- Added: Zamzam (follower): +2 Food and +2 Faith in cities without fresh water
-- Added: Sanctuaries (follower): buy Sanctuaries with 220 Faith (+2 Happiness, +2 Culture)
-- Added: Stupas (follower): buy Stupas with 100 Faith (+2 Food, +1 Happiness)
-- Added: Xian (enhancer): +1 Faith from Strategic resources
-- Added: Mandate of God (enhancer): +1 Delegate in the World Congress for the religion's founder
 - DLL: Belief_CityConditionYieldChanges (Condition NO_FRESH_WATER / ADJACENT_MOUNTAIN; LEKMOD_BELIEF_EXTRA_TABLES); belief IDs 100-101
 - Note: belief IDs 111-112, buildings 273-274 (classes 180-181); icons from the user, fitted to the base building icon layout (circle 171/256 of the cell at 43,42; art_sources/tools/round_building_icon.py)
 - DLL: Beliefs.OnAdoptCulture/OnAdoptGold/OnAdoptCityPlots, LeagueVotes (counted in CvLeague::CalculateStartingVotesForMember, own line in the Delegates tooltip); belief IDs 109-110, 113
@@ -1399,6 +1620,7 @@ Tags: ui, religion
 HOUSES OF WORSHIP (BELIEF_HOUSES_OF_WORSHIP)
 --------------------------------------------
 Tags: religion, buildings
+Subsection: Reformation beliefs
 The three houses got new yields; Culture now depends on how many a city has.
 - Changed: Art Hall, Writing Auditorium and Vocal Chamber cost 120 Faith (100 with Mandate of Heaven; was 100 for all)
 - Changed: the first house in a city gives +4 Culture, the second +2, the third none
@@ -1411,6 +1633,7 @@ The three houses got new yields; Culture now depends on how many a city has.
 UNDERGROUND SECT (BELIEF_UNDERGROUND_SECT)
 ------------------------------------------
 Tags: religion
+Subsection: Reformation beliefs
 - Changed: +2 Science and +2 Gold for your empire for every city (anyone's) with followers of your religion where it is not the main religion (was +1 Science per 4 followers)
 - Added: your Missionaries are hidden until a unit is next to them (like submarines)
 - Added: one extra Spy when you reach the Renaissance Era (right away if you adopt it later)

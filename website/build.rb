@@ -108,10 +108,20 @@ SECTION_LAYOUT = {
              AUTOCRACY FREEDOM ORDER]],
   ],
 }.freeze
+# Sections whose cards name their own block with a "Subsection:" line, in this order (alphabetical inside).
+SUBSECTION_ORDER = {
+  "religion" => ["Pantheons", "Founder beliefs", "Follower beliefs", "Enhancer beliefs", "Reformation beliefs"],
+}.freeze
 Block = Struct.new(:heading, :minor, :cards)
 groups = cards.group_by(&:group).sort_by { |g, _| [order.index(g) || order.size, g.to_s] }
 groups = groups.map do |g, list|
   layout = SECTION_LAYOUT.fetch(g, [])
+  if SUBSECTION_ORDER.key?(g)
+    (list.map(&:subsection).compact.uniq - SUBSECTION_ORDER[g]).each { |s| warn "unknown subsection #{s.inspect} in #{g}" }
+    layout = SUBSECTION_ORDER[g].map do |heading|
+      [heading, list.select { |c| c.subsection == heading }.sort_by { |c| c.name.downcase }.map(&:name)]
+    end
+  end
   # A listed card stays in its block even when minor (after the block's major cards).
   blocks = layout.map do |heading, names|
     Block.new(heading, false, names.filter_map { |n| list.find { |c| c.name == n } }.sort_by.with_index { |c, i| [c.minor ? 1 : 0, i] })

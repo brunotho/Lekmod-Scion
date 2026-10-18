@@ -19,8 +19,9 @@ module Changelog
   end
 
   # weight: "major" (default) or "minor" (from a "Weight: minor" line); fresh: the title carries "(NEW)";
-  # collects: the section a collection card copies its lines from ("Collects: policies"), shown as a note.
-  Item = Struct.new(:key, :name, :tags, :weight, :fresh, :collects, :summary, :lines, keyword_init: true) do
+  # collects: the section a collection card copies its lines from ("Collects: policies"), shown as a note;
+  # subsection: the heading the card is listed under inside its section ("Subsection: Pantheons").
+  Item = Struct.new(:key, :name, :tags, :weight, :fresh, :collects, :subsection, :summary, :lines, keyword_init: true) do
     def group
       tags.first
     end
@@ -40,7 +41,7 @@ module Changelog
 
   Entry = Struct.new(:release, :summary, :lines, keyword_init: true)
 
-  Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :collects, :entries, keyword_init: true) do
+  Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :collects, :subsection, :entries, keyword_init: true) do
     def search_text
       ([name] + entries.flat_map { |e| [e.summary] + e.lines.map { |l| l[:text] } }).join(" ").downcase
     end
@@ -59,6 +60,7 @@ module Changelog
           card.minor = item.minor?
           card.fresh ||= item.fresh
           card.collects = item.collects
+          card.subsection = item.subsection
           card.tags = (card.tags + item.tags).uniq
           card.entries.unshift(Entry.new(release: rel, summary: item.summary, lines: item.player_lines))
         end
@@ -149,11 +151,13 @@ module Changelog
     tags = []
     weight = "major"
     collects = nil
-    while i < lines.size && (m = /\A(Tags|Weight|Collects):(.*)\z/.match(lines[i]))
+    subsection = nil
+    while i < lines.size && (m = /\A(Tags|Weight|Collects|Subsection):(.*)\z/.match(lines[i]))
       case m[1]
       when "Tags" then tags = m[2].split(",").map(&:strip).reject(&:empty?)
       when "Weight" then weight = m[2].strip.downcase
-      else collects = m[2].strip
+      when "Collects" then collects = m[2].strip
+      else subsection = m[2].strip
       end
       i += 1
     end
@@ -170,6 +174,6 @@ module Changelog
       end
       i += 1
     end
-    [Item.new(key: key, name: name, tags: tags, weight: weight, fresh: fresh, collects: collects, summary: summary.join(" "), lines: entries), i]
+    [Item.new(key: key, name: name, tags: tags, weight: weight, fresh: fresh, collects: collects, subsection: subsection, summary: summary.join(" "), lines: entries), i]
   end
 end
