@@ -982,7 +982,7 @@ Tags: units, combat
 - Changed: Modern Armor: 110 Strength (was 100), cost 361 -> 397
 - Changed: Stealth Bomber: 100 Ranged Strength (was 85), cost 361 -> 452; no longer reveals the area around its base (Air Recon); always intercepted, but takes 80% less damage (Stealth; was never intercepted); does not stack with Evasion
 - Changed: Nuclear Missile: cost 1005 -> 1105
-- Changed: with the Fast Hand option, Nuclear Missiles and Atomic Bombs can no longer rebase in the second half of the turn timer (like paradrops and setting up interception)
+- Changed: Nuclear Missiles and Atomic Bombs can no longer rebase in the second half of the turn timer (like paradrops and setting up interception)
 - Note: the spec names the Nuclear Missile only; the Atomic Bomb follows because it is the other nuclear unit
 - DLL: LEKMOD_FAST_HAND_NUKE_REBASE (CvUnit::canRebase)
 - Changed: Infantry (and the unique Infantry with 70 Strength): 72 Strength (was 70)
