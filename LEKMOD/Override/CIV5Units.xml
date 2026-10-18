@@ -210154,21 +210154,7 @@
 	<Trait_FeatureYieldChanges>
 		<Delete />
         
-        <!-- Canada -->
-        <Row>
-            <TraitType>TRAIT_FURTRADE</TraitType>
-            <FeatureType>FEATURE_ICE</FeatureType>
-            <YieldType>YIELD_CULTURE</YieldType>
-            <Yield>1</Yield>
-            <AllowImprovement>true</AllowImprovement>
-        </Row>
-		<Row>
-            <TraitType>TRAIT_FURTRADE</TraitType>
-            <FeatureType>FEATURE_ICE</FeatureType>
-            <YieldType>YIELD_GOLD</YieldType>
-            <Yield>2</Yield>
-            <AllowImprovement>true</AllowImprovement>
-        </Row>
+        <!-- Canada: no Ice yields (user, 2026-10-18: only Lake and Snow, see the trait dummy building) -->
         <!-- Armenia -->
 		<Row> 
 			<TraitType>TRAIT_ARMENIA</TraitType> 
@@ -284554,8 +284540,8 @@
 			<HurryCostModifier>25</HurryCostModifier>
 			<MinAreaSize>-1</MinAreaSize>
 			<ConquestProb>66</ConquestProb>
-			<GreatWorkSlotType>GREAT_WORK_SLOT_MUSIC</GreatWorkSlotType>
-			<GreatWorkCount>1</GreatWorkCount>
+			<SpecialistType>SPECIALIST_MUSICIAN</SpecialistType>
+			<SpecialistCount>1</SpecialistCount>
 			<ArtDefineTag>TEMPLE</ArtDefineTag>
 			<MaxStartEra>ERA_RENAISSANCE</MaxStartEra>
 			<PrereqTech>TECH_PHILOSOPHY</PrereqTech>
@@ -285897,7 +285883,7 @@
 		<Row>
 			<TraitType>TRAIT_GAELIC</TraitType>
 			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>2</YieldChange>
 		</Row>
 	</Trait_GreatWorkYieldChanges>
 	<Trait_BuildingClassHappinessChanges>

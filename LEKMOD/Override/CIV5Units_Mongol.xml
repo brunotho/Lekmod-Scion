@@ -147417,7 +147417,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Jongmyo Shrine</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_JONGMYO_HELP">
-			<Text>Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 slot for a [ICON_GREAT_WORK] Great Work of Music.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.</Text>
+			<Text>Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 Musician specialist slot.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_RUNESTONE">
 			<Text>Rune Stone</Text>
@@ -147535,7 +147535,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_PRODUCTION] Production and +1 [ICON_RESEARCH] Science from [ICON_BUILDING_WORKSHOP] Workshops, [ICON_BUILDING_WINDMILL] Windmills, [ICON_BUILDING_FACTORY] Factories and [ICON_BUILDING_HYDRO_PLANT] Hydro Plants.[NEWLINE][NEWLINE]Earn [ICON_GREAT_ENGINEER] Great Engineers 33% Faster.[NEWLINE][NEWLINE]Upgrading units costs 10% less [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_FURTRADE">
-			<Text>+2 [ICON_GOLD] Gold from [ICON_BUILD_CAMP] Camps.[NEWLINE][NEWLINE]Lake, Snow and Ice tiles yield +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.</Text>
+			<Text>+2 [ICON_GOLD] Gold from [ICON_BUILD_CAMP] Camps.[NEWLINE][NEWLINE]Lake and Snow tiles yield +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ISLANDS">
 			<Text>Start the game with nearby Coastal tiles and Islands already explored.</Text>
@@ -147583,7 +147583,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_CULTURE] Culture in the [ICON_CAPITAL] Capital.[NEWLINE]+2 [ICON_CULTURE] Culture from [COLOR_POSITIVE_TEXT]World Wonders[ENDCOLOR].[NEWLINE]Great Works in the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]The Eiffel Tower yields twice as much for France.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GAELIC">
-			<Text>Great Works yield +3 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.</Text>
+			<Text>Great Works yield +2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_HELP">
 			<Text>Replaces the Armory. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>

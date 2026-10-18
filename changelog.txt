@@ -20,6 +20,24 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+CANADA (CIVILIZATION_CANADA)
+----------------------------
+Tags: civs
+- Removed: Ice tiles no longer yield +2 Gold and +1 Culture (only Lake and Snow do)
+- Dev: Trait_FeatureYieldChanges FEATURE_ICE rows of TRAIT_FURTRADE removed; UA text updated
+
+IRELAND (CIVILIZATION_IRELAND)
+------------------------------
+Tags: civs, tourism
+- Changed: Great Works yield +2 Faith (was +3)
+- Dev: Trait_GreatWorkYieldChanges TRAIT_GAELIC 3 -> 2; UA text updated
+
+KOREA (CIVILIZATION_KOREA)
+--------------------------
+Tags: civs, buildings
+- Changed: Jongmyo Shrine: 1 Musician specialist slot instead of the Great Work of Music slot
+- Dev: BUILDING_LEKMOD_JONGMYO SpecialistType SPECIALIST_MUSICIAN, SpecialistCount 1 (GreatWorkSlotType/Count removed); help text updated
+
 PIETY (POLICY_BRANCH_PIETY)
 --------------------------
 Tags: policies, religion
@@ -1341,7 +1359,7 @@ Subsection: Buildings
 - Added: Amber and Atolls give +1 Culture
 - Added: buying tiles in the city costs 33% less Gold
 - Added: with Construction, Coast tiles (not lakes) give +1 Production
-- Changed: Carthage's Cothon follows the same changes and keeps its +1 Food and +1 Production on the building
+- Dev: the Cothon's own changes are on the Carthage card (an earlier note here said it kept +1 Food +1 Production; it doesn't)
 - DLL: Building_TechTerrainYieldChanges (LEKMOD_BUILDING_TECH_TERRAIN_YIELDS); plot yields refresh when the tech arrives or the building is built
 
 AIRPORT (BUILDING_AIRPORT)
@@ -1789,7 +1807,7 @@ Tags: tourism, buildings, wonders
   - 1 slot, filled: +4 Gold
   - when built, +30 Influence with the closest coastal city-state you are at peace with
 - Changed: Hanging Gardens: 2 slots, both filled: +2 Food
-- Changed: Parthenon: 2 slots (the Frieze in one), both filled: +3 Culture
+- Changed: Parthenon: 2 slots, 1 comes filled; both filled: +3 Culture
 - Changed: Notre Dame:
   - no Faith and no Artist points
   - 2 slots, 1 comes filled
@@ -1880,7 +1898,7 @@ Holding a civ's capital and being culturally Influential over it now stand in fo
 - Changed: Cultural Victory: holding a civ's original capital counts as being Influential over it
 - Changed: Domination Victory: being Influential over a living civ counts as holding its original capital (you still need your own)
 - Added: if you meet both victories at once, the higher count decides (capitals held vs civs you are Influential over); a tie counts as Domination
-- Changed: in team games, influence from any teammate counts, and teammates no longer need to be influenced
+- Dev: in team games, influence from any teammate counts, and teammates no longer need to be influenced (not shown: every player is on their own)
 - Dev: Civilopedia pages for both victories describe the current rules
 - DLL: LEKMOD_CAPITAL_INFLUENCE_VICTORY (CvGame::LekmodGetCapitalInfluenceVictory, used by testVictory and DoTestConquestVictory)
 
@@ -2573,7 +2591,7 @@ Tags: civs, units, buildings
 - Changed: Ballista Elephant:
   - 18 Strength (was 20)
   - 2 Movement (was 3)
-  - needs 2 Iron (was 1)
+  - needs 2 Iron (the Trebuchet it replaces needs 1)
 - Dev: capital dummy building 287 (class 190) with a Building_LekmodConditionalYields row (RequiresAllTechsOfEra)
 
 MAYA (CIVILIZATION_MAYA)
@@ -2793,7 +2811,7 @@ Tags: civs, units
 MACEDONIA (CIVILIZATION_MACEDONIA)
 ----------------------------------
 Tags: civs, units
-- Changed: Great Generals give +30% (was +15%); Barracks, Armories and Military Academies give +1 Culture
+- Changed: Great Generals give +30%; Barracks, Armories and Military Academies give +1 Culture
 - Removed: +1 Food and +1 Happiness from Barracks and Armories
 - Added: units trained in a city get +5 XP each for a Monument, an Amphitheater and an Opera House there
 - Added: Gymnasium, a unique Aqueduct with a Merchant slot and an Artist slot
@@ -3027,7 +3045,7 @@ Tags: civs
 CANADA (CIVILIZATION_CANADA)
 ----------------------------
 Tags: civs, units
-- Added: Lake and Snow tiles yield +2 Gold and +1 Culture (Ice keeps its +2 Gold and +1 Culture)
+- Added: Lake and Snow tiles yield +2 Gold and +1 Culture
 - Changed: Combat Engineer works twice as fast as a Worker (was 1.5x)
 - Dev: per-city dummy building BUILDING_LEKMOD_CANADA_TRAIT (ID 281, class 186) for the lake yields; the old text said "Lakes" but the data only covered Ice
 
@@ -3253,9 +3271,11 @@ Tags: civs, promotions
 CARTHAGE (CIVILIZATION_CARTHAGE)
 --------------------------------
 Tags: civs, units, buildings
-- Changed: Cothon costs 40 (was 50); its Coast Production no longer needs Construction
-- Removed: Cothon: +1 Food and +1 Production
-- Added: the Cothon can also be built in a city next to a lake
+- Changed: Cothon (replaces the Lighthouse):
+  - costs 40 (the Lighthouse 50)
+  - Coast tiles +1 Production from the start (the Lighthouse needs Construction for it)
+  - can also be built in a city next to a lake
+  - no longer: +1 Food and +1 Production on the building
 - Changed: African Forest Elephant renamed African Elephant: needs 3 Iron, upgrades to the Punic War Elephant (keeping Feared Elephant, Hannibal's charge and the Great General bonus)
 - Added: Punic War Elephant, elephant cavalry that can only be reached by upgrading an African Elephant (Chivalry): 21 Strength, 3 Movement, costs 90, needs 3 Iron, Feared Elephant; upgrades to the Cavalry, which loses Feared Elephant
 - Dev: unit ID 273, class 118 (Units.UpgradeOnly)
@@ -3483,7 +3503,7 @@ City yields from civilization abilities now show on the city's own tile instead 
 
 CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 --------------------------------------------
-Tags: civs, ui
+Tags: ui, civs
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
