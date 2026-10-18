@@ -55,7 +55,7 @@ code { font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; backgro
 .page-menu a[aria-current="page"] { color: var(--accent); font-weight: 600; }
 
 /* Layout */
-.content { padding: 24px; max-width: 900px; }
+.content { padding: 24px; max-width: 980px; }
 .content.narrow { margin: 0 auto; max-width: 760px; }
 .with-sidebar .content { margin-left: 260px; }
 .sidebar {
@@ -114,6 +114,28 @@ input[type="search"] { width: 100%; }
 .lines .sub { list-style: disc; margin: 2px 0 0; padding-left: 18px; }
 .lines .sub li { display: list-item; margin: 0; }
 [hidden] { display: none !important; }
+
+/* Policy trees next to the policy cards */
+.card.has-tree { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: start; }
+.ptree { width: 290px; max-width: 100%; overflow-x: auto; position: sticky; top: calc(var(--header-h) + 12px); }
+.pgrid { position: relative; margin: 10px 0; }
+.pgrid svg { position: absolute; left: 0; top: 0; }
+.pgrid line { stroke: var(--muted); stroke-width: 1.5; opacity: 0.55; }
+.pnode, .pbar { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; cursor: help; }
+.pnode { position: absolute; padding: 2px 1px; font-size: 9.5px; line-height: 1.12; overflow: hidden; hyphens: manual; }
+.pbar { display: block; width: 100%; padding: 6px 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; text-align: center; }
+.pnode:hover, .pnode:focus, .pbar:hover, .pbar:focus, .pnode.active, .pbar.active { border-color: var(--accent); background: var(--card); outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+.ptree-panel { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 0.85rem; line-height: 1.45; color: var(--muted); min-height: 3.5em; }
+.ptree-panel.filled { color: var(--text); }
+.ptier { margin: 0 0 10px; }
+.ptier-label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+.ptier-nodes { display: flex; flex-wrap: wrap; gap: 4px; }
+.ptier .pnode { position: static; padding: 3px 7px; font-size: 11.5px; }
+@media (max-width: 900px) {
+  .card.has-tree { grid-template-columns: 1fr; }
+  .ptree { position: static; }
+}
+
 
 /* Civ list */
 .civ h2 { margin: 0 0 8px; font-size: 1.2rem; }

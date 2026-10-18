@@ -15,6 +15,7 @@ require_relative "lib/changelog"
 require_relative "lib/civs"
 require_relative "lib/game_text"
 require_relative "lib/loose_list"
+require_relative "lib/policy_trees"
 
 ROOT = File.expand_path("..", __dir__)
 SITE = File.expand_path(__dir__)
@@ -43,6 +44,57 @@ module Helpers
   def tag_label(tag)
     return "UI" if tag.to_s == "ui"
     tag.to_s.gsub(/[a-z]+/) { |w| w == "and" ? w : w.capitalize }
+  end
+
+  # Small policy tree like the game's: opener on top, the policies on their grid (GridX 1-5, GridY) with
+  # prerequisite lines, finisher at the bottom. Ideologies: tenets by level. Hover/focus shows the policy's
+  # current text in the panel below (site.js); without JavaScript the title attribute has it.
+  PT_COL = 58
+  PT_ROW = 56
+  PT_W = 56
+  PT_BREAKS = %w[Adminis-tration Confed-eracy Entre-preneurship Infra-structure Mercan-tilism Protec-tionism
+                 Represen-tation Scholas-ticism Revolu-tion Reforma-tion Sover-eignty Profes-sional Flourish-ing
+                 Meritoc-racy Aristoc-racy Citizen-ship Secular-ism].to_h { |w| [w.delete("-"), w.sub("-", "­")] }.freeze
+  PT_H = 44
+
+  def policy_tree_html(tree)
+    nodes = []
+    if tree.ideology
+      body = tree.nodes.group_by(&:level).sort.map do |level, list|
+        chips = list.sort_by(&:name).map { |n| policy_node(n, nil) }.join
+        %(<div class="ptier"><span class="ptier-label">Tier #{level}</span><div class="ptier-nodes">#{chips}</div></div>)
+      end.join
+      return %(<aside class="ptree ideology" aria-label="#{h tree.name} tenets">#{body}#{ptree_panel}</aside>)
+    end
+    rows = tree.nodes.map(&:y).max.to_i
+    width = PT_COL * 5
+    height = PT_ROW * rows
+    pos = tree.nodes.to_h { |n| [n.type, [(n.x - 1) * PT_COL + (PT_COL - PT_W) / 2, (n.y - 1) * PT_ROW]] }
+    lines = tree.links.filter_map do |a, b|
+      next unless pos[a] && pos[b]
+      ax, ay = pos[a]
+      bx, by = pos[b]
+      %(<line x1="#{ax + PT_W / 2}" y1="#{ay + PT_H}" x2="#{bx + PT_W / 2}" y2="#{by}"/>)
+    end.join
+    tree.nodes.each { |n| nodes << policy_node(n, pos[n.type]) }
+    opener = tree.opener ? policy_node(tree.opener, nil, "pbar") : ""
+    finisher = tree.finisher ? policy_node(tree.finisher, nil, "pbar", "Completing #{tree.name}") : ""
+    %(<aside class="ptree" aria-label="#{h tree.name} policy tree">#{opener}) +
+      %(<div class="pgrid" style="width:#{width}px;height:#{height}px"><svg width="#{width}" height="#{height}" aria-hidden="true">#{lines}</svg>#{nodes.join}</div>) +
+      %(#{finisher}#{ptree_panel}</aside>)
+  end
+
+  def policy_node(node, pos, cls = "pnode", label = nil)
+    style = pos ? %( style="left:#{pos[0]}px;top:#{pos[1]}px;width:#{PT_W}px;height:#{PT_H}px") : ""
+    tip = node.help ? GameText.to_html(node.help) : ""
+    plain = node.help ? CGI.unescapeHTML(tip.gsub("<br>", "\n").gsub(/<[^>]+>/, "")) : ""
+    # Long words get a soft hyphen at a syllable, so they break cleanly in the small boxes.
+    text = (label || node.name).split(" ").map { |w| PT_BREAKS.fetch(w, w) }.join(" ")
+    %(<button type="button" class="#{cls}"#{style} data-help="#{h tip}" title="#{h plain}">#{h text}</button>)
+  end
+
+  def ptree_panel
+    %(<div class="ptree-panel" aria-live="polite">Hover a policy to read it.</div>)
   end
 
   def slug(text)
@@ -137,7 +189,8 @@ end
 all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }
 versions = [["0", "LEKMOD v35.4 (fork point)"]] + releases.map { |r| [r.index.to_s, r.title] }
 write_page(out, "index.html", "Changelog",
-           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases),
+           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases,
+                         policy_trees: PolicyTrees.load(File.join(ROOT, "LEKMOD", "Override"))),
            page_class: "with-sidebar")
 
 # Map changelog

@@ -2,6 +2,7 @@ require "minitest/autorun"
 require_relative "../lib/changelog"
 require_relative "../lib/game_text"
 require_relative "../lib/loose_list"
+require_relative "../lib/policy_trees"
 
 class ChangelogTest < Minitest::Test
   SAMPLE = <<~TXT
@@ -143,5 +144,20 @@ class RealChangelogTest < Minitest::Test
       end
     end
     assert_empty problems, problems.join("\n")
+  end
+end
+
+# The policy tree diagrams read the mod's own data; every non-ideology branch has 5 policies, an opener and a finisher.
+class PolicyTreesTest < Minitest::Test
+  def test_trees_load
+    trees = PolicyTrees.load(File.expand_path("../../LEKMOD/Override", __dir__))
+    branches = trees.values.reject(&:ideology)
+    assert_equal 9, branches.size
+    branches.each do |t|
+      assert_equal 5, t.nodes.size, t.name
+      assert t.opener && t.finisher, t.name
+      t.nodes.each { |n| assert (1..5).cover?(n.x) && n.y >= 1, "#{t.name}: #{n.name} off the grid" }
+    end
+    assert_equal 3, trees.values.count(&:ideology)
   end
 end

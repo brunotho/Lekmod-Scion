@@ -31,6 +31,8 @@ Tests (also check that `changelog.txt` stays readable for the site): `ruby websi
 - Inside a section, cards are alphabetical unless `SECTION_LAYOUT` in `build.rb` gives an order (and optional subsection headings): World Congress, Tourism, Policies, Tiles and Resources. Items with a `Weight: minor` line come last under "Minor changes". `(NEW)` after an item's name shows as a badge.
 - Collection cards (`Collects:` line) repeat lines from other cards for an overview; each line starts with `{Source Card}`, shown in grey. The tests check every copy against its source.
 - Developer lines (`Note`, `DLL`, `Dev`) and items with only such lines are never shown.
+- Policy cards (a card named like a policy branch, e.g. TRADITION) show the branch's tree on the right: `lib/policy_trees.rb` reads positions (`GridX`/`GridY`), prerequisites and the current texts from the Override files; `policy_tree_html` in `build.rb` draws it, and `site.js` shows a policy's text in the panel below the tree on hover, focus or tap. Ideologies show their tenets by tier. Long words get a soft hyphen from `PT_BREAKS`.
+- `  - item` lines under a changelog line become sub-bullets.
 
 ## Download buttons
 

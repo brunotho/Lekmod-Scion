@@ -161,6 +161,23 @@
     latest[repo].then(function (url) { if (url) a.href = url; });
   });
 
+  // Policy trees: hovering or focusing a policy shows its text in the panel below the tree.
+  $$(".ptree").forEach(function (tree) {
+    var panel = $(".ptree-panel", tree);
+    $$(".pnode, .pbar", tree).forEach(function (btn) {
+      btn.removeAttribute("title");
+      var show = function () {
+        $$(".active", tree).forEach(function (x) { x.classList.remove("active"); });
+        btn.classList.add("active");
+        panel.innerHTML = btn.dataset.help || "";
+        panel.classList.add("filled");
+      };
+      btn.addEventListener("mouseenter", show);
+      btn.addEventListener("focus", show);
+      btn.addEventListener("click", show);
+    });
+  });
+
   // Close the page menu when clicking elsewhere.
   document.addEventListener("click", function (e) {
     $$(".page-menu[open]").forEach(function (d) { if (!d.contains(e.target)) d.removeAttribute("open"); });

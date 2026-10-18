@@ -509,8 +509,9 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 - Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
 - Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Added: {Rationalism} finisher: a free Great Scientist; Academies on strategic resources provide double the resource
-- Changed: {Autocracy} Third Alternative (rebuilt): double Oil, Aluminum and Uranium; +50% Production toward Military Academies
-- Removed: {Autocracy} Third Alternative: double all strategic resources; Food and Science in the capital
+- Changed: {Autocracy} Third Alternative (rebuilt):
+  - double Oil, Aluminum and Uranium; +50% Production toward Military Academies
+  - no longer: double all strategic resources; Food and Science in the capital
 - Added: {Freedom} Technocratic Efficiency (tier 2): 1 less Aluminum for Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers; 1 less Uranium for Nuclear Submarines, Nuclear Missiles and Giant Death Robots
 - Added: {Order} Atomic Program (tier 2): 4 Uranium; Nuclear Missiles and Nuclear Plants need 1 less Uranium; +20% Production toward Nuclear Plants
 - Added: {Order} Five Year Offensive (tier 2): 15 Oil and 15 Aluminum; +100% Production toward Refineries and Recycling Centers; Siege units trained in a city with a Refinery start with Bombardment I and Cover I
@@ -1913,8 +1914,9 @@ HONOR (POLICY_BRANCH_HONOR)
 Tags: policies, combat
 - Changed: opener: Culture from kills is capped at 40 per kill (was uncapped)
 - Changed: Warrior Code: 10 units cost no maintenance (was 4); Gold from kills capped at 40 per kill (was uncapped)
-- Changed: Professional Army (rebuilt): +100% Production toward Barracks, Barracks +1 Production +1 Culture; +30% toward Colosseums, Colosseums +1 Food
-- Removed: Professional Army: Armory and Military Academy bonuses, Gold from Barracks
+- Changed: Professional Army (rebuilt):
+  - +100% Production toward Barracks, Barracks +1 Production +1 Culture; +30% toward Colosseums, Colosseums +1 Food
+  - no longer: Armory and Military Academy bonuses, Gold from Barracks
 - Changed: Discipline is now Hero Cult:
   - requires Professional Army instead of Warrior Code
   - +100% Production toward the Heroic Epic and the Circus Maximus
@@ -1926,16 +1928,14 @@ Tags: policies, combat
   - +30% toward Courthouses (was 50%)
   - cities with a Courthouse get +3 Production +3 Food (doesn't stack with Expansionism's Colonial Administration)
   - no longer: Citadel yields; Courthouse Gold
-- Changed: Military Caste: the Courthouse +2 Happiness doesn't stack with Expansionism's Colonial Infrastructure
 - Changed: Military Caste:
-  - from turn 80
-  - every city gets its +2 Culture and +1 Happiness
-  - garrisoned or not (before turn 80 it still needs a garrisoned unit)
-- Changed: finisher: +1 Food from Barracks and Colosseums; all non-air military units get the Discipline promotion (+50% Experience)
-- Removed: finisher:
-  - Science from kills
-  - +1 Food in every city
-  - Armory and National Wonder Food
+  - the Courthouse +2 Happiness doesn't stack with Expansionism's Colonial Infrastructure
+  - from turn 80 every city gets its +2 Culture and +1 Happiness, garrisoned or not (before turn 80 it still needs a garrisoned unit)
+- Changed: finisher:
+  - +1 Food from Barracks and Colosseums; all non-air military units get the Discipline promotion (+50% Experience)
+  - no longer: Science from kills
+  - no longer: +1 Food in every city
+  - no longer: Armory and National Wonder Food
 - DLL: Policies.CampClearGold, Policies.FreeTilesExistingCities (LEKMOD_POLICY_REWORK); kill caps use Policy_YieldFromKills.Max; Policy_BuildingClassNoMaintenance (Sacred Duty, CvTreasury::GetBuildingGoldMaintenance)
 - Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
@@ -2040,13 +2040,15 @@ Tags: policies
 - Added: Cultural Dominion (tier 1): Great Writers, Artists and Musicians 25% faster; World Wonders in captured cities +10 Tourism
 - Added: Doctrine of Subjugation (tier 1): each Courthouse built after adopting it creates 2 Great Works in your empty slots; +100% Gold from capturing cities (adds up with Songhai's bonus); resistance in captured cities lasts half as long
 - Added: Advanced Interrogation Techniques (tier 1): Spoils of War give 10 percentage points more of the technology (e.g. 30% -> 40% in the Information Era); each enemy spy you catch also steals a random technology from its owner (one you could research now)
-- Changed: Third Alternative (rebuilt): double Oil, Aluminum and Uranium; +50% Production toward Military Academies
-- Removed: Third Alternative: double all strategic resources; Food and Science in the capital
+- Changed: Third Alternative (rebuilt):
+  - double Oil, Aluminum and Uranium; +50% Production toward Military Academies
+  - no longer: double all strategic resources; Food and Science in the capital
 - Changed: Iron Fist:
   - all non-air military units get Discipline (+50% Experience); Gold and Culture from kills capped at 40 each
   - no longer: +50% Experience from combat; Science from kills
-- Changed: Gunboat Diplomacy (rebuilt): +2 World Congress votes; tribute costs no Influence, keeps your own pledge of protection and works at any Influence level, once every 10 turns per City-State
-- Removed: Gunboat Diplomacy: +50% intimidation, +50 Influence from tribute
+- Changed: Gunboat Diplomacy (rebuilt):
+  - +2 World Congress votes; tribute costs no Influence, keeps your own pledge of protection and works at any Influence level, once every 10 turns per City-State
+  - no longer: +50% intimidation, +50 Influence from tribute
 - Added: Cult of Personality: +2 Happiness from each Great Work
 - Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't)
 - DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty) ignores the Influence block and the 10-20 turn tribute penalty (LEKMOD_POLICY_REWORK)
@@ -2062,8 +2064,9 @@ Tags: policies
 - Added: Liberated Arts (tier 1): +2 Tourism and +1 Happiness from each Great Work; each Courthouse built after adopting it creates 2 Great Works in your empty slots (none if no slot is free)
 - Added: Fruits of Liberty (tier 1): +1 Gold, Culture and Science from each Great Work and each Great Person improvement (not Holy Sites)
 - Added: Republic of Letters (tier 1): Great Person improvements get +1 Production per adjacent Manufactory, +1 Science per adjacent Academy, +1 Culture per adjacent Festival
-- Changed: Arsenal of Democracy (rebuilt): air units and Helicopters start with 20 Experience; +25% City Strength
-- Removed: Arsenal of Democracy: Production toward air units and Nuclear Missiles, free Dogfighting I
+- Changed: Arsenal of Democracy (rebuilt):
+  - air units and Helicopters start with 20 Experience; +25% City Strength
+  - no longer: Production toward air units and Nuclear Missiles, free Dogfighting I
 - Added: Thoughts and Prayers (tier 2): Culture equal to half a killed military unit's strength; Gunpowder units get the Foreign Lands Bonus promotion (+20%)
 - Added: Soft Power (tier 2): Great Writers, Artists and Musicians 25% faster; +2 Gold from each Great Work; Festivals +2 Gold per era; new Great Musicians' Concert Tours 25% stronger
 - Added: Technocratic Efficiency (tier 2): 1 less Aluminum for Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers; 1 less Uranium for Nuclear Submarines, Nuclear Missiles and Giant Death Robots
@@ -2085,8 +2088,9 @@ Tags: policies
 - Changed: shorter resistance from Colonial Administration, Re-Education and Doctrine of Subjugation adds up (two of them: no resistance beyond the minimum of 1 turn)
 - Added: Atomic Program (tier 2): 4 Uranium; Nuclear Missiles and Nuclear Plants need 1 less Uranium; +20% Production toward Nuclear Plants
 - Added: Five Year Offensive (tier 2): 15 Oil and 15 Aluminum; +100% Production toward Refineries and Recycling Centers; Siege units trained in a city with a Refinery start with Bombardment I and Cover I
-- Changed: Command Economy (rebuilt): +30% Production toward military units; -10% Science in every city; a Great Scientist you keep loses its Science bonus three times slower (one counted turn every three turns instead of every turn)
-- Removed: Command Economy: strategic resources and their yields
+- Changed: Command Economy (rebuilt):
+  - +30% Production toward military units; -10% Science in every city; a Great Scientist you keep loses its Science bonus three times slower (one counted turn every three turns instead of every turn)
+  - no longer: strategic resources and their yields
 - Changed: Iron Curtain:
   - ends all your Trade Routes when adopted (units return home)
   - no Trade Routes with other civilizations or City-States
@@ -2428,8 +2432,9 @@ Tags: civs, units, buildings
 EGYPT (CIVILIZATION_EGYPT)
 --------------------------
 Tags: civs, units, buildings
-- Changed: Burial Tomb (rebuilt): available with Construction, needs no Shrine, 3 Faith, 2 Gold maintenance
-- Removed: Burial Tomb: 2 Happiness, double Gold for whoever captures the city, no maintenance
+- Changed: Burial Tomb (rebuilt):
+  - available with Construction, needs no Shrine, 3 Faith, 2 Gold maintenance
+  - no longer: 2 Happiness, double Gold for whoever captures the city, no maintenance
 - Changed: War Chariot needs 1 Horse (was none) and costs 33 (was 37)
 
 HUNS (CIVILIZATION_HUNS)
@@ -2684,8 +2689,9 @@ KONGO (CIVILIZATION_KONGO)
 --------------------------
 Tags: civs, units, buildings
 - Changed: Slave Market gives 4 Production and 4 Gold (was 4 and 5), +3 and +3 with Industrialization (was +3 and +2)
-- Changed: Ngao Mbeba (rebuilt): costs 60 (was 50), needs 4 Iron, starts with Cover I, Amphibious I, Woodsman, Native Tongue and +33% in Forest and Jungle
-- Removed: Ngao Mbeba: +100% defense against ranged attacks and its old abilities
+- Changed: Ngao Mbeba (rebuilt):
+  - costs 60 (was 50), needs 4 Iron, starts with Cover I, Amphibious I, Woodsman, Native Tongue and +33% in Forest and Jungle
+  - no longer: +100% defense against ranged attacks and its old abilities
 
 CELTS (CIVILIZATION_CELTS)
 --------------------------
@@ -2898,8 +2904,9 @@ Tags: civs, units, promotions
 - Removed: +2 Culture from Atolls
 - Changed: Dojo (rebuilt) no longer replaces the Barracks: Philosophy, costs 75, +1 Culture and +1 Faith for each military unit trained in the city (not recon, up to 3), always destroyed on capture
 - Removed: Dojo: +2 Science, +15 XP and the Way of the Warrior promotion
-- Changed: Samurai (rebuilt): available at Civil Service (was Steel), 18 Strength (was 21), costs 70 (was 80), needs 3 Iron (was 2), upgrades to the Musketman, starts with Great Generals II, Iaijutsu and Hatamoto
-- Removed: Samurai: Shock I and building Fishing Boats
+- Changed: Samurai (rebuilt):
+  - available at Civil Service (was Steel), 18 Strength (was 21), costs 70 (was 80), needs 3 Iron (was 2), upgrades to the Musketman, starts with Great Generals II, Iaijutsu and Hatamoto
+  - no longer: Shock I and building Fishing Boats
 - DLL: Buildings.LekmodTrainedUnitStackBuilding/Max (dummy 292, class 196); own building class 195
 
 GOLDEN HORDE (CIVILIZATION_GOLDEN_HORDE)
@@ -3005,8 +3012,9 @@ Tags: civs, buildings, units, naval
 - Changed: their Castle (rebuilt) costs 85 (was 53), 4 Gold maintenance, +4 Faith and +4 Culture with a garrison, still needs no Walls
 - Removed: their Castle's +2 Gold, +2 Faith and +4 Golden Age points
 - Added: their Castle: the city sees 2 tiles further, and terrain does not block its view
-- Changed: Privateer (rebuilt): same Strength and cost as the regular Privateer (24, was 26; cost 85, was 102)
-- Removed: Privateer: capturing enemy ships and pillaging without movement cost
+- Changed: Privateer (rebuilt):
+  - same Strength and cost as the regular Privateer (24, was 26; cost 85, was 102)
+  - no longer: capturing enemy ships and pillaging without movement cost
 - Added: Privateer: Corsair (Coast tiles cost 33% less movement; +20% Combat Strength attacking a target on a Coast tile), lost on upgrade
 - DLL: Buildings.CityVisionChange; UnitPromotions.CoastMoveCostMod, CoastAttackMod (promotion 390)
 - DLL: Traits.LekmodMinorUUFriendPurchase, LekmodEarlyMilitaryPurchaseDiscount/Era (City-State unique units reuse the Treaty of Arms purchase)
@@ -3177,8 +3185,9 @@ Tags: civs, buildings
   - Mints, Markets, Banks and Stock Exchanges +1 Culture +1 Science
 - Removed: Merchant specialists +2 Production +2 Science
 - Changed: Reislaeufer Post: trained units start with Altitude Training instead of the mountain combat promotion
-- Changed: Ski Resort (rebuilt): costs 165 (was 167), +3 Happiness, Mountain tiles worked by the city +5 Culture +5 Gold +5 Tourism (was +5 Tourism +2 Gold per nearby Mountain), still needs no Zoo
-- Removed: Ski Resort: the flat +5 Tourism and +3 Culture
+- Changed: Ski Resort (rebuilt):
+  - costs 165 (was 167), +3 Happiness, Mountain tiles worked by the city +5 Culture +5 Gold +5 Tourism (was +5 Tourism +2 Gold per nearby Mountain), still needs no Zoo
+  - no longer: the flat +5 Tourism and +3 Culture
 - DLL: Traits.LekmodPassedProposalExtraVotes, LekmodNoUnitCostAtPeace; LekmodHiddenGold (read by Lua: Demographics.lua, TradeLogic.lua)
 
 SHOSHONE (CIVILIZATION_SHOSHONE)
@@ -3227,8 +3236,9 @@ Tags: civs, units, buildings, promotions
 TURKEY (CIVILIZATION_TURKEY)
 ----------------------------
 Tags: civs, buildings
-- Changed: Halkevleri (rebuilt): available at Industrialization, costs 30% more than a Public School, no Science of its own; with a Broadcast Tower +1 Science and +1 Culture per 5 Population
-- Removed: Halkevleri: +3 Science, +3 Culture, Science per population and from Forests
+- Changed: Halkevleri (rebuilt):
+  - available at Industrialization, costs 30% more than a Public School, no Science of its own; with a Broadcast Tower +1 Science and +1 Culture per 5 Population
+  - no longer: +3 Science, +3 Culture, Science per population and from Forests
 - DLL: Building_LekmodConditionalYields (RequiresBuildingClass, PerPopulation)
 
 MEXICO (CIVILIZATION_MEXICO)
@@ -3301,7 +3311,8 @@ Tags: civs
 ASSYRIA (CIVILIZATION_ASSYRIA)
 ------------------------------
 Tags: civs, buildings
-- Removed: Royal Library: +15 XP for trained units from a filled Great Work slot (its slot takes any Great Work)
+- Changed: Treasures of Nineveh (UA): the Great Work from a conquered city is of the generic kind and fits any empty Great Work slot
+- Removed: Royal Library: +15 XP for units trained while its Great Work slot is filled
 
 AUSTRALIA (CIVILIZATION_AUSTRALIA)
 ----------------------------------

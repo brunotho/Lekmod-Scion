@@ -46,7 +46,11 @@
     <h3 class="subsection-heading"><%= h block.heading %></h3>
 <% end -%>
 <% block.cards.each do |card| -%>
-    <article class="card<%= ' minor' if card.minor %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
+<% tree = card.group == "policies" && policy_trees[card.name] -%>
+    <article class="card<%= ' minor' if card.minor %><%= ' has-tree' if tree %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
+<% if tree -%>
+      <div class="card-main">
+<% end -%>
       <h3><%= h card.name %><% if card.fresh %> <span class="new-badge">(NEW)</span><% end %></h3>
 <% if card.collects -%>
       <p class="collected">Collected here for the overview: each line is a copy from the card named in grey, under <%= card.collects.split(",").map { |s| %(<a href="##{slug(s.strip)}">#{h tag_label(s.strip)}</a>) }.join(", ") %>.</p>
@@ -65,6 +69,10 @@
         </ul>
 <% end -%>
       </div>
+<% end -%>
+<% if tree -%>
+      </div>
+      <%= policy_tree_html(tree) %>
 <% end -%>
     </article>
 <% end -%>
