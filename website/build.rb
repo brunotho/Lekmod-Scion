@@ -36,6 +36,7 @@ module Helpers
     ["map.html", "Map changelog"],
     ["install.html", "Installation"],
     ["civs.html", "Civ list"],
+    ["credits.html", "Credits"],
   ].freeze
 
   def h(text)
@@ -207,6 +208,7 @@ write_page(out, "map.html", "Map changelog", render("map", map_html: map_text ? 
 
 # Installation, civ list
 write_page(out, "install.html", "Installation", render("install"))
+write_page(out, "credits.html", "Credits", render("credits"))
 civs = Civs.load(File.join(ROOT, "LEKMOD", "Override"))
 write_page(out, "civs.html", "Civ list", render("civs", civs: civs), page_class: "with-sidebar")
 # Known issues page: switched off for now (user, 2026-10-18). To bring it back, re-add it to PAGES and:
