@@ -68,6 +68,14 @@ Tags: units
   - Nuclear Submarine and XCOM Squad 359 (was 341)
 - Dev: standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged, as for the Modern and Atomic increases
 
+SACRED SITES (BELIEF_SACRED_SITES)
+----------------------------------
+Tags: religion
+Subsection: Reformation beliefs
++3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
+- Fixed: Sanctuaries and Stupas get the +3 Gold and +3 Faith too, like the other buildings unlocked by Religious Beliefs
+- Dev: Belief_BuildingClassYieldChanges rows for BUILDINGCLASS_LEKMOD_SANCTUARY / _STUPA
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings
@@ -1728,7 +1736,7 @@ SACRED SITES (BELIEF_SACRED_SITES)
 Tags: religion
 Subsection: Reformation beliefs
 +3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
-- Changed: +3 Gold and +3 Faith from Pagodas, Mosques, Cathedrals, Gurdwaras, Synagogues, Viharas and Mandirs (was +2 Culture +2 Gold +2 Faith)
+- Changed: +3 Gold and +3 Faith from buildings unlocked by Religious Beliefs (was +2 Culture +2 Gold +2 Faith)
 - Added: adopting it gives a free Vihara in the capital
 
 WORK ETHIC (BELIEF_WORK_ETHIC)

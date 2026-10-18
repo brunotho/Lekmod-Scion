@@ -32026,6 +32026,30 @@
 			<YieldChange>3</YieldChange>
 		</Row>
 		<Row>
+			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_SANCTUARY</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>3</YieldChange>
+		</Row>
+		<Row>
+			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_SANCTUARY</BuildingClassType>
+			<YieldType>YIELD_FAITH</YieldType>
+			<YieldChange>3</YieldChange>
+		</Row>
+		<Row>
+			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_STUPA</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>3</YieldChange>
+		</Row>
+		<Row>
+			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_STUPA</BuildingClassType>
+			<YieldType>YIELD_FAITH</YieldType>
+			<YieldChange>3</YieldChange>
+		</Row>
+		<Row>
 			<BeliefType>BELIEF_JESUIT_EDUCATION</BeliefType>
 			<BuildingClassType>BUILDINGCLASS_LIBRARY</BuildingClassType>
 			<YieldType>YIELD_FAITH</YieldType>
