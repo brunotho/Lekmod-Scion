@@ -57,6 +57,17 @@ Tags: diplomacy and trade
 - DLL: define GOLD_PER_TURN_DEAL_DURATION_LONG (20); CvDeal::AddGoldPerTurnTrade / ChangeGoldPerTurnTrade keep 20 only when asked for exactly 20, everything else (AI deals too) stays 10
 - Dev: SimpleDiploTrade.xml buttons *PocketGoldPerTurnLong; TradeLogic (ui and eui) LekmodSyncGoldPerTurnLong labels both pockets "(10 TURNS)" / "(20 TURNS)"; changing the amount keeps the item's length (LekmodGetGoldPerTurnDuration). The AI trade screen has no long button
 
+LATE-GAME UNIT COSTS
+--------------------
+Tags: units
+- Changed: Information-era units cost 5% more too, like Atomic-era units (except the units with their own new cost and the spaceship parts):
+  - Guided Missile 148 (was 140)
+  - Heavy Cruiser 326 (was 311)
+  - Jet Fighter and the UAE's Desert Falcon 379 (was 361)
+  - Mechanized Infantry 316 (was 301)
+  - Nuclear Submarine and XCOM Squad 359 (was 341)
+- Dev: standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged, as for the Modern and Atomic increases
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

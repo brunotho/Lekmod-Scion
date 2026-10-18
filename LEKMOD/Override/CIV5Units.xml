@@ -280540,7 +280540,7 @@
 			<Set Combat="26" Cost="153"/>
 		</Update>
 	</Units>
-	<!-- LEKMOD unit stat and cost changes (2026-10-09); modern-era units +3% cost, atomic-era (ERA_POSTMODERN) units +5% -->
+	<!-- LEKMOD unit stat and cost changes (2026-10-09); modern-era units +3% cost, atomic-era (ERA_POSTMODERN) and information-era (ERA_FUTURE, 2026-10-18) units +5% -->
 	<Units>
 		<Update>
 			<Where Type="UNIT_AMERICAN_B17"/>
@@ -280720,11 +280720,32 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_XCOM_SQUAD"/>
-			<Set Combat="120" Moves="3"/>
+			<Set Combat="120" Moves="3" Cost="536"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_YUGO_M84"/>
 			<Set Cost="473"/>
+		</Update>
+		<!-- Information-era units +5% (2026-10-18) -->
+		<Update>
+			<Where Type="UNIT_GUIDED_MISSILE"/>
+			<Set Cost="221"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_HEAVY_CRUISER"/>
+			<Set Cost="488"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_JET_FIGHTER"/>
+			<Set Cost="567"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MECHANIZED_INFANTRY"/>
+			<Set Cost="473"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_NUCLEAR_SUBMARINE"/>
+			<Set Cost="536"/>
 		</Update>
 	</Units>
 	<!-- LEKMOD: Work Ethic, Workers can be bought with Faith (130% of the Production cost) -->
@@ -290374,7 +290395,7 @@
 			<Strategy>TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_STRATEGY</Strategy>
 			<Help>TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_HELP</Help>
 			<RangedCombat>75</RangedCombat>
-			<Cost>540</Cost>
+			<Cost>567</Cost>
 			<Moves>2</Moves>
 			<Immobile>1</Immobile>
 			<Range>10</Range>
