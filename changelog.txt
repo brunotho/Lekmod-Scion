@@ -2293,7 +2293,7 @@ Tags: civs, units
 - Changed: new UA: natural wonders yield +3 Culture (were doubled); discovering one gives 50 Gold per era (was 100)
 - Removed: doubled Happiness from natural wonders
 - Added: +10% Production towards Settlers and Conquistadors
-- Added: founding a city (not the capital) reveals the tiles within 6 and gives a free Scout
+- Added: founding a city (not the capital) reveals most tiles within 6 (each with 75% chance, like the map ruin) and gives a free Scout
 - Added: cities other than the capital +1 Production; the capital -1 Production per other city that is not a puppet (not below 0); shown in the city's Production tooltip as the civilization ability line
 - DLL: Traits.LekmodNaturalWonderFinderGoldPerEra, LekmodFoundCity*, LekmodExpansionProduction, LekmodCapitalProductionPerExpansion; Trait_LekmodPlotYields.NaturalWonder
 

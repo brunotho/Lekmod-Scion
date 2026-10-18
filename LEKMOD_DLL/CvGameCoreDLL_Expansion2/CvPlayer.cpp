@@ -10193,8 +10193,9 @@ void CvPlayer::found(int iX, int iY, UnitTypes eSettlerUnit)
 		{
 			for (int iDY = -iRadius; iDY <= iRadius; iDY++)
 			{
+				// each tile with 75% chance, like the map ruin (GOODY_MAP MapProb), so the edge looks noisy
 				CvPlot* pRevealPlot = plotXYWithRangeCheck(iX, iY, iDX, iDY, iRadius);
-				if (pRevealPlot)
+				if (pRevealPlot && GC.getGame().getJonRandNum(100, "Lekmod found city reveal") < 75)
 					pRevealPlot->setRevealed(getTeam(), true);
 			}
 		}
