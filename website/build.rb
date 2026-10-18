@@ -155,6 +155,10 @@ SECTION_LAYOUT = {
   "tiles and resources" => [
     [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],
   ],
+  # Espionage: the rules first, the spy wonders after them.
+  "espionage" => [
+    [nil, ["SPIES AND DIPLOMATS"]],
+  ],
   "policies" => [
     [nil, %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM
              AUTOCRACY FREEDOM ORDER]],
