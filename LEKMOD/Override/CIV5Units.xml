@@ -32679,6 +32679,7 @@
 		<Delete Type="BELIEF_WALLS"/>
 		<Delete Type="BELIEF_PROMISED_LAND"/>
 		<Delete Type="BELIEF_GOD_FESTIVALS"/>
+		<Delete Type="BELIEF_DEFENDER_FAITH"/>
 		<Update>
 			<Where Type="BELIEF_SACRED_WATERS"/>
 			<Set RiverHappiness="0"/>

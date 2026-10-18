@@ -20,6 +20,12 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+DEFENDER OF THE FAITH (BELIEF_DEFENDER_FAITH)
+---------------------------------------------
+Tags: religion
+Subsection: Enhancer beliefs
+- Removed: the enhancer belief Defender of the Faith (+15% Combat Strength in friendly territory)
+
 CANADA (CIVILIZATION_CANADA)
 ----------------------------
 Tags: civs
