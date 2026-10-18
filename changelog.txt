@@ -87,7 +87,7 @@ Tags: ui
 SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
 ------------------------------------------------------
 Tags: units
-- Changed: the Self-Propelled Artillery has its own 3D model, a tracked heavy howitzer (it used the Rocket Artillery's)
+- Dev: art, not in the player notes (user, 2026-10-19): the Self-Propelled Artillery has its own 3D model, a tracked heavy howitzer (it used the Rocket Artillery's)
 - Dev: model "Ha-to artillery" by Herdyn (CC BY 4.0; credit on its Civilopedia page, TXT_KEY_LEKMOD_SPA_PEDIA), reduced to 3,280 triangles and one baked 256 texture, on the Modern Armor skeleton and animations (all on tank_bone_body: the gun does not traverse or recoil); ArtDefine ART_DEF_UNIT_LEKMOD_SPA with the Artillery's combat effects; sources and scripts in art_sources/units/self_propelled_artillery and art_sources/tools/3d
 
 SPEAR THROW (PROMOTION_ANTI_GUNPOWDER)
@@ -651,7 +651,7 @@ Tags: tiles and resources
 TECH TREE ICONS
 ---------------
 Tags: ui
-- Changed: clearer icons for embarking and trade route effects in the tech tree
+- Dev: art, not in the player notes (user, 2026-10-19): clearer icons for embarking and trade route effects in the tech tree
 
 MAIN MENU BACKGROUND
 --------------------
@@ -997,7 +997,7 @@ The bomber promotions "Siege I-III" are renamed "Air Siege I-III", so they are n
 FEARED ELEPHANT (PROMOTION_FEARED_ELEPHANT)
 -------------------------------------------
 Tags: promotions
-- Changed: new icon
+- Dev: art, not in the player notes (user, 2026-10-19): new icon
 
 DEMOGRAPHICS SCREEN
 -------------------
@@ -1153,7 +1153,7 @@ Tags: promotions, units, air
 GREAT GENERAL AND CITADEL (UNIT_GREAT_GENERAL, IMPROVEMENT_CITADEL)
 -------------------------------------------------------------------
 Tags: units, naval
-- Changed: the Great General always looks like the early-era General
+- Dev: art, not in the player notes (user, 2026-10-19): the Great General always looks like the early-era General
 - Added: Citadels yield 3 Culture
 - Added: Citadels exert zone of control on enemy ships: a ship moving from one tile next to an enemy Citadel to another loses its remaining movement, as next to an enemy city
 - DLL: LEKMOD_CITADEL_NAVAL_ZOC (CvUnitMovement::IsSlowedByZOC; any improvement with NearbyEnemyDamage counts, not when pillaged)
@@ -2026,7 +2026,7 @@ Tags: policies
 COMMERCE (POLICY_BRANCH_COMMERCE)
 ---------------------------------
 Tags: policies
-- Changed: new branch picture
+- Dev: art, not in the player notes (user, 2026-10-19): new branch picture
 - Changed: Silk Road: +50% range for trade routes to other civilizations and City-States
 - Changed: Protectionism requires Silk Road (was Mercantilism); Mercenary Army requires Protectionism; the tree is rearranged (Silk Road on top; Entrepreneurship, Mercantilism and Protectionism below it; Mercenary Army below Protectionism)
 - Changed: finisher:
@@ -2091,7 +2091,7 @@ POLICY TEXTS (POLICY_BRANCH_*)
 ------------------------------
 Tags: policies, ui
 - Changed: policy and ideology tooltips list their effects as bullet points, one effect per line
-- Fixed: some unit and building texts showed a gap where an icon was missing
+- Dev: some unit and building texts showed a gap where an icon was missing (icon/text fix, not in the player notes)
 
 RATIONALISM (POLICY_BRANCH_RATIONALISM)
 ---------------------------------------
@@ -2726,7 +2726,7 @@ LITHUANIA (CIVILIZATION_LITHUANIA)
 ----------------------------------
 Tags: civs, units
 - Removed: Pestininkas (unique Pikeman)
-- Added: Bajoras, a unique Knight with its own portrait: 21 Strength, needs 2 Horses and 1 Iron, starts with Woodsman and Ambush Formation I
+- Added: Bajoras, a unique Knight: 21 Strength, needs 2 Horses and 1 Iron, starts with Woodsman and Ambush Formation I
 - Dev: the Bajoras reuses the old Pestininkas row (now Knight class, Knight model), renamed UNIT_BAJORAS
 
 ISRAEL (CIVILIZATION_ISRAEL)
@@ -3256,7 +3256,7 @@ Tags: civs, units
   - +3 Culture and 15% faster border growth while no other Serai is within 5 tiles
   - no longer: Gold per population, airlift and air unit slot
 - Removed: Marathi (air-like unique Horseman)
-- Added: Barlas Cavalry, a unique Knight with its own portrait: 22 Strength, costs 90, needs 3 Horses and 3 Iron, starts with Blitz
+- Added: Barlas Cavalry, a unique Knight: 22 Strength, costs 90, needs 3 Horses and 3 Iron, starts with Blitz
 - Dev: rebuilt from the old Marathi row (Sipahi model), renamed UNIT_BARLAS_CAVALRY; first named Gurkani Guard
 - Dev: the specialist slot tooltips now include the courts' specialist yields (they were only in the city totals)
 - DLL: Building_LekmodLocalSpecialistYields, Traits.LekmodSecondCityBuilding (dummy 295, class 198), Traits.LekmodFirstCityBuilding (the capital court BUILDING_ULUG), Buildings.LekmodIsolatedPlotCultureCostMod/Range

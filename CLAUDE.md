@@ -29,6 +29,7 @@ This file records what has been **verified** about how this mod works, and how t
        - A new item gets `(NEW)` right after its name, `NAME (NEW) (TYPE_KEY)`, not "NEW." in the summary.
        - `Weight: minor` (listed under "Minor changes" at the end of the section) is used **only in Game Mechanics** (user, 2026-10-18: no major/minor split anywhere else). Otherwise cards are alphabetical unless `SECTION_LAYOUT` / `SUBSECTION_ORDER` in `website/build.rb` say otherwise.
        - One card per thing: fold small changes into the card they belong to (a policy into its branch, a civ's building into the civ card), and split batch-shaped cards ("Research Lab, Caravansary, Hotel").
+       - **Art changes are never in the player notes** (user, 2026-10-19): new icons, portraits, 3D models, pictures, looks go on `Dev:` lines (a card with only Dev lines is hidden; remove it from `SECTION_LAYOUT` then).
        - No developer words in titles or lines: file names, pixel sizes, "(FORMULA CHANGE)". Numbers are always quick-speed, as in the specs (the game data holds standard values; players only care about quick).
        - A fix that isn't confirmed in game is worded as an attempt ("An attempted fix, not yet confirmed…", "should now…"), e.g. the aircraft count.
        - Fixes to things that are new in the same release (e.g. their icons) never reached players: `Dev:` lines.
