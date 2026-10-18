@@ -581,13 +581,13 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 LUXURY YIELDS
 -------------
 Tags: tiles and resources
-- Changed: Sugar: unimproved 1 Food 1 Gold -> 2 Gold
 - Changed: Tea: plantation +2 Gold -> +1 Gold (unimproved stays 1 Gold 1 Production); Wine and Coconut: unimproved 2 Gold -> 1 Gold
 - Note: every luxury keeps at least 1 Gold unimproved
 - Changed: Truffles: camp gives +3 Gold instead of +1 Food
 - Changed: Ivory: camp gives +4 Gold instead of +1 Gold +1 Food
 - Changed: Coffee: plantation +2 Gold -> +1 Gold; Cotton and Olives: plantation no longer gives +1 Gold; Lapis, Amber and Jade: mine no longer gives +1 Gold
 - Note: Camps still get +1 Gold at Economics
+- Dev: 2026-10-18: Sugar back to its v35.4 yields (1 Food 1 Gold unimproved); its change line was removed from these notes (user)
 
 TECH TREE ICONS
 ---------------
