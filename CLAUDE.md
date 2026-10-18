@@ -33,6 +33,8 @@ This file records what has been **verified** about how this mod works, and how t
        - A fix that isn't confirmed in game is worded as an attempt ("An attempted fix, not yet confirmed…", "should now…"), e.g. the aircraft count.
        - Fixes to things that are new in the same release (e.g. their icons) never reached players: `Dev:` lines.
        - Filter tags group across sections, e.g. `wonders` on every wonder card wherever its section is.
+       - **Big reworks read rules first** (user, 2026-10-18): World Congress = new proposals, changed proposals, mechanics (sessions, Delegates), rest; Tourism = "The rules", then "Where Great Works and Tourism come from" (wonders last there), then the policy collection. The order and subsection headings live in `SECTION_LAYOUT` in `website/build.rb` (keyed by card name; the build warns about names that match no card). Small fixes of a rework (e.g. tile icons) go to Bugfix, not into the rework's section.
+       - **Collection cards** (`Collects: <sections>` line) duplicate lines from other cards into one overview, explicitly: each line starts with `{Source Card}` and is a word-for-word copy of a line on that card (`website/test/changelog_test.rb` fails otherwise). When you change a source line, update its copy. Existing: Tourism in Policies and Ideologies, Strategic Resources: Overview.
      - Tags belong to changelog items, not to commits. The website reads `changelog.txt`, and the git history is for developers.
      - Update an item's existing section rather than adding a duplicate. When a later change alters an item, rewrite its player lines to the new net state.
      - Rewritten to these rules on 2026-10-07; the earlier entries mixed in internal names and intermediate steps.

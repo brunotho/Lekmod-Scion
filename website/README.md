@@ -28,7 +28,8 @@ Tests (also check that `changelog.txt` stays readable for the site): `ruby websi
 - The site merges the same item (same `TYPE_KEY` in brackets, or the same name) across releases into one card, with one part per release, newest first.
 - The two dropdowns pick a range of releases (the oldest choice is LEKMOD v35.4, the fork point); only the parts inside the range are shown.
 - Sections are the item's first tag, in the order of the tag list in the changelog header. Further tags are filter buttons (several = any of them); the search box matches names and lines. The filter state is kept in the URL.
-- Inside a section, cards are alphabetical (policies follow the game's order, `GAME_ORDER` in `build.rb`); items with a `Weight: minor` line come last under "Minor changes". `(NEW)` after an item's name shows as a badge.
+- Inside a section, cards are alphabetical unless `SECTION_LAYOUT` in `build.rb` gives an order (and optional subsection headings): World Congress, Tourism, Policies, Tiles and Resources. Items with a `Weight: minor` line come last under "Minor changes". `(NEW)` after an item's name shows as a badge.
+- Collection cards (`Collects:` line) repeat lines from other cards for an overview; each line starts with `{Source Card}`, shown in grey. The tests check every copy against its source.
 - Developer lines (`Note`, `DLL`, `Dev`) and items with only such lines are never shown.
 
 ## Download buttons

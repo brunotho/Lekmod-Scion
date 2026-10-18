@@ -127,4 +127,21 @@ class RealChangelogTest < Minitest::Test
     end
     assert_empty problems, problems.join("\n")
   end
+
+  # Collection cards copy lines from other cards; a copy that no longer matches its source is out of date.
+  def test_collection_lines_match_their_source
+    doc = Changelog.parse(File.read(PATH, encoding: "UTF-8"))
+    problems = []
+    doc.releases.each do |rel|
+      rel.items.select(&:collects).each do |coll|
+        coll.player_lines.each do |line|
+          source, text = Changelog.split_source(line[:text])
+          src = source && rel.items.find { |it| it.name.casecmp?(source) && !it.collects }
+          ok = src&.player_lines&.any? { |l| l[:kind] == line[:kind] && l[:text] == text }
+          problems << "#{coll.name}: no matching line on #{source.inspect}: #{text[0, 80]}" unless ok
+        end
+      end
+    end
+    assert_empty problems, problems.join("\n")
+  end
 end

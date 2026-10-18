@@ -61,7 +61,7 @@
         card.classList.toggle("multi", visibleEntries > 1);
         if (!card.hidden) anyVisible = true;
       });
-      $$("#changelog .minor-changes").forEach(function (m) {
+      $$("#changelog .subsection").forEach(function (m) {
         m.hidden = $$(".card", m).every(function (c) { return c.hidden; });
       });
       $$("#changelog .group").forEach(function (g) {

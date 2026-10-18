@@ -1,8 +1,8 @@
 <button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Sections</button>
 <aside class="sidebar" id="sidebar">
   <ul>
-<% groups.each do |group, list| -%>
-    <li><a href="#<%= slug(group) %>" data-section-link="<%= slug(group) %>"><%= h tag_label(group) %> <span class="count" data-count-for="<%= slug(group) %>"><%= list.size %></span></a></li>
+<% groups.each do |group, blocks| -%>
+    <li><a href="#<%= slug(group) %>" data-section-link="<%= slug(group) %>"><%= h tag_label(group) %> <span class="count" data-count-for="<%= slug(group) %>"><%= blocks.sum { |bl| bl.cards.size } %></span></a></li>
 <% end -%>
   </ul>
 </aside>
@@ -37,17 +37,20 @@
     <button type="button" class="clear" id="clear" hidden>Clear filters</button>
   </form>
   <p class="empty-note" id="no-results" hidden>Nothing matches these filters.</p>
-<% groups.each do |group, list| -%>
+<% groups.each do |group, blocks| -%>
   <section class="group" id="<%= slug(group) %>" data-section="<%= slug(group) %>">
     <h2><%= h tag_label(group) %></h2>
-<% list.chunk_while { |a, b| a.minor == b.minor }.each do |part| -%>
-<% if part.first.minor -%>
-    <div class="minor-changes">
-    <h3 class="minor-heading">Minor changes</h3>
+<% blocks.each do |block| -%>
+    <div class="subsection<%= ' minor-changes' if block.minor %>">
+<% if block.heading -%>
+    <h3 class="subsection-heading"><%= h block.heading %></h3>
 <% end -%>
-<% part.each do |card| -%>
+<% block.cards.each do |card| -%>
     <article class="card<%= ' minor' if card.minor %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
       <h3><%= h card.name %><% if card.fresh %> <span class="new-badge">(NEW)</span><% end %></h3>
+<% if card.collects -%>
+      <p class="collected">Collected here for the overview: each line is a copy from the card named in grey, under <%= card.collects.split(",").map { |s| %(<a href="##{slug(s.strip)}">#{h tag_label(s.strip)}</a>) }.join(", ") %>.</p>
+<% end -%>
 <% card.entries.each do |entry| -%>
       <div class="entry" data-release="<%= entry.release.index %>">
         <p class="release-label"><%= h entry.release.title %></p>
@@ -57,7 +60,7 @@
 <% unless entry.lines.empty? -%>
         <ul class="lines">
 <% entry.lines.each do |line| -%>
-          <li class="<%= line[:kind].downcase %>"><span class="kind"><%= line[:kind] %></span> <%= GameText.line_html(line[:text]) %></li>
+          <li class="<%= line[:kind].downcase %>"><span class="kind"><%= line[:kind] %></span> <span><% source, text = Changelog.split_source(line[:text]) %><% if source %><span class="source"><%= h source %></span> <% end %><%= GameText.line_html(text) %></span></li>
 <% end -%>
         </ul>
 <% end -%>
@@ -65,9 +68,7 @@
 <% end -%>
     </article>
 <% end -%>
-<% if part.first.minor -%>
     </div>
-<% end -%>
 <% end -%>
   </section>
 <% end -%>

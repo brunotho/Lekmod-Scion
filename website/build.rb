@@ -74,15 +74,43 @@ doc = Changelog.parse(File.read(File.join(ROOT, "changelog.txt"), encoding: "UTF
 releases = doc.public_releases(include_unreleased: options[:preview])
 cards = doc.cards(include_unreleased: options[:preview])
 order = doc.tag_order
-# Sections in which cards follow the game's own order instead of the alphabet (matched by card name; others after).
-GAME_ORDER = {
-  "policies" => %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM
-                   AUTOCRACY FREEDOM ORDER],
+# Sections with a fixed card order (matched by card name), optionally split into headed subsections.
+# Cards not listed follow alphabetically ("Other" when the section has headings); "Weight: minor" cards always
+# come last under "Minor changes". The big reworks read rules first, wonders late (user, 2026-10-18).
+SECTION_LAYOUT = {
+  "world congress" => [
+    [nil, ["WORLD CONGRESS: NEW PROPOSALS", "WORLD CONGRESS PROPOSALS", "WORLD CONGRESS SESSIONS",
+           "WORLD CONGRESS DELEGATES"]],
+  ],
+  "tourism" => [
+    ["The rules", ["GREAT WORKS", "TOURISM AND INFLUENCE", "VICTORY: CAPITALS AND INFLUENCE"]],
+    ["Where Great Works and Tourism come from", ["GREAT WRITER, ARTIST AND MUSICIAN", "GREAT WORK BUILDINGS",
+                                                "NATIONAL EPIC", "HOTEL", "CULTURAL CITY-STATES: ONE GREAT WORK",
+                                                "TOURISM WONDERS"]],
+    ["Policies and ideologies", ["TOURISM IN POLICIES AND IDEOLOGIES"]],
+  ],
+  "tiles and resources" => [
+    [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],
+  ],
+  "policies" => [
+    [nil, %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM
+             AUTOCRACY FREEDOM ORDER]],
+  ],
 }.freeze
+Block = Struct.new(:heading, :minor, :cards)
 groups = cards.group_by(&:group).sort_by { |g, _| [order.index(g) || order.size, g.to_s] }
 groups = groups.map do |g, list|
-  game = GAME_ORDER.fetch(g, [])
-  [g, list.sort_by { |c| [c.minor ? 1 : 0, game.index(c.name) || game.size, c.name.downcase] }]
+  layout = SECTION_LAYOUT.fetch(g, [])
+  major, minor = list.partition { |c| !c.minor }
+  blocks = layout.map do |heading, names|
+    Block.new(heading, false, names.filter_map { |n| major.find { |c| c.name == n } })
+  end
+  listed = layout.flat_map(&:last)
+  (listed - list.map(&:name)).each { |n| warn "SECTION_LAYOUT: no card named #{n.inspect} in #{g}" }
+  rest = major.reject { |c| listed.include?(c.name) }.sort_by { |c| c.name.downcase }
+  blocks << Block.new(layout.any?(&:first) ? "Other" : nil, false, rest)
+  blocks << Block.new("Minor changes", true, minor.sort_by { |c| c.name.downcase })
+  [g, blocks.reject { |b| b.cards.empty? }]
 end
 all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }
 versions = [["0", "LEKMOD v35.4 (fork point)"]] + releases.map { |r| [r.index.to_s, r.title] }

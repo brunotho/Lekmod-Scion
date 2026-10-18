@@ -18,8 +18,9 @@ module Changelog
     end
   end
 
-  # weight: "major" (default) or "minor" (from a "Weight: minor" line); fresh: the title carries "(NEW)".
-  Item = Struct.new(:key, :name, :tags, :weight, :fresh, :summary, :lines, keyword_init: true) do
+  # weight: "major" (default) or "minor" (from a "Weight: minor" line); fresh: the title carries "(NEW)";
+  # collects: the section a collection card copies its lines from ("Collects: policies"), shown as a note.
+  Item = Struct.new(:key, :name, :tags, :weight, :fresh, :collects, :summary, :lines, keyword_init: true) do
     def group
       tags.first
     end
@@ -39,7 +40,7 @@ module Changelog
 
   Entry = Struct.new(:release, :summary, :lines, keyword_init: true)
 
-  Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :entries, keyword_init: true) do
+  Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :collects, :entries, keyword_init: true) do
     def search_text
       ([name] + entries.flat_map { |e| [e.summary] + e.lines.map { |l| l[:text] } }).join(" ").downcase
     end
@@ -57,6 +58,7 @@ module Changelog
           card.group = item.group
           card.minor = item.minor?
           card.fresh ||= item.fresh
+          card.collects = item.collects
           card.tags = (card.tags + item.tags).uniq
           card.entries.unshift(Entry.new(release: rel, summary: item.summary, lines: item.player_lines))
         end
@@ -82,6 +84,12 @@ module Changelog
     dev_note = type_key || inner =~ /\A[a-z ]+\z/
     return [title, title] unless dev_note
     [name, type_key ? inner : name]
+  end
+
+  # Lines of a collection card start with "{Source Card} ": the card the line is copied from.
+  def self.split_source(text)
+    m = /\A\{([^{}]+)\}\s*(.*)\z/.match(text.to_s)
+    m ? [m[1], m[2]] : [nil, text]
   end
 
   module_function
@@ -140,11 +148,12 @@ module Changelog
     i += 2
     tags = []
     weight = "major"
-    while i < lines.size && (m = /\A(Tags|Weight):(.*)\z/.match(lines[i]))
-      if m[1] == "Tags"
-        tags = m[2].split(",").map(&:strip).reject(&:empty?)
-      else
-        weight = m[2].strip.downcase
+    collects = nil
+    while i < lines.size && (m = /\A(Tags|Weight|Collects):(.*)\z/.match(lines[i]))
+      case m[1]
+      when "Tags" then tags = m[2].split(",").map(&:strip).reject(&:empty?)
+      when "Weight" then weight = m[2].strip.downcase
+      else collects = m[2].strip
       end
       i += 1
     end
@@ -161,6 +170,6 @@ module Changelog
       end
       i += 1
     end
-    [Item.new(key: key, name: name, tags: tags, weight: weight, fresh: fresh, summary: summary.join(" "), lines: entries), i]
+    [Item.new(key: key, name: name, tags: tags, weight: weight, fresh: fresh, collects: collects, summary: summary.join(" "), lines: entries), i]
   end
 end

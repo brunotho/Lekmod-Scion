@@ -1,14 +1,14 @@
 :root {
-  --bg: #f7f2e8;
-  --card: #fffdf8;
-  --text: #1b1b1b;
-  --muted: #6b6459;
-  --line: #e2d9c8;
-  --accent: #b5176f;
-  --added: #2f7d32;
-  --changed: #8a6d1d;
-  --removed: #b3261e;
-  --fixed: #1f5f99;
+  --bg: #f4f4f6;
+  --card: #ffffff;
+  --text: #17171c;
+  --muted: #62626e;
+  --line: #e1e1e7;
+  --accent: #d0145f;
+  --added: #18804a;
+  --changed: #2459c7;
+  --removed: #c42634;
+  --fixed: #0d7f86;
   --header-h: 56px;
 }
 
@@ -95,8 +95,11 @@ input[type="search"] { width: 100%; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
 .card h3 { margin: 0 0 6px; font-size: 0.95rem; letter-spacing: 0.04em; }
 .new-badge { color: var(--accent); font-size: 0.8rem; letter-spacing: 0.04em; }
-.minor-heading { margin: 24px 0 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.subsection-heading { margin: 24px 0 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .card.minor { padding: 10px 18px; margin: 8px 0; }
+.collected { margin: 0 0 8px; font-size: 0.85rem; font-style: italic; color: var(--muted); }
+.collected a { color: var(--accent); }
+.source { font-size: 0.78rem; font-weight: 600; color: var(--muted); margin-right: 2px; }
 .entry + .entry { border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 10px; }
 .release-label { display: none; margin: 0 0 4px; font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 .card.multi .release-label { display: block; }

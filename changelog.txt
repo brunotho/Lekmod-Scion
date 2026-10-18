@@ -458,6 +458,74 @@ Hovering an unimproved resource shows what improving it would give.
 - Added: Fishing Boats show the time for a Worker or Nelayan and the instant alternative, e.g. "4 turns to improve, 1 with a Rowboat"
 - Note: standard UI only (EUI uses its own tile tooltip)
 
+TOURISM IN POLICIES AND IDEOLOGIES (COLLECTION_TOURISM_POLICIES)
+----------------------------------------------------------------
+Tags: tourism, policies
+Collects: policies
+- Changed: {Piety} finisher: Holy Sites +1 Food, +3 Gold and +1 Tourism; a free Garden in your first 5 cities (was 4)
+- Changed: {Aesthetics} Flourishing of the Arts: now right below Cultural Centers (requires only Cultural Centers); +1 Culture and +1 Tourism from every World Wonder; starts a 6-turn Golden Age (was 8)
+- Removed: {Aesthetics} Flourishing of the Arts: Culture and Tourism from Great Works
+- Changed: {Aesthetics} Artistic Genius: Great Works +1 Science +1 Culture (was +3 Science); Amphitheaters, Opera Houses, Museums and Broadcast Towers +1 Culture on top of their +1 Science; Monuments +1 Science +1 Culture; Festivals +1 Science per era (was +2)
+- Changed: {Aesthetics} Cultural Exchange is now Literary Tradition: requires Flourishing of the Arts; a free Great Writer; +1 Culture from Trading Posts
+- Changed: {Aesthetics} Fine Arts: requires only Artistic Genius; free Scriptorium, Gallery and Conservatory in your first 5 cities (was all cities); +50% yields and Happiness from Great Works (Happiness rounded down per city; shown on each Great Work)
+- Removed: {Aesthetics} Fine Arts: +20% Tourism from culture buildings (moved to the finisher)
+- Changed: {Aesthetics} finisher: 3 free Archaeologists; +50% Production toward Archaeologists (was 100%); Antiquity Sites are revealed even before Archaeology; +20% Tourism in cities with a Monument, Amphitheater, Opera House, Museum or Broadcast Tower (each)
+- Added: {Autocracy} Cultural Dominion (tier 1): Great Writers, Artists and Musicians 25% faster; World Wonders in captured cities +10 Tourism
+- Added: {Autocracy} Doctrine of Subjugation (tier 1): each Courthouse built after adopting it creates 2 Great Works in your empty slots; +100% Gold from capturing cities (adds up with Songhai's bonus); resistance in captured cities lasts half as long
+- Added: {Autocracy} Cult of Personality: +2 Happiness from each Great Work
+- Added: {Freedom} Liberated Arts (tier 1): +2 Tourism and +1 Happiness from each Great Work; each Courthouse built after adopting it creates 2 Great Works in your empty slots (none if no slot is free)
+- Added: {Freedom} Fruits of Liberty (tier 1): +1 Gold, Culture and Science from each Great Work and each Great Person improvement (not Holy Sites)
+- Added: {Freedom} Soft Power (tier 2): Great Writers, Artists and Musicians 25% faster; +2 Gold from each Great Work; Festivals +2 Gold per era; new Great Musicians' Concert Tours 25% stronger
+- Added: {Freedom} Broadcast Hegemony (tier 3): +50% Culture, Tourism and Gold in the capital; -10% Production in every city; -3 Happiness per city
+- Added: {Freedom} Eminence (tier 3): a free Great Artist, Writer, Musician, Engineer, Merchant and General
+- Added: {Order} Monuments of the People (tier 1): Landmarks, Citadels and Manufactories +5 Culture +5 Tourism
+- Added: {Order} Socialist Heritage (tier 1): +10% Tourism in every city per allied City-State; Landmarks and Festivals give double yields
+- Dev: collection card: every line is a copy of a line on the card named in braces (checked by website/test/changelog_test.rb)
+
+STRATEGIC RESOURCES: OVERVIEW (COLLECTION_STRATEGIC_RESOURCES)
+-------------------------------------------------------------
+Tags: tiles and resources, units, buildings, policies
+Collects: tiles and resources, buildings, units, policies, ui
+Strategic resources come in bigger deposits and from new buildings and policies, and most units and buildings that use them need more.
+- Changed: {Strategic Resource Node Sizes} major / minor deposits: Horses 6 / 2 (was 4 / 2), Iron 9 / 3 (was 6 / 2), Coal 18 / 4 (was 7 / 3), Oil 18 / 8 (was 7 / 4), Aluminum 24 / 12 (was 8 / 3), Uranium 6 / 2 (was 2 / 1)
+- Added: {Defense Buildings} Castle (and unique replacements): provides 3 Horses, +3 Defense if the city is next to a Mountain, the city heals 20 HP per turn
+- Removed: {Caravansary} Caravansary and its unique replacements no longer provide 2 Horses
+- Added: {Ironworks} Ironworks (and Sweden's Falu Gruva): provides 8 Iron, worked Mountains +2 Production (not natural wonders)
+- Changed: {Industrial Buildings} Oil Refinery: no longer needs improved Oil nearby; provides 6 Oil and +3 Production and +3 Gold on the building (Oil tiles keep +3 Production and +3 Gold); cost 134 -> 260, 12 Gold maintenance (was 0); at most 5 per player
+- Changed: {Industrial Buildings} Recycling Center: at Plastics (was Ecology); provides 10 Aluminum (was 2); +5 Production on the building and on Aluminum tiles; 20 Gold maintenance (was 3)
+- Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
+- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: {Rationalism} finisher: a free Great Scientist; Academies on strategic resources provide double the resource
+- Changed: {Autocracy} Third Alternative (rebuilt): double Oil, Aluminum and Uranium; +50% Production toward Military Academies
+- Removed: {Autocracy} Third Alternative: double all strategic resources; Food and Science in the capital
+- Added: {Freedom} Technocratic Efficiency (tier 2): 1 less Aluminum for Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers; 1 less Uranium for Nuclear Submarines, Nuclear Missiles and Giant Death Robots
+- Added: {Order} Atomic Program (tier 2): 4 Uranium; Nuclear Missiles and Nuclear Plants need 1 less Uranium; +20% Production toward Nuclear Plants
+- Added: {Order} Five Year Offensive (tier 2): 15 Oil and 15 Aluminum; +100% Production toward Refineries and Recycling Centers; Siege units trained in a city with a Refinery start with Bombardment I and Cover I
+- Changed: {Policy Resources} strategic resources granted by policies (e.g. Oil) only count once you know the technology that reveals them; they are added when you research it
+- Changed: {Strategic Resource Requirements} Catapult, Trebuchet, Cannon, Artillery: 1 Iron (was none)
+- Changed: {Strategic Resource Requirements} Swordsman, Longswordsman, Frigate: 2 Iron (was 1)
+- Changed: {Strategic Resource Requirements} Chariot Archer, Horseman, Lancer: 2 Horses (was 1)
+- Changed: {Strategic Resource Requirements} Knight, Cavalry: 2 Horses and 1 Iron (was 1 Horse)
+- Changed: {Strategic Resource Requirements} Triplane 2 Oil (was 1); Aircraft Carrier, Submarine, Mechanized Infantry, Heavy Cruiser: 2 Oil (was none)
+- Changed: {Strategic Resource Requirements} Great War Bomber, Landship, Tank, Bomber, Fighter: 3 Oil (was 1)
+- Changed: {Strategic Resource Requirements} Battleship: 6 Iron and 6 Oil (was 1 Oil)
+- Changed: {Strategic Resource Requirements} Mobile SAM, Rocket Artillery, Jet Fighter: 1 Aluminum and 1 Oil (was none)
+- Changed: {Strategic Resource Requirements} Helicopter Gunship: 3 Aluminum (was 1)
+- Changed: {Strategic Resource Requirements} Modern Armor: 3 Oil (was 1 Aluminum)
+- Changed: {Strategic Resource Requirements} Missile Cruiser: 6 Aluminum and 6 Oil (was 1 Aluminum)
+- Changed: {Strategic Resource Requirements} Stealth Bomber: 6 Aluminum and 3 Oil (was 1 Aluminum)
+- Changed: {Strategic Resource Requirements} Nuclear Submarine: 1 Uranium (was none)
+- Changed: {Strategic Resource Requirements} Giant Death Robot: 3 Uranium and 6 Aluminum (was 1 Uranium)
+- Changed: {Strategic Resource Requirements} Nuclear Missile: 7 Uranium (was 2)
+- Changed: {Strategic Resource Requirements} unique units follow their base unit, except those that needed nothing while their base unit did (e.g. Mohawk Warrior, Maccabee, War Chariot, Japanese Zero): they still need nothing
+- Changed: {Building Costs and Maintenance} Factory: cost 241 -> 260 (Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
+- Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
+- Changed: {Industrial Buildings} Nuclear Plant: needs 2 Uranium (was 1)
+- Changed: {Industrial Buildings} Hydro Plant: needs 3 Aluminum (was 1), cost 241 -> 280; can be built on a river or one tile away from one; no Gold maintenance in a city on a river, 10 otherwise (was 3)
+- Changed: {Spaceship Parts} spaceship parts are military units: 80 Strength, 1 movement (was 2), limited sight, cannot melee attack, need 10 Aluminum (was 1)
+- Added: {Disable Strategic Resource Trading} lobby setting "Disable Strategic Resource Trading" (on by default)
+- Dev: collection card: every line is a copy of a line on the card named in braces (checked by website/test/changelog_test.rb)
+
 LUXURY YIELDS
 -------------
 Tags: tiles and resources
@@ -1409,7 +1477,7 @@ The culture buildings no longer need each other, and two of them are the source 
 - Added: Amphitheater and Opera House (and their unique replacements): Great Works in their city yield +1 Tourism each (+2 with both)
 - Changed: Museum (and its unique replacements): 1 Great Work slot (was 2); 4 Gold maintenance (was 1)
 - Removed: building requirements of the Amphitheater (Monument), Opera House (Amphitheater), Museum (Amphitheater) and Broadcast Tower (Opera House), including their unique replacements
-- Fixed: Cuba's Dance Hall now really gives +4 Culture when its Great Work slot is filled (the bonus was described but never applied)
+- Dev: Cuba's Dance Hall now really gives +4 Culture when its Great Work slot is filled (the bonus was described but never applied)
 - Changed: great work yields keep fractions until they are added up for the city
 - DLL: Buildings.GreatWorkYieldModifier, great work yields in hundredths, Building_GreatWorkYieldChanges rows without a GreatWorkClassType load now (LEKMOD_GREAT_WORK_YIELD_MODIFIER)
 
@@ -1643,8 +1711,7 @@ Weight: minor
 
 TOURISM ON TILES (ui)
 ---------------------
-Tags: tourism, ui, art
-Weight: minor
+Tags: bugfix, ui, art
 - Fixed: the improvement build tooltip showed a lone "+" for Tourism; it now shows the Tourism change
 - Changed: tiles with 5 or more Tourism show a large suitcase instead of a camera
 
