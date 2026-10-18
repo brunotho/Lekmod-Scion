@@ -1,0 +1,9 @@
+"Ha-to artillery" (https://skfb.ly/6TKwT) by Herdyn is licensed under Creative Commons Attribution
+(http://creativecommons.org/licenses/by/4.0/).
+
+Used as the 3D model of Lekmod's Self-Propelled Artillery (UNIT_SELF_PROPELLED_ARTILLERY).
+CC-BY 4.0: the credit above must ship with the mod (Civilopedia or credits text) and changes must be noted.
+Changes made for the game are listed in ../README.md.
+
+Downloaded 2026-10-19 (Sketchfab): ha-to-artillery.zip = OBJ + MTL + DDS textures; textures_png = the PNG copies
+that came with the download.
