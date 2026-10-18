@@ -108,9 +108,9 @@ Tags: promotions, movement
 FEAR AURA (NEW) (PROMOTION_FEAR_AURA)
 -------------------------------------
 Tags: promotions, combat
-Enemy units within 1 tile have -15% combat strength.
-- Note: not granted to any unit yet (planned: GDR, Danish Berserker, Gallic swordsman)
-- Dev: NearbyEnemyCombatMod=-15, NearbyEnemyCombatRange=1; no domain restriction
+Enemy units within 1 tile have -10% combat strength. Lost on upgrade.
+- Added: the Giant Death Robot, Denmark's Berserker and the Gauls' Noble Swordsman start with it
+- Dev: was -15% during development (never released); NearbyEnemyCombatMod=-10 (first -15), NearbyEnemyCombatRange=1; no domain restriction
 
 ZEALOT (NEW) (PROMOTION_ZEALOT)
 -------------------------------
@@ -2062,8 +2062,8 @@ GAULS (CIVILIZATION_GAUL)
 -------------------------
 Tags: civs, units, promotions
 - Added: all land units have Woodsman
-- Changed: Fear Aura is lost on upgrade (also for the Berserker and the Giant Death Robot)
-- Changed: Fear Aura: enemies within 1 tile -10% Combat Strength (was -15%)
+- Dev: Fear Aura is lost on upgrade (also for the Berserker and the Giant Death Robot); now on the Fear Aura card
+- Dev: Fear Aura: enemies within 1 tile -10% Combat Strength (was -15% during development)
 - Changed: Noble Swordsman (rebuilt) replaces the Swordsman instead of the Longswordsman: 15 Strength, costs 60, needs 3 Iron, starts with Fear Aura
 - Removed: Noble Swordsman: its Forest and attack bonuses
 - Dev: a combat preview line that wraps to two lines (e.g. Fear Aura with its source) no longer overlaps the next line
