@@ -772,13 +772,14 @@ Weight: minor
 TEMPLE AND SHRINE (BUILDING_TEMPLE, BUILDING_SHRINE)
 ----------------------------------------------------
 Tags: buildings, religion
-Weight: minor
+Subsection: Buildings
 - Changed: Temple: cost 50 -> 67; Shrine: cost 20 -> 26 (the v34.11 costs)
 - Note: unique Temples and Shrines keep their costs
 
 TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
 -------------------------------------------
 Tags: buildings, wonders
+Subsection: Wonders and projects
 - Changed: needs Honor (the Statue of Zeus no longer does)
 - Changed: +3 Production, +3 Gold, +3 Culture (was +1 Culture) and +1 Great Engineer point
 - Changed: +15% Production and +15 XP for ranged units now also covers naval ranged units and submarines
@@ -1191,6 +1192,7 @@ New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, t
 DEFENSE BUILDINGS (BUILDING_WALLS, BUILDING_CASTLE, BUILDING_ARSENAL, BUILDING_MILITARY_BASE)
 ---------------------------------------------------------------------------------------------
 Tags: buildings, combat
+Subsection: Buildings
 Each defense building now has its own role, and its tooltip shows the city's total Hit Points and healing.
 - Changed: Walls (and unique replacements): Defense +1 lower (Walls 5 -> 4; Walls of Babylon and Murus Gallicus 6 -> 5)
 - Added: Walls (and unique replacements): +1 Defense if the city is on a Hill, +1 Defense if the city is next to a Mountain
@@ -1218,6 +1220,7 @@ Tags: game mechanics, combat
 BUILDING COSTS AND MAINTENANCE (BUILDING_COURTHOUSE, BUILDING_BOMB_SHELTER, BUILDING_STADIUM, BUILDING_FACTORY)
 ---------------------------------------------------------------------------------------------------------------
 Tags: buildings
+Subsection: Buildings
 - Changed: Courthouse (and unique replacements): 2 Gold maintenance (Courthouse was 4)
 - Changed: Bomb Shelter: 5 Gold maintenance (was 1)
 - Added: Bomb Shelter: military units (planes too) in the city take only 50 damage from a nuclear attack
@@ -1231,6 +1234,7 @@ Tags: buildings
 RESOURCE BUILDINGS (BUILDING_GROCER, BUILDING_BREWERY, BUILDING_GEMCUTTER, BUILDING_TEXTILE, BUILDING_MINT, BUILDING_FORGE, BUILDING_CENSER)
 --------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings
+Subsection: Buildings
 Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains workable.
 - Changed: Grocer: +2 Food on the building (was 1), no Gold maintenance (was 1), Salt gives +1 Food
 - Removed: Brewery: no longer improves Salt (and Salt no longer unlocks it)
@@ -1246,13 +1250,13 @@ Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains work
 RESEARCH LAB (BUILDING_LABORATORY)
 ----------------------------------
 Tags: buildings
-Weight: minor
+Subsection: Buildings
 - Added: Snow +3 Science
 
 CARAVANSARY (BUILDING_CARAVANSARY)
 ----------------------------------
 Tags: buildings
-Weight: minor
+Subsection: Buildings
 - Removed: Caravansary and its unique replacements no longer provide 2 Horses
 
 HOTEL (BUILDING_HOTEL)
@@ -1263,6 +1267,7 @@ Tags: tourism, buildings
 LIGHTHOUSE (BUILDING_LIGHTHOUSE)
 --------------------------------
 Tags: buildings, naval
+Subsection: Buildings
 Redesigned: the Lighthouse no longer boosts every water tile.
 - Removed: +1 Food on Coast and Ocean, +1 Food on the Great Barrier Reef, +1 Production on sea resources
 - Changed: Fish still give +1 Food
@@ -1275,6 +1280,7 @@ Redesigned: the Lighthouse no longer boosts every water tile.
 AIRPORT (BUILDING_AIRPORT)
 --------------------------
 Tags: buildings, air
+Subsection: Buildings
 - Added: a plane that rebases from a city with an Airport to another city with an Airport can still attack or act that turn; it can rebase only once per turn
 - Changed: cost 268 -> 321, 15 Gold maintenance (was 5)
 - DLL: Buildings.AirportRebase (LEKMOD_AIRPORT_REBASE); new saved unit field, old saves are incompatible
@@ -1282,6 +1288,7 @@ Tags: buildings, air
 INDUSTRIAL BUILDINGS (BUILDING_REFINERY, BUILDING_RECYCLING_CENTER, BUILDING_SPACESHIP_FACTORY, BUILDING_NUCLEAR_PLANT, BUILDING_HYDRO_PLANT)
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings
+Subsection: Buildings
 Strategic resource buildings are stronger, rarer and more expensive.
 - Changed: Oil Refinery: no longer needs improved Oil nearby; provides 6 Oil and +3 Production and +3 Gold on the building (Oil tiles keep +3 Production and +3 Gold); cost 134 -> 260, 12 Gold maintenance (was 0); at most 5 per player
 - Changed: Recycling Center: at Plastics (was Ecology); provides 10 Aluminum (was 2); +5 Production on the building and on Aluminum tiles; 20 Gold maintenance (was 3)
@@ -1294,19 +1301,20 @@ Strategic resource buildings are stronger, rarer and more expensive.
 APOLLO PROGRAM (PROJECT_APOLLO_PROGRAM)
 ---------------------------------------
 Tags: buildings
-Weight: minor
+Subsection: Wonders and projects
 - Added: the city that completes the Apollo Program gets +20% Science
 - DLL: Projects.FreeBuildingClass (LEKMOD_PROJECT_FREE_BUILDING) gives the hidden building BUILDING_LEKMOD_APOLLO (ID 270, class 177)
 
 IRONWORKS (BUILDING_IRONWORKS)
 ------------------------------
 Tags: buildings
-Weight: minor
+Subsection: Wonders and projects
 - Added: Ironworks (and Sweden's Falu Gruva): provides 8 Iron, worked Mountains +2 Production (not natural wonders)
 
 URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
 ----------------------------------------------------------------
 Tags: buildings, wonders
+Subsection: Wonders and projects
 - Added: Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
@@ -1714,6 +1722,7 @@ Tags: tourism, buildings, wonders
 WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, BUILDING_CHICHEN_ITZA, BUILDING_ALTHING, BUILDING_ARSENAL_OF_VENICE)
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings, wonders
+Subsection: Wonders and projects
 - Changed: Hubble Space Telescope: costs 1050 (was 837); 5 Scientist points (was 3); no Science and no free Recycling Center; keeps +100% Production toward Spaceship Parts; Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
 - Changed: Great Lighthouse: naval units trained in the city start with +15 XP; when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one. Removed: +1 movement and +1 sight for naval units, the free Quinquereme. Keeps the free Lighthouse and +1 Gold on water tiles
 - Changed: Angkor Wat (rebuilt): 1 Culture, 1 Engineer point, a free Garden, farms with fresh water worked by the city yield +1 Faith, 2 Great Work slots that come filled. Removed: the free University, 5 Culture and 5 Science, the Scientist point
@@ -1727,6 +1736,7 @@ Tags: buildings, wonders
 TOWER OF BELEM (BUILDING_TOWER_OF_BELEM)
 ----------------------------------------
 Tags: buildings, naval, wonders
+Subsection: Wonders and projects
 Rebuilt as a launch pad for overseas settling.
 - Changed: costs 400 (was 300); must be built on the coast; 1 Merchant point; +5 City Strength
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
@@ -1746,6 +1756,7 @@ Holding a civ's capital and being culturally Influential over it now stand in fo
 CANAL PROJECT (BUILDING_PANAMA)
 -------------------------------
 Tags: buildings, naval, wonders
+Subsection: Wonders and projects
 The Panama Canal is now the Canal Project, a national wonder. Its Great Engineers dig canals that ships can sail through.
 - Changed: national wonder (was a world wonder); requires Electronics (was Railroad); costs the same as Cristo Redentor; no longer has to be on the coast
 - Added: +33% to all yields you get from trade routes that start in its city (internal and external)
@@ -3146,7 +3157,7 @@ Tags: ui
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 --------------------------------------------------------------
 Tags: buildings, civs, ui
-Weight: minor
+Subsection: Buildings
 Every unique building's tooltip now says what it shares with the building it replaces and what it adds.
 - Changed: all unique building tooltips say what the building replaces, what it shares with it and what it adds
 - Fixed: several unique building tooltips missed or misstated effects

@@ -111,6 +111,7 @@ SECTION_LAYOUT = {
 # Sections whose cards name their own block with a "Subsection:" line, in this order (alphabetical inside).
 SUBSECTION_ORDER = {
   "religion" => ["Pantheons", "Founder beliefs", "Follower beliefs", "Enhancer beliefs", "Reformation beliefs"],
+  "buildings" => ["Buildings", "Wonders and projects"],
 }.freeze
 Block = Struct.new(:heading, :minor, :cards)
 groups = cards.group_by(&:group).sort_by { |g, _| [order.index(g) || order.size, g.to_s] }
