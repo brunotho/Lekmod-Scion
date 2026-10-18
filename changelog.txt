@@ -38,6 +38,12 @@ Tags: civs, tourism
 - Changed: Great Works yield +2 Faith (was +3)
 - Dev: Trait_GreatWorkYieldChanges TRAIT_GAELIC 3 -> 2; UA text updated
 
+PRUSSIA (CIVILIZATION_PRUSSIA)
+------------------------------
+Tags: civs, buildings
+- Changed: Prussian Factory needs no Coal or Iron (was 2 Coal and 1 Iron)
+- Dev: Building_ResourceQuantityRequirements rows of BUILDING_PRUSSIAN_FACTORY removed; help text updated
+
 KOREA (CIVILIZATION_KOREA)
 --------------------------
 Tags: civs, buildings

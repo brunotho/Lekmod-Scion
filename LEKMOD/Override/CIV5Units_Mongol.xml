@@ -19073,7 +19073,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_PRUSSIAN_FACTORY_HELP"> 
-			<Text>Replaces the Factory. Costs 25% less.[NEWLINE][NEWLINE]Like the Factory:[NEWLINE]+4 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production.[NEWLINE]2 Engineer specialist slots.[NEWLINE][ICON_RES_RUBBER] Rubber worked by this city yields +2 [ICON_GOLD] Gold.[NEWLINE]Needs 2 [ICON_RES_COAL] Coal and 1 [ICON_RES_IRON] Iron.[NEWLINE]City must have a Workshop.</Text>
+			<Text>Replaces the Factory. Costs 25% less and needs no [ICON_RES_COAL] Coal or [ICON_RES_IRON] Iron.[NEWLINE][NEWLINE]Like the Factory:[NEWLINE]+4 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production.[NEWLINE]2 Engineer specialist slots.[NEWLINE][ICON_RES_RUBBER] Rubber worked by this city yields +2 [ICON_GOLD] Gold.[NEWLINE]City must have a Workshop.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FACTORY"> 
 			<Text>

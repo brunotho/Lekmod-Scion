@@ -49091,16 +49091,6 @@
 		</Row>
 		<Delete BuildingType="BUILDING_COOPERATIVE"/>
 		<Row>
-			<BuildingType>BUILDING_PRUSSIAN_FACTORY</BuildingType>
-			<ResourceType>RESOURCE_COAL</ResourceType>
-			<Cost>2</Cost>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_PRUSSIAN_FACTORY</BuildingType>
-			<ResourceType>RESOURCE_IRON</ResourceType>
-			<Cost>1</Cost>
-		</Row>
-		<Row>
 			<BuildingType>BUILDING_COOPERATIVE</BuildingType>
 			<ResourceType>RESOURCE_COAL</ResourceType>
 			<Cost>2</Cost>
