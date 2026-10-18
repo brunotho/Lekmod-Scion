@@ -16,6 +16,23 @@ Scripts here:
   compiling and running it was blocked by the session's safety check on 2026-10-19; the same two steps can be
   done in Nexus Buddy's window.
 
-Pipeline: source model -> `spa_prepare.py` -> base unit skeleton (Nexus Buddy: open the base `.gr2`, Export to NB2;
-Blender: import NB2) -> parent the mesh to that armature, vertex groups named after its bones -> Export BR2 ->
-Nexus Buddy: open the base `.gr2`, Overwrite Meshes from BR2, Save As -> `.fxsxml` + textures + ArtDefine rows.
+Pipeline that worked (SPA, 2026-10-19; Nexus Buddy steps are clicks in its window):
+1. `spa_prepare.py`: source model -> one mesh, ~3,000 triangles, one baked texture.
+2. Base unit skeleton: extract `<unit>.gr2` and `unitmodels_stringdatabase.gsd` from `UnitModels.fpk`. Nexus Buddy:
+   Additional Actions -> **Load String Database** (the .gsd; without it bone names are empty and Export to NB2
+   crashes with a NullReference) -> Open the `.gr2` -> Select Model tab: tick the model -> Export to NB2 (Current Model).
+   Blender: `inspect_nb2.py` imports it (bone positions, mesh size/facing) and saves a reference .blend.
+3. `spa_build_br2.py`: mesh onto that armature (facing, length, ground level of the base mesh), vertex groups named
+   after bones (every mesh needs 2+ bones), Export BR2. **Use `matrix_world * v.co`**: Blender 2.79's OBJ import
+   keeps its Y-up turn as object rotation (raw `v.co` made the first SPA lie on its side).
+4. Nexus Buddy: Open the `.gr2` -> tick the model -> "Use Unit Template" -> Overwrite Meshes From BR2 (Current Model)
+   (saves into the open file). The NB2 export after that crashes (index out of range); ignore it.
+5. Nexus Buddy Edit Model tab: the new mesh has **no material** (invisible in game, white in the viewer): set its
+   material column to the base material (`Game_ModernArmor`) and that material's BaseTextureMap / SREFMap to our
+   `.dds` names (typing the file name works) -> Save. Later mesh overwrites of the same file only need the material
+   column again.
+6. Mod: `.gr2` + `.fxsxml` (the base unit's, Mesh and textures renamed) + `.dds` anywhere under `LEKMOD/Art`;
+   ArtDefine_UnitInfos / UnitInfoMemberInfos / UnitMemberInfos (Model = the .fxsxml name) / UnitMemberCombats /
+   UnitMemberCombatWeapons / StrategicView rows at the end of CIV5Units.xml; the unit's UnitArtInfo.
+   Diagnosis trick: point the .fxsxml at the base mesh (e.g. ModernArmor.gr2): if that shows, only our .gr2 is wrong.
+Textures: 256 DXT5 `_DIFF` (alpha 255 = no player colour) and `_SREF` (darkened colours, alpha ~30), `texconv -f BC3_UNORM -m 0`.
