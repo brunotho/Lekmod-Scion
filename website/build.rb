@@ -16,6 +16,7 @@ require_relative "lib/civs"
 require_relative "lib/game_text"
 require_relative "lib/loose_list"
 require_relative "lib/policy_trees"
+require_relative "lib/wonder_tiers"
 
 ROOT = File.expand_path("..", __dir__)
 SITE = File.expand_path(__dir__)
@@ -126,8 +127,10 @@ doc = Changelog.parse(File.read(File.join(ROOT, "changelog.txt"), encoding: "UTF
 releases = doc.public_releases(include_unreleased: options[:preview])
 cards = doc.cards(include_unreleased: options[:preview])
 order = doc.tag_order
+wonder_tiers = WonderTiers.load(File.join(ROOT, "LEKMOD", "Override"))
 # Sections with a fixed card order (matched by card name), optionally split into headed subsections.
-# Cards not listed follow alphabetically ("Other" when the section has headings); "Weight: minor" cards always
+# Cards not listed follow alphabetically, wonders after the other cards in the order they become available
+# (WonderTiers; "Other" when the section has headings); "Weight: minor" cards always
 # come last under "Minor changes". The big reworks read rules first, wonders late (user, 2026-10-18).
 SECTION_LAYOUT = {
   "world congress" => [
@@ -176,7 +179,7 @@ groups = groups.map do |g, list|
   if SUBSECTION_ORDER.key?(g)
     (list.map(&:subsection).compact.uniq - SUBSECTION_ORDER[g]).each { |s| warn "unknown subsection #{s.inspect} in #{g}" }
     layout = SUBSECTION_ORDER[g].map do |heading|
-      [heading, list.select { |c| c.subsection == heading }.sort_by { |c| c.name.downcase }.map(&:name)]
+      [heading, list.select { |c| c.subsection == heading }.sort_by { |c| WonderTiers.sort_key(c, wonder_tiers) }.map(&:name)]
     end
   end
   # A listed card stays in its block even when minor (after the block's major cards).
@@ -186,8 +189,8 @@ groups = groups.map do |g, list|
   listed = layout.flat_map(&:last)
   (listed - list.map(&:name)).each { |n| warn "SECTION_LAYOUT: no card named #{n.inspect} in #{g}" }
   major, minor = list.reject { |c| listed.include?(c.name) }.partition { |c| !c.minor }
-  blocks << Block.new(layout.any?(&:first) ? "Other" : nil, false, major.sort_by { |c| c.name.downcase })
-  blocks << Block.new("Minor changes", true, minor.sort_by { |c| c.name.downcase })
+  blocks << Block.new(layout.any?(&:first) ? "Other" : nil, false, major.sort_by { |c| WonderTiers.sort_key(c, wonder_tiers) })
+  blocks << Block.new("Minor changes", true, minor.sort_by { |c| WonderTiers.sort_key(c, wonder_tiers) })
   [g, blocks.reject { |b| b.cards.empty? }]
 end
 all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }

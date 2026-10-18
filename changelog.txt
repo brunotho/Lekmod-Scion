@@ -248,7 +248,7 @@ BARBARIAN ENCAMPMENTS (BarbCampGold)
 ------------------------------------
 Tags: game mechanics
 Weight: minor
-- Changed: gold from clearing an encampment 16 -> 40 (the same on every difficulty)
+- Changed: gold from clearing an encampment 16 -> 40
 - Dev: HandicapInfos BarbCampGold 60 on all difficulties (x67% quick speed = 40)
 
 MARSH CLEARING (FEATURE_MARSH)
@@ -268,7 +268,7 @@ NAVAL ZONE OF CONTROL (ZOC)
 ---------------------------
 Tags: game mechanics, naval, movement
 Weight: minor
-- Changed: enemy ships exert no zone of control on land units moving on land (including pontoons and shallows)
+- Changed: enemy ships exert no zone of control on land units moving on land (including pontoons)
 - Note: embarked units moving on open water are still slowed by enemy ships
 - Dev: LEKMOD_NO_NAVAL_ZOC_VS_LAND in CvUnitMovement::IsSlowedByZOC (destination plot decides)
 
@@ -471,8 +471,7 @@ An attempted fix, not yet confirmed in multiplayer games. Please report it if a 
 TECH TREE: BUILDINGS WITH TWO TECHS
 -----------------------------------
 Tags: bugfix, ui
-A building that either of two techs unlocks is shown under both in the tech tree.
-- Fixed: Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing; it sits with the other buildings, before the wonders
+- Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
 UNIT FLAGS: ATTACKED THIS TURN
@@ -635,7 +634,7 @@ Tags: ui
 MAIN MENU BACKGROUND
 --------------------
 Tags: ui, art
-- Changed: a new main menu background
+- Dev: not on the website (user, 2026-10-18). A new main menu background
 - Dev: replaces the earlier random rotation of 12 paintings and drops an unused 12 MB texture (about 33 MB less to download)
 - Dev: 2026-10-17: removed two more unused old menu backgrounds (oracle/pyramids, about 12 MB), the stale debug-symbol file of the upstream DLL (23 MB) and the base-game menu picture that was loaded and immediately replaced; the old paintings are gone from art_sources too
 
@@ -725,7 +724,7 @@ Tags: civs, ui
 - Changed: your capital keeps its name; every later city takes the next name from a shuffled list that differs each game
 - Changed: America, Russia, Aksum and the Timurids also keep their second city name
 - Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
-- Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venezuela) no longer show up as raw text keys
+- Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venice) no longer show up as raw text keys
 - Dev: LEKMOD_RANDOMIZE_CITY_NAMES in CvPlayer::getCivilizationCityName; deterministic shuffle seeded by player ID and starting plot (no synced RNG, so it is safe wherever the function is called)
 
 PROMOTION TOOLTIPS (UPGRADES)
@@ -1139,7 +1138,7 @@ Tags: units, naval
 GREAT ADMIRAL AND DRYDOCK (UNIT_GREAT_ADMIRAL, IMPROVEMENT_DOCK)
 ----------------------------------------------------------------
 Tags: units, naval
-Drydocks work like naval Citadels; Repair Fleet heals less.
+Drydocks claim the tiles around them like Citadels, but deal no damage; Repair Fleet heals less.
 - Added: Drydocks claim all surrounding tiles, like Citadels
 - Added: Drydocks can be built directly next to your territory, not only inside it
 - Added: units in a Drydock get +25% defense
@@ -1166,7 +1165,7 @@ CARAVAN AND CARGO SHIP (UNIT_CARAVAN, UNIT_CARGO_SHIP)
 ------------------------------------------------------
 Tags: diplomacy and trade, units, naval
 Caravans and Cargo Ships are now equal; only where they travel differs.
-- Changed: Cargo Ship costs 50 Production like the Caravan (was 67); Venezuela's Cargo Ship 33 like its Caravan (was 44)
+- Changed: Cargo Ship costs 50 Production like the Caravan (was 67); Venice's Cargo Ship 33 like its Caravan (was 44)
 - Changed: every trade route that starts in a coastal city yields 50% more Gold, Food or Production, whether by Caravan or Cargo Ship (sea routes used to yield 100% more, land routes nothing)
 - Changed: plundering a Cargo Ship gives 100 Gold like a Caravan (was 200)
 - Dev: the trade route tooltip shows this bonus as "Coastal city"
@@ -1254,7 +1253,7 @@ Tags: units, civs, policies
 - Removed: its extra sight
 - Added: disembarking costs only 1 movement (Amphibious II)
 - Changed: obsolete with Railroad, upgrades to the Vanguard Corps
-- Added: Spain, Portugal, the Netherlands, France and Belgium can build it already with Civil Service (everyone else still needs the Exploration opener)
+- Added: Spain, Portugal, the Netherlands, France and Belgium can build it already with Civil Service (everyone else still needs the Expansionism opener)
 - Note: like every city-founding unit it costs its own value plus a fixed amount (about 71 on quick); the user chose shown costs: the Conquistador shows about 71 (spec 70), the Vanguard Corps 290 (= Infantry)
 - DLL: Units.PolicyAlternateTech (LEKMOD_POLICY_ALTERNATE_TECH, CvPlayer::canTrain); shared copy is unit ID 272
 
@@ -1319,7 +1318,7 @@ New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, t
 - Added: Minimum Range (cannot attack adjacent targets): Battleship, Missile Cruiser
 - Added: Docked (cannot attack from inside a city): Galley, Galleass, Frigate, Ship of the Line, Dreadnought, Battleship, Missile Cruiser
 - Added: Swift Transport for Quinquereme, Caravel, Privateer, Frigate, Ship of the Line, Ironclad, Dreadnought, Destroyer, Battleship, Heavy Cruiser, Missile Cruiser
-- Removed: England no longer has the Ship of the Line as a unique unit (civ changes come later)
+- Removed: England no longer has the Ship of the Line as a unique unit
 - Note: unique replacements of the named classes get the same promotions; the Quinquereme's and Dreadnought's obsolete techs (Navigation, Electronics) were not in the spec
 - DLL: UnitPromotions.AdjacentRangedAttackMod / NoAdjacentRangedAttack / NoAttackFromCity (LEKMOD_NAVAL_PENALTY_PROMOTIONS); promotion IDs 368-371
 - Dev: the Ship of the Line had Blind Spot, Docked and Swift Transport twice (duplicate rows); the doubles were removed
@@ -1519,7 +1518,7 @@ KIN FORGED IN BLOOD (NEW) (BELIEF_LEKMOD_KIN_BLOOD)
 ---------------------------------------------------
 Tags: religion
 Subsection: Pantheons
-Clearing a barbarian encampment gives +1 Population in the capital and 30 Faith (shown over the camp); new military units get Zealot while the pantheon is in your capital (units keep it afterwards).
+Clearing a barbarian encampment gives +1 Population in the capital and 30 Faith; new military units get Zealot while the pantheon is in your capital.
 
 MANGROVE MYSTERIES (NEW) (BELIEF_LEKMOD_MANGROVE)
 -------------------------------------------------
@@ -1627,7 +1626,7 @@ THE TIDE'S CALLING (NEW) (BELIEF_LEKMOD_TIDES_CALLING)
 ------------------------------------------------------
 Tags: religion
 Subsection: Pantheons
-A coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (Brunei: Nelayan).
+A coastal capital gets +1 Faith and +1 Gold on its tile per inland city; +1 Faith and +1 Gold from Stone and Wheat; founding it gives a free Rowboat (or a Nelayan, for the civs that build it instead).
 
 CHARTER OF SETTLEMENT (NEW) (BELIEF_LEKMOD_CHARTER)
 ---------------------------------------------------
@@ -1837,28 +1836,28 @@ Tags: tourism, buildings, wonders
 - Changed: Great Library:
   - no Science of its own
   - each Great Work in it gives +3 Science and +3 Tourism (2 slots)
-- Changed: Great Mosque of Djenne:
-  - no Culture or Faith
-  - 2 Happiness (was 3)
-  - a free Mosque in the city
-  - 3 slots, 1 comes filled
-  - all filled: +10 Tourism
-- Changed: Hagia Sophia:
-  - no free Temple and no Faith
-  - 3 slots, 1 comes filled
-  - all filled: +10 Faith
 - Changed: Statue of Zeus (reworked):
   - no longer needs Honor
   - +10 resting Influence with city-states within 8 tiles
   - enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
   - 1 slot that comes filled
   - no longer: its yields, Engineer points, +10% military production and the +15% against cities for all units
+- Changed: Hanging Gardens: 2 slots, both filled: +2 Food
 - Changed: Colossus:
   - costs 250 (like the Oracle, was 185)
   - 1 slot, filled: +4 Gold
   - when built, +30 Influence with the closest coastal city-state you are at peace with
-- Changed: Hanging Gardens: 2 slots, both filled: +2 Food
+- Changed: Great Mosque of Djenne:
+  - no Culture or Faith
+  - 2 Happiness (was 3)
+  - a free Mosque in the city
+  - 3 slots, 1 comes filled
+  - all filled: +10 Tourism
 - Changed: Parthenon: 2 slots, 1 comes filled; both filled: +3 Culture
+- Changed: Hagia Sophia:
+  - no free Temple and no Faith
+  - 3 slots, 1 comes filled
+  - all filled: +10 Faith
 - Changed: Notre Dame:
   - no Faith and no Artist points
   - 2 slots, 1 comes filled
@@ -1867,26 +1866,26 @@ Tags: tourism, buildings, wonders
   - no Culture and no Writer points
   - 2 slots, 1 comes filled
   - each Great Work in it gives +1 Culture and +1 Tourism per era (Renaissance Era 4)
+- Changed: Sistine Chapel:
+  - +20% Culture in all cities (was 25%)
+  - Great Works in it yield double
+- Changed: Red Fort:
+  - no Tourism from Flight
+  - 3 slots, each Great Work in it gives +6 Tourism
 - Changed: Broadway (reworked):
   - a free Great Musician
   - 3 slots, 1 comes filled
   - each Great Work in it gives +3 Tourism per era (Modern Era 18)
   - no longer: its Culture
-- Changed: Red Fort:
-  - no Tourism from Flight
-  - 3 slots, each Great Work in it gives +6 Tourism
-- Changed: CN Tower:
-  - 3 slots
-  - all filled: +50% Tourism toward civs with territory within 10 tiles of the city
 - Changed: Eiffel Tower:
   - +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
   - no Merchant points
 - Changed: Cristo Redentor:
   - 3 slots
   - all filled: +40 Faith
-- Changed: Sistine Chapel:
-  - +20% Culture in all cities (was 25%)
-  - Great Works in it yield double
+- Changed: CN Tower:
+  - 3 slots
+  - all filled: +50% Tourism toward civs with territory within 10 tiles of the city
 - Dev: the combat preview calls every enemy aura "Fear Aura" with its source in brackets, e.g. "Fear Aura (Zeus)" (was "Nearby Reverse Great General"); auras don't stack, only the strongest counts
 - Dev: in the Great Works screen, hovering a building or wonder icon shows what Great Works inside it do
 - Note: Petra had no Tourism to remove. Colossus trade texts were already right (+2 Gold to you, +1 to the route owner)
@@ -1906,17 +1905,16 @@ WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 Tags: buildings, wonders
 Subsection: Wonders and projects
-- Changed: Hubble Space Telescope:
-  - costs 1050 (was 837)
-  - 5 Scientist points (was 3)
-  - no Science and no free Recycling Center
-  - keeps +100% Production toward Spaceship Parts
-  - Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
 - Changed: Great Lighthouse:
   - naval units trained in the city start with +15 XP
   - when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one
   - no longer: +1 movement and +1 sight for naval units, the free Quinquereme
   - keeps the free Lighthouse and +1 Gold on water tiles
+- Changed: Althing: its +1 Production and +1 Culture also apply to snow tiles
+- Changed: Chichen Itza:
+  - its city loses 1 Population whenever you enter a Golden Age
+  - 1 Scientist point instead of 1 Engineer point
+  - no longer: its 4 Happiness
 - Changed: Angkor Wat (reworked):
   - 1 Culture
   - 1 Engineer point
@@ -1924,11 +1922,12 @@ Subsection: Wonders and projects
   - farms with fresh water worked by the city yield +1 Faith
   - 2 Great Work slots that come filled
   - no longer: the free University, 5 Culture and 5 Science, the Scientist point
-- Changed: Chichen Itza:
-  - its city loses 1 Population whenever you enter a Golden Age
-  - 1 Scientist point instead of 1 Engineer point
-  - no longer: its 4 Happiness
-- Changed: Althing: its +1 Production and +1 Culture also apply to snow tiles
+- Changed: Hubble Space Telescope:
+  - costs 1050 (was 837)
+  - 5 Scientist points (was 3)
+  - no Science and no free Recycling Center
+  - keeps +100% Production toward Spaceship Parts
+  - Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
 - Removed: Arsenal of Venice (can no longer be built)
 - Note: Althing had no Tourism to remove
 - DLL: Buildings.ClosestCoastalMinorTradeQuest, GoldenAgePopulationChange, Building_FreshWaterImprovementYieldChanges (LEKMOD_GREAT_WORK_WONDER_EFFECTS)
