@@ -145,18 +145,35 @@ local g_LekmodTabLast = nil; -- the last plane Tab picked (its sort key), nil = 
 local g_LekmodTabTime = -1;
 local g_LekmodStrikeTime = -1;
 
--- remember when one of our air units fought (start and end of the combat)
-function LekmodOnCombatSim( attackerPlayerID, attackerUnitID )
-	if attackerPlayerID ~= Game.GetActivePlayer() then
+-- Remember when one of our air units struck. Combat animation events don't fire with Quick Combat (always on in
+-- multiplayer), so count our air units that are out of attacks whenever unit info changes: a higher count = a strike.
+local g_LekmodSpentAir = 0;
+
+function LekmodCountSpentAir()
+	local n = 0;
+	local pPlayer = Players[ Game.GetActivePlayer() ];
+	if pPlayer ~= nil then
+		for unit in pPlayer:Units() do
+			if unit:GetDomainType() == DomainTypes.DOMAIN_AIR and unit:IsOutOfAttacks() then
+				n = n + 1;
+			end
+		end
+	end
+	return n;
+end
+
+function LekmodCheckAirStrike()
+	if g_LekmodTargetPlot == nil then
 		return;
 	end
-	local unit = Players[ attackerPlayerID ]:GetUnitByID( attackerUnitID );
-	if unit ~= nil and unit:GetDomainType() == DomainTypes.DOMAIN_AIR then
+	local n = LekmodCountSpentAir();
+	if n > g_LekmodSpentAir then
 		g_LekmodStrikeTime = os.clock();
 	end
+	g_LekmodSpentAir = n;
 end
-Events.RunCombatSim.Add( LekmodOnCombatSim );
-Events.EndCombatSim.Add( LekmodOnCombatSim );
+Events.SerialEventUnitInfoDirty.Add( LekmodCheckAirStrike );
+Events.UnitFlagUpdated.Add( LekmodCheckAirStrike );
 
 -- same order as the in-range planes in the unit lists: farthest first, then name, then ID
 function LekmodTabLess( a, b )
@@ -220,6 +237,7 @@ end
 function LekmodSetTargetTile( plot )
 	g_LekmodTargetPlot = plot;
 	g_LekmodTabLast = nil;
+	g_LekmodSpentAir = LekmodCountSpentAir();
 	LekmodShowTargetTile();
 	if plot ~= nil then
 		LuaEvents.LekmodTargetTileChanged( plot:GetX(), plot:GetY() );
