@@ -175,6 +175,42 @@ end
 Events.SerialEventUnitInfoDirty.Add( LekmodCheckAirStrike );
 Events.UnitFlagUpdated.Add( LekmodCheckAirStrike );
 
+-- The strike itself is a click the engine handles (no Lua handler in selection or strike mode), and after a strike the
+-- game auto-selects the next unit, so the Tab delay alone doesn't slow strikes down. Returns true = swallow the click.
+-- A click is decided on button down (its button up follows that decision); the strike time is noted at once.
+local g_LekmodSwallowUp = {};
+
+function LekmodAirStrikeClick( uiMsg )
+	local bUp = (uiMsg == MouseEvents.RButtonUp or uiMsg == MouseEvents.LButtonUp);
+	local bRight = (uiMsg == MouseEvents.RButtonDown or uiMsg == MouseEvents.RButtonUp);
+	if bUp then
+		local bSwallow = g_LekmodSwallowUp[bRight];
+		g_LekmodSwallowUp[bRight] = false;
+		return bSwallow == true;
+	end
+	g_LekmodSwallowUp[bRight] = false;
+	-- right click attacks in selection mode, left click in strike mode
+	local mode = UI.GetInterfaceMode();
+	if (bRight and mode ~= InterfaceModeTypes.INTERFACEMODE_SELECTION) or (not bRight and mode ~= InterfaceModeTypes.INTERFACEMODE_AIRSTRIKE) then
+		return false;
+	end
+	local unit = UI.GetHeadSelectedUnit();
+	if unit == nil or unit:GetDomainType() ~= DomainTypes.DOMAIN_AIR or unit:CanNuke() then
+		return false;
+	end
+	local plot = Map.GetPlot( UI.GetMouseOverHex() );
+	if plot == nil or not unit:CanRangeStrikeAt( plot:GetX(), plot:GetY() ) then
+		return false;
+	end
+	local now = os.clock();
+	if now - g_LekmodStrikeTime < LEKMOD_TAB_DELAY and now >= g_LekmodStrikeTime then
+		g_LekmodSwallowUp[bRight] = true;
+		return true;
+	end
+	g_LekmodStrikeTime = now;
+	return false;
+end
+
 -- same order as the in-range planes in the unit lists: farthest first, then name, then ID
 function LekmodTabLess( a, b )
 	if a.dist ~= b.dist then
@@ -431,6 +467,11 @@ function InputHandler( uiMsg, wParam, lParam )
 	if uiMsg == KeyEvents.KeyDown and wParam == Keys.VK_TAB and g_LekmodTargetPlot ~= nil
 		and not UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
 		LekmodTabNextPlane();
+		return true;
+	end
+	-- LEKMOD: air strikes by click (right click, or left click in strike mode) at most once per LEKMOD_TAB_DELAY
+	if (uiMsg == MouseEvents.RButtonDown or uiMsg == MouseEvents.RButtonUp or uiMsg == MouseEvents.LButtonDown or uiMsg == MouseEvents.LButtonUp)
+		and LekmodAirStrikeClick( uiMsg ) then
 		return true;
 	end
 	local interfaceMode = UI.GetInterfaceMode();
