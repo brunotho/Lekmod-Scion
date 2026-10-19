@@ -35,7 +35,10 @@ Subsection: Enhancer beliefs
 SPEAR THROW (PROMOTION_ANTI_GUNPOWDER)
 --------------------------------------
 Tags: promotions, combat
-- Changed: Spear Throw (the Zulu Impi, the Vietnamese Infantry, Bulgaria's Konnitsa) no longer gives +25% against gunpowder units and paratroopers
+- Changed: Spear Throw (the Zulu Impi, the Vietnamese Infantry, Bulgaria's Konnitsa):
+  - the ranged attack before each melee attack uses 60% of the unit's Strength (was 50%)
+  - no longer: +25% against gunpowder units and paratroopers
+- DLL: LEKMOD_SUPPORT_FIRE_PERCENT (60)
 - Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Impi and the Vietnamese Infantry lost it during development (Phase 6 Deletes) and have it again; its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
 
 LEKMOD SCION (NAME)
@@ -3144,9 +3147,8 @@ Tags: civs, units, buildings, promotions
   | All units require 20% less experience to earn their next promotion.[NEWLINE]Melee units can take the Buffalo promotions (Horns, Loins, Chest).[NEWLINE][NEWLINE]-25% [ICON_GOLD] Gold in every city while you are not at war with another civilization.
 - Reworked: BUILDING_IKANDA
   | costs 80 · 1 Gold maintenance[NEWLINE]Replaces the Stable. Costs more; available with Civil Service (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE]Pastures next to the city yield +2 [ICON_FOOD] Food.
-- Removed: Impi: its bonus against gunpowder units
-- Changed: first-strike ranged attacks (Impi, the Bulgarian and Vietnamese units with it) use 60% of the unit's Strength (was 50%)
-- DLL: LEKMOD_SUPPORT_FIRE_PERCENT, Traits.LekmodGoldModifierAtPeace
+- Changed: Impi: its Spear Throw changed (see Spear Throw under Promotions)
+- DLL: Traits.LekmodGoldModifierAtPeace
 - Dev: marker promotion PROMOTION_LEKMOD_IKANDA (387) gates the Buffalo line
 
 TURKEY (CIVILIZATION_TURKEY)
