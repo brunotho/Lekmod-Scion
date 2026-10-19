@@ -96,7 +96,8 @@ end
 
 -------------------------------------------------
 -- LEKMOD: target tile (Alt + click a tile, InGame.lua): air units sorted by their distance to it.
--- Order: in strike range (farthest first), then out of range (closest first, distance dimmed), then all other units.
+-- Order: in strike range (farthest first), then out of range (closest first, distance dimmed), then all other units;
+-- units out of moves or attacks last. Tab (InGame.lua) selects the in-range planes in the same order.
 -------------------------------------------------
 local g_LekmodTarget = nil;
 local LEKMOD_DIST_ALPHA_OUT = 0.4;
@@ -104,6 +105,8 @@ local LEKMOD_DIST_ALPHA_OUT = 0.4;
 function LekmodTargetDistance( unit, sortEntry )
 	sortEntry.lekBucket = 3;
 	sortEntry.lekKey = 0;
+	-- units out of moves or attacks go to the very bottom (in the same order among themselves)
+	sortEntry.lekSpent = (not unit:CanMove()) or ((unit:IsCombatUnit() or unit:GetDomainType() == DomainTypes.DOMAIN_AIR) and unit:IsOutOfAttacks());
 	if g_LekmodTarget == nil or unit:GetDomainType() ~= DomainTypes.DOMAIN_AIR then
 		return nil, false;
 	end
@@ -139,6 +142,9 @@ function LekmodShowDistance( instance, unit, sortEntry )
 end
 
 function LekmodDistanceLess( entryA, entryB, nameA, nameB )
+	if entryA.lekSpent ~= entryB.lekSpent then
+		return entryB.lekSpent;
+	end
 	if entryA.lekBucket ~= entryB.lekBucket then
 		return entryA.lekBucket < entryB.lekBucket;
 	end
@@ -187,6 +193,33 @@ function LekmodRefresh()
 	Controls.CivilianStack:SortChildren( SortFunction );
 end
 Controls.LekmodClearTarget:RegisterCallback( Mouse.eLClick, function() LuaEvents.LekmodClearTargetTile(); end );
+
+-- LEKMOD: "Air units only" checkbox (kept in step with the other unit screen)
+local g_LekmodAirOnly = false;
+
+function LekmodUnits( pPlayer )
+	local list = {};
+	for unit in pPlayer:Units() do
+		if not g_LekmodAirOnly or unit:GetDomainType() == DomainTypes.DOMAIN_AIR then
+			table.insert( list, unit );
+		end
+	end
+	local i = 0;
+	return function()
+		i = i + 1;
+		return list[i];
+	end
+end
+
+function LekmodOnAirOnlyChanged( bOn )
+	g_LekmodAirOnly = bOn;
+	Controls.LekmodAirOnly:SetCheck( bOn );
+	if not ContextPtr:IsHidden() then
+		LekmodRefresh();
+	end
+end
+LuaEvents.LekmodAirOnlyChanged.Add( LekmodOnAirOnlyChanged );
+Controls.LekmodAirOnly:RegisterCheckHandler( function( bChecked ) LuaEvents.LekmodAirOnlyChanged( bChecked ); end );
 
 -------------------------------------------------
 -- On Popup
@@ -315,7 +348,7 @@ function BuildUnitList()
     m_CivilianIM:ResetInstances();
     LekmodApplyDistanceColumn();
     
-    for unit in pPlayer:Units()
+    for unit in LekmodUnits( pPlayer ) -- LEKMOD: "Air units only" filter
     do
         local instance;
         local iUnit = unit:GetID();

@@ -95496,7 +95496,6 @@
 			<Type>CONTROL_TOGGLE_CHAT</Type> 
 			<Description>TXT_KEY_CONTROL_TOGGLE_CHAT</Description> 
 			<Help>TXT_KEY_DIPLO_CLOSE_CHAT_TT</Help> 
-			<HotKey>KB_TAB</HotKey> 
 			<HotKeyPriority>0</HotKeyPriority> 
 			<HotKeyPriorityAlt>0</HotKeyPriorityAlt> 
 			<AltDown>false</AltDown> 

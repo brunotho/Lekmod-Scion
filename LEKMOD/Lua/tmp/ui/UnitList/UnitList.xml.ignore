@@ -163,13 +163,18 @@
 
         <Box Offset="18,44" Anchor="L.B" Size="355,22"  Color="255,255,255,0" >
 
-            <Button  Anchor="L,C" Size="355,24"  ColorSet="Beige_Black_Alpha" Font="TwCenMT18" FontStyle="Shadow"  String="TXT_KEY_MILITARY_OVERVIEW"  ID="OpenOverviewButton"    >
+            <!-- LEKMOD: narrower (355 -> 245) to make room for the "Air units only" checkbox -->
+            <Button  Anchor="L,C" Size="245,24"  ColorSet="Beige_Black_Alpha" Font="TwCenMT18" FontStyle="Shadow"  String="TXT_KEY_MILITARY_OVERVIEW"  ID="OpenOverviewButton"    >
                 <ShowOnMouseOver>
-                    <AlphaAnim Anchor="L,C" Size="355,32" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
-                        <Grid   Size="355,32" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+                    <AlphaAnim Anchor="L,C" Size="245,32" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+                        <Grid   Size="245,32" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
                     </AlphaAnim>
                 </ShowOnMouseOver>
             </Button>
+            <Box Anchor="L,C" Color="255.255.255.0" Offset="250,0" Size="105,24" ToolTip="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY_TT">
+            	<CheckBox Style="SquareCheck" Anchor="L,C" Offset="0,0" IsChecked="0" ID="LekmodAirOnly" />
+            	<Label Anchor="L,C" Offset="26,0" String="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" />
+            </Box>
 
 
             <Image Anchor="L,B" Offset="0,24" Texture="HorizontalTrim.dds" Size="355.5" />

@@ -11,6 +11,8 @@ include( "FLuaVector" );
 include( "InstanceManager" );
 include( "Bombardment");
 
+local g_LekmodTargetPlot = nil; -- LEKMOD: the tagged target tile (Alt + click, see LekmodToggleTargetTile)
+
 local g_InstanceManager = InstanceManager:new( "AlertMessageInstance", "AlertMessageLabel", Controls.AlertStack );
 local g_PopupIM = InstanceManager:new( "PopupText", "Anchor", Controls.PopupTextContainer );
 local g_InstanceMap = {};
@@ -137,8 +139,60 @@ end
 -- LEKMOD: target tile. The unit list (F3) and the Military Overview sort air units by their distance to it.
 -- Local to this player's screen: nothing is sent over the network.
 ----------------------------------------------------------
-local g_LekmodTargetPlot = nil;
 local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
+local LEKMOD_TAB_DELAY = 0.2; -- seconds between two Tab selections
+local g_LekmodTabLast = nil; -- the last plane Tab picked (its sort key), nil = start at the top
+local g_LekmodTabTime = -1;
+
+-- same order as the in-range planes in the unit lists: farthest first, then name, then ID
+function LekmodTabLess( a, b )
+	if a.dist ~= b.dist then
+		return a.dist > b.dist;
+	end
+	if a.name ~= b.name then
+		return Locale.Compare( a.name, b.name ) == -1;
+	end
+	return a.id < b.id;
+end
+
+-- planes (no nukes) in strike range of the target tile that can still attack this turn
+function LekmodTabNextPlane()
+	local now = os.clock();
+	if now - g_LekmodTabTime < LEKMOD_TAB_DELAY and now >= g_LekmodTabTime then
+		return;
+	end
+	g_LekmodTabTime = now;
+	local tx, ty = g_LekmodTargetPlot:GetX(), g_LekmodTargetPlot:GetY();
+	local list = {};
+	for unit in Players[ Game.GetActivePlayer() ]:Units() do
+		if unit:GetDomainType() == DomainTypes.DOMAIN_AIR and not unit:CanNuke() and unit:CanMove() and not unit:IsOutOfAttacks() then
+			local plot = unit:GetPlot();
+			local iDist = Map.PlotDistance( plot:GetX(), plot:GetY(), tx, ty );
+			if iDist <= unit:Range() then
+				table.insert( list, { unit = unit, dist = iDist, name = Locale.ConvertTextKey( unit:GetNameKey() ), id = unit:GetID() } );
+			end
+		end
+	end
+	if #list == 0 then
+		return;
+	end
+	table.sort( list, LekmodTabLess );
+	-- the next one after the last pick (planes that attacked have dropped out); past the end, back to the top
+	local pick = list[1];
+	if g_LekmodTabLast ~= nil then
+		for _, entry in ipairs( list ) do
+			if LekmodTabLess( g_LekmodTabLast, entry ) then
+				pick = entry;
+				break;
+			end
+		end
+	end
+	g_LekmodTabLast = { dist = pick.dist, name = pick.name, id = pick.id };
+	if UI.GetInterfaceMode() ~= InterfaceModeTypes.INTERFACEMODE_SELECTION then
+		UI.SetInterfaceMode( InterfaceModeTypes.INTERFACEMODE_SELECTION );
+	end
+	UI.SelectUnit( pick.unit );
+end
 
 function LekmodShowTargetTile()
 	Events.ClearHexHighlightStyle( LEKMOD_TARGET_STYLE );
@@ -150,6 +204,7 @@ end
 
 function LekmodSetTargetTile( plot )
 	g_LekmodTargetPlot = plot;
+	g_LekmodTabLast = nil;
 	LekmodShowTargetTile();
 	if plot ~= nil then
 		LuaEvents.LekmodTargetTileChanged( plot:GetX(), plot:GetY() );
@@ -170,6 +225,7 @@ LuaEvents.LekmodClearTargetTile.Add( function() LekmodSetTargetTile( nil ); end 
 -- other screens (e.g. the city screen) may clear all highlights
 Events.SerialEventExitCityScreen.Add( LekmodShowTargetTile );
 Events.ActivePlayerTurnStart.Add( LekmodShowTargetTile );
+Events.ActivePlayerTurnStart.Add( function() g_LekmodTabLast = nil; end );
 Events.GameplaySetActivePlayer.Add( function() LekmodSetTargetTile( nil ); end );
 InterfaceModeMessageHandler[InterfaceModeTypes.INTERFACEMODE_SELECTION][MouseEvents.LButtonUp] = ClickSelect;
 if (UI.IsTouchScreenEnabled()) then
@@ -338,6 +394,12 @@ InterfaceModeMessageHandler[InterfaceModeTypes.INTERFACEMODE_GIFT_TILE_IMPROVEME
 -- Input handling
 ----------------------------------------------------------------        
 function InputHandler( uiMsg, wParam, lParam )
+	-- LEKMOD: Tab cycles through the planes that can strike the target tile (the chat toggle no longer uses Tab)
+	if uiMsg == KeyEvents.KeyDown and wParam == Keys.VK_TAB and g_LekmodTargetPlot ~= nil
+		and not UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
+		LekmodTabNextPlane();
+		return true;
+	end
 	local interfaceMode = UI.GetInterfaceMode();
 	local currentInterfaceModeHandler = InterfaceModeMessageHandler[interfaceMode];
 	if currentInterfaceModeHandler and currentInterfaceModeHandler[uiMsg] then

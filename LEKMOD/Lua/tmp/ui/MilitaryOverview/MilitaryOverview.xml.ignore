@@ -147,6 +147,11 @@
 			<GridButton Anchor="L,B" Style="SmallButton" Size="170,32" Offset="174,0" StateOffsetIncrement="0,0" Hidden="1" ID="LekmodClearTarget">
 				<Label Anchor="C,C" Offset="0,0" String="TXT_KEY_LEKMOD_MO_CLEAR_TARGET" Font="TwCenMT18" ColorSet="Beige_Black_Alpha" FontStyle="Shadow"/>
 			</GridButton>
+			<!-- LEKMOD: "Air units only" filter -->
+			<Box Anchor="L,B" Color="255.255.255.0" Offset="360,4" Size="120,24" ToolTip="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY_TT">
+				<CheckBox Style="SquareCheck" Anchor="L,C" Offset="0,0" IsChecked="0" ID="LekmodAirOnly" />
+				<Label Anchor="L,C" Offset="26,0" String="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY" Font="TwCenMT16" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" />
+			</Box>
 		</Box>
 		<Image Anchor="C,T" Offset="0,66" Texture="HorizontalTrim.dds" Size="927.5"/>
 		<Image Anchor="C,B" Offset="0,110" Texture="HorizontalTrim.dds" Size="927.5"/>

@@ -148290,10 +148290,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Dist.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_DISTANCE_TT">
-			<Text>Distance of your air units to the tagged tile.[NEWLINE]Dimmed: out of strike range.[NEWLINE][NEWLINE]Alt + click a tile to tag it.[NEWLINE]Alt + click it again to clear it.</Text>
+			<Text>Distance of your air units to the tagged tile.[NEWLINE]Dimmed: out of strike range.[NEWLINE][NEWLINE]Alt + click a tile to tag it.[NEWLINE]Alt + click it again to clear it.[NEWLINE]Tab selects the next plane in range that can still attack.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MO_CLEAR_TARGET">
 			<Text>Clear tagged tile</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY">
+			<Text>Air units only</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY_TT">
+			<Text>Show only your air units in the unit list and the Military Overview.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>
