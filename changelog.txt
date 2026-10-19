@@ -750,7 +750,7 @@ CITY NAMES (Civilization_CityNames)
 -----------------------------------
 Tags: civs, ui
 - Changed: your capital keeps its name; every later city takes the next name from a shuffled list that differs each game
-- Changed: America, Russia, Aksum and the Timurids also keep their second city name
+- Dev: America, Russia, Aksum and the Timurids also keep their second city name (not in the player notes, user 2026-10-19)
 - Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
 - Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venice) no longer show up as raw text keys
 - Dev: LEKMOD_RANDOMIZE_CITY_NAMES in CvPlayer::getCivilizationCityName; deterministic shuffle seeded by player ID and starting plot (no synced RNG, so it is safe wherever the function is called)
