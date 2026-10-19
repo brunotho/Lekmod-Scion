@@ -97,6 +97,12 @@ Tags: promotions, bugfix, combat
 - Changed: Spear Throw no longer gives +25% against gunpowder units and paratroopers (Bulgaria's Konnitsa)
 - Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Phase 6 Deletes of it for the Impi and the Vietnamese Infantry are gone, its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
 
+HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
+---------------------------------------------
+Tags: promotions, air
+- Removed: the helicopter Sentry; helicopters have the Scouting line for sight
+- Dev: UnitPromotions_UnitCombats row of PROMOTION_HELI_SENTRY deleted (promotion row kept)
+
 PRUSSIA (CIVILIZATION_PRUSSIA)
 ------------------------------
 Tags: civs, buildings

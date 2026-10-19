@@ -292163,4 +292163,8 @@
 	<UnitPromotions_UnitCombatMods>
 		<Delete PromotionType="PROMOTION_ANTI_GUNPOWDER"/>
 	</UnitPromotions_UnitCombatMods>
+	<!-- LEKMOD: helicopters no longer pick their Sentry (they have the Scouting line; user 2026-10-19) -->
+	<UnitPromotions_UnitCombats>
+		<Delete PromotionType="PROMOTION_HELI_SENTRY"/>
+	</UnitPromotions_UnitCombats>
 </GameData>
