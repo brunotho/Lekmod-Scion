@@ -17,6 +17,8 @@
 	<style name="GUHB" type="HexContour" width=".2" texture="hex_contour2.dds"/>
 	<!-- LEKMOD: the tagged target tile (Alt + click; InGame.lua) -->
 	<style name="LekmodTargetTile" type="HexContour" width=".25" texture="hex_contour2.dds"/>
+	<!-- LEKMOD: strike range of a selected air unit, outline only (InGame.lua); like FireRangeBorder -->
+	<style name="LekmodAirRangeOutline" type="SplineBorder" width="6" texture="spline_border_contour2.dds" color="255,0,0,200"/>
 
 	<!-- HB Air Unit styles -->
 

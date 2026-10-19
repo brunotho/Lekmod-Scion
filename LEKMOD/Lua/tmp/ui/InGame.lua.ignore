@@ -140,44 +140,16 @@ end
 -- Local to this player's screen: nothing is sent over the network.
 ----------------------------------------------------------
 local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
-local LEKMOD_TAB_DELAY = 0.5; -- seconds after the last Tab selection and after the last strike by one of our air units
+local LEKMOD_STRIKE_DELAY = 0.5; -- seconds between two air strikes by click; Tab also waits this long after a strike
+local LEKMOD_TAB_DELAY = 0.45; -- seconds between two Tab selections
 local g_LekmodTabLast = nil; -- the last plane Tab picked (its sort key), nil = start at the top
 local g_LekmodTabTime = -1;
 local g_LekmodStrikeTime = -1;
 
--- Remember when one of our air units struck. Combat animation events don't fire with Quick Combat (always on in
--- multiplayer), so count our air units that are out of attacks whenever unit info changes: a higher count = a strike.
-local g_LekmodSpentAir = 0;
-
-function LekmodCountSpentAir()
-	local n = 0;
-	local pPlayer = Players[ Game.GetActivePlayer() ];
-	if pPlayer ~= nil then
-		for unit in pPlayer:Units() do
-			if unit:GetDomainType() == DomainTypes.DOMAIN_AIR and unit:IsOutOfAttacks() then
-				n = n + 1;
-			end
-		end
-	end
-	return n;
-end
-
-function LekmodCheckAirStrike()
-	if g_LekmodTargetPlot == nil then
-		return;
-	end
-	local n = LekmodCountSpentAir();
-	if n > g_LekmodSpentAir then
-		g_LekmodStrikeTime = os.clock();
-	end
-	g_LekmodSpentAir = n;
-end
-Events.SerialEventUnitInfoDirty.Add( LekmodCheckAirStrike );
-Events.UnitFlagUpdated.Add( LekmodCheckAirStrike );
-
 -- The strike itself is a click the engine handles (no Lua handler in selection or strike mode), and after a strike the
 -- game auto-selects the next unit, so the Tab delay alone doesn't slow strikes down. Returns true = swallow the click.
 -- A click is decided on button down (its button up follows that decision); the strike time is noted at once.
+-- (Combat animation events don't fire with Quick Combat, always on in multiplayer, so the click is the only clock.)
 local g_LekmodSwallowUp = {};
 
 function LekmodAirStrikeClick( uiMsg )
@@ -203,7 +175,7 @@ function LekmodAirStrikeClick( uiMsg )
 		return false;
 	end
 	local now = os.clock();
-	if now - g_LekmodStrikeTime < LEKMOD_TAB_DELAY and now >= g_LekmodStrikeTime then
+	if now - g_LekmodStrikeTime < LEKMOD_STRIKE_DELAY and now >= g_LekmodStrikeTime then
 		g_LekmodSwallowUp[bRight] = true;
 		return true;
 	end
@@ -225,8 +197,8 @@ end
 -- planes (no nukes) in strike range of the target tile that can still attack this turn
 function LekmodTabNextPlane()
 	local now = os.clock();
-	local last = math.max( g_LekmodTabTime, g_LekmodStrikeTime );
-	if now - last < LEKMOD_TAB_DELAY and now >= last then
+	if (now - g_LekmodTabTime < LEKMOD_TAB_DELAY and now >= g_LekmodTabTime)
+		or (now - g_LekmodStrikeTime < LEKMOD_STRIKE_DELAY and now >= g_LekmodStrikeTime) then
 		return;
 	end
 	g_LekmodTabTime = now;
@@ -273,7 +245,6 @@ end
 function LekmodSetTargetTile( plot )
 	g_LekmodTargetPlot = plot;
 	g_LekmodTabLast = nil;
-	g_LekmodSpentAir = LekmodCountSpentAir();
 	LekmodShowTargetTile();
 	if plot ~= nil then
 		LuaEvents.LekmodTargetTileChanged( plot:GetX(), plot:GetY() );
@@ -469,7 +440,7 @@ function InputHandler( uiMsg, wParam, lParam )
 		LekmodTabNextPlane();
 		return true;
 	end
-	-- LEKMOD: air strikes by click (right click, or left click in strike mode) at most once per LEKMOD_TAB_DELAY
+	-- LEKMOD: air strikes by click (right click, or left click in strike mode) at most once per LEKMOD_STRIKE_DELAY
 	if (uiMsg == MouseEvents.RButtonDown or uiMsg == MouseEvents.RButtonUp or uiMsg == MouseEvents.LButtonDown or uiMsg == MouseEvents.LButtonUp)
 		and LekmodAirStrikeClick( uiMsg ) then
 		return true;
@@ -1081,33 +1052,35 @@ end
 Events.UnitSelectionChanged.Add( OnUnitSelectionChange );
 
 ----------------------------------------------------------------
--- LEKMOD: a selected air unit that can strike shows its strike range, as if the strike action were chosen
--- (the same drawing as strike mode: AirStrikeHighlight in Bombardment.lua). Registered after OnInterfaceModeChanged
--- and OnUnitSelectionChange, so it draws after their cleanup.
+-- LEKMOD: a selected air unit that can strike shows its strike range as a plain red outline (style
+-- LekmodAirRangeOutline); strike mode itself keeps the base look (AirStrikeHighlight in Bombardment.lua).
+-- Registered after OnInterfaceModeChanged and OnUnitSelectionChange, so it draws after their cleanup.
 ----------------------------------------------------------------
-function LekmodClearAirRange()
-	Events.ClearHexHighlightStyle( "AirRangeFill" );
-	Events.ClearHexHighlightStyle( "AirRangeBorder" );
-	Events.ClearHexHighlightStyle( "ValidFireTargetBorder" );
-end
+local LEKMOD_AIR_RANGE_STYLE = "LekmodAirRangeOutline";
 
 function LekmodShowSelectedAirRange()
-	LekmodClearAirRange();
+	Events.ClearHexHighlightStyle( LEKMOD_AIR_RANGE_STYLE );
 	local unit = UI.GetHeadSelectedUnit();
-	if UI.GetInterfaceMode() == InterfaceModeTypes.INTERFACEMODE_SELECTION and unit ~= nil
-		and unit:GetDomainType() == DomainTypes.DOMAIN_AIR and not unit:CanNuke() and unit:CanRangeStrike() then
-		AirStrikeHighlight();
+	if UI.GetInterfaceMode() ~= InterfaceModeTypes.INTERFACEMODE_SELECTION or unit == nil
+		or unit:GetDomainType() ~= DomainTypes.DOMAIN_AIR or unit:CanNuke() or not unit:CanRangeStrike() then
+		return;
+	end
+	local iRange = unit:Range();
+	local x, y = unit:GetX(), unit:GetY();
+	local color = Vector4( 1.0, 0.0, 0.0, 1.0 );
+	for iDX = -iRange, iRange do
+		for iDY = -iRange, iRange do
+			local plot = Map.GetPlotXY( x, y, iDX, iDY );
+			if plot ~= nil and Map.PlotDistance( x, y, plot:GetX(), plot:GetY() ) <= iRange then
+				Events.SerialEventHexHighlight( ToHexFromGrid( Vector2( plot:GetX(), plot:GetY() ) ), true, color, LEKMOD_AIR_RANGE_STYLE );
+			end
+		end
 	end
 end
 Events.UnitSelectionChanged.Add( LekmodShowSelectedAirRange );
 Events.InterfaceModeChanged.Add( function( oldMode, newMode )
-	if newMode == InterfaceModeTypes.INTERFACEMODE_SELECTION then
-		LekmodShowSelectedAirRange();
-	elseif oldMode == InterfaceModeTypes.INTERFACEMODE_SELECTION and newMode ~= InterfaceModeTypes.INTERFACEMODE_AIRSTRIKE
-		and newMode ~= InterfaceModeTypes.INTERFACEMODE_NUKE then
-		-- other modes (rebase, sweep, ...) draw their own range; strike and nuke mode draw these same tiles
-		LekmodClearAirRange();
-	end
+	-- shown in selection mode only; strike, rebase and sweep mode draw their own range
+	LekmodShowSelectedAirRange();
 end );
 
 function OnUpdateSelection( isSelected )
