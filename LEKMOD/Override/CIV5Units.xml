@@ -287194,7 +287194,7 @@
 	<Improvements>
 		<Update>
 			<Where Type="IMPROVEMENT_TIBET"/>
-			<Set RequiresAdjacentMountain="true"/>
+			<Set RequiresAdjacentMountain="true" Help="TXT_KEY_IMPROVEMENT_TIBET_HELP"/>
 		</Update>
 	</Improvements>
 	<!-- Carthage: Cothon also next to a lake (any water counts with MinAreaSize 0) -->

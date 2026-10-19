@@ -4,7 +4,10 @@
 # A card is one item across all releases (same key = the TYPE_KEY in brackets, or the name), with one
 # entry per release, newest first. Developer lines (Note/DLL/Dev) are dropped.
 module Changelog
-  PLAYER_KINDS = %w[Added Changed Removed Fixed].freeze
+  # New / Reworked: the line names an item type (TRAIT_X, UNIT_X, ...); the website shows its in-game text
+  # (GameRefs), frozen into the changelog ("  | text") when a release is prepared.
+  PLAYER_KINDS = %w[New Reworked Added Changed Removed Fixed].freeze
+  REF_KINDS = %w[New Reworked].freeze
   DEV_KINDS = %w[Note DLL Dev].freeze
 
   Release = Struct.new(:index, :version, :label, :unreleased, :items, keyword_init: true) do
@@ -43,7 +46,7 @@ module Changelog
 
   Card = Struct.new(:key, :name, :group, :tags, :minor, :fresh, :collects, :subsection, :entries, keyword_init: true) do
     def search_text
-      ([name] + entries.flat_map { |e| [e.summary] + e.lines.flat_map { |l| [l[:text], *l[:items]] } }).join(" ").downcase
+      ([name] + entries.flat_map { |e| [e.summary] + e.lines.flat_map { |l| [l[:ref_name] || l[:text], l[:ref_text], *l[:items]] } }).join(" ").downcase
     end
   end
 
@@ -79,6 +82,8 @@ module Changelog
   LINE = /\A- (\w+): (.*)\z/
   # "  - item" under a line: one entry of a list that belongs to that line (shown as sub-bullets).
   SUB_LINE = /\A\s{2,}- (.*)\z/
+  # "  | text": the frozen in-game text of a New/Reworked line (Civ V markup, one line)
+  FROZEN_LINE = /\A\s{2,}\| (.*)\z/
 
   def self.split_title(title)
     m = TRAILING_BRACKET.match(title)
@@ -173,6 +178,8 @@ module Changelog
         entries << { kind: m[1], text: m[2].strip }
       elsif (m = SUB_LINE.match(l)) && entries.any?
         (entries.last[:items] ||= []) << m[1].strip
+      elsif (m = FROZEN_LINE.match(l)) && entries.any?
+        entries.last[:frozen] = m[1].strip
       elsif !l.strip.empty? && entries.empty?
         summary << l.strip
       end

@@ -64,6 +64,9 @@
 <% unless entry.lines.empty? -%>
         <ul class="lines">
 <% entry.lines.each do |line| -%>
+<% if line[:ref_name] -%>
+          <li class="<%= line[:kind].downcase %> ref"><span class="kind"><%= line[:kind] %></span> <span><% if line[:ref_role] %><span class="role"><%= h line[:ref_role] %></span> <% end %><strong><%= h line[:ref_name] %></strong><div class="game-text"><%= GameText.to_html(line[:ref_text]) %></div><% if line[:items] %><ul class="sub"><% line[:items].each do |it| %><li><%= GameText.line_html(it) %></li><% end %></ul><% end %></span></li>
+<% next end -%>
           <li class="<%= line[:kind].downcase %>"><span class="kind"><%= line[:kind] %></span> <span><% source, text = Changelog.split_source(line[:text]) %><% if source %><span class="source"><%= h source %></span> <% end %><%= GameText.line_html(text) %><% if line[:items] %><ul class="sub"><% line[:items].each do |it| %><li><%= GameText.line_html(it) %></li><% end %></ul><% end %></span></li>
 <% end -%>
         </ul>

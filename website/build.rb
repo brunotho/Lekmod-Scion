@@ -17,6 +17,7 @@ require_relative "lib/game_text"
 require_relative "lib/loose_list"
 require_relative "lib/policy_trees"
 require_relative "lib/wonder_tiers"
+require_relative "lib/game_refs"
 
 ROOT = File.expand_path("..", __dir__)
 SITE = File.expand_path(__dir__)
@@ -127,6 +128,20 @@ File.write(File.join(out, ".nojekyll"), "")
 doc = Changelog.parse(File.read(File.join(ROOT, "changelog.txt"), encoding: "UTF-8"))
 releases = doc.public_releases(include_unreleased: options[:preview])
 cards = doc.cards(include_unreleased: options[:preview])
+# "- New: TYPE" / "- Reworked: TYPE": the item's name and in-game text (frozen text of a release first, else the current one)
+game_refs = GameRefs.load(File.join(ROOT, "LEKMOD", "Override"))
+cards.each do |card|
+  card.entries.each do |entry|
+    entry.lines.each do |line|
+      next unless Changelog::REF_KINDS.include?(line[:kind])
+      ref = game_refs[GameRefs.key_for(line[:text].split.first, card.key)]
+      warn "changelog: unknown type #{line[:text].inspect} in #{card.name}" unless ref
+      line[:ref_name] = ref ? ref.name : line[:text]
+      line[:ref_role] = ref&.role
+      line[:ref_text] = line[:frozen] || (ref && ref.text)
+    end
+  end
+end
 order = doc.tag_order
 wonder_tiers = WonderTiers.load(File.join(ROOT, "LEKMOD", "Override"))
 # Sections with a fixed card order (matched by card name), optionally split into headed subsections.

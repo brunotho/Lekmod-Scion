@@ -20425,7 +20425,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OUTREMER_HELP"> 
-			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here like a Great Prophet, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
+			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OXFORD_UNIVERSITY"> 
 			<Text>
@@ -77285,7 +77285,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_IMPROVEMENT_TIBET_HELP">
-			<Text>Unique to Tibet. Unlocked at the [COLOR_CYAN]Calendar[ENDCOLOR] Technology. Can only be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR]. Provides +2 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; an additional +1 [ICON_PEACE] Faith at [COLOR_CYAN]Theology[ENDCOLOR] and +1 [ICON_CULTURE] Culture at [COLOR_CYAN]Acoustics[ENDCOLOR]. +1 [ICON_CULTURE] Culture for each adjacent Mountain tile. At [COLOR_CYAN]Flight[ENDCOLOR], receives +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold. May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.</Text>
+			<Text>Unique to Tibet. Available at [COLOR_CYAN]Calendar[ENDCOLOR]. Must be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR] next to a Mountain.[NEWLINE]+2 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; +1 [ICON_CULTURE] Culture for each adjacent Mountain.[NEWLINE]+1 [ICON_CULTURE] Culture with [COLOR_CYAN]Acoustics[ENDCOLOR]; +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold with [COLOR_CYAN]Flight[ENDCOLOR].[NEWLINE]+1 [ICON_RESEARCH] Science when worked by a city with a University.[NEWLINE]May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_IMPROVEMENT_TIPI"> 
 			<Text>
@@ -147447,7 +147447,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Longswordsman. Stronger, but needs 3 [ICON_RES_IRON] Iron.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength outside friendly territory.[NEWLINE]Kills yield [ICON_PEACE] Faith equal to 200% of the opponent's [ICON_STRENGTH] Combat Strength.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OUTREMER_HELP">
-			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here like a Great Prophet, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
+			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_DENMARK_BERSERKER_HELP">
 			<Text>Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.[NEWLINE]Needs 3 [ICON_RES_IRON] Iron.</Text>
@@ -147959,13 +147959,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Land units start with Amphibious I and pillage without spending movement.[NEWLINE]Naval and embarked units may enter Ocean tiles before Astronomy.[NEWLINE][NEWLINE]New cities claim the Fish tiles within 2 tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LAND_TRADE_GOLD2">
-			<Text>Double quantity of [ICON_RES_OIL] Oil.[NEWLINE][NEWLINE]Trade routes to your own cities and to [ICON_CITY_STATE] City-States spread the origin city's [ICON_RELIGION] Religion there like a Great Prophet.[NEWLINE][NEWLINE]Oases yield +2 [ICON_PEACE] Faith once you know [ICON_TECH_CALENDAR] Calendar.</Text>
+			<Text>Double quantity of [ICON_RES_OIL] Oil.[NEWLINE][NEWLINE]Trade routes to your own cities and to [ICON_CITY_STATE] City-States spread the origin city's [ICON_RELIGION] Religion there.[NEWLINE][NEWLINE]Oases yield +2 [ICON_PEACE] Faith once you know [ICON_TECH_CALENDAR] Calendar.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HOLYLAND">
 			<Text>+1 [ICON_PEACE] Faith from [COLOR_GREEN]Luxury Resources[ENDCOLOR].[NEWLINE][NEWLINE]Units get +15% [ICON_STRENGTH] Combat Strength inside the territory of an enemy city that follows the [ICON_RELIGION] Religion you founded.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OUTREMER_HELP">
-			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here like a Great Prophet, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
+			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
 		</Replace>
 		<!-- LEKMOD: Phase 6 C++ batch I (2026-10-14) -->
 		<Replace Tag="TXT_KEY_TRAIT_ART_OF_WAR">

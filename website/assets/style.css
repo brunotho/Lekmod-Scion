@@ -112,6 +112,10 @@ input[type="search"] { width: 100%; }
 .changed .kind { color: var(--changed); }
 .removed .kind { color: var(--removed); }
 .fixed .kind { color: var(--fixed); }
+.new .kind { color: var(--added); }
+.reworked .kind { color: var(--changed); }
+.ref .role { color: var(--muted); }
+.ref .game-text { margin: 2px 0 4px; line-height: 1.45; }
 .lines .sub { list-style: disc; margin: 2px 0 0; padding-left: 18px; }
 .lines .sub li { display: list-item; margin: 0; }
 [hidden] { display: none !important; }

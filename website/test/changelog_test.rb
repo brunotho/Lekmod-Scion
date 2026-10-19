@@ -3,6 +3,7 @@ require_relative "../lib/changelog"
 require_relative "../lib/game_text"
 require_relative "../lib/loose_list"
 require_relative "../lib/policy_trees"
+require_relative "../lib/game_refs"
 
 class ChangelogTest < Minitest::Test
   SAMPLE = <<~TXT
@@ -95,8 +96,8 @@ class ChangelogTest < Minitest::Test
 
   def test_game_text
     html = GameText.to_html("[COLOR_GREEN]Wonders[ENDCOLOR] yield +3 [ICON_CULTURE] Culture.[NEWLINE][ICON_BULLET]a & b")
-    assert_equal "<strong>Wonders</strong> yield +3 Culture.<br>&bull; a &amp; b", html
-    assert_equal "<strong>open</strong>", GameText.to_html("[COLOR_RED]open")
+    assert_equal "Wonders yield +3 Culture.<br>&bull; a &amp; b", html
+    assert_equal "open", GameText.to_html("[COLOR_RED]open")
     assert_equal "50 &rarr; 25", GameText.line_html("50 -> 25")
   end
 
@@ -124,6 +125,25 @@ class RealChangelogTest < Minitest::Test
         problems << "#{item.name}: tags not in the header vocabulary: #{unknown.join(', ')}" unless unknown.empty?
         bad = item.lines.reject { |l| (Changelog::PLAYER_KINDS + Changelog::DEV_KINDS).include?(l[:kind]) }
         problems << "#{item.name}: unknown line prefix #{bad.map { |l| l[:kind] }.uniq.join(', ')}" unless bad.empty?
+      end
+    end
+    assert_empty problems, problems.join("\n")
+  end
+
+  # "- New: TYPE" / "- Reworked: TYPE" name an item the mod defines ("UA" = the civ's trait); a released block must
+  # carry the frozen text ("  | text", website/freeze_refs.rb), so it keeps showing what that release shipped.
+  def test_ref_lines_resolve_and_releases_are_frozen
+    doc = Changelog.parse(File.read(PATH, encoding: "UTF-8"))
+    refs = GameRefs.load(File.expand_path("../../LEKMOD/Override", __dir__))
+    problems = []
+    doc.releases.each do |rel|
+      rel.items.each do |item|
+        item.lines.select { |l| Changelog::REF_KINDS.include?(l[:kind]) }.each do |l|
+          word = l[:text].split.first
+          problems << "#{item.name}: #{l[:kind]} #{word} is no item type" unless word == "UA" || refs.key?(word) || l[:frozen]
+          problems << "#{item.name}: UA but #{item.key} has no trait" if word == "UA" && !refs.key?("UA:#{item.key}") && !l[:frozen]
+          problems << "#{rel.version}: #{item.name}: #{word} has no frozen text" if !rel.unreleased && !l[:frozen]
+        end
       end
     end
     assert_empty problems, problems.join("\n")
