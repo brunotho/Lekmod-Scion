@@ -452,7 +452,7 @@ function BuildUnitList()
         instance.SelectAnim:SetSizeY( rowY + 3 );
         instance.SelectHL:SetSizeY( rowY + 3 );
 
-        -- LEKMOD: current HP, colored as in the unit list (F3)
+        -- LEKMOD: current HP, colored as in the unit list
         local iHealth = unit:GetMaxHitPoints() - unit:GetDamage();
         sortEntry.health = iHealth;
         local sHealth = tostring( iHealth );

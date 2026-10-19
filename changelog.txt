@@ -425,10 +425,16 @@ Tags: bugfix, ui
 - Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
-UNIT LIST (F3) AND MILITARY OVERVIEW
-------------------------------------
+TOP-LEFT PANEL HOTKEYS
+----------------------
+Tags: ui
+- Added: hotkeys for the panels of the top-left corner: Shift+F2 City List, Shift+F3 Unit List, Shift+F4 Resource List, Shift+F6 Research Info, Shift+F9 Great Person List (press again to close)
+- Dev: LekmodInfoCornerHotkey in InGame.lua (InputHandler, Shift without Ctrl/Alt; toggles via Events.OpenInfoCorner); the button tooltips (TXT_KEY_IC_*) name the keys
+
+UNIT LIST AND MILITARY OVERVIEW
+-------------------------------
 Tags: ui, promotions
-- Changed: the unit list (F3) and the Military Overview show the promotions you picked for each unit instead of its status
+- Changed: the unit list and the Military Overview show the promotions you picked for each unit instead of its status
 - Added: the Military Overview shows each unit's health
 - Added: Alt + click a tile to tag it as a target: both screens then list your air units by their distance to it, those in strike range first (farthest first), then the ones out of range (closest first, dimmed), and units that can't move or attack any more at the bottom; Alt + click it again to clear it
 - Added: while a tile is tagged, Tab selects the next plane in strike range that can still attack this turn, in the list's order (at most one every 0.45 seconds, and not within half a second after one of your air strikes)

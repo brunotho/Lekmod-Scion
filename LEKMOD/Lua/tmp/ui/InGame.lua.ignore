@@ -136,7 +136,7 @@ function ClickSelect( wParam, lParam )
 end
 
 ----------------------------------------------------------
--- LEKMOD: target tile. The unit list (F3) and the Military Overview sort air units by their distance to it.
+-- LEKMOD: target tile. The unit list (Shift+F3) and the Military Overview (F3) sort air units by their distance to it.
 -- Local to this player's screen: nothing is sent over the network.
 ----------------------------------------------------------
 local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
@@ -251,6 +251,44 @@ function LekmodSetTargetTile( plot )
 	else
 		LuaEvents.LekmodTargetTileChanged( -1, -1 );
 	end
+end
+
+----------------------------------------------------------
+-- LEKMOD: hotkeys for the top-left panels (InfoCorner.lua has none). Shift + the F-key of the related screen:
+-- City List = Shift+F2 (Economic Overview F2), Unit List = Shift+F3 (Military Overview F3), Resource List = Shift+F4
+-- (Diplomacy F4, where resources are traded), Research Info = Shift+F6 (Tech Tree F6), Great Person List = Shift+F9.
+-- The button tooltips name the keys (TXT_KEY_IC_*). A key closes its panel when that panel is open.
+----------------------------------------------------------
+local g_LekmodInfoCorner = nil;
+Events.OpenInfoCorner.Add( function( iInfoType ) g_LekmodInfoCorner = iInfoType; end );
+
+function LekmodInfoCornerHotkey( wParam )
+	-- InfoCorner.lua adds Resources and GP to InfoCornerID; do the same if this context sees the table first
+	if InfoCornerID.Resources == nil then
+		local n = 0;
+		for _ in pairs( InfoCornerID ) do
+			n = n + 1;
+		end
+		InfoCornerID.Resources = n;
+		InfoCornerID.GP = n + 1;
+	end
+	local keys = {
+		[Keys.VK_F2] = InfoCornerID.Cities,
+		[Keys.VK_F3] = InfoCornerID.Units,
+		[Keys.VK_F4] = InfoCornerID.Resources,
+		[Keys.VK_F6] = InfoCornerID.Tech,
+		[Keys.VK_F9] = InfoCornerID.GP,
+	};
+	local iInfoType = keys[wParam];
+	if iInfoType == nil then
+		return false;
+	end
+	if g_LekmodInfoCorner == iInfoType then
+		Events.OpenInfoCorner( InfoCornerID.None );
+	else
+		Events.OpenInfoCorner( iInfoType );
+	end
+	return true;
 end
 
 -- tagging the tagged tile again clears it
@@ -438,6 +476,11 @@ function InputHandler( uiMsg, wParam, lParam )
 	if uiMsg == KeyEvents.KeyDown and wParam == Keys.VK_TAB and g_LekmodTargetPlot ~= nil
 		and not UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
 		LekmodTabNextPlane();
+		return true;
+	end
+	-- LEKMOD: Shift + F-key toggles a panel of the top-left corner (next to the related screen's F-key)
+	if uiMsg == KeyEvents.KeyDown and UIManager:GetShift() and not UIManager:GetControl() and not UIManager:GetAlt()
+		and LekmodInfoCornerHotkey( wParam ) then
 		return true;
 	end
 	-- LEKMOD: air strikes by click (right click, or left click in strike mode) at most once per LEKMOD_STRIKE_DELAY
