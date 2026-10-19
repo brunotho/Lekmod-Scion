@@ -1503,6 +1503,8 @@ Diversify Spain and Australia's NW Discovery bonus
 // Improvements.LekmodCountsAsFort: Forts and the defensive unique improvements count as one group for NoTwoAdjacent
 // (none of them next to another one of the group, built or under construction)
 #define LEKMOD_IMPROVEMENT_FORT_GROUP
+// No Explore automation for human players, in every game (user, 2026-10-19); the AI keeps it
+#define LEKMOD_NO_HUMAN_AUTO_EXPLORE
 // Building_AdjacentCityPlotYieldChanges: yields on plots next to a city with the building (optional Improvement, Resource,
 // Terrain and Feature conditions; Fulling Mill, Isibaya, Australia)
 #define LEKMOD_BUILDING_ADJACENT_CITY_YIELDS

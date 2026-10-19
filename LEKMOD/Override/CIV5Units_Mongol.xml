@@ -9378,7 +9378,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Caer</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION]. +1 [ICON_CULTURE] Culture with Acoustics. Receives additional yields from certain Policies.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production.[NEWLINE]+1 [ICON_CULTURE] Culture with Acoustics.[NEWLINE]+1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE]Receives additional yields from certain Policies.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIVILOPEDIA_MC_SCOTTISH_CLAN_CASTLE_PEDIA">
 			<Text>Caer</Text>
@@ -9387,7 +9387,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Construct a [LINK=IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE]Caer[\LINK]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>A Caer increases the [ICON_GOLD] Gold yield of the tile (and [ICON_CULTURE] Culture + [ICON_PRODUCTION] Production yield, after Architecture and Gunpowder are researched). [NEWLINE][NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
+			<Text>A Caer yields +3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production; +1 [ICON_CULTURE] Culture with Acoustics and +1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE][NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_REC">
 			<Text>It will help with the defense of the tile!</Text>
@@ -21891,7 +21891,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_IMPROVEMENT_TIBET_BUILD_HELP">
-			<Text>+1 [ICON_CULTURE] Culture from each adjacent Mountain. Preserves Forest and Jungle. Extra [ICON_PEACE] Faith / [ICON_CULTURE] Culture from [COLOR_CYAN]Theology[ENDCOLOR] and [COLOR_CYAN]Acoustics[ENDCOLOR]; extra [ICON_CULTURE] Culture and [ICON_GOLD] Gold at [COLOR_CYAN]Flight[ENDCOLOR].</Text>
+			<Text>+2 [ICON_PEACE] Faith; +1 [ICON_CULTURE] Culture from each adjacent Mountain. Preserves Forest and Jungle.[NEWLINE]+1 [ICON_RESEARCH] Science with [COLOR_CYAN]Astronomy[ENDCOLOR]; +1 [ICON_CULTURE] Culture with [COLOR_CYAN]Archaeology[ENDCOLOR].</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_BUILD_MOTTE_BAILEY"> 
 			<Text>
@@ -46614,7 +46614,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_HWACHA_HELP"> 
 			<Text>
-				Anti-personnel rocket unit of the Medieval Era. Very strong against land units, but has no bonuses against cities. Only Korea may build it. Replaces the Trebuchet.
+				Replaces the Trebuchet. Needs Physics instead of Guilds.[NEWLINE]Much stronger [ICON_RANGE_STRENGTH] Ranged Strength, but weaker in melee.[NEWLINE]+100% [ICON_STRENGTH] Combat Strength against cities (the Trebuchet has +200%).
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_HWACHA_STRATEGY"> 
@@ -77285,7 +77285,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_IMPROVEMENT_TIBET_HELP">
-			<Text>Unique to Tibet. Available at [COLOR_CYAN]Calendar[ENDCOLOR]. Must be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR] next to a Mountain.[NEWLINE]+2 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; +1 [ICON_CULTURE] Culture for each adjacent Mountain.[NEWLINE]+1 [ICON_CULTURE] Culture with [COLOR_CYAN]Acoustics[ENDCOLOR]; +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold with [COLOR_CYAN]Flight[ENDCOLOR].[NEWLINE]+1 [ICON_RESEARCH] Science when worked by a city with a University.[NEWLINE]May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.</Text>
+			<Text>Unique to Tibet. Available at [COLOR_CYAN]Calendar[ENDCOLOR]. Must be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR] next to a Mountain.[NEWLINE]+2 [ICON_PEACE] Faith; +1 [ICON_CULTURE] Culture for each adjacent Mountain.[NEWLINE]+1 [ICON_RESEARCH] Science with [COLOR_CYAN]Astronomy[ENDCOLOR]; +1 [ICON_CULTURE] Culture with [COLOR_CYAN]Archaeology[ENDCOLOR].[NEWLINE]May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_IMPROVEMENT_TIPI"> 
 			<Text>
@@ -147922,7 +147922,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Water Puppet Theatre</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE_HELP">
-			<Text>Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains, Marsh and Lake tiles next to the city yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]While a Festival (Great Musician) is next to the city, these tiles also yield +1 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Amphitheater. Available earlier, at Calendar.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains, Marsh and Lake tiles next to the city yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]While a Festival (Great Musician) is next to the city, these tiles also yield +1 [ICON_FOOD] Food.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MAHAMATRAS_OFFICE">
 			<Text>Mahamatras' Office</Text>

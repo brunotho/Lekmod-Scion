@@ -4405,6 +4405,12 @@ bool CvUnit::CanAutomate(AutomateTypes eAutomate, bool bTestVisibility) const
 		{
 			return false;
 		}
+#ifdef LEKMOD_NO_HUMAN_AUTO_EXPLORE
+		if(isHuman())
+		{
+			return false;
+		}
+#endif
 
 		if(!bTestVisibility)
 		{

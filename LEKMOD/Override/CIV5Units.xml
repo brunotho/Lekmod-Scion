@@ -80426,8 +80426,8 @@
 			<Type>CIVILIZATION_BUGANDA</Type>
 			<Description>TXT_KEY_CIV_BUGANDA_DESC</Description>
 			<CivilopediaTag>TXT_KEY_CIV_BUGANDA_DESC</CivilopediaTag>
-			<Playable>true</Playable>
-			<AIPlayable>true</AIPlayable>
+			<Playable>false</Playable>
+			<AIPlayable>false</AIPlayable>
 			<ShortDescription>TXT_KEY_CIV_BUGANDA_SHORT_DESC</ShortDescription>
 			<Adjective>TXT_KEY_CIV_BUGANDA_ADJECTIVE</Adjective>
 			<DefaultPlayerColor>PLAYERCOLOR_BUGANDA</DefaultPlayerColor>
@@ -141381,27 +141381,27 @@
 			<YieldType>YIELD_FAITH</YieldType> 
 			<Yield>1</Yield> 
 		</Row>
-		<Row> 
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType> 
-			<TechType>TECH_FLIGHT</TechType> 
-			<YieldType>YIELD_CULTURE</YieldType> 
-			<Yield>1</Yield> 
-		</Row>
-		<Row> 
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType> 
-			<TechType>TECH_ACOUSTICS</TechType> 
-			<YieldType>YIELD_CULTURE</YieldType> 
-			<Yield>1</Yield> 
-		</Row>
-		<Row> 
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType> 
-			<TechType>TECH_FLIGHT</TechType> 
-			<YieldType>YIELD_GOLD</YieldType> 
-			<Yield>1</Yield> 
-		</Row>
 		<Row>
 			<ImprovementType>IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE</ImprovementType>
 			<TechType>TECH_ACOUSTICS</TechType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<ImprovementType>IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE</ImprovementType>
+			<TechType>TECH_CHEMISTRY</TechType>
+			<YieldType>YIELD_PRODUCTION</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
+			<TechType>TECH_ASTRONOMY</TechType>
+			<YieldType>YIELD_SCIENCE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
+			<TechType>TECH_ARCHAEOLOGY</TechType>
 			<YieldType>YIELD_CULTURE</YieldType>
 			<Yield>1</Yield>
 		</Row>
@@ -142137,11 +142137,6 @@
 			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType> 
 			<YieldType>YIELD_FAITH</YieldType> 
 			<Yield>2</Yield> 
-		</Row>
-		<Row> 
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType> 
-			<YieldType>YIELD_CULTURE</YieldType> 
-			<Yield>1</Yield> 
 		</Row>
 		<Row> 
 			<ImprovementType>IMPROVEMENT_DOCK</ImprovementType> 
@@ -257549,14 +257544,6 @@
 			<PromotionType>PROMOTION_ENVELOPMENT</PromotionType>
 			<PrerequisitePromotion>PROMOTION_SHOCK_2</PrerequisitePromotion>
 		</Row>
-		<Row>
-			<PromotionType>PROMOTION_ENVELOPMENT</PromotionType>
-			<PrerequisitePromotion>PROMOTION_DRILL_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_ENVELOPMENT</PromotionType>
-			<PrerequisitePromotion>PROMOTION_AMPHIBIOUS_2</PrerequisitePromotion>
-		</Row>
 		<!-- Mobility -->
 		<Row>
 			<PromotionType>PROMOTION_MOBILITY</PromotionType>
@@ -267670,6 +267657,10 @@
 			<UnitType>UNIT_KOREAN_HWACHA</UnitType> 
 			<PromotionType>PROMOTION_INDIRECT_FIRE</PromotionType> 
 		</Row>
+		<Row>
+			<UnitType>UNIT_KOREAN_HWACHA</UnitType>
+			<PromotionType>PROMOTION_CITY_SIEGE_II</PromotionType>
+		</Row>
 		<Row> 
 			<UnitType>UNIT_BABYLONIAN_BOWMAN</UnitType> 
 			<PromotionType>PROMOTION_ONLY_DEFENSIVE</PromotionType> 
@@ -276137,8 +276128,8 @@
 			<Civilopedia>TXT_KEY_CIV5_KOREA_HWACHA_TEXT</Civilopedia>
 			<Strategy>TXT_KEY_CIV5_KOREA_HWACHA_STRATEGY</Strategy>
 			<Help>TXT_KEY_CIV5_KOREA_HWACHA_HELP</Help>
-			<Combat>11</Combat>
-			<RangedCombat>26</RangedCombat>
+			<Combat>9</Combat>
+			<RangedCombat>22</RangedCombat>
 			<Cost>120</Cost>
 			<FaithCost>240</FaithCost>
 			<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
@@ -276152,7 +276143,7 @@
 			<MilitaryProduction>true</MilitaryProduction>
 			<Pillage>true</Pillage>
 			<Mechanized>true</Mechanized>
-			<PrereqTech>TECH_GUILDS</PrereqTech>
+			<PrereqTech>TECH_PHYSICS</PrereqTech>
 			<ObsoleteTech>TECH_CHEMISTRY</ObsoleteTech>
 			<GoodyHutUpgradeUnitClass>UNITCLASS_CANNON</GoodyHutUpgradeUnitClass>
 			<AdvancedStartCost>25</AdvancedStartCost>
@@ -287292,27 +287283,6 @@
 			<RequiresAllTechsOfEra>ERA_ANCIENT</RequiresAllTechsOfEra>
 		</Row>
 	</Building_LekmodConditionalYields>
-	<!-- Tibet: Monasteries worked by a city with a University +1 Science -->
-	<Building_ImprovementYieldChanges>
-		<Row>
-			<BuildingType>BUILDING_UNIVERSITY</BuildingType>
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
-			<YieldType>YIELD_SCIENCE</YieldType>
-			<Yield>1</Yield>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_WAT</BuildingType>
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
-			<YieldType>YIELD_SCIENCE</YieldType>
-			<Yield>1</Yield>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_AYYUBIDS_UNIVERSITY</BuildingType>
-			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
-			<YieldType>YIELD_SCIENCE</YieldType>
-			<Yield>1</Yield>
-		</Row>
-	</Building_ImprovementYieldChanges>
 	<!-- Phase 6 C++ batch C (2026-10-14) -->
 	<!-- Chile: units trained next to a mountain get Stargazing; Tibet: Altitude Training, and no bonus for Dalai Lama cities (the capital bonus stays) -->
 	<Trait_LekmodTrainedPromotions>
@@ -291963,7 +291933,7 @@
 			<MinAreaSize>-1</MinAreaSize>
 			<ConquestProb>66</ConquestProb>
 			<ArtDefineTag>COLESSEUM</ArtDefineTag>
-			<PrereqTech>TECH_DRAMA</PrereqTech>
+			<PrereqTech>TECH_CALENDAR</PrereqTech>
 			<FreeStartEra>ERA_INDUSTRIAL</FreeStartEra>
 			<GreatWorkSlotType>GREAT_WORK_SLOT_ART_ARTIFACT</GreatWorkSlotType>
 			<GreatWorkCount>1</GreatWorkCount>

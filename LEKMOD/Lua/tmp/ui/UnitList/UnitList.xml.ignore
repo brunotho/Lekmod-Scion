@@ -48,6 +48,19 @@
                 </Box>
 
                 <Box ID="StatusBox" Anchor="L,C"  Color="255.255.255.0" Offset="0,0" Size="160,24">
+                    <!-- LEKMOD: the promotions the player chose (placed by LekmodShowPromotions) -->
+                    <Box ID="PromoBox" Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="160,32" >
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo1" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo2" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo3" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo4" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo5" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo6" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo7" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo8" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo9" />
+                        <Image Anchor="L,C" Size="32,32" Hidden="1" ID="Promo10" />
+                    </Box>
                     <Label Anchor="C,C"  WrapWidth="160" LeadingOffset="-10" Offset="0,0" ColorSet="Beige_Black_Alpha" Font="TwCenMT18" FontStyle="Shadow" Hidden="1" ID="Status" />
                 </Box>
 

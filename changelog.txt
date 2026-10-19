@@ -425,11 +425,24 @@ Tags: bugfix, ui
 - Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
+UNIT LIST (F3)
+--------------
+Tags: ui, promotions
+- Added: the unit list (F3) shows the promotions you picked for each unit
+- Dev: UnitList.lua (both UIs): pickable promotions the unit type does not start with, as 32 px icons in the status column (up to 10, closer together when they do not fit; rows with icons are 32 px tall); their names in the row tooltip
+
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------
 Tags: ui, combat
 - Added: your units that attacked this turn and can still move show crossed swords on their flag
 - Dev: LEKMOD_UNIT_ATTACKED_FLAG_ICON: Lua Unit:GetNumAttacksMadeThisTurn; UnitFlagManager (ui and eui) uses the existing IsOutOfAttacks label, refreshed on SerialEventUnitInfoDirty and ActivePlayerTurnStart
+
+EXPLORE (AUTOMATE_EXPLORE)
+--------------------------
+Tags: game mechanics, movement
+Weight: minor
+- Removed: units can no longer explore automatically (the Explore action is gone)
+- DLL: LEKMOD_NO_HUMAN_AUTO_EXPLORE (CvUnit::CanAutomate, humans only; the AI keeps it). The Tournament preset's "Disable Auto Missions" already did this in network games, together with worker automation
 
 BORDER GROWTH OVER WATER
 ------------------------
@@ -594,7 +607,7 @@ Tags: game mechanics, combat
 TECH TREE CHANGES
 -----------------
 Tags: game mechanics, units, combat
-- Changed: Trebuchet (and the Korean Hwacha) unlocked at Guilds instead of Physics
+- Changed: Trebuchet unlocked at Guilds instead of Physics (the Korean Hwacha still needs Physics)
 - Changed: the Wealth process (production into gold) unlocked at Banking instead of Guilds
 - Changed: Mobile Tactics no longer needs Ecology (only Nuclear Fission)
 - Changed: Academies get +4 Science at Scientific Theory (was +2)
@@ -718,7 +731,7 @@ Tags: promotions, movement, combat
   - for melee, gunpowder, mounted, armor and ranged land units
 - New: PROMOTION_AMPHIBIOUS_2
   | +1 [ICON_MOVES] Movement while embarked.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement instead of ending the turn, but leaves at most 1 [ICON_MOVES] Movement afterwards (enemy Zone of Control still applies).
-  - also unlocks Mobility and Envelopment
+  - also unlocks Mobility
 - New: PROMOTION_AMPHIBIOUS_3
   | No [ICON_STRENGTH] Combat Strength penalty when attacking from water.[NEWLINE]+1 [ICON_MOVES] Movement while embarked.[NEWLINE]Embarking and disembarking leave up to 2 [ICON_MOVES] Movement afterwards.[NEWLINE]Heals while embarked as if on land.
 - Removed: the old Amphibious promotion
@@ -755,7 +768,7 @@ ENVELOPMENT (NEW) (PROMOTION_ENVELOPMENT)
 Tags: promotions, combat
 - New: PROMOTION_ENVELOPMENT
   | Doubles the flanking bonus: each adjacent friendly unit adds +20% [ICON_STRENGTH] Combat Strength when attacking (up from +10%).
-  - for melee, gunpowder, mounted and armor units after Shock II, Drill II or Amphibious II
+  - for melee, gunpowder, mounted and armor units after Shock II
 - Dev: FlankAttackModifier=100
 
 SORTIE (PROMOTION_SORTIE)
@@ -2500,10 +2513,17 @@ Tags: civs, units, promotions
 - Dev: Fear Aura: enemies within 1 tile -10% Combat Strength (was -15% during development)
 - Dev: a combat preview line that wraps to two lines (e.g. Fear Aura with its source) no longer overlaps the next line
 
+BUGANDA (CIVILIZATION_BUGANDA)
+------------------------------
+Tags: civs
+- Removed: Buganda can no longer be picked, by players or the AI
+- Dev: Civilizations.Playable and AIPlayable false (user, 2026-10-19); its data and code stay
+
 WALES (CIVILIZATION_WALES)
 --------------------------
 Tags: civs, units
 - Removed: UA: +10% combat strength on Hills for all units and +1 Gold from Sheep
+- Added: Caer (unique improvement): +1 Production with Chemistry
 - Reworked: UNIT_US_LONGBOWMAN
   | 12 Strength · 17 Ranged Strength (range 2) · 2 Movement · costs 80[NEWLINE]Replaces the Crossbowman. Can move after attacking and ignores terrain movement costs.
 
@@ -2653,6 +2673,10 @@ KOREA (CIVILIZATION_KOREA)
 Tags: civs, units, buildings, naval
 - New: BUILDING_LEKMOD_JONGMYO
   | costs 50[NEWLINE]Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 Musician specialist slot.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.
+- Changed: Hwacha:
+  - 22 Ranged Strength (was 26)
+  - 9 Strength (was 11)
+  - +100% Combat Strength against cities (the Trebuchet it replaces has +200%)
 - Reworked: UNIT_KOREAN_TURTLE_SHIP
   | 25 Strength · 5 Movement · costs 96 · needs 1 Iron[NEWLINE]Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.
 - DLL: Buildings.LekmodTimedBuilding/Turns (dummy 293, class 197); timed buildings are saved per city (city save version 7)
@@ -2801,7 +2825,6 @@ Tags: civs
   | The [ICON_CAPITAL] Capital receives +2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_GOLD] Gold, +2 [ICON_RESEARCH] Science, +2 [ICON_CULTURE] Culture, and +2 [ICON_PEACE] Faith upon the discovery of [ICON_TECH_DRAMA] [COLOR_CYAN]Drama and Poetry[ENDCOLOR], and +1 of those yields for every Era you advance to after the Classical Era.[NEWLINE][NEWLINE]Units trained in a city next to a mountain, civilians included, start with Altitude Training.
 - Added: start bias towards hills
 - Reworked: IMPROVEMENT_TIBET
-  | Unique to Tibet. Available at [COLOR_CYAN]Calendar[ENDCOLOR]. Must be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR] next to a Mountain.[NEWLINE]+2 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; +1 [ICON_CULTURE] Culture for each adjacent Mountain.[NEWLINE]+1 [ICON_CULTURE] Culture with [COLOR_CYAN]Acoustics[ENDCOLOR]; +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold with [COLOR_CYAN]Flight[ENDCOLOR].[NEWLINE]+1 [ICON_RESEARCH] Science when worked by a city with a University.[NEWLINE]May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.
 - Reworked: UNIT_DALAILAMA
   | 4 Movement[NEWLINE]The Tibetan replacement for the [ICON_PROPHET] Great Prophet. It can found a city, or found or enhance a [ICON_RELIGION] Religion, and arrives with 5 [ICON_MISSION_SPREAD_RELIGION] Religion Spreads.[NEWLINE][NEWLINE]Instead of spreading the Religion, it can spend its spreads on:[NEWLINE][ICON_BULLET]Monastery, built at once: 1 spread[NEWLINE][ICON_BULLET]Bless a unit on its tile (double healing): 2 spreads[NEWLINE][ICON_BULLET]Holy Site, built at once, claims the tiles around it: 3 spreads[NEWLINE][ICON_BULLET]Start a [ICON_GOLDEN_AGE] Golden Age: 4 spreads[NEWLINE]It is used up with its last spread.[NEWLINE][NEWLINE]Converting a City-State with it gives +10 [ICON_INFLUENCE] Influence there.
 - DLL: LEKMOD_SPREAD_ABILITIES: Builds.LekmodSpreadCost/LekmodClaimAdjacent, Units.LekmodMinorConvertInfluence/LekmodBlessPromotion/LekmodBlessSpreadCost/LekmodGoldenAgeSpreadCost, UnitPromotions.LekmodHealRateMod; MISSION_LEKMOD_BLESS (mission 59), PROMOTION_LEKMOD_BLESSED (391), builds 73/74
@@ -3327,7 +3350,7 @@ Tags: civs, units, buildings
 - Changed: start bias: Jungle only (was Jungle and Wetlands)
 - Removed: Vo Khi (unique Armory)
 - New: BUILDING_LEKMOD_WATER_PUPPET_THEATRE
-  | costs 67 · 1 Gold maintenance[NEWLINE]Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains, Marsh and Lake tiles next to the city yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]While a Festival (Great Musician) is next to the city, these tiles also yield +1 [ICON_FOOD] Food.
+  - available at Calendar, earlier than the Amphitheater
 - Reworked: UNIT_VIETNAM_INFANTRY
   | 72 Strength · 3 Movement · costs 290[NEWLINE]Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.
 - DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303

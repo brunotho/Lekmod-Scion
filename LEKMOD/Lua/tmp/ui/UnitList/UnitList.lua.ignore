@@ -6,6 +6,7 @@
 -------------------------------------------------
 include( "InstanceManager" );
 include( "SupportFunctions" );
+include( "IconSupport" );
 local m_MilitaryIM = InstanceManager:new( "UnitInstance", "Root", Controls.MilitaryStack );
 local m_CivilianIM = InstanceManager:new( "UnitInstance", "Root", Controls.CivilianStack );
 
@@ -93,6 +94,95 @@ Events.SerialEventUnitMoveToHexes.Add( OnChangeEvent );
 Events.SerialEventUnitMove.Add( OnChangeEvent );
 Events.SerialEventUnitTeleportedToHex.Add( OnChangeEvent );
 Events.GameplaySetActivePlayer.Add(OnChangeEvent);
+
+-------------------------------------------------
+-- LEKMOD: promotions the player chose (not those the unit type starts with, nor ones that can't be picked)
+-------------------------------------------------
+local LEKMOD_MAX_PROMO_ICONS = 10;
+local g_LekmodPickable = nil;
+local g_LekmodFreeByUnit = {};
+
+function LekmodChosenPromotions( unit )
+	if g_LekmodPickable == nil then
+		g_LekmodPickable = {};
+		for promo in GameInfo.UnitPromotions() do
+			if not promo.CannotBeChosen and promo.IconAtlas ~= nil then
+				table.insert( g_LekmodPickable, promo );
+			end
+		end
+	end
+	local unitType = GameInfo.Units[unit:GetUnitType()].Type;
+	local free = g_LekmodFreeByUnit[unitType];
+	if free == nil then
+		free = {};
+		for row in GameInfo.Unit_FreePromotions{ UnitType = unitType } do
+			free[row.PromotionType] = true;
+		end
+		g_LekmodFreeByUnit[unitType] = free;
+	end
+	local list = {};
+	for _, promo in ipairs( g_LekmodPickable ) do
+		if not free[promo.Type] and unit:IsHasPromotion( promo.ID ) then
+			table.insert( list, promo );
+		end
+	end
+	return list;
+end
+
+-- Fills the status column: promotion icons from the left, the status text moves to the right edge when both are shown.
+-- The icons move closer together (overlapping) when they don't fit. Returns true if any icon is shown.
+function LekmodShowPromotions( instance, unit )
+	local list = LekmodChosenPromotions( unit );
+	local n = math.min( #list, LEKMOD_MAX_PROMO_ICONS );
+	local boxX = instance.StatusBox:GetSizeX();
+	local text = instance.Status:GetText();
+	local bText = (not instance.Status:IsHidden()) and text ~= nil and text ~= "";
+
+	if n == 0 then
+		instance.Status:SetAnchor( "C,C" );
+		instance.Status:SetWrapWidth( boxX );
+	else
+		instance.Status:SetAnchor( "R,C" );
+		instance.Status:SetWrapWidth( 70 );
+	end
+	if bText then
+		instance.Status:SetText( text );
+	end
+
+	local freeX = boxX;
+	if n > 0 and bText then
+		freeX = boxX - instance.Status:GetSizeX() - 4;
+	end
+	local step = 34;
+	if n > 1 and (n - 1) * step + 32 > freeX then
+		step = math.max( 8, math.floor( (freeX - 32) / (n - 1) ) );
+	end
+
+	local names = {};
+	for i = 1, LEKMOD_MAX_PROMO_ICONS do
+		local icon = instance["Promo" .. i];
+		if i <= n then
+			local promo = list[i];
+			if IconHookup( promo.PortraitIndex, 32, promo.IconAtlas, icon ) then
+				icon:SetOffsetVal( (i - 1) * step, 0 );
+				icon:SetHide( false );
+			else
+				icon:SetHide( true );
+			end
+		else
+			icon:SetHide( true );
+		end
+	end
+	for _, promo in ipairs( list ) do
+		table.insert( names, Locale.ConvertTextKey( promo.Description ) );
+	end
+	if #names > 0 then
+		instance.Button:SetToolTipString( table.concat( names, "[NEWLINE]" ) );
+	else
+		instance.Button:SetToolTipString( "" );
+	end
+	return n > 0;
+end
 
 -------------------------------------------------
 -------------------------------------------------
@@ -235,16 +325,19 @@ function UpdateDisplay()
 		    instance.Status:SetText( "" );
 	    end
 	    
+	    -- LEKMOD: the chosen promotions next to the status; the row grows for the icons (instances are reused, so always set the size)
+	    local bPromos = LekmodShowPromotions( instance, unit );
 	    local statusY = instance.Status:GetSizeY();
 	    statusY = statusY + 10;
-	    --print(statusY);
-	    if(statusY > 24)then
-		   instance.StatusBox:SetSizeY(statusY); 
-		   instance.SelectionFrame:SetSizeY(statusY);
-		   instance.Root:SetSizeY(statusY);
-		   instance.SelectHL:SetSizeY(statusY);
-		   instance.SelectAnim:SetSizeY(statusY);
-        end
+	    local rowY = 24;
+	    if statusY > rowY then rowY = statusY; end
+	    if bPromos and rowY < 32 then rowY = 32; end
+	    instance.StatusBox:SetSizeY(rowY);
+	    instance.SelectionFrame:SetSizeY(rowY);
+	    instance.Root:SetSizeY(rowY);
+	    instance.Button:SetSizeY(rowY);
+	    instance.SelectHL:SetSizeY(rowY);
+	    instance.SelectAnim:SetSizeY(rowY);
 
         local iHealth = 100 - unit:GetDamage()
         if iHealth == 100 then
