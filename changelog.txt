@@ -20,112 +20,23 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+
+## 1.0.0 (2026-10-19)
+- Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
+- Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
+- Dev: the April promotions were only defined in Art/Promotions/LekmodPromotions.xml, which the game never loads; they now live in the Override files.
+
 DEFENDER OF THE FAITH (BELIEF_DEFENDER_FAITH)
 ---------------------------------------------
 Tags: religion
 Subsection: Enhancer beliefs
 - Removed: the enhancer belief Defender of the Faith (+15% Combat Strength in friendly territory)
 
-CANADA (CIVILIZATION_CANADA)
-----------------------------
-Tags: civs
-- Removed: Ice tiles no longer yield +2 Gold and +1 Culture (only Lake and Snow do)
-- Dev: Trait_FeatureYieldChanges FEATURE_ICE rows of TRAIT_FURTRADE removed; UA text updated
-
-IRELAND (CIVILIZATION_IRELAND)
-------------------------------
-Tags: civs, tourism
-- Changed: Great Works yield +2 Faith (was +3)
-- Dev: Trait_GreatWorkYieldChanges TRAIT_GAELIC 3 -> 2; UA text updated
-
-FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
----------------------------------------------------------
-Tags: tiles and resources, combat
-- Changed: units on a Kasbah, Motte and Bailey, Caer or Pa get +50% Defensive Strength, like on a Fort and a Chateau:
-  - Kasbah (was +25%)
-  - Motte and Bailey (was +25%)
-  - Caer (was +25%)
-  - Pa (was +40%)
-- Changed: none of the Fort, Kasbah, Chateau, Motte and Bailey, Caer and Pa can be built next to another one of them (or next to one under construction); before, each only kept away from its own kind, and the Caer had no such rule
-- DLL: Improvements.LekmodCountsAsFort (LEKMOD_IMPROVEMENT_FORT_GROUP, CvPlot::canBuild next to NoTwoAdjacent); all six get DefenseModifier 50, NoTwoAdjacent 1
-- Dev: improvement and build texts and the Fort's Civilopedia page updated
-
-GOLD PER TURN TRADES (GOLD_PER_TURN_DEAL_DURATION)
---------------------------------------------------
-Tags: diplomacy and trade
-- Added: a second Gold per Turn trade item that is paid for 20 turns, next to the one paid for 10 turns (each side can offer one of the two in a deal)
-- DLL: define GOLD_PER_TURN_DEAL_DURATION_LONG (20); CvDeal::AddGoldPerTurnTrade / ChangeGoldPerTurnTrade keep 20 only when asked for exactly 20, everything else (AI deals too) stays 10
-- Dev: SimpleDiploTrade.xml buttons *PocketGoldPerTurnLong; TradeLogic (ui and eui) LekmodSyncGoldPerTurnLong labels both pockets "(10 TURNS)" / "(20 TURNS)"; changing the amount keeps the item's length (LekmodGetGoldPerTurnDuration). The AI trade screen has no long button
-
-LATE-GAME UNIT COSTS
---------------------
-Tags: units
-- Changed: Information-era units cost 5% more too, like Atomic-era units (except the units with their own new cost and the spaceship parts):
-  - Guided Missile 148 (was 140)
-  - Heavy Cruiser 326 (was 311)
-  - Jet Fighter and the UAE's Desert Falcon 379 (was 361)
-  - Mechanized Infantry 316 (was 301)
-  - Nuclear Submarine and XCOM Squad 359 (was 341)
-- Dev: standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged, as for the Modern and Atomic increases
-
-SACRED SITES (BELIEF_SACRED_SITES)
-----------------------------------
-Tags: religion
-Subsection: Reformation beliefs
-+3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
-- Fixed: Sanctuaries and Stupas get the +3 Gold and +3 Faith too, like the other buildings unlocked by Religious Beliefs
-- Dev: Belief_BuildingClassYieldChanges rows for BUILDINGCLASS_LEKMOD_SANCTUARY / _STUPA
-
-GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
-------------------------------------------------
-Tags: ui
-- Fixed: long hotkeys (like Shift+Ctrl+R) no longer run into the next button: worker builds and promotions sit in fixed columns, take two columns when their hotkey needs it, and the panel grows by rows
-- Changed: Route To sits with the other unit actions on the left instead of among the worker builds
-- Removed: the "Recommended" build suggestion in the worker panel
-- Dev: UnitPanel (standard UI) places worker builds and promotions with LekmodFlowPlace (fixed columns: button + room for a one-letter key; a wider label takes more columns; new row when full); the panel moved left (small UI x 106 -> 72, normal 200 -> 90) so it ends inside the unit panel below; hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
-
-SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
-------------------------------------------------------
-Tags: units
-- Dev: art, not in the player notes (user, 2026-10-19): the Self-Propelled Artillery has its own 3D model, a tracked heavy howitzer (it used the Rocket Artillery's)
-- Dev: model "Ha-to artillery" by Herdyn (CC BY 4.0; credit on its Civilopedia page, TXT_KEY_LEKMOD_SPA_PEDIA), reduced to 3,280 triangles and one baked 256 texture, on the Modern Armor skeleton and animations (all on tank_bone_body: the gun does not traverse or recoil); ArtDefine ART_DEF_UNIT_LEKMOD_SPA with the Artillery's combat effects; sources and scripts in art_sources/units/self_propelled_artillery and art_sources/tools/3d
-
 SPEAR THROW (PROMOTION_ANTI_GUNPOWDER)
 --------------------------------------
-Tags: promotions, bugfix, combat
-- Fixed: the Zulu Impi and the Vietnamese Infantry have their Spear Throw again (before each melee attack, a ranged attack at 60% of their Strength); they had lost it together with their bonus against gunpowder units
-- Changed: Spear Throw no longer gives +25% against gunpowder units and paratroopers (Bulgaria's Konnitsa)
-- Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Phase 6 Deletes of it for the Impi and the Vietnamese Infantry are gone, its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
-
-HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
----------------------------------------------
-Tags: promotions, air
-- Removed: the helicopter Sentry; helicopters have the Scouting line for sight
-- Dev: UnitPromotions_UnitCombats row of PROMOTION_HELI_SENTRY deleted (promotion row kept)
-
-PRUSSIA (CIVILIZATION_PRUSSIA)
-------------------------------
-Tags: civs, buildings
-- Changed: Prussian Factory needs no Coal or Iron (was 2 Coal and 1 Iron)
-- Dev: Building_ResourceQuantityRequirements rows of BUILDING_PRUSSIAN_FACTORY removed; help text updated
-
-KOREA (CIVILIZATION_KOREA)
---------------------------
-Tags: civs, buildings
-- Changed: Jongmyo Shrine: 1 Musician specialist slot instead of the Great Work of Music slot
-- Changed: Turtle Ship starts with Sambuca instead of Sapper
-- Dev: BUILDING_LEKMOD_JONGMYO SpecialistType SPECIALIST_MUSICIAN, SpecialistCount 1 (GreatWorkSlotType/Count removed); help text updated
-
-PIETY (POLICY_BRANCH_PIETY)
---------------------------
-Tags: policies, religion
-- Changed: the +25% Production toward religious buildings (it only matters for Georgia, who builds them with Production) moves from Reformation to Organized Religion, where the Faith discount is
-- Dev: Policy_BuildingClassProductionModifiers rows POLICY_REFORMATION -> POLICY_ORGANIZED_RELIGION (user, 2026-10-18)
-
-## 1.0.0 (2026-10-18)
-- Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
-- Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
-- Dev: the April promotions were only defined in Art/Promotions/LekmodPromotions.xml, which the game never loads; they now live in the Override files.
+Tags: promotions, combat
+- Changed: Spear Throw (the Zulu Impi, the Vietnamese Infantry, Bulgaria's Konnitsa) no longer gives +25% against gunpowder units and paratroopers
+- Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Impi and the Vietnamese Infantry lost it during development (Phase 6 Deletes) and have it again; its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
 
 LEKMOD SCION (NAME)
 -------------------
@@ -324,11 +235,16 @@ Tags: diplomacy and trade
 - Changed: trade routes last 15 turns (was up to about 20 turns, more on very long routes)
 - Dev: new define TRADE_ROUTE_DURATION (15, not speed-scaled); LEKMOD_TRADE_ROUTE_FIXED_DURATION sets m_iTurnRouteComplete = start + 15 and expires by turn in CvPlayerTrade::MoveUnits (circuits unlimited)
 
-FORTS (IMPROVEMENT_FORT)
-------------------------
-Tags: tiles and resources
-- Changed: a Fort cannot be built on a tile next to another Fort (or next to one under construction)
-- Dev: IMPROVEMENT_FORT NoTwoAdjacent=true (existing column)
+FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
+---------------------------------------------------------
+Tags: tiles and resources, combat
+- Changed: units on a Motte and Bailey, Caer or Pa get +50% Defensive Strength, like on a Fort, Kasbah and Chateau:
+  - Motte and Bailey (was +25%)
+  - Caer (was +25%)
+  - Pa (was +40%)
+- Changed: none of the Fort, Kasbah, Chateau, Motte and Bailey, Caer and Pa can be built next to another one of them (or next to one under construction); before, the Fort, Kasbah and Caer had no such rule, and the others only kept away from their own kind
+- DLL: Improvements.LekmodCountsAsFort (LEKMOD_IMPROVEMENT_FORT_GROUP, CvPlot::canBuild next to NoTwoAdjacent); all six get DefenseModifier 50, NoTwoAdjacent 1
+- Dev: improvement and build texts and the Fort's Civilopedia page updated; the Kasbah was at +25% for a while during development
 
 PUPPET CITIES (CITY FOCUS)
 --------------------------
@@ -349,6 +265,9 @@ GOLD PER TURN TRADES (GOLD_PER_TURN_DEAL_DURATION)
 --------------------------------------------------
 Tags: diplomacy and trade, ui
 - Changed: Gold per Turn deals last 10 turns (was 25)
+- Added: a second Gold per Turn trade item that is paid for 20 turns (each side can offer one of the two in a deal)
+- DLL: define GOLD_PER_TURN_DEAL_DURATION_LONG (20); CvDeal::AddGoldPerTurnTrade / ChangeGoldPerTurnTrade keep 20 only when asked for exactly 20, everything else (AI deals too) stays 10
+- Dev: SimpleDiploTrade.xml buttons *PocketGoldPerTurnLong; TradeLogic (ui and eui) LekmodSyncGoldPerTurnLong labels both pockets "(10 TURNS)" / "(20 TURNS)"; the AI trade screen has no long button
 - Dev: the trade screen tooltip on Gold per Turn shows how many turns it is paid
 - Dev: new define GOLD_PER_TURN_DEAL_DURATION (10, not speed-scaled); LEKMOD_GPT_DEAL_FIXED_DURATION in CvDeal::AddGoldPerTurnTrade and ChangeGoldPerTurnTrade; TradeLogic templates (ui and eui)
 
@@ -1145,7 +1064,13 @@ Tags: units, combat
 LATE-GAME UNIT COSTS
 --------------------
 Tags: units
-- Changed: Modern-era units cost 3% more and Atomic-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes)
+- Changed: Modern-era units cost 3% more, Atomic- and Information-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts); the Information-era ones:
+  - Guided Missile 148 (was 140)
+  - Heavy Cruiser 326 (was 311)
+  - Jet Fighter 379 (was 361); the UAE's Desert Falcon costs the same
+  - Mechanized Infantry 316 (was 301)
+  - Nuclear Submarine and XCOM Squad 359 (was 341)
+- Dev: Information-era standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
 -----------------------------------------------------------------------
@@ -1157,8 +1082,7 @@ Landing troops embark and land faster instead of fighting better from the water.
 HELICOPTER PROMOTIONS (PROMOTION_HELI_SENTRY)
 ---------------------------------------------
 Tags: promotions, units, air
-- Added: Sentry (helicopter): +2 Visibility Range (the normal Sentry gives +1)
-- Added: it can be picked once any helicopter promotion line is at level 2, like Repair
+- Dev: a helicopter Sentry (+2 Visibility Range) existed during development and was removed again (user, 2026-10-19: helicopters have the Scouting line); its UnitPromotions_UnitCombats row is deleted, the promotion row kept
 - Dev: Quick Study (+50% experience) was a helicopter choice too until 2026-10-18 (user: removed)
 
 GREAT GENERAL AND CITADEL (UNIT_GREAT_GENERAL, IMPROVEMENT_CITADEL)
@@ -1266,7 +1190,7 @@ Tags: units, combat
   - 2 movement
 - Added: Indirect Fire, +200% vs cities, Sitting Ducks; cannot melee attack, no defensive terrain bonuses, limited sight; no set-up needed
 - Changed: the Artillery (and the Rocket Corps) becomes obsolete with Ballistics and upgrades to the Self-Propelled Artillery; the Self-Propelled Artillery becomes obsolete with Rocketry and upgrades to the Rocket Artillery
-- Note: uses the Rocket Artillery's look and icon as a placeholder (user decision)
+- Dev: art, not in the player notes (user, 2026-10-19): own portrait and its own 3D model, a tracked heavy howitzer; model "Ha-to artillery" by Herdyn (CC BY 4.0; credit on its Civilopedia page and the website), on the Modern Armor skeleton and animations; sources in art_sources/units/self_propelled_artillery and art_sources/tools/3d
 
 VANGUARD CORPS (NEW) (UNIT_VANGUARD_CORPS, BUILDING_LEKMOD_FIELD_HOSPITAL)
 --------------------------------------------------------------------------
@@ -1393,7 +1317,7 @@ Subsection: Buildings
 - Added: Bomb Shelter: military units (planes too) in the city take only 50 damage from a nuclear attack
 - Changed: Stadium: cost 335 -> 284, 5 Gold maintenance (was 2)
 - Changed: Factory: cost 241 -> 260 (Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
-- Changed: Prussian Factory: cost 180 -> 195 (Faith 144 -> 156), now needs 2 Coal and 1 Iron (needed none)
+- Changed: Prussian Factory: cost 180 -> 195 (Faith 144 -> 156); unlike the Factory it needs no Coal or Iron
 - Changed: Chilean Cooperative: cost 241 -> 260 (Faith too), needs 2 Coal (was 1) and 1 Iron
 - Note: the Swiss Ski Resort (Stadium replacement) keeps its cost
 - DLL: Buildings.NukeUnitDamageFixed (LEKMOD_DEFENSE_BUILDINGS); a GDR's Nuke Resistance (20) still wins when lower
@@ -1770,6 +1694,7 @@ Subsection: Reformation beliefs
 +3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
 - Changed: +3 Gold and +3 Faith from buildings unlocked by Religious Beliefs (was +2 Culture +2 Gold +2 Faith)
 - Added: adopting it gives a free Vihara in the capital
+- Dev: the new Sanctuary and Stupa missed the +3 Gold +3 Faith at first (Belief_BuildingClassYieldChanges rows added)
 
 WORK ETHIC (BELIEF_WORK_ETHIC)
 ------------------------------
@@ -2066,8 +1991,7 @@ Tags: policies, religion
   | [COLOR_POSITIVE_TEXT]Sacred Duty[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_BUILDING_TEMPLE] Temples cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Clearing a [COLOR_POSITIVE_TEXT]Barbarian Encampment[ENDCOLOR] gives +20 [ICON_GOLD] Gold[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; from turn 80 on, every city gets this[NEWLINE][ICON_BULLET]The [ICON_BUILDING_GRAND_TEMPLE] Grand Temple: +25% [ICON_GOLD] Gold in its city
 - Reworked: POLICY_MANDATE_OF_HEAVEN
   | [COLOR_POSITIVE_TEXT]Mandate of Heaven[ENDCOLOR][NEWLINE][ICON_BULLET]+2 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each [ICON_BUILDING_TEMPLE] Temple[NEWLINE][ICON_BULLET]Every city you own claims 2 extra tiles at once (not cities founded later; later border growth costs don't rise)
-- Changed: the +25% Production toward religious buildings (it only matters for Georgia, who builds them with Production) moves from Mandate of Heaven to Reformation
-- Changed: Organized Religion: 20% discount on Faith purchases of religious units and buildings
+- Changed: Organized Religion: 20% discount on Faith purchases of religious units and buildings; +25% Production toward religious buildings (moved from Mandate of Heaven; it only matters for Georgia, who builds them with Production)
 - Removed: Reformation: border growth bonus
 - Reworked: POLICY_BRANCH_PIETY
   | Adopting Piety:[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_SHRINE] Shrines and [ICON_BUILDING_TEMPLE] Temples[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_MOSQUE_OF_DJENNE] Great Mosque of Djenne[NEWLINE][NEWLINE]Completing the Piety tree:[NEWLINE][ICON_BULLET]A [ICON_PROPHET] Great Prophet appears[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Holy Sites[ENDCOLOR] provide +1 [ICON_FOOD] Food, +3 [ICON_GOLD] Gold and +1 [ICON_TOURISM] Tourism[NEWLINE][ICON_BULLET]A free [ICON_BUILDING_GARDEN] Garden in your first 5 cities[NEWLINE][ICON_BULLET]Buy 1 [ICON_GREAT_PEOPLE] Great Person of each kind (not the [ICON_GREAT_SCIENTIST] Great Scientist) with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
@@ -2728,11 +2652,11 @@ KOREA (CIVILIZATION_KOREA)
 --------------------------
 Tags: civs, units, buildings, naval
 - New: BUILDING_LEKMOD_JONGMYO
-  | costs 50[NEWLINE]Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 slot for a [ICON_GREAT_WORK] Great Work of Music.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.
+  | costs 50[NEWLINE]Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 Musician specialist slot.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.
 - Reworked: UNIT_KOREAN_TURTLE_SHIP
-  | 25 Strength · 5 Movement · costs 96 · needs 1 Iron[NEWLINE]Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sapper.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.
+  | 25 Strength · 5 Movement · costs 96 · needs 1 Iron[NEWLINE]Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.
 - DLL: Buildings.LekmodTimedBuilding/Turns (dummy 293, class 197); timed buildings are saved per city (city save version 7)
-- Dev: building ID 278 BUILDING_LEKMOD_JONGMYO, icon art_sources/buildings/jongmyo_shrine
+- Dev: building ID 278 BUILDING_LEKMOD_JONGMYO, icon art_sources/buildings/jongmyo_shrine; a Musician specialist slot instead of its Great Work of Music slot, and the Turtle Ship starts with Sambuca instead of Sapper (user, 2026-10-18)
 
 KONGO (CIVILIZATION_KONGO)
 --------------------------
@@ -2944,7 +2868,7 @@ Tags: civs, units, game mechanics
 - Reworked: UA
   | Cities founded on Desert (also Flood Plains) start with 3 additional tiles and get +1 [ICON_FOOD] Food after The Wheel.[NEWLINE][NEWLINE]Founding a city on a Kasbah gives it +4 [ICON_CITIZEN] Population, a Monument and a Granary, plus a Worker and 150 [ICON_GOLD] Gold.[NEWLINE][NEWLINE]Roads on a Kasbah are built in 1 turn and cost no maintenance.
 - Reworked: IMPROVEMENT_KASBAH
-  | +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+25% defense for units on it.[NEWLINE][NEWLINE]Must be next to a luxury resource and not next to another Kasbah. Not on resources or features (Flood Plains are fine).[NEWLINE]Founding a city on it gives a large bonus (see the Moroccan ability).
+  | +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).[NEWLINE]Founding a city on it gives a large bonus (see the Moroccan ability).
 - Reworked: UNIT_BERBER_CAVALRY
   | 34 Strength · 4 Movement · costs 150 · needs 3 Horses[NEWLINE]Replaces the Cavalry. Needs 3 [ICON_RES_HORSE] Horses.[NEWLINE]Starts with Shock I, Drill I and Mobility.
 - DLL: Traits.LekmodDesertFound*, LekmodFoundOnImprovement*, LekmodFastRouteImprovement; Improvements.LekmodNoFeature; dummy building 300 (class 201)
@@ -2979,9 +2903,10 @@ Tags: civs
 CANADA (CIVILIZATION_CANADA)
 ----------------------------
 Tags: civs, units
-- Added: UA: Lake and Snow tiles yield +2 Gold and +1 Culture
+- Changed: UA: Lake and Snow tiles yield +2 Gold and +1 Culture (was Ice tiles)
 - Changed: Combat Engineer works twice as fast as a Worker (was 1.5x)
 - Dev: per-city dummy building BUILDING_LEKMOD_CANADA_TRAIT (ID 281, class 186) for the lake yields; the old text said "Lakes" but the data only covered Ice
+- Dev: Trait_FeatureYieldChanges FEATURE_ICE rows of TRAIT_FURTRADE removed
 
 TONGA (CIVILIZATION_TONGA)
 --------------------------
@@ -3091,7 +3016,7 @@ Tags: civs, units, buildings, air
   | costs 201[NEWLINE]Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture (but not the Hotel's extra [ICON_CULTURE] Culture from Natural Wonders, Lakes and Oases).
 - Removed: Qasimi Raider (unique unit)
 - New: UNIT_LEKMOD_DESERT_FALCON
-  | 75 Ranged Strength (range 10) · costs 361 · needs 1 Aluminum[NEWLINE]Replaces the Jet Fighter. Needs only 1 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.
+  | 75 Ranged Strength (range 10) · costs 379 · needs 1 Aluminum[NEWLINE]Replaces the Jet Fighter. Needs only 1 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.
 - DLL: Traits.LekmodFoundWaterResource*, LekmodStrategicTrade, LekmodTechReveal*, LekmodEra*; unit 275
 - DLL: CvTeam::LekmodHasResourceTradeTech (replaces the TechCityTrade checks of resource connection), CvPlayer::LekmodHasEarlyBuildTech
 
@@ -3131,7 +3056,7 @@ IRELAND (CIVILIZATION_IRELAND)
 ------------------------------
 Tags: civs
 - Reworked: UA
-  | Great Works yield +3 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.
+  | Great Works yield +2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.
 
 SWITZERLAND (CIVILIZATION_SWISS)
 --------------------------------
@@ -3404,7 +3329,7 @@ Tags: civs, units, buildings
 - New: BUILDING_LEKMOD_WATER_PUPPET_THEATRE
   | costs 67 · 1 Gold maintenance[NEWLINE]Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains, Marsh and Lake tiles next to the city yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]While a Festival (Great Musician) is next to the city, these tiles also yield +1 [ICON_FOOD] Food.
 - Reworked: UNIT_VIETNAM_INFANTRY
-  | 72 Strength · 3 Movement · costs 290[NEWLINE]Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack before each melee attack.
+  | 72 Strength · 3 Movement · costs 290[NEWLINE]Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.
 - DLL: Traits.LekmodKeepFeatureOnBuild (CvPlayer::LekmodKeepsFeatureOnBuild: build time, feature tech, removal on completion); Building_AdjacentCityPlotYieldChanges.LakeOnly and CityAdjacentImprovementType (tiles around a city refresh when an improvement next to it changes or is pillaged); building 303
 
 GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
@@ -3414,6 +3339,9 @@ Tags: ui
 - Added: promotions can also be picked with the number keys 1-9
 - Changed: promotions are sorted by when they become available
 - Added: an audio option to mute the chat message sound
+- Changed: Route To sits with the other unit actions on the left instead of among the worker builds
+- Removed: the "Recommended" build suggestion in the worker panel
+- Dev: long hotkeys (Shift+Ctrl+R) first ran into the next button; worker builds and promotions now sit in fixed columns (LekmodFlowPlace: button + room for a one-letter key, a wider label takes more columns, new row when full); the panel moved left (small UI x 106 -> 72, normal 200 -> 90); hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
 - Dev: the unit action stacks on the left had the labels for one build (e36c6c38); removed again, since keys like "Shift+E" don't fit there
 - Dev: the label sits in UnitPanel.xml and UnitPanel_small.xml; with the small UI the game loads the _small layout, which first had no label (Lua.log: label missing, keys present)
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
