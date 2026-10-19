@@ -129,30 +129,12 @@ function LekmodChosenPromotions( unit )
 	return list;
 end
 
--- Fills the status column: promotion icons from the left, the status text moves to the right edge when both are shown.
--- The icons move closer together (overlapping) when they don't fit. Returns true if any icon is shown.
+-- Fills the promotions column (it replaces the Status column) with icons from the left.
+-- The icons move closer together (overlapping) when they don't fit. Returns the number of chosen promotions.
 function LekmodShowPromotions( instance, unit )
 	local list = LekmodChosenPromotions( unit );
 	local n = math.min( #list, LEKMOD_MAX_PROMO_ICONS );
-	local boxX = instance.StatusBox:GetSizeX();
-	local text = instance.Status:GetText();
-	local bText = (not instance.Status:IsHidden()) and text ~= nil and text ~= "";
-
-	if n == 0 then
-		instance.Status:SetAnchor( "C,C" );
-		instance.Status:SetWrapWidth( boxX );
-	else
-		instance.Status:SetAnchor( "R,C" );
-		instance.Status:SetWrapWidth( 70 );
-	end
-	if bText then
-		instance.Status:SetText( text );
-	end
-
-	local freeX = boxX;
-	if n > 0 and bText then
-		freeX = boxX - instance.Status:GetSizeX() - 4;
-	end
+	local freeX = instance.PromoBox:GetSizeX();
 	local step = 34;
 	if n > 1 and (n - 1) * step + 32 > freeX then
 		step = math.max( 8, math.floor( (freeX - 32) / (n - 1) ) );
@@ -181,7 +163,7 @@ function LekmodShowPromotions( instance, unit )
 	else
 		instance.Button:SetToolTipString( "" );
 	end
-	return n > 0;
+	return #list;
 end
 
 -------------------------------------------------
@@ -325,13 +307,12 @@ function UpdateDisplay()
 		    instance.Status:SetText( "" );
 	    end
 	    
-	    -- LEKMOD: the chosen promotions next to the status; the row grows for the icons (instances are reused, so always set the size)
-	    local bPromos = LekmodShowPromotions( instance, unit );
-	    local statusY = instance.Status:GetSizeY();
-	    statusY = statusY + 10;
+	    -- LEKMOD: the Status column shows the chosen promotions instead (the status is still used for sorting by name);
+	    -- the row grows for the icons (instances are reused, so always set the size)
+	    instance.Status:SetHide( true );
+	    sortEntry.promoCount = LekmodShowPromotions( instance, unit );
 	    local rowY = 24;
-	    if statusY > rowY then rowY = statusY; end
-	    if bPromos and rowY < 32 then rowY = 32; end
+	    if sortEntry.promoCount > 0 then rowY = 32; end
 	    instance.StatusBox:SetSizeY(rowY);
 	    instance.SelectionFrame:SetSizeY(rowY);
 	    instance.Root:SetSizeY(rowY);
@@ -415,9 +396,9 @@ function SortFunction( a, b )
             valueD = entryB.status;
             healthA = entryA.unit:GetDamage();
             healthB = entryB.unit:GetDamage();
-		elseif( m_SortMode == eStatus ) then
-			valueA = entryA.status;
-			valueB = entryB.status;
+		elseif( m_SortMode == eStatus ) then -- LEKMOD: the promotions column, by number of chosen promotions
+			valueA = entryA.promoCount;
+			valueB = entryB.promoCount;
 		else -- health
 			valueA = 100 - entryA.health;
 			valueB = 100 - entryB.health;

@@ -425,11 +425,12 @@ Tags: bugfix, ui
 - Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
-UNIT LIST (F3)
---------------
+UNIT LIST (F3) AND MILITARY OVERVIEW
+------------------------------------
 Tags: ui, promotions
-- Added: the unit list (F3) shows the promotions you picked for each unit
-- Dev: UnitList.lua (both UIs): pickable promotions the unit type does not start with, as 32 px icons in the status column (up to 10, closer together when they do not fit; rows with icons are 32 px tall); their names in the row tooltip
+- Changed: the unit list (F3) and the Military Overview show the promotions you picked for each unit instead of its status
+- Added: the Military Overview shows each unit's health
+- Dev: UnitList.lua (both UIs) and MilitaryOverview.lua (new override, standard UI only): pickable promotions the unit type does not start with, as 32 px icons in the old Status column (up to 10, closer together when they do not fit; rows with icons are 32 px tall), names in the row tooltip, sorted by count; HP column colored like the unit list's
 
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------

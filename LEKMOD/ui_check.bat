@@ -145,6 +145,11 @@ IF NOT EXIST "%euifolder%" (
   copy /y "%patchfolder%\Lua\tmp\ui\PlotHelpText.xml.ignore" "%patchfolder%\Lua\UI\PlotHelpText.xml" > nul
 )
 REM --------------------------------------------------------------------------------------------------
+IF NOT EXIST "%euifolder%" (
+  copy /y "%patchfolder%\Lua\tmp\ui\MilitaryOverview\MilitaryOverview.lua.ignore" "%patchfolder%\Lua\UI\MilitaryOverview.lua" > nul
+  copy /y "%patchfolder%\Lua\tmp\ui\MilitaryOverview\MilitaryOverview.xml.ignore" "%patchfolder%\Lua\UI\MilitaryOverview.xml" > nul
+)
+REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\MiniMapPanel\MiniMapPanel.lua.ignore" "%patchfolder%\Lua\UI\MiniMapPanel.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\MiniMapPanel\MiniMapPanel.xml.ignore" "%patchfolder%\Lua\UI\MiniMapPanel.xml" > nul
 REM --------------------------------------------------------------------------------------------------

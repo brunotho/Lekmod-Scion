@@ -148276,6 +148276,16 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Replace Tag="TXT_KEY_CONCEPT_LEKMOD_CS_PERSONALITIES_SUMMARY">
 			<Text>Every City-State has a personality, shown on its screen.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR]: never asks you to conquer another City-State.[NEWLINE]Asks for road connections more often.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Neutral[ENDCOLOR]: no special rules.[NEWLINE]Rarely asks you to conquer another City-State.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Hostile[ENDCOLOR]: [ICON_INFLUENCE] Influence drops by 1.5 per turn instead of 1.[NEWLINE]Asks you to conquer other City-States more often and gives out quests less often.[NEWLINE]Harder to demand tribute from.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Irrational[ENDCOLOR]: more random in the quests it gives.</Text>
 		</Replace>
+		<!-- LEKMOD: unit list (F3) and Military Overview promotions column (2026-10-19) -->
+		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_PROMOTIONS">
+			<Text>Promotions</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_MO_SORT_PROMOTIONS">
+			<Text>Sort by number of chosen promotions</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_MO_SORT_HEALTH">
+			<Text>Sort by health</Text>
+		</Row>
 	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
