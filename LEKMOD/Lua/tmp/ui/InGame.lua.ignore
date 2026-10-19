@@ -123,10 +123,54 @@ function ClickSelect( wParam, lParam )
 		local bShift = UIManager:GetShift();
 		local bAlt = UIManager:GetAlt();
 		local bCtrl = UIManager:GetControl();
+		-- LEKMOD: Alt + click tags a target tile instead of selecting
+		if bAlt and not bCtrl and not bShift then
+			LekmodToggleTargetTile( plot );
+			return true;
+		end
 		UI.LocationSelect(plot, bCtrl, bAlt, bShift);
 	end
 	return true;
 end
+
+----------------------------------------------------------
+-- LEKMOD: target tile. The unit list (F3) and the Military Overview sort air units by their distance to it.
+-- Local to this player's screen: nothing is sent over the network.
+----------------------------------------------------------
+local g_LekmodTargetPlot = nil;
+local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
+
+function LekmodShowTargetTile()
+	Events.ClearHexHighlightStyle( LEKMOD_TARGET_STYLE );
+	if g_LekmodTargetPlot ~= nil then
+		local hexID = ToHexFromGrid( Vector2( g_LekmodTargetPlot:GetX(), g_LekmodTargetPlot:GetY() ) );
+		Events.SerialEventHexHighlight( hexID, true, Vector4( 1.0, 1.0, 1.0, 1.0 ), LEKMOD_TARGET_STYLE );
+	end
+end
+
+function LekmodSetTargetTile( plot )
+	g_LekmodTargetPlot = plot;
+	LekmodShowTargetTile();
+	if plot ~= nil then
+		LuaEvents.LekmodTargetTileChanged( plot:GetX(), plot:GetY() );
+	else
+		LuaEvents.LekmodTargetTileChanged( -1, -1 );
+	end
+end
+
+-- tagging the tagged tile again clears it
+function LekmodToggleTargetTile( plot )
+	if g_LekmodTargetPlot ~= nil and g_LekmodTargetPlot:GetX() == plot:GetX() and g_LekmodTargetPlot:GetY() == plot:GetY() then
+		LekmodSetTargetTile( nil );
+	else
+		LekmodSetTargetTile( plot );
+	end
+end
+LuaEvents.LekmodClearTargetTile.Add( function() LekmodSetTargetTile( nil ); end );
+-- other screens (e.g. the city screen) may clear all highlights
+Events.SerialEventExitCityScreen.Add( LekmodShowTargetTile );
+Events.ActivePlayerTurnStart.Add( LekmodShowTargetTile );
+Events.GameplaySetActivePlayer.Add( function() LekmodSetTargetTile( nil ); end );
 InterfaceModeMessageHandler[InterfaceModeTypes.INTERFACEMODE_SELECTION][MouseEvents.LButtonUp] = ClickSelect;
 if (UI.IsTouchScreenEnabled()) then
 	InterfaceModeMessageHandler[InterfaceModeTypes.INTERFACEMODE_SELECTION][MouseEvents.PointerUp] = ClickSelect;

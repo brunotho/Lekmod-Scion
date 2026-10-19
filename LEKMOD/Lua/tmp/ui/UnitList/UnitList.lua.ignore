@@ -14,6 +14,7 @@ local m_SortTable;
 local eName     = 0;
 local eStatus   = 1;
 local eHealth = 2;
+local eDistance = 3; -- LEKMOD: distance to the target tile
 
 local m_SortMode = eName;
 local m_bSortReverse = true;
@@ -167,6 +168,96 @@ function LekmodShowPromotions( instance, unit )
 end
 
 -------------------------------------------------
+-- LEKMOD: target tile (Alt + click a tile, InGame.lua): air units sorted by their distance to it.
+-- Order: in strike range (farthest first), then out of range (closest first, distance dimmed), then all other units.
+-------------------------------------------------
+local g_LekmodTarget = nil;
+local LEKMOD_DIST_ALPHA_OUT = 0.4;
+
+function LekmodTargetDistance( unit, sortEntry )
+	sortEntry.lekBucket = 3;
+	sortEntry.lekKey = 0;
+	if g_LekmodTarget == nil or unit:GetDomainType() ~= DomainTypes.DOMAIN_AIR then
+		return nil, false;
+	end
+	local plot = unit:GetPlot();
+	local iDist = Map.PlotDistance( plot:GetX(), plot:GetY(), g_LekmodTarget.x, g_LekmodTarget.y );
+	if iDist <= unit:Range() then
+		sortEntry.lekBucket = 1;
+		sortEntry.lekKey = -iDist;
+		return iDist, true;
+	end
+	sortEntry.lekBucket = 2;
+	sortEntry.lekKey = iDist;
+	return iDist, false;
+end
+
+-- the distance column takes its room from the promotions column; call before LekmodShowPromotions
+function LekmodShowDistance( instance, unit, sortEntry )
+	local bOn = g_LekmodTarget ~= nil;
+	instance.StatusBox:SetSizeX( bOn and 124 or 160 );
+	instance.PromoBox:SetSizeX( bOn and 116 or 152 );
+	instance.DistBox:SetHide( not bOn );
+	local iDist, bInRange = LekmodTargetDistance( unit, sortEntry );
+	if iDist == nil then
+		instance.Dist:SetText( "" );
+	else
+		instance.Dist:SetText( tostring( iDist ) );
+		if bInRange then
+			instance.Dist:SetAlpha( 1.0 );
+		else
+			instance.Dist:SetAlpha( LEKMOD_DIST_ALPHA_OUT );
+		end
+	end
+end
+
+function LekmodDistanceLess( entryA, entryB, nameA, nameB )
+	if entryA.lekBucket ~= entryB.lekBucket then
+		return entryA.lekBucket < entryB.lekBucket;
+	end
+	if entryA.lekKey ~= entryB.lekKey then
+		return entryA.lekKey < entryB.lekKey;
+	end
+	if nameA ~= nameB then
+		return Locale.Compare( nameA, nameB ) == -1;
+	end
+	return entryA.unit:GetID() < entryB.unit:GetID();
+end
+
+function LekmodApplyDistanceColumn()
+	local bOn = g_LekmodTarget ~= nil;
+	Controls.SortDistance:SetHide( not bOn );
+	Controls.SortStatus:SetSizeX( bOn and 114 or 150 );
+	Controls.SortStatusAnim:SetSizeX( bOn and 114 or 150 );
+	Controls.SortStatusHL:SetSizeX( bOn and 114 or 150 );
+	Controls.HeaderStack:CalculateSize();
+	Controls.HeaderStack:ReprocessAnchoring();
+end
+
+-- a new tile sorts by distance at once; clearing it goes back to sorting by name
+function LekmodOnTargetTileChanged( x, y )
+	if x < 0 then
+		g_LekmodTarget = nil;
+		if m_SortMode == eDistance then
+			m_SortMode = eName;
+			m_bSortReverse = false;
+		end
+	else
+		g_LekmodTarget = { x = x, y = y };
+		m_SortMode = eDistance;
+	end
+	LekmodApplyDistanceColumn();
+	if not ContextPtr:IsHidden() then
+		LekmodRefresh();
+	end
+end
+LuaEvents.LekmodTargetTileChanged.Add( LekmodOnTargetTileChanged );
+
+function LekmodRefresh()
+	UpdateDisplay();
+end
+
+-------------------------------------------------
 -------------------------------------------------
 function UpdateDisplay()
 
@@ -185,6 +276,7 @@ function UpdateDisplay()
     
     m_MilitaryIM:ResetInstances();
     m_CivilianIM:ResetInstances();
+    LekmodApplyDistanceColumn();
    
     for unit in pPlayer:Units()
     do
@@ -310,6 +402,7 @@ function UpdateDisplay()
 	    -- LEKMOD: the Status column shows the chosen promotions instead (the status is still used for sorting by name);
 	    -- the row grows for the icons (instances are reused, so always set the size)
 	    instance.Status:SetHide( true );
+	    LekmodShowDistance( instance, unit, sortEntry );
 	    sortEntry.promoCount = LekmodShowPromotions( instance, unit );
 	    local rowY = 24;
 	    if sortEntry.promoCount > 0 then rowY = 32; end
@@ -389,6 +482,9 @@ function SortFunction( a, b )
 			end
         end;
     else
+		if( m_SortMode == eDistance ) then -- LEKMOD
+			return LekmodDistanceLess( entryA, entryB, entryA.name, entryB.name );
+		end
 		if( m_SortMode == eName ) then
 			valueA = Locale.ConvertTextKey( entryA.unit:GetNameKey() );
 			valueB = Locale.ConvertTextKey( entryB.unit:GetNameKey() );
@@ -475,9 +571,11 @@ end
 Controls.SortName:RegisterCallback( Mouse.eLClick, OnSort );
 Controls.SortStatus:RegisterCallback( Mouse.eLClick, OnSort );
 Controls.SortHealth:RegisterCallback( Mouse.eLClick, OnSort );
+Controls.SortDistance:RegisterCallback( Mouse.eLClick, OnSort );
 Controls.SortName:SetVoid1( eName );
 Controls.SortStatus:SetVoid1( eStatus );
 Controls.SortHealth:SetVoid1( eHealth );
+Controls.SortDistance:SetVoid1( eDistance );
 
 	
 -------------------------------------------------
