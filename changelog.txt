@@ -434,6 +434,8 @@ Tags: ui, promotions
 - Added: while a tile is tagged, Tab selects the next plane in strike range that can still attack this turn, in the list's order (at most one every 0.2 seconds)
 - Added: an "Air units only" checkbox in both screens
 - Changed: Tab no longer opens the chat (use the chat button)
+- Added: a selected air unit shows its strike range right away, as if its strike action were already chosen
+- Dev: strike range on selection: LekmodShowSelectedAirRange in InGame.lua reuses AirStrikeHighlight (Bombardment.lua); nukes excluded; cleared when another mode (rebase, sweep) takes over
 - Dev: target tile in InGame.lua (ClickSelect, highlight style LekmodTargetTile in Highlights.xml), passed to both screens with LuaEvents.LekmodTargetTileChanged; screen-local, nothing sent over the network. The distance column (air units only) appears while a tile is tagged and takes its room from the promotions column; Military Overview has a "Clear tagged tile" button. Tab (InGame InputHandler, before the interface mode handlers): nukes excluded, wraps to the top, restarts on a new tag and every turn, selects without moving the camera. CONTROL_TOGGLE_CHAT lost its KB_TAB hotkey. The checkbox state is shared through LuaEvents.LekmodAirOnlyChanged
 - Dev: UnitList.lua (both UIs) and MilitaryOverview.lua (new override, standard UI only): pickable promotions the unit type does not start with, as 32 px icons in the old Status column (up to 10, closer together when they do not fit; rows with icons are 32 px tall), names in the row tooltip, sorted by count; HP column colored like the unit list's
 

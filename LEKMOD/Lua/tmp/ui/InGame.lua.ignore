@@ -1006,6 +1006,36 @@ function OnUnitSelectionChange( p, u, i, j, k, isSelected )
 end
 Events.UnitSelectionChanged.Add( OnUnitSelectionChange );
 
+----------------------------------------------------------------
+-- LEKMOD: a selected air unit that can strike shows its strike range, as if the strike action were chosen
+-- (the same drawing as strike mode: AirStrikeHighlight in Bombardment.lua). Registered after OnInterfaceModeChanged
+-- and OnUnitSelectionChange, so it draws after their cleanup.
+----------------------------------------------------------------
+function LekmodClearAirRange()
+	Events.ClearHexHighlightStyle( "AirRangeFill" );
+	Events.ClearHexHighlightStyle( "AirRangeBorder" );
+	Events.ClearHexHighlightStyle( "ValidFireTargetBorder" );
+end
+
+function LekmodShowSelectedAirRange()
+	LekmodClearAirRange();
+	local unit = UI.GetHeadSelectedUnit();
+	if UI.GetInterfaceMode() == InterfaceModeTypes.INTERFACEMODE_SELECTION and unit ~= nil
+		and unit:GetDomainType() == DomainTypes.DOMAIN_AIR and not unit:CanNuke() and unit:CanRangeStrike() then
+		AirStrikeHighlight();
+	end
+end
+Events.UnitSelectionChanged.Add( LekmodShowSelectedAirRange );
+Events.InterfaceModeChanged.Add( function( oldMode, newMode )
+	if newMode == InterfaceModeTypes.INTERFACEMODE_SELECTION then
+		LekmodShowSelectedAirRange();
+	elseif oldMode == InterfaceModeTypes.INTERFACEMODE_SELECTION and newMode ~= InterfaceModeTypes.INTERFACEMODE_AIRSTRIKE
+		and newMode ~= InterfaceModeTypes.INTERFACEMODE_NUKE then
+		-- other modes (rebase, sweep, ...) draw their own range; strike and nuke mode draw these same tiles
+		LekmodClearAirRange();
+	end
+end );
+
 function OnUpdateSelection( isSelected )
     RequestYieldDisplay();	
 
