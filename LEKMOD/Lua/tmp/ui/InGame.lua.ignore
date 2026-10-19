@@ -140,9 +140,23 @@ end
 -- Local to this player's screen: nothing is sent over the network.
 ----------------------------------------------------------
 local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
-local LEKMOD_TAB_DELAY = 0.2; -- seconds between two Tab selections
+local LEKMOD_TAB_DELAY = 0.5; -- seconds after the last Tab selection and after the last strike by one of our air units
 local g_LekmodTabLast = nil; -- the last plane Tab picked (its sort key), nil = start at the top
 local g_LekmodTabTime = -1;
+local g_LekmodStrikeTime = -1;
+
+-- remember when one of our air units fought (start and end of the combat)
+function LekmodOnCombatSim( attackerPlayerID, attackerUnitID )
+	if attackerPlayerID ~= Game.GetActivePlayer() then
+		return;
+	end
+	local unit = Players[ attackerPlayerID ]:GetUnitByID( attackerUnitID );
+	if unit ~= nil and unit:GetDomainType() == DomainTypes.DOMAIN_AIR then
+		g_LekmodStrikeTime = os.clock();
+	end
+end
+Events.RunCombatSim.Add( LekmodOnCombatSim );
+Events.EndCombatSim.Add( LekmodOnCombatSim );
 
 -- same order as the in-range planes in the unit lists: farthest first, then name, then ID
 function LekmodTabLess( a, b )
@@ -158,7 +172,8 @@ end
 -- planes (no nukes) in strike range of the target tile that can still attack this turn
 function LekmodTabNextPlane()
 	local now = os.clock();
-	if now - g_LekmodTabTime < LEKMOD_TAB_DELAY and now >= g_LekmodTabTime then
+	local last = math.max( g_LekmodTabTime, g_LekmodStrikeTime );
+	if now - last < LEKMOD_TAB_DELAY and now >= last then
 		return;
 	end
 	g_LekmodTabTime = now;
