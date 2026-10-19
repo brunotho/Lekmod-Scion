@@ -134,11 +134,13 @@ cards.each do |card|
   card.entries.each do |entry|
     entry.lines.each do |line|
       next unless Changelog::REF_KINDS.include?(line[:kind])
-      ref = game_refs[GameRefs.key_for(line[:text].split.first, card.key)]
+      ref = game_refs[GameRefs.key_for(Changelog.ref_word(line[:text]), card.key)]
       warn "changelog: unknown type #{line[:text].inspect} in #{card.name}" unless ref
       line[:ref_name] = ref ? ref.name : line[:text]
       line[:ref_role] = ref&.role
       line[:ref_text] = line[:frozen] || (ref && ref.text)
+      # policy texts open with their own name, which the line already shows
+      line[:ref_text] = line[:ref_text]&.sub(/\A(?:\[COLOR_[A-Z_]+\])?#{Regexp.escape(line[:ref_name])}s?(?:\[ENDCOLOR\])?:?\s*\[NEWLINE\]/i, "")
     end
   end
 end

@@ -4,7 +4,8 @@ usage:
   python tools/release.py check   1.0.0    checks only: version numbers, changelog, map logs, clean trees
   python tools/release.py prepare 1.0.0    renames "## UNRELEASED (...)" to "## 1.0.0 (<date>)" in changelog.txt,
                                            opens a new empty UNRELEASED block, sets the release date in
-                                           scion_versions.json. Review the diff and commit it yourself.
+                                           scion_versions.json, freezes the in-game texts of New/Reworked lines
+                                           (website/freeze_refs.rb). Review the diff and commit it yourself.
   python tools/release.py package 1.0.0    writes dist/Lekmod Scion 1.0.0.zip and dist/Lekmap Scion 1.0.0.zip
                                            from the committed state (git archive) and prints the gh commands
                                            that publish both releases. Nothing is pushed or published here.
@@ -87,6 +88,10 @@ def prepare(version, date):
         sys.exit("changelog.txt: no '## UNRELEASED' block")
     head = "## UNRELEASED (next version)\n\n\n## %s (%s)" % (version, date)
     write_like(CHANGELOG, log[:m.start()] + head + log[m.end():])
+    # "- New/Reworked: TYPE" lines keep the in-game text this release ships ("  | text"); the release commit only
+    # touches changelog.txt and the version files, so HEAD holds the release's game data
+    ruby = r"C:\Ruby34-x64\bin\ruby.exe" if os.path.exists(r"C:\Ruby34-x64\bin\ruby.exe") else "ruby"
+    subprocess.run([ruby, os.path.join(REPO, "website", "freeze_refs.rb"), version, "HEAD"], cwd=REPO, check=True)
     versions = json.loads(read(VERSIONS_JSON))
     entry = versions.setdefault("v" + version, {"changelog": "Lekmod Scion " + version})
     entry["release_date"] = date

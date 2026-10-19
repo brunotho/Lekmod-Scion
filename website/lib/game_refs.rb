@@ -58,6 +58,18 @@ module GameRefs
         refs[type] = Ref.new(type: type, role: ROLES[table], name: name.to_s.gsub(/\[[A-Z_0-9]+\]/, "").delete("*").strip, text: text)
       end
     end
+    # policies name their branch: "Tradition policy", "Freedom tenet, tier 2"
+    branches = Civs.rows(data, "PolicyBranchTypes").to_h { |r| [r["Type"], r] }
+    Civs.rows(data, "Policies").each do |r|
+      b = branches[r["PolicyBranchType"]]
+      next unless b && refs[r["Type"]]
+      bname = refs[b["Type"]]&.name || b["Type"]
+      refs[r["Type"]].role = if b["PurchaseByLevel"] == "true" || b["PurchaseByLevel"] == "1"
+                               "#{bname} tenet" + (r["Level"].to_i.positive? ? ", tier #{r['Level']}" : "")
+                             else
+                               "#{bname} policy"
+                             end
+    end
     # "UA" in a civ card ("- Reworked: UA" under CIVILIZATION_X) = the civ's trait, found through its leader
     leaders = Civs.rows(data, "Civilization_Leaders").to_h { |r| [r["CivilizationType"], r["LeaderheadType"]] }
     traits = Civs.rows(data, "Leader_Traits").to_h { |r| [r["LeaderType"], r["TraitType"]] }

@@ -30,7 +30,7 @@ while i < lines.size
     card_key = l[/\(([A-Z][A-Z0-9_]+)\)\s*\z/, 1]
   end
   out << l
-  if in_block && (m = /\A- (New|Reworked): (\S+)/.match(l))
+  if in_block && (m = /\A- (New|Reworked): (?:\{[^}]*\} )?(\S+)/.match(l))
     j = i + 1
     j += 1 while j < lines.size && lines[j] =~ /\A\s{2,}[-|] /
     unless lines[(i + 1)...j].any? { |x| x =~ /\A\s{2,}\| / }

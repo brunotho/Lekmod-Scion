@@ -96,6 +96,11 @@ module Changelog
   end
 
   # Lines of a collection card start with "{Source Card} ": the card the line is copied from.
+  # The item type a New/Reworked line names (after a collection card's "{Source} " prefix).
+  def self.ref_word(text)
+    split_source(text).last.to_s.split.first
+  end
+
   def self.split_source(text)
     m = /\A\{([^{}]+)\}\s*(.*)\z/.match(text.to_s)
     m ? [m[1], m[2]] : [nil, text]

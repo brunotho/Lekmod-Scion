@@ -540,44 +540,37 @@ TOURISM IN POLICIES AND IDEOLOGIES (COLLECTION_TOURISM_POLICIES)
 ----------------------------------------------------------------
 Tags: tourism, policies
 Collects: policies
-- Changed: {Piety} finisher:
-  - Holy Sites +1 Food, +3 Gold and +1 Tourism; a free Garden in your first 5 cities (was 4)
-  - no longer: Holy Site Culture
-- Changed: {Aesthetics} Flourishing of the Arts:
-  - now right below Cultural Centers (requires only Cultural Centers)
-  - +1 Culture and +1 Tourism from every World Wonder
-  - starts a 6-turn Golden Age (was 8)
-  - no longer: Culture and Tourism from Great Works
-- Changed: {Aesthetics} Artistic Genius:
-  - Great Works +1 Science +1 Culture (was +3 Science)
-  - Amphitheaters, Opera Houses, Museums and Broadcast Towers +1 Culture on top of their +1 Science
-  - Monuments +1 Science +1 Culture
-  - Festivals +1 Science per era (was +2)
-- Changed: {Aesthetics} Cultural Exchange is now Literary Tradition:
-  - requires Flourishing of the Arts
-  - a free Great Writer
-  - +1 Culture from Trading Posts
-  - no longer: Culture from Great Person improvements, Landmarks, Moai, Brazilwood Camps, Chateaus, Caers and Citadels
-- Changed: {Aesthetics} Fine Arts:
-  - requires only Artistic Genius
-  - free Scriptorium, Gallery and Conservatory in your first 5 cities (was all cities)
-  - +50% yields and Happiness from Great Works (Happiness rounded down per city; shown on each Great Work)
-  - no longer: +20% Tourism from culture buildings (moved to the finisher)
-- Changed: {Aesthetics} finisher:
-  - 3 free Archaeologists
-  - +50% Production toward Archaeologists (was 100%)
-  - Antiquity Sites are revealed even before Archaeology
-  - +20% Tourism in cities with a Monument, Amphitheater, Opera House, Museum or Broadcast Tower (each)
-- Added: {Autocracy} Cultural Dominion (tier 1): Great Writers, Artists and Musicians 25% faster; World Wonders in captured cities +10 Tourism
-- Added: {Autocracy} Doctrine of Subjugation (tier 1): each Courthouse built after adopting it creates 2 Great Works in your empty slots; +100% Gold from capturing cities (adds up with Songhai's bonus); resistance in captured cities lasts half as long
+- Reworked: {Piety} POLICY_BRANCH_PIETY
+  | Adopting Piety:[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_SHRINE] Shrines and [ICON_BUILDING_TEMPLE] Temples[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_MOSQUE_OF_DJENNE] Great Mosque of Djenne[NEWLINE][NEWLINE]Completing the Piety tree:[NEWLINE][ICON_BULLET]A [ICON_PROPHET] Great Prophet appears[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Holy Sites[ENDCOLOR] provide +1 [ICON_FOOD] Food, +3 [ICON_GOLD] Gold and +1 [ICON_TOURISM] Tourism[NEWLINE][ICON_BULLET]A free [ICON_BUILDING_GARDEN] Garden in your first 5 cities[NEWLINE][ICON_BULLET]Buy 1 [ICON_GREAT_PEOPLE] Great Person of each kind (not the [ICON_GREAT_SCIENTIST] Great Scientist) with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+- Reworked: {Aesthetics} POLICY_FLOURISHING_OF_ARTS
+  | [COLOR_POSITIVE_TEXT]Flourishing of the Arts[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism from every [COLOR_POSITIVE_TEXT]World Wonder[ENDCOLOR][NEWLINE][ICON_BULLET]Starts a 6-turn [ICON_GOLDEN_AGE] Golden Age
+- Reworked: {Aesthetics} POLICY_ARTISTIC_GENIUS
+  | [COLOR_POSITIVE_TEXT]Artistic Genius[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_ARTIST] Great Artist appears[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture from Great Works and culture buildings[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Festivals[ENDCOLOR] provide +1 [ICON_RESEARCH] Science per era
+- Reworked: {Aesthetics} POLICY_ETHICS
+  | [COLOR_POSITIVE_TEXT]Literary Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_WRITER] Great Writer appears[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture from every [COLOR_POSITIVE_TEXT]Trading Post[ENDCOLOR]
+- Reworked: {Aesthetics} POLICY_FINE_ARTS
+  | [COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]A free Scriptorium, Gallery and Conservatory in your first 5 cities[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
+- Reworked: {Aesthetics} POLICY_BRANCH_AESTHETICS
+  | Adopting Aesthetics:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_UFFIZI] Uffizi[NEWLINE][NEWLINE]Completing the Aesthetics tree:[NEWLINE][ICON_BULLET]3 Archaeologists appear[NEWLINE][ICON_BULLET]+50% [ICON_PRODUCTION] Production toward Archaeologists[NEWLINE][ICON_BULLET]Reveals Antiquity Sites (even before Archaeology) and [COLOR_POSITIVE_TEXT]Hidden Antiquity Sites[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_TOURISM] Tourism from culture buildings[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on[NEWLINE][ICON_BULLET]1 free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]
+- New: {Autocracy} POLICY_LEKMOD_CULTURAL_DOMINION
+  | [COLOR_POSITIVE_TEXT]Cultural Dominion[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster.[NEWLINE]World Wonders in cities you captured provide +10 [ICON_TOURISM] Tourism.
+- New: {Autocracy} POLICY_LEKMOD_DOCTRINE_OF_SUBJUGATION
+  | [COLOR_POSITIVE_TEXT]Doctrine of Subjugation[ENDCOLOR][NEWLINE]Each Courthouse you build creates 2 Great Works.[NEWLINE]+100% [ICON_GOLD] Gold from capturing cities.[NEWLINE]Resistance in cities you capture lasts half as long.
 - Added: {Autocracy} Cult of Personality: +2 Happiness from each Great Work
-- Added: {Freedom} Liberated Arts (tier 1): +2 Tourism and +1 Happiness from each Great Work; each Courthouse built after adopting it creates 2 Great Works in your empty slots (none if no slot is free)
-- Added: {Freedom} Fruits of Liberty (tier 1): +1 Gold, Culture and Science from each Great Work and each Great Person improvement (not Holy Sites)
-- Added: {Freedom} Soft Power (tier 2): Great Writers, Artists and Musicians 25% faster; +2 Gold from each Great Work; Festivals +2 Gold per era; new Great Musicians' Concert Tours 25% stronger
-- Added: {Freedom} Broadcast Hegemony (tier 3): +50% Culture, Tourism and Gold in the capital; -10% Production in every city; -3 Happiness per city
-- Added: {Freedom} Eminence (tier 3): a free Great Artist, Writer, Musician, Engineer, Merchant and General
-- Added: {Order} Monuments of the People (tier 1): Landmarks, Citadels and Manufactories +5 Culture +5 Tourism
-- Added: {Order} Socialist Heritage (tier 1): +10% Tourism in every city per allied City-State; Landmarks and Festivals give double yields
+- New: {Freedom} POLICY_LEKMOD_LIBERATED_ARTS
+  | [COLOR_POSITIVE_TEXT]Liberated Arts[ENDCOLOR][NEWLINE]+2 [ICON_TOURISM] Tourism and +1 [ICON_HAPPINESS_1] Happiness from each Great Work.[NEWLINE]Each Courthouse you build creates 2 Great Works.
+- New: {Freedom} POLICY_LEKMOD_FRUITS_OF_LIBERTY
+  | [COLOR_POSITIVE_TEXT]Fruits of Liberty[ENDCOLOR][NEWLINE]+1 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_RESEARCH] Science from each Great Work and each Great Person improvement (except Holy Sites).
+- New: {Freedom} POLICY_LEKMOD_SOFT_POWER
+  | [COLOR_POSITIVE_TEXT]Soft Power[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster.[NEWLINE]+2 [ICON_GOLD] Gold from each Great Work.[NEWLINE]Festivals provide +2 [ICON_GOLD] Gold per era.[NEWLINE]Concert Tours of new Great Musicians are 25% stronger.
+- New: {Freedom} POLICY_LEKMOD_BROADCAST_HEGEMONY
+  | [COLOR_POSITIVE_TEXT]Broadcast Hegemony[ENDCOLOR][NEWLINE]+50% [ICON_CULTURE] Culture, [ICON_TOURISM] Tourism and [ICON_GOLD] Gold in the [ICON_CAPITAL] Capital.[NEWLINE]-10% [ICON_PRODUCTION] Production in every city.[NEWLINE]-3 [ICON_HAPPINESS_1] Happiness for each city.
+- New: {Freedom} POLICY_LEKMOD_EMINENCE
+  | [COLOR_POSITIVE_TEXT]Eminence[ENDCOLOR][NEWLINE]A [ICON_GREAT_ARTIST] Great Artist, [ICON_GREAT_WRITER] Great Writer, [ICON_GREAT_MUSICIAN] Great Musician, [ICON_GREAT_ENGINEER] Great Engineer, [ICON_GREAT_MERCHANT] Great Merchant and [ICON_GREAT_GENERAL] Great General appear.
+- New: {Order} POLICY_LEKMOD_MONUMENTS_OF_THE_PEOPLE
+  | [COLOR_POSITIVE_TEXT]Monuments of the People[ENDCOLOR][NEWLINE]Landmarks, Citadels and Manufactories provide +5 [ICON_CULTURE] Culture and +5 [ICON_TOURISM] Tourism.
+- New: {Order} POLICY_LEKMOD_SOCIALIST_HERITAGE
+  | [COLOR_POSITIVE_TEXT]Socialist Heritage[ENDCOLOR][NEWLINE]+10% [ICON_TOURISM] Tourism in every city for each allied City-State.[NEWLINE]Landmarks and Festivals provide double yields.
 - Dev: collection card: every line is a copy of a line on the card named in braces (checked by website/test/changelog_test.rb)
 
 STRATEGIC RESOURCES: OVERVIEW (COLLECTION_STRATEGIC_RESOURCES)
@@ -607,13 +600,16 @@ Strategic resources come in bigger deposits and from new buildings and policies,
   - 20 Gold maintenance (was 3)
 - Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
 - Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
-- Added: {Rationalism} finisher: a free Great Scientist; Academies on strategic resources provide double the resource
-- Changed: {Autocracy} Third Alternative (reworked):
-  - double Oil, Aluminum and Uranium; +50% Production toward Military Academies
-  - no longer: double all strategic resources; Food and Science in the capital
-- Added: {Freedom} Technocratic Efficiency (tier 2): 1 less Aluminum for Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers; 1 less Uranium for Nuclear Submarines, Nuclear Missiles and Giant Death Robots
-- Added: {Order} Atomic Program (tier 2): 4 Uranium; Nuclear Missiles and Nuclear Plants need 1 less Uranium; +20% Production toward Nuclear Plants
-- Added: {Order} Five Year Offensive (tier 2): 15 Oil and 15 Aluminum; +100% Production toward Refineries and Recycling Centers; Siege units trained in a city with a Refinery start with Bombardment I and Cover I
+- Reworked: {Rationalism} POLICY_BRANCH_RATIONALISM
+  | Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER] Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]A free [ICON_GREAT_SCIENTIST] Great Scientist[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources provide double the resource
+- Reworked: {Autocracy} POLICY_THIRD_ALTERNATIVE
+  | [COLOR_POSITIVE_TEXT]Third Alternative[ENDCOLOR][NEWLINE]Double the [ICON_RES_OIL] Oil, [ICON_RES_ALUMINUM] Aluminum and [ICON_RES_URANIUM] Uranium you own.[NEWLINE]+50% [ICON_PRODUCTION] Production toward Military Academies.
+- New: {Freedom} POLICY_LEKMOD_TECHNOCRATIC_EFFICIENCY
+  | [COLOR_POSITIVE_TEXT]Technocratic Efficiency[ENDCOLOR][NEWLINE]Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers need 1 less [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]Nuclear Submarines, Nuclear Missiles and Giant Death Robots need 1 less [ICON_RES_URANIUM] Uranium.
+- New: {Order} POLICY_LEKMOD_ATOMIC_PROGRAM
+  | [COLOR_POSITIVE_TEXT]Atomic Program[ENDCOLOR][NEWLINE]Provides 4 [ICON_RES_URANIUM] Uranium.[NEWLINE]Nuclear Missiles and Nuclear Plants need 1 less [ICON_RES_URANIUM] Uranium.[NEWLINE]+20% [ICON_PRODUCTION] Production toward Nuclear Plants.
+- New: {Order} POLICY_LEKMOD_FIVE_YEAR_OFFENSIVE
+  | [COLOR_POSITIVE_TEXT]Five Year Offensive[ENDCOLOR][NEWLINE]Provides 15 [ICON_RES_OIL] Oil and 15 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]+100% [ICON_PRODUCTION] Production toward Refineries and Recycling Centers.[NEWLINE]Siege units trained in a city with a Refinery start with Bombardment I and Cover I.
 - Changed: {Policy Resources} strategic resources granted by policies (e.g. Oil) only count once you know the technology that reveals them; they are added when you research it
 - Changed: {Strategic Resource Requirements} Catapult, Trebuchet, Cannon, Artillery: 1 Iron (was none)
 - Changed: {Strategic Resource Requirements} Swordsman, Longswordsman, Frigate: 2 Iron (was 1)
@@ -1134,13 +1130,13 @@ Tags: units, combat
 - Changed: Stealth Bomber:
   - 100 Ranged Strength (was 85), cost 361 -> 452
   - no longer reveals the area around its base (Air Recon)
-  - always intercepted, but takes 80% less damage (Stealth; was never intercepted)
+  - always intercepted, but takes 80% less damage when intercepted (was never intercepted)
   - does not stack with Evasion
 - Changed: Nuclear Missile: cost 1005 -> 1105
 - Changed: Nuclear Missiles and Atomic Bombs can no longer rebase in the second half of the turn timer (like paradrops and setting up interception)
 - Note: the spec names the Nuclear Missile only; the Atomic Bomb follows because it is the other nuclear unit
 - DLL: LEKMOD_FAST_HAND_NUKE_REBASE (CvUnit::canRebase)
-- Changed: Infantry (and the unique Infantry with 70 Strength): 72 Strength (was 70)
+- Changed: Infantry, Vietnam's Dong Khoi Soldier and New Zealand's Maori Battalion: 72 Strength (was 70)
 - Changed: Paratrooper: 70 Strength (was 65)
 - Changed: XCOM Squad: 120 Strength (was 110)
 - Changed: Rocket Artillery: 3 movement (was 2)
@@ -1300,15 +1296,13 @@ Tags: units, civs, policies
 SPACESHIP PARTS (UNITCOMBAT_SPACESHIP)
 --------------------------------------
 Tags: units, promotions
-Spaceship parts are military units that can defend themselves on the way to the capital.
 - Changed: spaceship parts are military units:
   - 80 Strength
   - 1 movement (was 2)
   - limited sight
   - cannot melee attack
   - need 10 Aluminum (was 1)
-- Added: they can earn promotions: Mobility I, II and III (+1 movement each) and Armor Plating I, II and III; level III of either line unlocks Repair and Nuke Resistance
-- Added: Mobility II and III continue the Mobility line (only spaceship parts can take them for now); Mobility is now called Mobility I
+- Added: they can earn promotions: Mobility I, II and III (+1 movement each; II and III are new and only for spaceship parts) and Armor Plating I, II and III; level III of either line unlocks Repair and Nuke Resistance
 - Note: the spec's "may not move in the first 3 seconds of the turn" is left out (user, 2026-10-10: turn time is each computer's own clock, so it could desync)
 - Dev: the first version gave the parts a second CombatLimit column, which made the game drop CIV5Units.xml and crash at "Play Now"; fixed
 - Dev: marker promotion PROMOTION_SPACESHIP_PART (ID 377) lets parts take Mobility I as a first promotion; Mobility II/III IDs 375/376; Nuke Resistance can now be chosen (only spaceship parts have it in their list); unit combat ID 18
@@ -1444,8 +1438,7 @@ LIGHTHOUSE (BUILDING_LIGHTHOUSE)
 --------------------------------
 Tags: buildings, naval
 Subsection: Buildings
-- Removed: +1 Food on Coast and Ocean, +1 Food on the Great Barrier Reef, +1 Production on sea resources
-- Changed: Fish still give +1 Food
+- Removed: +1 Food on Coast and Ocean (Fish keep their +1 Food), +1 Food on the Great Barrier Reef, +1 Production on sea resources
 - Added: Amber and Atolls give +1 Culture
 - Added: buying tiles in the city costs 33% less Gold
 - Added: with Construction, Coast tiles (not lakes) give +1 Production
@@ -2027,11 +2020,8 @@ TRADITION (POLICY_BRANCH_TRADITION)
 -----------------------------------
 Tags: policies
 - Changed: opener: border growth bonus 25% -> 20% (the Culture cost of new tiles rises 20% slower)
-- Changed: Oligarchy:
-  - free Walls in your first 2 cities without Walls
-  - 5 units cost no maintenance
-  - cities with a garrison (not Recon) get +1 Gold and +1 Culture (every city from turn 80)
-  - no longer: garrisoned units no longer cost no maintenance; no +50% ranged strength for garrisoned cities
+- Reworked: POLICY_OLIGARCHY
+  | [COLOR_POSITIVE_TEXT]Oligarchy[ENDCOLOR][NEWLINE][ICON_BULLET]Free Walls in your first 2 cities that don't have Walls[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture; from turn 80 on, every city gets this
 - DLL: Policy_GarrisonYieldChanges, NumCitiesFreeWalls only counts cities without walls and gives maintenance-free walls (LEKMOD_POLICY_REWORK)
 
 LIBERTY (POLICY_BRANCH_LIBERTY)
@@ -2043,41 +2033,28 @@ Tags: policies
 COMMERCE (POLICY_BRANCH_COMMERCE)
 ---------------------------------
 Tags: policies
-- Dev: art, not in the player notes (user, 2026-10-19): new branch picture
 - Changed: Silk Road: +50% range for trade routes to other civilizations and City-States
-- Changed: Protectionism requires Silk Road (was Mercantilism); Mercenary Army requires Protectionism; the tree is rearranged (Silk Road on top; Entrepreneurship, Mercantilism and Protectionism below it; Mercenary Army below Protectionism)
-- Changed: finisher:
-  - 1 free Great Merchant (was 2)
-  - no longer: +1 Food from unique improvements (Scottish Caer); Trading Posts keep it
+- Changed: Protectionism requires Silk Road (was Mercantilism); Mercenary Army requires Protectionism
+- Reworked: POLICY_BRANCH_COMMERCE
+  | Adopting Commerce:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_MERCHANT] Great Merchants 33% faster[NEWLINE][ICON_BULLET]Unlocks building [ICON_WONDER_BIG_BEN] Big Ben[NEWLINE][NEWLINE]Completing the Commerce tree:[NEWLINE][ICON_BULLET]A free [ICON_GREAT_MERCHANT] Great Merchant[NEWLINE][ICON_BULLET]Double [ICON_GOLD] Gold from Great Merchant [COLOR_POSITIVE_TEXT]Trade Missions[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_FOOD] Food from [COLOR_POSITIVE_TEXT]Trading Posts[ENDCOLOR][NEWLINE][ICON_BULLET]Buy [ICON_GREAT_MERCHANT] Great Merchants with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+- Dev: art, not in the player notes (user, 2026-10-19): new branch picture
 - DLL: Policies.ExternalTradeRouteRangeModifier (CvGameTrade::IsValidTradeRoutePath)
 
 HONOR (POLICY_BRANCH_HONOR)
 ---------------------------
 Tags: policies, combat
-- Changed: opener: Culture from kills is capped at 40 per kill (was uncapped)
-- Changed: Warrior Code: 10 units cost no maintenance (was 4); Gold from kills capped at 40 per kill (was uncapped)
-- Changed: Professional Army (reworked):
-  - +100% Production toward Barracks, Barracks +1 Production +1 Culture; +30% toward Colosseums, Colosseums +1 Food
-  - no longer: Armory and Military Academy bonuses, Gold from Barracks
-- Changed: Discipline is now Hero Cult:
-  - requires Professional Army instead of Warrior Code
-  - +100% Production toward the Heroic Epic and the Circus Maximus
-  - each gives +3 Production and +3 Happiness
-  - no longer: +50% Experience; Heroic Epic Food, Gold and Culture
-- Changed: Military Tradition:
-  - unit upgrades 10% cheaper
-  - +100% Production toward Armories
-  - +30% toward Courthouses (was 50%)
-  - cities with a Courthouse get +3 Production +3 Food (doesn't stack with Expansionism's Colonial Administration)
-  - no longer: Citadel yields; Courthouse Gold
-- Changed: Military Caste:
-  - the Courthouse +2 Happiness doesn't stack with Expansionism's Colonial Infrastructure
-  - from turn 80 every city gets its +2 Culture and +1 Happiness, garrisoned or not (before turn 80 it still needs a garrisoned unit)
-- Changed: finisher:
-  - +1 Food from Barracks and Colosseums; all non-air military units get the Discipline promotion (+50% Experience)
-  - no longer: Science from kills
-  - no longer: +1 Food in every city
-  - no longer: Armory and National Wonder Food
+- Reworked: POLICY_WARRIOR_CODE
+  | [COLOR_POSITIVE_TEXT]Warrior Code[ENDCOLOR][NEWLINE][ICON_BULLET]2 [ICON_UNIT_WARRIOR] Warriors appear immediately[NEWLINE][ICON_BULLET]10 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET][ICON_GOLD] Gold for each enemy unit killed (max. 40; barbarian kills stop counting from turn 80)
+- Reworked: POLICY_PROFESSIONAL_ARMY
+  | [COLOR_POSITIVE_TEXT]Professional Army[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_BARRACKS] Barracks[NEWLINE][ICON_BULLET]Barracks provide +1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]Colosseums provide +1 [ICON_FOOD] Food
+- Reworked: POLICY_DISCIPLINE
+  | [COLOR_POSITIVE_TEXT]Hero Cult[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward the Heroic Epic and the Circus Maximus[NEWLINE][ICON_BULLET]The Heroic Epic provides +3 [ICON_PRODUCTION] Production and +3 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]The Circus Maximus provides +3 [ICON_PRODUCTION] Production and +3 [ICON_HAPPINESS_1] Happiness
+- Reworked: POLICY_MILITARY_TRADITION
+  | [COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +3 [ICON_PRODUCTION] Production and +3 [ICON_FOOD] Food (doesn't stack with Colonial Administration)[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_ARMORY] Armories[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
+- Reworked: POLICY_MILITARY_CASTE
+  | [COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Colonial Infrastructure)[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from turn 80 on, every city gets this
+- Reworked: POLICY_BRANCH_HONOR
+  | Adopting Honor:[NEWLINE][ICON_BULLET]+33% [ICON_STRENGTH] Combat Strength against [COLOR_POSITIVE_TEXT]Barbarians[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_CULTURE] Culture for each enemy unit killed (max. 40; barbarian kills stop counting from turn 80)[NEWLINE][ICON_BULLET]Unlocks building the Temple of Artemis[NEWLINE][NEWLINE]Completing the Honor tree:[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] Food from [ICON_BUILDING_BARRACKS] Barracks and [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]All non-air military units get the Discipline promotion (+50% Experience)[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_GENERAL] Great Generals with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
 - DLL: Policies.CampClearGold, Policies.FreeTilesExistingCities (LEKMOD_POLICY_REWORK); kill caps use Policy_YieldFromKills.Max; Policy_BuildingClassNoMaintenance (Sacred Duty, CvTreasury::GetBuildingGoldMaintenance)
 - Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
@@ -2085,24 +2062,16 @@ Tags: policies, combat
 PIETY (POLICY_BRANCH_PIETY)
 ---------------------------
 Tags: policies, religion
-- Changed: opener: +100% Production toward Shrines and Temples (was 50%)
-- Changed: Theocracy is now Sacred Duty:
-  - Temples cost no Gold maintenance
-  - 5 units cost no maintenance
-  - clearing a Barbarian Encampment gives +20 Gold
-  - cities with a garrison (not Recon) get +1 Faith and +1 Culture (every city from turn 80)
-  - Grand Temple +25% Gold in its city (was +33%)
-  - no longer: Shrine and Temple Gold; Holy Site Gold (moved to the finisher)
-- Changed: Mandate of Heaven:
-  - Palace +2 Faith (was +1); every city you own claims 2 extra tiles when you adopt it
-  - no longer: Palace Production; the Faith purchase discount (moved to Organized Religion)
+- Reworked: POLICY_THEOCRACY
+  | [COLOR_POSITIVE_TEXT]Sacred Duty[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_BUILDING_TEMPLE] Temples cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Clearing a [COLOR_POSITIVE_TEXT]Barbarian Encampment[ENDCOLOR] gives +20 [ICON_GOLD] Gold[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; from turn 80 on, every city gets this[NEWLINE][ICON_BULLET]The [ICON_BUILDING_GRAND_TEMPLE] Grand Temple: +25% [ICON_GOLD] Gold in its city
+- Reworked: POLICY_MANDATE_OF_HEAVEN
+  | [COLOR_POSITIVE_TEXT]Mandate of Heaven[ENDCOLOR][NEWLINE][ICON_BULLET]+2 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each [ICON_BUILDING_TEMPLE] Temple[NEWLINE][ICON_BULLET]Every city you own claims 2 extra tiles at once (not cities founded later; later border growth costs don't rise)
 - Changed: the +25% Production toward religious buildings (it only matters for Georgia, who builds them with Production) moves from Mandate of Heaven to Reformation
 - Changed: Organized Religion: 20% discount on Faith purchases of religious units and buildings
-- Dev: Religious Tolerance: tooltip lists Temple Science, Grand Temple Science, then the second Pantheon belief
-- Changed: finisher:
-  - Holy Sites +1 Food, +3 Gold and +1 Tourism; a free Garden in your first 5 cities (was 4)
-  - no longer: Holy Site Culture
 - Removed: Reformation: border growth bonus
+- Reworked: POLICY_BRANCH_PIETY
+  | Adopting Piety:[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_SHRINE] Shrines and [ICON_BUILDING_TEMPLE] Temples[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_MOSQUE_OF_DJENNE] Great Mosque of Djenne[NEWLINE][NEWLINE]Completing the Piety tree:[NEWLINE][ICON_BULLET]A [ICON_PROPHET] Great Prophet appears[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Holy Sites[ENDCOLOR] provide +1 [ICON_FOOD] Food, +3 [ICON_GOLD] Gold and +1 [ICON_TOURISM] Tourism[NEWLINE][ICON_BULLET]A free [ICON_BUILDING_GARDEN] Garden in your first 5 cities[NEWLINE][ICON_BULLET]Buy 1 [ICON_GREAT_PEOPLE] Great Person of each kind (not the [ICON_GREAT_SCIENTIST] Great Scientist) with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+- Dev: Religious Tolerance: tooltip lists Temple Science, Grand Temple Science, then the second Pantheon belief
 
 POLICY TEXTS (POLICY_BRANCH_*)
 ------------------------------
@@ -2114,42 +2083,32 @@ RATIONALISM (POLICY_BRANCH_RATIONALISM)
 ---------------------------------------
 Tags: policies
 - Changed: Humanism: Science buildings (Library, University, Observatory, Public School, Research Lab) cost 20% less Gold to buy
-- Added: Sovereignty: +1 Happiness from Universities until you adopt an Ideology; Banks +1 Gold for each other civ that adopts an Ideology after you take Sovereignty and before you adopt yours (same-turn adoptions don't count)
-- Changed: Free Thought:
-  - requires Humanism; Manufactories +4 Science
-  - no longer: Science from Brazilwood Camps, Chateaus and Caers (Trading Posts keep +1)
-- Changed: Scientific Revolution:
-  - requires Sovereignty and Humanism; +20% Science in every city for 5 turns
-  - no longer: the free Great Scientist (moved to the finisher)
-- Added: finisher: a free Great Scientist; Academies on strategic resources provide double the resource
-- Removed: Sovereignty: +1 Gold from Science buildings
-- Removed: finisher: +10% Science while the empire is happy
-- Changed: the tree is rearranged in two centered columns like Aesthetics (Humanism and Sovereignty on top; Free Thought below Humanism, Scientific Revolution below Sovereignty, Secularism below Scientific Revolution)
+- Reworked: POLICY_SOVEREIGNTY
+  | [COLOR_POSITIVE_TEXT]Sovereignty[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from [ICON_BUILDING_UNIVERSITY] Universities until you adopt an Ideology[NEWLINE][ICON_BULLET][ICON_BUILDING_BANK] Banks give +1 [ICON_GOLD] Gold for each other civilization that adopts an Ideology after you take this policy and before you adopt yours (same-turn adoptions don't count)
+- Reworked: POLICY_FREE_THOUGHT
+  | [COLOR_POSITIVE_TEXT]Free Thought[ENDCOLOR][NEWLINE][ICON_BULLET]+4 [ICON_RESEARCH] Science from every [COLOR_POSITIVE_TEXT]Academy[ENDCOLOR], [COLOR_POSITIVE_TEXT]Customs House[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Manufactory[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] Science from every [COLOR_POSITIVE_TEXT]Trading Post[ENDCOLOR]
+- Reworked: POLICY_SCIENTIFIC_REVOLUTION
+  | [COLOR_POSITIVE_TEXT]Scientific Revolution[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_RESEARCH] Science in every city for 5 turns
+- Reworked: POLICY_BRANCH_RATIONALISM
+  | Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER] Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]A free [ICON_GREAT_SCIENTIST] Great Scientist[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources provide double the resource
 - Dev: Sovereignty's University Happiness first sat in a code path that is compiled out; moved to the live one
 - DLL: Policy_BuildingClassPurchaseCostModifiers, Policy_BuildingClassHappinessUntilIdeology, Policy_BuildingClassGoldPerEarlierIdeology, Policy_ImprovementResourceExtractionMods, Policies.TempScienceModifier/TempScienceTurns; new saved player fields (old saves incompatible)
 
 PATRONAGE (POLICY_BRANCH_PATRONAGE)
 -----------------------------------
 Tags: policies
-- Changed: Merchant Confederacy:
-  - +2 Influence per turn with every City-State you have a Trade Route with (was +1); Gold gifts give 25% more Influence
-  - no longer: Food and Production from Trade Routes with City-States
+- Reworked: POLICY_MERCHANT_CONFEDERACY
+  | [COLOR_POSITIVE_TEXT]Merchant Confederacy[ENDCOLOR][NEWLINE][ICON_BULLET]+2 [ICON_INFLUENCE] Influence per turn with every City-State you have a [ICON_INTERNATIONAL_TRADE] Trade Route with[NEWLINE][ICON_BULLET][ICON_GOLD] Gold gifts to City-States give 25% more [ICON_INFLUENCE] Influence
+- Reworked: POLICY_CULTURAL_DIPLOMACY
+  | [COLOR_POSITIVE_TEXT]Embassy Exchange[ENDCOLOR][NEWLINE][ICON_BULLET]You see 3 tiles around the capital of every City-State you are allied with[NEWLINE][ICON_BULLET][ICON_INFLUENCE] Influence with City-States decays 25% slower
+- Reworked: POLICY_PHILANTHROPY
+  | [COLOR_POSITIVE_TEXT]Treaty of Arms[ENDCOLOR][NEWLINE][ICON_BULLET]Militaristic City-States send 2 units per gift (allied ones about every 9 to 13 turns)[NEWLINE][ICON_BULLET]Every allied Militaristic City-State sends a gift right away when you adopt this[NEWLINE][ICON_BULLET]Any city can buy the unique unit of an allied [COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR] City-State with [ICON_GOLD] Gold once you know its technology[NEWLINE][ICON_BULLET]It costs 30% less than normal; other purchase discounts don't apply
+- Reworked: POLICY_CONSULATES
+  | [COLOR_POSITIVE_TEXT]Open Markets[ENDCOLOR][NEWLINE][ICON_BULLET]Friendly and Allied City-States give 50% more [ICON_FOOD] Food, [ICON_CULTURE] Culture, [ICON_PEACE] Faith and [ICON_HAPPINESS_1] Happiness
+- Reworked: POLICY_BRANCH_PATRONAGE
+  | Adopting Patronage:[NEWLINE][ICON_BULLET]The resting point for [ICON_INFLUENCE] Influence with all City-States is 20 higher[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_FORBIDDEN_PALACE] Forbidden Palace[NEWLINE][NEWLINE]Completing the Patronage tree:[NEWLINE][ICON_BULLET]+1 [COLOR_POSITIVE_TEXT]Delegate[ENDCOLOR] in the World Congress, +1 more per era from the Industrial Era (5 in the Information Era)[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_ENGINEER] Great Engineers, [ICON_GREAT_GENERAL] Great Generals and [ICON_GREAT_WRITER] Great Writers with [ICON_GOLD] Gold from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on[NEWLINE][ICON_BULLET]The first costs 1000 [ICON_GOLD] Gold, then 1500, 2500, 4000 etc. (all three types count together; purchase discounts don't apply)
 - Dev: Scholasticism: the tooltip shows this era's Science per allied and friendly City-State
-- Changed: Cultural Diplomacy is now Embassy Exchange:
-  - you see 3 tiles around the capital of every allied City-State; Influence decays 25% slower
-  - no longer: more gifted strategic resources and luxury Happiness
-- Changed: Philanthropy is now Treaty of Arms:
-  - any city can buy an allied Militaristic City-State's unique unit with Gold at 30% off (no other discounts)
-  - Militaristic City-States send 2 units per gift
-  - allied ones send a gift right away when you adopt it
-  - no longer: the Gold gift and Influence decay bonuses (moved to Merchant Confederacy and Embassy Exchange)
-- Changed: Consulates is now Open Markets:
-  - Friendly and Allied City-States give 50% more Food, Culture, Faith and Happiness
-  - no longer: its World Congress Delegates (moved to the finisher), including the extra Delegate per era from the Industrial Era on
 - Dev: a leftover script still gave Consulates/Open Markets a Delegate per era from the Industrial Era; removed
-- Changed: finisher:
-  - +1 World Congress Delegate; buy Great Engineers, Generals and Writers with Gold from the Industrial Era (1000, then 1500, 2500, 4000 etc.; all types count together; purchase discounts don't apply)
-  - no longer: Great People gifts from allies, 50% more City-State yields, double unit gifts (moved to Open Markets and Treaty of Arms)
 - DLL: Policies.AllyCityStateVisionRange, AllyMilitaristicUUPurchaseMod, ImmediateMilitaristicGift, Policy_GoldPurchaseUnitClasses (LEKMOD_POLICY_REWORK); Mercantile Happiness now uses the player's CityStateBonusModifier; new saved fields in CvPlayer and CvMinorCivAI
 
 IDEOLOGY TENET LIST
@@ -2179,18 +2138,18 @@ AUTOCRACY (POLICY_BRANCH_AUTOCRACY)
 -----------------------------------
 Tags: policies
 - Removed: Nationalism
-- Added: Cultural Dominion (tier 1): Great Writers, Artists and Musicians 25% faster; World Wonders in captured cities +10 Tourism
-- Added: Doctrine of Subjugation (tier 1): each Courthouse built after adopting it creates 2 Great Works in your empty slots; +100% Gold from capturing cities (adds up with Songhai's bonus); resistance in captured cities lasts half as long
-- Added: Advanced Interrogation Techniques (tier 1): Spoils of War give 10 percentage points more of the technology (e.g. 30% -> 40% in the Information Era); each enemy spy you catch also steals a random technology from its owner (one you could research now)
-- Changed: Third Alternative (reworked):
-  - double Oil, Aluminum and Uranium; +50% Production toward Military Academies
-  - no longer: double all strategic resources; Food and Science in the capital
-- Changed: Iron Fist:
-  - all non-air military units get Discipline (+50% Experience); Gold and Culture from kills capped at 40 each
-  - no longer: +50% Experience from combat; Science from kills
-- Changed: Gunboat Diplomacy (reworked):
-  - +2 World Congress votes; tribute costs no Influence, keeps your own pledge of protection and works at any Influence level, once every 10 turns per City-State
-  - no longer: +50% intimidation, +50 Influence from tribute
+- New: POLICY_LEKMOD_CULTURAL_DOMINION
+  | [COLOR_POSITIVE_TEXT]Cultural Dominion[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster.[NEWLINE]World Wonders in cities you captured provide +10 [ICON_TOURISM] Tourism.
+- New: POLICY_LEKMOD_DOCTRINE_OF_SUBJUGATION
+  | [COLOR_POSITIVE_TEXT]Doctrine of Subjugation[ENDCOLOR][NEWLINE]Each Courthouse you build creates 2 Great Works.[NEWLINE]+100% [ICON_GOLD] Gold from capturing cities.[NEWLINE]Resistance in cities you capture lasts half as long.
+- New: POLICY_LEKMOD_ADVANCED_INTERROGATION
+  | [COLOR_POSITIVE_TEXT]Advanced Interrogation Techniques[ENDCOLOR][NEWLINE]Capturing a city gives 10% more of a technology (Spoils of War).[NEWLINE]Catching an enemy [ICON_SPY] Spy steals a random technology from its owner.
+- Reworked: POLICY_THIRD_ALTERNATIVE
+  | [COLOR_POSITIVE_TEXT]Third Alternative[ENDCOLOR][NEWLINE]Double the [ICON_RES_OIL] Oil, [ICON_RES_ALUMINUM] Aluminum and [ICON_RES_URANIUM] Uranium you own.[NEWLINE]+50% [ICON_PRODUCTION] Production toward Military Academies.
+- Reworked: POLICY_IRON_FIST
+  | [COLOR_POSITIVE_TEXT]Iron Fist[ENDCOLOR][NEWLINE]All non-air military units get the Discipline promotion (+50% Experience).[NEWLINE]Kills give [ICON_GOLD] Gold and [ICON_CULTURE] Culture equal to the killed unit's [ICON_STRENGTH] Strength, max. 40 each.
+- Reworked: POLICY_GUNBOAT_DIPLOMACY
+  | [COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence, does not break your pledge to protect it and works at any Influence level, once every 10 turns per City-State.
 - Added: Cult of Personality: +2 Happiness from each Great Work
 - Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't)
 - DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty) ignores the Influence block and the 10-20 turn tribute penalty (LEKMOD_POLICY_REWORK)
@@ -2200,44 +2159,55 @@ FREEDOM (POLICY_BRANCH_FREEDOM)
 -------------------------------
 Tags: policies
 - Removed: Covert Action, Volunteer Army, Creative Expression, Universal Healthcare, Free Mind, New Deal, Media Culture
-- Changed: Capitalism:
-  - +1 Gold from Banks and Stock Exchanges (on top of their Happiness)
-  - no longer: Happiness from Markets
-- Added: Liberated Arts (tier 1): +2 Tourism and +1 Happiness from each Great Work; each Courthouse built after adopting it creates 2 Great Works in your empty slots (none if no slot is free)
-- Added: Fruits of Liberty (tier 1): +1 Gold, Culture and Science from each Great Work and each Great Person improvement (not Holy Sites)
-- Added: Republic of Letters (tier 1): Great Person improvements get +1 Production per adjacent Manufactory, +1 Science per adjacent Academy, +1 Culture per adjacent Festival
-- Changed: Arsenal of Democracy (reworked):
-  - air units and Helicopters start with 20 Experience; +25% City Strength
-  - no longer: Production toward air units and Nuclear Missiles, free Dogfighting I
-- Added: Thoughts and Prayers (tier 2): Culture equal to half a killed military unit's strength; Gunpowder units get the Foreign Lands Bonus promotion (+20%)
-- Added: Soft Power (tier 2): Great Writers, Artists and Musicians 25% faster; +2 Gold from each Great Work; Festivals +2 Gold per era; new Great Musicians' Concert Tours 25% stronger
-- Added: Technocratic Efficiency (tier 2): 1 less Aluminum for Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers; 1 less Uranium for Nuclear Submarines, Nuclear Missiles and Giant Death Robots
-- Added: Broadcast Hegemony (tier 3): +50% Culture, Tourism and Gold in the capital; -10% Production in every city; -3 Happiness per city
-- Added: Eminence (tier 3): a free Great Artist, Writer, Musician, Engineer, Merchant and General
-- Added: Free World (tier 3): +1 World Congress vote per two allied City-States (rounded up)
+- Reworked: POLICY_CAPITALISM
+  | [COLOR_POSITIVE_TEXT]Capitalism[ENDCOLOR][NEWLINE]+1 [ICON_HAPPINESS_1] Happiness and +1 [ICON_GOLD] Gold from Banks and Stock Exchanges.
+- New: POLICY_LEKMOD_LIBERATED_ARTS
+  | [COLOR_POSITIVE_TEXT]Liberated Arts[ENDCOLOR][NEWLINE]+2 [ICON_TOURISM] Tourism and +1 [ICON_HAPPINESS_1] Happiness from each Great Work.[NEWLINE]Each Courthouse you build creates 2 Great Works.
+- New: POLICY_LEKMOD_FRUITS_OF_LIBERTY
+  | [COLOR_POSITIVE_TEXT]Fruits of Liberty[ENDCOLOR][NEWLINE]+1 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_RESEARCH] Science from each Great Work and each Great Person improvement (except Holy Sites).
+- New: POLICY_LEKMOD_REPUBLIC_OF_LETTERS
+  | [COLOR_POSITIVE_TEXT]Republic of Letters[ENDCOLOR][NEWLINE]Great Person improvements get +1 [ICON_PRODUCTION] Production for each adjacent Manufactory, +1 [ICON_RESEARCH] Science for each adjacent Academy and +1 [ICON_CULTURE] Culture for each adjacent Festival.
+- Reworked: POLICY_ARSENAL_DEMOCRACY
+  | [COLOR_POSITIVE_TEXT]Arsenal of Democracy[ENDCOLOR][NEWLINE]Air units and Helicopters start with 20 Experience.[NEWLINE]+25% City [ICON_STRENGTH] Strength.
+- New: POLICY_LEKMOD_THOUGHTS_AND_PRAYERS
+  | [COLOR_POSITIVE_TEXT]Thoughts and Prayers[ENDCOLOR][NEWLINE]When one of your military units is killed, gain [ICON_CULTURE] Culture equal to half its [ICON_STRENGTH] Strength.[NEWLINE]Gunpowder units get the Foreign Lands Bonus promotion (+20% [ICON_STRENGTH] Strength outside your territory).
+- New: POLICY_LEKMOD_SOFT_POWER
+  | [COLOR_POSITIVE_TEXT]Soft Power[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster.[NEWLINE]+2 [ICON_GOLD] Gold from each Great Work.[NEWLINE]Festivals provide +2 [ICON_GOLD] Gold per era.[NEWLINE]Concert Tours of new Great Musicians are 25% stronger.
+- New: POLICY_LEKMOD_TECHNOCRATIC_EFFICIENCY
+  | [COLOR_POSITIVE_TEXT]Technocratic Efficiency[ENDCOLOR][NEWLINE]Rocket Artillery, Mobile SAMs, Helicopter Gunships, Missile Cruisers, Jet Fighters and Stealth Bombers need 1 less [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]Nuclear Submarines, Nuclear Missiles and Giant Death Robots need 1 less [ICON_RES_URANIUM] Uranium.
+- New: POLICY_LEKMOD_BROADCAST_HEGEMONY
+  | [COLOR_POSITIVE_TEXT]Broadcast Hegemony[ENDCOLOR][NEWLINE]+50% [ICON_CULTURE] Culture, [ICON_TOURISM] Tourism and [ICON_GOLD] Gold in the [ICON_CAPITAL] Capital.[NEWLINE]-10% [ICON_PRODUCTION] Production in every city.[NEWLINE]-3 [ICON_HAPPINESS_1] Happiness for each city.
+- New: POLICY_LEKMOD_EMINENCE
+  | [COLOR_POSITIVE_TEXT]Eminence[ENDCOLOR][NEWLINE]A [ICON_GREAT_ARTIST] Great Artist, [ICON_GREAT_WRITER] Great Writer, [ICON_GREAT_MUSICIAN] Great Musician, [ICON_GREAT_ENGINEER] Great Engineer, [ICON_GREAT_MERCHANT] Great Merchant and [ICON_GREAT_GENERAL] Great General appear.
+- New: POLICY_LEKMOD_FREE_WORLD
+  | [COLOR_POSITIVE_TEXT]Free World[ENDCOLOR][NEWLINE]+1 World Congress vote for every two allied City-States (rounded up).
 - DLL: Policies.GreatWorkHappiness, CultureFromUnitDeathPercent, GreatMusicianBlastModifier, VotesPerTwoAlliedCS; Policy_BuildingClassGreatWorks, Policy_BuildingClassFreeBuildings with Buildings.LekmodPolicyGranted (no rows yet), Policy_GPImprovementAdjacentYields, Policy_ImprovementYieldPerEra (LEKMOD_POLICY_REWORK)
 
 ORDER (POLICY_BRANCH_ORDER)
 ---------------------------
 Tags: policies
 - Removed: Double Agents, Cultural Revolution, Academy of Sciences, People's Army
-- Changed: Patriotic War (reworked, now tier 1): your units fight at full strength even when damaged
-- Removed: Patriotic War: +1 Movement and +10% Combat Strength in friendly territory
-- Added: Monuments of the People (tier 1): Landmarks, Citadels and Manufactories +5 Culture +5 Tourism
-- Added: Socialist Heritage (tier 1): +10% Tourism in every city per allied City-State; Landmarks and Festivals give double yields
-- Changed: Party Leadership: now tier 2; +2 Food, Production, Science and Gold in every city (was +1 each and +1 Culture)
-- Added: Re-Education (tier 2): +2 Happiness from each Constabulary and Courthouse; resistance in captured cities lasts half as long
+- Reworked: POLICY_PATRIOTIC_WAR
+  | [COLOR_POSITIVE_TEXT]Patriotic War[ENDCOLOR][NEWLINE]Your units fight at full strength even when damaged.
+  - now tier 1
+- New: POLICY_LEKMOD_MONUMENTS_OF_THE_PEOPLE
+  | [COLOR_POSITIVE_TEXT]Monuments of the People[ENDCOLOR][NEWLINE]Landmarks, Citadels and Manufactories provide +5 [ICON_CULTURE] Culture and +5 [ICON_TOURISM] Tourism.
+- New: POLICY_LEKMOD_SOCIALIST_HERITAGE
+  | [COLOR_POSITIVE_TEXT]Socialist Heritage[ENDCOLOR][NEWLINE]+10% [ICON_TOURISM] Tourism in every city for each allied City-State.[NEWLINE]Landmarks and Festivals provide double yields.
+- Reworked: POLICY_PARTY_LEADERSHIP
+  | [COLOR_POSITIVE_TEXT]Party Leadership[ENDCOLOR][NEWLINE]+2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_RESEARCH] Science and +2 [ICON_GOLD] Gold in every city.
+  - now tier 2
+- New: POLICY_LEKMOD_RE_EDUCATION
+  | [COLOR_POSITIVE_TEXT]Re-Education[ENDCOLOR][NEWLINE]+2 [ICON_HAPPINESS_1] Happiness from each Constabulary and Courthouse.[NEWLINE]Resistance in cities you capture lasts half as long.
+- New: POLICY_LEKMOD_ATOMIC_PROGRAM
+  | [COLOR_POSITIVE_TEXT]Atomic Program[ENDCOLOR][NEWLINE]Provides 4 [ICON_RES_URANIUM] Uranium.[NEWLINE]Nuclear Missiles and Nuclear Plants need 1 less [ICON_RES_URANIUM] Uranium.[NEWLINE]+20% [ICON_PRODUCTION] Production toward Nuclear Plants.
+- New: POLICY_LEKMOD_FIVE_YEAR_OFFENSIVE
+  | [COLOR_POSITIVE_TEXT]Five Year Offensive[ENDCOLOR][NEWLINE]Provides 15 [ICON_RES_OIL] Oil and 15 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]+100% [ICON_PRODUCTION] Production toward Refineries and Recycling Centers.[NEWLINE]Siege units trained in a city with a Refinery start with Bombardment I and Cover I.
 - Changed: shorter resistance from Colonial Administration, Re-Education and Doctrine of Subjugation adds up (two of them: no resistance beyond the minimum of 1 turn)
-- Added: Atomic Program (tier 2): 4 Uranium; Nuclear Missiles and Nuclear Plants need 1 less Uranium; +20% Production toward Nuclear Plants
-- Added: Five Year Offensive (tier 2): 15 Oil and 15 Aluminum; +100% Production toward Refineries and Recycling Centers; Siege units trained in a city with a Refinery start with Bombardment I and Cover I
-- Changed: Command Economy (reworked):
-  - +30% Production toward military units; -10% Science in every city; a Great Scientist you keep loses its Science bonus three times slower (one counted turn every three turns instead of every turn)
-  - no longer: strategic resources and their yields
-- Changed: Iron Curtain:
-  - ends all your Trade Routes when adopted (units return home)
-  - no Trade Routes with other civilizations or City-States
-  - enemy Spies steal 50% slower
-  - internal routes +10 Food or Production, +1 per era after the Industrial Era (was +200%)
+- Reworked: POLICY_DICTATORSHIP_PROLETARIAT
+  | [COLOR_POSITIVE_TEXT]Command Economy[ENDCOLOR][NEWLINE]+30% [ICON_PRODUCTION] Production toward military units in every city.[NEWLINE]-10% [ICON_RESEARCH] Science in every city.[NEWLINE][ICON_GREAT_SCIENTIST] Great Scientists you keep lose their [ICON_RESEARCH] Science bonus three times slower.
+- Reworked: POLICY_IRON_CURTAIN
+  | [COLOR_POSITIVE_TEXT]Iron Curtain[ENDCOLOR][NEWLINE]Internal Trade Routes provide +10 [ICON_FOOD] Food or [ICON_PRODUCTION] Production, +1 more for each era after the Industrial Era.[NEWLINE]All your running [ICON_INTERNATIONAL_TRADE] Trade Routes end when you adopt it (the trade units return home).[NEWLINE]No more Trade Routes with other civilizations or City-States.[NEWLINE]Enemy [ICON_SPY] Spies steal technologies 50% slower in your cities.
 - DLL: Policies.TourismModPerAlliedCS, NoExternalTradeRoutes, GreatScientistDecayModifier, TradeYieldPerEraTimes100/TradeYieldEraType; Policy_UnitClassResourceRequirementChanges, Policy_BuildingClassResourceRequirementChanges, Policy_UnitCombatPromotionsIfBuilding, Policy_ImprovementYieldModifiers (LEKMOD_POLICY_REWORK)
 
 PENDING POLICY PICK (game mechanics)
@@ -2258,78 +2228,40 @@ Tags: policies, game mechanics
 AESTHETICS (POLICY_BRANCH_AESTHETICS)
 -------------------------------------
 Tags: policies
-- Changed: Flourishing of the Arts:
-  - now right below Cultural Centers (requires only Cultural Centers)
-  - +1 Culture and +1 Tourism from every World Wonder
-  - starts a 6-turn Golden Age (was 8)
-  - no longer: Culture and Tourism from Great Works
-- Changed: Artistic Genius:
-  - Great Works +1 Science +1 Culture (was +3 Science)
-  - Amphitheaters, Opera Houses, Museums and Broadcast Towers +1 Culture on top of their +1 Science
-  - Monuments +1 Science +1 Culture
-  - Festivals +1 Science per era (was +2)
+- Reworked: POLICY_FLOURISHING_OF_ARTS
+  | [COLOR_POSITIVE_TEXT]Flourishing of the Arts[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism from every [COLOR_POSITIVE_TEXT]World Wonder[ENDCOLOR][NEWLINE][ICON_BULLET]Starts a 6-turn [ICON_GOLDEN_AGE] Golden Age
+- Reworked: POLICY_ARTISTIC_GENIUS
+  | [COLOR_POSITIVE_TEXT]Artistic Genius[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_ARTIST] Great Artist appears[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture from Great Works and culture buildings[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Festivals[ENDCOLOR] provide +1 [ICON_RESEARCH] Science per era
+- Reworked: POLICY_ETHICS
+  | [COLOR_POSITIVE_TEXT]Literary Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_WRITER] Great Writer appears[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture from every [COLOR_POSITIVE_TEXT]Trading Post[ENDCOLOR]
+- Reworked: POLICY_FINE_ARTS
+  | [COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]A free Scriptorium, Gallery and Conservatory in your first 5 cities[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
+- Reworked: POLICY_BRANCH_AESTHETICS
+  | Adopting Aesthetics:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_UFFIZI] Uffizi[NEWLINE][NEWLINE]Completing the Aesthetics tree:[NEWLINE][ICON_BULLET]3 Archaeologists appear[NEWLINE][ICON_BULLET]+50% [ICON_PRODUCTION] Production toward Archaeologists[NEWLINE][ICON_BULLET]Reveals Antiquity Sites (even before Archaeology) and [COLOR_POSITIVE_TEXT]Hidden Antiquity Sites[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_TOURISM] Tourism from culture buildings[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on[NEWLINE][ICON_BULLET]1 free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]
 - Dev: Aesthetics tooltips say "culture buildings" (Monument, Amphitheater, Opera House, Museum, Broadcast Tower) instead of listing them
-- Changed: Cultural Exchange is now Literary Tradition:
-  - requires Flourishing of the Arts
-  - a free Great Writer
-  - +1 Culture from Trading Posts
-  - no longer: Culture from Great Person improvements, Landmarks, Moai, Brazilwood Camps, Chateaus, Caers and Citadels
-- Changed: Fine Arts:
-  - requires only Artistic Genius
-  - free Scriptorium, Gallery and Conservatory in your first 5 cities (was all cities)
-  - +50% yields and Happiness from Great Works (Happiness rounded down per city; shown on each Great Work)
-  - no longer: +20% Tourism from culture buildings (moved to the finisher)
-- Changed: finisher:
-  - 3 free Archaeologists
-  - +50% Production toward Archaeologists (was 100%)
-  - Antiquity Sites are revealed even before Archaeology
-  - +20% Tourism in cities with a Monument, Amphitheater, Opera House, Museum or Broadcast Tower (each)
 - Note: Flourishing of the Arts' World Wonder Culture and Tourism were 34.11 effects missing in 35.x (its tooltip already promised them)
 - DLL: Policies.GreatWorkYieldModifier, Resources.PolicyRevealOr (LEKMOD_POLICY_REWORK)
 
 EXPANSIONISM (POLICY_BRANCH_EXPLORATION)
 ----------------------------------------
 Tags: policies, naval, units, buildings
-- Changed: Exploration is now Expansionism (reworked), still from the Medieval Era
-- Changed: opener:
-  - +1 Sight for all land military units and for naval melee and ranged units
-  - allows Conquistadors
-  - a free Conquistador appears in your city closest to water and a free Galleass on the water tile closest to your cities
-  - every city claims 1 extra tile, including cities founded later
-  - unlocks the Tower of Belem
-  - no longer: +1 Movement and +1 Sight for naval units
-- Changed: Maritime Infrastructure is now Colonial Administration:
-  - resistance in captured cities lasts half as long
-  - captured cities get a free Crown Office and a free Worker
-  - cities with a Courthouse or Crown Office get +3 Food +3 Production (doesn't stack with Military Tradition)
-  - no longer: +2 Production in every city; faster Lighthouses, Harbors and Seaports
-- Changed: Merchant Navy is now Colonial Infrastructure:
-  - +20% Production toward buildings from before the Renaissance (wonders excluded)
-  - newly founded cities get a free Crown Office and a free Rowboat
-  - cities with a Courthouse or Crown Office get +2 Happiness (doesn't stack with Military Caste)
-  - no longer: +2 Population, free Worker and 6 extra tiles for new cities
-- Changed: Naval Tradition:
-  - +1 Happiness from Lighthouses and Harbors; Drydocks +5 Culture
-  - no longer: Seaport Happiness; Culture from Lighthouses, Harbors and Seaports
-- Changed: Treasure Fleets:
-  - requires Naval Tradition and Colonial Infrastructure
-  - with a Lighthouse +1 Production on Coast tiles without a resource
-  - with a Harbor +1 Gold on Coast tiles next to the city
-  - with a Seaport +3 Production on Coast tiles next to the city and a Mountain (lakes excluded)
-  - a free Great Admiral
-  - no longer: Food and Production on unimproved Coast, Ocean and Lake tiles
-- Changed: Navigation School:
-  - requires only Naval Tradition
-  - naval units +10% Combat Strength and +1 Movement
-  - a free Great Admiral
-  - no longer: +2 Science in every city
-- Changed: finisher:
-  - +1 Happiness from each Luxury; Great Admirals can still be bought with Faith from the Industrial Era
-  - no longer: Great Admirals twice as fast, free Great Admiral, Gold on Coast and Ocean tiles
-- Added: Crown Office building (free only; counts like a Courthouse for Colonial Administration and Colonial Infrastructure)
-- Note: the branch uses the Commerce branch picture until new Commerce art arrives
-- Changed: tree layout: Naval Tradition, Colonial Infrastructure, Colonial Administration on top; Navigation School bottom left, Treasure Fleets in the middle
+- Reworked: POLICY_BRANCH_EXPLORATION
+  | Adopting Expansionism:[NEWLINE][ICON_BULLET]+1 Sight for land units and for naval melee and ranged units[NEWLINE][ICON_BULLET]Allows training [ICON_UNIT_SPANISH_CONQUISTADOR] Conquistadors[NEWLINE][ICON_BULLET]A free Conquistador appears in your city closest to water[NEWLINE][ICON_BULLET]A free [ICON_UNIT_GALLEASS] Galleass appears on the water tile closest to your cities[NEWLINE][ICON_BULLET]Every city claims 1 extra tile, including cities you found later[NEWLINE][ICON_BULLET]Unlocks building the Tower of Belem[NEWLINE][NEWLINE]Completing the Expansionism tree:[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each Luxury resource[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_ADMIRAL] Great Admirals with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+- Reworked: POLICY_NAVAL_TRADITION
+  | [COLOR_POSITIVE_TEXT]Naval Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each [ICON_BUILDING_LIGHTHOUSE] Lighthouse and [ICON_BUILDING_HARBOR] Harbor[NEWLINE][ICON_BULLET]Drydocks provide +5 [ICON_CULTURE] Culture
+- Reworked: POLICY_MERCHANT_NAVY
+  | [COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
+- Reworked: POLICY_MARITIME_INFRASTRUCTURE
+  | [COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +3 [ICON_FOOD] Food and +3 [ICON_PRODUCTION] Production (doesn't stack with Military Tradition)
+- Reworked: POLICY_NAVIGATION_SCHOOL
+  | [COLOR_POSITIVE_TEXT]Navigation Schools[ENDCOLOR][NEWLINE][ICON_BULLET]+10% [ICON_STRENGTH] Combat Strength and +1 [ICON_MOVES] Movement for naval units[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
+- Reworked: POLICY_TREASURE_FLEETS
+  | [COLOR_POSITIVE_TEXT]Treasure Fleets[ENDCOLOR][NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_LIGHTHOUSE] Lighthouse: +1 [ICON_PRODUCTION] Production on Coast tiles without a resource[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_HARBOR] Harbor: +1 [ICON_GOLD] Gold on Coast tiles next to the city[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_SEAPORT] Seaport: +3 [ICON_PRODUCTION] Production on Coast tiles next to the city and to a Mountain[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
+- New: BUILDING_LEKMOD_CROWN_OFFICE
+  | Given for free by the Expansionism policies Colonial Administration (captured cities) and Colonial Infrastructure (newly founded cities).[NEWLINE]Counts like a [ICON_BUILDING_COURTHOUSE] Courthouse for those two policies.[NEWLINE][NEWLINE]Cannot be built. Destroyed when the city is captured.
 - Removed: the Colonialism Governor's Mansion in newly founded cities
+- Dev: tree layout: Naval Tradition, Colonial Infrastructure, Colonial Administration on top; Navigation School bottom left, Treasure Fleets in the middle (the website shows the tree)
+- Note: the branch uses the Commerce branch picture until new Commerce art arrives
 - Dev: the No Quitters script that granted it was still loaded by InGame.lua; no longer loaded
 - DLL: Policies.ResistanceTimeModifier, ConquestFreeUnitClass, NewCityFreeBuildingClass, NewCityFreeUnitClass, FreeTilesNewCities, EarlyBuildingProductionModifier/EarlyBuildingEraType, FreeUnitClassNearWater/FreeUnitClassOnWater; tables Policy_CityYieldIfBuildingClass, Policy_CityHappinessIfBuildingClass (largest value counts; Military Tradition and Military Caste moved there), Policy_BuildingTerrainYieldChanges (LEKMOD_POLICY_REWORK)
 

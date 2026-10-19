@@ -139,7 +139,7 @@ class RealChangelogTest < Minitest::Test
     doc.releases.each do |rel|
       rel.items.each do |item|
         item.lines.select { |l| Changelog::REF_KINDS.include?(l[:kind]) }.each do |l|
-          word = l[:text].split.first
+          word = Changelog.ref_word(l[:text])
           problems << "#{item.name}: #{l[:kind]} #{word} is no item type" unless word == "UA" || refs.key?(word) || l[:frozen]
           problems << "#{item.name}: UA but #{item.key} has no trait" if word == "UA" && !refs.key?("UA:#{item.key}") && !l[:frozen]
           problems << "#{rel.version}: #{item.name}: #{word} has no frozen text" if !rel.unreleased && !l[:frozen]
