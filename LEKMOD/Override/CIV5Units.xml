@@ -289297,6 +289297,14 @@
 			<YieldChange>1</YieldChange>
 		</Row>
 	</Trait_GreatWorkYieldChanges>
+	<!-- The playable Venice is CIVILIZATION_VENEZ (leader LEADER_VENEZ, old UA TRAIT_VENEZ "Serenissima"); TRAIT_SUPER_CITY_STATE belongs to the unplayable base-game CIVILIZATION_VENICE, so the playable leader gets that trait (2026-10-20) -->
+	<Leader_Traits>
+		<Delete LeaderType="LEADER_VENEZ"/>
+		<Row>
+			<LeaderType>LEADER_VENEZ</LeaderType>
+			<TraitType>TRAIT_SUPER_CITY_STATE</TraitType>
+		</Row>
+	</Leader_Traits>
 	<!-- Assyria: Royal Library keeps its (generic) Great Work slot; the XP for trained units from a filled slot is removed -->
 	<Building_DomainFreeExperiencePerGreatWork>
 		<Delete BuildingType="BUILDING_ROYAL_LIBRARY"/>

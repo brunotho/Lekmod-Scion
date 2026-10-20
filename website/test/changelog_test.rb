@@ -4,6 +4,7 @@ require_relative "../lib/game_text"
 require_relative "../lib/loose_list"
 require_relative "../lib/policy_trees"
 require_relative "../lib/game_refs"
+require_relative "../lib/civs"
 
 class ChangelogTest < Minitest::Test
   SAMPLE = <<~TXT
@@ -164,6 +165,28 @@ class RealChangelogTest < Minitest::Test
       end
     end
     assert_empty problems, problems.join("\n")
+  end
+
+  # Some civs exist twice (Venice: the playable CIVILIZATION_VENEZ and the unplayable base-game CIVILIZATION_VENICE).
+  # A civ card or a trait change on the unplayable copy never reaches the game (2026-10-20: Venice's new UA did).
+  # A card for a civ that was made unplayable on purpose says so with a Removed line.
+  def test_civ_changes_target_playable_civs
+    doc = Changelog.parse(File.read(PATH, encoding: "UTF-8"))
+    data = Civs.strip_comments(File.read(File.expand_path("../../LEKMOD/Override/CIV5Units.xml", __dir__), encoding: "UTF-8"))
+    playable = Civs.rows(data, "Civilizations").select { |r| %w[true 1].include?(r["Playable"]) }.map { |r| r["Type"] }
+    leaders = Civs.rows(data, "Civilization_Leaders").select { |r| playable.include?(r["CivilizationType"]) }.map { |r| r["LeaderheadType"] }
+    live_traits = Civs.rows(data, "Leader_Traits").select { |r| leaders.include?(r["LeaderType"]) }.map { |r| r["TraitType"] }
+    problems = []
+    doc.releases.flat_map(&:items).each do |item|
+      next unless item.key.to_s.start_with?("CIVILIZATION_") && !playable.include?(item.key)
+      problems << "#{item.name}: #{item.key} is not playable" unless item.lines.any? { |l| l[:kind] == "Removed" }
+    end
+    data.scan(%r{<Traits>(.*?)</Traits>}m) do |(block)|
+      block.scan(/<Where\s+Type="(TRAIT_[A-Z0-9_]+)"/) do |(t)|
+        problems << "Traits update on #{t}, which no playable civ has" unless live_traits.include?(t)
+      end
+    end
+    assert_empty problems.uniq, problems.uniq.join("\n")
   end
 end
 

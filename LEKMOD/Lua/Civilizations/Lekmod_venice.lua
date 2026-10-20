@@ -23,6 +23,7 @@ end
 ------------------------------------------------------------------------------------------------------------------------
 -- Check if the civilization is active and add the event listener
 ------------------------------------------------------------------------------------------------------------------------
-if LekmodUtilities:is_civilization_active(this_civ) then
+-- Off since 2026-10-20: Venice has the UA Masks and Mirrors (TRAIT_SUPER_CITY_STATE), not Serenissima.
+if false and LekmodUtilities:is_civilization_active(this_civ) then
 	GameEvents.TeamTechResearched.Add(lekmod_venice_route_compass)
 end
