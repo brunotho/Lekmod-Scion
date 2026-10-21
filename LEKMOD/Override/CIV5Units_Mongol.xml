@@ -147921,6 +147921,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPTIONS_TAB">
 			<Text>Lek Options</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS">
+			<Text>Show picked promotions under your units' flags</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT">
+			<Text>Small icons of the promotions you picked appear under the flag of each of your units on the map (other players' units show none).</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE">
 			<Text>[COLOR_CULTURE_STORED]Jaegye[ENDCOLOR]: {1_Num} turns left</Text>
 		</Row>

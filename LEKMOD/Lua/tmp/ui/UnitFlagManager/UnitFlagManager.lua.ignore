@@ -247,6 +247,7 @@ local g_UnitFlagClass =
         o:SetFogState( fogState );
         o:UpdateFlagOffset();
         o:UpdateVisibility();
+        LekmodUpdateFlagPromotions( o );
     
     
         ---------------------------------------------------------
@@ -1841,3 +1842,82 @@ function LekmodUpdateAllAttackedIcons()
 end
 Events.SerialEventUnitInfoDirty.Add( LekmodUpdateAllAttackedIcons );
 Events.ActivePlayerTurnStart.Add( LekmodUpdateAllAttackedIcons );
+
+-------------------------------------------------
+-- LEKMOD (2026-10-22): the promotions you picked for your own units, as small icons under their flag.
+-- Option "LEK_FlagPromotions" (Lek Options; unset = on). Same choice of promotions as the unit list: pickable ones
+-- the unit type doesn't start with. The atlas icons are 32 px; they are drawn at LEKMOD_FLAG_PROMO_SIZE.
+-------------------------------------------------
+local LEKMOD_FLAG_PROMO_SIZE = 20;
+local LEKMOD_FLAG_PROMO_MAX = 8;
+local g_LekmodFlagOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+local g_LekmodFlagPickable = nil;
+local g_LekmodFlagFreeByUnit = {};
+
+function LekmodFlagChosenPromotions( unit )
+    if g_LekmodFlagPickable == nil then
+        g_LekmodFlagPickable = {};
+        for promo in GameInfo.UnitPromotions() do
+            if not promo.CannotBeChosen and promo.IconAtlas ~= nil then
+                table.insert( g_LekmodFlagPickable, promo );
+            end
+        end
+    end
+    local unitType = GameInfo.Units[unit:GetUnitType()].Type;
+    local free = g_LekmodFlagFreeByUnit[unitType];
+    if free == nil then
+        free = {};
+        for row in GameInfo.Unit_FreePromotions{ UnitType = unitType } do
+            free[row.PromotionType] = true;
+        end
+        g_LekmodFlagFreeByUnit[unitType] = free;
+    end
+    local list = {};
+    for _, promo in ipairs( g_LekmodFlagPickable ) do
+        if not free[promo.Type] and unit:IsHasPromotion( promo.ID ) then
+            table.insert( list, promo );
+        end
+    end
+    return list;
+end
+
+function LekmodUpdateFlagPromotions( flag )
+    if( flag == nil or flag.m_Instance == nil or flag.m_Instance.LekmodPromoStack == nil ) then
+        return;
+    end
+    local list = {};
+    local bOn = g_LekmodFlagOptions == nil or g_LekmodFlagOptions.GetValue( "LEK_FlagPromotions" ) ~= 0;
+    if( bOn and flag.m_PlayerID == Game.GetActivePlayer() ) then
+        local pUnit = Players[ flag.m_PlayerID ]:GetUnitByID( flag.m_UnitID );
+        if( pUnit ~= nil and pUnit:IsCombatUnit() ) then
+            list = LekmodFlagChosenPromotions( pUnit );
+        end
+    end
+    for i = 1, LEKMOD_FLAG_PROMO_MAX do
+        local image = flag.m_Instance["LekmodPromo" .. i];
+        local promo = list[i];
+        if( image ~= nil ) then
+            image:SetHide( promo == nil );
+            if( promo ~= nil ) then
+                IconHookup( promo.PortraitIndex, 32, promo.IconAtlas, image );
+                image:SetSizeVal( LEKMOD_FLAG_PROMO_SIZE, LEKMOD_FLAG_PROMO_SIZE );
+                image:SetTextureSizeVal( 32, 32 );
+                image:NormalizeTexture();
+            end
+        end
+    end
+    flag.m_Instance.LekmodPromoStack:SetHide( #list == 0 );
+    flag.m_Instance.LekmodPromoStack:CalculateSize();
+    flag.m_Instance.LekmodPromoStack:ReprocessAnchoring();
+end
+
+function LekmodUpdateAllFlagPromotions()
+    local playerTable = g_MasterList[ Game.GetActivePlayer() ];
+    if( playerTable ~= nil ) then
+        for _, flag in pairs( playerTable ) do
+            LekmodUpdateFlagPromotions( flag );
+        end
+    end
+end
+Events.SerialEventUnitInfoDirty.Add( LekmodUpdateAllFlagPromotions );
+Events.ActivePlayerTurnStart.Add( LekmodUpdateAllFlagPromotions );

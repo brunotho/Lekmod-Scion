@@ -103,6 +103,7 @@ function OnOK()
     EUI_options.SetValue( "LEK_PromotionHotkeys", Controls.LekmodPromoHotkeysCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_BuildHotkeys", Controls.LekmodBuildHotkeysCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_MuteChatSound", Controls.LekmodMuteChatCheckbox:IsChecked() and 1 or 0 )
+    EUI_options.SetValue( "LEK_FlagPromotions", Controls.LekmodFlagPromotionsCheckbox:IsChecked() and 1 or 0 )
 
 	OptionsManager.CommitGameOptions();
 	OptionsManager.CommitGraphicsOptions();
@@ -676,6 +677,7 @@ function UpdateGameOptionsDisplay()
     Controls.LekmodPromoHotkeysCheckbox:SetCheck( EUI_options.GetValue( "LEK_PromotionHotkeys" ) ~= 0 )
     Controls.LekmodBuildHotkeysCheckbox:SetCheck( EUI_options.GetValue( "LEK_BuildHotkeys" ) ~= 0 )
     Controls.LekmodMuteChatCheckbox:SetCheck( EUI_options.GetValue( "LEK_MuteChatSound" ) == 1 )
+    Controls.LekmodFlagPromotionsCheckbox:SetCheck( EUI_options.GetValue( "LEK_FlagPromotions" ) ~= 0 )
     --Controls.NoCitizenWarningCheckbox:SetCheck( OptionsManager.IsNoCitizenWarning() );
     Controls.AutoWorkersDontReplaceCB:SetCheck( OptionsManager.IsAutoWorkersDontReplace_Cached() );
     Controls.AutoWorkersDontRemoveFeaturesCB:SetCheck( OptionsManager.IsAutoWorkersDontRemoveFeatures_Cached() );
