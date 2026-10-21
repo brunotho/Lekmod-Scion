@@ -117901,7 +117901,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_TRADE_UNIONS_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Mercenary Army[ENDCOLOR][NEWLINE][ICON_BULLET]Allows buying [ICON_UNIT_GERMAN_LANDSKNECHT] Landsknechts from [COLOR_CYAN]Civil Service[ENDCOLOR] on[NEWLINE][ICON_BULLET]Allows buying [ICON_UNIT_FRENCH_FOREIGNLEGION] Foreign Legions from [COLOR_CYAN]Replaceable Parts[ENDCOLOR] on
+				[COLOR_POSITIVE_TEXT]Mercenary Army[ENDCOLOR][NEWLINE][ICON_BULLET]Allows buying [ICON_UNIT_GERMAN_LANDSKNECHT] Landsknechts from [COLOR_CYAN]Economics[ENDCOLOR] on[NEWLINE][ICON_BULLET]Allows buying [ICON_UNIT_FRENCH_FOREIGNLEGION] Foreign Legions from [COLOR_CYAN]Replaceable Parts[ENDCOLOR] on
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_TRADITION"> 
@@ -141162,7 +141162,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_GERMAN_LANDSKNECHT_STRATEGY"> 
 			<Text>
-				The Landsknecht is a unit only available through the Mercenary Army social policy that must be purchased with gold. The Landsknecht is much cheaper than the Pikeman and has a number of bonuses related to pillaging tiles and sacking cities. These units create a cheap army that can provide a nice return on their investment if sent rampaging across enemy territory.
+				The Landsknecht is a unit only available through the Mercenary Army social policy that must be purchased with gold. The Landsknecht has a number of bonuses related to pillaging tiles and sacking cities. These units create an army that can provide a nice return on their investment if sent rampaging across enemy territory.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_GERMAN_PANZER"> 
@@ -141698,7 +141698,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANDSKNECHT"> 
 			<Text>
-				This unit is much cheaper than the Pikeman, and can pillage without using any movement points. Steals gold when attacking a city. Unlocked through the Mercenary Army social policy, these units may not be built; they must be purchased through gold. May move immediately after purchase.
+				Can pillage without using any movement points. Steals gold when attacking a city.[NEWLINE]Unlocked through the Mercenary Army social policy; it cannot be built and must be bought with gold.[NEWLINE]May move immediately after purchase.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANDWHER"> 
