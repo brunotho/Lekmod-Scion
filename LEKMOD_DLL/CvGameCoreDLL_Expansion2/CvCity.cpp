@@ -16128,6 +16128,10 @@ int CvCity::GetLekmodConditionalBuildingYield(YieldTypes eYield, bool bCityTile)
 		const bool bOnTile = GC.getBuildingInfo(eBuilding)->IsLekmodYieldsOnCityTile() && eYield <= YIELD_FAITH;
 		if (bOnTile != bCityTile)
 			continue;
+		// city tile yields count once per copy of the building (the Dojo's trained-unit dummy stacks up to 3)
+		const int iCopies = bOnTile ? std::max(1, m_pCityBuildings->GetNumBuilding(eBuilding)) : 1;
+#else
+		const int iCopies = 1;
 #endif
 		const std::vector<LekmodBuildingConditionalYield>& aRows = GC.getBuildingInfo(eBuilding)->GetLekmodConditionalYields();
 		for (uint j = 0; j < aRows.size(); j++)
@@ -16266,7 +16270,7 @@ int CvCity::GetLekmodConditionalBuildingYield(YieldTypes eYield, bool bCityTile)
 			}
 			if (kRow.m_iPerPopulation > 0)
 				iMultiplier *= getPopulation() / kRow.m_iPerPopulation;
-			iTotal += kRow.m_iYield * iMultiplier;
+			iTotal += kRow.m_iYield * iMultiplier * iCopies;
 		}
 	}
 	return iTotal;

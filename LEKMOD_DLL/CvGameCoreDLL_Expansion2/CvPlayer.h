@@ -332,6 +332,9 @@ public:
 	void LekmodChooseRuinOffer(int iPlotIndex, GoodyTypes eGoody);
 	void LekmodResolvePendingRuins();
 #endif
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	void LekmodDoMinorTraitBuildings();
+#endif
 
 #ifdef LEKMOD_NEW_ANCIENT_RUIN_REWARDS
 	CvCity* findBestCityForGoody(CvPlot* pPlot) const;

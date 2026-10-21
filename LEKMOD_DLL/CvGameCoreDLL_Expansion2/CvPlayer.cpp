@@ -5283,6 +5283,9 @@ void CvPlayer::doTurn()
 
 	CvAssertMsg(isAlive(), "isAlive is expected to be true");
 
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	LekmodDoMinorTraitBuildings();
+#endif
 #if defined(LEKMOD_RUIN_CHOICE)
 	LekmodResolvePendingRuins();
 #endif
@@ -9818,6 +9821,48 @@ void CvPlayer::LekmodChooseRuinOffer(int iPlotIndex, GoodyTypes eGoody)
 }
 
 // Offers nobody chose (turn timer, reload) are resolved at random when the turn ends
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+//	--------------------------------------------------------------------------------
+/// City-State trait buildings (Appletree, War College): granted in the City-State's capital at the first era threshold,
+/// one copy per threshold the city's owner has reached; kept (at least one copy) by whoever owns the city later
+void CvPlayer::LekmodDoMinorTraitBuildings()
+{
+	static std::vector<int> s_aiBuildings;
+	static bool s_bInit = false;
+	if (!s_bInit)
+	{
+		for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+		{
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)iBuilding);
+			if (pkBuilding && pkBuilding->GetLekmodMinorCivTrait() != -1)
+				s_aiBuildings.push_back(iBuilding);
+		}
+		s_bInit = true;
+	}
+	if (s_aiBuildings.empty() || !isAlive())
+		return;
+	const int iTrait = isMinorCiv() ? (int)GetMinorCivAI()->GetTrait() : -1;
+	int iLoop;
+	for (CvCity* pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
+	{
+		for (uint i = 0; i < s_aiBuildings.size(); i++)
+		{
+			const BuildingTypes eBuilding = (BuildingTypes)s_aiBuildings[i];
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
+			const int iHave = pLoopCity->GetCityBuildings()->GetNumRealBuilding(eBuilding);
+			const bool bGrant = pLoopCity->isCapital() && iTrait != -1 && pkBuilding->GetLekmodMinorCivTrait() == iTrait;
+			if (iHave <= 0 && !bGrant)
+				continue;
+			int iLevel = pkBuilding->GetLekmodEraLevel(GetCurrentEra());
+			if (iHave <= 0 && iLevel <= 0)
+				continue;
+			iLevel = std::max(1, iLevel);
+			if (iLevel != iHave)
+				pLoopCity->GetCityBuildings()->SetNumRealBuilding(eBuilding, iLevel);
+		}
+	}
+}
+#endif
 void CvPlayer::LekmodResolvePendingRuins()
 {
 	while (!m_aiLekmodPendingRuins.empty())

@@ -37,6 +37,33 @@ HONOR (POLICY_BRANCH_HONOR)
 Tags: policies
 - Changed: Military Tradition: cities with a Courthouse get +2 Food and +2 Production (was +3 each); with Expansionism's Colonial Administration they get its +3 instead (the two still don't add up)
 
+JAPAN (CIVILIZATION_JAPAN)
+--------------------------
+Tags: civs, buildings
+- Changed: Dojo: the Culture and Faith it gives per trained unit are yields of the city tile
+- Dev: BUILDING_LEKMOD_DOJO_TRAINED: Building_LekmodConditionalYields + LekmodYieldsOnCityTile; city tile yields of such buildings count once per copy (GetLekmodConditionalBuildingYield)
+
+MARITIME CITY-STATES (BUILDING_LEKMOD_APPLETREE)
+------------------------------------------------
+Tags: city-states
+- New: BUILDING_LEKMOD_APPLETREE
+- Added: the City-State screen shows the Appletree next to the trait, with its effect in the tooltip
+- DLL: LEKMOD_MINOR_TRAIT_BUILDINGS (Buildings.LekmodMinorCivTrait, LekmodEraLevel1/2/3; CvPlayer::LekmodDoMinorTraitBuildings every turn); building 304, class 206
+- Dev: icon borrowed from the Granary until there is art
+
+MILITARISTIC CITY-STATES (BUILDING_LEKMOD_WAR_COLLEGE)
+------------------------------------------------------
+Tags: city-states, combat
+- New: BUILDING_LEKMOD_WAR_COLLEGE
+- Added: the City-State screen shows the unit a Militaristic City-State knows and its War College next to the trait, each with a tooltip
+- Dev: one copy per era threshold of the city's owner (Classical, Renaissance, Modern), each +5 XP for all domains and Defense 200; at least one copy once the city has it; building 305, class 207; icon borrowed from the Military Academy until there is art
+
+SWIFT TRANSPORT (PROMOTION_SWIFT_TRANSPORT)
+-------------------------------------------
+Tags: promotions, naval, movement
+- Added: a ship with Swift Transport takes your embarked units on its tile along when it moves (onto water tiles they could enter themselves, not into cities); they keep their own movement. Moving the embarked unit yourself works as before
+- DLL: LEKMOD_SWIFT_TRANSPORT_CARRY (end of CvUnit::move)
+
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
 Tags: units, air

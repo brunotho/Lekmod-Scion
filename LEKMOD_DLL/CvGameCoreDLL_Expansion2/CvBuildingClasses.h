@@ -312,6 +312,10 @@ public:
 	int GetLekmodBuildingProductionPerCity() const;
 	int GetLekmodInstantSciencePerPop() const;
 	bool IsLekmodYieldsOnCityTile() const;
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	int GetLekmodMinorCivTrait() const;
+	int GetLekmodEraLevel(EraTypes eEra) const;
+#endif
 #endif
 	bool IsNearRiver() const;
 	bool IsNoMaintenanceOnRiver() const;
@@ -739,6 +743,10 @@ private:
 	int m_iLekmodBuildingProductionPerCity;
 	int m_iLekmodInstantSciencePerPop;
 	bool m_bLekmodYieldsOnCityTile;
+#endif
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	int m_iLekmodMinorCivTrait;
+	CvString m_astrLekmodEraLevel[3];
 #endif
 	bool m_bNearRiver;
 	bool m_bNoMaintenanceOnRiver;

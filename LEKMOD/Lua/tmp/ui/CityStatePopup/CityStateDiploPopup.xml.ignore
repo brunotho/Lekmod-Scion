@@ -58,7 +58,12 @@
       <Stack Anchor="C,T" Offset="-47,0" Padding="12" StackGrowth="Bottom">
         <!-- Trait -->
         <Label ID="TraitLabel" Anchor="R,T" Offset="0,0" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_POP_CSTATE_TRAIT">
-          <Label ID="TraitInfo" String="Information" Anchor="R,T" AnchorSide="O.I" Offset="12,0" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha"/>
+          <Label ID="TraitInfo" String="Information" Anchor="R,T" AnchorSide="O.I" Offset="12,0" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha">
+            <!-- LEKMOD: the unit a Militaristic City-State knows and the trait building (Appletree, War College) -->
+            <Image ID="LekmodTraitIcon1" Anchor="R,C" AnchorSide="O.I" Offset="2,0" Size="45,45" Hidden="1">
+              <Image ID="LekmodTraitIcon2" Anchor="R,C" AnchorSide="O.I" Offset="0,0" Size="45,45" Hidden="1"/>
+            </Image>
+          </Label>
         </Label>
         <!-- Personality  -->
         <Label ID="PersonalityLabel" Anchor="R,T" Offset="0,0" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_POP_CSTATE_PERSONALITY">

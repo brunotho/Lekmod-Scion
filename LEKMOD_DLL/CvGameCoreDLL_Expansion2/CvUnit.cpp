@@ -4160,7 +4160,31 @@ void CvUnit::move(CvPlot& targetPlot, bool bShow)
 
 	if(bShouldDeductCost)
 		changeMoves(-iMoveCost);
+#ifdef LEKMOD_SWIFT_TRANSPORT_CARRY
+	// Swift Transport: the owner's embarked land units on the ship's tile come along (user, 2026-10-21)
+	std::vector<CvUnit*> apLekmodCarried;
+	if (pOldPlot != NULL && getDomainType() == DOMAIN_SEA && IsEmbarkedUnitReceivesMovement() && targetPlot.isWater() && !targetPlot.isCity())
+	{
+		IDInfo* pLekmodNode = pOldPlot->headUnitNode();
+		while (pLekmodNode != NULL)
+		{
+			CvUnit* pLoopUnit = ::getUnit(*pLekmodNode);
+			pLekmodNode = pOldPlot->nextUnitNode(pLekmodNode);
+			if (pLoopUnit != NULL && pLoopUnit != this && pLoopUnit->getOwner() == getOwner() && pLoopUnit->isEmbarked() && pLoopUnit->getDomainType() == DOMAIN_LAND && !pLoopUnit->isDelayedDeath())
+				apLekmodCarried.push_back(pLoopUnit);
+		}
+	}
+#endif
 	setXY(targetPlot.getX(), targetPlot.getY(), true, true, bShow && targetPlot.isVisibleToWatchingHuman(), bShow);
+#ifdef LEKMOD_SWIFT_TRANSPORT_CARRY
+	for (uint iCarried = 0; iCarried < apLekmodCarried.size(); iCarried++)
+	{
+		CvUnit* pCarried = apLekmodCarried[iCarried];
+		// only units that are still there and may stand on the new tile (stacking, ocean before Astronomy, enemies)
+		if (pCarried->plot() == pOldPlot && pCarried->canMoveInto(targetPlot, CvUnit::MOVEFLAG_DESTINATION))
+			pCarried->setXY(targetPlot.getX(), targetPlot.getY(), true, true, bShow && targetPlot.isVisibleToWatchingHuman(), bShow);
+	}
+#endif
 }
 
 

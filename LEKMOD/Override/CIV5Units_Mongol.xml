@@ -148301,6 +148301,30 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_AIR_ONLY_TT">
 			<Text>Show only your air units in the unit list and the Military Overview.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_APPLETREE">
+			<Text>Appletree</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_APPLETREE_HELP">
+			<Text>+1 [ICON_FOOD] Food.[NEWLINE][NEWLINE]Maritime City-States get it in the Classical Era.[NEWLINE]Not destroyed when the city is captured.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WAR_COLLEGE">
+			<Text>War College</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WAR_COLLEGE_HELP">
+			<Text>Military units trained in this city get +5 XP (+10 from the Renaissance Era, +15 from the Modern Era).[NEWLINE]The city gets +2 [ICON_STRENGTH] Combat Strength (+4 from the Renaissance Era, +6 from the Modern Era).[NEWLINE]The era is the one of the city's owner.[NEWLINE][NEWLINE]Militaristic City-States get it in the Classical Era.[NEWLINE]Not destroyed when the city is captured.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT">
+			<Text>{1_Name} ({2_State})[NEWLINE][NEWLINE]{3_Help}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS">
+			<Text>this City-State has it</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_NOT_YET">
+			<Text>not yet: comes in the Classical Era</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_UNIQUE_UNIT_TT">
+			<Text>This City-State knows the {1_Name}.[NEWLINE][NEWLINE]{2_Help}</Text>
+		</Row>
 	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>

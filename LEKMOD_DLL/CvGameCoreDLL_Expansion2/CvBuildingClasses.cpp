@@ -117,6 +117,9 @@ CvBuildingEntry::CvBuildingEntry(void):
 	m_iLekmodInstantSciencePerPop(0),
 	m_bLekmodYieldsOnCityTile(false),
 #endif
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	m_iLekmodMinorCivTrait(-1),
+#endif
 	m_bNearRiver(false),
 	m_bNoMaintenanceOnRiver(false),
 	m_iRevealResource(-1),
@@ -565,6 +568,26 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 	m_iLekmodBuildingProductionPerCity = kResults.GetInt("LekmodBuildingProductionPerCity");
 	m_iLekmodInstantSciencePerPop = kResults.GetInt("LekmodInstantSciencePerPop");
 	m_bLekmodYieldsOnCityTile = kResults.GetBool("LekmodYieldsOnCityTile");
+#endif
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+	{
+		// MinorCivTraitTypes is a fixed enum: map the trait's type name to it
+		const char* szTrait = kResults.GetText("LekmodMinorCivTrait");
+		const CvString strTrait = szTrait ? szTrait : "";
+		m_iLekmodMinorCivTrait = -1;
+		if (strTrait == "MINOR_CIV_TRAIT_CULTURED") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_CULTURED;
+		else if (strTrait == "MINOR_CIV_TRAIT_MILITARISTIC") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_MILITARISTIC;
+		else if (strTrait == "MINOR_CIV_TRAIT_MARITIME") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_MARITIME;
+		else if (strTrait == "MINOR_CIV_TRAIT_MERCANTILE") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_MERCANTILE;
+		else if (strTrait == "MINOR_CIV_TRAIT_RELIGIOUS") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_RELIGIOUS;
+		// eras are resolved when first needed (GetLekmodEraLevel)
+		const char* aszCols[3] = { "LekmodEraLevel1", "LekmodEraLevel2", "LekmodEraLevel3" };
+		for (int i = 0; i < 3; i++)
+		{
+			const char* szEra = kResults.GetText(aszCols[i]);
+			m_astrLekmodEraLevel[i] = szEra ? szEra : "";
+		}
+	}
 #endif
 	m_bNearRiver = kResults.GetBool("NearRiver");
 	m_bNoMaintenanceOnRiver = kResults.GetBool("NoMaintenanceOnRiver");
@@ -2254,6 +2277,27 @@ int CvBuildingEntry::GetLekmodInstantSciencePerPop() const
 bool CvBuildingEntry::IsLekmodYieldsOnCityTile() const
 {
 	return m_bLekmodYieldsOnCityTile;
+}
+#endif
+#ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
+/// Buildings.LekmodMinorCivTrait: City-States of this trait (MinorCivTraitTypes) get the building; -1 none
+int CvBuildingEntry::GetLekmodMinorCivTrait() const
+{
+	return m_iLekmodMinorCivTrait;
+}
+/// How many copies a city of an owner in eEra holds: the number of LekmodEraLevel1/2/3 eras reached
+int CvBuildingEntry::GetLekmodEraLevel(EraTypes eEra) const
+{
+	int iLevel = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if (m_astrLekmodEraLevel[i].empty())
+			continue;
+		const int iEra = GC.getInfoTypeForString(m_astrLekmodEraLevel[i].c_str(), true);
+		if (iEra != -1 && (int)eEra >= iEra)
+			iLevel++;
+	}
+	return iLevel;
 }
 #endif
 

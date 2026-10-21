@@ -43454,6 +43454,10 @@
     	<Column name="LekmodBuildingProductionPerCity" type="integer" default="0"/>
     	<Column name="LekmodInstantSciencePerPop" type="integer" default="0"/>
 	<Column name="LekmodYieldsOnCityTile" type="boolean" default="false"/>
+	<Column name="LekmodMinorCivTrait" type="text" default="NULL"/> <!-- LEKMOD: City-States of this trait get the building (MINOR_CIV_TRAIT_X) -->
+	<Column name="LekmodEraLevel1" type="text" reference="Eras(Type)" default="NULL"/> <!-- LEKMOD: copies held = era thresholds of the owner reached -->
+	<Column name="LekmodEraLevel2" type="text" reference="Eras(Type)" default="NULL"/>
+	<Column name="LekmodEraLevel3" type="text" reference="Eras(Type)" default="NULL"/>
     	<Column name="GreatWorkFilledTourismModifier" type="integer" default="0"/>
     	<Column name="FreePlotPurchase" type="boolean" default="false"/>
     	<Column name="LekmodTimedBuilding" type="text" reference="Buildings(Type)" default="NULL"/>
@@ -292177,4 +292181,129 @@
 			<IconsPerColumn>1</IconsPerColumn>
 		</Row>
 	</IconTextureAtlases>
+	<!-- LEKMOD (2026-10-21): Dojo's trained-unit Culture and Faith sit on the city tile (counted once per copy, LEKMOD_POST_CHANGES) -->
+	<Building_YieldChanges>
+		<Delete BuildingType="BUILDING_LEKMOD_DOJO_TRAINED"/>
+	</Building_YieldChanges>
+	<Building_LekmodConditionalYields>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_DOJO_TRAINED</BuildingType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_DOJO_TRAINED</BuildingType>
+			<YieldType>YIELD_FAITH</YieldType>
+			<Yield>1</Yield>
+		</Row>
+	</Building_LekmodConditionalYields>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_DOJO_TRAINED"/>
+			<Set LekmodYieldsOnCityTile="true"/>
+		</Update>
+	</Buildings>
+	<!-- LEKMOD (2026-10-21): City-State trait buildings (LEKMOD_MINOR_TRAIT_BUILDINGS): one copy per era threshold of the city's owner,
+	     kept on capture. Maritime: Appletree (+1 Food). Militaristic: War College (+5 XP all domains, +2 city Strength per copy).
+	     Icons borrowed from the Granary and the Military Academy until there is art. -->
+	<BuildingClasses>
+		<Row>
+			<ID>206</ID>
+			<Type>BUILDINGCLASS_LEKMOD_APPLETREE</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_APPLETREE</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_APPLETREE</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>304</ID>
+			<Type>BUILDING_LEKMOD_APPLETREE</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_APPLETREE</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_APPLETREE</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_APPLETREE_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<ConquestProb>100</ConquestProb>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<LekmodMinorCivTrait>MINOR_CIV_TRAIT_MARITIME</LekmodMinorCivTrait>
+			<LekmodEraLevel1>ERA_CLASSICAL</LekmodEraLevel1>
+			<PortraitIndex>0</PortraitIndex>
+			<IconAtlas>BW_ATLAS_1</IconAtlas>
+		</Row>
+	</Buildings>
+	<BuildingClasses>
+		<Row>
+			<ID>207</ID>
+			<Type>BUILDINGCLASS_LEKMOD_WAR_COLLEGE</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_WAR_COLLEGE</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_WAR_COLLEGE</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>305</ID>
+			<Type>BUILDING_LEKMOD_WAR_COLLEGE</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_WAR_COLLEGE</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_WAR_COLLEGE</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_WAR_COLLEGE_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<ConquestProb>100</ConquestProb>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<Defense>200</Defense>
+			<LekmodMinorCivTrait>MINOR_CIV_TRAIT_MILITARISTIC</LekmodMinorCivTrait>
+			<LekmodEraLevel1>ERA_CLASSICAL</LekmodEraLevel1>
+			<LekmodEraLevel2>ERA_RENAISSANCE</LekmodEraLevel2>
+			<LekmodEraLevel3>ERA_MODERN</LekmodEraLevel3>
+			<PortraitIndex>8</PortraitIndex>
+			<IconAtlas>BW_ATLAS_1</IconAtlas>
+		</Row>
+	</Buildings>
+	<Building_YieldChanges>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_APPLETREE</BuildingType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+	</Building_YieldChanges>
+	<Building_DomainFreeExperiences>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WAR_COLLEGE</BuildingType>
+			<DomainType>DOMAIN_LAND</DomainType>
+			<Experience>5</Experience>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WAR_COLLEGE</BuildingType>
+			<DomainType>DOMAIN_SEA</DomainType>
+			<Experience>5</Experience>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WAR_COLLEGE</BuildingType>
+			<DomainType>DOMAIN_AIR</DomainType>
+			<Experience>5</Experience>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_LEKMOD_WAR_COLLEGE</BuildingType>
+			<DomainType>DOMAIN_HOVER</DomainType>
+			<Experience>5</Experience>
+		</Row>
+	</Building_DomainFreeExperiences>
 </GameData>

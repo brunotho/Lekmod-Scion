@@ -1505,6 +1505,14 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_IMPROVEMENT_FORT_GROUP
 // No Explore automation for human players, in every game (user, 2026-10-19); the AI keeps it
 #define LEKMOD_NO_HUMAN_AUTO_EXPLORE
+// Swift Transport (user, 2026-10-21): a ship with EmbarkedUnitReceivesMovement takes the owner's embarked land units on its tile
+// along when it moves onto a water tile (not a city) they could enter themselves; they don't spend their own moves.
+// Moving the embarked unit itself works as before.
+#define LEKMOD_SWIFT_TRANSPORT_CARRY
+// Buildings.LekmodMinorCivTrait + LekmodEraLevel1/2/3 (user, 2026-10-21): City-States of that trait get the building in their
+// capital at the first era; the city holds one copy per era threshold its owner has reached (effects scale with the count,
+// at least 1 once there), checked every turn; the building survives capture (ConquestProb 100). Appletree, War College.
+#define LEKMOD_MINOR_TRAIT_BUILDINGS
 // Building_AdjacentCityPlotYieldChanges: yields on plots next to a city with the building (optional Improvement, Resource,
 // Terrain and Feature conditions; Fulling Mill, Isibaya, Australia)
 #define LEKMOD_BUILDING_ADJACENT_CITY_YIELDS
