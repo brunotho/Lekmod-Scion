@@ -741,6 +741,27 @@ end
 -------------------------------------------------
 -- City View Update
 -------------------------------------------------
+-- LEKMOD (2026-10-21): Korea's Jaegye, the Jongmyo Shrine's timed building, shows under the luxury / We Love the
+-- King Day box with its turns left (City:LekmodGetTimedBuildingTurns; an older DLL without it shows no turns)
+function LekmodShowJaegye(pCity)
+	if (Controls.LekmodJaegyeBox == nil) then
+		return;
+	end
+	local building = GameInfo.Buildings["BUILDING_LEKMOD_JAEGYE"];
+	local bActive = (building ~= nil and pCity ~= nil and pCity:IsHasBuilding(building.ID));
+	Controls.LekmodJaegyeBox:SetHide(not bActive);
+	if (bActive) then
+		local iTurns = (pCity.LekmodGetTimedBuildingTurns ~= nil) and pCity:LekmodGetTimedBuildingTurns(building.ID) or 0;
+		if (iTurns > 0) then
+			Controls.LekmodJaegyeString:SetText(Locale.ConvertTextKey("TXT_KEY_LEKMOD_CITYVIEW_JAEGYE", iTurns));
+		else
+			Controls.LekmodJaegyeString:SetText(Locale.ConvertTextKey("TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_ACTIVE"));
+		end
+		Controls.LekmodJaegyeBox:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_TT"));
+		Controls.LekmodJaegyeBox:SetSizeX(Controls.LekmodJaegyeString:GetSizeX() + 10);
+	end
+end
+
 function OnCityViewUpdate()
     if( ContextPtr:IsHidden() ) then
         return;
@@ -1573,6 +1594,7 @@ function OnCityViewUpdate()
 		
 		Controls.ResourceDemandedString:SetText(szText);
 		Controls.ResourceDemandedBox:SetSizeX(Controls.ResourceDemandedString:GetSizeX() + 10);
+		LekmodShowJaegye(pCity);
 		
 		Controls.IconsStack:CalculateSize();
 		Controls.IconsStack:ReprocessAnchoring();

@@ -147921,6 +147921,27 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPTIONS_TAB">
 			<Text>Lek Options</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE">
+			<Text>[COLOR_CYAN]Jaegye[ENDCOLOR]: {1_Num} turns left</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_ACTIVE">
+			<Text>[COLOR_CYAN]Jaegye[ENDCOLOR] is active</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_TT">
+			<Text>Jaegye, the fasting period started by the Jongmyo Shrine:[NEWLINE]+4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city.[NEWLINE]Half of the excess [ICON_FOOD] Food is lost.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TIMED_BUILDING_STARTED">
+			<Text>{1_Name:textkey} has begun in {2_City:textkey} and lasts {3_Num} turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TIMED_BUILDING_STARTED_SUMMARY">
+			<Text>{1_Name:textkey} in {2_City:textkey}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TIMED_BUILDING_ENDED">
+			<Text>{1_Name:textkey} has ended in {2_City:textkey}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TIMED_BUILDING_ENDED_SUMMARY">
+			<Text>{1_Name:textkey} ended in {2_City:textkey}</Text>
+		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_WATER_PUPPET_THEATRE">
 			<Text>Water Puppet Theatre</Text>
 		</Row>

@@ -392,6 +392,9 @@ void CvLuaCity::PushMethods(lua_State* L, int t)
 #ifdef LEKMOD_MARITIME_FOOD_CITY_YIELD
 	Method(GetYieldFromMinorCivsTimes100);
 #endif
+#ifdef LEKMOD_CITY_TIMED_BUILDINGS
+	Method(LekmodGetTimedBuildingTurns);
+#endif
 	Method(ChangeBaseYieldRateFromPolicies);
 	Method(GetBaseYieldRateFromThemedBuildings);
 	Method(GetBaseYieldRateFromLandmarks);
@@ -3131,6 +3134,16 @@ int CvLuaCity::lGetBaseYieldRateFromPolicies(lua_State* L)
 int CvLuaCity::lGetYieldFromMinorCivsTimes100(lua_State* L)
 {
 	return BasicLuaMethod(L, &CvCity::GetYieldFromMinorCivsTimes100);
+}
+#endif
+#ifdef LEKMOD_CITY_TIMED_BUILDINGS
+//------------------------------------------------------------------------------
+int CvLuaCity::lLekmodGetTimedBuildingTurns(lua_State* L)
+{
+	CvCity* pkCity = GetInstance(L);
+	const BuildingTypes eBuilding = (BuildingTypes)lua_tointeger(L, 2);
+	lua_pushinteger(L, pkCity->LekmodGetTimedBuildingTurns(eBuilding));
+	return 1;
 }
 #endif
 //------------------------------------------------------------------------------

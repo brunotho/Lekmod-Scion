@@ -906,6 +906,8 @@ public:
 #ifdef LEKMOD_CITY_TIMED_BUILDINGS
 	void LekmodOnBuildingAdded(const CvBuildingEntry* pkBuilding);
 	void LekmodDoTimedBuildings();
+	int LekmodGetTimedBuildingTurns(BuildingTypes eBuilding) const;
+	void LekmodNotifyTimedBuilding(BuildingTypes eTimed, int iTurns) const;
 	void LekmodOnUnitTrained(const CvUnit* pUnit);
 #endif
 #ifdef LEKMOD_CIV_TRAIT_FLAGS

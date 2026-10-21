@@ -397,6 +397,9 @@ protected:
 #ifdef LEKMOD_MARITIME_FOOD_CITY_YIELD
 	static int lGetYieldFromMinorCivsTimes100(lua_State* L);
 #endif
+#ifdef LEKMOD_CITY_TIMED_BUILDINGS
+	static int lLekmodGetTimedBuildingTurns(lua_State* L);
+#endif
 	static int lChangeBaseYieldRateFromPolicies(lua_State* L);
 	static int lGetBaseYieldRateFromThemedBuildings(lua_State* L);
 	static int lGetBaseYieldRateFromLandmarks(lua_State* L);

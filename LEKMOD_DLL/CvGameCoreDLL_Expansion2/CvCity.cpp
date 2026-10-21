@@ -15846,6 +15846,7 @@ void CvCity::LekmodOnBuildingAdded(const CvBuildingEntry* pkBuilding)
 			m_aLekmodTimedBuildings.push_back(std::make_pair((int)eTimed, iTurns));
 		if (m_pCityBuildings->GetNumRealBuilding(eTimed) <= 0)
 			m_pCityBuildings->SetNumRealBuilding(eTimed, 1);
+		LekmodNotifyTimedBuilding(eTimed, LekmodGetTimedBuildingTurns(eTimed));
 	}
 #ifdef LEKMOD_CIV_TRAIT_FLAGS
 	if (pkBuilding->IsLekmodSpreadCapitalReligionOnBuild() && GET_PLAYER(getOwner()).getCapitalCity() != NULL)
@@ -15858,6 +15859,32 @@ void CvCity::LekmodOnBuildingAdded(const CvBuildingEntry* pkBuilding)
 			SetWeLoveTheKingDayCounter(iTurns);
 	}
 }
+/// Turns left of a timed dummy building (Jaegye), 0 when it isn't running (Lua: City:LekmodGetTimedBuildingTurns)
+int CvCity::LekmodGetTimedBuildingTurns(BuildingTypes eBuilding) const
+{
+	for (uint i = 0; i < m_aLekmodTimedBuildings.size(); i++)
+	{
+		if (m_aLekmodTimedBuildings[i].first == (int)eBuilding)
+			return m_aLekmodTimedBuildings[i].second;
+	}
+	return 0;
+}
+/// Tell the owner that a timed dummy building started (iTurns > 0) or ended (iTurns 0) in this city (user, 2026-10-21: Jaegye)
+void CvCity::LekmodNotifyTimedBuilding(BuildingTypes eTimed, int iTurns) const
+{
+	CvBuildingEntry* pkTimed = GC.getBuildingInfo(eTimed);
+	CvNotifications* pNotifications = GET_PLAYER(getOwner()).GetNotifications();
+	if (pkTimed == NULL || pNotifications == NULL || !GET_PLAYER(getOwner()).isHuman())
+		return;
+	Localization::String strText = Localization::Lookup(iTurns > 0 ? "TXT_KEY_LEKMOD_TIMED_BUILDING_STARTED" : "TXT_KEY_LEKMOD_TIMED_BUILDING_ENDED");
+	strText << pkTimed->GetDescription();
+	strText << getNameKey();
+	strText << iTurns;
+	Localization::String strSummary = Localization::Lookup(iTurns > 0 ? "TXT_KEY_LEKMOD_TIMED_BUILDING_STARTED_SUMMARY" : "TXT_KEY_LEKMOD_TIMED_BUILDING_ENDED_SUMMARY");
+	strSummary << pkTimed->GetDescription();
+	strSummary << getNameKey();
+	pNotifications->Add(NOTIFICATION_GENERIC, strText.toUTF8(), strSummary.toUTF8(), getX(), getY(), -1);
+}
 /// Count down the timed dummy buildings; remove them when their time is up
 void CvCity::LekmodDoTimedBuildings()
 {
@@ -15869,7 +15896,10 @@ void CvCity::LekmodDoTimedBuildings()
 			const BuildingTypes eTimed = (BuildingTypes)m_aLekmodTimedBuildings[i].first;
 			m_aLekmodTimedBuildings.erase(m_aLekmodTimedBuildings.begin() + i);
 			if (eTimed != NO_BUILDING && m_pCityBuildings->GetNumRealBuilding(eTimed) > 0)
+			{
 				m_pCityBuildings->SetNumRealBuilding(eTimed, 0);
+				LekmodNotifyTimedBuilding(eTimed, 0);
+			}
 		}
 	}
 }

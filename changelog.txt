@@ -49,14 +49,14 @@ Tags: city-states
 - New: BUILDING_LEKMOD_APPLETREE
 - Added: the City-State screen shows the Appletree next to the trait, with its effect in the tooltip
 - DLL: LEKMOD_MINOR_TRAIT_BUILDINGS (Buildings.LekmodMinorCivTrait, LekmodEraLevel1/2/3; CvPlayer::LekmodDoMinorTraitBuildings every turn); building 304, class 206
-- Dev: icon borrowed from the Granary until there is art
+- Dev: icon from the user's art (art_sources/buildings/appletree, 2026-10-21)
 
 MILITARISTIC CITY-STATES (BUILDING_LEKMOD_WAR_COLLEGE)
 ------------------------------------------------------
 Tags: city-states, combat
 - New: BUILDING_LEKMOD_WAR_COLLEGE
 - Added: the City-State screen shows the unit a Militaristic City-State knows and its War College next to the trait, each with a tooltip
-- Dev: one copy per era threshold of the city's owner (Classical, Renaissance, Modern), each +5 XP for all domains and Defense 200; at least one copy once the city has it; building 305, class 207; icon borrowed from the Military Academy until there is art
+- Dev: one copy per era threshold of the city's owner (Classical, Renaissance, Modern), each +5 XP for all domains and Defense 200; at least one copy once the city has it; building 305, class 207; icon from the user's art (art_sources/buildings/war_college, 2026-10-21)
 
 SWIFT TRANSPORT (PROMOTION_SWIFT_TRANSPORT)
 -------------------------------------------
@@ -75,6 +75,12 @@ WORLD CONGRESS HOST ELECTION (RESOLUTION_CHANGE_LEAGUE_HOST)
 Tags: bugfix, world congress
 - Fixed: the vote for the next World Congress host no longer lists players twice
 - DLL: CvLeague::GetChoicesForDecision (RESOLUTION_DECISION_MAJOR_CIV_MEMBER under DIPLO_VICTORY_VOTING) added the member list once per enact proposal and fell through into OTHER_MAJOR_CIV_MEMBER (missing break)
+
+KOREA (CIVILIZATION_KOREA)
+--------------------------
+Tags: civs, ui
+- Added: Jaegye (from the Jongmyo Shrine) shows in the city screen with its turns left, and a notification tells you when it starts and when it ends
+- DLL: City:LekmodGetTimedBuildingTurns (Lua), CvCity::LekmodNotifyTimedBuilding (timed dummy buildings: start and end); standard UI CityView box LekmodJaegyeBox (EUI unchanged)
 
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
