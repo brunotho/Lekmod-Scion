@@ -76,6 +76,15 @@ h2 { font-size: 1.35rem; margin: 32px 0 12px; }
 .empty-note { color: var(--muted); font-style: italic; }
 
 /* Controls */
+/* Changelog views: Full (default), Essentials, Search; without JavaScript everything shows */
+.views { display: flex; gap: 6px; margin: 0 0 12px; border-bottom: 1px solid var(--line); }
+.view-tab { padding: 8px 14px; border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; background: none; color: var(--muted); font: inherit; font-weight: 600; cursor: pointer; margin-bottom: -1px; }
+.view-tab[aria-selected="true"] { color: inherit; background: var(--card); border-color: var(--line); }
+html[data-view="full"] #controls, html[data-view="essentials"] #controls { display: none; }
+html[data-view="full"] #essentials, html[data-view="search"] #essentials { display: none; }
+html[data-view="essentials"] #changelog .group, html[data-view="essentials"] #no-results, html[data-view="essentials"] #sidebar ul { display: none; }
+.essentials h3 { margin: 18px 0 4px; }
+.essentials h3:first-child { margin-top: 0; }
 .controls { display: grid; gap: 12px; margin-bottom: 8px; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
 .versions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .versions label { display: flex; gap: 8px; align-items: center; }

@@ -11,6 +11,18 @@
 <% if releases.empty? -%>
   <p class="empty-note">No version of Lekmod Scion has been released yet.</p>
 <% else -%>
+  <div class="views" role="tablist" aria-label="Changelog view">
+    <button type="button" class="view-tab" role="tab" data-view="full" aria-selected="true">Full changelog</button>
+<% if essentials_html -%>
+    <button type="button" class="view-tab" role="tab" data-view="essentials" aria-selected="false">Essentials</button>
+<% end -%>
+    <button type="button" class="view-tab" role="tab" data-view="search" aria-selected="false">Search</button>
+  </div>
+<% if essentials_html -%>
+  <section class="essentials card prose" id="essentials">
+    <%= essentials_html %>
+  </section>
+<% end -%>
   <form class="controls" id="controls" onsubmit="return false">
     <div class="versions">
       <label>From

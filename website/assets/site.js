@@ -35,6 +35,8 @@
       if (search.value.trim()) p.set("q", search.value.trim());
       var tags = selectedTags();
       if (tags.length) p.set("tags", tags.join(","));
+      var view = document.documentElement.dataset.view;
+      if (view && view !== "full") p.set("view", view);
       var qs = p.toString();
       history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
     };
@@ -92,8 +94,29 @@
       tagButtons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
       apply();
     });
+    // Views (user, 2026-10-21): Full changelog (default, no filters), Essentials (the short hand-written page),
+    // Search (the filters above). Filters in the URL open the Search view.
+    var viewTabs = $$(".view-tab");
+    var setView = function (view, keepFilters) {
+      if (!viewTabs.some(function (t) { return t.dataset.view === view; })) view = "full";
+      document.documentElement.dataset.view = view;
+      viewTabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.view === view ? "true" : "false"); });
+      if (view !== "search" && !keepFilters) {
+        search.value = "";
+        tagButtons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+        fromSel.value = defaults.from;
+        toSel.value = defaults.to;
+      }
+      apply(); // writes the URL, view included
+    };
+    viewTabs.forEach(function (t) {
+      t.addEventListener("click", function () { setView(t.dataset.view, false); });
+    });
     readUrl();
-    apply();
+    var startParams = new URLSearchParams(location.search);
+    var startView = startParams.get("view") ||
+      (startParams.get("q") || startParams.get("tags") || startParams.get("from") || startParams.get("to") ? "search" : "full");
+    setView(startView, true);
   }
 
   // --- Civ list search ---------------------------------------------------------------------------

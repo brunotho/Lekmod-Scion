@@ -1,0 +1,57 @@
+The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
+
+## Great Works and Tourism
+- Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.
+- A Great Work gives 2 Culture and no Tourism by itself. Tourism comes from where it sits: the Amphitheater and the Opera House add Tourism to the Great Works in their city, and many wonders have their own slots with their own bonus when filled (some come with a Great Work already in them).
+- New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.
+- Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.
+- No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.
+- Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.
+
+## World Congress
+- The Congress runs on a fixed cycle: the host is elected, then the host and the civilization with the most Delegates propose, and the vote is 3 turns later. Results apply at the start of the next turn.
+- Delegates come from the Congress era, allied City-States, original capitals you hold, your passed proposals and your cultural influence over others.
+- World Leader votes have their own timer, starting 7 turns after the first civilization reaches the Atomic Era: everyone votes for themselves, 45 Delegates win, otherwise the top two each gain a permanent Delegate.
+- 14 new proposals (e.g. Clausewitz Book Club, Pariah, Blackout, Breakdown of International Relations) and many changed ones.
+
+## Spies and diplomats
+- Spies no longer roll for success: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.
+- A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.
+- Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.
+- The Espionage screen explains every number on its Rules tab.
+
+## Policies
+- You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no growth, Production, Science, Gold income, Culture or Faith).
+- Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.
+
+## Strategic resources and late-game power
+- Strategic resources come in much bigger deposits (e.g. Iron 9, Oil 18, Aluminum 24), but most units and buildings need more of them (e.g. Knights 2 Horses and 1 Iron, Tanks 3 Oil, Battleships 6 Iron and 6 Oil).
+- Strategic resources can no longer be traded between players.
+- New sources: the Castle (Horses), the Ironworks (Iron), the Oil Refinery and the Recycling Center provide them directly; a Customs House on a strategic resource gives 50% more.
+- Later units and technologies cost more, the strongest late units were toned down (e.g. Giant Death Robot, Stealth Bomber, Battleship), and new upkeep costs hit the big late buildings.
+
+## Combat rules you won't see explained in game
+- Cities heal 10 HP per turn (was 20); Walls, Castle, Arsenal and Command Bunker raise that, the best one counts. Walls also damage adjacent enemies.
+- Base city strength +1, the hill bonus for cities 5 -> 3.
+- Embarked units defend with 40% of their best combat strength instead of a fixed value per era.
+- Ranged ships defend with their Ranged Strength against ranged attacks.
+- Spearmen and Pikemen get +33% against mounted units (was +50%).
+- In Tournament mode (the default), civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
+- From turn 80, killing barbarians gives no bonus yields any more.
+
+## Economy and diplomacy
+- Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).
+- Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.
+- Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
+- Ancient ruins let you choose between 2 rewards (3 for the Shoshone), with the amounts shown.
+
+## City-States
+- Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.
+- City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.
+- Trade route and resource quests pay part of their Influence over time.
+
+## New interface
+- Lobby: a Mode choice (Tournament / Casual) sets all game options; hover a civilization to see its ability and uniques.
+- Unit list and Military Overview: picked promotions, health, and air strike targeting (Alt + click a tile, Tab through the planes in range).
+- Hotkey letters on promotion and worker build buttons, Shift + F-keys for the top-left panels, a Lek Options tab in the Options.
+- Policy and belief texts list one effect per line; the religion screens have a search box.

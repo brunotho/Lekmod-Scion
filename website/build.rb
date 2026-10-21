@@ -213,8 +213,11 @@ groups = groups.map do |g, list|
 end
 all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }
 versions = [["0", "LEKMOD v35.4 (fork point)"]] + releases.map { |r| [r.index.to_s, r.title] }
+# "Essentials" view of the home page: a hand-written short version of the latest release (user, 2026-10-21)
+essentials_path = File.join(SITE, "data", "essentials.txt")
+essentials_html = File.exist?(essentials_path) ? LooseList.to_html(File.read(essentials_path, encoding: "UTF-8")) : nil
 write_page(out, "index.html", "Changelog",
-           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases,
+           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases, essentials_html: essentials_html,
                          policy_trees: PolicyTrees.load(File.join(ROOT, "LEKMOD", "Override"))),
            page_class: "with-sidebar")
 
