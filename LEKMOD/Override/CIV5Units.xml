@@ -273840,7 +273840,6 @@
 			<MilitaryProduction>true</MilitaryProduction>
 			<Mechanized>true</Mechanized>
 			<Suicide>true</Suicide>
-			<PrereqTech>TECH_ADVANCED_BALLISTICS</PrereqTech>
 			<AdvancedStartCost>40</AdvancedStartCost>
 			<AirUnitCap>1</AirUnitCap>
 			<CombatLimit>0</CombatLimit>
@@ -280740,10 +280739,10 @@
 			<Where Type="UNIT_YUGO_M84"/>
 			<Set Cost="473"/>
 		</Update>
-		<!-- Information-era units +5% (2026-10-18) -->
+		<!-- Information-era units +5% (2026-10-18); the Guided Missile is removed (2026-10-21) -->
 		<Update>
 			<Where Type="UNIT_GUIDED_MISSILE"/>
-			<Set Cost="221"/>
+			<Set Cost="-1" ShowInPedia="0"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_HEAVY_CRUISER"/>
@@ -283723,24 +283722,13 @@
 			<PromotionType>PROMOTION_MARCH</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
-	<!-- Egypt: Burial Tomb (from scratch): Construction, no Shrine needed, 2 Gold maintenance, 3 Faith; War Chariot 1 Horse, 10% cheaper -->
+	<!-- Egypt: Burial Tomb as in v34.11 (2026-10-21): Philosophy, needs a Shrine, no Gold maintenance, +2 Happiness, +2 Faith; without the doubled plunder. War Chariot 1 Horse, 10% cheaper -->
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_BURIAL_TOMB"/>
-			<Set Happiness="0" CapturePlunderModifier="0" GoldMaintenance="2" PrereqTech="TECH_CONSTRUCTION"/>
+			<Set Cost="100" Happiness="2" CapturePlunderModifier="0" GoldMaintenance="0"/>
 		</Update>
 	</Buildings>
-	<Building_ClassesNeededInCity>
-		<Delete BuildingType="BUILDING_BURIAL_TOMB"/>
-	</Building_ClassesNeededInCity>
-	<Building_YieldChanges>
-		<Delete BuildingType="BUILDING_BURIAL_TOMB"/>
-		<Row>
-			<BuildingType>BUILDING_BURIAL_TOMB</BuildingType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<Yield>3</Yield>
-		</Row>
-	</Building_YieldChanges>
 	<Units>
 		<Update>
 			<Where Type="UNIT_EGYPTIAN_WARCHARIOT"/>

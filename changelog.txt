@@ -20,6 +20,19 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+EGYPT (CIVILIZATION_EGYPT)
+--------------------------
+Tags: civs, buildings
+- Reworked: BUILDING_BURIAL_TOMB
+  - back to its earlier Lekmod version (Philosophy, needs a Shrine, +2 Faith), without the doubled Gold plundered on capture
+- Dev: Burial Tomb as in v34.11 (Cost 100, Happiness 2, GoldMaintenance 0), CapturePlunderModifier 0 (user, 2026-10-21)
+
+GUIDED MISSILE (UNIT_GUIDED_MISSILE)
+------------------------------------
+Tags: units, air
+- Removed: the Guided Missile
+- Dev: Units Cost -1, no PrereqTech, ShowInPedia 0; tech and ship texts no longer mention it
+
 
 ## 1.0.0 (2026-10-20)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
