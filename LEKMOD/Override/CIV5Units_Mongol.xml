@@ -117074,7 +117074,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MARITIME_INFRASTRUCTURE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +3 [ICON_FOOD] Food and +3 [ICON_PRODUCTION] Production (doesn't stack with Military Tradition)
+				[COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +3 [ICON_FOOD] Food and +3 [ICON_PRODUCTION] Production (instead of Military Tradition's +2)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MARITIME_INFRASTRUCTURE_TEXT"> 
@@ -117199,7 +117199,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_TRADITION_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +3 [ICON_PRODUCTION] Production and +3 [ICON_FOOD] Food (doesn't stack with Colonial Administration)[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_ARMORY] Armories[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
+				[COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +2 [ICON_PRODUCTION] Production and +2 [ICON_FOOD] Food (doesn't stack with Colonial Administration's +3)[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_ARMORY] Armories[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MOBILIZATION"> 

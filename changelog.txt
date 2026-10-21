@@ -32,6 +32,11 @@ ASSYRIA (CIVILIZATION_ASSYRIA)
 Tags: civs, buildings
 - Dev: the Royal Library tooltip now says that the first Royal Library comes with a free Great Work of Writing (NQ_CHEAT_FIRST_ROYAL_LIBRARY_COMES_WITH_GREAT_WORK, unchanged since v35.4; the 2026-10-17 UB text audit had left it out)
 
+HONOR (POLICY_BRANCH_HONOR)
+---------------------------
+Tags: policies
+- Changed: Military Tradition: cities with a Courthouse get +2 Food and +2 Production (was +3 each); with Expansionism's Colonial Administration they get its +3 instead (the two still don't add up)
+
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
 Tags: units, air
