@@ -106,6 +106,12 @@ Tags: units, policies
   - 22 Strength (was 16)
   - costs 100 (was 30), so its Gold price rises too
 
+PORTUGAL (CIVILIZATION_PORTUGAL)
+--------------------------------
+Tags: civs, units
+- Removed: Portugal's cheaper Caravan and Cargo Ship (33 Production instead of 50); Portugal builds the normal ones
+- Dev: Civilization_UnitClassOverrides rows to UNIT_VENEZ_CARAVAN / UNIT_VENEZ_CARGO_SHIP deleted (leftover of the v35.4 ability; the units stay unused, ShowInPedia 0)
+
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
 Tags: units, air

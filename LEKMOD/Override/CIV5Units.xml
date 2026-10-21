@@ -292457,4 +292457,9 @@
 			<Set Happiness="5"/>
 		</Update>
 	</Policy_BuildingClassHappiness>
+	<!-- LEKMOD (2026-10-22): Portugal no longer has the cheaper Caravan / Cargo Ship of its v35.4 ability (the new ability doesn't use them) -->
+	<Civilization_UnitClassOverrides>
+		<Delete CivilizationType="CIVILIZATION_PORTUGAL" UnitClassType="UNITCLASS_CARAVAN"/>
+		<Delete CivilizationType="CIVILIZATION_PORTUGAL" UnitClassType="UNITCLASS_CARGO_SHIP"/>
+	</Civilization_UnitClassOverrides>
 </GameData>
