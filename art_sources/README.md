@@ -72,7 +72,8 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   the non-black pixels, 5% inside its nearest edge, radius 0.38-0.47 of the width), scales it into a circle 4 px
   wider than the base layout (175 px at 41,40) and writes 32/45/64/80/128/214/256 to `LEKMOD/Art/Lekmod (v 1)/Art/Buildings/`.
   Sources delivered as a cut-out on white get their white background replaced by a dark colour first
-  (`WHITE_BACKGROUND`: Ministry of Truth).
+  (`WHITE_BACKGROUND`: Ministry of Truth; since 2026-10-22 also the round pictures on white: Appletree, War College,
+  Self-Propelled Artillery). Replaced sources go into an `old/` subfolder (the tool reads only the folder itself).
 - Why (2026-10-14): the first version cut a fixed 5% off the source and drew exactly the base circle. The size matched
   the base icons, but the art's dark edge sat right inside the ring and looked like a gap in the city banner
   (user screenshot, Fulling Mill vs a base icon). All icons were rebuilt.
