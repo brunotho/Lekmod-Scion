@@ -20767,7 +20767,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ROYAL_LIBRARY_HELP"> 
-			<Text>Replaces the Library.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.</Text>
+			<Text>Replaces the Library.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Your first Royal Library comes with a free Great Work of Writing in its slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ROYAL_LIBRARY_STRATEGY"> 
 			<Text>
@@ -147981,7 +147981,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Earn [ICON_GREAT_MERCHANT] Great Merchants, [ICON_GREAT_WRITER] Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 20% faster.[NEWLINE]A Merchant of Venice appears after researching [ICON_TECH_CURRENCY] Currency.[NEWLINE][NEWLINE]Great Works yield +2 [ICON_GOLD] Gold and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]One extra [ICON_SPY] Spy when entering the Renaissance.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ROYAL_LIBRARY_HELP">
-			<Text>Replaces the Library.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.</Text>
+			<Text>Replaces the Library.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Your first Royal Library comes with a free Great Work of Writing in its slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HANSE_HELP">
 			<Text>Replaces the Bank.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold and +25% [ICON_GOLD] Gold.[NEWLINE]1 Merchant specialist slot.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5% [ICON_PRODUCTION] Production for each trade route your civilization has with a City-State.[NEWLINE]Whoever receives a [ICON_INTERNATIONAL_TRADE] Trade Route from this city gets +2 [ICON_GOLD] Gold per era (2 in the Ancient Era).[NEWLINE][ICON_INTERNATIONAL_TRADE] Trade Routes from this city to your own cities yield +50% for each foreign civilization or City-State that receives a Trade Route from one of your cities with a Hanse.</Text>
