@@ -400,6 +400,7 @@ function OnCategory( which )
     Controls.MultiplayerPanel:SetHide( which ~= 5 );
     -- NEW
     Controls.HotkeysPanel:SetHide( which ~= 6 );
+    Controls.LekmodPanel:SetHide( which ~= 7 );
     
     Controls.GameHighlight:SetHide(  which ~= 1 );
     Controls.IFaceHighlight:SetHide( which ~= 2 );
@@ -408,6 +409,7 @@ function OnCategory( which )
     Controls.MultiplayerHighlight:SetHide( which ~= 5 ); 
     -- NEW
     Controls.HotkeyManagerHighlight:SetHide( which ~= 6 );
+    Controls.LekmodHighlight:SetHide( which ~= 7 );
     
     Controls.TitleLabel:SetText( m_PanelNames[ which ] );
 end
@@ -418,6 +420,7 @@ Controls.AudioButton:RegisterCallback( Mouse.eLClick, OnCategory );
 Controls.MultiplayerButton:RegisterCallback( Mouse.eLClick, OnCategory );
 -- NEW
 Controls.HotkeyManagerButton:RegisterCallback( Mouse.eLClick, OnCategory );
+Controls.LekmodButton:RegisterCallback( Mouse.eLClick, OnCategory );
 
 Controls.GameButton:SetVoid1(  1 );
 Controls.IFaceButton:SetVoid1( 2 );
@@ -426,6 +429,7 @@ Controls.AudioButton:SetVoid1( 4 );
 Controls.MultiplayerButton:SetVoid1( 5 );
 -- NEW
 Controls.HotkeyManagerButton:SetVoid1( 6 );
+Controls.LekmodButton:SetVoid1( 7 );
 
 m_PanelNames = {};
 m_PanelNames[ 1 ] = Locale.ConvertTextKey( "TXT_KEY_GAME_OPTIONS" );
@@ -433,6 +437,7 @@ m_PanelNames[ 2 ] = Locale.ConvertTextKey( "TXT_KEY_INTERFACE_OPTIONS" );
 m_PanelNames[ 3 ] = Locale.ConvertTextKey( "TXT_KEY_VIDEO_OPTIONS" );
 m_PanelNames[ 4 ] = Locale.ConvertTextKey( "TXT_KEY_AUDIO_OPTIONS" );
 m_PanelNames[ 5 ] = Locale.ConvertTextKey( "TXT_KEY_MULTIPLAYER_OPTIONS" );
+m_PanelNames[ 7 ] = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_OPTIONS_TAB" );
     -- NEW
 m_PanelNames[ 6 ] = Locale.ConvertTextKey( "TXT_KEY_HOTKEY_OPTIONS" );
 

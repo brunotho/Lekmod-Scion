@@ -64,6 +64,18 @@ Tags: promotions, naval, movement
 - Added: a ship with Swift Transport takes your embarked units on its tile along when it moves (onto water tiles they could enter themselves, not into cities); they keep their own movement. Moving the embarked unit yourself works as before
 - DLL: LEKMOD_SWIFT_TRANSPORT_CARRY (end of CvUnit::move)
 
+LEK OPTIONS (OPTIONS_MENU)
+--------------------------
+Tags: ui
+- Added: the Options screen has a "Lek Options" tab with all of Lekmod's own settings (promotion and build hotkey letters, muting the chat sound); it takes the place of the Multiplayer tab (turn notification e-mails)
+- Dev: standard UI only (EUI has its own OptionsMenu); the Multiplayer panel stays in the XML, its tab button is hidden
+
+WORLD CONGRESS HOST ELECTION (RESOLUTION_CHANGE_LEAGUE_HOST)
+-----------------------------------------------------------
+Tags: bugfix, world congress
+- Fixed: the vote for the next World Congress host no longer lists players twice
+- DLL: CvLeague::GetChoicesForDecision (RESOLUTION_DECISION_MAJOR_CIV_MEMBER under DIPLO_VICTORY_VOTING) added the member list once per enact proposal and fell through into OTHER_MAJOR_CIV_MEMBER (missing break)
+
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
 Tags: units, air

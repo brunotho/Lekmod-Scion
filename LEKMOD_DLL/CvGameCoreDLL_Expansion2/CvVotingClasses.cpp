@@ -3297,29 +3297,24 @@ std::vector<int> CvLeague::GetChoicesForDecision(ResolutionDecisionTypes eDecisi
 		break;
 	case RESOLUTION_DECISION_MAJOR_CIV_MEMBER:
 #ifdef DIPLO_VICTORY_VOTING
-		for (EnactProposalList::iterator it = m_vEnactProposals.begin(); it != m_vEnactProposals.end(); ++it)
 		{
-			if (it->GetEffects()->bDiplomaticVictory)
+			// LEKMOD (2026-10-21): the list used to be added once per enact proposal on the table and then fell through into
+			// OTHER_MAJOR_CIV_MEMBER (no break), so the host election showed players two or more times. Now: one list;
+			// while a world leader vote is proposed, everyone can only vote for themselves (as before)
+			bool bVictoryProposed = false;
+			for (EnactProposalList::iterator it = m_vEnactProposals.begin(); it != m_vEnactProposals.end(); ++it)
 			{
-				for (uint i = 0; i < m_vMembers.size(); i++)
-				{
-					if (m_vMembers[i].ePlayer == eDecider)
-					{
-						vChoices.push_back(m_vMembers[i].ePlayer);
-					}
-				}
+				if (it->GetEffects()->bDiplomaticVictory)
+					bVictoryProposed = true;
 			}
-			else
+			for (uint i = 0; i < m_vMembers.size(); i++)
 			{
-				for (uint i = 0; i < m_vMembers.size(); i++)
-				{
-					if (!GET_PLAYER(m_vMembers[i].ePlayer).isMinorCiv() && LekmodIsHostCandidate(m_vMembers[i].ePlayer))
-					{
-						vChoices.push_back(m_vMembers[i].ePlayer);
-					}
-				}
+				const PlayerTypes eMember = m_vMembers[i].ePlayer;
+				if (bVictoryProposed ? (eMember == eDecider) : (!GET_PLAYER(eMember).isMinorCiv() && LekmodIsHostCandidate(eMember)))
+					vChoices.push_back(eMember);
 			}
 		}
+		break;
 #else
 		for (uint i = 0; i < m_vMembers.size(); i++)
 		{

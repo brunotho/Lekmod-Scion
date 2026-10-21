@@ -70,8 +70,18 @@
           <Grid Anchor="C,C" Offset="0,0" Size="160,26"  Style="Grid9FrameTurns" Hidden="1" ID="AudioHighlight" />
         </Button>
 
+		<!-- LEKMOD (2026-10-21): the Multiplayer tab (turn notification e-mails for async games) gives its place to Lek Options -->
+        <Button  Anchor="L,T" Size="160,24" Font="TwCenMT18" Offset="0,0"  String="TXT_KEY_LEKMOD_OPTIONS_TAB" ID="LekmodButton" >
+          <ShowOnMouseOver>
+            <AlphaAnim Anchor="L,T" Size="160,27" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+              <Grid   Size="160,27" Offset="0,-1" Padding="0,0" Style="Grid9FrameTurnsHL" />
+            </AlphaAnim>
+          </ShowOnMouseOver>
+          <Grid Anchor="C,C" Offset="0,0" Size="160,26"  Style="Grid9FrameTurns" Hidden="1" ID="LekmodHighlight" />
+        </Button>
+
 		<!-- NEW: shorten this tab a bit -->
-        <Button  Anchor="L,T" Size="160,24" Font="TwCenMT18" Offset="0,0"  String="TXT_KEY_MULTIPLAYER_OPTIONS_SHORT" ID="MultiplayerButton" >
+        <Button  Anchor="L,T" Size="160,24" Font="TwCenMT18" Offset="0,0"  String="TXT_KEY_MULTIPLAYER_OPTIONS_SHORT" ID="MultiplayerButton" Hidden="1" >
           <ShowOnMouseOver>
             <AlphaAnim Anchor="L,T" Size="160,27" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
               <Grid   Size="160,27" Offset="0,-1" Padding="0,0" Style="Grid9FrameTurnsHL" />
@@ -132,9 +142,6 @@
         <CheckBox String="TXT_KEY_OPSCREEN_CIVILIAN_YIELDS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="CivilianYieldsCheckbox" ToolTip="TXT_KEY_OPSCREEN_CIVILIAN_YIELDS_TT"  />
         <CheckBox String="TXT_KEY_OPSCREEN_NO_BASIC_HELP" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="NoBasicHelpCheckbox" ToolTip="TXT_KEY_OPSCREEN_NO_BASIC_HELP_TT"  />
         <CheckBox String="TXT_KEY_OPSCREEN_QUICK_SELECTION_ADVANCE" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="QuickSelectionAdvCheckbox" ToolTip="TXT_KEY_OPSCREEN_QUICK_SELECTION_ADVANCE_TT"  />
-        <!-- LEKMOD -->
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodBuildHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT"  />
 </Stack>
     </Container>
 
@@ -289,10 +296,17 @@
 
         <Label Anchor="L,C" Offset="0,20" ID="SpeechVolumeSliderValue" />
         <Slider Length="500" Style="Slider" ID="SpeechVolumeSlider" WheelSteps="1" />
-        <!-- LEKMOD -->
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="C,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
       </Stack>
 
+    </Container>
+
+    <!-- LEKMOD: Lek Options (2026-10-21): every Lekmod setting in one tab -->
+    <Container Size="971,500" Offset="0,44" ID="LekmodPanel" Hidden="1" >
+      <Stack Anchor="C,T" Offset="0,90" Padding="15" >
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodBuildHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT"  />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
+      </Stack>
     </Container>
 
     <!-- Multiplayer Options -->
