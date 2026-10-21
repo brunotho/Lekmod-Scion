@@ -23,6 +23,9 @@
 <% civ.uniques.each do |u| -%>
     <div class="unique">
       <h3><span class="kind"><%= u.kind %></span> <%= h u.name %><% if u.replaces %> <span class="replaces">replaces <%= h u.replaces %></span><% end %></h3>
+<% if u.stats && !u.stats.empty? -%>
+      <p class="stats"><%= h u.stats %></p>
+<% end -%>
 <% if u.text -%>
       <p><%= GameText.to_html(u.text) %></p>
 <% end -%>

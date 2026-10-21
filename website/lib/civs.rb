@@ -2,7 +2,7 @@
 # straight from the mod's Override files (no game database needed). Same rules as tools/dev/civtexts.py:
 # a text tag's last <Row>/<Replace> wins, rows inside XML comments are ignored.
 module Civs
-  Unique = Struct.new(:kind, :name, :replaces, :text, keyword_init: true)
+  Unique = Struct.new(:kind, :name, :replaces, :text, :stats, keyword_init: true)
   Civ = Struct.new(:type, :name, :leader, :ability_name, :ability, :uniques, keyword_init: true)
 
   module_function
@@ -10,7 +10,8 @@ module Civs
   def load(override_dir)
     data = strip_comments(File.read(File.join(override_dir, "CIV5Units.xml"), encoding: "UTF-8"))
     texts = load_texts(File.join(override_dir, "CIV5Units_Mongol.xml"))
-    t = ->(key) { key && texts[key] }
+    # a few rows hold a plain name instead of a text key (the Anti-Tank Rifle's Description)
+    t = ->(key) { key && (texts[key] || (key.start_with?("TXT_KEY") ? nil : key)) }
     help = ->(row) { t.(row["Help"]) || t.(row["Strategy"]) }
 
     by_type = lambda do |table|
@@ -30,6 +31,7 @@ module Civs
     leader_traits = group(rows(data, "Leader_Traits"), "LeaderType", "TraitType")
     unit_overrides = rows(data, "Civilization_UnitClassOverrides").select { |r| present?(r["UnitType"]) }
     building_overrides = rows(data, "Civilization_BuildingClassOverrides").select { |r| present?(r["BuildingType"]) }
+    needs = rows(data, "Unit_ResourceQuantityRequirements").group_by { |r| r["UnitType"] }
 
     civs.values.select { |c| c["Playable"] == "true" || c["Playable"] == "1" }.map do |c|
       type = c["Type"]
@@ -39,18 +41,26 @@ module Civs
       unit_overrides.select { |r| r["CivilizationType"] == type }.map { |r| r["UnitType"] }.uniq.each do |u|
         row = units[u] or next
         default = unit_classes.dig(row["Class"], "DefaultUnit")
+        base = default && default != u ? units[default] : nil
         uniques << Unique.new(kind: "Unit", name: t.(row["Description"]), text: help.(row),
-                              replaces: default && default != u ? t.(units.dig(default, "Description")) : nil)
+                              replaces: base ? t.(base["Description"]) : nil,
+                              stats: compare_stats(unit_stats(row, needs[u]), base && unit_stats(base, needs[default]),
+                                                   clean_name(base && t.(base["Description"]))))
       end
       civ_buildings = building_overrides.select { |r| r["CivilizationType"] == type }.map { |r| r["BuildingType"] }
       civ_buildings += buildings.values.select { |b| b["RequiredCivilization"] == type }.map { |b| b["Type"] }
       civ_buildings.uniq.each do |b|
         row = buildings[b] or next
         default = building_classes.dig(row["BuildingClass"], "DefaultBuilding")
+        base = default && default != b ? buildings[default] : nil
         uniques << Unique.new(kind: "Building", name: t.(row["Description"]), text: help.(row),
-                              replaces: default && default != b ? t.(buildings.dig(default, "Description")) : nil)
+                              replaces: base ? t.(base["Description"]) : nil,
+                              stats: compare_stats(building_stats(row), base && building_stats(base),
+                                                   clean_name(base && t.(base["Description"]))))
       end
-      improvements.values.select { |i| i["SpecificCivRequired"] == "true" && i["CivilizationType"] == type }.each do |i|
+      # one entry per name: the Netherlands have a land and a water Polder with the same name and text
+      improvements.values.select { |i| i["SpecificCivRequired"] == "true" && i["CivilizationType"] == type }
+                  .uniq { |i| i["Description"] }.each do |i|
         uniques << Unique.new(kind: "Improvement", name: t.(i["Description"]), text: help.(i), replaces: nil)
       end
       uniques.each do |u|
@@ -63,6 +73,44 @@ module Civs
               ability_name: t.(trait["ShortDescription"]), ability: t.(trait["Description"]),
               uniques: uniques.select { |u| u.name })
     end.sort_by { |c| c.name.to_s }
+  end
+
+  QUICK = 67 # quick speed: costs x 67 / 100, rounded down like the game
+
+  # Ordered [label, value] pairs of a unit's numbers (quick-speed cost); value nil = the unit doesn't have it.
+  def unit_stats(row, needs)
+    res = (needs || []).map do |r|
+      n = (r["Cost"] || "1").to_i
+      name = r["ResourceType"].to_s.sub("RESOURCE_", "").capitalize
+      "#{n} #{n > 1 && name == 'Horse' ? 'Horses' : name}"
+    end
+    ranged = row["RangedCombat"].to_i
+    [["Strength", row["Combat"].to_i.positive? ? row["Combat"].to_i : nil],
+     ["Ranged Strength", ranged.positive? ? "#{ranged} at range #{row['Range'].to_i}" : nil],
+     ["Movement", row["Domain"] != "DOMAIN_AIR" && row["Moves"].to_i.positive? ? row["Moves"].to_i : nil],
+     ["Cost", row["Cost"].to_i.positive? ? row["Cost"].to_i * QUICK / 100 : nil],
+     ["Needs", res.empty? ? nil : res.join(" and ")]]
+  end
+
+  def building_stats(row)
+    [["Cost", row["Cost"].to_i.positive? ? row["Cost"].to_i * QUICK / 100 : nil],
+     ["Gold maintenance", row["GoldMaintenance"].to_i.positive? ? row["GoldMaintenance"].to_i : nil]]
+  end
+
+  # "Strength 12 (Spearman 11) · Movement 2 · Cost 42 (Spearman 37) · Needs 3 Iron (Spearman: nothing)":
+  # every number of the unique, and the replaced item's number where it differs.
+  def compare_stats(mine, theirs, base_name)
+    theirs = theirs.to_h if theirs
+    mine.filter_map do |label, v|
+      b = theirs && theirs[label]
+      next nil if v.nil? && b.nil?
+      shown = v.nil? ? "none" : v.to_s
+      shown = "#{label} #{shown}"
+      if theirs && b != v
+        shown += v.is_a?(Integer) && b.is_a?(Integer) ? " (#{base_name} #{b})" : " (#{base_name}: #{b.nil? ? 'none' : b})"
+      end
+      shown
+    end.join(" · ")
   end
 
   # In-game names mark unique national wonders with a colored "*"; the site shows plain names.
