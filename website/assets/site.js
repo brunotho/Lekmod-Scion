@@ -11,7 +11,7 @@
   if (controls) {
     var fromSel = $("#from"), toSel = $("#to"), search = $("#search"), clear = $("#clear");
     var tagButtons = $$(".tag", controls);
-    var cards = $$("#changelog .card");
+    var cards = $$("#changelog article.card"); // not the Essentials box, which only borrows the card style
     var defaults = { from: fromSel.value, to: toSel.value };
 
     var readUrl = function () {
