@@ -147922,10 +147922,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Lek Options</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE">
-			<Text>[COLOR_CYAN]Jaegye[ENDCOLOR]: {1_Num} turns left</Text>
+			<Text>[COLOR_CULTURE_STORED]Jaegye[ENDCOLOR]: {1_Num} turns left</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_ACTIVE">
-			<Text>[COLOR_CYAN]Jaegye[ENDCOLOR] is active</Text>
+			<Text>[COLOR_CULTURE_STORED]Jaegye[ENDCOLOR] is active</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE_TT">
 			<Text>Jaegye, the fasting period started by the Jongmyo Shrine:[NEWLINE]+4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city.[NEWLINE]Half of the excess [ICON_FOOD] Food is lost.</Text>
