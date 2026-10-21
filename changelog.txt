@@ -36,6 +36,7 @@ HONOR (POLICY_BRANCH_HONOR)
 ---------------------------
 Tags: policies
 - Changed: Military Tradition: cities with a Courthouse get +2 Food and +2 Production (was +3 each); with Expansionism's Colonial Administration they get its +3 instead (the two still don't add up)
+- Dev: the Honor tooltips no longer mention that they don't stack with Expansionism (the Expansionism tooltips still do)
 
 JAPAN (CIVILIZATION_JAPAN)
 --------------------------
@@ -81,6 +82,21 @@ KOREA (CIVILIZATION_KOREA)
 Tags: civs, ui
 - Added: Jaegye (from the Jongmyo Shrine) shows in the city screen with its turns left, and a notification tells you when it starts and when it ends
 - DLL: City:LekmodGetTimedBuildingTurns (Lua), CvCity::LekmodNotifyTimedBuilding (timed dummy buildings: start and end); standard UI CityView box LekmodJaegyeBox (EUI unchanged)
+
+COMMERCE (POLICY_BRANCH_COMMERCE)
+---------------------------------
+Tags: policies
+- Changed: opener: Great Merchants 20% faster (was 33%)
+- Added: Silk Road: +1 Gold from every Market, Bank and Stock Exchange
+- Changed: Mercantilism: buying things costs 15% less Gold (was 20%)
+- Changed: Protectionism: the East India Company gives +5 Culture and +5 Happiness (was +4 Production, +4 Culture, +4 Happiness)
+
+AESTHETICS (POLICY_BRANCH_AESTHETICS)
+-------------------------------------
+Tags: policies
+- Changed: opener: Great Writers, Artists and Musicians 20% faster (was 25%)
+- Removed: Cultural Centers: +1 Happiness from each Guild
+- Dev: finisher text no longer says "even before Archaeology"
 
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------

@@ -292406,4 +292406,55 @@
 			<Experience>5</Experience>
 		</Row>
 	</Building_DomainFreeExperiences>
+	<!-- LEKMOD (2026-10-22): Commerce and Aesthetics tweaks (user's NEW SPECS AGAIN page) -->
+	<Policies>
+		<Update>
+			<Where Type="POLICY_COMMERCE"/>
+			<Set GreatMerchantRateModifier="20"/>
+		</Update>
+		<Update>
+			<Where Type="POLICY_AESTHETICS"/>
+			<Set GreatWriterRateModifier="20" GreatArtistRateModifier="20" GreatMusicianRateModifier="20"/>
+		</Update>
+	</Policies>
+	<Policy_HurryModifiers>
+		<Update>
+			<Where PolicyType="POLICY_MERCANTILISM" HurryType="HURRY_GOLD"/>
+			<Set HurryCostModifier="-15"/>
+		</Update>
+	</Policy_HurryModifiers>
+	<Policy_BuildingClassYieldChanges>
+		<Row>
+			<PolicyType>POLICY_CARAVANS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_MARKET</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_CARAVANS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_BANK</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_CARAVANS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_STOCK_EXCHANGE</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Delete PolicyType="POLICY_PROTECTIONISM" BuildingClassType="BUILDINGCLASS_NATIONAL_TREASURY"/>
+		<Row>
+			<PolicyType>POLICY_PROTECTIONISM</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_NATIONAL_TREASURY</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>5</YieldChange>
+		</Row>
+	</Policy_BuildingClassYieldChanges>
+	<Policy_BuildingClassHappiness>
+		<Delete PolicyType="POLICY_CULTURAL_CENTERS"/>
+		<Update>
+			<Where PolicyType="POLICY_PROTECTIONISM" BuildingClassType="BUILDINGCLASS_NATIONAL_TREASURY"/>
+			<Set Happiness="5"/>
+		</Update>
+	</Policy_BuildingClassHappiness>
 </GameData>
