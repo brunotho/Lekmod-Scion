@@ -1459,8 +1459,21 @@ CivilopediaCategory[CategoryHomePage].DisplayHomePage = function()
 
 	g_BBTextManager:ResetInstances();
 	
-	--Welcome and insert 1st manual paragraph
-	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_PEDIA_HOME_PAGE_BLURB_TEXT" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
+	-- LEKMOD (2026-10-22): the home page shows the Essentials of the latest version (website Essentials page, copied
+	-- into the text file by tools/sync_pedia_essentials.py), one box per section, then the usual help box
+	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
+	for iSection = 1, 50 do
+		local strHeaderKey = "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_HEADER";
+		local strHeader = Locale.ConvertTextKey( strHeaderKey );
+		if strHeader == nil or strHeader == strHeaderKey then
+			break;
+		end
+		local sectionInstance = g_BBTextManager:GetInstance();
+		if sectionInstance then
+			sectionInstance.BBTextHeader:SetText( strHeader );
+			UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_TEXT" ), sectionInstance.BBTextLabel, sectionInstance.BBTextInnerFrame, sectionInstance.BBTextFrame );
+		end
+	end
 
 	--How to use the Pedia	
 	local thisBBTextInstance = g_BBTextManager:GetInstance();

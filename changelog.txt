@@ -112,6 +112,12 @@ Tags: civs, units
 - Removed: Portugal's cheaper Caravan and Cargo Ship (33 Production instead of 50); Portugal builds the normal ones
 - Dev: Civilization_UnitClassOverrides rows to UNIT_VENEZ_CARAVAN / UNIT_VENEZ_CARGO_SHIP deleted (leftover of the v35.4 ability; the units stay unused, ShowInPedia 0)
 
+CIVILOPEDIA HOME PAGE
+---------------------
+Tags: ui
+- Changed: the Civilopedia home page shows the essentials of this version (the same text as the Essentials tab on the website)
+- Dev: texts generated from website/data/essentials.txt by tools/sync_pedia_essentials.py (rerun after every edit)
+
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
 Tags: units, air

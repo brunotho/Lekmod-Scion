@@ -7,7 +7,7 @@ A static site (plain HTML, CSS, a little JavaScript) built by a Ruby script with
 | Page | Source |
 |---|---|
 | Mod changelog (`index.html`) | `changelog.txt` at the repo root (format: see its header); three views: Full changelog (default, no filters), Essentials, Search (the version/tag/text filters; filter URLs open it) |
-| Essentials (view of `index.html`) | `data/essentials.txt`, written by hand for the latest release: only what changes how the game is played broadly (rules, hidden mechanics, the strategic resource economy, big new UI), no civs or beliefs (user, 2026-10-21); same loose format as the map changelog. Rewrite it for each release |
+| Essentials (view of `index.html`) | `data/essentials.txt`, written by hand for the latest release: only what changes how the game is played broadly (rules, hidden mechanics, the strategic resource economy, big new UI), no civs or beliefs (user, 2026-10-21); same loose format as the map changelog. Rewrite it for each release. **The Civilopedia home page shows the same text: after every edit run `python tools/sync_pedia_essentials.py`** (user, 2026-10-22) |
 | Map changelog (`map.html`) | `CHANGELOG.txt` in the map repo (`brunotho/lekmap-scion`), loosely written: `#` headings, `-` bullets, tab-indented sub-bullets |
 | Installation (`install.html`) | `templates/install.html.erb` (written by hand) |
 | Civ list (`civs.html`) | the mod's `LEKMOD/Override/CIV5Units.xml` and `CIV5Units_Mongol.xml`, read directly |
