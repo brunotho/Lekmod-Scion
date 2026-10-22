@@ -147423,7 +147423,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Jongmyo Shrine</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_JONGMYO_HELP">
-			<Text>Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 Musician specialist slot.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns.</Text>
+			<Text>Replaces the Temple. Costs less, needs no Shrine and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Temple:[NEWLINE]+2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]1 Musician specialist slot.[NEWLINE]When built: +4 [ICON_CULTURE] Culture and +4 [ICON_PEACE] Faith in this city for 7 turns, but half of its excess [ICON_FOOD] Food is lost during that time.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_RUNESTONE">
 			<Text>Rune Stone</Text>

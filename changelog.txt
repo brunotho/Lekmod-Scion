@@ -21,6 +21,11 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+KOREA (CIVILIZATION_KOREA)
+--------------------------
+Tags: civs, buildings
+- Dev: the Jongmyo Shrine tooltip now says that half of the excess Food is lost during Jaegye
+
 LOADING SCREEN: ALL UNIQUE ITEMS
 --------------------------------
 Tags: ui

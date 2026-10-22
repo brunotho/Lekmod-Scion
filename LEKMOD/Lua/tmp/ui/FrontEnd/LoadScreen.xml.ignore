@@ -32,7 +32,7 @@
                     <Image Anchor="C,C" Offset="0,0" Texture="bar340x2.dds" Size="340.1"/>
                     <!-- LEKMOD: up to 5 unique items, two per row (was 2) -->
                     <Stack Anchor="C,C" Offset="0,0" StackGrowth="Bottom" Padding="4" ID="SubStack" >
-                        <Stack Anchor="C,C" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow1">
+                        <Stack Anchor="L,T" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow1">
                             <Box Anchor="C.C" Offset="0,0" Size="225,48" Color="White.0" ID="BonusBox1">
                                 <Image Anchor="L,C" Offset="0,0" Texture="IconFrame64.dds" Size="64.64" ID="BF1">
                                     <Image Anchor="C,C" Size="64,64" Texture="WonderAtlas512.dds" ID="B1"/>
@@ -46,7 +46,7 @@
                                 </Image>
                             </Box>
                         </Stack>
-                        <Stack Anchor="C,C" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow2">
+                        <Stack Anchor="L,T" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow2">
                             <Box Anchor="C.C" Offset="0,0" Size="225,48" Color="White.0" ID="BonusBox3">
                                 <Image Anchor="L,C" Offset="0,0" Texture="IconFrame64.dds" Size="64.64" Hidden="0" ID="BF3">
                                     <Image Anchor="C,C" Size="64,64" Texture="WonderAtlas512.dds" ID="B3"/>
@@ -60,7 +60,7 @@
                                 </Image>
                             </Box>
                         </Stack>
-                        <Stack Anchor="C,C" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow3">
+                        <Stack Anchor="L,T" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow3">
                             <Box Anchor="C.C" Offset="0,0" Size="225,48" Color="White.0" ID="BonusBox5">
                                 <Image Anchor="L,C" Offset="0,0" Texture="IconFrame64.dds" Size="64.64" Hidden="0" ID="BF5">
                                     <Image Anchor="C,C" Size="64,64" Texture="WonderAtlas512.dds" ID="B5"/>
