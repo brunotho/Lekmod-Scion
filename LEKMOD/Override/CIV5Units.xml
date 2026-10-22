@@ -280475,7 +280475,7 @@
 			<PrereqTech>TECH_RAILROAD</PrereqTech>
 			<MinAreaSize>-1</MinAreaSize>
 			<NukeDamageLevel>-1</NukeDamageLevel>
-			<UnitArtInfo>ART_DEF_UNIT_GENERAL_LATE</UnitArtInfo>
+			<UnitArtInfo>ART_DEF_UNIT_LEKMOD_VANGUARD_CORPS</UnitArtInfo>
 			<ShowInPedia>true</ShowInPedia>
 			<MoveRate>BIPED</MoveRate>
 			<UnitFlagIconOffset>0</UnitFlagIconOffset>
@@ -292128,6 +292128,21 @@
 			<Asset>SV_MobileRocketArtillery.dds</Asset>
 		</Row>
 	</ArtDefine_StrategicView>
+	<!-- LEKMOD: Vanguard Corps uses the late Great General model but its own portrait (UI.GetUnitPortraitIcon reads the art define's IconAtlas) -->
+	<ArtDefine_UnitInfos>
+		<Row>
+			<Type>ART_DEF_UNIT_LEKMOD_VANGUARD_CORPS</Type>
+			<IconAtlas>LEKMOD_VANGUARD_CORPS_ATLAS</IconAtlas>
+			<PortraitIndex>0</PortraitIndex>
+		</Row>
+	</ArtDefine_UnitInfos>
+	<ArtDefine_UnitInfoMemberInfos>
+		<Row>
+			<UnitInfoType>ART_DEF_UNIT_LEKMOD_VANGUARD_CORPS</UnitInfoType>
+			<UnitMemberInfoType>ART_DEF_UNIT_MEMBER_GREATGENERAL_LATE</UnitMemberInfoType>
+			<NumMembers>1</NumMembers>
+		</Row>
+	</ArtDefine_UnitInfoMemberInfos>
 	<!-- LEKMOD: Spear Throw (PROMOTION_ANTI_GUNPOWDER) is the first strike only (spec: Zulu UU, 60% via LEKMOD_SUPPORT_FIRE_PERCENT); Impi and Vietnamese Infantry keep it (2026-10-19) -->
 	<UnitPromotions_UnitCombatMods>
 		<Delete PromotionType="PROMOTION_ANTI_GUNPOWDER"/>

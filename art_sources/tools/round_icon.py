@@ -40,10 +40,12 @@ RADIUS = {
 }
 # zoom into the picture (crop radius / zoom) so the subject looks as big as in the base game's icons, whose subjects
 # fill the circle (user, 2026-10-22: ours looked smaller in the tech tree and production list at the same circle size)
-ZOOM = {'self_propelled_artillery': 1.25, 'vanguard_corps': 1.25}
-# draw the circle larger than the base layout (same centre): base icons with bright subjects that fill or break out
-# of the circle still looked bigger in the tech tree (user, 2026-10-22)
-SCALE = {'self_propelled_artillery': 1.1, 'vanguard_corps': 1.1}
+ZOOM = {'self_propelled_artillery': 1.35, 'vanguard_corps': 1.25}
+# parts of the picture that break out of the circle, like the base game's Machine Gun (user, 2026-10-22): a polygon in
+# source pixels; where it lies outside the circle, the picture is drawn there too (it must stay inside the 256 cell)
+BREAKOUT = {'self_propelled_artillery': [(830, 415), (900, 375), (965, 350), (985, 342), (1010, 345), (1030, 365),
+                                         (1042, 400), (1040, 430), (1025, 448), (1000, 455), (930, 495), (890, 540),
+                                         (830, 550)]}
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
 WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     # round pictures on white (2026-10-22)
@@ -51,11 +53,9 @@ WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
-def icon(src, size, layout, scale=1.0):
+def icon(src, size, layout, breakout=None):
+    """breakout: (full source, crop box, polygon) for a picture part drawn outside the circle"""
     s = 4
-    if scale != 1.0:
-        d0 = layout[0] * scale
-        layout = (d0, layout[1] + (layout[0] - d0) / 2.0, layout[2] + (layout[0] - d0) / 2.0)
     big = size * s
     d = int(round(layout[0] / 256.0 * big))
     x, y = int(round(layout[1] / 256.0 * big)), int(round(layout[2] / 256.0 * big))
@@ -65,6 +65,19 @@ def icon(src, size, layout, scale=1.0):
     art.putalpha(Image.composite(art.getchannel('A'), Image.new('L', (d, d), 0), mask))
     canvas = Image.new('RGBA', (big, big), (0, 0, 0, 0))
     canvas.alpha_composite(art, (x, y))
+    if breakout:
+        full, box, poly = breakout
+        k = d / float(box[2] - box[0])
+        fw, fh = full.size
+        big_full = full.resize((int(round(fw * k)), int(round(fh * k))), Image.LANCZOS)
+        ox, oy = x - box[0] * k, y - box[1] * k
+        m = Image.new('L', (big, big), 0)
+        ImageDraw.Draw(m).polygon([(px * k + ox, py * k + oy) for px, py in poly], fill=255)
+        ImageDraw.Draw(m).ellipse((x, y, x + d - 1, y + d - 1), fill=0)
+        layer = Image.new('RGBA', (big, big), (0, 0, 0, 0))
+        layer.paste(big_full, (int(round(ox)), int(round(oy))))
+        layer.putalpha(Image.composite(layer.getchannel('A'), Image.new('L', (big, big), 0), m))
+        canvas.alpha_composite(layer)
     return canvas.resize((size, size), Image.LANCZOS)
 
 
@@ -128,11 +141,14 @@ def build(kind, name):
     cx, cy, r = picture_circle(src, name)
     r /= ZOOM.get(name, 1.0)
     d = r * src.size[0]
-    src = src.crop((int(round(cx - d)), int(round(cy - d)), int(round(cx + d)), int(round(cy + d))))
+    full = src
+    box = (int(round(cx - d)), int(round(cy - d)), int(round(cx + d)), int(round(cy + d)))
+    src = src.crop(box)
+    breakout = (full, box, BREAKOUT[name]) if name in BREAKOUT else None
     tmp = tempfile.mkdtemp()
     for sz in sizes:
         p = os.path.join(tmp, '%s_%d.png' % (name, sz))
-        img = icon(src, sz, layout, SCALE.get(name, 1.0))
+        img = icon(src, sz, layout, breakout)
         if not os.path.exists(TEXCONV):
             write_bc3(img, os.path.join(out_dir, '%s_%d.dds' % (name, sz)))
             continue
