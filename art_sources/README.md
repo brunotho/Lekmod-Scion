@@ -94,12 +94,16 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
 
 ## Civilopedia tabs
 - Sources: `civilopedia/` (2026-10-22: `nq_gold_letters_v1.png`, gold "NQ" letters on transparency, 1254 px; the NQ tab).
+  `reference_tab_row_2026-10-22.png`: the user's in-game screenshot of the tab row at 1:1 scale, the template for the tab.
 - `python art_sources/tools/build_pedia_tab.py <source> <name> [--preview out.png]`: a 64x256 sheet of 46x50 tab frames
   stacked at 50 px steps (normal, mouseover = the selected tab, pressed, disabled), uncompressed, plus `<name>256.dds` (the
   glyph alone, BC3) for the tab's page picture, in `LEKMOD/Art/Lekmod (v 1)/Art/Civilopedia/`.
 - The base tab textures (`CivilopediaTopButtons*.dds` in `Expansion2UITextures.fpk`) are stored compressed in a Firaxis
-  format that couldn't be decoded, so the tab body (navy, blue when highlighted, thin gold rim) is drawn by the tool, not
-  copied. Check it in game next to the base tabs and adjust `STATES` if it clashes.
+  format that couldn't be decoded, so the tool rebuilds a tab from the screenshot: the normal frame is the Home tab with its
+  disc replaced by the darkest pixel of six tabs (drops their icons) and smoothed in the middle; the selected frame is the
+  raised Promotions tab with its icon filled in from the blue disc around it. The glyph goes on the disc as is (whitened a
+  little on the blue one, like the base icons). The preview shows the tab in the screenshot's row.
+- The first version (2026-10-22) drew a square navy tab; it looked out of place next to the round base tabs.
 
 ## Espionage screen icons
 - `python art_sources/tools/build_levelup_icon.py [--preview out.png]` draws the framed 45 px level-up arrow for the diplomat

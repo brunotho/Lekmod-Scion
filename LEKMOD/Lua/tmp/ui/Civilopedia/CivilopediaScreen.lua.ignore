@@ -1950,10 +1950,11 @@ CivilopediaCategory[CategoryWorldCongress].DisplayHomePage = function()
 	ResizeEtc();
 end;
 
--- LEKMOD: the NQ tab (placeholder page, no article list yet)
+-- LEKMOD: the NQ tab: the No Quitters rule set (a Google Doc, copied into the text file by tools/sync_pedia_nq.py),
+-- one box per section; no article list
 CivilopediaCategory[CategoryLekmodNQ].DisplayHomePage = function()
 	ClearArticle();
-	Controls.ArticleID:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_PAGE_LABEL" ));
+	Controls.ArticleID:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_TITLE" ));
 
 	Controls.Portrait:SetTexture("LekmodPediaTabNQ256.dds");
 	Controls.Portrait:SetTextureOffsetVal(0,0);
@@ -1961,14 +1962,21 @@ CivilopediaCategory[CategoryLekmodNQ].DisplayHomePage = function()
 
 	Controls.PortraitFrame:SetHide(false);
 
-	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_BLURB" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
+	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_INTRO" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
 
 	g_BBTextManager:ResetInstances();
 
-	local thisBBTextInstance = g_BBTextManager:GetInstance();
-	if thisBBTextInstance then
-		thisBBTextInstance.BBTextHeader:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_HEADER" ));
-		UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_TEXT" ), thisBBTextInstance.BBTextLabel, thisBBTextInstance.BBTextInnerFrame, thisBBTextInstance.BBTextFrame );
+	for iSection = 1, 50 do
+		local strHeaderKey = "TXT_KEY_LEKMOD_PEDIA_NQ_" .. iSection .. "_HEADER";
+		local strHeader = Locale.ConvertTextKey( strHeaderKey );
+		if strHeader == nil or strHeader == strHeaderKey then
+			break;
+		end
+		local sectionInstance = g_BBTextManager:GetInstance();
+		if sectionInstance then
+			sectionInstance.BBTextHeader:SetText( strHeader );
+			UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_" .. iSection .. "_TEXT" ), sectionInstance.BBTextLabel, sectionInstance.BBTextInnerFrame, sectionInstance.BBTextFrame );
+		end
 	end
 	Controls.BBTextStack:SetHide( false );
 	ResizeEtc();
