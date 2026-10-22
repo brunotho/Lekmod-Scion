@@ -1347,7 +1347,7 @@
 			<Text>Swift Transport</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_SWIFT_TRANSPORT_HELP">
-			<Text>Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.</Text>
+			<Text>Your embarked units on this ship's tile move with it (onto water tiles they can enter, not into cities) without spending their own movement.[NEWLINE]Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_IAIJUTSU">
 			<Text>Iaijutsu</Text>
