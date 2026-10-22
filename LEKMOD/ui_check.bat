@@ -99,6 +99,8 @@ copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MultiplayerSelect.lua.ignore" "%patch
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\MultiplayerSelect.xml.ignore" "%patchfolder%\Lua\UI\MultiplayerSelect.xml" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\OtherMenu.lua.ignore" "%patchfolder%\Lua\UI\OtherMenu.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\OtherMenu.xml.ignore" "%patchfolder%\Lua\UI\OtherMenu.xml" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\LoadScreen.lua.ignore" "%patchfolder%\Lua\UI\LoadScreen.lua" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\FrontEnd\LoadScreen.xml.ignore" "%patchfolder%\Lua\UI\LoadScreen.xml" > nul
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\GameSetup\UniqueBonuses.lua.ignore" "%patchfolder%\Lua\UI\UniqueBonuses.lua" > nul
 IF NOT EXIST "%euifolder%\GameSetup\GameSetupScreen.lua" (

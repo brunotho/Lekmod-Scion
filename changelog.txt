@@ -21,6 +21,12 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+LOADING SCREEN: ALL UNIQUE ITEMS
+--------------------------------
+Tags: ui
+- Changed: the loading screen shows all of your civilization's unique items (up to 5, two per row; was 2)
+- Dev: Lekmod's own LoadScreen.lua/.xml (Lua/tmp/ui/FrontEnd, both UIs via ui_check.bat); UniqueBonuses no longer resumes a finished coroutine (with more slots than items it returned an error text as a name)
+
 
 ## 1.0.0 (2026-10-22)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.

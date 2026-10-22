@@ -146,8 +146,11 @@ function PopulateUniqueBonuses( controlTable, civ, _, extendedTooltip, noTooltip
 		if(button and buttonFrame) then
 			button:SetHide(true);
 			buttonFrame:SetHide(true);
-			local _, text = coroutine.resume(co, button, buttonFrame);
-			table.insert(BonusText, text);
+			-- LEKMOD: with more slots than items the coroutine finishes; a dead one would return an error text
+			if coroutine.status(co) ~= "dead" then
+				local ok, text = coroutine.resume(co, button, buttonFrame);
+				if ok and text ~= nil then table.insert(BonusText, text); end
+			end
 		end
 	end
     
