@@ -78,6 +78,11 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   the base icons, but the art's dark edge sat right inside the ring and looked like a gap in the city banner
   (user screenshot, Fulling Mill vs a base icon). All icons were rebuilt.
 - Atlases: one 1x1 atlas per icon.
+- Size check (2026-10-22, after the user saw Cristo Redentor and the Uranium Mapping Project at different heights):
+  the base sheets extracted from `Resource/DX9/UITextures.fpk` (`wonderatlas.dds` 256 px, `wonderatlas360.dds` 45 px;
+  file table: u32 name length, name, 9 bytes, u32 size, u32 offset) put almost every circle at 41..213 x 42..214 (256)
+  and 7..38 x 7..38 (45). Ours: 41..216 x 40..215 and exactly 7..38. No systemic size error; a few base wonders
+  (Cristo Redentor's arms) stick out of the circle, which makes them look bigger.
 
 ## Unit action icons
 - Sources: `unit_actions/` (2026-10-16: `buy_city_state_heart_v1.png`, the Merchant of Venice's buy-City-State button; a

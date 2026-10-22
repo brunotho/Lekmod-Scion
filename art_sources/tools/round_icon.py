@@ -36,13 +36,13 @@ DARK, MARGIN, R_MIN, R_MAX = 20, 0.05, 0.38, 0.47
 RADIUS = {
     'barlas_cavalry': 0.435,  # gold ring painted on from radius 0.455
     'bajoras': 0.435,         # gold ring painted on from radius 0.455
-    'vanguard_corps': 0.5,    # soldier on black, shown whole
     'mahamatras_office': 0.5, # full-bleed scene, shown whole
 }
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
 WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     # round pictures on white (2026-10-22)
-                    'appletree': (22, 22, 24), 'war_college': (22, 22, 24), 'self_propelled_artillery': (22, 22, 24)}
+                    'appletree': (22, 22, 24), 'war_college': (22, 22, 24), 'self_propelled_artillery': (22, 22, 24),
+                    'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
 def icon(src, size, layout):
