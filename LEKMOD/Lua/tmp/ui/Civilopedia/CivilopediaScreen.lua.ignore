@@ -49,7 +49,15 @@ local CategoryResources = 13;
 local CategoryImprovements = 14;
 local CategoryBeliefs = 15;
 local CategoryWorldCongress = 16;
-local numCategories = 16;
+local CategoryLekmodNQ = 17; -- LEKMOD: the NQ tab
+local numCategories = 17;
+
+-- LEKMOD: the tab order in CivilopediaScreen.xml (the NQ tab is second); also the order of the home page list
+local g_LekmodTabOrder = { CategoryHomePage, CategoryLekmodNQ, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+local g_LekmodTabSlot = {};
+for slot, category in ipairs(g_LekmodTabOrder) do
+	g_LekmodTabSlot[category] = slot;
+end
 
 local selectedCategory = CategoryHomePage;
 local CivilopediaCategory = {};
@@ -134,7 +142,7 @@ function SetSelectedCategory( thisCategory )
 	if selectedCategory ~= thisCategory then
 		selectedCategory = thisCategory;
 		-- set up tab
-		Controls.SelectedCategoryTab:SetOffsetVal(47 * (selectedCategory - 1), -10);
+		Controls.SelectedCategoryTab:SetOffsetVal(47 * (g_LekmodTabSlot[selectedCategory] - 1), -10);
 		Controls.SelectedCategoryTab:SetTexture( CivilopediaCategory[selectedCategory].buttonTexture );
 		-- set up label for category
 		Controls.CategoryLabel:SetText( CivilopediaCategory[selectedCategory].labelString );
@@ -188,6 +196,7 @@ CivilopediaCategory[CategoryResources].buttonTexture = "Assets/UI/Art/Civilopedi
 CivilopediaCategory[CategoryImprovements].buttonTexture = "Assets/UI/Art/Civilopedia/CivilopediaTopButtonsImprovements.dds";
 CivilopediaCategory[CategoryBeliefs].buttonTexture = "CivilopediaTopButtonsReligion.dds";
 CivilopediaCategory[CategoryWorldCongress].buttonTexture = "CivilopediaTopButtonsWorldCongress.dds";
+CivilopediaCategory[CategoryLekmodNQ].buttonTexture = "LekmodPediaTabNQ.dds";
 
 CivilopediaCategory[CategoryHomePage].labelString = Locale.ConvertTextKey( "TXT_KEY_PEDIA_CATEGORY_1_LABEL" );
 CivilopediaCategory[CategoryGameConcepts].labelString = Locale.ConvertTextKey( "TXT_KEY_PEDIA_CATEGORY_2_LABEL" );
@@ -205,6 +214,7 @@ CivilopediaCategory[CategoryResources].labelString = Locale.ConvertTextKey( "TXT
 CivilopediaCategory[CategoryImprovements].labelString = Locale.ConvertTextKey( "TXT_KEY_PEDIA_CATEGORY_14_LABEL" );
 CivilopediaCategory[CategoryBeliefs].labelString = Locale.Lookup("TXT_KEY_PEDIA_CATEGORY_15_LABEL");
 CivilopediaCategory[CategoryWorldCongress].labelString = Locale.Lookup("TXT_KEY_PEDIA_CATEGORY_16_LABEL");
+CivilopediaCategory[CategoryLekmodNQ].labelString = Locale.Lookup("TXT_KEY_PEDIA_CATEGORY_17_LABEL");
 
 CivilopediaCategory[CategoryHomePage].PopulateList = function()
 	sortedList[CategoryHomePage] = {};
@@ -212,9 +222,9 @@ CivilopediaCategory[CategoryHomePage].PopulateList = function()
 	sortedList[CategoryHomePage][1] = {}; -- there is only one section 
 	local tableid = 1;		
 	
-		-- for each major category
- 		for i=1, numCategories,1 do  
- 		
+		-- for each major category (LEKMOD: in tab order)
+ 		for _, i in ipairs(g_LekmodTabOrder) do
+
 			-- add an entry to a list (localized name, tag, etc.)
  			local article = {};
  			local compoundName = "TXT_KEY_PEDIA_CATEGORY_" .. tostring(i) .. "_LABEL" ;
@@ -1927,15 +1937,39 @@ CivilopediaCategory[CategoryWorldCongress].DisplayHomePage = function()
 	Controls.PortraitFrame:SetHide(false);
 	
 	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_PEDIA_WORLD_CONGRESS_HOMEPAGE_BLURB" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
-	
+
 	g_BBTextManager:ResetInstances();
-			
-	--Basic Sectional Infos	
+
+	--Basic Sectional Infos
 	local thisBBTextInstance = g_BBTextManager:GetInstance();
 	if thisBBTextInstance then
 		thisBBTextInstance.BBTextHeader:SetText( Locale.ConvertTextKey( "TXT_KEY_PEDIA_WORLD_CONGRESS_HOMEPAGE_LABEL1" ));
 		UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_PEDIA_WORLD_CONGRESS_HOMEPAGE_TEXT1" ), thisBBTextInstance.BBTextLabel, thisBBTextInstance.BBTextInnerFrame, thisBBTextInstance.BBTextFrame );
-	end	
+	end
+	Controls.BBTextStack:SetHide( false );
+	ResizeEtc();
+end;
+
+-- LEKMOD: the NQ tab (placeholder page, no article list yet)
+CivilopediaCategory[CategoryLekmodNQ].DisplayHomePage = function()
+	ClearArticle();
+	Controls.ArticleID:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_PAGE_LABEL" ));
+
+	Controls.Portrait:SetTexture("LekmodPediaTabNQ256.dds");
+	Controls.Portrait:SetTextureOffsetVal(0,0);
+	Controls.Portrait:SetHide(false);
+
+	Controls.PortraitFrame:SetHide(false);
+
+	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_BLURB" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
+
+	g_BBTextManager:ResetInstances();
+
+	local thisBBTextInstance = g_BBTextManager:GetInstance();
+	if thisBBTextInstance then
+		thisBBTextInstance.BBTextHeader:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_HEADER" ));
+		UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_TEXT" ), thisBBTextInstance.BBTextLabel, thisBBTextInstance.BBTextInnerFrame, thisBBTextInstance.BBTextFrame );
+	end
 	Controls.BBTextStack:SetHide( false );
 	ResizeEtc();
 end;
@@ -2110,7 +2144,7 @@ CivilopediaCategory[CategoryHomePage].SelectArticle = function( pageID, shouldAd
 			SetSelectedCategory(pageID);
 		end
 		CivilopediaCategory[pageID].DisplayHomePage();
-	elseif pageID == CategoryWorldCongress then
+	elseif pageID == CategoryWorldCongress or pageID == CategoryLekmodNQ then
 		if selectedCategory ~= pageID then
 			SetSelectedCategory(pageID);
 		end

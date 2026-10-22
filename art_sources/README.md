@@ -92,6 +92,15 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
 - The base action icons are packed sprites in `Expansion2UITextures.fpk` (with `-index.dds` files), so they can't be used as
   templates directly; our replacements are plain square textures in a 1x1 atlas (`Missions.IconAtlas`).
 
+## Civilopedia tabs
+- Sources: `civilopedia/` (2026-10-22: `nq_gold_letters_v1.png`, gold "NQ" letters on transparency, 1254 px; the NQ tab).
+- `python art_sources/tools/build_pedia_tab.py <source> <name> [--preview out.png]`: a 64x256 sheet of 46x50 tab frames
+  stacked at 50 px steps (normal, mouseover = the selected tab, pressed, disabled), uncompressed, plus `<name>256.dds` (the
+  glyph alone, BC3) for the tab's page picture, in `LEKMOD/Art/Lekmod (v 1)/Art/Civilopedia/`.
+- The base tab textures (`CivilopediaTopButtons*.dds` in `Expansion2UITextures.fpk`) are stored compressed in a Firaxis
+  format that couldn't be decoded, so the tab body (navy, blue when highlighted, thin gold rim) is drawn by the tool, not
+  copied. Check it in game next to the base tabs and adjust `STATES` if it clashes.
+
 ## Espionage screen icons
 - `python art_sources/tools/build_levelup_icon.py [--preview out.png]` draws the framed 45 px level-up arrow for the diplomat
   progress bar (`lekmod_esp_levelup45.dds`): gold ring, glossy black-to-blue disc and pale cyan double chevron, matching the

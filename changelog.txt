@@ -798,6 +798,7 @@ Tags: ui
 - Note: Concepts IDs 505-518 (CONCEPT_LEKMOD_CS_*); base concept 322 (CONCEPT_CITY_STATE_INFLUENCE_LEVELS_PERMANENT_WAR) and its 3 related-concept rows deleted, chained by InsertAfter after CONCEPT_CITY_STATE_SPREAD_RELIGION. The Civilopedia has no clickable links between game concepts (the related-articles box is unused in the base UI), so the pages sit directly below the overview instead
 - Changed: the Civilopedia home page shows the essentials of this version (the same text as the Essentials tab on the website)
 - Dev: texts generated from website/data/essentials.txt by tools/sync_pedia_essentials.py (rerun after every edit)
+- Dev: new NQ tab in the second place of the tab bar (category 17, placeholder page, no articles yet; a player line follows once it has content); the layout is overridden too (CivilopediaScreen.xml.ignore: the extra button and a 48 px narrower search box, since 16 tabs already filled the bar); tab art from art_sources/civilopedia/ by build_pedia_tab.py
 
 EMBARKED UNIT DEFENSE
 ---------------------
