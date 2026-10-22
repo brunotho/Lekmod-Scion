@@ -127,6 +127,7 @@ input[type="search"] { width: 100%; }
 .ref .game-text { margin: 2px 0 4px; line-height: 1.45; }
 .lines .sub { list-style: disc; margin: 2px 0 0; padding-left: 18px; }
 .lines .sub li { display: list-item; margin: 0; }
+.lines li.now { display: list-item; list-style: disc; margin-left: 18px; }
 [hidden] { display: none !important; }
 
 /* Policy trees next to the policy cards */

@@ -4,7 +4,8 @@ Format (also the source for player patch notes on the website):
 - "## <release>" opens a release block; "## UNRELEASED (...)" collects work since the last release.
 - Each item: NAME (TYPE_KEY), dashed underline, "Tags: a, b" line, then a short player-facing summary.
 - The first tag is the item's group (the website's section header); further tags are filters.
-- Player-facing lines: the summary and "- Added:", "- Changed:", "- Removed:", "- Fixed:".
+- Player-facing lines: the summary and "- Added:", "- Changed:", "- Removed:", "- Fixed:";
+  a reworked system's card says how it works now with "- Now:" lines (plain bullets), plus Removed/Fixed.
   They describe the net change compared to the previous release (for the first block: LEKMOD v35.4),
   in quick-speed numbers, for players with no development knowledge. Bugs we introduced and fixed
   before a release are not player-facing.
@@ -935,26 +936,23 @@ ANCIENT RUINS OVERHAUL (GOODY_*)
 --------------------------------
 Tags: game mechanics, ruins, religion
 Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshone ability), with the exact amounts shown. Rewards scale with the era (ancient = 1, classical = 2, ...) and the turn.
-- Added: popping a ruin offers 2 different random rewards to choose from (3 with Native Tongue); rewards of your previous 3 ruins are not offered again (counted by what they give: a Food ruin also blocks trades that gain Food), and rewards you can't use right now are left out
-- Changed: the choices show Food, Culture, Gold and Science amounts in their yield colors
-- Added: new reward "Trade": pay 5-8 Food from your capital, 40-70 Gold or 5-8 Culture for 75-105 Gold, 27-37 Science, (turn + 10-14) Culture, the location of the 3 nearest city-states you haven't seen, or Mobility for the unit (city-states and Mobility cost a quarter less); a bigger price comes with a bigger reward; only offered when you can pay. Gold for Gold and Culture for Culture never come up. All amounts x era
-- Changed: a Trade offer never pays or gains something another offer of the same ruin gives (no "Mobility" next to "Trade 50 Gold for Mobility", no "+13 Food" next to a trade paying Food); if no such trade fits, another reward is offered instead
-- Added: new reward "Free technology": a random ancient era technology you can research
-- Changed: if you don't choose before the turn ends, one of the offers is picked at random
-- Changed: Food: 5 + 2.2 x era x capital population food in the capital; the unit gets Glutton (-30% combat strength, lost on upgrade)
-- Changed: Upgrade: from turn 6; the unit loses 20 HP
-- Changed: Tech:
-  - no more free tech
-  - 20-30 x era science instead (max 90)
-  - 3 in 5 times also 10-35 x era gold (at most 60, not tied to the science)
-  - the unit loses three times the science in HP (keeps at least 1)
-- Changed: Map: reveals a patchy area of radius 6 and gives 6 experience; until turn 10
-- Changed: Culture: turn x era - 2 culture, from turn 6
-- Changed: Faith: 9 faith from turn 6 while you have no pantheon and 0 faith; turn x 2 x era faith plus a full heal once you have a pantheon (and no religion)
-- Changed: Gold: 35 + 5 x (1-10) x era gold; 70 or more also spawns an era-appropriate barbarian next to the ruin
-- Changed: Mobility is no longer a ruin reward of its own; it only comes from a Trade
-- Removed: the Prophet faith ruin
-- Changed: short choice texts with the exact numbers: what you gain first, in its yield color (Food green), then what you lose, in red (e.g. "Gain 30 Science - Lose 40 Gold"); new result texts
+- Now: popping a ruin offers 2 different random rewards to choose from (3 with Native Tongue); if you don't choose before the turn ends, one of them is picked at random
+- Now: rewards of your previous 3 ruins are not offered again (counted by what they give: a Food ruin also blocks trades that gain Food), and rewards you can't use right now are left out
+- Now: the choices are short texts with the exact numbers: what you gain first, in its yield color, then what you lose, in red (e.g. "Gain 30 Science - Lose 40 Gold")
+- Now: Food: 5 + 2.2 x era x capital population Food in the capital; the unit gets Glutton (-30% combat strength, lost on upgrade)
+- Now: Culture: turn x era - 2 Culture, from turn 6
+- Now: Gold: 35 + 5 x (1-10) x era Gold; 70 or more also spawns an era-appropriate barbarian next to the ruin
+- Now: Science:
+  - 20-30 x era Science (max 90)
+  - 3 in 5 times also 10-35 x era Gold (at most 60, not tied to the Science)
+  - the unit loses three times the Science in HP (keeps at least 1)
+- Now: Faith: 9 Faith from turn 6 while you have no pantheon and 0 Faith; turn x 2 x era Faith plus a full heal once you have a pantheon (and no religion)
+- Now: Map: reveals a patchy area of radius 6 and gives 6 experience; until turn 10
+- Now: Upgrade: from turn 6; the unit loses 20 HP
+- Now: Free technology: a random ancient era technology you can research
+- Now: Trade: pay 5-8 Food from your capital, 40-70 Gold or 5-8 Culture for 75-105 Gold, 27-37 Science, (turn + 10-14) Culture, the location of the 3 nearest city-states you haven't seen, or Mobility for the unit (city-states and Mobility cost a quarter less); a bigger price comes with a bigger reward; only offered when you can pay. Gold for Gold and Culture for Culture never come up. All amounts x era
+- Now: a Trade offer never pays or gains something another offer of the same ruin gives (no "Mobility" next to "Trade 50 Gold for Mobility", no "+13 Food" next to a trade paying Food); if no such trade fits, another reward is offered instead
+- Removed: the Prophet faith ruin, the free technology from the Science ruin, and Mobility as a reward of its own (it only comes from a Trade)
 - Dev: Civilopedia ruin pages rewritten with the current rewards and numbers
 - Dev: new GoodyHuts columns (BeforeEra, UnitDamage, GoldEraFactor, EraBarbarianSpawn, ScienceEraRuin, CultureEraTurn, FaithEraTurn, FoodEraScale, FaithZeroOnly); ruin data moved out of the unloaded Art/No Quitters Mod XML. The popup shows the DLL-computed amount (Data2).
 - Dev: LEKMOD_RUIN_CHOICE: offers rolled with the synced RNG in CvPlayer::doGoody (one roll 0-999 per offer sets all its numbers), stored per plot in CvPlayer (saved), chosen via Network.SendGoodyChoice, AIs pick at random, leftovers resolved in CvPlayer::doTurn. New GoodyHuts columns LekmodTrade / LekmodAncientTech, rows GOODY_LEKMOD_TRADE (pool weight 2) and GOODY_LEKMOD_ANCIENT_TECH (weight 1). Lua: Player:GetLekmodRuinOffers(plotIndex); ChooseGoodyHutReward.lua override
@@ -2277,23 +2275,22 @@ WORLD CONGRESS SESSIONS (LEAGUE_SESSIONS)
 -----------------------------------------
 Tags: world congress, game mechanics
 The World Congress runs on a fixed cycle: host election, proposals, and the vote 3 turns later. World Leader votes have their own timer.
-- Changed: the Congress era is the era of the most advanced civilization (was one era behind until half the civilizations reached it)
-- Changed: the first civilization with Printing Press that has met everyone founds and hosts the Congress; ties go to the most Delegates, then at random
-- Changed: each session:
+- Now: the first civilization with Printing Press that has met everyone founds and hosts the Congress; ties go to the most Delegates, then at random
+- Now: the Congress era is the era of the most advanced civilization
+- Now: sessions every 15/13/11/9/7 turns in the Renaissance/Industrial/Modern/Atomic/Information Era
+- Now: each session:
   - the host is elected 1 turn before proposals open
-  - the host and the civilization with the most Delegates propose (ties at random, no longer the host's pick)
+  - the host and the civilization with the most Delegates propose (ties at random)
+  - a civilization that has not proposed by the end of its turn gets a random proposal
   - the vote is 3 turns after proposals open
-- Changed: a civilization that has not proposed by the end of its turn gets a random proposal
-- Changed: AI civilizations never propose and never host (the host vote only lists human players); a player slot an AI took over makes no proposal
-- Changed: sessions every 15/13/11/9/7 turns in the Renaissance/Industrial/Modern/Atomic/Information Era (was 16/12/10/5)
-- Changed: results take effect at the start of the turn after the vote, once that turn's yields are in (was during the turn change)
-- Changed: new eras no longer hold a special host session
-- Changed: World Leader votes:
+- Now: results take effect at the start of the turn after the vote, once that turn's yields are in
+- Now: AI civilizations never propose and never host (the host vote only lists human players); a player slot an AI took over makes no proposal
+- Now: World Leader votes:
   - 7 turns after the first civilization reaches the Atomic Era, then every 7 turns, independent of sessions
   - every civilization votes for itself
   - 45 Delegates win (1 fewer per destroyed City-State)
   - otherwise first and second place each gain 1 permanent Delegate (ties: all tied)
-- Removed: the World Leader proposal in United Nations sessions
+- Removed: the World Leader proposal in United Nations sessions, and the special host session in each new era
 - Note: Delegate sources are still the old ones; the new vote sources are the next item
 - DLL: LEKMOD_CONGRESS_CYCLE, LEKMOD_WORLD_LEADER_VOTES_BASE (CvLeague::m_iLekmodVoteTurn/m_iLekmodLeaderVoteTurn, league save version 15, CvGameLeagues::DoTurnLate)
 
@@ -2301,16 +2298,19 @@ WORLD CONGRESS DELEGATES (LEAGUE_VOTES)
 ---------------------------------------
 Tags: world congress, game mechanics
 Delegates now depend on the Congress era and on what you hold.
-- Changed: membership 1/2/3/4/5 Delegates in the Renaissance/Industrial/Modern/Atomic/Information Era (was 1 to 4)
-- Added: each other civilization's original capital you hold: 0/1/1/2/3 Delegates
-- Changed: host 1 Delegate, 2 from the Modern Era
-- Changed: each allied City-State 0/1/1/1/2 Delegates (was 0 to 2)
-- Added: +1 permanent Delegate for each of your proposals that passes
-- Added: +1 Delegate per civilization you are Influential (or more) over, -1 per civilization Influential over you
-- Changed: Forbidden Palace 3 Delegates from the Atomic Era (2 before)
-- Changed: Patronage finisher: +1 Delegate, +1 more per era from the Industrial Era (5 in the Information Era)
-- Added: Big Ben +1 Delegate; Oxford University +1 Delegate
-- Removed: Delegates from Diplomats (Globalization keeps its own +1 Delegate)
+- Now: Delegates by Congress era (Renaissance/Industrial/Modern/Atomic/Information):
+  - membership: 1/2/3/4/5
+  - each other civilization's original capital you hold: 0/1/1/2/3
+  - each allied City-State: 0/1/1/1/2
+  - host: 1, 2 from the Modern Era
+- Now: +1 permanent Delegate for each of your proposals that passes
+- Now: +1 Delegate per civilization you are Influential (or more) over, -1 per civilization Influential over you
+- Now: buildings and policies:
+  - Forbidden Palace: 2 Delegates, 3 from the Atomic Era
+  - Big Ben and Oxford University: +1 Delegate each
+  - Patronage finisher: +1 Delegate, +1 more per era from the Industrial Era (5 in the Information Era)
+  - Globalization: +1 Delegate
+- Removed: Delegates from Diplomats
 - Note: World Leader placements (first and second place +1 permanent Delegate) are part of World Congress Sessions; World Religion, World Ideology, Embargo and Mandate of Occupation come with the proposal changes
 - DLL: LEKMOD_CONGRESS_CYCLE vote tables in CvLeague::CalculateStartingVotesForMember; Member::iLekmodPassedProposals (league save version 16); Buildings.ExtraLeagueVotesAtomic, Policies.LeagueVotesPerEraFromIndustrial
 
@@ -2392,37 +2392,31 @@ SPIES AND DIPLOMATS (ESPIONAGE)
 -------------------------------
 Tags: espionage, game mechanics
 Spies and diplomats are reworked: spies steal on a timer and risk getting caught by hidden guards, diplomats give steady bonuses; the Espionage screen explains it all on a Rules tab.
-- Changed: spies and diplomats have levels 1 to 5 (was Recruit, Agent, Special Agent); a spy gains a level for each successful steal, coup or caught enemy spy
-- Changed: spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
-- Changed: a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
-- Changed: a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
-- Changed: a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
-- Changed: each steal can get the spy caught: 10% per Constabulary, Police Station and Intelligence Agency, plus a part from the guarding spy's level minus the spy's strength (-4 or less 0%, -3 5%, -2 10%, -1 20%, 0 33%, +1 50%, +2 67%, +3 83%, +4 or more 100%; at most 100% in total); the guarding spy is hidden from the attacker and doesn't slow the steals
-- Changed: diplomats gain a level every 25 turns in the same city (moving keeps the level, restarts the count)
-- Changed: a diplomat in another civilization's capital gives you 2% per level of that capital's Science (halved at war; only while they know a technology you lack) and +15% per level Gold on your trade routes to that city
-- Changed: a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
-- Changed: diplomats are no longer expelled by war, and are established at once with civilizations that give you open borders
-- Changed: a spy in a City-State takes 0.2 per turn per level off every other civilization's Influence change there: above the resting point it falls faster, below it recovers more slowly (they don't learn whose spy it is)
-- Removed: City-State elections (Rig Election)
-- Removed: Tourism bonus from diplomats
-- Added: spies placed in a city cost 3 Gold per turn per era from the Renaissance (3 / 6 / 9 / 12 / 15); diplomats are free
-- Changed: spies and diplomats see around their city with a radius of strength minus visible defense (none at 0 or less), updated every turn
-- Added: a caught enemy spy is held by the defender, who chooses in the Espionage screen to execute it or evict it (it returns home and keeps its level); without a choice it is executed when the turn ends (computer players always execute)
-- Added: level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
-- Added: a level 3+ spy guarding your own city can sweep it for 5 turns of that city's Science in Gold; every enemy spy there is caught with its usual catch chance
-- Changed: the Espionage screen has a Rules tab, and agent tooltips explain timers, catch chances and levels
+- Now: spies and diplomats have levels 1 to 5; a spy gains a level for each successful steal, coup or caught enemy spy; a diplomat gains a level every 25 turns in the same city (moving keeps the level, restarts the count)
+- Now: spies placed in a city cost 3 Gold per turn per era from the Renaissance (3 / 6 / 9 / 12 / 15); diplomats are free
+- Now: spies and diplomats see around their city with a radius of strength minus visible defense (none at 0 or less), updated every turn
+- Now: spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
+- Now: a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
+- Now: a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
+- Now: effects that slow down steals add up and lengthen the steal timer: Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, Diplomatic Transparency +50%
+- Now: a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
+- Now: each steal can get the spy caught: 10% per Constabulary, Police Station and Intelligence Agency, plus a part from the guarding spy's level minus the spy's strength (-4 or less 0%, -3 5%, -2 10%, -1 20%, 0 33%, +1 50%, +2 67%, +3 83%, +4 or more 100%; at most 100% in total); the guarding spy is hidden from the attacker and doesn't slow the steals
+- Now: a caught enemy spy is held by the defender, who chooses in the Espionage screen to execute it or evict it (it returns home and keeps its level); without a choice it is executed when the turn ends (computer players always execute)
+- Now: level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
+- Now: a level 3+ spy guarding your own city can sweep it for 5 turns of that city's Science in Gold; every enemy spy there is caught with its usual catch chance
+- Now: a spy in a City-State is Meddling: it takes 0.2 per turn per level off every other civilization's Influence change there (above the resting point it falls faster, below it recovers more slowly; they don't learn whose spy it is), and it shows its coup chance
+- Now: a diplomat in another civilization's capital gives you 2% per level of that capital's Science (halved at war; only while they know a technology you lack) and +15% per level Gold on your trade routes to that city
+- Now: a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
+- Now: diplomats are not expelled by war, and are established at once with civilizations that give you open borders
+- Now: when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
+- Now: the Espionage screen has a Rules tab, and agent tooltips explain timers, catch chances and levels
+- Removed: City-State elections (Rig Election), the Tourism bonus from diplomats, and the Potential column in the city lists
 - Dev: agent tooltips describe the current rules: a spying agent shows its steal timer, its catch chance from buildings (and what a hidden guard would add) and what makes up its strength and the city's visible defense; guards show the catch chance against each spy strength and the part from defense buildings; diplomats show their actual Science, Gold and Influence bonuses
-- Removed: the Potential column in the city lists
 - Dev: tooltip explanations of mechanics that no longer apply (elections, the old Potential and rank rules)
 - Dev: trade route tooltips show the Gold bonus from your diplomat in the destination capital
 - Dev: diplomats show a progress bar to their next level (with a level-up arrow icon); meddling spies no longer show a meaningless election timer
 - Dev: after a successful steal the spy's next steal timer already uses its new level; the Full tech button switches on screen at once
-- Added: diplomats can also be posted in City-States
-- Changed: the spy activity in City-States is now called Meddling
 - Dev: the Gold tooltip lists spy upkeep, and the Science tooltip lists diplomat Science
-- Added: when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
-- Added: spies in City-States show their coup chance
-- Changed: effects that slow down steals add up and lengthen the steal timer: Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, Diplomatic Transparency +50%
 - Dev: Iron Curtain's slower steals were ignored by the reworked steal timer; fixed
 - Fixed: a Tourism influence bonus over a City-State's ally could make the coup chance worse instead of better (high spy levels counted like the lowest one)
 - DLL: LEKMOD_SPY_REWORK (CvPlayerEspionage::LekmodGetSpyStrength/LekmodGetCityDefense/LekmodGetStealInterval/LekmodGetCatchChance/LekmodSpyCaught), LEKMOD_DIPLOMAT_TRADE_GOLD_PER_LEVEL; LEKMOD_SPY_WONDERS (LekmodGetStealSlower, LekmodEvictBlockedAgents, LekmodInterrogate, LekmodPlayerBuildingValue)

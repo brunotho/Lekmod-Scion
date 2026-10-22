@@ -6,7 +6,8 @@
 module Changelog
   # New / Reworked: the line names an item type (TRAIT_X, UNIT_X, ...); the website shows its in-game text
   # (GameRefs), frozen into the changelog ("  | text") when a release is prepared.
-  PLAYER_KINDS = %w[New Reworked Added Changed Removed Fixed].freeze
+  # Now: a line of a reworked system's state card ("how it works now"), shown as a plain bullet without a label.
+  PLAYER_KINDS = %w[New Reworked Now Added Changed Removed Fixed].freeze
   REF_KINDS = %w[New Reworked].freeze
   DEV_KINDS = %w[Note DLL Dev].freeze
 
