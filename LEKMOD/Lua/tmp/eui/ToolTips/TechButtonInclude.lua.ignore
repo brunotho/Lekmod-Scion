@@ -217,6 +217,11 @@ function GatherInfoAboutUniqueStuff( civType )
 		end
 	end
 
+	-- LEKMOD: the Landsknecht is a Commerce policy unit; not shown in the tech tree (user, 2026-10-22)
+	if validUnitBuilds["UNITCLASS_LANDSKNECHT"] == "UNIT_GERMAN_LANDSKNECHT" then
+		validUnitBuilds["UNITCLASS_LANDSKNECHT"] = nil;
+	end
+
 	-- put in the default buildings for any civ
 	for thisBuildingClass in GameInfo.BuildingClasses() do
 		validBuildingBuilds[thisBuildingClass.Type] = thisBuildingClass.DefaultBuilding
