@@ -435,7 +435,7 @@ LOBBY: MODES (TOURNAMENT / CASUAL)
 ----------------------------------
 Tags: ui, game mechanics
 The multiplayer lobby has a Mode choice that sets all game options at once.
-- Added: Mode in the lobby: Tournament (the default) or Casual; the lobby only shows the map, Mode and Civ Colors
+- Added: Mode in the lobby: Tournament or Casual; the lobby only shows the map, Mode and Civ Colors
 - Added: both modes play on quick speed from the Ancient Era with simultaneous turns, a turn timer and no combat randomness
 - Added: Tournament: no private chat, players start at war, same-turn wonders go to nobody; Casual: private chat, no start at war, same-turn wonders go to everyone who finished them
 - Note: map options (resources, legendary start) are enforced by the map script; map size waits for the 6/7/8-player lobby work
@@ -444,13 +444,13 @@ The multiplayer lobby has a Mode choice that sets all game options at once.
 START AT WAR
 ------------
 Tags: game mechanics, diplomacy and trade
-- Added: in Tournament mode (the default), major civilizations are at war as soon as they meet and cannot make peace before turn 20 (City-States are not affected)
+- Added: in Tournament mode, major civilizations are at war as soon as they meet and cannot make peace before turn 20 (City-States are not affected)
 - Dev: LEKMOD_WAR_START (CvTeam::makeHasMet, CvDeal::IsPossibleToTradeItem peace treaty); LEKMOD_WAR_START_PEACE_TURN 20; GameOptions ID 71
 
 SAME-TURN WONDERS
 -----------------
 Tags: game mechanics, wonders
-- Added: when several players finish the same World Wonder on the same turn: in Tournament mode (the default) nobody gets it and each gets Gold for its Production; in Casual mode everyone who finished it gets it
+- Added: when several players finish the same World Wonder on the same turn: in Tournament mode nobody gets it and each gets Gold for its Production; in Casual mode everyone who finished it gets it
 - Added: a player never owns the same World Wonder twice: capturing a city with a wonder you already have destroys the captured copy
 - Dev: LEKMOD_WONDER_TIE_RULES: CvGame::isBuildingClassMaxedOut exception while cities process production (Both); look-ahead over other players' cities and a per-turn tie marker in CvCity::doProduction (Neither); duplicate check in CvPlayer::acquireCity. GameOptions IDs 69/70 (hidden, set by the lobby dropdown), 72 mode (hidden)
 
@@ -3454,7 +3454,7 @@ MULTIPLAYER LOBBY: CIVILIZATION INFO
 ------------------------------------
 Tags: ui
 - Changed: hovering a civilization in the lobby shows its ability, unique items and start bias in a side panel
-- Changed: every draft pool has 1 coastal and 2 inland civilizations (was random)
+- Changed: the draft settings now start at 1 coastal and 2 inland civilizations per pool (the host can change them)
 - Dev: Lekmod_staging_draft.lua Draft_SetCivHoverHelp / Draft_ShowCivInfoPanel (width and position from the space left of MainGrid, 260-420 px); StagingRoom.xml LekmodCivInfoPanel (standard UI)
 
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
