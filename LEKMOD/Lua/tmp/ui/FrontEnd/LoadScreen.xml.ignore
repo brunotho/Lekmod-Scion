@@ -31,7 +31,7 @@
                     <Label Anchor="C,C" WrapWidth="460" ID="BonusDescription" LeadingOffset="-4" Offset="0,0" ColorSet="Beige_Black_Alpha" Font="TwCenMT16" FontStyle="Shadow"/>
                     <Image Anchor="C,C" Offset="0,0" Texture="bar340x2.dds" Size="340.1"/>
                     <!-- LEKMOD: up to 5 unique items, two per row (was 2) -->
-                    <Stack Anchor="C,C" Offset="0,0" StackGrowth="Bottom" Padding="4" ID="SubStack" >
+                    <Stack Anchor="C,C" Offset="0,0" StackGrowth="Bottom" Padding="14" ID="SubStack" >
                         <Stack Anchor="L,T" Offset="0,0" StackGrowth="Right" Padding="0" ID="BonusRow1">
                             <Box Anchor="C.C" Offset="0,0" Size="225,48" Color="White.0" ID="BonusBox1">
                                 <Image Anchor="L,C" Offset="0,0" Texture="IconFrame64.dds" Size="64.64" ID="BF1">

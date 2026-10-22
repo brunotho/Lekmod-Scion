@@ -41,6 +41,9 @@ RADIUS = {
 # zoom into the picture (crop radius / zoom) so the subject looks as big as in the base game's icons, whose subjects
 # fill the circle (user, 2026-10-22: ours looked smaller in the tech tree and production list at the same circle size)
 ZOOM = {'self_propelled_artillery': 1.25, 'vanguard_corps': 1.25}
+# draw the circle larger than the base layout (same centre): base icons with bright subjects that fill or break out
+# of the circle still looked bigger in the tech tree (user, 2026-10-22)
+SCALE = {'self_propelled_artillery': 1.1, 'vanguard_corps': 1.1}
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
 WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     # round pictures on white (2026-10-22)
@@ -48,8 +51,11 @@ WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
-def icon(src, size, layout):
+def icon(src, size, layout, scale=1.0):
     s = 4
+    if scale != 1.0:
+        d0 = layout[0] * scale
+        layout = (d0, layout[1] + (layout[0] - d0) / 2.0, layout[2] + (layout[0] - d0) / 2.0)
     big = size * s
     d = int(round(layout[0] / 256.0 * big))
     x, y = int(round(layout[1] / 256.0 * big)), int(round(layout[2] / 256.0 * big))
@@ -126,7 +132,7 @@ def build(kind, name):
     tmp = tempfile.mkdtemp()
     for sz in sizes:
         p = os.path.join(tmp, '%s_%d.png' % (name, sz))
-        img = icon(src, sz, layout)
+        img = icon(src, sz, layout, SCALE.get(name, 1.0))
         if not os.path.exists(TEXCONV):
             write_bc3(img, os.path.join(out_dir, '%s_%d.dds' % (name, sz)))
             continue
