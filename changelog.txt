@@ -1830,20 +1830,19 @@ Subsection: Reformation beliefs
 GREAT WORKS (GREAT_WORK_SLOT_ART_ARTIFACT)
 ------------------------------------------
 Tags: tourism, game mechanics
-- Changed: Great Works of Writing, Art, Music and Artifacts all go into the same kind of slot; every great work slot accepts any of them
-- Removed: theming bonuses
-- Changed: a great work gives 2 Culture and no Tourism (was 2 Culture and 2 Tourism); Tourism now comes from buildings and policies
+- Now: every great work slot accepts any Great Work: Writing, Art, Music and Artifacts alike
+- Now: a great work gives 2 Culture and no Tourism by itself; Tourism comes from buildings and policies
+- Removed: theming bonuses, and the 2 Tourism each great work gave
 - Note: when a captured city's great work building is destroyed, its great works already moved to free slots of the new owner (base game); with one slot type they find any free slot
 - DLL: LEKMOD_GENERIC_GREAT_WORKS (AI no longer rearranges great works; the Royal Library's free work uses its own slot type)
 
 TOURISM AND INFLUENCE (LEKMOD_NO_PUBLIC_OPINION)
 ------------------------------------------------
 Tags: tourism, game mechanics, combat
-- Removed: dissidents (no public opinion unhappiness from ideologies)
-- Removed: other civs' influence no longer pushes you to switch ideology; only the World Ideology proposal can change it
-- Removed: open borders, trade routes and diplomats no longer raise Tourism (were +25% each)
-- Added: +5% combat strength against a civ for each level of your cultural influence over it (Exotic 5% ... Dominant 25%); works both ways
-- Changed: Tourism toward other civs keeps fractions until the end, so small amounts and modifiers no longer get rounded away
+- Now: +5% combat strength against a civ for each level of your cultural influence over it (Exotic 5% ... Dominant 25%); works both ways
+- Now: only the World Ideology proposal can make you switch ideology
+- Now: Tourism toward other civs keeps fractions until the end, so small amounts and modifiers don't get rounded away
+- Removed: dissidents (public opinion unhappiness from ideologies), other civs' influence pushing you to switch ideology, and the +25% Tourism each from open borders, trade routes and diplomats
 - DLL: LEKMOD_NO_PUBLIC_OPINION, LEKMOD_INFLUENCE_COMBAT_BONUS, LEKMOD_TOURISM_DECIMALS
 
 GREAT WORK BUILDINGS (BUILDING_AMPHITHEATER, BUILDING_OPERA_HOUSE, BUILDING_MUSEUM, BUILDING_BROADCAST_TOWER)
@@ -1978,9 +1977,9 @@ VICTORY: CAPITALS AND INFLUENCE (VICTORY_DOMINATION, VICTORY_CULTURAL)
 ----------------------------------------------------------------------
 Tags: tourism, game mechanics
 Holding a civ's capital and being culturally Influential over it now stand in for each other.
-- Changed: Cultural Victory: holding a civ's original capital counts as being Influential over it
-- Changed: Domination Victory: being Influential over a living civ counts as holding its original capital (you still need your own)
-- Added: if you meet both victories at once, the higher count decides (capitals held vs civs you are Influential over); a tie counts as Domination
+- Now: Cultural Victory: holding a civ's original capital counts as being Influential over it
+- Now: Domination Victory: being Influential over a living civ counts as holding its original capital (you still need your own)
+- Now: if you meet both victories at once, the higher count decides (capitals held vs civs you are Influential over); a tie counts as Domination
 - Dev: in team games, influence from any teammate counts, and teammates no longer need to be influenced (not shown: every player is on their own)
 - Dev: Civilopedia pages for both victories describe the current rules
 - DLL: LEKMOD_CAPITAL_INFLUENCE_VICTORY (CvGame::LekmodGetCapitalInfluenceVictory, used by testVictory and DoTestConquestVictory)
@@ -1990,14 +1989,13 @@ CANAL PROJECT (BUILDING_PANAMA)
 Tags: buildings, naval, wonders
 Subsection: Wonders and projects
 The Panama Canal is now the Canal Project, a national wonder. Its Great Engineers dig canals that ships can sail through.
-- Changed: national wonder (was a world wonder); requires Electronics (was Railroad); costs the same as Cristo Redentor; no longer has to be on the coast
-- Added: +33% to all yields you get from trade routes that start in its city (internal and external)
-- Changed: 2 Engineer points (was 2 Merchant points)
-- Removed: +8 Gold from external sea trade routes, the free Great Merchant, its Culture and Gold
-- Added: Great Engineers can build a Canal (uses up the Great Engineer): flat land in your territory next to water, connecting two separate bodies of water (two seas, or a sea and a lake); a city next to the tile counts as part of the water it touches
-- Added: once you have the Canal Project, the Canal button shows for every Great Engineer; where it can't be built it is greyed out and says why
-- Added: Canal tiles yield exactly 15 Gold and nothing else; naval units can enter them (4 movement); all units on a Canal have -70% defense and cannot attack
-- Added: a pillaged Canal no longer lets ships through and yields like the land under it; the defense penalty and the no-attack rule stay
+- Now: a national wonder; requires Electronics; costs the same as Cristo Redentor; doesn't have to be on the coast; 2 Engineer points
+- Now: +33% to all yields you get from trade routes that start in its city (internal and external)
+- Now: Great Engineers can build a Canal (uses up the Great Engineer): flat land in your territory next to water, connecting two separate bodies of water (two seas, or a sea and a lake); a city next to the tile counts as part of the water it touches
+- Now: once you have the Canal Project, the Canal button shows for every Great Engineer; where it can't be built it is greyed out and says why
+- Now: Canal tiles yield exactly 15 Gold and nothing else; naval units can enter them (4 movement); all units on a Canal have -70% defense and cannot attack
+- Now: a pillaged Canal doesn't let ships through and yields like the land under it; the defense penalty and the no-attack rule stay
+- Removed: the Panama Canal world wonder with its +8 Gold from external sea trade routes, free Great Merchant, Culture and Gold
 - Note: the Canal improvement existed in the data but no unit could build it
 - DLL: Buildings.TradeRouteOriginYieldModifier, Builds.PrereqBuildingClass, canal move cost and no attacks from canal tiles (LEKMOD_CANAL_PROJECT); Improvements.OverridesTileYields, RequiresTwoWaterBodies, visible-everywhere builds (LEKMOD_CANAL_RULES); Lua Player:GetTradeConnectionOriginBuildingValueModifier (trade route tooltip line)
 

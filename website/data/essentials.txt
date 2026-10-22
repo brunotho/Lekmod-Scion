@@ -29,9 +29,10 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 - Strategic resources can no longer be traded between players.
 - New sources: the Castle (Horses), the Ironworks (Iron), the Oil Refinery (Oil) and the Recycling Center (Aluminum) each provide them; a Customs House on a strategic resource gives 50% more.
 
-## Powercreep compensation
-- Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.
-- Modern-era units cost 3% more, Atomic- and Information-era units 5% more.
+## City-States
+- Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.
+- City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.
+- Trade route and resource quests pay part of their Influence over time.
 
 ## Combat rules
 - Cities heal 10 HP per turn (was 20); Walls, Castle, Arsenal and Command Bunker raise that, the best one counts. Walls also damage adjacent enemies.
@@ -42,19 +43,19 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 - From turn 80, killing barbarians gives no bonus yields any more.
 
 ## Miscellaneous game mechanics
-- In Tournament mode (the default), civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
+- In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
 - Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).
 - Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.
 - Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
-- Ancient ruins let you choose between 2 rewards (3 for the Shoshone), with the amounts shown.
+- Ancient ruins let you choose between 2 rewards, with the amounts shown.
 
-## City-States
-- Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.
-- City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.
-- Trade route and resource quests pay part of their Influence over time.
+## Powercreep compensation
+- Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.
+- Modern-era units cost 3% more, Atomic- and Information-era units 5% more.
 
 ## Interface
 - Lobby: a Mode choice (Tournament / Casual) sets all game options; hover a civilization to see its ability and uniques.
-- Unit list and Military Overview: picked promotions, health, and air strike targeting (Alt + click a tile, Tab through the planes in range).
+- The unit list and the Military Overview also show each unit's picked promotions and health.
+- Air strike targeting: Alt + click a tile to mark it. The unit lists then show each plane's distance to it and put the planes that can reach it first, and Tab selects the next plane that can strike it.
 - Hotkey letters on promotion and worker build buttons, Shift + F-keys for the top-left panels, a Lek Options tab in the Options with all Lekmod settings, including muting the chat sound.
 - Policy and belief texts list one effect per line; the religion screens have a search box.

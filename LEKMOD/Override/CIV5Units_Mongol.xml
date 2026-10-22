@@ -148390,10 +148390,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_BULLET]Strategic resources come in much bigger deposits (e.g. Iron 9, Oil 18, Aluminum 24), but most units and buildings need more of them (e.g. Knights 2 Horses and 1 Iron, Tanks 3 Oil, Battleships 6 Iron and 6 Oil).[NEWLINE][ICON_BULLET]Strategic resources can no longer be traded between players.[NEWLINE][ICON_BULLET]New sources: the Castle (Horses), the Ironworks (Iron), the Oil Refinery (Oil) and the Recycling Center (Aluminum) each provide them; a Customs House on a strategic resource gives 50% more.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_6_HEADER">
-			<Text>Powercreep compensation</Text>
+			<Text>City-States</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_6_TEXT">
-			<Text>[ICON_BULLET]Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.[NEWLINE][ICON_BULLET]Modern-era units cost 3% more, Atomic- and Information-era units 5% more.</Text>
+			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_7_HEADER">
 			<Text>Combat rules</Text>
@@ -148405,19 +148405,19 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Miscellaneous game mechanics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_TEXT">
-			<Text>[ICON_BULLET]In Tournament mode (the default), civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards (3 for the Shoshone), with the amounts shown.</Text>
+			<Text>[ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_HEADER">
-			<Text>City-States</Text>
+			<Text>Powercreep compensation</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_TEXT">
-			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.</Text>
+			<Text>[ICON_BULLET]Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.[NEWLINE][ICON_BULLET]Modern-era units cost 3% more, Atomic- and Information-era units 5% more.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_10_HEADER">
 			<Text>Interface</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_10_TEXT">
-			<Text>[ICON_BULLET]Lobby: a Mode choice (Tournament / Casual) sets all game options; hover a civilization to see its ability and uniques.[NEWLINE][ICON_BULLET]Unit list and Military Overview: picked promotions, health, and air strike targeting (Alt + click a tile, Tab through the planes in range).[NEWLINE][ICON_BULLET]Hotkey letters on promotion and worker build buttons, Shift + F-keys for the top-left panels, a Lek Options tab in the Options with all Lekmod settings, including muting the chat sound.[NEWLINE][ICON_BULLET]Policy and belief texts list one effect per line; the religion screens have a search box.</Text>
+			<Text>[ICON_BULLET]Lobby: a Mode choice (Tournament / Casual) sets all game options; hover a civilization to see its ability and uniques.[NEWLINE][ICON_BULLET]The unit list and the Military Overview also show each unit's picked promotions and health.[NEWLINE][ICON_BULLET]Air strike targeting: Alt + click a tile to mark it. The unit lists then show each plane's distance to it and put the planes that can reach it first, and Tab selects the next plane that can strike it.[NEWLINE][ICON_BULLET]Hotkey letters on promotion and worker build buttons, Shift + F-keys for the top-left panels, a Lek Options tab in the Options with all Lekmod settings, including muting the chat sound.[NEWLINE][ICON_BULLET]Policy and belief texts list one effect per line; the religion screens have a search box.</Text>
 		</Row>
 		<!-- LEKMOD ESSENTIALS END -->
 	</Language_en_US>
