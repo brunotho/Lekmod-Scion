@@ -18391,7 +18391,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ARSENAL_HELP"> 
 			<Text>
-				City must have a Castle.
+				+15% [ICON_PRODUCTION] Production when building Gunpowder and Siege units.[NEWLINE][NEWLINE]City must have a Castle.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ARSENAL_STRATEGY"> 
@@ -18718,7 +18718,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CASTLE_HELP"> 
 			<Text>
-				City must have Walls.
+				Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]City must have Walls.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CASTLE_STRATEGY"> 

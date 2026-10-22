@@ -26,6 +26,11 @@ KOREA (CIVILIZATION_KOREA)
 Tags: civs, buildings
 - Dev: the Jongmyo Shrine tooltip now says that half of the excess Food is lost during Jaegye
 
+DEFENSE BUILDINGS (BUILDING_WALLS, BUILDING_CASTLE, BUILDING_ARSENAL, BUILDING_MILITARY_BASE)
+-------------------------------------------------------------------------------------------
+Tags: buildings
+- Dev: the Arsenal tooltip names its +15% Production for Gunpowder and Siege units, the Castle tooltip its 3 Horses
+
 UNIT ICONS (UNIT_VANGUARD_CORPS, UNIT_SELF_PROPELLED_ARTILLERY)
 ---------------------------------------------------------------
 Tags: units
