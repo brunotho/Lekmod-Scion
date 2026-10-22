@@ -43,6 +43,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 - From turn 80, killing barbarians gives no bonus yields any more.
 
 ## Miscellaneous game mechanics
+- Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.
 - In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
 - Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).
 - Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.
