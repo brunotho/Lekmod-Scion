@@ -1846,9 +1846,11 @@ Events.ActivePlayerTurnStart.Add( LekmodUpdateAllAttackedIcons );
 -------------------------------------------------
 -- LEKMOD (2026-10-22): the promotions you picked for your own units, as small icons under their flag.
 -- Option "LEK_FlagPromotions" (Lek Options; unset = on). Same choice of promotions as the unit list: pickable ones
--- the unit type doesn't start with. The atlas icons are 32 px; they are drawn at LEKMOD_FLAG_PROMO_SIZE.
+-- the unit type doesn't start with. 32 px icons like the unit list, side by side without gaps; from 5 on they
+-- overlap so the row stays as wide as 4 icons (user, 2026-10-22: 20 px drawn icons were too small).
 -------------------------------------------------
-local LEKMOD_FLAG_PROMO_SIZE = 20;
+local LEKMOD_FLAG_PROMO_SIZE = 32;
+local LEKMOD_FLAG_PROMO_ROW = 4;
 local LEKMOD_FLAG_PROMO_MAX = 8;
 local g_LekmodFlagOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
 local g_LekmodFlagPickable = nil;
@@ -1893,21 +1895,26 @@ function LekmodUpdateFlagPromotions( flag )
             list = LekmodFlagChosenPromotions( pUnit );
         end
     end
+    local n = math.min( #list, LEKMOD_FLAG_PROMO_MAX );
+    local step = LEKMOD_FLAG_PROMO_SIZE;
+    if( n > LEKMOD_FLAG_PROMO_ROW ) then
+        step = math.floor( (LEKMOD_FLAG_PROMO_ROW - 1) * LEKMOD_FLAG_PROMO_SIZE / (n - 1) );
+    end
     for i = 1, LEKMOD_FLAG_PROMO_MAX do
         local image = flag.m_Instance["LekmodPromo" .. i];
         local promo = list[i];
         if( image ~= nil ) then
-            image:SetHide( promo == nil );
-            if( promo ~= nil ) then
-                IconHookup( promo.PortraitIndex, 32, promo.IconAtlas, image );
-                image:SetSizeVal( LEKMOD_FLAG_PROMO_SIZE, LEKMOD_FLAG_PROMO_SIZE );
-                image:SetTextureSizeVal( 32, 32 );
-                image:NormalizeTexture();
+            local bShow = (i <= n) and IconHookup( promo.PortraitIndex, 32, promo.IconAtlas, image ) ~= nil;
+            if( i <= n ) then
+                image:SetOffsetVal( (i - 1) * step, 0 );
             end
+            image:SetHide( not bShow );
         end
     end
-    flag.m_Instance.LekmodPromoStack:SetHide( #list == 0 );
-    flag.m_Instance.LekmodPromoStack:CalculateSize();
+    if( n > 0 ) then
+        flag.m_Instance.LekmodPromoStack:SetSizeVal( (n - 1) * step + LEKMOD_FLAG_PROMO_SIZE, LEKMOD_FLAG_PROMO_SIZE );
+    end
+    flag.m_Instance.LekmodPromoStack:SetHide( n == 0 );
     flag.m_Instance.LekmodPromoStack:ReprocessAnchoring();
 end
 
