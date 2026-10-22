@@ -1820,6 +1820,10 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_NO_DESTRUCTIVE_RECAPTURE
 // Fixed a bug due to which in some cases the cost of technologies could decrease when annexing a city
 #define FIX_MAX_EFFECTIVE_CITIES
+// LEKMOD (user, 2026-10-22): tech and policy costs count only the current non-puppet cities (no lasting peak)
+#define LEKMOD_CITY_COUNT_COSTS_CURRENT
+// LEKMOD (user, 2026-10-22): puppets add no Science or Culture to the empire (their own border growth keeps their Culture)
+#define LEKMOD_PUPPET_NO_EMPIRE_SCIENCE_CULTURE
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

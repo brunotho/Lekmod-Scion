@@ -24103,6 +24103,10 @@ int CvPlayer::getYieldFromCitiesTimes100(YieldTypes eYield, bool bIgnoreTrade) c
 	int iLoop;
 	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
 	{
+#ifdef LEKMOD_PUPPET_NO_EMPIRE_SCIENCE_CULTURE
+		if ((eYield == YIELD_SCIENCE || eYield == YIELD_CULTURE) && pLoopCity->IsPuppet())
+			continue;
+#endif
 		yield += pLoopCity->getYieldRateTimes100(eYield, bIgnoreTrade);
 	}
 
@@ -24361,6 +24365,10 @@ int CvPlayer::GetScienceFromCitiesTimes100(bool bIgnoreTrade) const
 	int iLoop;
 	for(pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
 	{
+#ifdef LEKMOD_PUPPET_NO_EMPIRE_SCIENCE_CULTURE
+		if (pLoopCity->IsPuppet())
+			continue;
+#endif
 		iScience += pLoopCity->getYieldRateTimes100(YIELD_SCIENCE, bIgnoreTrade);
 	}
 
@@ -33591,6 +33599,11 @@ int CvPlayer::GetMaxEffectiveCities(bool bIncludePuppets)
 	if(iNumCities == 0)	// If we don't pretend the player has at least one city it screws up the math
 		iNumCities = 1;
 
+#ifdef LEKMOD_CITY_COUNT_COSTS_CURRENT
+	// current non-puppet cities only, for tech and policy costs alike; the old peak (m_iMaxEffectiveCities) stays saved but unused
+	m_iMaxEffectiveCities = iNumCities;
+	return iNumCities;
+#endif
 	// Update member variable
 	m_iMaxEffectiveCities = (m_iMaxEffectiveCities > iNumCities) ? m_iMaxEffectiveCities : iNumCities;
 

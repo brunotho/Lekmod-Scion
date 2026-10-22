@@ -285158,7 +285158,7 @@
 			<PromotionType>PROMOTION_HATAMOTO</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
-	<!-- Golden Horde: puppets +33% Science/Gold/Culture (no Production), tribute +33%; Ulan 2 Horses 1 Iron (pledge rule and Yam Route need C++, open) -->
+	<!-- Golden Horde: puppets +33% Gold/Production (Science/Culture dropped 2026-10-22: puppets give the empire none), tribute +33%; Ulan 2 Horses 1 Iron (pledge rule and Yam Route need C++, open) -->
 	<Traits>
 		<Update>
 			<Where Type="TRAIT_HORDE"/>
@@ -285169,17 +285169,12 @@
 		<Delete TraitType="TRAIT_HORDE"/>
 		<Row>
 			<TraitType>TRAIT_HORDE</TraitType>
-			<YieldType>YIELD_SCIENCE</YieldType>
+			<YieldType>YIELD_PRODUCTION</YieldType>
 			<Yield>33</Yield>
 		</Row>
 		<Row>
 			<TraitType>TRAIT_HORDE</TraitType>
 			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>33</Yield>
-		</Row>
-		<Row>
-			<TraitType>TRAIT_HORDE</TraitType>
-			<YieldType>YIELD_CULTURE</YieldType>
 			<Yield>33</Yield>
 		</Row>
 	</Trait_PuppetYieldModifiers>
