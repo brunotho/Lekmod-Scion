@@ -38,6 +38,9 @@ RADIUS = {
     'bajoras': 0.435,         # gold ring painted on from radius 0.455
     'mahamatras_office': 0.5, # full-bleed scene, shown whole
 }
+# zoom into the picture (crop radius / zoom) so the subject looks as big as in the base game's icons, whose subjects
+# fill the circle (user, 2026-10-22: ours looked smaller in the tech tree and production list at the same circle size)
+ZOOM = {'self_propelled_artillery': 1.25, 'vanguard_corps': 1.25}
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
 WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
                     # round pictures on white (2026-10-22)
@@ -117,6 +120,7 @@ def build(kind, name):
     if name in WHITE_BACKGROUND:
         src = replace_white_background(src, WHITE_BACKGROUND[name])
     cx, cy, r = picture_circle(src, name)
+    r /= ZOOM.get(name, 1.0)
     d = r * src.size[0]
     src = src.crop((int(round(cx - d)), int(round(cy - d)), int(round(cx + d)), int(round(cy + d))))
     tmp = tempfile.mkdtemp()
