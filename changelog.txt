@@ -78,7 +78,7 @@ Tags: units, policies
   - available with Economics (was Civil Service)
   - 22 Strength (was 16)
   - costs 100 (was 30), so its Gold price rises too
-- Dev: hidden in the tech tree again (TechButtonInclude, both UIs); it showed there once it got a tech
+- Dev: hidden in the tech tree again (TechButtonInclude, both UIs: all units with Units.PolicyType, also the Foreign Legion); it showed there once it got a tech
 
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
 ------------------------------------
