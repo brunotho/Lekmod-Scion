@@ -26,6 +26,12 @@ KOREA (CIVILIZATION_KOREA)
 Tags: civs, buildings
 - Dev: the Jongmyo Shrine tooltip now says that half of the excess Food is lost during Jaegye
 
+UNIT ICONS (UNIT_VANGUARD_CORPS, UNIT_SELF_PROPELLED_ARTILLERY)
+---------------------------------------------------------------
+Tags: units
+- Dev: Vanguard Corps has its own art define (ART_DEF_UNIT_LEKMOD_VANGUARD_CORPS, the late General's model), so the city production list shows its own portrait instead of the Great General's
+- Dev: round_icon.py ZOOM and BREAKOUT (picture parts drawn outside the circle); SPA zoomed 1.35 with its barrel tip breaking out, Vanguard Corps zoomed 1.25
+
 LOADING SCREEN: ALL UNIQUE ITEMS
 --------------------------------
 Tags: ui
