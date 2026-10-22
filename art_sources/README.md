@@ -93,7 +93,7 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   templates directly; our replacements are plain square textures in a 1x1 atlas (`Missions.IconAtlas`).
 
 ## Civilopedia tabs
-- Sources: `civilopedia/` (2026-10-22: `nq_gold_letters_v1.png`, gold "NQ" letters on transparency, 1254 px; the NQ tab).
+- Sources: `civilopedia/` (2026-10-23: `nq_silver_letters_v2.png`, silver-white "NQ" letters on transparency, 1254 px; the NQ tab. The first, gold version is in `old/`).
   `reference_tab_row_2026-10-22.png`: the user's in-game screenshot of the tab row at 1:1 scale, the template for the tab.
 - `python art_sources/tools/build_pedia_tab.py <source> <name> [--preview out.png]`: a 64x256 sheet of 46x50 tab frames
   stacked at 50 px steps (normal, mouseover = the selected tab, pressed, disabled), uncompressed, plus `<name>256.dds` (the

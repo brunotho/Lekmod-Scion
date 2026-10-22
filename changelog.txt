@@ -799,7 +799,7 @@ Tags: ui
 - Changed: the Civilopedia home page shows the essentials of this version (the same text as the Essentials tab on the website)
 - Dev: texts generated from website/data/essentials.txt by tools/sync_pedia_essentials.py (rerun after every edit)
 - Added: a No Quitters Rules tab with the community's full multiplayer rule set
-- Dev: NQ tab = category 17 in the second place of the tab bar; texts from the No Quitters Google Doc by tools/sync_pedia_nq.py (rerun when the doc changes); the layout is overridden too (CivilopediaScreen.xml.ignore: the extra button and a 48 px narrower search box, since 16 tabs already filled the bar); tab art from art_sources/civilopedia/ by build_pedia_tab.py
+- Dev: NQ tab = category 17 in the second place of the tab bar; texts from the No Quitters Google Doc by tools/sync_pedia_nq.py (rerun when the doc changes); the layout is overridden too (CivilopediaScreen.xml.ignore: the extra button and a 48 px narrower search box, since 16 tabs already filled the bar); tab art from art_sources/civilopedia/ by build_pedia_tab.py; the NQ page hides the article list and its text boxes use the full width
 
 EMBARKED UNIT DEFENSE
 ---------------------

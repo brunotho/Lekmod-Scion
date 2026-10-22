@@ -449,6 +449,15 @@
 			</Grid>
 		</Grid>
 	</Instance>
+	<!-- LEKMOD: the big text block at full width, for pages without the article list (NQ tab) -->
+	<Instance Name="LekmodFullTextInstance">
+		<Grid Anchor="L,T" Offset="0,24" Size="936,200" Padding="0,0" Style="GridBlackIndent8" Hidden="0" ID="BBTextFrame">
+			<Label ID="BBTextHeader" Anchor="L,T" Offset="4,-18" Anchorside="I.O" WrapWidth="900" LeadingOffset="0" Font="TwCenMT20" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160"/>
+			<Grid Anchor="C,C" Offset="0,0" Size="940,204" Padding="0,0" Style="Grid9Frame" Hidden="0" ID="BBTextInnerFrame">
+				<Label Anchor="L,T" Offset="15,15" WrapWidth="915" LeadingOffset="-5" Font="TwCenMT18" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" ID="BBTextLabel"/>
+			</Grid>
+		</Grid>
+	</Instance>
 	<!--=======================================================================================================================-->
 	<!-- The display -->
 	<!--=======================================================================================================================-->
@@ -546,11 +555,11 @@
 				</Image>
 			</Stack>
 		</Grid>
-		<Image Anchor="L,T" Offset="273,125" TextureOffset="0.0" Texture="SideRight.dds" Size="13,1500" Hidden="0"/>
+		<Image Anchor="L,T" Offset="273,125" TextureOffset="0.0" Texture="SideRight.dds" Size="13,1500" Hidden="0" ID="LekmodListDivider"/>
 		<!--Invisible box that everything is anchored to-->
 		<Box Anchor="C,T" Size="1000,980" Offset="0,126" Color="255,255,255,0">
 			<!--glowy blue background behind list of articles-->
-			<AlphaAnim Anchor="L,T" Offset="0,0" Size="270,Full" Pause="0" Cycle="Bounce" Speed="1" AlphaStart=".55" AlphaEnd=".75">
+			<AlphaAnim Anchor="L,T" Offset="0,0" Size="270,Full" Pause="0" Cycle="Bounce" Speed="1" AlphaStart=".55" AlphaEnd=".75" ID="LekmodListGlow">
 				<Grid Size="270,full" Anchor="L,T" Offset="0,0" Padding="0,0" Style="GridGlass16"/>
 			</AlphaAnim>
 			<ScrollPanel Anchor="C,T" Offset="0,0" Size="1002,980" Vertical="1" ID="ScrollPanel" AutoScrollBar="1">

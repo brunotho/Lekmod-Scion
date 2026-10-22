@@ -104,6 +104,7 @@ local g_RequiredPromotionsManager = InstanceManager:new( "RequiredPromotionInsta
 local g_RequiredPoliciesManager = InstanceManager:new( "RequiredPolicyInstance", "RequiredPolicyButton", Controls.RequiredPoliciesInnerFrame );
 local g_FreeFormTextManager = InstanceManager:new( "FreeFormTextInstance", "FFTextFrame", Controls.FFTextStack );
 local g_BBTextManager = InstanceManager:new( "BBTextInstance", "BBTextFrame", Controls.BBTextStack );
+local g_LekmodFullTextManager = InstanceManager:new( "LekmodFullTextInstance", "BBTextFrame", Controls.BBTextStack ); -- LEKMOD: NQ tab
 local g_LeadersManager = InstanceManager:new( "LeaderInstance", "LeaderButton", Controls.LeadersInnerFrame );
 local g_UniqueUnitsManager = InstanceManager:new( "UniqueUnitInstance", "UniqueUnitButton", Controls.UniqueUnitsInnerFrame );
 local g_UniqueBuildingsManager = InstanceManager:new( "UniqueBuildingInstance", "UniqueBuildingButton", Controls.UniqueBuildingsInnerFrame );
@@ -137,8 +138,18 @@ Controls.LeftScrollPanel:SetSize( leftScrollPanelSize );
 Controls.ScrollPanel:CalculateInternalSize();
 Controls.LeftScrollPanel:CalculateInternalSize();
 
+-- LEKMOD: the NQ tab has no article list; its page uses the list's space too
+function LekmodSetFullWidth( bFull )
+	Controls.LekmodListGlow:SetHide( bFull );
+	Controls.LekmodListDivider:SetHide( bFull );
+	Controls.LeftScrollPanel:SetHide( bFull );
+	Controls.NarrowStack:SetOffsetVal( bFull and 24 or 304, 0 );
+	Controls.SuperWideStack:SetOffsetVal( bFull and 20 or 320, 260 );
+end
+
 function SetSelectedCategory( thisCategory )
 	print("SetSelectedCategory("..tostring(thisCategory)..")");
+	LekmodSetFullWidth( thisCategory == CategoryLekmodNQ );
 	if selectedCategory ~= thisCategory then
 		selectedCategory = thisCategory;
 		-- set up tab
@@ -1966,16 +1977,21 @@ CivilopediaCategory[CategoryLekmodNQ].DisplayHomePage = function()
 
 	g_BBTextManager:ResetInstances();
 
+	-- full-width boxes (LekmodFullTextInstance, 936/940 wide), since this tab hides the article list
 	for iSection = 1, 50 do
 		local strHeaderKey = "TXT_KEY_LEKMOD_PEDIA_NQ_" .. iSection .. "_HEADER";
 		local strHeader = Locale.ConvertTextKey( strHeaderKey );
 		if strHeader == nil or strHeader == strHeaderKey then
 			break;
 		end
-		local sectionInstance = g_BBTextManager:GetInstance();
+		local sectionInstance = g_LekmodFullTextManager:GetInstance();
 		if sectionInstance then
 			sectionInstance.BBTextHeader:SetText( strHeader );
-			UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_" .. iSection .. "_TEXT" ), sectionInstance.BBTextLabel, sectionInstance.BBTextInnerFrame, sectionInstance.BBTextFrame );
+			sectionInstance.BBTextLabel:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_NQ_" .. iSection .. "_TEXT" ) );
+			local textHeight = sectionInstance.BBTextLabel:GetSize().y;
+			sectionInstance.BBTextInnerFrame:SetSize( { x = 940; y = textHeight + textPaddingFromInnerFrame; } );
+			sectionInstance.BBTextFrame:SetSize( { x = 936; y = textHeight + textPaddingFromInnerFrame - offsetsBetweenFrames; } );
+			sectionInstance.BBTextFrame:SetHide( false );
 		end
 	end
 	Controls.BBTextStack:SetHide( false );
@@ -7100,6 +7116,7 @@ end
 
 function ClearArticle()
 	Controls.ScrollPanel:SetScrollValue( 0 );
+	g_LekmodFullTextManager:ResetInstances();
 	Controls.PortraitFrame:SetHide( true );
 	Controls.CostFrame:SetHide( true );
 	Controls.MaintenanceFrame:SetHide( true );
