@@ -148471,6 +148471,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS_TT">
 			<Text>The map marks recommended spots for new cities and improvements. Off by default.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BUILD_BLOCKED_HILLS_ONLY">
+			<Text>{1_Improvement} can only be built on Hills.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_IDEOLOGY_TIER">
 			<Text>Tier {1_Num}</Text>
 		</Row>

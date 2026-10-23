@@ -847,7 +847,7 @@ function LekmodShowTraitIcons(pPlayer)
 		local info = aIcons[i];
 		control:SetHide(info == nil);
 		if (info ~= nil) then
-			IconHookup(info[1], 45, info[2], control);
+			IconHookup(info[1], 64, info[2], control);
 			control:SetToolTipString(info[3]);
 		end
 	end

@@ -1899,6 +1899,26 @@ function TipHandler( control )
 				strDisabledString = strDisabledString .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BUILD_BLOCKED_CANAL");
 			end
 
+			-- LEKMOD (2026-10-23): an improvement the player's ability allows only on Hills (Malagasy Holy Site)
+			if (pImprovement and pPlot ~= nil and not pPlot:IsHills()) then
+				local pActive = Players[Game.GetActivePlayer()];
+				local leader = pActive and GameInfo.Leaders[pActive:GetLeaderType()];
+				if (leader ~= nil) then
+					for row in GameInfo.Leader_Traits{ LeaderType = leader.Type } do
+						local trait = GameInfo.Traits[row.TraitType];
+						if (trait ~= nil and trait.LekmodImprovementHillsOnly == pImprovement.Type) then
+							if (bFirstEntry) then
+								bFirstEntry = false;
+							else
+								strDisabledString = strDisabledString .. "[NEWLINE]";
+							end
+							strDisabledString = strDisabledString .. "[NEWLINE]";
+							strDisabledString = strDisabledString .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BUILD_BLOCKED_HILLS_ONLY", strImpRouteKey);
+						end
+					end
+				end
+			end
+
 			-- LEKMOD: unique and Great Person improvements show on every tile; without a listed reason say so, and show the improvement's rules
 			if (pBuild and pBuild.LekmodAlwaysVisible and pImprovement) then
 				if (bFirstEntry) then

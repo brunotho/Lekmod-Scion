@@ -1871,6 +1871,19 @@ function ActionToolTipHandler( control )
 				disabledTip:insertLocalized( "TXT_KEY_LEKMOD_BUILD_BLOCKED_CANAL" )
 			end
 
+			-- LEKMOD (2026-10-23): an improvement the player's ability allows only on Hills (Malagasy Holy Site)
+			if improvement and plot and not plot:IsHills() then
+				local leader = GameInfo.Leaders[ g_activePlayer:GetLeaderType() ]
+				if leader then
+					for row in GameInfo.Leader_Traits{ LeaderType = leader.Type } do
+						local trait = GameInfo.Traits[ row.TraitType ]
+						if trait and trait.LekmodImprovementHillsOnly == improvement.Type then
+							disabledTip:insertLocalized( "TXT_KEY_LEKMOD_BUILD_BLOCKED_HILLS_ONLY", strImpRouteKey )
+						end
+					end
+				end
+			end
+
 			-- LEKMOD: unique and Great Person improvements show on every tile; without a listed reason say so, and show the improvement's rules
 			if build and build.LekmodAlwaysVisible and improvement then
 				if #disabledTip == 0 then
