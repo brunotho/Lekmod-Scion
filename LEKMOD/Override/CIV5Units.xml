@@ -31909,10 +31909,6 @@
 			<Where Type="BELIEF_WORK_ETHIC"/>
 			<Set NoProphetSpawn="true"/>
 		</Update>
-		<Update>
-			<Where Type="BELIEF_SACRED_SITES"/>
-			<Set FreeBuildingClassInCapital="BUILDINGCLASS_VIHARA"/>
-		</Update>
 		<Row>
 			<ID>109</ID>
 			<Type>BELIEF_LEKMOD_CHARTER</Type>
@@ -31940,114 +31936,42 @@
 		</Row>
 	</Beliefs>
 	<Belief_BuildingClassYieldChanges>
-		<Delete BeliefType="BELIEF_SACRED_SITES"/>
+		<!-- Sacred Sites back to v35.4 (2026-10-23): +2 Culture, Gold and Faith from belief buildings; the old rows above cover the first seven -->
 		<Row>
 			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_PAGODA</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_PAGODA</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_MOSQUE</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_MOSQUE</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_CATHEDRAL</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_CATHEDRAL</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_GURDWARA</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_GURDWARA</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_SYNAGOGUE</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_SYNAGOGUE</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_VIHARA</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_VIHARA</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_MANDIR</BuildingClassType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
-			<BuildingClassType>BUILDINGCLASS_MANDIR</BuildingClassType>
-			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_SANCTUARY</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>2</YieldChange>
 		</Row>
 		<Row>
 			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_SANCTUARY</BuildingClassType>
 			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>2</YieldChange>
 		</Row>
 		<Row>
 			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_SANCTUARY</BuildingClassType>
 			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>2</YieldChange>
+		</Row>
+		<Row>
+			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
+			<BuildingClassType>BUILDINGCLASS_LEKMOD_STUPA</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>2</YieldChange>
 		</Row>
 		<Row>
 			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_STUPA</BuildingClassType>
 			<YieldType>YIELD_GOLD</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>2</YieldChange>
 		</Row>
 		<Row>
 			<BeliefType>BELIEF_SACRED_SITES</BeliefType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_STUPA</BuildingClassType>
 			<YieldType>YIELD_FAITH</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>2</YieldChange>
 		</Row>
 		<Row>
 			<BeliefType>BELIEF_JESUIT_EDUCATION</BeliefType>
@@ -32207,13 +32131,6 @@
 			<Type>BELIEF_LEKMOD_SONGS_LEVIATHAN</Type>
 			<Description>TXT_KEY_LEKMOD_SONGS_LEVIATHAN</Description>
 			<ShortDescription>TXT_KEY_LEKMOD_SONGS_LEVIATHAN_SHORT</ShortDescription>
-			<Pantheon>true</Pantheon>
-		</Row>
-		<Row>
-			<ID>97</ID>
-			<Type>BELIEF_LEKMOD_HARVEST_CONFLUENCE</Type>
-			<Description>TXT_KEY_LEKMOD_HARVEST_CONFLUENCE</Description>
-			<ShortDescription>TXT_KEY_LEKMOD_HARVEST_CONFLUENCE_SHORT</ShortDescription>
 			<Pantheon>true</Pantheon>
 		</Row>
 		<Row>
@@ -32506,30 +32423,6 @@
 			<BeliefType>BELIEF_LEKMOD_SONGS_LEVIATHAN</BeliefType>
 			<ResourceType>RESOURCE_WHALE</ResourceType>
 			<YieldType>YIELD_FAITH</YieldType>
-			<Yield>2</Yield>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_LEKMOD_HARVEST_CONFLUENCE</BeliefType>
-			<ResourceType>RESOURCE_CRAB</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>2</Yield>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_LEKMOD_HARVEST_CONFLUENCE</BeliefType>
-			<ResourceType>RESOURCE_WHEAT</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>2</Yield>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_LEKMOD_HARVEST_CONFLUENCE</BeliefType>
-			<ResourceType>RESOURCE_BANANA</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>2</Yield>
-		</Row>
-		<Row>
-			<BeliefType>BELIEF_LEKMOD_HARVEST_CONFLUENCE</BeliefType>
-			<ResourceType>RESOURCE_COW</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
 			<Yield>2</Yield>
 		</Row>
 		<Row>
@@ -48841,187 +48734,11 @@
 			<IconAtlas>LEKMOD_EXTRAORDINARY_SESSION_ATLAS</IconAtlas>
 		</Row>
 	</Buildings> 
-	<!-- LEKMOD: every purchasable building costs +25% Gold to buy (like the Granary); Stone Works and Aqueduct keep 0% -->
+	<!-- LEKMOD (2026-10-23): building purchase costs are back to v34.11/v35.4 (the +25%-everywhere block is gone); only the Windmill changed, to the Factory's 0% -->
 	<Buildings>
 		<Update>
-			<Where Type="BUILDING_AIRPORT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BARAY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BASIL"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BOMB_SHELTER"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BROADCAST_TOWER"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_COOPERATIVE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_FACTORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_HOSPITAL"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_HYDRO_PLANT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_LABORATORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_MEDICAL_LAB"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_MILITARY_ACADEMY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_MUSEUM"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_NUCLEAR_PLANT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_PRUSSIAN_FACTORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_PUBLIC_SCHOOL"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_SOLAR_PLANT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_SPACESHIP_FACTORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_STADIUM"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_SWISS_SKI_RESORT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_UC_HALKEVLERI"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_YUGO_SPOMENIK"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BELGIUM_ZOO"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BOERS_OPERA_HOUSE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_CEILIDH_HALL"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_DANCE_HALL"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_IRISH_PUB"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_NATIONALCHURCH"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_OPERA_HOUSE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_THEATRE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_ARMENIA_OBSERVATORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_AYYUBIDS_UNIVERSITY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_BANK"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_CANTON"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_HANSE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_OBSERVATORY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_SATRAPS_COURT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_STOCK_EXCHANGE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_UNIVERSITY"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_WAT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_ASHOKA"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_MONUMENT"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_STELE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_COURTHOUSE"/>
-			<Set HurryCostModifier="25"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_OUTREMER"/>
-			<Set HurryCostModifier="25"/>
+			<Where BuildingClass="BUILDINGCLASS_WINDMILL"/>
+			<Set HurryCostModifier="0"/>
 		</Update>
 	</Buildings>
 	<!-- LEKMOD: defense buildings (Walls, Castle, Arsenal, Command Bunker and their unique replacements) -->
@@ -49104,7 +48821,7 @@
 		</Update>
 		<Update>
 			<Where BuildingClass="BUILDINGCLASS_LIGHTHOUSE"/>
-			<Set PlotBuyCostModifier="-33"/>
+			<Set PlotBuyCostModifier="-20"/>
 		</Update>
 	</Buildings>
 	<Building_ResourceQuantityRequirements>
@@ -49517,7 +49234,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_RECYCLING_CENTER"/>
-			<Set Cost="500" GoldMaintenance="20" PrereqTech="TECH_PLASTIC" HurryCostModifier="25"/>
+			<Set Cost="500" GoldMaintenance="20" PrereqTech="TECH_PLASTIC"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_SPACESHIP_FACTORY"/>
@@ -50222,7 +49939,7 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_PANAMA"/>
-			<Set Water="false" Cost="1203" PrereqTech="TECH_ELECTRONICS" SpecialistType="SPECIALIST_ENGINEER" GreatPeopleRateChange="2" TradeRouteOriginYieldModifier="33" NeverCapture="true" ConquestProb="0"/>
+			<Set Water="false" Cost="1203" PrereqTech="TECH_ELECTRONICS" SpecialistType="SPECIALIST_ENGINEER" GreatPeopleRateChange="0" TradeRouteOriginYieldModifier="33" NeverCapture="true" ConquestProb="0"/>
 		</Update>
 	</Buildings>
 	<Building_YieldChanges>
@@ -205382,7 +205099,7 @@
 		</Update>
 		<Update>
 			<Where Type="TECH_ASTRONOMY"/>
-			<Set Cost="677"/>
+			<Set Cost="716"/>
 		</Update>
 		<Update>
 			<Where Type="TECH_ACOUSTICS"/>
@@ -205402,7 +205119,7 @@
 		</Update>
 		<Update>
 			<Where Type="TECH_NAVIGATION"/>
-			<Set Cost="997"/>
+			<Set Cost="1056"/>
 		</Update>
 		<Update>
 			<Where Type="TECH_ARCHITECTURE"/>
@@ -282019,7 +281736,7 @@
 		</Update>
 		<Update>
 			<Where Type="POLICY_MERCHANT_NAVY"/>
-			<Set GridX="3" GridY="1" NewCityExtraPopulation="0" ExtraTerritoryClaim="0" EarlyBuildingProductionModifier="20" EarlyBuildingEraType="ERA_RENAISSANCE" NewCityFreeBuildingClass="BUILDINGCLASS_LEKMOD_CROWN_OFFICE" NewCityFreeUnitClass="UNITCLASS_SKIFF"/>
+			<Set GridX="3" GridY="1" NewCityExtraPopulation="0" ExtraTerritoryClaim="0" EarlyBuildingProductionModifier="30" EarlyBuildingEraType="ERA_RENAISSANCE" NewCityFreeBuildingClass="BUILDINGCLASS_LEKMOD_CROWN_OFFICE" NewCityFreeUnitClass="UNITCLASS_SKIFF"/>
 		</Update>
 		<Update>
 			<Where Type="POLICY_NAVAL_TRADITION"/>
@@ -285696,7 +285413,7 @@
 			<PromotionType>PROMOTION_SWIFT_TRANSPORT</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
-	<!-- Sweden: Falu Gruva like a regular Ironworks (8 Iron, +8 Production, +2 Production on mountains; hills production and Flight Tourism removed); start bias tundra, avoid jungle -->
+	<!-- Sweden: Falu Gruva like a regular Ironworks (8 Iron, +8 Production, +2 Production on mountains; hills production and Flight Tourism removed); start bias tundra, avoid jungle and desert -->
 	<Building_TechEnhancedYieldChanges>
 		<Delete BuildingType="BUILDING_FALU_GRUVA"/>
 	</Building_TechEnhancedYieldChanges>
@@ -285721,6 +285438,10 @@
 		<Row>
 			<CivilizationType>CIVILIZATION_SWEDEN</CivilizationType>
 			<RegionType>REGION_JUNGLE</RegionType>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_SWEDEN</CivilizationType>
+			<RegionType>REGION_DESERT</RegionType>
 		</Row>
 	</Civilization_Start_Region_Avoid>
 	<!-- Maurya: unique Missionary removed (new UA and Mahamatras' Office need C++, open) -->
@@ -291051,16 +290772,6 @@
 			<UnitCombatType>UNITCOMBAT_MOUNTED_RANGED</UnitCombatType>
 			<Experience>15</Experience>
 		</Row>
-		<Row>
-			<BuildingType>BUILDING_TEMPLE_ARTEMIS</BuildingType>
-			<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType>
-			<Experience>15</Experience>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_TEMPLE_ARTEMIS</BuildingType>
-			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType>
-			<Experience>15</Experience>
-		</Row>
 	</Building_UnitCombatFreeExperiences>
 	<Building_UnitCombatProductionModifiers>
 		<Delete BuildingType="BUILDING_TEMPLE_ARTEMIS"/>
@@ -292479,4 +292190,70 @@
 			<Set Help="TXT_KEY_IMPROVEMENT_GOTH_HELP"/>
 		</Update>
 	</Improvements>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_MUGHALS_CARAVANSARY"/>
+			<Set GarrisonStrengthBonus="0"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_FULLING_MILL"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+	</Buildings>
+	<Building_FreeUnits>
+		<Row>
+			<BuildingType>BUILDING_PANAMA</BuildingType>
+			<UnitType>UNIT_ENGINEER</UnitType>
+			<NumUnits>1</NumUnits>
+		</Row>
+	</Building_FreeUnits>
+	<!-- Angkor Wat at Civil Service with Chichen Itza's cost; Ministry of Truth 1600 on quick like the Extraordinary Session -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_ANGKOR_WAT"/>
+			<Set PrereqTech="TECH_CIVIL_SERVICE" Cost="300"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_MINISTRY_OF_TRUTH"/>
+			<Set Cost="2389"/>
+		</Update>
+	</Buildings>
+	<!-- Old Faithful 3 Culture 5 Science, no Happiness; Krakatoa 1 Food 8 Science -->
+	<Feature_YieldChanges>
+		<Delete FeatureType="FEATURE_GEYSER"/>
+		<Delete FeatureType="FEATURE_VOLCANO"/>
+		<Row>
+			<FeatureType>FEATURE_GEYSER</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>3</Yield>
+		</Row>
+		<Row>
+			<FeatureType>FEATURE_GEYSER</FeatureType>
+			<YieldType>YIELD_SCIENCE</YieldType>
+			<Yield>5</Yield>
+		</Row>
+		<Row>
+			<FeatureType>FEATURE_VOLCANO</FeatureType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<FeatureType>FEATURE_VOLCANO</FeatureType>
+			<YieldType>YIELD_SCIENCE</YieldType>
+			<Yield>8</Yield>
+		</Row>
+	</Feature_YieldChanges>
+	<Features>
+		<Update>
+			<Where Type="FEATURE_GEYSER"/>
+			<Set InBorderHappiness="0"/>
+		</Update>
+	</Features>
+	<!-- Berber Cavalry: +10 Production on quick (150 -> 160; Faith cost stays 2x) -->
+	<Units>
+		<Update>
+			<Where Type="UNIT_BERBER_CAVALRY"/>
+			<Set Cost="239" FaithCost="478"/>
+		</Update>
+	</Units>
 </GameData>

@@ -714,14 +714,14 @@ BUILDING PURCHASE COSTS
 -----------------------
 Tags: game mechanics
 Weight: minor
-- Changed: every building you can buy now costs +25% Gold over the base price. Before: 0% for most late buildings (Factory, Hospital, Stadium, Public School, Museum, Laboratory...), +10% Opera House and Theatre types, +15% University, Bank, Observatory, Stock Exchange, +40% Monument, +50% Courthouse
-- Note: Stone Works and Aqueduct stay at 0%; most other buildings were already at +25%
+- Changed: the Windmill (and its unique replacements) costs less Gold to buy: no surcharge on its base price, like the Factory (was +25%)
+- Dev: 2026-10-23 (user): the first 1.0.0 had +25% on every building; back to the v35.4 values except the Windmill
 
 TECHNOLOGY COSTS
 ----------------
 Tags: game mechanics
 - Changed: technology cost +1% Classical, +1.5% Medieval, +2% Renaissance, +3.5% Industrial, +5% Modern, +8% Atomic, +11% Information era (Ancient unchanged)
-- Changed: Astronomy and Navigation cost 15% less (after the era increase): Astronomy about 520 -> 450, Navigation about 770 -> 670
+- Changed: Astronomy and Navigation cost 10% less (after the era increase): Astronomy about 535 -> 480, Navigation about 785 -> 705
 - Dev: per-tech Cost updates after the Technologies table in CIV5Units.xml; later per-tech changes (e.g. Astronomy/Navigation) must edit those values
 
 CITY-STATE PLEDGE ICONS
@@ -941,7 +941,7 @@ Tags: buildings, wonders
 Subsection: Wonders and projects
 - Changed: needs Honor (the Statue of Zeus no longer does)
 - Changed: +3 Production, +3 Gold, +3 Culture (was +1 Culture) and +1 Great Engineer point
-- Changed: +15% Production and +15 XP for ranged units now also covers naval ranged units and submarines
+- Changed: its +15% Production for ranged units now also covers naval ranged units and submarines (the +15 XP stays with land ranged units)
 - Removed: +15% Growth in the city; +1 Faith from worked Camps
 
 ZIMBABWE (BUILDING_STONE_MASON)
@@ -1084,7 +1084,8 @@ Tags: tiles and resources
 - Changed: Mt. Sinai: 8 -> 5 Faith; +5 Production when worked by a Holy City
 - Changed: Sri Pada: 3 Faith (was 2 Food 4 Faith), no Happiness; +3 Culture with a Shrine and +3 Food with a Temple in the working city
 - Changed: Mt. Kailash: no Happiness; Holy Sites next to it yield +2 Culture
-- Changed: Krakatoa: 10 Science (was 2 Food 8 Science)
+- Changed: Krakatoa: 1 Food 8 Science (was 2 Food 8 Science)
+- Changed: Old Faithful: 3 Culture 5 Science (was 4 Science), no Happiness
 - Changed: Fountain of Youth: 2 Food 2 Culture 2 Faith (was nothing), no Happiness; cities next to it get +10% Food
 - Changed: Mt. Kilimanjaro: is a source of fresh water; Pastures next to it yield +1 Food
 - Dev: hovering a natural wonder shows its yields and special effects (the yields are listed once, at the top)
@@ -1462,7 +1463,7 @@ Tags: buildings, naval
 Subsection: Buildings
 - Removed: +1 Food on Coast and Ocean (Fish keep their +1 Food), +1 Food on the Great Barrier Reef, +1 Production on sea resources
 - Added: Amber and Atolls give +1 Culture
-- Added: buying tiles in the city costs 33% less Gold
+- Added: buying tiles in the city costs 20% less Gold
 - Added: with Construction, Coast tiles (not lakes) give +1 Production
 - Dev: the Cothon's own changes are on the Carthage card (an earlier note here said it kept +1 Food +1 Production; it doesn't)
 - DLL: Building_TechTerrainYieldChanges (LEKMOD_BUILDING_TECH_TERRAIN_YIELDS); plot yields refresh when the tech arrives or the building is built
@@ -1562,12 +1563,6 @@ Tags: religion
 Subsection: Pantheons
 +2 Faith from Cotton, Tea and Coffee.
 - Changed: no longer on Sugar
-
-HARVEST CONFLUENCE (NEW) (BELIEF_LEKMOD_HARVEST_CONFLUENCE)
------------------------------------------------------------
-Tags: religion
-Subsection: Pantheons
-+2 Gold from Crabs, Wheat, Bananas and Cattle.
 
 KIN FORGED IN BLOOD (NEW) (BELIEF_LEKMOD_KIN_BLOOD)
 ---------------------------------------------------
@@ -1789,10 +1784,9 @@ SACRED SITES (BELIEF_SACRED_SITES)
 ----------------------------------
 Tags: religion
 Subsection: Reformation beliefs
-+3 Gold and +3 Faith from buildings unlocked by Religious Beliefs. A free Vihara in your capital.
-- Changed: +3 Gold and +3 Faith from buildings unlocked by Religious Beliefs (was +2 Culture +2 Gold +2 Faith)
-- Added: adopting it gives a free Vihara in the capital
-- Dev: the new Sanctuary and Stupa missed the +3 Gold +3 Faith at first (Belief_BuildingClassYieldChanges rows added)
++2 Culture, +2 Gold and +2 Faith from buildings unlocked by Religious Beliefs.
+- Added: also from the new Sanctuary and Stupa
+- Dev: 2026-10-23 (user): back to its v35.4 effect (it was +3 Gold +3 Faith and a free Vihara in the capital in the first 1.0.0)
 
 WORK ETHIC (BELIEF_WORK_ETHIC)
 ------------------------------
@@ -1970,6 +1964,7 @@ Subsection: Wonders and projects
   - 1 Scientist point instead of 1 Engineer point
   - no longer: its 4 Happiness
 - Changed: Angkor Wat (reworked):
+  - available with Civil Service (was Education) and costs 201 like Chichen Itza (was 268)
   - 1 Culture
   - 1 Engineer point
   - a free Garden
@@ -2011,7 +2006,7 @@ CANAL PROJECT (BUILDING_PANAMA)
 Tags: buildings, naval, wonders
 Subsection: Wonders and projects
 The Panama Canal is now the Canal Project, a national wonder. Its Great Engineers dig canals that ships can sail through.
-- Now: a national wonder; requires Electronics; costs the same as Cristo Redentor; doesn't have to be on the coast; 2 Engineer points
+- Now: a national wonder; requires Electronics; costs the same as Cristo Redentor; doesn't have to be on the coast; gives a free Great Engineer
 - Now: +33% to all yields you get from trade routes that start in its city (internal and external)
 - Now: Great Engineers can build a Canal (uses up the Great Engineer): flat land in your territory next to water, connecting two separate bodies of water (two seas, or a sea and a lake); a city next to the tile counts as part of the water it touches
 - Now: once you have the Canal Project, the Canal button shows for every Great Engineer; where it can't be built it is greyed out and says why
@@ -2463,7 +2458,7 @@ Tags: espionage, buildings, wonders
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
 -----------------------------------------------------------
 Tags: espionage, buildings, wonders
-- Added: World Wonder at Telecommunications, 2000 Production
+- Added: World Wonder at Telecommunications, 1600 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
 - Added: other players' Demographics screens are blacked out
@@ -3082,7 +3077,7 @@ SWEDEN (CIVILIZATION_SWEDEN)
 Tags: civs, buildings
 - Reworked: UA
   | +20% [ICON_GREAT_PEOPLE] Great Person points in all Cities.[NEWLINE][NEWLINE]Strategic resources on Snow yield +3 [ICON_PRODUCTION] Production.
-- Changed: start bias avoids jungle instead of desert (tundra bias kept)
+- Added: start bias also avoids jungle (desert avoidance and tundra bias kept)
 - Reworked: BUILDING_FALU_GRUVA
   | costs 83[NEWLINE]Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.
 - New: UNIT_SWEDISH_HAKKAPELIITTA

@@ -46,7 +46,9 @@ module GameRefs
     refs = {}
     TABLES.each do |table, (name_col, text_col)|
       rows = Civs.rows(data, table).each_with_object({}) { |r, acc| acc[r["Type"]] = r if r["Type"] }
-      Civs.apply_updates(data, table, rows).each do |type, row|
+      rows = Civs.apply_updates(data, table, rows)
+      rows = Civs.with_free_range(data, rows) if table == "Units"
+      rows.each do |type, row|
         name = texts[row[name_col]] || row[name_col]
         text = texts[row[text_col]] || texts["#{row[name_col]}_HELP"] # some rows never set their Help key
         stats = case table

@@ -32,6 +32,7 @@ module Civs
     unit_overrides = rows(data, "Civilization_UnitClassOverrides").select { |r| present?(r["UnitType"]) }
     building_overrides = rows(data, "Civilization_BuildingClassOverrides").select { |r| present?(r["BuildingType"]) }
     needs = rows(data, "Unit_ResourceQuantityRequirements").group_by { |r| r["UnitType"] }
+    units = with_free_range(data, units)
 
     civs.values.select { |c| c["Playable"] == "true" || c["Playable"] == "1" }.map do |c|
       type = c["Type"]
@@ -76,6 +77,20 @@ module Civs
   end
 
   QUICK = 67 # quick speed: costs x 67 / 100, rounded down like the game
+
+  # Units rows with "Range" including the RangeChange of their free promotions (the English Longbowman has Range 2
+  # plus a +1 Range promotion), as the game shows it.
+  def with_free_range(data, units)
+    change = rows(data, "UnitPromotions").to_h { |r| [r["Type"], r["RangeChange"].to_i] }
+    bonus = Hash.new(0)
+    rows(data, "Unit_FreePromotions").uniq { |r| [r["UnitType"], r["PromotionType"]] }.each do |r|
+      bonus[r["UnitType"]] += change[r["PromotionType"]] || 0
+    end
+    units.to_h do |type, row|
+      next [type, row] if bonus[type].zero? || row["Range"].to_i.zero?
+      [type, row.merge("Range" => (row["Range"].to_i + bonus[type]).to_s)]
+    end
+  end
 
   # Ordered [label, value] pairs of a unit's numbers (quick-speed cost); value nil = the unit doesn't have it.
   def unit_stats(row, needs)

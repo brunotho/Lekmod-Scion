@@ -1718,7 +1718,7 @@
 			<Text>The Mansabdari system was a unique administrative structure established by Emperor Akbar that formed the backbone of the Mughal Empire's civil and military administration. Under this system, imperial officers known as mansabdars were assigned ranks (mansabs) that determined their status, responsibilities, and compensation. Each mansabdar maintained estates that served as centers of local governance and military recruitment. These estates not only strengthened imperial control but also served as cultural centers that promoted Mughal artistic and architectural styles. The system helped integrate diverse ethnic and religious groups into the empire's administrative framework, reflecting the Mughals' skill at incorporating various cultural traditions into their governance model.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">			
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +5 Defense, +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_STRATEGY">			
 			<Text>The Mansabdari Estate is available at a different technology than the Caravansary it replaces, requiring Currency rather than Horseback Riding. Beyond improving land trade routes, it provides significant defensive bonuses to your cities and additional [ICON_GOLD] Gold and [ICON_CULTURE] Culture when the city is garrisoned, encouraging a balanced approach to growth and defense.</Text>
@@ -5641,7 +5641,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		</Row>
 		<!-- Help tags -->
 		<Row Tag="TXT_KEY_WONDER_PANAMA_HELP1">
-			<Text>+33% to all yields from [ICON_INTERNATIONAL_TRADE] Trade Routes that start in this city (internal and external).[NEWLINE][NEWLINE]Your [ICON_GREAT_ENGINEER] Great Engineers can build a Canal.</Text>
+			<Text>Gives a free [ICON_GREAT_ENGINEER] Great Engineer.[NEWLINE][NEWLINE]+33% to all yields from [ICON_INTERNATIONAL_TRADE] Trade Routes that start in this city (internal and external).[NEWLINE][NEWLINE]Your [ICON_GREAT_ENGINEER] Great Engineers can build a Canal.</Text>
 		</Row>
 		<!-- Quote tags -->
 		<Row Tag="TXT_KEY_WONDER_PANAMA_QUOTE1">
@@ -17727,7 +17727,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_SACRED_SITES"> 
 			<Text>
-				+3 [ICON_GOLD] Gold and +3 [ICON_PEACE] Faith from buildings unlocked by [COLOR_POSITIVE_TEXT]Religious Beliefs[ENDCOLOR][NEWLINE]A free [COLOR_POSITIVE_TEXT]Vihara[ENDCOLOR] in your capital
+				+2 [ICON_CULTURE] Culture, +2 [ICON_GOLD] Gold and +2 [ICON_PEACE] Faith from buildings unlocked by [COLOR_POSITIVE_TEXT]Religious Beliefs[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_SACRED_SITES_SHORT"> 
@@ -18017,7 +18017,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_SACRED_SITES"> 
 			<Text>
-				+3 [ICON_GOLD] Gold and +3 [ICON_PEACE] Faith from buildings unlocked by [COLOR_POSITIVE_TEXT]Religious Beliefs[ENDCOLOR][NEWLINE]A free [COLOR_POSITIVE_TEXT]Vihara[ENDCOLOR] in your capital
+				+2 [ICON_CULTURE] Culture, +2 [ICON_GOLD] Gold and +2 [ICON_PEACE] Faith from buildings unlocked by [COLOR_POSITIVE_TEXT]Religious Beliefs[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_SACRED_SITES_SHORT"> 
@@ -18939,7 +18939,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COTHON_HELP"> 
-			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 33% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
+			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 20% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COURTHOUSE"> 
 			<Text>
@@ -19882,7 +19882,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_LIGHTHOUSE_HELP"> 
 			<Text>
-				Each source of [ICON_RES_FISH] Fish worked by this City produces +1 [ICON_FOOD] Food.[NEWLINE]Each source of [ICON_RES_AMBER] Amber and each Atoll worked by this City produces +1 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]Buying tiles in this City costs 33% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]With Construction: Coast tiles worked by this City produce +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]City must be built on the coast.
+				Each source of [ICON_RES_FISH] Fish worked by this City produces +1 [ICON_FOOD] Food.[NEWLINE]Each source of [ICON_RES_AMBER] Amber and each Atoll worked by this City produces +1 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]Buying tiles in this City costs 20% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]With Construction: Coast tiles worked by this City produce +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]City must be built on the coast.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_LIGHTHOUSE_STRATEGY"> 
@@ -117141,7 +117141,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERCHANT_NAVY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
+				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERITOCRACY"> 
@@ -145911,7 +145911,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_TEMPLE_ARTEMIS_HELP"> 
-			<Text>Requires Honor.[NEWLINE][NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_CULTURE] Culture in the city.[NEWLINE]+1 [ICON_GREAT_PEOPLE] Great Engineer point per turn.[NEWLINE][NEWLINE]Ranged units (land, mounted, naval and submarines) built in the city: +15% [ICON_PRODUCTION] Production and +15 Experience.</Text>
+			<Text>Requires Honor.[NEWLINE][NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_CULTURE] Culture in the city.[NEWLINE]+1 [ICON_GREAT_PEOPLE] Great Engineer point per turn.[NEWLINE][NEWLINE]Ranged units (land, mounted, naval and submarines) built in the city: +15% [ICON_PRODUCTION] Production.[NEWLINE]Land ranged units (also mounted) built in the city: +15 Experience.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_TEMPLE_ARTEMIS_QUOTE"> 
 			<Text>
@@ -147340,7 +147340,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Atlatlist is the Mayan unique unit, replacing the Composite Bowman. It hits hardest at close range and moves quickly through Forest and Jungle.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +5 Defense, +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ALCAZABA_HELP">
 			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
@@ -147688,7 +147688,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack (60% of its [ICON_STRENGTH] Strength) before combat.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COTHON_HELP">
-			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 33% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
+			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 20% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_IKANDA_DESC">
 			<Text>Isibaya</Text>
@@ -147813,7 +147813,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- Specs to refine answers 2026-10-14 -->
 		<Replace Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +5 Defense, +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_FINLAND">
 			<Text>+1 [ICON_CULTURE] Culture from [COLOR_GREEN]unimproved Forest[ENDCOLOR] tiles.</Text>
