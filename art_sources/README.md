@@ -34,7 +34,7 @@ e.g. `LEKMOD_NUKE_RESISTANCE_PROMOTION_ATLAS`) and the promotion's `IconAtlas`/`
 2. **Key out the background** (`reshape_icons.reshape`): only background **connected to the image border** becomes transparent, so dark details inside the glyph (eye patch, skull eyes) stay. With `key=all` in the manifest, enclosed dark areas are cleared too (outline shapes, e.g. the Nuke Resistance shield, whose inside would otherwise show as a dark patch on the 32 px tile). The glyph test is "max(R,G) > 90" (gold); edges get a soft alpha.
 3. **Crop and fit the glyph** to `scale` x 256 px (0.72 normally, leaves room for the round frame). Nuke Resistance uses 0.80 because its trefoil detail was lost at 0.72.
 4. **Even out the gold**: the AI art had baked-in lighting (bright top-left, darker orange right/bottom), which looked thin and weak on the right at 64 px. Gold/orange pixels (hue 25-60 deg, saturated) are lifted to the same brightness (V 0.97, hue at least 42 deg); dark details are untouched.
-5. **Shift 8 px right** (2 px at 64 px): in the promotion choice the icons looked 1-2 px too far left.
+5. **Shift 4 px right** (1 px at 64 px): in the promotion choice the icons looked 1-2 px too far left without it; 8 px (until 2026-10-23) looked a hair too far right (user).
 6. **Write the sizes**: 256 px as BC3 (DXT5) with mips; **64/45 px uncompressed** (B8G8R8A8, one mip). BC3 compresses 4x4 pixel blocks and smeared fine detail at small sizes (very visible on Nuke Resistance); uncompressed small files are only 8-16 KB and use the same DDS format as the menu background, which the game reads.
 7. **32 px tile**: the glyph (from the 256 px result) on a blue square tile (box 4,5-27,28; navy-to-teal gradient, lighter 1 px edge), uncompressed.
 

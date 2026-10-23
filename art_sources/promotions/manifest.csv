@@ -1,5 +1,5 @@
 name,source,scale,key,notes,dx
-amphibious_1,user_art/amphibious_1_45px.png,0.72,border,user art 2026-10-10 (bold trident + 1 bar); only 45 px exists, so the 256 px file is an upscale
+amphibious_1,user_art/amphibious_1_45px.png,0.72,border,"user art 2026-10-10 (bold trident + 1 bar); only 45 px exists, so the 256 px file is an upscale",
 amphibious_2,user_art/amphibious_2_45px.png,0.72,border,user art 2026-10-10 (2 bars); 45 px source
 amphibious_3,user_art/amphibious_3_45px.png,0.72,border,user art 2026-10-10 (3 bars); 45 px source
 nuke_resistance,user_art/nuke_resistance_shield_2026-10-10.png,0.80,all,user art 2026-10-10 (third version: plain gold outline shield; cut from merged_shield_and_skull_2026-10-10.png); key=all clears the inside

@@ -292284,6 +292284,17 @@
 			<Set InBorderHappiness="0"/>
 		</Update>
 	</Features>
+	<!-- dummy buildings show with their source's icon: Apollo Program (the +20% Science building), Gymnasium (second slot) -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_APOLLO"/>
+			<Set IconAtlas="BW_ATLAS_2" PortraitIndex="33"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_GYMNASIUM_ARTIST"/>
+			<Set IconAtlas="LEKMOD_GYMNASIUM_ATLAS" PortraitIndex="0"/>
+		</Update>
+	</Buildings>
 	<!-- Berber Cavalry: +10 Production on quick (150 -> 160; Faith cost stays 2x) -->
 	<Units>
 		<Update>

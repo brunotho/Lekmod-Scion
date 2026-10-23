@@ -11,7 +11,7 @@ Pipeline (see art_sources/README.md for the reasons behind each step):
     manifest column key=all also clears enclosed dark areas (outline shapes such as the Nuke Resistance shield)
  3. crop to the glyph and fit it into <scale> of the 256 px canvas (0.72 normally), centred
  4. even out the baked-in lighting: gold/orange pixels get the same bright gold, dark details stay
- 5. shift the glyph 8 px right (2 px at 64 px, where the promotion choice looked off-centre)
+ 5. shift the glyph 4 px right (1 px at 64 px, where the promotion choice looked off-centre; 8 px looked too far right)
  6. 256 px: BC3 (DXT5) with mips;  64/45 px: LANCZOS downscale, uncompressed B8G8R8A8, one mip
  7. 32 px: blue square tile (base-game earned-promotion style) with the gold glyph, uncompressed
 """
@@ -26,7 +26,7 @@ TEXCONV = os.environ.get('TEXCONV', os.path.join(os.path.dirname(REPO), 'texconv
 sys.path.insert(0, HERE)
 import reshape_icons  # noqa: E402
 
-SHIFT_X = 8          # at 256 px
+SHIFT_X = 4          # at 256 px (8 until 2026-10-23: then they looked a hair too far right)
 TILE = (4, 5, 27, 28)  # 32 px tile box
 
 
