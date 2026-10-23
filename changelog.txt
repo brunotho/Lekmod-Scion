@@ -730,10 +730,11 @@ Tags: game mechanics
 - Changed: Astronomy and Navigation cost 10% less (after the era increase): Astronomy about 535 -> 480, Navigation about 785 -> 705
 - Dev: per-tech Cost updates after the Technologies table in CIV5Units.xml; later per-tech changes (e.g. Astronomy/Navigation) must edit those values
 
-CITY-STATE PLEDGE ICONS
+CITY-STATE BANNER ICONS
 -----------------------
 Tags: ui, city-states
 - Added: City-State banners show who has pledged to protect them
+- Added: City-State banners show the icons of their quests for you, with the quest list as a tooltip
 - Note: standard UI only for now (EUI has its own city banners)
 
 WORKER TURNS REMAINING

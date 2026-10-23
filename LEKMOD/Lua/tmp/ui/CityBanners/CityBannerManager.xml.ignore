@@ -163,6 +163,8 @@
 			</Button>
 			<!-- List of Icons -->
 			<Stack ID="IconsStack" Anchor="C,C" Offset="0,30" StackGrowth="Right" Padding="3">
+				<!-- LEKMOD: the city-state's quests for you, the icons of the City-State screen -->
+				<Label ID="LekmodQuestIcons" Anchor="C,C" Offset="0,0" String="" Font="TwCenMT18" FontStyle="Shadow" Hidden="1"/>
 				<Label ID="RazingIcon" Anchor="C,C" Offset="0,0" String="[ICON_RAZING]" Font="TwCenMT18" FontStyle="Shadow" Hidden="1"/>
 				<Label ID="ResistanceIcon" Anchor="C,C" Offset="0,0" String="[ICON_RESISTANCE]" Font="TwCenMT18" FontStyle="Shadow" Hidden="1"/>
 				<Label ID="ConnectedIcon" Anchor="C,C" Offset="0,0" String="[ICON_CONNECTED]" Font="TwCenMT18" FontStyle="Shadow" Hidden="1"/>

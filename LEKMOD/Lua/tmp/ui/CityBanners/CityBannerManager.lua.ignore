@@ -513,6 +513,7 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 
 				SetUpMinorMeter(iActivePlayer, cityBanner.playerID, controls, textColor );
 				LekmodUpdatePledgeIcons(controls, player, iActivePlayer);
+				LekmodUpdateQuestIcons(controls, player, iActivePlayer);
 				
 				-- minor trait icon
 				controls.StatusIcon:SetTexture( GameInfo.MinorCivTraits[ GameInfo.MinorCivilizations[ player:GetMinorCivType() ].MinorCivTrait ].TraitIcon );
@@ -523,6 +524,9 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 				if (controls.PledgeMineBox ~= nil) then -- LEKMOD: banners are reused; no pledges on major civ cities
 					controls.PledgeMineBox:SetHide( true );
 					controls.PledgeOthersBox:SetHide( true );
+				end
+				if (controls.LekmodQuestIcons ~= nil) then
+					controls.LekmodQuestIcons:SetHide( true );
 				end
 				controls.StatusIcon:SetOffsetX( 0 );
 				controls.StatusIconBG:SetHide( true );
@@ -599,6 +603,26 @@ function LekmodUpdatePledgeIcons( controls, pMinor, iActivePlayer )
 	controls.PledgeOthersIcon:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_BANNER_PLEDGE_OTHERS") .. "[NEWLINE]" .. table.concat(others, "[NEWLINE]"));
 end
 
+-- LEKMOD: the city-state's quests for the active player as icons below the name (tooltip: the quest list)
+function LekmodUpdateQuestIcons( controls, pMinor, iActivePlayer )
+	if (controls.LekmodQuestIcons == nil) then
+		return;
+	end
+	local pActive = Players[iActivePlayer];
+	local sIcons = "";
+	if (pActive ~= nil and Teams[pActive:GetTeam()]:IsHasMet(pMinor:GetTeam())) then
+		sIcons = GetActiveQuestText(iActivePlayer, pMinor:GetID());
+		if (sIcons == Locale.Lookup("TXT_KEY_CITY_STATE_QUEST_NONE")) then
+			sIcons = "";
+		end
+	end
+	controls.LekmodQuestIcons:SetText(sIcons);
+	controls.LekmodQuestIcons:SetHide(sIcons == "");
+	if (sIcons ~= "") then
+		controls.LekmodQuestIcons:SetToolTipString(GetActiveQuestToolTip(iActivePlayer, pMinor:GetID()));
+	end
+end
+
 -- Other players' pledges don't refresh the banners on their own
 function LekmodRefreshMinorBanners()
 	local iActivePlayer = Game.GetActivePlayer();
@@ -609,6 +633,7 @@ function LekmodRefreshMinorBanners()
 				local controls = cityBanner.SubControls;
 				if (controls ~= nil) then
 					LekmodUpdatePledgeIcons(controls, pPlayer, iActivePlayer);
+					LekmodUpdateQuestIcons(controls, pPlayer, iActivePlayer);
 					controls.IconsStack:CalculateSize();
 					controls.IconsStack:ReprocessAnchoring();
 				end
