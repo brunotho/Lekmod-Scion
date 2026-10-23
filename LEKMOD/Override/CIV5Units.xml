@@ -289318,7 +289318,7 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_HANSE"/>
-			<Set LekmodTradeRecipientGoldPerEra="2" LekmodInternalTradePerPartnerMod="50"/>
+			<Set LekmodTradeRecipientGoldPerEra="2" LekmodInternalTradePerPartnerMod="50" CityStateTradeRouteProductionModifier="0"/>
 		</Update>
 	</Buildings>
 	<!-- LEKMOD: England MI6 (2026-10-14): National Intelligence Agency replacement (building 299) -->
@@ -292472,4 +292472,11 @@
 		<Delete CivilizationType="CIVILIZATION_PORTUGAL" UnitClassType="UNITCLASS_CARAVAN"/>
 		<Delete CivilizationType="CIVILIZATION_PORTUGAL" UnitClassType="UNITCLASS_CARGO_SHIP"/>
 	</Civilization_UnitClassOverrides>
+	<!-- LEKMOD (2026-10-23): NEW SPECS AGAIN, third list -->
+	<Improvements>
+		<Update>
+			<Where Type="IMPROVEMENT_GOTH"/>
+			<Set Help="TXT_KEY_IMPROVEMENT_GOTH_HELP"/>
+		</Update>
+	</Improvements>
 </GameData>

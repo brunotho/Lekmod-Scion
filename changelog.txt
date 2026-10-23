@@ -37,7 +37,7 @@ Tags: game mechanics
 LOADING SCREEN: ALL UNIQUE ITEMS
 --------------------------------
 Tags: ui
-- Changed: the loading screen shows all of your civilization's unique items (up to 5, two per row; was 2)
+- Dev: not in the player notes (user, 2026-10-23): the loading screen shows all of your civilization's unique items (up to 5, two per row; was 2)
 - Dev: Lekmod's own LoadScreen.lua/.xml (Lua/tmp/ui/FrontEnd, both UIs via ui_check.bat); UniqueBonuses no longer resumes a finished coroutine (with more slots than items it returned an error text as a name)
 
 MARITIME CITY-STATES (BUILDING_LEKMOD_APPLETREE)
@@ -361,10 +361,10 @@ Tags: game mechanics, movement, naval
 CITY-STATE BONUSES PER ERA (MARITIME / CULTURED / RELIGIOUS)
 ------------------------------------------------------------
 Tags: city-states, religion
-Maritime, Cultured and Religious city-states give bonuses that grow with every era. Allies get twice as much as friends.
-- Changed: Cultured city-states give 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Culture to friends (Ancient to Information era), double for allies
-- Changed: Religious city-states give 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Faith to friends, double for allies
-- Changed: Maritime city-states give allies 2.2 / 2.6 / 3 / 3.4 / 3.8 / 4.2 / 4.6 / 5 Food in the capital and 0.6 / 0.8 / 1 / 1.2 / 1.4 / 1.6 / 1.8 / 2 Food in every other city; friends get half
+The bonuses grow with every era (Ancient to Information era). The numbers are for friends; allies get twice as much.
+- Changed: Cultured city-states: 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Culture
+- Changed: Religious city-states: 2 / 4 / 6 / 8 / 10 / 12 / 14 / 16 Faith
+- Changed: Maritime city-states: 1.1 / 1.3 / 1.5 / 1.7 / 1.9 / 2.1 / 2.3 / 2.5 Food in the capital and 0.3 / 0.4 / 0.5 / 0.6 / 0.7 / 0.8 / 0.9 / 1 Food in every other city
 - Dev: new Eras columns CityStateFriend/AllyCapitalFoodTimes100, ...CityFoodTimes100, ...Culture, ...Faith hold the totals per status; LEKMOD_CITY_STATE_ERA_BONUSES derives the friend part and the ally extra in CvMinorCivAI. The era-change handler now passes the new era to the ally food functions too.
 
 MARITIME CITY-STATE FOOD
@@ -438,7 +438,7 @@ Tags: bugfix, civs, ui
 BASILICA (BUILDING_BASIL)
 -------------------------
 Tags: bugfix, civs, ui
-- Fixed: the tooltip didn't mention +15% Culture (instead of +10%), that no Amphitheater is needed, that it is cheaper, or that it unlocks with Industrialization
+- Fixed: the tooltip now names everything that differs from the Museum: +15% Culture (instead of +10%), cheaper, available with Industrialization
 - Dev: the Museum's Civilopedia strategy text no longer claims an Opera House is required (it needs an Amphitheater); the Basilica has its own strategy text
 
 SEVERAL TRADE OFFERS AT ONCE
@@ -480,7 +480,7 @@ Tags: ui
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air
-An attempted fix, not yet confirmed in multiplayer games. Please report it if a count is still wrong.
+An attempted fix, not yet confirmed in multiplayer games.
 - Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war could be missing from its banner count (or an old count stayed); the count should now be rebuilt when the city comes into view and at the start of every turn
 - Note: standard UI only; EUI draws aircraft differently and is unchanged
 
@@ -658,12 +658,23 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 LUXURY YIELDS
 -------------
 Tags: tiles and resources
-- Changed: Tea: plantation +2 Gold -> +1 Gold (unimproved stays 1 Gold 1 Production); Wine and Coconut: unimproved 2 Gold -> 1 Gold
+- Changed: Perfume: unimproved +1 Gold +1 Culture (was +2 Gold); Plantation +2 Gold +2 Culture (was +2 Culture), so 3 Gold 3 Culture improved
+- Changed: Perfume Plantations take 1 more turn to build
+- Changed: Spices: unimproved +5 Gold (was +2 Gold); a Plantation turns it into a food tile: +3 Food and 4 Gold less (was +1 Food +2 Gold), so 3 Food 1 Gold improved
+- Changed: Gems: unimproved +1 Gold +1 Science (was +3 Gold); Mine +4 Gold (was +1 Gold) plus the usual +1 Production, so 1 Production 5 Gold 1 Science improved
+- Changed: Gem Mines take 2 more turns to build
+- Changed: less Gold from some luxuries:
+  - Tea and Coffee: Plantation +1 Gold (was +2)
+  - Wine and Coconut: 1 Gold unimproved (was 2)
+  - Cotton and Olives: Plantation no longer gives +1 Gold
+  - Lapis, Amber and Jade: Mine no longer gives +1 Gold
+- Changed: Truffles: Camp gives +3 Gold instead of +1 Food
+- Changed: Ivory: Camp gives +4 Gold instead of +1 Gold +1 Food
 - Note: every luxury keeps at least 1 Gold unimproved
-- Changed: Truffles: camp gives +3 Gold instead of +1 Food
-- Changed: Ivory: camp gives +4 Gold instead of +1 Gold +1 Food
-- Changed: Coffee: plantation +2 Gold -> +1 Gold; Cotton and Olives: plantation no longer gives +1 Gold; Lapis, Amber and Jade: mine no longer gives +1 Gold
 - Note: Camps still get +1 Gold at Economics
+- Dev: resource Civilopedia pages show what each improvement adds, extra build time and settle-on effects, instead of history text
+- Note: the spec gave Perfume no unimproved Gold; it keeps 1 by the luxury minimum rule
+- DLL: Resources.ImprovementBuildTimeChange (standard-speed build units, 150 = 1 turn on quick), added in CvPlot::getBuildTime for the improvement that connects the resource (LEKMOD_RESOURCE_CITY_EFFECTS)
 - Dev: 2026-10-18: Sugar back to its v35.4 yields (1 Food 1 Gold unimproved); its change line was removed from these notes (user)
 
 TECH TREE ICONS
@@ -681,7 +692,7 @@ Tags: ui
 BARBARIAN KILL BONUSES
 ----------------------
 Tags: game mechanics, combat
-- Changed: from turn 80, killing barbarians gives no bonus yields any more (Honor culture, gold and science from kills, Iron Fist, Zealot, the Aztec ability and every other kill bonus). Kills of other civilizations' and city-states' units are unaffected
+- Changed: from turn 80, killing barbarians gives no bonus yields any more (Honor, Zealot, the Aztec ability and every other kill bonus). Kills of other civilizations' and city-states' units are unaffected
 - DLL: LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN 80 (CvPlayer::DoYieldsFromKill returns early)
 
 TECH TREE CHANGES
@@ -694,7 +705,7 @@ Tags: game mechanics, units, combat
 - Removed: Fishing Boats no longer get +1 Gold at Compass
 - Changed: embarked units have 2 movement from Sailing on (the +1 moved from Optics to Sailing)
 - Dev: the Optics tooltip claimed it allows embarking (Sailing does)
-- Changed: building a road takes 1 turn once you know Railroad (was 3 turns)
+- Changed: building a road takes 1 turn once you know Railroad (was 2 turns)
 - Changed: Nuclear Fusion needs Mobile Tactics instead of Satellites, so Satellites (Spaceship Cockpit, Hubble) is an optional end of the tree; Nuclear Fusion sits one row higher, level with Advanced Ballistics
 - Added: Future Tech: each one gives +20% combat strength to all units and +20% Food, Production, Gold, Culture and Tourism in all cities (it stacks)
 - Dev: new define FUTURE_TECH_BONUS_PERCENT (20); LEKMOD_FUTURE_TECH_BONUS in CvUnit::GetGenericMaxStrengthModifier(kInfo) and CvCity::getBaseYieldRateModifier; CvPlayer::GetFutureTechBonusModifier counts the team's repeat-tech count
@@ -953,8 +964,8 @@ Tags: promotions, units
 ANCIENT RUINS OVERHAUL (GOODY_*)
 --------------------------------
 Tags: game mechanics, ruins, religion
-Every ruin lets you choose between 2 rewards (3 with Native Tongue / the Shoshone ability), with the exact amounts shown. Rewards scale with the era (ancient = 1, classical = 2, ...) and the turn.
-- Now: popping a ruin offers 2 different random rewards to choose from (3 with Native Tongue); if you don't choose before the turn ends, one of them is picked at random
+Rewards scale with the era (ancient = 1, classical = 2, ...) and the turn.
+- Now: popping a ruin lets you choose between 2 different random rewards, with the exact amounts shown
 - Now: rewards of your previous 3 ruins are not offered again (counted by what they give: a Food ruin also blocks trades that gain Food), and rewards you can't use right now are left out
 - Now: the choices are short texts with the exact numbers: what you gain first, in its yield color, then what you lose, in red (e.g. "Gain 30 Science - Lose 40 Gold")
 - Now: Food: 5 + 2.2 x era x capital population Food in the capital; the unit gets Glutton (-30% combat strength, lost on upgrade)
@@ -1042,26 +1053,14 @@ Tags: tiles and resources, naval
 - Dev: Civilopedia pages for Coast, Lakes and Atolls show the current yields
 - Note: the spec gave Coral no unimproved Gold; it keeps 1 by the luxury minimum rule. Lakes: the lake bonus went 2 -> 1 Food so they stay at 3 (user rule)
 
-RARE LUXURIES: PERFUME, SPICES, GEMS
-------------------------------------
-Tags: tiles and resources
-- Changed: Perfume: unimproved +1 Gold +1 Culture (was +2 Gold); Plantation +2 Gold +2 Culture (was +2 Culture), so 3 Gold 3 Culture improved
-- Changed: Perfume Plantations take 1 more turn to build
-- Changed: Spices: unimproved +5 Gold (was +2 Gold); a Plantation turns it into a food tile: +3 Food and 4 Gold less (was +1 Food +2 Gold), so 3 Food 1 Gold improved
-- Changed: Gems: unimproved +1 Gold +1 Science (was +3 Gold); Mine +4 Gold (was +1 Gold) plus the usual +1 Production, so 1 Production 5 Gold 1 Science improved
-- Changed: Gem Mines take 2 more turns to build
-- Dev: resource Civilopedia pages show what each improvement adds, extra build time and settle-on effects, instead of history text
-- Note: the spec gave Perfume no unimproved Gold; it keeps 1 by the luxury minimum rule
-- DLL: Resources.ImprovementBuildTimeChange (standard-speed build units, 150 = 1 turn on quick), added in CvPlot::getBuildTime for the improvement that connects the resource (LEKMOD_RESOURCE_CITY_EFFECTS)
-
 SETTLE-ON EFFECTS: SALT, STONE, CATTLE, RUBBER, MARBLE
 ------------------------------------------------------
 Tags: tiles and resources
 - Added: Salt: a city founded on Salt starts with +1 Population, if you know Pottery
 - Added: Stone: a city founded on Stone gets free Walls, if you know Masonry
 - Added: Cattle: a city founded on Cattle starts with +4 Food in storage, if you know Animal Husbandry
-- Added: Rubber: a city standing on Rubber gets +40% Production towards Armored units
-- Changed: Marble: a city standing on Marble gets +20% Production towards Ancient and Classical era Wonders instead of Marble's usual +10%
+- Added: Rubber: a city settled on Rubber gets +40% Production towards Armored units
+- Changed: Marble: a city settled on Marble gets +20% Production towards Ancient and Classical era Wonders instead of Marble's usual +10%
 - Changed: Obsidian: +10% Production towards Melee units in a city with improved Obsidian, +20% instead when the city stands on Obsidian (was -10% Melee unit cost)
 - Dev: hovering a resource tile and the resource's Civilopedia page list these effects (also on improved tiles)
 - Dev: the free Walls from Stone were not drawn on the map until a reload (free buildings skip the renderer call); fixed
@@ -1183,7 +1182,7 @@ GREAT GENERAL AND CITADEL (UNIT_GREAT_GENERAL, IMPROVEMENT_CITADEL)
 Tags: units, naval
 - Dev: art, not in the player notes (user, 2026-10-19): the Great General always looks like the early-era General
 - Added: Citadels yield 3 Culture
-- Added: Citadels exert zone of control on enemy ships: a ship moving from one tile next to an enemy Citadel to another loses its remaining movement, as next to an enemy city
+- Added: Citadels exert zone of control on enemy ships
 - DLL: LEKMOD_CITADEL_NAVAL_ZOC (CvUnitMovement::IsSlowedByZOC; any improvement with NearbyEnemyDamage counts, not when pillaged)
 
 GREAT ADMIRAL AND DRYDOCK (UNIT_GREAT_ADMIRAL, IMPROVEMENT_DOCK)
@@ -1216,7 +1215,7 @@ CARAVAN AND CARGO SHIP (UNIT_CARAVAN, UNIT_CARGO_SHIP)
 ------------------------------------------------------
 Tags: diplomacy and trade, units, naval
 Caravans and Cargo Ships are now equal; only where they travel differs.
-- Changed: Cargo Ship costs 50 Production like the Caravan (was 67); Venice's Cargo Ship 33 like its Caravan (was 44)
+- Changed: Cargo Ship costs 50 Production like the Caravan (was 67)
 - Changed: every trade route that starts in a coastal city yields 50% more Gold, Food or Production, whether by Caravan or Cargo Ship (sea routes used to yield 100% more, land routes nothing)
 - Changed: plundering a Cargo Ship gives 100 Gold like a Caravan (was 200)
 - Dev: the trade route tooltip shows this bonus as "Coastal city"
@@ -1411,7 +1410,7 @@ BUILDING COSTS AND MAINTENANCE (BUILDING_COURTHOUSE, BUILDING_BOMB_SHELTER, BUIL
 ---------------------------------------------------------------------------------------------------------------
 Tags: buildings
 Subsection: Buildings
-- Changed: Courthouse (and unique replacements): 2 Gold maintenance (Courthouse was 4)
+- Changed: Courthouse (and unique replacements): 2 Gold maintenance (was 4)
 - Changed: Bomb Shelter: 5 Gold maintenance (was 1)
 - Added: Bomb Shelter: military units (planes too) in the city take only 50 damage from a nuclear attack
 - Changed: Stadium: cost 335 -> 284, 5 Gold maintenance (was 2)
@@ -1455,7 +1454,7 @@ Subsection: Buildings
 HOTEL (BUILDING_HOTEL)
 ----------------------
 Tags: tourism, buildings
-- Added: Hotel and its unique replacements: natural wonders worked by the city give +10 Culture (was +1 on Lake Victoria only)
+- Added: Hotel and its unique replacements: natural wonders worked by the city give +10 Culture
 
 LIGHTHOUSE (BUILDING_LIGHTHOUSE)
 --------------------------------
@@ -1832,13 +1831,13 @@ HOUSES OF WORSHIP (BELIEF_HOUSES_OF_WORSHIP)
 --------------------------------------------
 Tags: religion, buildings
 Subsection: Reformation beliefs
-The three houses got new yields; Culture now depends on how many a city has.
-- Changed: Art Hall, Writing Auditorium and Vocal Chamber cost 120 Faith (100 with Mandate of Heaven; was 100 for all)
-- Changed: the first house in a city gives +4 Culture, the second +2, the third none
-- Changed: Art Hall: +2 Production, -1 Happiness (was +1 Culture, +4 Faith, +3 Tourism)
-- Changed: Writing Auditorium: +2 Science, +1 Happiness, 4 Gold maintenance (was +2 Culture, +1 Science)
-- Changed: Vocal Chamber: +2 Food, -4 Faith (was +3 Culture, +1 Happiness, Great Musician slot)
-- Fixed: buildings with negative Happiness now actually reduce Happiness
+- Now: lets you buy an Art Hall, a Writing Auditorium and a Vocal Chamber with Faith: 120 each (100 with Organized Religion)
+- Now: the first house in a city gives +4 Culture, the second +2, the third none
+- Now: Art Hall: +2 Production, -1 Happiness
+- Now: Writing Auditorium: +2 Science, +1 Happiness, 4 Gold maintenance
+- Now: Vocal Chamber: +2 Food, -4 Faith
+- Removed: the old house yields (Art Hall +1 Culture +4 Faith +3 Tourism; Writing Auditorium +2 Culture +1 Science; Vocal Chamber +3 Culture +1 Happiness and a Great Musician slot)
+- Dev: buildings with negative Happiness didn't reduce Happiness (only reachable with the new Art Hall); fixed
 - DLL: Buildings.WorshipHouse, Culture added in CvCity::processBuilding (LEKMOD_DEFENSE_BUILDINGS group)
 
 UNDERGROUND SECT (BELIEF_UNDERGROUND_SECT)
@@ -1873,7 +1872,7 @@ GREAT WORK BUILDINGS (BUILDING_AMPHITHEATER, BUILDING_OPERA_HOUSE, BUILDING_MUSE
 -------------------------------------------------------------------------------------------------------------
 Tags: tourism, buildings
 The culture buildings no longer need each other, and two of them are the source of great work Tourism.
-- Added: Amphitheater and Opera House (and their unique replacements): Great Works in their city yield +1 Tourism each (+2 with both)
+- Added: Amphitheater and Opera House (and their unique replacements): Great Works in their city yield +1 Tourism each
 - Changed: Museum (and its unique replacements): 1 Great Work slot (was 2); 4 Gold maintenance (was 1)
 - Removed: building requirements of the Amphitheater (Monument), Opera House (Amphitheater), Museum (Amphitheater) and Broadcast Tower (Opera House), including their unique replacements
 - Dev: Cuba's Dance Hall now really gives +4 Culture when its Great Work slot is filled (the bonus was described but never applied)
@@ -1954,7 +1953,6 @@ Tags: tourism, buildings, wonders
 - Changed: 3 Great Work slots, 2 come filled; with all 3 filled, +25% Great People in the city (was always +25%)
 - Removed: its Culture
 - Changed: 4 Gold maintenance (was 0)
-- Changed: Aksum's version gets the same slots, Great People rule and maintenance, and keeps its Culture and Faith
 - DLL: Buildings.GreatWorkFilledGPRateModifier
 
 WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, BUILDING_CHICHEN_ITZA, BUILDING_ALTHING, BUILDING_ARSENAL_OF_VENICE)
@@ -1983,7 +1981,7 @@ Subsection: Wonders and projects
   - 5 Scientist points (was 3)
   - no Science and no free Recycling Center
   - keeps +100% Production toward Spaceship Parts
-  - Spaceship Parts built in any of your cities start with 15 XP (tooltip says both apply in all your cities)
+  - Spaceship Parts built in any of your cities start with 15 XP
 - Removed: Arsenal of Venice (can no longer be built)
 - Note: Althing had no Tourism to remove
 - DLL: Buildings.ClosestCoastalMinorTradeQuest, GoldenAgePopulationChange, Building_FreshWaterImprovementYieldChanges (LEKMOD_GREAT_WORK_WONDER_EFFECTS)
@@ -2146,7 +2144,7 @@ TRADE SCREEN TEXTS (ui)
 -----------------------
 Tags: diplomacy and trade, ui
 - Dev: Gold's hover says only that it cannot be traded
-- Fixed: the trade screen no longer suggests that strategic resources can be traded
+- Dev: the trade screen no longer suggests that strategic resources can be traded
 
 BUILDING AND UNIT ICONS
 -----------------------
@@ -2605,7 +2603,7 @@ Tags: civs, units, promotions
 BUGANDA (CIVILIZATION_BUGANDA)
 ------------------------------
 Tags: civs
-- Removed: Buganda can no longer be picked, by players or the AI
+- Removed: Buganda can no longer be picked
 - Dev: Civilizations.Playable and AIPlayable false (user, 2026-10-19); its data and code stay
 
 WALES (CIVILIZATION_WALES)
@@ -3025,7 +3023,7 @@ Tags: civs
 CANADA (CIVILIZATION_CANADA)
 ----------------------------
 Tags: civs, units
-- Changed: UA: Lake and Snow tiles yield +2 Gold and +1 Culture (was Ice tiles)
+- Changed: UA: Lake and Snow tiles yield +2 Gold and +1 Culture
 - Changed: Combat Engineer works twice as fast as a Worker (was 1.5x)
 - Dev: per-city dummy building BUILDING_LEKMOD_CANADA_TRAIT (ID 281, class 186) for the lake yields; the old text said "Lakes" but the data only covered Ice
 - Dev: Trait_FeatureYieldChanges FEATURE_ICE rows of TRAIT_FURTRADE removed
@@ -3362,7 +3360,7 @@ City-States are back to the four personalities of LEKMOD v34.11: Friendly, Neutr
 MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE (MINOR_CIV_TRAIT_MILITARISTIC)
 -------------------------------------------------------------------------------
 Tags: city-states, units
-- Added: a city founded by a Militaristic City-State can train that City-State's unique unit while you hold it; when you lose the city, the unit and the Production on it are lost (the normal version stays available)
+- Added: while you hold a captured Militaristic City-State, you can train its unique unit; if you lose the City-State, units in production lose their Production (the normal version stays available)
 - DLL: CvPlayer::LekmodHasCapturedMilitaristicUU, checked in CvPlayer::canTrain and (for the city itself) CvCity::canTrain
 
 EXPANDED ZOC (NEW) (PROMOTION_LEKMOD_EXPANDED_ZOC)
@@ -3419,8 +3417,7 @@ Tags: game mechanics, combat, naval
 UA CITY YIELDS ON THE CITY TILE (Buildings.LekmodYieldsOnCityTile)
 ------------------------------------------------------------------
 Tags: civs, ui
-City yields from civilization abilities now show on the city's own tile instead of under "from buildings".
-- Changed: Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile; the amounts are unchanged
+- Dev: not in the player notes (user, 2026-10-23): Chile (coast and mountain Culture), Maurya (connected cities Culture), Khmer (capital Food and Faith), Mughals (border Culture, Faith and Science) and Greece (Shrine next to a mountain Faith) show their yields on the city tile instead of "from buildings"; the amounts are unchanged
 - Note: the Mughals' Golden Age points stay a city yield (tiles can't hold them)
 - DLL: Buildings.LekmodYieldsOnCityTile on the UA dummy buildings; CvCity::GetLekmodConditionalBuildingYield(eYield, bCityTile) split, added in CvPlot::calculateYield; the city tile refreshes every turn, when such a building changes and when a tech is learned
 
@@ -3479,8 +3476,7 @@ Tags: ui
 
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 --------------------------------------------------------------
-Tags: buildings, civs, ui
-Subsection: Buildings
+Tags: ui, buildings, civs
 - Changed: all unique building tooltips say what the building replaces, what it shares with it and what it adds
 - Fixed: several unique building tooltips missed or misstated effects
 - Dev: tools/dev/ubdiff.py (unique vs. base building from the loaded DB) and tools/dev/ub_texts_2026_10_17.py (the texts; rerunnable); Hippodrome and Canton Factory get their own Help tags (they used the Amphitheater's and the Bank's)

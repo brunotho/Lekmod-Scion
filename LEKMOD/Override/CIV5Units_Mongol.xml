@@ -2797,7 +2797,7 @@
 		</Replace>
 		
 		<Replace Tag="TXT_KEY_BUILDING_HORDE_YAM_ROUTE_HELP"> 
-			<Text>Replaces the Caravansary. Only the Golden Horde may build it. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]+3 [ICON_RESEARCH] Science if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]Mounted units and civilians that start their turn in the city get +2 [ICON_MOVES] Movement.</Text>
+			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]+3 [ICON_RESEARCH] Science if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]Mounted units and civilians that start their turn in the city get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 	
 	<!-- Naval Anti-land promo nerf v31 -->
@@ -2880,9 +2880,7 @@
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DREADNOUGHT"> 
-			<Text>
-				Industrial Era ranged naval unit that replaces the Frigate and the Ship of the Line.[NEWLINE]Moves twice as fast along the Coast.
-			</Text>
+			<Text>Industrial Era ranged naval unit, stronger than the Frigate and the Ship of the Line.[NEWLINE]Moves twice as fast along the Coast.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_EXPLORER_STRATEGY"> 
 			<Text>
@@ -6548,7 +6546,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Matato'a</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_RAPA_NUI_MATATOA_HELP">
-			<Text>Unique Archer. Available immediately. Has 1 additional [ICON_MOVES] Movement and Sight. Only Tonga may build it.</Text>
+			<Text>Unique Archer. Available immediately. Has 1 additional [ICON_MOVES] Movement and Sight.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_RAPA_NUI_MATATOA_STRATEGY">
 			<Text>The Matato'a is a Unique Unit of Tonga. It is faster and can see further than the Archer, which it replaces.</Text>
@@ -7476,7 +7474,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Maori Battalion</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_NEW_ZEALAND_MAORI_BATTALION_HELP">
-			<Text>Replaces Infantry. Fights better the further it is from the [ICON_CAPITAL] Capital and fights better while Embarked. Receives +1 [ICON_INFLUENCE] Influence for every turn stationed in city-state territory. Only New Zealand may train it.</Text>
+			<Text>Replaces Infantry. Fights better the further it is from the [ICON_CAPITAL] Capital and fights better while Embarked. Receives +1 [ICON_INFLUENCE] Influence for every turn stationed in city-state territory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_NEW_ZEALAND_MAORI_BATTALION_STRATEGY">
 			<Text>The Maori Battalion is an infantry unit unique to New Zealand. It excells at fighting in foreign wars, and at protecting friendly City-States.</Text>
@@ -7502,8 +7500,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Defender</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
-			<Text>Replaces the Ironclad. May only be trained by New Zealand. 50 Strength (vs. 45). Earns a +15% [ICON_STRENGTH] Combat bonus inside [COLOR_POSITIVE_TEXT] Friendly[ENDCOLOR] territory and ignores [COLOR_POSITIVE_TEXT]Zone of Control[ENDCOLOR] [ICON_MOVES] Movement penalties when within 2 tiles of an owned City or a City from a player whom you have an active [COLOR_POSITIVE_TEXT]Declaration of Friendship[ENDCOLOR] with. In addition to the typical traits, arrives with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR] (gain a +33% [ICON_STRENGTH] Combat bonus defending against Ranged attacks).[NEWLINE][NEWLINE]Does not require [ICON_RES_COAL] Coal.
-		</Text>
+			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_JFD_DEFENDER_STRATEGY">
 			<Text>A powerful, Industrial Era Naval Melee Unit, the Defender is much stronger and resists ranged attacks better and has a combat bonus inside friendly lands. Ignores enemy Zone of Control when it starts its turn within 2 tiles of a friendly city. </Text>
@@ -8296,7 +8293,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Dhow</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_DHOW_HELP">
-			<Text>Fast Medieval exploration Unit. Weaker, but available earlier, cheaper to produce and fights better against other naval units. Only Kilwa may build it.</Text>
+			<Text>Fast Medieval exploration Unit. Weaker, but available earlier, cheaper to produce and fights better against other naval units.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_DHOW_STRATEGY">
 			<Text>The Dhow, the Kilwa replacement for the Caravel, is a significant upgrade to a civilization's exploration capabilities. As a Medieval era unit, it grants an appreciable leg up in naval exploration against all civilizations except Polynesia. It is also cheaper to produce than the standard Caravel.</Text>
@@ -19475,7 +19472,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HANSE_HELP"> 
-			<Text>Replaces the Bank.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold and +25% [ICON_GOLD] Gold.[NEWLINE]1 Merchant specialist slot.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5% [ICON_PRODUCTION] Production for each trade route your civilization has with a City-State.[NEWLINE]Whoever receives a [ICON_INTERNATIONAL_TRADE] Trade Route from this city gets +2 [ICON_GOLD] Gold per era (2 in the Ancient Era).[NEWLINE][ICON_INTERNATIONAL_TRADE] Trade Routes from this city to your own cities yield +50% for each foreign civilization or City-State that receives a Trade Route from one of your cities with a Hanse.</Text>
+			<Text>Replaces the Bank.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold and +25% [ICON_GOLD] Gold.[NEWLINE]1 Merchant specialist slot.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whoever receives a [ICON_INTERNATIONAL_TRADE] Trade Route from this city gets +2 [ICON_GOLD] Gold per era (2 in the Ancient Era).[NEWLINE][ICON_INTERNATIONAL_TRADE] Trade Routes from this city to your own cities yield +50% for each foreign civilization or City-State that receives a Trade Route from one of your cities with a Hanse.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HANSE_STRATEGY"> 
 			<Text>
@@ -19535,7 +19532,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MYSORE_HELP"> 
-			<Text>Replaces the Hermitage. Only the Mysore may build it. Available with Chivalry (instead of Architecture); needs Walls in all cities (instead of Opera Houses).[NEWLINE][NEWLINE]Like the Hermitage:[NEWLINE]+2 [ICON_CULTURE] Culture and +50% [ICON_CULTURE] Culture in this city.[NEWLINE][ICON_GREAT_WORK] 3 slots for Great Works of Art or Artifacts.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_RESEARCH] Science.[NEWLINE]Starts a [ICON_GOLDEN_AGE] Golden Age when built.</Text>
+			<Text>Replaces the Hermitage. Available with Chivalry (instead of Architecture); needs Walls in all cities (instead of Opera Houses).[NEWLINE][NEWLINE]Like the Hermitage:[NEWLINE]+2 [ICON_CULTURE] Culture and +50% [ICON_CULTURE] Culture in this city.[NEWLINE][ICON_GREAT_WORK] 3 slots for Great Works of Art or Artifacts.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_RESEARCH] Science.[NEWLINE]Starts a [ICON_GOLDEN_AGE] Golden Age when built.</Text>
 		</Replace>
 		
 		<Replace Tag="TXT_KEY_BUILDING_HEROIC_EPIC"> 
@@ -20854,7 +20851,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SLAVE_HELP"> 
-			<Text>Replaces the Colosseum. Only Kongo may build it. Needs no [ICON_GOLD] Gold maintenance. Gives no [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PRODUCTION] Production and +4 [ICON_GOLD] Gold, +3 more of each with Industrialization.[NEWLINE]Removes 1 [ICON_CITIZEN] Citizen from the city when built.</Text>
+			<Text>Replaces the Colosseum. Needs no [ICON_GOLD] Gold maintenance. Gives no [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PRODUCTION] Production and +4 [ICON_GOLD] Gold, +3 more of each with Industrialization.[NEWLINE]Removes 1 [ICON_CITIZEN] Citizen from the city when built.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SOLAR_PLANT"> 
 			<Text>
@@ -21046,7 +21043,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STPETERS_HELP"> 
-			<Text>[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Grand Temple. Needs no Temples.[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must be built in a Holy City.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Comes with a free [ICON_BUILDING_CATHEDRAL] Cathedral.[NEWLINE]+2 [ICON_GREAT_ARTIST] Great Artist points.[NEWLINE]+2 Delegates in the [COLOR_POSITIVE_TEXT]World Congress[ENDCOLOR].</Text>
+			<Text>Replaces the Grand Temple. Needs no Temples.[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must be built in a Holy City.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Comes with a free [ICON_BUILDING_CATHEDRAL] Cathedral.[NEWLINE]+2 [ICON_GREAT_ARTIST] Great Artist points.[NEWLINE]+2 Delegates in the [COLOR_POSITIVE_TEXT]World Congress[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SUBTERRANEAN_COLONY"> 
 			<Text>
@@ -44959,7 +44956,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_HELP"> 
-			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).[NEWLINE]Founding a city on it gives a large bonus (see the Moroccan ability).</Text>
+			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_TEXT"> 
 			<Text>
@@ -48391,7 +48388,7 @@ Nebuchadnezzar II died in Babylon in 562 BC. He is remembered as a successful mi
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_POLYNESIAN_MAORI_WARRIOR_HELP"> 
 			<Text>
-				Ancient Era unit that strikes fear into nearby enemies making them less effective in combat. Only Maori may build it. Replaces the Warrior.
+				Ancient Era unit that strikes fear into nearby enemies making them less effective in combat. Replaces the Warrior.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_POLYNESIAN_MAORI_WARRIOR_STRATEGY"> 
@@ -101595,7 +101592,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Given to cities founded by a Vanguard Corps.[NEWLINE][NEWLINE]+4 [ICON_HAPPINESS_1] Happiness.[NEWLINE]Your non-air units on this city's tiles heal 5 more HP per turn.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_CONQUISTADOR_SHARED">
-			<Text>Unique Conquistador of Spain, Portugal, the Netherlands, France and Belgium: available with Civil Service or the Exploration opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE]Needs 2 Horses and 1 Iron.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
+			<Text>Unique Conquistador of Spain, Portugal, the Netherlands, France and Belgium: available with Civil Service or the Exploration opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNITCOMBAT_LEKMOD_SPACESHIP">
 			<Text>Spaceship Parts</Text>
@@ -141360,7 +141357,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ASSYRIAN_SIEGE_TOWER"> 
 			<Text>
-				Powerful melee siege unit which grants a city attack bonus to nearby units when next to an enemy city. May only be built by the Assyrians.
+				Powerful melee siege unit which grants a city attack bonus to nearby units when next to an enemy city.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ATOMIC_BOMB"> 
@@ -141505,7 +141502,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CHUKONU"> 
 			<Text>
-				Medieval ranged infantry Unit. Only the Chinese may build it. Slightly more expensive. This Unit may fire twice in one turn, unlike the Crossbowman which it replaces.
+				Medieval ranged infantry Unit. Slightly more expensive. This Unit may fire twice in one turn, unlike the Crossbowman which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COMPANION_CAVALRY"> 
@@ -141520,7 +141517,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COSSACK"> 
 			<Text>
-				Mounted Unit capable of fighting toe-to-toe with contemporary infantry units. [NEWLINE][NEWLINE]Only the Russians may build it. This Unit has a combat bonus when fighting enemies that have already taken damage.
+				Mounted Unit capable of fighting toe-to-toe with contemporary infantry units. This Unit has a combat bonus when fighting enemies that have already taken damage.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CROSSBOWMAN"> 
@@ -141620,7 +141617,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HOPLITE"> 
 			<Text>
-				Ancient Era Unit which specializes in defeating Mounted Units. Only the Greeks may build it. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Spearman which it replaces.
+				Ancient Era Unit which specializes in defeating Mounted Units. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Spearman which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HORSEMAN"> 
@@ -141654,7 +141651,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDONESIAN_KRIS_SWORDSMAN"> 
-			<Text>Replaces the Swordsman. Needs 2 [ICON_RES_IRON] Iron. Obsolete with Gunpowder.[NEWLINE][NEWLINE]Starts with one random blade promotion: Restlessness, Sneak Attack, Ambition, Invulnerability or Cursed Blade.</Text>
+			<Text>Replaces the Swordsman. Obsolete with Gunpowder.[NEWLINE][NEWLINE]Starts with one random blade promotion: Restlessness, Sneak Attack, Ambition, Invulnerability or Cursed Blade.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INFANTRY"> 
 			<Text>
@@ -141673,7 +141670,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JAGUAR"> 
 			<Text>
-				Fairly weak early-game military Unit. Only the Aztecs may build it. This Unit fights more effectively in Jungle and heals damage when it kills an enemy Unit, unlike the Warrior which it replaces.
+				Fairly weak early-game military Unit. This Unit fights more effectively in Jungle and heals damage when it kills an enemy Unit, unlike the Warrior which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JANISSARY"> 
@@ -141741,7 +141738,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MEHAL_SEFARI"> 
 			<Text>
-				Unique Unit which replaces the Riflemen. Only the Ethiopians may build it. Has a combat bonus when fighting in rough terrain and defending near the Ethiopian capital. 
+				Unique Unit which replaces the Riflemen. Has a combat bonus when fighting in rough terrain and defending near the Ethiopian capital. 
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MINUTEMAN"> 
@@ -141779,7 +141776,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSKETEER"> 
 			<Text>
-				One of the first gunpowder units of the game. Only the French may build it. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Musketman, which it replaces.
+				One of the first gunpowder units of the game. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Musketman, which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSKETMAN"> 
@@ -141814,7 +141811,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PANZER"> 
 			<Text>
-				Unique unit which replaces the Tank. Only the Germans may build it. Has a lot higher [ICON_STRENGTH] Combat strength and +1 [ICON_MOVES] Movement.
+				Unique unit which replaces the Tank. Has a lot higher [ICON_STRENGTH] Combat strength and +1 [ICON_MOVES] Movement.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PARATROOPER"> 
@@ -141838,9 +141835,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PRIVATEER"> 
-			<Text>
-				Naval Unit that specializes in attacking coastal cities.
-			</Text>
+			<Text>Renaissance naval melee unit for raiding: pillages for more [ICON_GOLD] Gold and carries embarked units with it.[NEWLINE]Weak against cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_RIFLED_CANNON"> 
 			<Text>
@@ -141859,7 +141854,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ROMAN_LEGION"> 
 			<Text>
-				Strong, front-line land Unit of the Classical Era. Only the Romans may build it. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Swordsman, which it replaces.
+				Strong, front-line land Unit of the Classical Era. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Swordsman, which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SAMURAI"> 
@@ -141884,7 +141879,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SEA_BEGGAR"> 
 			<Text>
-				Slightly weaker at attacking Cities than the Privateer which it replaces, however, this unit is much stronger against other Naval units. Only the Dutch can build it.
+				Slightly weaker at attacking Cities than the Privateer which it replaces, however, this unit is much stronger against other Naval units.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SETTLER"> 
@@ -141914,7 +141909,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SIPAHI"> 
 			<Text>
-				Mounted Unit specialized in defeating enemy Mounted Units. May only be built by the Ottomans. This Unit is faster, cheaper to train, available earlier, and can see further than the Lancer, which it replaces.
+				Mounted Unit specialized in defeating enemy Mounted Units. This Unit is faster, cheaper to train, available earlier, and can see further than the Lancer, which it replaces.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SPEARMAN"> 
@@ -141987,7 +141982,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ULAN"> 
 			<Text>
-				Unique unit which replaces the Pikeman. Only the Golden Horde may build it. Behaves like a regular mounted unit but has no combat penalty against cities.
+				Unique unit which replaces the Pikeman. Behaves like a regular mounted unit but has no combat penalty against cities.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VANDAL_AXEMAN"> 
@@ -142002,7 +141997,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_GALLEASS"> 
 			<Text>
-				A brutally powerful Medieval Era Naval Unit used to wrest control of the seas with its ranged attack. Better at attacking and defending than the normal Galleass it replaces, but more expensive. May only be built by Venice.
+				A brutally powerful Medieval Era Naval Unit used to wrest control of the seas with its ranged attack. Better at attacking and defending than the normal Galleass it replaces, but more expensive.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_MERCHANT"> 
@@ -142022,7 +142017,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WINGED_HUSSAR"> 
 			<Text>
-				Heavy Mounted Unit specialized in defeating enemy mounted units. This unit is faster and more powerful than the Lancer, which it replaces. Forces defenders to retreat when it inflicts more damage than it receives. May only be built by the Polish.
+				Heavy Mounted Unit specialized in defeating enemy mounted units. This unit is faster and more powerful than the Lancer, which it replaces. Forces defenders to retreat when it inflicts more damage than it receives.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WORKBOAT"> 
@@ -142057,7 +142052,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI"> 
 			<Text>
-				Unique Unit that replaces the Pikemen. Only the Zulu may build it. Performs a first-strike ranged attack before combat and has a bonus against gunpowder units.
+				Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack before combat and has a bonus against gunpowder units.
 			</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_UNIT_HETAIROI"> 
@@ -142611,7 +142606,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NGANGKARI"> 
 			<Text>
-				Unique unit which replaces the Worker. Only Australia may build it. Has +1 [ICON_MOVES] Movement.
+				Unique unit which replaces the Worker. Has +1 [ICON_MOVES] Movement.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NGAO"> 
@@ -142733,9 +142728,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PHALANXX_HELP"> 
-			<Text>
-				The Phalanx has the Spearman's bonus vs Mounted units (+33%; vs Mounted Ranged +66% attacking, +33% defending).[NEWLINE]It gets a 50% bonus to flanking and is cheaper.
-			</Text>
+			<Text>Replaces the Spearman. Cheaper, and starts with Envelopment.[NEWLINE]Same bonus against Mounted units as the Spearman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PIKEMAN"> 
 			<Text>
@@ -142974,7 +142967,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Row Tag="TXT_KEY_UNIT_SKINFANTRY_HELP"> 
 			<Text>
-				Strong, front-line land Unit of the mid-game that specializes in operating in Snow, Tundra and Hills. Arrives Trained with [ICON_PROMOTION_DRILL_1] [COLOR_GREEN]Drill I[ENDCOLOR] and [ICON_PROMOTION_DRILL_2] [COLOR_GREEN]Drill II[ENDCOLOR]. Only Norway may build it. Replaces the [ICON_UNIT_GREAT_WAR_INFANTRY] [COLOR_YELLOW]Great War Infantry[ENDCOLOR].
+				Strong, front-line land Unit of the mid-game that specializes in operating in Snow, Tundra and Hills. Arrives Trained with [ICON_PROMOTION_DRILL_1] [COLOR_GREEN]Drill I[ENDCOLOR] and [ICON_PROMOTION_DRILL_2] [COLOR_GREEN]Drill II[ENDCOLOR]. Replaces the [ICON_UNIT_GREAT_WAR_INFANTRY] [COLOR_YELLOW]Great War Infantry[ENDCOLOR].
 			</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_UNIT_SKY_FORTRESS"> 
@@ -147244,16 +147237,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Horseman. Much stronger, but more expensive.[NEWLINE]Adjacent units receive the Great General combat bonus.[NEWLINE]Does not become obsolete.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HITTITE_WARCHARIOT_HELP">
-			<Text>Replaces the Chariot Archer. Stronger [ICON_RANGE_STRENGTH] Ranged attack, but costs more and needs Iron as well as Horses.</Text>
+			<Text>Replaces the Chariot Archer. Stronger [ICON_RANGE_STRENGTH] Ranged attack, but costs more.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ZIGGURAT_HELP">
 			<Text>Replaces the Temple. Costs no [ICON_GOLD] Gold maintenance.[NEWLINE]+10% [ICON_RESEARCH] Science in the city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PHALANXX_HELP">
-			<Text>Replaces the Spearman. Has the Spearman's bonus against Mounted units (+33%; against Mounted Ranged units +66% when attacking, +33% when defending).[NEWLINE]Starts with Envelopment and is cheaper.</Text>
+			<Text>Replaces the Spearman. Cheaper, and starts with Envelopment.[NEWLINE]Same bonus against Mounted units as the Spearman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_IMMORTAL">
-			<Text>Replaces the Spearman. Stronger, and starts with March (heals every turn, even after acting).[NEWLINE]Needs Iron.</Text>
+			<Text>Replaces the Spearman. Stronger, and starts with March (heals every turn, even after acting).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BURIAL_TOMB_HELP">
 			<Text>Replaces the Temple. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness.</Text>
@@ -147323,7 +147316,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the University.[NEWLINE][NEWLINE]Like the University:[NEWLINE]+33% [ICON_RESEARCH] Science.[NEWLINE]2 Scientist specialist slots.[NEWLINE]Jungle tiles worked by this city yield +2 [ICON_RESEARCH] Science.[NEWLINE]Allows Archaeologists to be built in this city.[NEWLINE]City must have a Library.[NEWLINE][NEWLINE]In addition:[NEWLINE]Flood Plains worked by this city yield +1 [ICON_RESEARCH] Science, Oasis tiles +2 [ICON_RESEARCH] Science.[NEWLINE]Gives 30 [ICON_PEACE] Faith once when it is built.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MAMLUK">
-			<Text>Replaces the Knight. Stronger, but costs more and needs 6 [ICON_RES_HORSE] Horses and 4 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Envelopment and Charge.</Text>
+			<Text>Replaces the Knight. Stronger, but costs more.[NEWLINE]Starts with Envelopment and Charge.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_BABYLON_BOWMAN_HELP">
 			<Text>Replaces the Archer. Higher [ICON_RANGE_STRENGTH] Ranged Strength and [ICON_STRENGTH] Combat Strength.</Text>
@@ -147377,13 +147370,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_HAPPINESS_1] Happiness, [ICON_FOOD] Food, [ICON_CULTURE] Culture, and [ICON_PEACE] Faith from friendly and allied [ICON_CITY_STATE] City-States increased by 50%.[NEWLINE]Units gifted by [ICON_CITY_STATE] City-States arrive 50% faster.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SIAMESE_WARELEPHANT">
-			<Text>Replaces the Knight. Slower, but much stronger, with a bonus against other Mounted units.[NEWLINE]Starts with Feared Elephant.[NEWLINE]Costs more and needs 3 [ICON_RES_IRON] Iron.</Text>
+			<Text>Replaces the Knight. Slower, but much stronger, with a bonus against other Mounted units.[NEWLINE]Starts with Feared Elephant.[NEWLINE]Costs more.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TERROR">
 			<Text>Upon discovering [ICON_TECH_CHIVALRY] Chivalry, in each owned City, a [ICON_RES_HORSE] Horse tile is revealed nearby and all [ICON_RES_HORSE] Horse tiles yield +1 [ICON_FOOD] Food.[NEWLINE]The revealed Horse sources are small (2 Horses).[NEWLINE]Start the game with [ICON_TECH_ANIMAL_HUSBANDRY] Animal Husbandry.[NEWLINE][NEWLINE]Cannot pledge to protect [ICON_CITY_STATE] City-States.[NEWLINE]+30% [ICON_STRENGTH] Combat Strength when fighting a [ICON_CITY_STATE] City-State.[NEWLINE][NEWLINE]All mounted and armor units receive +1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_MONGOLIA_KESHIK_HELP">
-			<Text>Replaces the Knight. A fast mounted unit with a strong [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Its battles give double the points towards Great Generals.</Text>
+			<Text>Replaces the Knight. A fast mounted unit with a strong [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Starts with Great Generals I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_MONGOLIA_KESHIK_STRATEGY">
 			<Text>The Keshik is a unique replacement for the Knight, available to the Mongols starting in the Medieval Era. Keshiks have a strong ranged attack and, with the Mongol bonus, 5 movement points, which makes them excellent at hit and run attacks. They also earn Great General points twice as fast.</Text>
@@ -147432,25 +147425,25 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Shrine. Costs more.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith (instead of +1).[NEWLINE]Units trained in this city start with +5 XP.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_TURTLESHIP_HELP">
-			<Text>Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more and needs 1 [ICON_RES_IRON] Iron.</Text>
+			<Text>Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NGAO">
-			<Text>Replaces the Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle.[NEWLINE]Starts with Cover I, Amphibious I, Woodsman and Native Tongue.</Text>
+			<Text>Replaces the Swordsman. Stronger.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle.[NEWLINE]Starts with Cover I, Amphibious I, Woodsman and Native Tongue.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SLAVE_HELP">
-			<Text>Replaces the Colosseum. Only Kongo may build it. Needs no [ICON_GOLD] Gold maintenance. Gives no [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PRODUCTION] Production and +4 [ICON_GOLD] Gold, +3 more of each with Industrialization.[NEWLINE]Removes 1 [ICON_CITIZEN] Citizen from the city when built.</Text>
+			<Text>Replaces the Colosseum. Needs no [ICON_GOLD] Gold maintenance. Gives no [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PRODUCTION] Production and +4 [ICON_GOLD] Gold, +3 more of each with Industrialization.[NEWLINE]Removes 1 [ICON_CITIZEN] Citizen from the city when built.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CELT_PICTISH_WARRIOR">
-			<Text>Replaces the Warrior, also as a starting unit. Stronger.[NEWLINE]Starts with Zealot and Woodsman.[NEWLINE]Upgrades to the Swordsman.</Text>
+			<Text>Replaces the Warrior, also as a starting unit. Stronger.[NEWLINE]Starts with Zealot and Woodsman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_CRUSADER_HELP">
-			<Text>Replaces the Longswordsman. Stronger, but needs 3 [ICON_RES_IRON] Iron.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength outside friendly territory.[NEWLINE]Kills yield [ICON_PEACE] Faith equal to 200% of the opponent's [ICON_STRENGTH] Combat Strength.</Text>
+			<Text>Replaces the Longswordsman. Stronger.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength outside friendly territory.[NEWLINE]Kills yield [ICON_PEACE] Faith equal to 200% of the opponent's [ICON_STRENGTH] Combat Strength.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OUTREMER_HELP">
 			<Text>Replaces the Courthouse.[NEWLINE][NEWLINE]Like the Courthouse:[NEWLINE]No extra [ICON_HAPPINESS_4] Unhappiness from an [ICON_OCCUPIED] Occupied City.[NEWLINE][NEWLINE]In addition:[NEWLINE]When built: spreads your [ICON_CAPITAL] Capital's [ICON_RELIGION] Religion here, and units in or next to the city get +2 [ICON_MOVES] Movement for one turn.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_DENMARK_BERSERKER_HELP">
-			<Text>Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.[NEWLINE]Needs 3 [ICON_RES_IRON] Iron.</Text>
+			<Text>Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DANISH_LONGSHIP">
 			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Swift Transport and Coastal Raider I.</Text>
@@ -147468,7 +147461,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Great Generals give +30% [ICON_STRENGTH] Combat Strength (instead of +15%).[NEWLINE][NEWLINE][ICON_BUILDING_BARRACKS] Barracks, [ICON_BUILDING_ARMORY] Armories and [ICON_BUILDING_MILITARY_ACADEMY] Military Academies provide +1 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]Units trained in a city get +5 XP each for a [ICON_BUILDING_MONUMENT] Monument, an [ICON_BUILDING_AMPHITHEATER] Amphitheater and an [ICON_BUILDING_OPERA_HOUSE] Opera House there.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SARISSO">
-			<Text>Replaces the Pikeman.[NEWLINE]Starts with Envelopment and Mobility.[NEWLINE]Needs 2 [ICON_RES_IRON] Iron.</Text>
+			<Text>Replaces the Pikeman.[NEWLINE]Starts with Envelopment and Mobility.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_MERCHANT">
 			<Text>This Venetian unique Great Person replaces the [ICON_GREAT_MERCHANT] Great Merchant. +2 [ICON_MOVES] Movement.[NEWLINE][ICON_MISSION_TRADE] Trade Missions conducted by Venetian Merchants provide 20% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence.[NEWLINE][NEWLINE]Can Purchase [ICON_CITY_STATE] City States that have not been allied to any other Major Civilization for [COLOR_WARNING_TEXT]5[ENDCOLOR] turns.</Text>
@@ -147501,7 +147494,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Receive double [ICON_GOLD] Gold from Barbarian encampments and pillaging Cities.[NEWLINE][NEWLINE]Land units ignore terrain costs when traveling along or across rivers.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSLIM_CAVALRY">
-			<Text>Replaces the Knight. Needs 3 [ICON_RES_HORSE] Horses and 1 [ICON_RES_IRON] Iron.[NEWLINE]Pillages without spending movement.[NEWLINE]+2 [ICON_MOVES] Movement after killing a unit.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when more than 3 tiles away from your nearest city.</Text>
+			<Text>Replaces the Knight.[NEWLINE]Pillages without spending movement.[NEWLINE]+2 [ICON_MOVES] Movement after killing a unit.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when more than 3 tiles away from your nearest city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_YUGO_M84_HELP">
 			<Text>Unique Unit for Yugoslavia. Replaces the Tank and is cheaper (costs as much as a Landship).</Text>
@@ -147513,16 +147506,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Non-Air Units Fight at Full Strength even when Damaged.[NEWLINE][NEWLINE]+1 [ICON_CULTURE] Culture from each [ICON_BUILD_FISHING_BOATS] Fishing Boat.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SAMURAI">
-			<Text>Replaces the Longswordsman. Available at Civil Service. Weaker and cheaper, needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Great Generals II, Iaijutsu (attacks again after hitting a unit at full health) and Hatamoto (+1 [ICON_MOVES] Movement next to a Great General).[NEWLINE]Upgrades to the Musketman.</Text>
+			<Text>Replaces the Longswordsman. Available at Civil Service. Weaker and cheaper.[NEWLINE]Starts with Great Generals II, Iaijutsu (attacks again after hitting a unit at full health) and Hatamoto (+1 [ICON_MOVES] Movement next to a Great General).[NEWLINE]Upgrades to the Musketman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_HORDE">
 			<Text>Units are 33% more effective at intimidating [ICON_CITY_STATE] City-States, and demanding tribute does not break your own pledge of protection.[NEWLINE][NEWLINE][ICON_PUPPET] Puppeted Cities yield 33% more [ICON_GOLD] Gold and [ICON_PRODUCTION] Production and 33% less [ICON_HAPPINESS_4] Unhappiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
-			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]Heals 25 HP upon killing an enemy unit.[NEWLINE]Starts with Cover I.</Text>
+			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Heals 25 HP upon killing an enemy unit.[NEWLINE]Starts with Cover I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BERBER_CAVALRY">
-			<Text>Replaces the Cavalry. Needs 3 [ICON_RES_HORSE] Horses.[NEWLINE]Starts with Shock I, Drill I and Mobility.</Text>
+			<Text>Replaces the Cavalry.[NEWLINE]Starts with Shock I, Drill I and Mobility.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GOOD_FIGHT">
 			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE]Your first 2 Expands Receive +1 [ICON_CITIZEN] Population.[NEWLINE]Land units start with Amphibious I.</Text>
@@ -147553,7 +147546,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Barlas Cavalry</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BARLAS_CAVALRY">
-			<Text>Replaces the Knight. Stronger, but costs more and needs 3 [ICON_RES_HORSE] Horses and 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Blitz (attacks more than once per turn).</Text>
+			<Text>Replaces the Knight. Stronger, but costs more.[NEWLINE]Starts with Blitz (attacks more than once per turn).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_HELP">
 			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.</Text>
@@ -147562,13 +147555,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
-			<Text>Replaces the Ironclad. May only be trained by New Zealand. 50 Strength (vs. 45).[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].[NEWLINE]Needs 1 [ICON_RES_COAL] Coal.</Text>
+			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_DEFENDER_HELP">
 			<Text>+15% Combat bonus inside friendly territory.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_NEW_ZEALAND_MAORI_BATTALION_HELP">
-			<Text>Replaces Infantry. Only New Zealand may train it.[NEWLINE]Starts with Haka War Dance (adjacent enemies -10% [ICON_STRENGTH] Combat Strength), Amphibious I, Charge and Mobility.</Text>
+			<Text>Replaces Infantry.[NEWLINE]Starts with Haka War Dance (adjacent enemies -10% [ICON_STRENGTH] Combat Strength), Amphibious I, Charge and Mobility.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BRUNEI_REFINERY_HELP">
 			<Text>Unique Building for Brunei. Replaces the [ICON_BUILDING_REFINERY] Oil Refinery and has no limit per empire.[NEWLINE]Provides 6 [ICON_RES_OIL] Oil, +3 [ICON_PRODUCTION] Production and +3 [ICON_GOLD] Gold, and +3 [ICON_PRODUCTION] Production and +3 [ICON_GOLD] Gold from [ICON_RES_OIL] Oil.[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness.</Text>
@@ -147598,10 +147591,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Founded cities start with 4 additional tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SHOSHONE_PATHFINDER">
-			<Text>Replaces the Warrior, also as a starting unit. Stronger.[NEWLINE]Ignores terrain movement costs and chooses its reward from ancient ruins (Native Tongue). Keeps both on upgrade.[NEWLINE]Upgrades to the Swordsman (Composite Bowman from ruins).</Text>
+			<Text>Replaces the Warrior, also as a starting unit. Stronger.[NEWLINE]Ignores terrain movement costs.[NEWLINE]Ancient Ruins offer it 3 rewards to choose from instead of 2 (Native Tongue).[NEWLINE]Keeps both on upgrade.[NEWLINE]Upgrades to the Swordsman (Composite Bowman from ruins).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SHOSHONE_COMANCHE_RIDERS">
-			<Text>Replaces the Cavalry. Needs 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]Open terrain costs 33% less movement.[NEWLINE]Heals every turn in friendly territory, even after acting.[NEWLINE]Both are lost on upgrade.</Text>
+			<Text>Replaces the Cavalry.[NEWLINE][NEWLINE]Open terrain costs 33% less movement.[NEWLINE]Heals every turn in friendly territory, even after acting.[NEWLINE]Both are lost on upgrade.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_HARTE_HELP">
 			<Text>Heals every turn, even after acting.[NEWLINE]+5 HP healing per turn.</Text>
@@ -147677,7 +147670,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>African Elephant</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARTHAGINIAN_FOREST_ELEPHANT">
-			<Text>Replaces the Horseman. Stronger but slower, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker), deals more damage when attacking downhill and earns Great General points faster.[NEWLINE]Upgrades to the Punic War Elephant, keeping these.</Text>
+			<Text>Replaces the Horseman. Stronger but slower.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker), deals more damage when attacking downhill and earns Great General points faster.[NEWLINE]Upgrades to the Punic War Elephant, keeping these.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_CARTHAGINIAN_FOREST_ELEPHANT_STRATEGY">
 			<Text>The African Elephant is a Carthaginian unique unit, replacing the Horseman. It is slower but more powerful than the Horseman, can move after attacking, and weakens adjacent enemies. Success in combat with an Elephant earns Great Generals faster. It later upgrades to the Punic War Elephant.</Text>
@@ -147686,13 +147679,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Gajasena</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDIAN_WAR_ELEPHANT">
-			<Text>Replaces the Chariot Archer. Stronger [ICON_STRENGTH] Combat and [ICON_RANGE_STRENGTH] Ranged Strength, and needs 3 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Gajarohi.</Text>
+			<Text>Replaces the Chariot Archer. Stronger [ICON_STRENGTH] Combat and [ICON_RANGE_STRENGTH] Ranged Strength.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_INDIAN_WARELEPHANT_STRATEGY">
 			<Text>The Gajasena is the Indian unique unit, replacing the Chariot Archer. It is more powerful than the Chariot Archer and weakens adjacent enemies. As a mounted unit it is vulnerable to Spearmen. It later upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI">
-			<Text>Unique Unit that replaces the Pikemen. Only the Zulu may build it. Performs a first-strike ranged attack (60% of its [ICON_STRENGTH] Strength) before combat.</Text>
+			<Text>Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack (60% of its [ICON_STRENGTH] Strength) before combat.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COTHON_HELP">
 			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 33% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
@@ -147738,7 +147731,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_FOOD] Food if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]+4 [ICON_CULTURE] Culture while a Caravan's route ends here.[NEWLINE]+4 [ICON_GOLD] Gold while a Cargo Ship's route ends here.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HORDE_YAM_ROUTE_HELP">
-			<Text>Replaces the Caravansary. Only the Golden Horde may build it. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]+3 [ICON_RESEARCH] Science if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]Mounted units and civilians that start their turn in the city get +2 [ICON_MOVES] Movement.</Text>
+			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]+3 [ICON_RESEARCH] Science if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]Mounted units and civilians that start their turn in the city get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_UC_HALKEVLERI_HELP">
 			<Text>Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and gives no [ICON_RESEARCH] Science of its own.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.</Text>
@@ -147829,7 +147822,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Archer. Available at Agriculture and 15% cheaper.[NEWLINE]Range 1 and slightly weaker.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
-			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Cover I.</Text>
+			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Starts with Cover I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MAYAN_ATLATLIST">
 			<Text>Replaces the Composite Bowman.[NEWLINE]+30% [ICON_RANGE_STRENGTH] Ranged Combat Strength when attacking an adjacent target (Point Blank, lost on upgrade).[NEWLINE]Starts with Woodsman.</Text>
@@ -147860,7 +147853,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The first tile purchase of each city is free.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Gunpowder[ENDCOLOR] units that start their turn on a Harjis get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
-			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger, but needs 4 [ICON_RES_IRON] Iron.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit (lost on upgrade).</Text>
+			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit (lost on upgrade).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FINNISH_SAUNA_HELP">
 			<Text>Replaces the Shrine. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
@@ -148014,14 +148007,14 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Library.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Your first Royal Library comes with a free Great Work of Writing in its slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HANSE_HELP">
-			<Text>Replaces the Bank.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold and +25% [ICON_GOLD] Gold.[NEWLINE]1 Merchant specialist slot.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5% [ICON_PRODUCTION] Production for each trade route your civilization has with a City-State.[NEWLINE]Whoever receives a [ICON_INTERNATIONAL_TRADE] Trade Route from this city gets +2 [ICON_GOLD] Gold per era (2 in the Ancient Era).[NEWLINE][ICON_INTERNATIONAL_TRADE] Trade Routes from this city to your own cities yield +50% for each foreign civilization or City-State that receives a Trade Route from one of your cities with a Hanse.</Text>
+			<Text>Replaces the Bank.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold and +25% [ICON_GOLD] Gold.[NEWLINE]1 Merchant specialist slot.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]Whoever receives a [ICON_INTERNATIONAL_TRADE] Trade Route from this city gets +2 [ICON_GOLD] Gold per era (2 in the Ancient Era).[NEWLINE][ICON_INTERNATIONAL_TRADE] Trade Routes from this city to your own cities yield +50% for each foreign civilization or City-State that receives a Trade Route from one of your cities with a Hanse.</Text>
 		</Replace>
 		<!-- LEKMOD: England MI6 (2026-10-14) -->
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MI6">
 			<Text>MI6</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MI6_HELP">
-			<Text>[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the National Intelligence Agency.[NEWLINE][NEWLINE]Like the National Intelligence Agency:[NEWLINE]Provides 1 more spy and levels up all your existing spies.[NEWLINE]Enemy spies are 15% less effective.[NEWLINE]Must have a Constabulary in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]A dead [ICON_SPY] Spy is replaced 1 turn sooner.[NEWLINE][ICON_RESEARCH] Science stolen by your spies also gives the same amount of [ICON_GOLD] Gold.[NEWLINE]The first successful coup in each [ICON_CITY_STATE] City-State gives 150 [ICON_GOLD] Gold per era (150 in the Ancient Era, 300 in the Classical Era, ...).</Text>
+			<Text>Replaces the National Intelligence Agency.[NEWLINE][NEWLINE]Like the National Intelligence Agency:[NEWLINE]Provides 1 more spy and levels up all your existing spies.[NEWLINE]Enemy spies are 15% less effective.[NEWLINE]Must have a Constabulary in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]A dead [ICON_SPY] Spy is replaced 1 turn sooner.[NEWLINE][ICON_RESEARCH] Science stolen by your spies also gives the same amount of [ICON_GOLD] Gold.[NEWLINE]The first successful coup in each [ICON_CITY_STATE] City-State gives 150 [ICON_GOLD] Gold per era (150 in the Ancient Era, 300 in the Classical Era, ...).</Text>
 		</Row>
 		<!-- Phase 6 C++ batch J -->
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_PLAINS_RIDER">
@@ -148076,7 +148069,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Desert Falcon</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_HELP">
-			<Text>Replaces the Jet Fighter. Needs only 1 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
+			<Text>Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_PEDIA">
 			<Text>The U.A.E.'s unique Jet Fighter: longer range, stronger against wounded units and harder to intercept.</Text>
@@ -148241,14 +148234,14 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: Hakkapeliitta (2026-10-15) -->
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWEDISH_HAKKAPELIITTA">
-			<Text>Replaces the Lancer for Sweden and Finland: same cost, [ICON_STRENGTH] Strength and [ICON_MOVES] Movement, needs 2 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]Starts with Envelopment and Great Generals II.</Text>
+			<Text>Replaces the Lancer for Sweden and Finland: same cost, [ICON_STRENGTH] Strength and [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Starts with Envelopment and Great Generals II.</Text>
 		</Replace>
 		<!-- POST: Expanded ZOC (2026-10-15) -->
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC">
 			<Text>Expanded ZOC</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC_HELP">
-			<Text>Enemy units next to this unit lose all their remaining [ICON_MOVES] Movement when they move.[NEWLINE]Attacking is not a move.[NEWLINE][NEWLINE]Requires the second level of a promotion line (e.g. Drill II or Boarding Party II).</Text>
+			<Text>Enemy units next to this unit lose all their remaining [ICON_MOVES] Movement when they move.[NEWLINE]Attacking is not a move.</Text>
 		</Row>
 		<!-- POST: Altitude Training for civilians (2026-10-15) -->
 		<Replace Tag="TXT_KEY_PROMOTION_ALTITUDE_TRAINING_HELP">
@@ -148288,7 +148281,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture from every Great Work and every Great Person tile improvement.[NEWLINE][NEWLINE]All military units have the Zealot promotion ([ICON_PEACE] Faith from kills).[NEWLINE][NEWLINE]Owned [ICON_OCCUPIED] Occupied Cities that follow your [ICON_RELIGION] Religion instantly receive a Courthouse.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STPETERS_HELP">
-			<Text>[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Replaces the Grand Temple. Needs no Temples.[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must be built in a Holy City.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Comes with a free [ICON_BUILDING_CATHEDRAL] Cathedral.[NEWLINE]+2 [ICON_GREAT_ARTIST] Great Artist points.[NEWLINE]+2 Delegates in the [COLOR_POSITIVE_TEXT]World Congress[ENDCOLOR].</Text>
+			<Text>Replaces the Grand Temple. Needs no Temples.[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must be built in a Holy City.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Comes with a free [ICON_BUILDING_CATHEDRAL] Cathedral.[NEWLINE]+2 [ICON_GREAT_ARTIST] Great Artist points.[NEWLINE]+2 Delegates in the [COLOR_POSITIVE_TEXT]World Congress[ENDCOLOR].</Text>
 		</Replace>
 		<!-- POST: City-State personalities back to v34.11 (2026-10-15) -->
 		<Replace Tag="TXT_KEY_CITY_STATE_PERSONALITY_FRIENDLY_TT">
@@ -148456,6 +148449,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_BULLET]All players should be respectful and display good sportsmanship; abusive players will be kicked. Do not abuse game mechanics intentionally.[NEWLINE][ICON_BULLET]During Reload, moving before a hotjoin is not allowed.[NEWLINE][ICON_BULLET]Suiciding on purpose can be considered worse than quitting. All players should look long term and play to win and not just ruin it for others.[NEWLINE][ICON_BULLET]Should a player in your game stream DO NOT watch his/her stream! It will result in a warning/ban.[NEWLINE][ICON_BULLET]Collusion or predetermined team play is not allowed. Playing not to win or helping another player to win is not allowed.[NEWLINE][ICON_BULLET]Selling and rebuilding low-hammer buildings (e.g. shrine) to generate production overflow is not allowed.[NEWLINE][ICON_BULLET]Gifting any type of Great Person is not allowed under any circumstances.[NEWLINE][ICON_BULLET]Building Oxford University more than once is not allowed.[NEWLINE][ICON_BULLET]Saving policies, spy steals or free technologies by not ending your turn for more than 1 turn is not allowed.[NEWLINE][ICON_BULLET]Allowing another player to liberate a City State you have captured in order to manipulate world leader vote requirements is not allowed. Capturing or marrying a City State you are allied to on the turn of the world leader vote to lower the vote requirement is not allowed.[NEWLINE][ICON_BULLET]Using interface mods giving access to information that's not available in the base game is not allowed. This includes the standard version of EUI mod, if you want to use EUI mod please refer to the discussion board post on how to make it compliant with this rule.[NEWLINE][ICON_BULLET]Avoid changing your nickname constantly, this is a small community and people gain reputations and shouldn't need to check your previous aliases to avoid you if you are a toxic/connection issues type player. Constant changing may result in a kick if you are attempting to fool players on your identity.[NEWLINE][NEWLINE]If a clear violation of a rule has occurred a reload should take place, however if all players agree you may continue.[NEWLINE][NEWLINE]Banned/kicked players cannot use group resources (e.g. group chat), including using other people to form lobbies - if people wish to assist banned players in "proxy" playing in the group further punishment may be applied or punishment towards the player assisting. To prevent ban evasion, banned/kicked players can be banned from group chat until they have been reinvited.[NEWLINE][NEWLINE]Chat is exclusive for members only, the only exceptions to this are if you are awaiting membership to join the group as a new member or you are a banned player seeking support from the Moderation team about your situation[NEWLINE][NEWLINE]By using the No Quitters resources (ie. Steam Chat, Voice Communication Server) you agree to all of the rules above.</Text>
 		</Row>
 		<!-- LEKMOD NQ RULES END -->
+		<!-- LEKMOD (2026-10-23): NEW SPECS AGAIN, third list -->
+		<Row Tag="TXT_KEY_IMPROVEMENT_GOTH_HELP">
+			<Text>+1 [ICON_PRODUCTION] Production; +1 more each with Iron Working, Gunpowder and Dynamite.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to another Harjis.</Text>
+		</Row>
 	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
