@@ -101,8 +101,8 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
 - The base tab textures (`CivilopediaTopButtons*.dds` in `Expansion2UITextures.fpk`) are stored compressed in a Firaxis
   format that couldn't be decoded, so the tool rebuilds a tab from the screenshot: the normal frame is the Home tab with its
   disc replaced by the darkest pixel of six tabs (drops their icons) and smoothed in the middle; the selected frame is the
-  raised Promotions tab with its icon filled in from the blue disc around it. The glyph goes on the disc as is (whitened a
-  little on the blue one, like the base icons). The preview shows the tab in the screenshot's row.
+  raised Promotions tab with its icon filled in from the blue disc around it. The glyph is tinted 80% towards the base icons' colour
+  (warm cream, measured from their bright pixels in the screenshot; lighter on the selected tab), keeping its shading. The preview shows the tab in the screenshot's row.
 - The first version (2026-10-22) drew a square navy tab; it looked out of place next to the round base tabs.
 
 ## Espionage screen icons

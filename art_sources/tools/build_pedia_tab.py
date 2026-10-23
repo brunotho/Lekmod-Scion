@@ -27,7 +27,11 @@ NORMAL_DISC = (24.0, 28.0, 16.5)           # centre x, y and radius of the glass
 SELECTED_DISC = (24.4, 21.7, 16.5)         # the same for the raised (selected) frame
 GLYPH_BOX = (29, 18)                       # the glyph fits into this, centred on the disc
 PANEL = (42, 39, 29, 255)                  # the panel colour behind the tabs (preview only)
-GLYPH_WHITEN = 0.35                        # selected tab: base icons are near-white on the blue disc
+# the base icons' colour (mean of their bright pixels in REF): warm cream, lighter on the selected tab;
+# GLYPH_TINT moves the glyph that far towards it (0 = the art's own colours, 1 = the same mean colour)
+ICON_COLOUR_NORMAL = (225, 227, 199)
+ICON_COLOUR_SELECTED = (242, 244, 233)
+GLYPH_TINT = 0.8
 
 
 def frame(ref, slot):
@@ -127,13 +131,25 @@ def fit(img, box):
     return img.resize((max(1, round(img.size[0] * k)), max(1, round(img.size[1] * k))), Image.LANCZOS)
 
 
-def put_glyph(img, g, disc, whiten=0.0):
-    gs = fit(g, GLYPH_BOX)
-    if whiten:
-        white = Image.new("RGBA", gs.size, (255, 255, 250, 255))
-        a = gs.getchannel("A")
-        gs = Image.blend(gs, white, whiten)
-        gs.putalpha(a)
+def tint(g, target, strength):
+    """Scale each colour channel so the glyph's bright pixels move towards the target colour; shading is kept."""
+    px = g.load()
+    v = [px[x, y][:3] for y in range(g.height) for x in range(g.width) if px[x, y][3] > 200 and lum(px[x, y]) > 170]
+    if not v or not strength:
+        return g
+    mean = [sum(c[i] for c in v) / float(len(v)) for i in range(3)]
+    f = [(target[i] / mean[i]) ** strength for i in range(3)]
+    out = g.copy()
+    opx = out.load()
+    for y in range(g.height):
+        for x in range(g.width):
+            r, gg, b, a = px[x, y]
+            opx[x, y] = (min(255, round(r * f[0])), min(255, round(gg * f[1])), min(255, round(b * f[2])), a)
+    return out
+
+
+def put_glyph(img, g, disc, target):
+    gs = tint(fit(g, GLYPH_BOX), target, GLYPH_TINT)
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     layer.paste(gs, (round(disc[0] - gs.size[0] / 2.0), round(disc[1] - gs.size[1] / 2.0)), gs)
     return Image.alpha_composite(img, layer)
@@ -148,9 +164,9 @@ def tab_sheet(g):
         for x in range(W):
             if in_disc(x, y, NORMAL_DISC):
                 npx[x, y] = dpx[x, y]
-    normal = put_glyph(cut_background(normal), g, NORMAL_DISC)
+    normal = put_glyph(cut_background(normal), g, NORMAL_DISC, ICON_COLOUR_NORMAL)
     selected = fill_icon(frame(ref, SELECTED_SLOT), SELECTED_DISC)
-    selected = put_glyph(cut_background(selected), g, SELECTED_DISC, GLYPH_WHITEN)
+    selected = put_glyph(cut_background(selected), g, SELECTED_DISC, ICON_COLOUR_SELECTED)
     disabled = ImageEnhance.Brightness(ImageEnhance.Color(normal).enhance(0.2)).enhance(0.6)
     sheet = Image.new("RGBA", (64, 256), (0, 0, 0, 0))
     for i, f in enumerate((normal, selected, selected, disabled)):
