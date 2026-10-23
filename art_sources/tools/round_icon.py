@@ -47,10 +47,8 @@ BREAKOUT = {'self_propelled_artillery': [(830, 415), (900, 375), (965, 350), (98
                                          (1042, 400), (1040, 430), (1025, 448), (1000, 455), (930, 495), (890, 540),
                                          (830, 550)]}
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
-WHITE_BACKGROUND = {'ministry_of_truth': (22, 22, 24),
-                    # round pictures on white (2026-10-22)
-                    'appletree': (22, 22, 24), 'war_college': (22, 22, 24), 'self_propelled_artillery': (22, 22, 24),
-                    'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
+WHITE_BACKGROUND = {# round pictures on white (2026-10-22; appletree, war_college, ministry_of_truth came on black on 2026-10-23)
+                    'self_propelled_artillery': (22, 22, 24), 'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
 def icon(src, size, layout, breakout=None):

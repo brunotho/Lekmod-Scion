@@ -2153,6 +2153,7 @@ BUILDING AND UNIT ICONS
 Tags: ui
 - Dev: the icons of the new buildings and wonders and the Vanguard Corps portrait fill their round frame like the original icons (before, a dark rim looked like a gap inside the ring)
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
+- Dev: 2026-10-23: new pictures for the Appletree, War College, Ministry of Truth, Fulling Mill and MI6 (user art; replaced sources in old/)
 
 TOURISM ON TILES (ui)
 ---------------------
