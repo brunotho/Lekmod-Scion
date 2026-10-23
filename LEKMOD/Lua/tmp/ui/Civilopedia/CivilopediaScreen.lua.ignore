@@ -105,6 +105,7 @@ local g_RequiredPoliciesManager = InstanceManager:new( "RequiredPolicyInstance",
 local g_FreeFormTextManager = InstanceManager:new( "FreeFormTextInstance", "FFTextFrame", Controls.FFTextStack );
 local g_BBTextManager = InstanceManager:new( "BBTextInstance", "BBTextFrame", Controls.BBTextStack );
 local g_LekmodFullTextManager = InstanceManager:new( "LekmodFullTextInstance", "BBTextFrame", Controls.BBTextStack ); -- LEKMOD: NQ tab
+local g_LekmodEssentialsManager = InstanceManager:new( "LekmodEssentialsInstance", "BBTextFrame", Controls.BBTextStack ); -- LEKMOD: home page sections
 local g_LeadersManager = InstanceManager:new( "LeaderInstance", "LeaderButton", Controls.LeadersInnerFrame );
 local g_UniqueUnitsManager = InstanceManager:new( "UniqueUnitInstance", "UniqueUnitButton", Controls.UniqueUnitsInnerFrame );
 local g_UniqueBuildingsManager = InstanceManager:new( "UniqueBuildingInstance", "UniqueBuildingButton", Controls.UniqueBuildingsInnerFrame );
@@ -918,6 +919,7 @@ CivilopediaCategory[CategoryPolicies].PopulateList = function()
 			article.entryName = name;
 			article.entryID = policy.ID;
 			article.entryCategory = CategoryPolicies;
+			article.lekmodLevel = policy.Level or 0;
 			article.tooltipTextureOffset, article.tooltipTexture = IconLookup( policy.PortraitIndex, buttonSize, policy.IconAtlas );				
 			if not article.tooltipTextureOffset then
 				article.tooltipTexture = defaultErrorTextureSheet;
@@ -958,9 +960,37 @@ CivilopediaCategory[CategoryPolicies].PopulateList = function()
 
 		-- sort this list alphabetically by localized name
 		table.sort(sortedList[CategoryPolicies][branchID], Alphabetically);
+		-- LEKMOD (user, 2026-10-23): ideologies by tier, each tier under a "Tier N" line (not clickable)
+		if branch.PurchaseByLevel then
+			local list = sortedList[CategoryPolicies][branchID];
+			table.sort(list, function(a, b)
+				if (a.lekmodLevel or 0) ~= (b.lekmodLevel or 0) then
+					return (a.lekmodLevel or 0) < (b.lekmodLevel or 0);
+				end
+				return Alphabetically(a, b);
+			end);
+			local withTiers = {};
+			local lastLevel = nil;
+			for _, v in ipairs(list) do
+				if (v.lekmodLevel or 0) > 0 and v.lekmodLevel ~= lastLevel then
+					lastLevel = v.lekmodLevel;
+					table.insert(withTiers, { lekmodTierHeader = true, entryName = Locale.ConvertTextKey("TXT_KEY_LEKMOD_PEDIA_IDEOLOGY_TIER", lastLevel) });
+				end
+				table.insert(withTiers, v);
+			end
+			sortedList[CategoryPolicies][branchID] = withTiers;
+		end
 	
 	end
 		
+end
+
+-- LEKMOD: a "Tier N" line in the ideology lists; clicking it does nothing
+function LekmodShowPolicyTierHeader( thisListInstance, v )
+	thisListInstance.ListItemLabel:SetText( "[COLOR_CYAN]" .. v.entryName .. "[ENDCOLOR]" );
+	thisListInstance.ListItemButton:SetVoids( -1, 0 );
+	thisListInstance.ListItemButton:RegisterCallback( Mouse.eLClick, function() end );
+	thisListInstance.ListItemButton:SetToolTipCallback( function() end );
 end
 
 CivilopediaCategory[CategoryPeople].PopulateList = function()
@@ -1481,7 +1511,8 @@ CivilopediaCategory[CategoryHomePage].DisplayHomePage = function()
 	g_BBTextManager:ResetInstances();
 	
 	-- LEKMOD (2026-10-22): the home page shows the Essentials of the latest version (website Essentials page, copied
-	-- into the text file by tools/sync_pedia_essentials.py), one box per section, then the usual help box
+	-- into the text file by tools/sync_pedia_essentials.py), one box per section; 2026-10-23 (user): headers in the
+	-- website's accent colour and the largest font, no base-game help box
 	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
 	for iSection = 1, 50 do
 		local strHeaderKey = "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_HEADER";
@@ -1489,20 +1520,13 @@ CivilopediaCategory[CategoryHomePage].DisplayHomePage = function()
 		if strHeader == nil or strHeader == strHeaderKey then
 			break;
 		end
-		local sectionInstance = g_BBTextManager:GetInstance();
+		local sectionInstance = g_LekmodEssentialsManager:GetInstance();
 		if sectionInstance then
-			sectionInstance.BBTextHeader:SetText( strHeader );
+			sectionInstance.BBTextHeader:SetText( "[COLOR_LEKMOD_ACCENT]" .. strHeader .. "[ENDCOLOR]" );
 			UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_TEXT" ), sectionInstance.BBTextLabel, sectionInstance.BBTextInnerFrame, sectionInstance.BBTextFrame );
 		end
 	end
 
-	--How to use the Pedia	
-	local thisBBTextInstance = g_BBTextManager:GetInstance();
-	if thisBBTextInstance then
-		thisBBTextInstance.BBTextHeader:SetText( Locale.ConvertTextKey( "TXT_KEY_PEDIA_HOME_PAGE_HELP_LABEL" ));
-		UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_PEDIA_HOME_PAGE_HELP_TEXT" ), thisBBTextInstance.BBTextLabel, thisBBTextInstance.BBTextInnerFrame, thisBBTextInstance.BBTextFrame );
-	end	
-	
 	Controls.BBTextStack:SetHide( false );	
 	ResizeEtc();
 end;
@@ -5779,7 +5803,11 @@ CivilopediaCategory[CategoryPolicies].SelectHeading = function( selectedBranchID
 		if sortedList[CategoryPolicies][branchID].headingOpen then
 			for i, v in ipairs(sortedList[CategoryPolicies][branchID]) do
 				local thisListInstance = g_ListItemManager:GetInstance();
-				if thisListInstance then
+				if thisListInstance and v.lekmodTierHeader then
+					sortOrder = sortOrder + 1;
+					LekmodShowPolicyTierHeader( thisListInstance, v );
+					otherSortedList[tostring( thisListInstance.ListItemButton )] = sortOrder;
+				elseif thisListInstance then
 					sortOrder = sortOrder + 1;
 					thisListInstance.ListItemLabel:SetText( v.entryName );
 					thisListInstance.ListItemButton:SetVoids( v.entryID, addToList );
@@ -6683,7 +6711,11 @@ CivilopediaCategory[CategoryPolicies].DisplayList = function()
 		for i, v in ipairs(sortedList[CategoryPolicies][branchID]) do
 			-- add an entry
 			local thisListInstance = g_ListItemManager:GetInstance();
-			if thisListInstance then
+			if thisListInstance and v.lekmodTierHeader then
+				sortOrder = sortOrder + 1;
+				LekmodShowPolicyTierHeader( thisListInstance, v );
+				otherSortedList[tostring( thisListInstance.ListItemButton )] = sortOrder;
+			elseif thisListInstance then
 				sortOrder = sortOrder + 1;
 				thisListInstance.ListItemLabel:SetText( v.entryName );
 				thisListInstance.ListItemButton:SetVoids( v.entryID, addToList );
@@ -7117,6 +7149,7 @@ end
 function ClearArticle()
 	Controls.ScrollPanel:SetScrollValue( 0 );
 	g_LekmodFullTextManager:ResetInstances();
+	g_LekmodEssentialsManager:ResetInstances();
 	Controls.PortraitFrame:SetHide( true );
 	Controls.CostFrame:SetHide( true );
 	Controls.MaintenanceFrame:SetHide( true );

@@ -3318,7 +3318,8 @@ function Draft_AdjustScreenSize()
 		Controls.ListingScrollBar:SetSizeY(math.max(40, listH - 36));
 	end
 	if Controls.ListingScrollUp ~= nil then setOffset(Controls.ListingScrollUp, 590, 0); end
-	if Controls.ListingScrollDown ~= nil then setOffset(Controls.ListingScrollDown, 590, 0); end
+	-- top-anchored (StagingRoom.xml): at the bottom of the visible list, not of its content (user, 2026-10-23)
+	if Controls.ListingScrollDown ~= nil then setOffset(Controls.ListingScrollDown, 590, math.max(18, listH - 18)); end
 
 	if Controls.Host ~= nil then
 		setSize(Controls.Host, 610, SLOT_ROW_HEIGHT);

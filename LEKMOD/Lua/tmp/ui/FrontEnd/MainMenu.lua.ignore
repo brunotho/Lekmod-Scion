@@ -233,52 +233,6 @@ end
 Controls.OtherButton:RegisterCallback( Mouse.eLClick, OtherClick );
 
 
--------------------------------------------------
--- Discord / GitHub link buttons
--------------------------------------------------
-local LEKMOD_DISCORD_URL = "http://discord.gg/VQBNPmc";
-local LEKMOD_GITHUB_URL = "http://github.com/EnormousApplePie/Lekmod";
-
-local function OpenExternalUrl(url)
-	-- Force http:// for Steam overlay compatibility.
-	local target = tostring(url or "");
-	if string.sub(target, 1, 8) == "https://" then
-		target = "http://" .. string.sub(target, 9);
-	elseif string.sub(target, 1, 7) ~= "http://" then
-		target = "http://" .. target;
-	end
-
-	local ok = pcall(function()
-		Steam.ActivateGameOverlayToWebPage(target);
-	end);
-	if not ok and LekmodVersion ~= nil and LekmodVersion.OpenDownload ~= nil then
-		LekmodVersion.OpenDownload(target);
-	end
-end
-
-function DiscordClick()
-	OpenExternalUrl(LEKMOD_DISCORD_URL);
-end
-function GitHubClick()
-	OpenExternalUrl(LEKMOD_GITHUB_URL);
-end
-
-if Controls.DiscordButton ~= nil then
-	Controls.DiscordButton:RegisterCallback(Mouse.eLClick, DiscordClick);
-	local tip = Locale.Lookup("TXT_KEY_LEKMOD_MENU_DISCORD_TT");
-	if tip == nil or tip == "" or tip == "TXT_KEY_LEKMOD_MENU_DISCORD_TT" then
-		tip = "Join the Lekmod Discord";
-	end
-	Controls.DiscordButton:SetToolTipString(tip);
-end
-if Controls.GitHubButton ~= nil then
-	Controls.GitHubButton:RegisterCallback(Mouse.eLClick, GitHubClick);
-	local tip = Locale.Lookup("TXT_KEY_LEKMOD_MENU_GITHUB_TT");
-	if tip == nil or tip == "" or tip == "TXT_KEY_LEKMOD_MENU_GITHUB_TT" then
-		tip = "Open the Lekmod GitHub repository";
-	end
-	Controls.GitHubButton:SetToolTipString(tip);
-end
 
 
 
@@ -304,11 +258,6 @@ end
 Events.MultiplayerGameLaunched.Add( OnGameLaunched );
 
 
-----------------------------------------------------------------        
-function OnExpansionRulesSwitch()
-	UIManager:QueuePopup( Controls.PremiumContentScreen, PopupPriority.OtherMenu );
-end		
-Controls.ExpansionRulesSwitch:RegisterCallback(Mouse.eLClick, OnExpansionRulesSwitch);
 
 -------------------------------------------------------------------------------
 function OnSystemUpdateUI( type, tag  )

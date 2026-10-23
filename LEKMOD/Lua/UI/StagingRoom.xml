@@ -281,7 +281,9 @@
            that overlapped VerticalTrim2 / the summary column. -->
       <ScrollBar  Style="VertSlider" Length="357" Offset="590,18" Anchor="L,T" AnchorSide="I,I" ID="ListingScrollBar" />
       <UpButton   Style="ScrollBarUp"   Offset="590,0"  Anchor="L,T" AnchorSide="I,I" ID="ListingScrollUp" />
-      <DownButton Style="ScrollBarDown" Offset="590,0"  Anchor="L,B" AnchorSide="I,I" ID="ListingScrollDown" />
+      <!-- LEKMOD (2026-10-23): top-anchored and placed at the visible bottom in Lua; bottom-anchored it followed the
+           content (taller than the visible list) and showed up over the chat -->
+      <DownButton Style="ScrollBarDown" Offset="590,342"  Anchor="L,T" AnchorSide="I,I" ID="ListingScrollDown" />
 
     </ScrollPanel>
 

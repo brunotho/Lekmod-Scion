@@ -2574,6 +2574,9 @@ function AdjustScreenSize()
 		if Controls.ListingScrollBar ~= nil then
 			Controls.ListingScrollBar:SetSizeY( math.max(40, listH - 36) );
 		end
+		if Controls.ListingScrollDown ~= nil then
+			Controls.ListingScrollDown:SetOffsetVal( 590, math.max(18, listH - 18) );
+		end
 		Controls.ListingScrollPanel:CalculateInternalSize();
 		Controls.GameOptionsSummary:SetSizeY( trimH - 8 );
 		Controls.GameOptionsSummary:CalculateInternalSize();

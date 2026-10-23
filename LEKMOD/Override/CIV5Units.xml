@@ -83302,6 +83302,15 @@
 			<Blue>0.6</Blue>
 			<Alpha>1</Alpha>
 		</Row>
+		<!-- LEKMOD: the website's accent colour (#d0145f), lighter for dark backgrounds (Civilopedia home page headers) -->
+		<Row>
+			<ID>383</ID>
+			<Type>COLOR_LEKMOD_ACCENT</Type>
+			<Red>0.95</Red>
+			<Green>0.25</Green>
+			<Blue>0.55</Blue>
+			<Alpha>1</Alpha>
+		</Row>
 	</Colors> 
 
 	<Table name="Commands">
