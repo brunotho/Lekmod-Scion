@@ -101574,7 +101574,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Dismiss all</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_DISMISS_ALL_TT">
-			<Text>Dismiss all notifications except the research and production prompts.</Text>
+			<Text>Dismiss all notifications except the research and production prompts (Shift+D).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_VANGUARD_CORPS">
 			<Text>Vanguard Corps</Text>
@@ -147918,7 +147918,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Show picked promotions under your units' flags</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT">
-			<Text>Small icons of the promotions you picked appear under the flag of each of your units on the map (other players' units show none).</Text>
+			<Text>Small icons of the promotions you picked appear under the flag of each of your units on the map (other players' units show only Expanded ZOC).[NEWLINE]Alt+P or the map options next to the minimap switch them on and off.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITYVIEW_JAEGYE">
 			<Text>[COLOR_CULTURE_STORED]Jaegye[ENDCOLOR]: {1_Num} turns left</Text>
@@ -148456,6 +148456,21 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<!-- LEKMOD NQ RULES END -->
 		<!-- LEKMOD (2026-10-23): NEW SPECS AGAIN, third list -->
+		<Row Tag="TXT_KEY_LEKMOD_MAP_OPTIONS_TT">
+			<Text>Map and unit display options</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS">
+			<Text>Promotions under unit flags</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS">
+			<Text>Alt+P</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS">
+			<Text>Show tile recommendations</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS_TT">
+			<Text>The map marks recommended spots for new cities and improvements. Off by default.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_IDEOLOGY_TIER">
 			<Text>Tier {1_Num}</Text>
 		</Row>

@@ -173,7 +173,8 @@ function GetMapOptionDefaults()
 		g_MapOptionDefaults.ShowGrid = OptionsManager.GetGridOn();
 		g_MapOptionDefaults.ShowYield = OptionsManager.GetYieldOn();
 		g_MapOptionDefaults.ShowResources = OptionsManager.GetResourceOn();
-		g_MapOptionDefaults.HideTileRecommendations = OptionsManager.IsNoTileRecommendations();
+		-- LEKMOD (2026-10-23): hidden unless Options > Lek Options switches them on
+		g_MapOptionDefaults.HideTileRecommendations = not LekmodShowTileRecommendations();
 
 		g_MapOptionDefaults.SVIconMode = 1;
 		g_MapOptionDefaults.SVOverlayMode = 1;
@@ -270,7 +271,7 @@ function UpdateOptionsPanel()
 	Controls.ShowGrid:SetCheck( mapOptions.ShowGrid );
 	Controls.ShowYield:SetCheck( mapOptions.ShowYield );
 	Controls.ShowResources:SetCheck( mapOptions.ShowResources );
-	Controls.HideRecommendation:SetCheck( mapOptions.HideTileRecommendations );
+	LekmodUpdateOptionLabels();
 	Controls.StrategicStack:SetHide( not InStrategicView() );
 	
 	Controls.ShowFeatures:SetCheck( mapOptions.SVShowFeatures );
@@ -533,7 +534,52 @@ function OnRecommendationChecked( bIsChecked )
 	OptionsManager.CommitGameOptions(PreGame.IsHotSeatGame());
 	LuaEvents.OnRecommendationCheckChanged( bIsChecked );
 end
-Controls.HideRecommendation:RegisterCheckHandler( OnRecommendationChecked );
+if Controls.HideRecommendation ~= nil then
+	Controls.HideRecommendation:RegisterCheckHandler( OnRecommendationChecked );
+end
+
+----------------------------------------------------------------
+-- LEKMOD (2026-10-23): unit options in this panel and the hotkey of every option next to it
+----------------------------------------------------------------
+local g_LekmodOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+function LekmodShowTileRecommendations()
+	return g_LekmodOptions ~= nil and g_LekmodOptions.GetValue( "LEK_ShowTileRecommendations" ) == 1;
+end
+-- " (Key)" for a Controls row, as the strategic view button's tooltip writes it
+local function LekmodControlKey( controlType )
+	local row = GameInfo.Controls[controlType];
+	if row == nil or type(row.HotKey) ~= "string" or row.HotKey == "" then
+		return "";
+	end
+	local desc = Locale.GetHotKeyDescription( row.HotKey, row.CtrlDown, row.AltDown, row.ShiftDown );
+	if desc == nil or type(desc) ~= "string" or desc == "" then
+		return "";
+	end
+	return " (" .. desc .. ")";
+end
+function LekmodUpdateOptionLabels()
+	Controls.ShowYield:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_YIELD_ICONS" ) .. LekmodControlKey( "CONTROL_YIELDS" ) );
+	Controls.ShowResources:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_RESOURCE_ICONS" ) .. LekmodControlKey( "CONTROL_RESOURCE_ALL" ) );
+	Controls.ShowGrid:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_HEX_GRID" ) .. LekmodControlKey( "CONTROL_TOGGLE_HEX_GRID" ) );
+	if Controls.LekmodFlagPromotions ~= nil then
+		Controls.LekmodFlagPromotions:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS" ) .. " (" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS" ) .. ")" );
+		Controls.LekmodFlagPromotions:SetCheck( g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_FlagPromotions" ) ~= 0 );
+	end
+end
+if Controls.LekmodFlagPromotions ~= nil then
+	Controls.LekmodFlagPromotions:RegisterCheckHandler( function( bIsChecked )
+		if g_LekmodOptions ~= nil then
+			g_LekmodOptions.SetValue( "LEK_FlagPromotions", bIsChecked and 1 or 0 );
+		end
+		LuaEvents.LekmodFlagPromotionsChanged();
+	end );
+end
+-- Alt+P (InGame.lua) or Lek Options changed it
+LuaEvents.LekmodFlagPromotionsChanged.Add( function()
+	if Controls.LekmodFlagPromotions ~= nil then
+		Controls.LekmodFlagPromotions:SetCheck( g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_FlagPromotions" ) ~= 0 );
+	end
+end );
 
 ----------------------------------------------------------------        
 ----------------------------------------------------------------   

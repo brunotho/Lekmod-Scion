@@ -1830,6 +1830,10 @@ function LekmodUpdateAttackedIcon( flag )
         end
     end
     flag.m_Instance.IsOutOfAttacks:SetHide( not bShow );
+    -- the promotion row sits closer to the flag when the crossed swords aren't there
+    if LekmodUpdateFlagPromotions ~= nil then
+        LekmodUpdateFlagPromotions( flag );
+    end
 end
 
 function LekmodUpdateAllAttackedIcons()
@@ -1852,6 +1856,11 @@ Events.ActivePlayerTurnStart.Add( LekmodUpdateAllAttackedIcons );
 local LEKMOD_FLAG_PROMO_SIZE = 32;
 local LEKMOD_FLAG_PROMO_ROW = 4;
 local LEKMOD_FLAG_PROMO_MAX = 8;
+-- the row's offset under the flag: -10 with the crossed swords (attacked this turn) shown, LIFT px higher without
+-- them, which roughly halves the gap to the flag (user, 2026-10-23)
+local LEKMOD_FLAG_PROMO_Y = -10;
+local LEKMOD_FLAG_PROMO_LIFT = 6;
+local g_LekmodExpandedZOC = GameInfo.UnitPromotions["PROMOTION_LEKMOD_EXPANDED_ZOC"];
 local g_LekmodFlagOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
 local g_LekmodFlagPickable = nil;
 local g_LekmodFlagFreeByUnit = {};
@@ -1894,6 +1903,12 @@ function LekmodUpdateFlagPromotions( flag )
         if( pUnit ~= nil and pUnit:IsCombatUnit() ) then
             list = LekmodFlagChosenPromotions( pUnit );
         end
+    elseif( bOn and g_LekmodExpandedZOC ~= nil ) then
+        -- other players' units show only Expanded ZOC, the one picked promotion that changes how you move near them
+        local pUnit = Players[ flag.m_PlayerID ]:GetUnitByID( flag.m_UnitID );
+        if( pUnit ~= nil and pUnit:IsHasPromotion( g_LekmodExpandedZOC.ID ) ) then
+            list = { g_LekmodExpandedZOC };
+        end
     end
     local n = math.min( #list, LEKMOD_FLAG_PROMO_MAX );
     local step = LEKMOD_FLAG_PROMO_SIZE;
@@ -1914,13 +1929,15 @@ function LekmodUpdateFlagPromotions( flag )
     if( n > 0 ) then
         flag.m_Instance.LekmodPromoStack:SetSizeVal( (n - 1) * step + LEKMOD_FLAG_PROMO_SIZE, LEKMOD_FLAG_PROMO_SIZE );
     end
+    local bSwords = flag.m_Instance.IsOutOfAttacks ~= nil and not flag.m_Instance.IsOutOfAttacks:IsHidden();
+    flag.m_Instance.LekmodPromoStack:SetOffsetVal( -6, bSwords and LEKMOD_FLAG_PROMO_Y or (LEKMOD_FLAG_PROMO_Y - LEKMOD_FLAG_PROMO_LIFT) );
     flag.m_Instance.LekmodPromoStack:SetHide( n == 0 );
     flag.m_Instance.LekmodPromoStack:ReprocessAnchoring();
 end
 
 function LekmodUpdateAllFlagPromotions()
-    local playerTable = g_MasterList[ Game.GetActivePlayer() ];
-    if( playerTable ~= nil ) then
+    -- every player's flags: other players' units can show Expanded ZOC
+    for _, playerTable in pairs( g_MasterList ) do
         for _, flag in pairs( playerTable ) do
             LekmodUpdateFlagPromotions( flag );
         end
@@ -1928,3 +1945,5 @@ function LekmodUpdateAllFlagPromotions()
 end
 Events.SerialEventUnitInfoDirty.Add( LekmodUpdateAllFlagPromotions );
 Events.ActivePlayerTurnStart.Add( LekmodUpdateAllFlagPromotions );
+-- the option was switched (Lek Options, map options panel or Alt+P)
+LuaEvents.LekmodFlagPromotionsChanged.Add( LekmodUpdateAllFlagPromotions );

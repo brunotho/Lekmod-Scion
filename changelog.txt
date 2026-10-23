@@ -62,8 +62,9 @@ LEK OPTIONS (OPTIONS_MENU)
 Tags: ui
 - Added: the Options screen has a "Lek Options" tab with all of Lekmod's own settings (promotion and build hotkey letters, muting the chat sound); it takes the place of the Multiplayer tab (turn notification e-mails)
 - Dev: standard UI only (EUI has its own OptionsMenu); the Multiplayer panel stays in the XML, its tab button is hidden
-- Added: your units show small icons of the promotions you picked under their flag on the map (other players' units don't); a Lek Options setting turns it off
-- Dev: UnitFlagManager (standard UI) LekmodPromoStack, icons hooked at 32 px and drawn at 20 px (SetTextureSizeVal + NormalizeTexture; check in game); option LEK_FlagPromotions, unset = on
+- Added: your units show small icons of the promotions you picked under their flag on the map; other players' units show Expanded ZOC when they have it. Switch it with Alt+P, in Lek Options or in the map options next to the minimap
+- Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default and switched in Lek Options instead
+- Dev: UnitFlagManager (standard UI) LekmodPromoStack, 32 px icons; option LEK_FlagPromotions, unset = on; the row sits 6 px higher when the crossed swords (attacked this turn) aren't shown; LuaEvents.LekmodFlagPromotionsChanged; option LEK_ShowTileRecommendations (unset = hidden; InGame g_ShowWorkerRecommendation and the minimap defaults read it)
 
 WORLD CONGRESS HOST ELECTION (RESOLUTION_CHANGE_LEAGUE_HOST)
 -----------------------------------------------------------
@@ -538,7 +539,7 @@ Cities claim plain water tiles as readily as plain flat land when their borders 
 DISMISS ALL NOTIFICATIONS
 -------------------------
 Tags: ui
-- Added: a "Dismiss all" button for the notifications
+- Added: a "Dismiss all" button for the notifications (Shift+D)
 - Note: standard UI only
 
 TILE TOOLTIP: UNIMPROVED RESOURCES

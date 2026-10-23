@@ -545,6 +545,7 @@ function LekmodDismissAll()
 	end
 end
 Controls.LekmodDismissAll:RegisterCallback( Mouse.eLClick, LekmodDismissAll );
+LuaEvents.LekmodDismissAllNotifications.Add( LekmodDismissAll ); -- Shift+D (InGame.lua)
 
 function ProcessStackSizes()
 
