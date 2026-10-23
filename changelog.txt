@@ -459,6 +459,7 @@ The multiplayer lobby has a Mode choice that sets all game options at once.
 - Added: Tournament: no private chat, players start at war, same-turn wonders go to nobody; Casual: private chat, no start at war, same-turn wonders go to everyone who finished them
 - Note: map options (resources, legendary start) are enforced by the map script; map size waits for the 6/7/8-player lobby work
 - Dev: a new lobby applies the Tournament preset once (hidden flag GAMEOPTION_LEKMOD_PRESET_APPLIED, ID 73; an unset option reads as its database default 0, so the mode option itself can't tell)
+- Dev: 2026-10-23: the player list's down arrow showed over the chat (bottom-anchored, it followed the list's content); now top-anchored and placed at the visible bottom
 
 START AT WAR
 ------------
@@ -810,7 +811,8 @@ Tags: ui
 - Dev: Civilopedia script override (Lua/tmp/ui/Civilopedia/CivilopediaScreen.lua.ignore, copied by ui_check.bat for both UIs); only the City-States home page and article changed
 - Note: Concepts IDs 505-518 (CONCEPT_LEKMOD_CS_*); base concept 322 (CONCEPT_CITY_STATE_INFLUENCE_LEVELS_PERMANENT_WAR) and its 3 related-concept rows deleted, chained by InsertAfter after CONCEPT_CITY_STATE_SPREAD_RELIGION. The Civilopedia has no clickable links between game concepts (the related-articles box is unused in the base UI), so the pages sit directly below the overview instead
 - Changed: the Civilopedia home page shows the essentials of this version (the same text as the Essentials tab on the website)
-- Dev: texts generated from website/data/essentials.txt by tools/sync_pedia_essentials.py (rerun after every edit)
+- Dev: texts generated from website/data/essentials.txt by tools/sync_pedia_essentials.py (rerun after every edit); 2026-10-23: the page is titled "Changelog Essentials <version>" (newest released version in changelog.txt), section headers in the website's accent colour (COLOR_LEKMOD_ACCENT, Colors ID 383) and the largest font (LekmodEssentialsInstance), no base-game help box
+- Changed: the Policies tab lists each ideology's tenets by tier
 - Added: a No Quitters Rules tab with the community's full multiplayer rule set
 - Dev: NQ tab = category 17 in the second place of the tab bar; texts from the No Quitters Google Doc by tools/sync_pedia_nq.py (rerun when the doc changes); the layout is overridden too (CivilopediaScreen.xml.ignore: the extra button and a 48 px narrower search box, since 16 tabs already filled the bar); tab art from art_sources/civilopedia/ by build_pedia_tab.py; the NQ page hides the article list and its text boxes use the full width
 
@@ -3490,3 +3492,5 @@ Tags: ui
 - Changed: Multiplayer goes straight to New Game (an online lobby with the Tournament settings) and Load Game; the other multiplayer modes are under Main Menu > Other
 - Note: the map is Lekmap Scion's Fractal Pangaea, found by its file name (LekmapScion_FractalPangaea.lua); without it the game's default map stays
 - Dev: Lua/tmp/ui/FrontEnd/MultiplayerSelect.lua/.xml (copies of the base files, both UIs via ui_check.bat): LekmodShowSimpleMenu, LekmodFindDefaultMapScript, LekmodNewGameClick (Matchmaking.HostInternetGame like the setup screen's Host button), LoadMenu child context LekmodLoadGameScreen (DeferLoad, so it starts as a network game); Lekmod's own OtherMenu.lua/.xml (both UIs) fires LuaEvents.LekmodOpenMultiplayerOtherModes
+- Changed: the main menu shows Single Player, Multiplayer, Mods, Options and Other; DLC, Discord and GitHub moved under Other
+- Dev: Other lost Latest News and Leaderboard (dead online services) to make room; its buttons are 42 px tall like the main menu's
