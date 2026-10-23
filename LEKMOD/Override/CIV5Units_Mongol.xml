@@ -121670,7 +121670,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_ANTI_GUNPOWDER_HELP"> 
 			<Text>
-				Before engaging in melee combat, this unit performs a Ranged Attack at 60% of its [ICON_STRENGTH] Strength.
+				Before engaging in melee combat, this unit performs a Ranged Attack at 40% of its [ICON_STRENGTH] Strength.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_ANTI_HELICOPTER"> 
@@ -142274,7 +142274,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KONNITSA_HELP"> 
 			<Text>
-				Replaces the Knight.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.
+				Replaces the Knight.[NEWLINE]Performs a ranged attack (40% of its [ICON_STRENGTH] Strength) before each melee attack.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KRIVIS"> 
@@ -143244,7 +143244,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_VIETNAM_INFANTRY_HELP"> 
-			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (60% of its [ICON_STRENGTH] Strength) before each melee attack.</Text>
+			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (40% of its [ICON_STRENGTH] Strength) before each melee attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VOORTREKKER"> 
 			<Text>
@@ -147685,7 +147685,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Gajasena is the Indian unique unit, replacing the Chariot Archer. It is more powerful than the Chariot Archer and weakens adjacent enemies. As a mounted unit it is vulnerable to Spearmen. It later upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI">
-			<Text>Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack (60% of its [ICON_STRENGTH] Strength) before combat.</Text>
+			<Text>Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack (40% of its [ICON_STRENGTH] Strength) before combat.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COTHON_HELP">
 			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 20% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>

@@ -99,10 +99,10 @@ SPEAR THROW (PROMOTION_ANTI_GUNPOWDER)
 --------------------------------------
 Tags: promotions, combat
 - Changed: Spear Throw (the Zulu Impi, the Vietnamese Infantry, Bulgaria's Konnitsa):
-  - the ranged attack before each melee attack uses 60% of the unit's Strength (was 50%)
+  - the ranged attack before each melee attack uses 40% of the unit's Strength (was 50%)
   - no longer: +25% against gunpowder units and paratroopers
-- DLL: LEKMOD_SUPPORT_FIRE_PERCENT (60)
-- Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Impi and the Vietnamese Infantry lost it during development (Phase 6 Deletes) and have it again; its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 60%
+- DLL: LEKMOD_SUPPORT_FIRE_PERCENT (40; 60 until 2026-10-23, user: weaker than v34.11's 50%)
+- Dev: in Lekmod the first strike is PROMOTION_ANTI_GUNPOWDER (RangedSupportFire); the Impi and the Vietnamese Infantry lost it during development (Phase 6 Deletes) and have it again; its UnitPromotions_UnitCombatMods rows deleted (spec, Zulu: 60% "on promotion level", "remove bonus vs gunpowder"); Konnitsa and Vietnamese Infantry texts say 40%
 
 LEKMOD SCION (NAME)
 -------------------

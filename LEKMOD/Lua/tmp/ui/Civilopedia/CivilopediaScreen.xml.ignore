@@ -451,10 +451,10 @@
 	</Instance>
 	<!-- LEKMOD: a home page section (Essentials): the BBText block with a larger header -->
 	<Instance Name="LekmodEssentialsInstance">
-		<Grid Anchor="L,T" Offset="0,32" Size="636,200" Padding="0,0" Style="GridBlackIndent8" Hidden="0" ID="BBTextFrame">
-			<Label ID="BBTextHeader" Anchor="L,T" Offset="4,-24" Anchorside="I.O" WrapWidth="600" LeadingOffset="0" Font="TwCenMT24" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160"/>
-			<Grid Anchor="C,C" Offset="0,0" Size="640,204" Padding="0,0" Style="Grid9Frame" Hidden="0" ID="BBTextInnerFrame">
-				<Label Anchor="L,T" Offset="15,15" WrapWidth="615" LeadingOffset="-5" Font="TwCenMT18" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" ID="BBTextLabel"/>
+		<Grid Anchor="L,T" Offset="0,32" Size="936,200" Padding="0,0" Style="GridBlackIndent8" Hidden="0" ID="BBTextFrame">
+			<Label ID="BBTextHeader" Anchor="L,T" Offset="4,-24" Anchorside="I.O" WrapWidth="900" LeadingOffset="0" Font="TwCenMT24" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160"/>
+			<Grid Anchor="C,C" Offset="0,0" Size="940,204" Padding="0,0" Style="Grid9Frame" Hidden="0" ID="BBTextInnerFrame">
+				<Label Anchor="L,T" Offset="15,15" WrapWidth="915" LeadingOffset="-5" Font="TwCenMT18" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" ID="BBTextLabel"/>
 			</Grid>
 		</Grid>
 	</Instance>

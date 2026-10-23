@@ -150,7 +150,8 @@ end
 
 function SetSelectedCategory( thisCategory )
 	print("SetSelectedCategory("..tostring(thisCategory)..")");
-	LekmodSetFullWidth( thisCategory == CategoryLekmodNQ );
+	-- LEKMOD: the home page (Essentials, user 2026-10-23) and the NQ tab have no article list
+	LekmodSetFullWidth( thisCategory == CategoryLekmodNQ or thisCategory == CategoryHomePage );
 	if selectedCategory ~= thisCategory then
 		selectedCategory = thisCategory;
 		-- set up tab
@@ -1523,7 +1524,12 @@ CivilopediaCategory[CategoryHomePage].DisplayHomePage = function()
 		local sectionInstance = g_LekmodEssentialsManager:GetInstance();
 		if sectionInstance then
 			sectionInstance.BBTextHeader:SetText( "[COLOR_LEKMOD_ACCENT]" .. strHeader .. "[ENDCOLOR]" );
-			UpdateSuperWideTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_TEXT" ), sectionInstance.BBTextLabel, sectionInstance.BBTextInnerFrame, sectionInstance.BBTextFrame );
+			-- full width like the NQ tab (the home page hides the article list)
+			sectionInstance.BBTextLabel:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_TEXT" ) );
+			local textHeight = sectionInstance.BBTextLabel:GetSize().y;
+			sectionInstance.BBTextInnerFrame:SetSize( { x = 940; y = textHeight + textPaddingFromInnerFrame; } );
+			sectionInstance.BBTextFrame:SetSize( { x = 936; y = textHeight + textPaddingFromInnerFrame - offsetsBetweenFrames; } );
+			sectionInstance.BBTextFrame:SetHide( false );
 		end
 	end
 
