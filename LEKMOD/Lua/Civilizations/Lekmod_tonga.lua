@@ -8,6 +8,16 @@ local is_active = LekmodUtilities:is_civilization_active(this_civ)
 ------------------------------------------------------------------------------------------------------------------------
 -- Tonga UA. Reveal nearby islands and explore nearby coastline at the start of the game.
 ------------------------------------------------------------------------------------------------------------------------
+-- Each tile is revealed with 75% chance, like the map ruin (GOODY_MAP MapProb), so the edge looks noisy (user, 2026-10-23).
+-- The roll is a hash of the tile and the start position: the same on every machine, no synced random number used.
+local function lekmod_tonga_keep(plot, start_plot)
+   local n = (plot:GetX() * 389 + plot:GetY() * 7919 + start_plot:GetX() * 31 + start_plot:GetY() * 977) % 2147483647 + 1
+   for _ = 1, 3 do
+      n = (n * 16807) % 2147483647
+   end
+   return n % 100 < 75
+end
+
 function lekmod_tonga_explore(player)
 
    local team = player:GetTeam()
@@ -20,7 +30,9 @@ function lekmod_tonga_explore(player)
          for island_plot in PlotAreaSweepIterator(loop_plot, 5, SECTOR_NORTH, DIRECTION_CLOCKWISE, DIRECTION_OUTWARDS, CENTRE_EXCLUDE) do
             if island_plot:Area() == loop_plot:Area() then
                for to_reveal_plot in PlotAreaSweepIterator(island_plot, 1, SECTOR_NORTH, DIRECTION_CLOCKWISE, DIRECTION_OUTWARDS, CENTRE_EXCLUDE) do
-                  to_reveal_plot:SetRevealed(team, true)
+                  if lekmod_tonga_keep(to_reveal_plot, start_plot) then
+                     to_reveal_plot:SetRevealed(team, true)
+                  end
                end
             end
          end
@@ -38,7 +50,7 @@ function lekmod_tonga_explore(player)
       end
       if loop_plot:IsCoastalLand() and no_lake then
          for to_reveal_plot in PlotAreaSweepIterator(loop_plot, 1, SECTOR_NORTH, DIRECTION_CLOCKWISE, DIRECTION_OUTWARDS, CENTRE_EXCLUDE) do
-            if to_reveal_plot:IsCoastalLand() or to_reveal_plot:IsWater() then
+            if (to_reveal_plot:IsCoastalLand() or to_reveal_plot:IsWater()) and lekmod_tonga_keep(to_reveal_plot, start_plot) then
                to_reveal_plot:SetRevealed(team, true);
             end
          end

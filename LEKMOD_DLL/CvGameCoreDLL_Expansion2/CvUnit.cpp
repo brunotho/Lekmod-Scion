@@ -9169,6 +9169,10 @@ bool CvUnit::CanSpreadReligion(const CvPlot* pPlot) const
 	if(pCity == NULL)
 	{
 		pCity = pPlot->GetAdjacentCity();
+#ifdef LEKMOD_SPECS_2026_10_23
+		if(pCity == NULL)
+			pCity = LekmodGetJustWarSpreadCity(pPlot);
+#endif
 		if(pCity == NULL)
 		{
 			return false;
@@ -9496,6 +9500,10 @@ CvCity *CvUnit::GetSpreadReligionTargetCity() const
 		if(pCity == NULL)
 		{
 			pCity = pPlot->GetAdjacentCity();
+#ifdef LEKMOD_SPECS_2026_10_23
+			if(pCity == NULL)
+				pCity = LekmodGetJustWarSpreadCity(pPlot);
+#endif
 			if(pCity == NULL)
 			{
 				return NULL;
@@ -9504,6 +9512,25 @@ CvCity *CvUnit::GetSpreadReligionTargetCity() const
 	}
 	return pCity;
 }
+#ifdef LEKMOD_SPECS_2026_10_23
+//	--------------------------------------------------------------------------------
+/// Just War missionaries also reach a city 2 tiles away (the first one found, in a fixed order); NULL for other units
+CvCity* CvUnit::LekmodGetJustWarSpreadCity(const CvPlot* pPlot) const
+{
+	if (pPlot == NULL || GetLekmodMissionaryBeliefValue(0) <= 0)
+		return NULL;
+	for (int iDX = -2; iDX <= 2; iDX++)
+	{
+		for (int iDY = -2; iDY <= 2; iDY++)
+		{
+			CvPlot* pLoopPlot = plotXYWithRangeCheck(pPlot->getX(), pPlot->getY(), iDX, iDY, 2);
+			if (pLoopPlot && pLoopPlot->isCity() && plotDistance(pPlot->getX(), pPlot->getY(), pLoopPlot->getX(), pLoopPlot->getY()) == 2)
+				return pLoopPlot->getPlotCity();
+		}
+	}
+	return NULL;
+}
+#endif
 
 //	--------------------------------------------------------------------------------
 #ifdef LEKMOD_JUST_WAR_MISSIONARIES
@@ -17861,6 +17888,10 @@ int CvUnit::GetLekmodAuraVsWoundedMod(const CvUnit* pDefender) const
 			const CvUnit* pAdjacentUnit = pAdjacentPlot->getUnitByIndex(iUnit);
 			if (pAdjacentUnit == NULL || pAdjacentUnit == this || pAdjacentUnit->getOwner() != getOwner())
 				continue;
+#ifdef LEKMOD_SPECS_2026_10_23
+			if (plotDistance(pAdjacentUnit->getX(), pAdjacentUnit->getY(), pDefender->getX(), pDefender->getY()) != 1)
+				continue;
+#endif
 			for (uint i = 0; i < aPromotions.size(); i++)
 				if (pAdjacentUnit->isHasPromotion(aPromotions[i]))
 					iBest = std::max(iBest, GC.getPromotionInfo(aPromotions[i])->GetLekmodAuraVsWoundedMod());
@@ -23901,6 +23932,12 @@ bool CvUnit::canAcquirePromotion(PromotionTypes ePromotion) const
 		return false;
 	}
 
+#ifdef LEKMOD_SPECS_2026_10_23
+	if(getUnitInfo().IsLekmodBlockedPromotion(ePromotion))
+	{
+		return false;
+	}
+#endif
 	if(isHasPromotion(ePromotion))
 	{
 		return false;

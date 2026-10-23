@@ -142,7 +142,9 @@ COASTAL RAIDER LINE (PROMOTION_COASTAL_RAIDER_1/2/3)
 Tags: promotions, naval, combat
 - Changed: city attack bonus per level 15/15/20% -> 25/25/25%
 - Removed: no more gold stolen when attacking cities
+- Added: each level takes 1 off the extra Movement a city attack costs (naval melee units spend 2 extra Movement on it)
 - Dev: the tooltips now show the actual values
+- DLL: UnitPromotions.CityMovementPenalty -1 per level; the total can't go below 0 (LEKMOD_SPECS_2026_10_23 in CvUnitCombat)
 
 BOARDING PARTY LINE (PROMOTION_BOARDING_PARTY_1/2/3)
 ----------------------------------------------------
@@ -1232,6 +1234,8 @@ Tags: units, combat, promotions
 - Changed: Nuke Resistance instead of nuke immunity: nuclear weapons deal it 20 damage, wherever it stands (also in the blast center and in cities)
 - Added: starts with Fear Aura, Charge, Armor Plating I and Repair
 - Added: it can pillage, but doesn't heal from pillaging (new promotion No Healing from Pillage)
+- Removed: it can no longer pick Sentry
+- DLL: new table Unit_LekmodBlockedPromotions (UnitType, PromotionType), checked in CvUnit::canAcquirePromotion (LEKMOD_SPECS_2026_10_23)
 - DLL: UnitPromotions.NukeDamageFixed (LEKMOD_NUKE_RESISTANCE, CvUnitCombat nuke damage); promotion ID 373
 - Note: Nuke Resistance has its own icon (radiation shield, user art)
 - Dev: PROMOTION_NO_PILLAGE_HEAL (ID 365) uses upstream's PillageHealChange (-100); CvUnit::pillage clamps the heal at 0 so a negative change never damages
@@ -1741,9 +1745,10 @@ JUST WAR (BELIEF_JUST_WAR)
 --------------------------
 Tags: religion
 Subsection: Enhancer beliefs
-+15% Combat Strength near enemy cities that follow this religion. Missionaries spread it as strongly as Great Prophets and have +1 Movement.
++15% Combat Strength near enemy cities that follow this religion. Missionaries spread it as strongly as Great Prophets, from up to 2 tiles away, and have +1 Movement.
 - Changed: +15% Combat Strength near enemy cities of this religion (was +20%)
-- Added: Missionaries spread the religion as strongly as Great Prophets and have +1 Movement
+- Added: Missionaries spread the religion as strongly as Great Prophets, from up to 2 tiles away, and have +1 Movement
+- DLL: CvUnit::LekmodGetJustWarSpreadCity (CanSpreadReligion / GetSpreadReligionTargetCity; the first city 2 tiles away in a fixed order)
 
 MANDATE OF GOD (NEW) (BELIEF_LEKMOD_MANDATE_OF_GOD)
 ---------------------------------------------------
@@ -2783,6 +2788,7 @@ Tags: civs, units, promotions
 - Reworked: UNIT_CELT_PICTISH_WARRIOR
   | 9 Strength · 2 Movement · costs 26[NEWLINE]Replaces the Warrior, also as a starting unit. Stronger.[NEWLINE]Starts with Zealot and Woodsman.[NEWLINE]Upgrades to the Swordsman.
 - Dev: the Faith was first a city yield; moved onto the forest tiles (user, 2026-10-14)
+- Added: chopping a Forest shows the Faith it cost above the tile
 - DLL: Traits.LekmodChopFaithCost, LekmodNoRouteFeature, LekmodForestCity*
 - DLL: Trait_LekmodPlotYields
 
@@ -2795,6 +2801,7 @@ Tags: civs, units, buildings
 - Reworked: UNIT_CRUSADER
   | 22 Strength · 2 Movement · costs 80 · needs 3 Iron[NEWLINE]Replaces the Longswordsman. Stronger, but needs 3 [ICON_RES_IRON] Iron.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength outside friendly territory.[NEWLINE]Kills yield [ICON_PEACE] Faith equal to 200% of the opponent's [ICON_STRENGTH] Combat Strength.
 - DLL: Traits.LekmodReligiousEnemyTerritoryCombat; Buildings.LekmodSpreadCapitalReligionOnBuild, LekmodStartTurnMovesAround (one-shot dummy 296, class 199, removed after the next unit reset)
+- Dev: 2026-10-23: the Outremer's extra Movement came a turn late (moves are reset at the end of a turn, the building is finished at the start of the next); it is now given when the building is added (CvCity::LekmodOnBuildingAdded), in the turn it is finished or bought
 
 DENMARK (CIVILIZATION_DENMARK)
 ------------------------------

@@ -967,6 +967,10 @@ void CvUnitCombat::ResolveCityMeleeCombat(const CvCombatInfo& kCombatInfo, uint 
 			}
 #ifdef LEKMOD_MOVE_PENALTY_CITY_COMBAT
 			int iPenalty = pkAttacker->GetCityAttackMovePenalty();
+#ifdef LEKMOD_SPECS_2026_10_23
+			// Coastal Raider (-1 per level) can remove the extra cost, but an attack never gives moves back
+			iPenalty = std::max(0, iPenalty);
+#endif
 			pkAttacker->changeMoves(-GC.getMOVE_DENOMINATOR() * ( 1 + iPenalty));
 #else
 			pkAttacker->changeMoves(-GC.getMOVE_DENOMINATOR());

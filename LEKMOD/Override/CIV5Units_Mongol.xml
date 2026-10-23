@@ -5064,10 +5064,10 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>"You have constructed a [COLOR_POSITIVE_TEXT]World Wonder[ENDCOLOR] in [COLOR_POSITIVE_TEXT] {1_CityName}[ENDCOLOR]! Receive {2_Num} [ICON_GOLD] Gold and the city starts a [COLOR_YELLOW]We Love The King Day[ENDCOLOR] for {3_Num} turns!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_YALLAH_HABIBI_SHORT">
-			<Text>Yallah Habibi</Text>
+			<Text>Pearl of the Gulf</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_YALLAH_HABIBI">
-			<Text>Founding the [ICON_CAPITAL] Capital and the second city places [ICON_RES_PEARLS] Pearls on the closest free Coast tile.[NEWLINE][NEWLINE]May trade strategic resources.[NEWLINE][NEWLINE][ICON_RES_OIL] Oil is revealed with Archaeology, which also places an [ICON_RES_OIL] Oil node in the [ICON_CAPITAL] Capital.[NEWLINE]From then on you can build Oil Wells and Offshore Platforms, and your [ICON_RES_OIL] Oil counts, without Biology.[NEWLINE][NEWLINE]From the Modern Era: luxury resource tiles yield -2 [ICON_GOLD] Gold (not below 0), and cities yield +30% [ICON_GOLD] Gold.</Text>
+			<Text>Founding the [ICON_CAPITAL] Capital and the second city places [ICON_RES_PEARLS] Pearls on the closest free Coast tile.[NEWLINE][NEWLINE]May trade strategic resources.[NEWLINE][NEWLINE][ICON_RES_OIL] Oil is revealed with Archaeology, which also places an [ICON_RES_OIL] Oil node in the [ICON_CAPITAL] Capital.[NEWLINE]From then on you can build Oil Wells and Offshore Platforms, and your [ICON_RES_OIL] Oil counts, without Biology.[NEWLINE][NEWLINE]From the Industrial Era: luxury resource tiles yield -1 [ICON_GOLD] Gold (not below 0), and cities yield +10% [ICON_GOLD] Gold.[NEWLINE]Both grow with every later era, up to -4 [ICON_GOLD] Gold and +40% [ICON_GOLD] Gold in the Information Era.</Text>
 		</Row>
 		<!--Spy Names-->
 		<Row Tag="TXT_KEY_SPY_NAME_UAE_0">
@@ -17267,7 +17267,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_JUST_WAR"> 
 			<Text>
-				+15% [ICON_STRENGTH] Combat Strength near enemy cities that follow this religion[NEWLINE][ICON_MISSIONARY] Missionaries spread it as strongly as [ICON_PROPHET] Great Prophets and have +1 [ICON_MOVES] Movement
+				+15% [ICON_STRENGTH] Combat Strength near enemy cities that follow this religion[NEWLINE][ICON_MISSIONARY] Missionaries spread it as strongly as [ICON_PROPHET] Great Prophets, from up to 2 tiles away, and have +1 [ICON_MOVES] Movement
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_JUST_WAR_SHORT"> 
@@ -21942,7 +21942,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_PONTOON_BRIDGE_HELP"> 
 			<Text>
-				Both land and naval units can traverse this Coast tile.[NEWLINE]Counts as a Road.[NEWLINE][NEWLINE]Units on it have -20% [ICON_STRENGTH] Defensive Strength (-100% if land and naval units share the tile).[NEWLINE][NEWLINE]May only be constructed in a Coast tile with 2 or more land tiles adjacent to it. <!-- Thanks szope! -->
+				Both land and naval units can traverse this Coast tile.[NEWLINE]Counts as a Road, and as a Railroad once Railroad is researched.[NEWLINE][NEWLINE]Units on it have -20% [ICON_STRENGTH] Defensive Strength (-100% if land and naval units share the tile).[NEWLINE][NEWLINE]May only be constructed in a Coast tile with 2 or more land tiles adjacent to it. <!-- Thanks szope! -->
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_PONTOON_BRIDGE_REC"> 
@@ -122048,7 +122048,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_1_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_DOUBLE_HELP"> 
 			<Text>
@@ -122066,7 +122066,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_2_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_3"> 
 			<Text>
@@ -122074,7 +122074,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_3_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COMBAT1"> 
 			<Text>
@@ -147835,7 +147835,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Shield Wall</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_GADRAUHT_AURA_HELP">
-			<Text>Adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit (does not stack).</Text>
+			<Text>Adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit that is also next to this unit (does not stack).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_AURA_VS_WOUNDED">
 			<Text>Shield Wall (wounded target): {1_Num}%</Text>
@@ -147853,7 +147853,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The first tile purchase of each city is free.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Gunpowder[ENDCOLOR] units that start their turn on a Harjis get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT">
-			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit (lost on upgrade).</Text>
+			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit that is also next to this unit (lost on upgrade).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FINNISH_SAUNA_HELP">
 			<Text>Replaces the Shrine. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
@@ -147866,7 +147866,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Granary. Available with Sailing or Bronze Working (instead of Pottery).[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_CULTURE] Culture.[NEWLINE]If 3 or more Coast tiles are next to the city: [ICON_RES_FISH] Fish yield +1 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith.[NEWLINE]If 3 or more Jungle tiles are next to the city: Jungle yields +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_ISLANDS">
-			<Text>Start the game with Coast tiles and Islands within 6 tiles already explored.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the first [ICON_CITY_STATE] City-State you pledge to protect.[NEWLINE]Lost for good once that pledge ends: you revoke it, demand tribute from that City-State, or one of you declares war.</Text>
+			<Text>Start the game with most Coast tiles and Islands within 6 tiles already explored.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the first [ICON_CITY_STATE] City-State you pledge to protect.[NEWLINE]Lost for good once that pledge ends: you revoke it, demand tribute from that City-State, or one of you declares war.</Text>
 		</Replace>
 		<!-- Phase 6 C++ batch G -->
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_GYMNASIUM">
@@ -148078,7 +148078,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Use its extra range to strike deep, and finish off damaged units with Charge.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PRODMOD_GOLD_MODERN_ERA">
-			<Text>[NEWLINE][ICON_BULLET]Modern Era: {1_Num}%</Text>
+			<Text>[NEWLINE][ICON_BULLET]Pearl of the Gulf: {1_Num}%</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_ATTACK_FULL_HP">
 			<Text>Attacking a Healthy Unit</Text>

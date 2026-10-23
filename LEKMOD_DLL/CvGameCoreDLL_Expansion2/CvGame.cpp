@@ -9273,6 +9273,11 @@ UnitTypes CvGame::GetRandomUniqueUnitType(bool bIncludeCivsInGame, bool bInclude
 		// We only want unique units
 		if(eLoopUnit == pkUnitClassInfo->getDefaultUnitIndex())
 			continue;
+#if defined(LEKMOD_SPECS_2026_10_23) && defined(LEKMOD_UPGRADE_ONLY_UNITS)
+		// units nobody can train (Barcid Elephant, Gajasena) are no City-State unit
+		if (pkUnitInfo->IsLekmodUpgradeOnly())
+			continue;
+#endif
 
 		// Is it a unique unit from a civ that is in our game?
 		if (!bIncludeCivsInGame)

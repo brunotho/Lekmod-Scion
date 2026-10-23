@@ -192,6 +192,9 @@ public:
 	bool GetBuildings(int i) const;
 	bool GetBuildingClassRequireds(int i) const;
 	bool GetFreePromotions(int i) const;
+#ifdef LEKMOD_SPECS_2026_10_23
+	bool IsLekmodBlockedPromotion(int i) const;
+#endif
 
 #if defined(LEKMOD_UNIT_STRENGTH_PROMOTION_ERA)
 	int GetEraStrengthChanges(int i) const { return m_piEraStrengthChanges ? m_piEraStrengthChanges[i] : 0; }
@@ -369,6 +372,9 @@ private:
 	bool* m_pbBuildings;
 	bool* m_pbBuildingClassRequireds;
 	bool* m_pbFreePromotions;
+#ifdef LEKMOD_SPECS_2026_10_23
+	bool* m_pbLekmodBlockedPromotions;
+#endif
 #if defined(LEKMOD_UNIT_STRENGTH_PROMOTION_ERA)
 	int* m_piEraStrengthChanges;
 	int* m_piEraRangedStrengthChanges;

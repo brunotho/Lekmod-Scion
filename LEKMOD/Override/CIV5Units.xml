@@ -109892,6 +109892,10 @@
 		<Column name="BuildingClassType" type="text" reference="BuildingClasses(Type)"/>
 		<Column name="Defense" type="integer" default="0"/>
 	</Table>
+	<Table name="Unit_LekmodBlockedPromotions">
+		<Column name="UnitType" type="text" reference="Units(Type)"/>
+		<Column name="PromotionType" type="text" reference="UnitPromotions(Type)"/>
+	</Table>
 	<Table name="Unit_LekmodIdeologyPromotions">
 		<Column name="UnitType" type="text" reference="Units(Type)"/>
 		<Column name="PolicyBranchType" type="text" reference="PolicyBranchTypes(Type)"/>
@@ -290089,7 +290093,7 @@
 	<Traits>
 		<Update>
 			<Where Type="TRAIT_YALLAH_HABIBI"/>
-			<Set LekmodFoundWaterResource="RESOURCE_PEARLS" LekmodFoundWaterResourceCities="2" LekmodStrategicTrade="1" LekmodTechRevealTech="TECH_ARCHAEOLOGY" LekmodTechRevealResource="RESOURCE_OIL" LekmodTechRevealCapitalAmount="18" LekmodEraBonusEra="ERA_MODERN" LekmodEraLuxuryGold="-2" LekmodEraGoldMod="30"/>
+			<Set LekmodFoundWaterResource="RESOURCE_PEARLS" LekmodFoundWaterResourceCities="2" LekmodStrategicTrade="1" LekmodTechRevealTech="TECH_ARCHAEOLOGY" LekmodTechRevealResource="RESOURCE_OIL" LekmodTechRevealCapitalAmount="18" LekmodEraBonusEra="ERA_INDUSTRIAL" LekmodEraLuxuryGold="-1" LekmodEraGoldMod="10"/>
 		</Update>
 	</Traits>
 	<Units>
@@ -292218,6 +292222,28 @@
 			<Set Cost="2389"/>
 		</Update>
 	</Buildings>
+	<!-- Giant Death Robot can't pick Sentry (Unit_LekmodBlockedPromotions, LEKMOD_SPECS_2026_10_23) -->
+	<Unit_LekmodBlockedPromotions>
+		<Row>
+			<UnitType>UNIT_MECH</UnitType>
+			<PromotionType>PROMOTION_SENTRY</PromotionType>
+		</Row>
+	</Unit_LekmodBlockedPromotions>
+	<!-- Coastal Raider: each level takes 1 off the extra Movement a naval melee unit spends attacking a city (never below 0) -->
+	<UnitPromotions>
+		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_1"/>
+			<Set CityMovementPenalty="-1"/>
+		</Update>
+		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_2"/>
+			<Set CityMovementPenalty="-1"/>
+		</Update>
+		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_3"/>
+			<Set CityMovementPenalty="-1"/>
+		</Update>
+	</UnitPromotions>
 	<!-- Old Faithful 3 Culture 5 Science, no Happiness; Krakatoa 1 Food 8 Science -->
 	<Feature_YieldChanges>
 		<Delete FeatureType="FEATURE_GEYSER"/>

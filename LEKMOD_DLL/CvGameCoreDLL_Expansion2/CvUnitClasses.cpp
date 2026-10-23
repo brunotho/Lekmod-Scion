@@ -140,6 +140,9 @@ CvUnitEntry::CvUnitEntry(void) :
 	m_piFlavorValue(NULL),
 	m_piUnitGroupRequired(NULL),
 	m_pbFreePromotions(NULL),
+#ifdef LEKMOD_SPECS_2026_10_23
+	m_pbLekmodBlockedPromotions(NULL),
+#endif
 	m_paszEarlyArtDefineTags(NULL),
 	m_paszLateArtDefineTags(NULL),
 	m_paszMiddleArtDefineTags(NULL),
@@ -187,6 +190,9 @@ CvUnitEntry::~CvUnitEntry(void)
 	SAFE_DELETE_ARRAY(m_piFlavorValue);
 	SAFE_DELETE_ARRAY(m_piUnitGroupRequired);
 	SAFE_DELETE_ARRAY(m_pbFreePromotions);
+#ifdef LEKMOD_SPECS_2026_10_23
+	SAFE_DELETE_ARRAY(m_pbLekmodBlockedPromotions);
+#endif
 	SAFE_DELETE_ARRAY(m_paszEarlyArtDefineTags);
 	SAFE_DELETE_ARRAY(m_paszLateArtDefineTags);
 	SAFE_DELETE_ARRAY(m_paszMiddleArtDefineTags);
@@ -405,6 +411,9 @@ bool CvUnitEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility& k
 		pResults->Reset();
 	}
 	kUtility.PopulateArrayByExistence(m_pbFreePromotions, "UnitPromotions", "Unit_FreePromotions", "PromotionType", "UnitType", szUnitType);
+#ifdef LEKMOD_SPECS_2026_10_23
+	kUtility.PopulateArrayByExistence(m_pbLekmodBlockedPromotions, "UnitPromotions", "Unit_LekmodBlockedPromotions", "PromotionType", "UnitType", szUnitType);
+#endif
 #ifdef LEKMOD_UNIT_IDEOLOGY_PROMOTIONS
 	{
 		m_aLekmodIdeologyPromotions.clear();
@@ -1390,6 +1399,15 @@ bool CvUnitEntry::GetFreePromotions(int i) const
 	CvAssertMsg(i > -1, "Index out of bounds");
 	return m_pbFreePromotions ? m_pbFreePromotions[i] : false;
 }
+#ifdef LEKMOD_SPECS_2026_10_23
+/// Promotions this unit can never pick, although its unit combat could (Unit_LekmodBlockedPromotions)
+bool CvUnitEntry::IsLekmodBlockedPromotion(int i) const
+{
+	CvAssertMsg(i < GC.getNumPromotionInfos(), "Index out of bounds");
+	CvAssertMsg(i > -1, "Index out of bounds");
+	return m_pbLekmodBlockedPromotions ? m_pbLekmodBlockedPromotions[i] : false;
+}
+#endif
 
 #if defined(LEKMOD_UNIT_STRENGTH_PROMOTION_ERA)
 bool CvUnitEntry::IsFreePromotionEra(int iPromotion, int iEra) const

@@ -934,6 +934,9 @@ public:
 #ifdef LEKMOD_JUST_WAR_MISSIONARIES
 	// missionary effects from its religion's beliefs (Just War): 0 = prophet-strength spread, 1 = extra moves
 	int GetLekmodMissionaryBeliefValue(int iWhich) const;
+#ifdef LEKMOD_SPECS_2026_10_23
+	CvCity* LekmodGetJustWarSpreadCity(const CvPlot* pPlot) const;
+#endif
 #endif
 	void SetLekmodAirportRebased(bool bValue) { m_bLekmodAirportRebased = bValue; }
 	void RefundAttack();

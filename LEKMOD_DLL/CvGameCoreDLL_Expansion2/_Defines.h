@@ -1824,6 +1824,10 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_CITY_COUNT_COSTS_CURRENT
 // LEKMOD (user, 2026-10-22): puppets add no Science or Culture to the empire (their own border growth keeps their Culture)
 #define LEKMOD_PUPPET_NO_EMPIRE_SCIENCE_CULTURE
+// LEKMOD (user, 2026-10-23, NEW SPECS AGAIN list): Coastal Raider vs the city attack move cost (never below 0),
+// Just War missionaries spread from 2 tiles, Outremer moves in the turn it is finished, Shield Wall only against
+// units next to the Gadraught, UAE era bonus grows per era, Celt chop Faith shown, Unit_LekmodBlockedPromotions
+#define LEKMOD_SPECS_2026_10_23
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

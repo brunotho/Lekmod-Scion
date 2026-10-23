@@ -13084,6 +13084,9 @@ int CvCity::getBaseYieldRateModifier(YieldTypes eIndex, int iExtra, CvString* to
 		iTempMod = kPlayer.GetPlayerTraits()->GetLekmodTraitInt(LTI_ERA_GOLD_MOD);
 		if (eEra != -1 && iTempMod != 0 && (int)kPlayer.GetCurrentEra() >= eEra)
 		{
+#ifdef LEKMOD_SPECS_2026_10_23
+			iTempMod *= (int)kPlayer.GetCurrentEra() - eEra + 1;
+#endif
 			iModifier += iTempMod;
 			if(toolTipSink)
 				GC.getGame().BuildProdModHelpText(toolTipSink, "TXT_KEY_LEKMOD_PRODMOD_GOLD_MODERN_ERA", iTempMod);
@@ -15858,6 +15861,25 @@ void CvCity::LekmodOnBuildingAdded(const CvBuildingEntry* pkBuilding)
 		if (GetWeLoveTheKingDayCounter() < iTurns)
 			SetWeLoveTheKingDayCounter(iTurns);
 	}
+#ifdef LEKMOD_SPECS_2026_10_23
+	// Outremer muster: units in or next to the city get the moves at once, in the turn the building is finished or bought
+	// (units have already been reset for this turn; the dummy is removed at the end of the turn in CvPlayer::DoUnitReset)
+	if (pkBuilding->GetLekmodStartTurnMovesAround() > 0)
+	{
+		for (int iDirection = -1; iDirection < NUM_DIRECTION_TYPES; iDirection++)
+		{
+			CvPlot* pNear = (iDirection < 0) ? plot() : plotDirection(getX(), getY(), (DirectionTypes)iDirection);
+			if (pNear == NULL)
+				continue;
+			for (int iUnit = 0; iUnit < pNear->getNumUnits(); iUnit++)
+			{
+				CvUnit* pLoopUnit = pNear->getUnitByIndex(iUnit);
+				if (pLoopUnit && pLoopUnit->getOwner() == getOwner() && pLoopUnit->getDomainType() != DOMAIN_AIR)
+					pLoopUnit->changeMoves(pkBuilding->GetLekmodStartTurnMovesAround() * GC.getMOVE_DENOMINATOR());
+			}
+		}
+	}
+#endif
 }
 /// Turns left of a timed dummy building (Jaegye), 0 when it isn't running (Lua: City:LekmodGetTimedBuildingTurns)
 int CvCity::LekmodGetTimedBuildingTurns(BuildingTypes eBuilding) const

@@ -9948,7 +9948,11 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay)
 		const ResourceTypes eLux = getResourceType(GET_PLAYER(ePlayer).getTeam());
 		if (eEra != -1 && pTraits->GetLekmodTraitInt(LTI_ERA_LUXURY_GOLD) != 0 && (int)GET_PLAYER(ePlayer).GetCurrentEra() >= eEra
 			&& eLux != NO_RESOURCE && GC.getResourceInfo(eLux)->getResourceUsage() == RESOURCEUSAGE_LUXURY)
+#ifdef LEKMOD_SPECS_2026_10_23
+			iYield = std::max(0, iYield + pTraits->GetLekmodTraitInt(LTI_ERA_LUXURY_GOLD) * ((int)GET_PLAYER(ePlayer).GetCurrentEra() - eEra + 1));
+#else
 			iYield = std::max(0, iYield + pTraits->GetLekmodTraitInt(LTI_ERA_LUXURY_GOLD));
+#endif
 	}
 #endif
 	return std::max(0, iYield);
@@ -11436,7 +11440,18 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 						if (GET_PLAYER(pCity->getOwner()).GetPlayerTraits()->GetLekmodTraitInt(LTI_CHOP_FAITH_COST) > 0)
 						{
 							CvPlayer& kChopper = GET_PLAYER(pCity->getOwner());
+#ifdef LEKMOD_SPECS_2026_10_23
+							const int iFaithLost = std::min(iProduction, kChopper.GetFaith());
+							kChopper.ChangeFaith(-iFaithLost);
+							if (iFaithLost > 0 && kChopper.GetID() == GC.getGame().getActivePlayer())
+							{
+								char text[64] = {0};
+								sprintf_s(text, "[COLOR_RED]-%d[ENDCOLOR][ICON_PEACE]", iFaithLost);
+								GC.GetEngineUserInterface()->AddPopupText(getX(), getY(), text, 0.0f);
+							}
+#else
 							kChopper.ChangeFaith(-std::min(iProduction, kChopper.GetFaith()));
+#endif
 						}
 #endif
 						if(pCity->getOwner() == GC.getGame().getActivePlayer())

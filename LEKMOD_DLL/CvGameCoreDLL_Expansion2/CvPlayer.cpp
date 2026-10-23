@@ -6137,6 +6137,7 @@ void CvPlayer::DoUnitReset()
 			}
 		}
 #ifdef LEKMOD_CITY_TIMED_BUILDINGS
+#ifndef LEKMOD_SPECS_2026_10_23
 		// Outremer: units starting the turn in or next to a city with the (1-turn) muster building
 		if (pLoopUnit->plot() && pLoopUnit->getDomainType() != DOMAIN_AIR)
 		{
@@ -6157,6 +6158,7 @@ void CvPlayer::DoUnitReset()
 			if (iAround > 0)
 				pLoopUnit->changeMoves(iAround * GC.getMOVE_DENOMINATOR());
 		}
+#endif
 #endif
 		// Maurya: workers starting the turn on a road or railroad
 		if (pLoopUnit->getUnitInfo().GetWorkRate() > 0 && !pLoopUnit->IsCombatUnit() && pLoopUnit->plot() && pLoopUnit->plot()->getRouteType() != NO_ROUTE && !pLoopUnit->plot()->IsRoutePillaged())
