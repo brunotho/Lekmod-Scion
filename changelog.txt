@@ -2850,7 +2850,7 @@ Tags: civs, units
   | Earn [ICON_GREAT_MERCHANT] Great Merchants, [ICON_GREAT_WRITER] Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 20% faster.[NEWLINE]A Merchant of Venice appears after researching [ICON_TECH_CURRENCY] Currency.[NEWLINE][NEWLINE]Great Works yield +2 [ICON_GOLD] Gold and +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]One extra [ICON_SPY] Spy when entering the Renaissance.
 - Reworked: UNIT_VENETIAN_MERCHANT
   | 6 Movement[NEWLINE]This Venetian unique Great Person replaces the [ICON_GREAT_MERCHANT] Great Merchant. +2 [ICON_MOVES] Movement.[NEWLINE][ICON_MISSION_TRADE] Trade Missions conducted by Venetian Merchants provide 20% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence.[NEWLINE][NEWLINE]Can Purchase [ICON_CITY_STATE] City States that have not been allied to any other Major Civilization for [COLOR_WARNING_TEXT]5[ENDCOLOR] turns.
-- Dev: the Merchant of Venice's "buy City-State" button has a new icon (a heart)
+- Dev: the Merchant of Venice's "buy City-State" button has a new icon (a heart); 2026-10-23: centred to a quarter pixel (build_action_icon.py draws 4x and scales down; at 45 px it sat half a pixel left)
 - DLL: Traits.LekmodGreatArtsRateModifier (Writer/Artist/Musician rate)
 - Dev: until 2026-10-20 the new UA sat on the unplayable base-game Venice (CIVILIZATION_VENICE); the playable Venice (CIVILIZATION_VENEZ) still had Serenissima, so 1.0.0 as published plays with the old UA. Its leader now has TRAIT_SUPER_CITY_STATE; the Serenissima Lua is off
 

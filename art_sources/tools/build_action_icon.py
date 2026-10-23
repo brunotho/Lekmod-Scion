@@ -29,13 +29,20 @@ def glyph_mask(src):
 
 
 def icon(mask, size):
+    # drawn 4x larger and scaled down, so the glyph is centred to a quarter pixel (a whole-pixel floor put the
+    # 45 px heart half a pixel left and up; user, 2026-10-23)
+    big = icon_px(mask, size * 4)
+    return big.resize((size, size), Image.LANCZOS)
+
+
+def icon_px(mask, size):
     s = FIT * size
     k = s / max(mask.size)
     gm = mask.resize((max(1, round(mask.size[0] * k)), max(1, round(mask.size[1] * k))), Image.LANCZOS)
     out = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    ox, oy = (size - gm.size[0]) // 2, (size - gm.size[1]) // 2
+    ox, oy = int(round((size - gm.size[0]) / 2.0)), int(round((size - gm.size[1]) / 2.0))
     shadow = Image.new("L", (size, size), 0)
-    shadow.paste(gm, (ox + 1, oy + 2))
+    shadow.paste(gm, (ox + size // 64, oy + size // 32))
     shadow = shadow.filter(ImageFilter.GaussianBlur(size / 40.0))
     out.paste((0, 0, 0, 255), (0, 0), shadow.point(lambda a: a * 160 // 255))
     white = Image.new("RGBA", gm.size, (255, 255, 255, 255))
