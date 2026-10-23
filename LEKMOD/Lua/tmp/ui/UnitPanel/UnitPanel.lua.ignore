@@ -251,6 +251,53 @@ function LekmodShortHotKey( strHotKey )
 	return table.concat( mods, "+" ), key;
 end
 
+-- LEKMOD: the key an action is shown with: its own hotkey, for promotions the promotion's key as a fallback
+function LekmodActionKey( action )
+	local strMods, strKey = LekmodShortHotKey( action.HotKey );
+	if strKey == "" and action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION then
+		-- the action's Type is the promotion's type; CommandData only as a fallback
+		local promotion = GameInfo.UnitPromotions[action.Type] or GameInfo.UnitPromotions[action.CommandData];
+		if promotion ~= nil and promotion.HotKey ~= nil then
+			strKey = string.gsub( promotion.HotKey, "^KB_", "" );
+		end
+	end
+	return strMods, strKey;
+end
+
+-- LEKMOD: keys that two or more of the unit's visible actions share (e.g. Citadel and Holy Site both "D");
+-- those builds and promotions show a number 1-9 instead, which picks them (LekmodPromoNumberInput).
+-- Only actions the unit can do right now count: greyed-out builds share keys all the time (Pasture and
+-- Plantation are both P), and the key already picks the one that is possible.
+function LekmodConflictingKeys( order, bUnitHasMovesLeft )
+	local count = {};
+	for _, iAction in ipairs( order ) do
+		local action = GameInfoActions[iAction];
+		local bShown = bUnitHasMovesLeft or action.Type == "COMMAND_CANCEL" or action.Type == "COMMAND_STOP_AUTOMATION" or action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION;
+		if bShown and action.Visible and Game.CanHandleAction( iAction ) then
+			local strMods, strKey = LekmodActionKey( action );
+			if strKey ~= "" then
+				local combo = strMods .. "|" .. string.upper( strKey );
+				count[combo] = (count[combo] or 0) + 1;
+			end
+		end
+	end
+	local conflicts = {};
+	for combo, n in pairs( count ) do
+		if n > 1 then conflicts[combo] = true; end
+	end
+	return conflicts;
+end
+
+-- LEKMOD: the label for a build or promotion; a conflicting or missing key becomes the next number 1-9
+function LekmodNumberedKey( iAction, strMods, strKey, conflicts, bAllowMissing )
+	local bConflict = strKey ~= "" and conflicts[strMods .. "|" .. string.upper( strKey )];
+	if (bConflict or (strKey == "" and bAllowMissing)) and #g_LekmodPromoNumberActions < 9 then
+		table.insert( g_LekmodPromoNumberActions, iAction );
+		return "", tostring( #g_LekmodPromoNumberActions );
+	end
+	return strMods, strKey;
+end
+
 function LekmodSetHotKeyLabel( instance, strMods, strKey )
 	if instance.LekmodHotKeyLabel ~= nil then
 		instance.LekmodHotKeyLabel:SetText( strKey );
@@ -374,6 +421,8 @@ function UpdateUnitActions( unit )
 	local bLekmodKeys = (hasPromotion and bShowKeys) or ((not hasPromotion) and bShowBuildKeys);
 	LekmodFlowReset( Controls.WorkerActionPanel:GetSizeX(), buttonPadding + buttonOffsetX, buttonSize, bLekmodKeys and promoStep or buttonSize );
 
+    local lekmodConflicts = LekmodConflictingKeys( LekmodGetActionOrder(), bUnitHasMovesLeft );
+
     -- loop over all the game actions (LEKMOD: promotions in the order of LekmodGetActionOrder)
     for _, iAction in ipairs( LekmodGetActionOrder() )
     do
@@ -408,19 +457,11 @@ function UpdateUnitActions( unit )
                 instance = g_PromotionIM:GetInstance();
 				-- LEKMOD: the promotion's current hotkey on the button (option, default on)
 				if instance.LekmodHotKeyLabel ~= nil then
-					local strMods, strKey = LekmodShortHotKey( action.HotKey );
-					if strKey == "" then
-						-- the action's Type is the promotion's type; CommandData only as a fallback
-						local promotion = GameInfo.UnitPromotions[action.Type] or GameInfo.UnitPromotions[action.CommandData];
-						strKey = "";
-						if promotion ~= nil and promotion.HotKey ~= nil then
-							strKey = string.gsub( promotion.HotKey, "^KB_", "" );
-						end
-					end
-					-- promotions without a key of their own get 1-9 by their place in the panel (LekmodPromoNumberInput)
-					if strKey == "" and bShowKeys and #g_LekmodPromoNumberActions < 9 then
-						table.insert( g_LekmodPromoNumberActions, iAction );
-						strKey = tostring( #g_LekmodPromoNumberActions );
+					local strMods, strKey = LekmodActionKey( action );
+					-- promotions without a key of their own, or with a key another action has too,
+					-- get 1-9 by their place in the panel (LekmodPromoNumberInput)
+					if bShowKeys then
+						strMods, strKey = LekmodNumberedKey( iAction, strMods, strKey, lekmodConflicts, true );
 					end
 					if bShowKeys then
 						LekmodSetHotKeyLabel( instance, strMods, tostring( strKey ) );
@@ -439,7 +480,8 @@ function UpdateUnitActions( unit )
 				instance = g_BuildIM:GetInstance();
 				instance.UnitActionButton:SetAnchor( "L,B" );
 				if bShowBuildKeys then
-					LekmodSetHotKeyLabel( instance, LekmodShortHotKey( action.HotKey ) );
+					local strMods, strKey = LekmodActionKey( action );
+					LekmodSetHotKeyLabel( instance, LekmodNumberedKey( iAction, strMods, strKey, lekmodConflicts, false ) );
 				else
 					LekmodSetHotKeyLabel( instance, "", "" );
 				end
@@ -1096,8 +1138,8 @@ function OnActivePlayerTurnEnd()
 	bOkayToProcess = false;
 end
 
--- LEKMOD: number keys 1-9 (top row or numpad) pick the promotions that have no hotkey of their own,
--- in the order the panel numbers them (option "Show promotion hotkeys")
+-- LEKMOD: number keys 1-9 (top row or numpad) pick the promotions that have no hotkey of their own and the
+-- builds/promotions whose key another action shares, in the order the panel numbers them
 g_LekmodPromoNumberActions = {};
 function LekmodPromoNumberInput( uiMsg, wParam, lParam )
 	if uiMsg ~= KeyEvents.KeyDown or #g_LekmodPromoNumberActions == 0 or Controls.WorkerActionPanel:IsHidden() then

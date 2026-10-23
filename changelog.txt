@@ -3467,6 +3467,7 @@ GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
 Tags: ui
 - Added: options to show the hotkey on each promotion and worker build button (both on by default)
 - Added: promotions can also be picked with the number keys 1-9
+- Added: when two things a unit can do right now share a hotkey (e.g. two builds on "D"), their buttons show a number 1-9 instead, which picks them
 - Changed: promotions are sorted by when they become available
 - Added: an option to mute the chat message sound
 - Changed: Route To sits with the other unit actions on the left instead of among the worker builds
