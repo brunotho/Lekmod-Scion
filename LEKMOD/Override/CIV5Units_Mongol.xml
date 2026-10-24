@@ -148498,7 +148498,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Carroccio is a sturdy war cart that heals the units around it. Protect it: losing it costs Happiness for good. Bring it home to your Capital and retire it when it is no longer needed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_CARROCCIO_PEDIA">
-			<Text>Available to every civilization with Civil Service, trained only in the [ICON_CAPITAL] Capital. Becomes obsolete with the Printing Press and does not upgrade.[NEWLINE][NEWLINE]14 [ICON_STRENGTH] Combat Strength, 2 [ICON_MOVES] Movement, 80 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]Starts with Cover I and Medic I. It cannot attack and never gains experience.[NEWLINE][NEWLINE]Losing it (killed, deleted or gifted to a City-State) costs 2 [ICON_HAPPINESS_1] Happiness for the rest of the game. The Retire action in your [ICON_CAPITAL] Capital removes it without that penalty.</Text>
+			<Text>Available to every civilization with Civil Service, trained only in the [ICON_CAPITAL] Capital. Becomes obsolete with Chivalry and does not upgrade.[NEWLINE][NEWLINE]14 [ICON_STRENGTH] Combat Strength, 2 [ICON_MOVES] Movement, 80 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]Starts with Cover I and Medic I. It cannot attack and never gains experience.[NEWLINE][NEWLINE]Losing it (killed, deleted or gifted to a City-State) costs 2 [ICON_HAPPINESS_1] Happiness for the rest of the game. The Retire action in your [ICON_CAPITAL] Capital removes it without that penalty.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MISSION_LEKMOD_RETIRE">
 			<Text>Retire</Text>

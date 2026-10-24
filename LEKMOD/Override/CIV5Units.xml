@@ -292018,7 +292018,7 @@
 			<MilitarySupport>true</MilitarySupport>
 			<MilitaryProduction>true</MilitaryProduction>
 			<PrereqTech>TECH_CIVIL_SERVICE</PrereqTech>
-			<ObsoleteTech>TECH_PRINTING_PRESS</ObsoleteTech>
+			<ObsoleteTech>TECH_CHIVALRY</ObsoleteTech>
 			<HurryCostModifier>20</HurryCostModifier>
 			<AdvancedStartCost>20</AdvancedStartCost>
 			<CombatLimit>100</CombatLimit>

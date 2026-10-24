@@ -98,7 +98,7 @@ CARROCCIO (NEW) (UNIT_LEKMOD_CARROCCIO)
 ---------------------------------------
 Tags: units, combat
 - New: UNIT_LEKMOD_CARROCCIO
-  - every civilization can train it from Civil Service, only in the capital; obsolete with the Printing Press; no upgrades
+  - every civilization can train it from Civil Service, only in the capital; obsolete with Chivalry; no upgrades
   - starts with Cover I and Medic I
 - Changed: the Happiness tooltip's "from units" line now counts the Happiness lost with Carroccios
 - DLL: Units.LekmodNoExperience, LekmodDeathUnhappiness (added to the player's units unhappiness in CvUnit::kill, taken back by Retire), LekmodRetireInCapital (MISSION_LEKMOD_RETIRE, ID 60), LekmodCapitalOnly (CvCity::canTrain)
