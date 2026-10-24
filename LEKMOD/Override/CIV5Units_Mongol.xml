@@ -116268,7 +116268,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_RATIONALISM_HELP"> 
 			<Text>
-				Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20%[NEWLINE]     faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER][NEWLINE]     Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]A free [ICON_GREAT_SCIENTIST] Great Scientist[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources[NEWLINE]     provide double the resource
+				Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20%[NEWLINE]     faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER][NEWLINE]     Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]+10% [ICON_RESEARCH] Science in all cities[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources[NEWLINE]     provide double the resource
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_TRADITION"> 
@@ -117706,9 +117706,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_SCIENTIFIC_REVOLUTION_HELP"> 
-			<Text>
-				[COLOR_POSITIVE_TEXT]Scientific Revolution[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_RESEARCH] Science in every city for 5 turns
-			</Text>
+			<Text>[COLOR_POSITIVE_TEXT]Scientific Revolution[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_SCIENTIST] Great Scientist appears</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_SECULARISM"> 
 			<Text>

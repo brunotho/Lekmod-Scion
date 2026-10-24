@@ -292124,4 +292124,57 @@
 			<IconAtlas>UNIT_ACTION_CHANGE_HOME_CITY</IconAtlas>
 		</Row>
 	</Missions>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): Rationalism: Free Thought needs Sovereignty, Scientific Revolution gives a Great Scientist, finisher +10% Science instead of a Great Scientist -->
+	<Policies>
+		<Update>
+			<Where Type="POLICY_SOVEREIGNTY"/>
+			<Set GridX="2" GridY="1"/>
+		</Update>
+	</Policies>
+	<Policies>
+		<Update>
+			<Where Type="POLICY_HUMANISM"/>
+			<Set GridX="4" GridY="1"/>
+		</Update>
+	</Policies>
+	<Policies>
+		<Update>
+			<Where Type="POLICY_FREE_THOUGHT"/>
+			<Set GridX="2" GridY="2"/>
+		</Update>
+	</Policies>
+	<Policies>
+		<Update>
+			<Where Type="POLICY_SCIENTIFIC_REVOLUTION"/>
+			<Set GridX="4" GridY="2" IncludesOneShotFreeUnits="true" TempScienceModifier="0" TempScienceTurns="0"/>
+		</Update>
+	</Policies>
+	<Policies>
+		<Update>
+			<Where Type="POLICY_RATIONALISM_FINISHER"/>
+			<Set IncludesOneShotFreeUnits="false"/>
+		</Update>
+	</Policies>
+	<Policy_PrereqPolicies>
+		<Delete PolicyType="POLICY_FREE_THOUGHT"/>
+		<Row>
+			<PolicyType>POLICY_FREE_THOUGHT</PolicyType>
+			<PrereqPolicy>POLICY_SOVEREIGNTY</PrereqPolicy>
+		</Row>
+	</Policy_PrereqPolicies>
+	<Policy_FreeUnitClasses>
+		<Delete PolicyType="POLICY_RATIONALISM_FINISHER"/>
+		<Row>
+			<PolicyType>POLICY_SCIENTIFIC_REVOLUTION</PolicyType>
+			<UnitClassType>UNITCLASS_SCIENTIST</UnitClassType>
+			<Count>1</Count>
+		</Row>
+	</Policy_FreeUnitClasses>
+	<Policy_YieldModifiers>
+		<Row>
+			<PolicyType>POLICY_RATIONALISM_FINISHER</PolicyType>
+			<YieldType>YIELD_SCIENCE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+	</Policy_YieldModifiers>
 </GameData>

@@ -115,6 +115,13 @@ Tags: ui
 - Changed: the Canal Project's page links to the Canal improvement it unlocks
 - Dev: SelectBuildingOrWonderArticle shows the Improvements frame for Builds.PrereqBuildingClass of the building's class
 
+RATIONALISM (POLICY_BRANCH_RATIONALISM)
+---------------------------------------
+Tags: policies
+- Changed: Free Thought needs Sovereignty (was Humanism); Humanism and Sovereignty swapped places in the tree
+- Changed: Scientific Revolution: a Great Scientist appears (was +20% Science in every city for 5 turns)
+- Changed: completing the tree gives +10% Science in all cities (was a free Great Scientist)
+
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
