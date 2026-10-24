@@ -56,7 +56,7 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
 - Sources: `units/<name>/` (Vanguard Corps: square portrait + map flag source; Barlas Cavalry and Bajoras: 1254 px
   pictures with a gold ring painted on, user 2026-10-14).
 - **Portrait** (unit panel, Civilopedia): `python art_sources/tools/round_icon.py units <name>` writes a circle
-  177 px wide at (39,40) in a 256 px cell (the old 173 px layout at (41,42), 4 px wider; see the building icons),
+  173 px wide at (41,42) in a 256 px cell (scaled and rounded per size; see the building icons),
   256/128/80/64/45/32 px, BC3, to `LEKMOD/Art/Units/`. The painted gold ring of the two UU pictures is cut off
   (fixed radius in the tool's `RADIUS`); the game draws its own frame.
 - The tool takes the **largest** picture directly in the unit's folder, so other pictures (e.g. a map flag source) go in a subfolder (`flag/`). Until 2026-10-15 the 1254 px flag source sat next to the 256 px Vanguard Corps portrait, and the 2026-10-14 rebuild turned every portrait size into the flag silhouette (user saw it in the tech tree). Without texconv (cloud session) the tool writes BC3 with Pillow.
@@ -69,8 +69,8 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   (43,42) in a 256 px cell (128: 22..107, 64: 11..54, 45: 8..38), transparent around it, no frame. The city screen
   and the city banner (45 px) draw their ring around that circle.
 - `python art_sources/tools/round_icon.py buildings <name> [...]`: crops the source to its picture (bounding box of
-  the non-black pixels, 5% inside its nearest edge, radius 0.38-0.47 of the width), scales it into a circle 4 px
-  wider than the base layout (175 px at 41,40) and writes 32/45/64/80/128/214/256 to `LEKMOD/Art/Lekmod (v 1)/Art/Buildings/`.
+  the non-black pixels, 5% inside its nearest edge, radius 0.38-0.47 of the width), scales it into exactly the
+  base circle of each size (`KINDS` in the tool; 32/80/214 scale the 256 box) and writes 32/45/64/80/128/214/256 to `LEKMOD/Art/Lekmod (v 1)/Art/Buildings/`.
   Sources delivered as a cut-out on white get their white background replaced by a dark colour first
   (`WHITE_BACKGROUND`: Ministry of Truth; since 2026-10-22 also the round pictures on white: Appletree, War College,
   Self-Propelled Artillery). Replaced sources go into an `old/` subfolder (the tool reads only the folder itself).
@@ -83,6 +83,17 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   file table: u32 name length, name, 9 bytes, u32 size, u32 offset) put almost every circle at 41..213 x 42..214 (256)
   and 7..38 x 7..38 (45). Ours: 41..216 x 40..215 and exactly 7..38. No systemic size error; a few base wonders
   (Cristo Redentor's arms) stick out of the circle, which makes them look bigger.
+- **Corrected 2026-10-24** (user screenshots of the city banner: our Fulling Mill touched the ring at the top and left
+  a gap below, the Monument didn't; a "bump" at the top left; a frayed edge). The 2026-10-22 check counted faint
+  pixels (alpha > 10) and missed it. Measured at alpha > 127, the base 45 px circle is 8..37 on both axes; ours was
+  7..37: the "4 px wider" circle rounded onto the top and left only at small sizes (off-centre by half a pixel, a
+  flattened top-left), and the Lanczos-filtered alpha left a 2-3 px soft edge with stray low-alpha pixels. Since then
+  the tool draws each size's base circle exactly (`circle_box`), takes the alpha from a circle drawn 8x larger and
+  box-filtered (one antialiased pixel, like the base icons) and fills the whole cell with picture before masking, so
+  no dark rim bleeds in. All 15 building and 5 unit icons were rebuilt. Promotion icons are a different pipeline.
+- Watch out: the "4 px wider" circle (2026-10-14) was meant to hide the art's dark vignette inside the ring. The crop
+  already stays 5% inside the picture, so that should not come back; if a dark gap shows inside the ring again, crop
+  tighter (`MARGIN`, `ZOOM`) instead of growing the circle.
 
 ## Unit action icons
 - Sources: `unit_actions/` (2026-10-16: `buy_city_state_heart_v1.png`, the Merchant of Venice's buy-City-State button; a

@@ -26,12 +26,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 TEXCONV = os.environ.get('TEXCONV', os.path.join(os.path.dirname(REPO), 'texconv.exe'))
 KINDS = {
-    # kind: (output folder, sizes, (diameter, x, y) in a 256 px cell)
+    # kind: (output folder, sizes, circle box (left, top, right, bottom) in a 256 px cell, exact boxes per size)
+    # Buildings: the base circles of BuildingPortraits3_<size>_Exp2Patch.dds (alpha > 127), measured 2026-10-24; other
+    # sizes scale the 256 box. Units: the 173 px layout at (41,42) (no loose base unit atlas to measure).
     'buildings': (os.path.join(REPO, 'LEKMOD', 'Art', 'Lekmod (v 1)', 'Art', 'Buildings'),
-                  (32, 45, 64, 80, 128, 214, 256), (175, 41, 40)),
+                  (32, 45, 64, 80, 128, 214, 256), (43, 42, 214, 214),
+                  {256: (43, 42, 214, 214), 128: (22, 21, 107, 107), 64: (11, 11, 54, 54), 45: (8, 8, 38, 38)}),
     'units': (os.path.join(REPO, 'LEKMOD', 'Art', 'Units'),
-              (32, 45, 64, 80, 128, 256), (177, 39, 40)),
+              (32, 45, 64, 80, 128, 256), (41, 42, 214, 215), {}),
 }
+
+
+def circle_box(kind, size):
+    """the circle's pixel box at this size: the measured base box, else the 256 box scaled and rounded"""
+    _, _, box256, exact = KINDS[kind]
+    if size in exact:
+        return exact[size]
+    return tuple(int(round(v * size / 256.0)) for v in box256)
 DARK, MARGIN, R_MIN, R_MAX = 20, 0.05, 0.38, 0.47
 RADIUS = {
     'barlas_cavalry': 0.435,  # gold ring painted on from radius 0.455
@@ -51,32 +62,34 @@ WHITE_BACKGROUND = {# round pictures on white (2026-10-22; appletree, war_colleg
                     'self_propelled_artillery': (22, 22, 24), 'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
-def icon(src, size, layout, breakout=None):
-    """breakout: (full source, crop box, polygon) for a picture part drawn outside the circle"""
-    s = 4
+def icon(full, crop, size, cbox, poly=None):
+    """full: the source; crop: the source square shown in the circle; cbox: the circle's pixel box at this size;
+    poly: source polygon of a picture part drawn outside the circle (breakout).
+    The picture is scaled with Lanczos over the whole cell (no dark rim bleeds in at the circle's edge); the alpha is
+    the circle (plus breakout) drawn 8x larger and box-filtered, so the edge is antialiased over one pixel like the base
+    icons, with no halo (2026-10-24: the old Lanczos-filtered alpha was soft and asymmetric at small sizes)."""
+    s = 8
     big = size * s
-    d = int(round(layout[0] / 256.0 * big))
-    x, y = int(round(layout[1] / 256.0 * big)), int(round(layout[2] / 256.0 * big))
-    art = src.resize((d, d), Image.LANCZOS)
-    mask = Image.new('L', (d, d), 0)
-    ImageDraw.Draw(mask).ellipse((0, 0, d - 1, d - 1), fill=255)
-    art.putalpha(Image.composite(art.getchannel('A'), Image.new('L', (d, d), 0), mask))
-    canvas = Image.new('RGBA', (big, big), (0, 0, 0, 0))
-    canvas.alpha_composite(art, (x, y))
-    if breakout:
-        full, box, poly = breakout
-        k = d / float(box[2] - box[0])
-        fw, fh = full.size
-        big_full = full.resize((int(round(fw * k)), int(round(fh * k))), Image.LANCZOS)
-        ox, oy = x - box[0] * k, y - box[1] * k
-        m = Image.new('L', (big, big), 0)
-        ImageDraw.Draw(m).polygon([(px * k + ox, py * k + oy) for px, py in poly], fill=255)
-        ImageDraw.Draw(m).ellipse((x, y, x + d - 1, y + d - 1), fill=0)
-        layer = Image.new('RGBA', (big, big), (0, 0, 0, 0))
-        layer.paste(big_full, (int(round(ox)), int(round(oy))))
-        layer.putalpha(Image.composite(layer.getchannel('A'), Image.new('L', (big, big), 0), m))
-        canvas.alpha_composite(layer)
-    return canvas.resize((size, size), Image.LANCZOS)
+    l, t, r, b = [v * s for v in cbox]
+    k = (r - l) / float(crop[2] - crop[0])          # source px -> 8x px
+    ky = (b - t) / float(crop[3] - crop[1])
+    ox, oy = l - crop[0] * k, t - crop[1] * ky
+    # the source region that covers the whole cell (clamped to the source; edge pixels repeat beyond it)
+    fw, fh = full.size
+    sx0, sy0 = max(0, int((0 - ox) / k)), max(0, int((0 - oy) / ky))
+    sx1, sy1 = min(fw, int((big - ox) / k) + 1), min(fh, int((big - oy) / ky) + 1)
+    region = full.crop((sx0, sy0, sx1, sy1))
+    canvas = Image.new('RGBA', (big, big), (0, 0, 0, 255))
+    w, h = int(round((sx1 - sx0) * k)), int(round((sy1 - sy0) * ky))
+    canvas.paste(region.resize((w, h), Image.LANCZOS), (int(round(ox + sx0 * k)), int(round(oy + sy0 * ky))))
+    mask = Image.new('L', (big, big), 0)
+    if poly:
+        ImageDraw.Draw(mask).polygon([(px * k + ox, py * ky + oy) for px, py in poly], fill=255)
+    ImageDraw.Draw(mask).ellipse((l, t, r - 1, b - 1), fill=255)
+    rgb = canvas.convert('RGB').resize((size, size), Image.LANCZOS)
+    alpha = mask.resize((size, size), Image.BOX).point(lambda v: 0 if v < 8 else v)
+    rgb.putalpha(alpha)
+    return rgb
 
 
 def replace_white_background(src, colour):
@@ -132,21 +145,18 @@ def write_bc3(img, out_path):
 
 
 def build(kind, name):
-    out_dir, sizes, layout = KINDS[kind]
+    out_dir, sizes = KINDS[kind][0], KINDS[kind][1]
     src = Image.open(largest_source(os.path.join(REPO, 'art_sources', kind, name))).convert('RGBA')
     if name in WHITE_BACKGROUND:
         src = replace_white_background(src, WHITE_BACKGROUND[name])
     cx, cy, r = picture_circle(src, name)
     r /= ZOOM.get(name, 1.0)
     d = r * src.size[0]
-    full = src
-    box = (int(round(cx - d)), int(round(cy - d)), int(round(cx + d)), int(round(cy + d)))
-    src = src.crop(box)
-    breakout = (full, box, BREAKOUT[name]) if name in BREAKOUT else None
+    box = (cx - d, cy - d, cx + d, cy + d)
     tmp = tempfile.mkdtemp()
     for sz in sizes:
         p = os.path.join(tmp, '%s_%d.png' % (name, sz))
-        img = icon(src, sz, layout, breakout)
+        img = icon(src, box, sz, circle_box(kind, sz), BREAKOUT.get(name))
         if not os.path.exists(TEXCONV):
             write_bc3(img, os.path.join(out_dir, '%s_%d.dds' % (name, sz)))
             continue
