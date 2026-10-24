@@ -176,9 +176,14 @@ SECTION_LAYOUT = {
   "tiles and resources" => [
     [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],
   ],
-  # Espionage: the rules first, the spy wonders after them.
+  # Espionage: the rules first (its wonders are in "world wonders", user 2026-10-24).
   "espionage" => [
     [nil, ["SPIES AND DIPLOMATS"]],
+  ],
+  # World wonders (user, 2026-10-24): every world wonder's changes, one card each, the rule first; the rest by
+  # availability. The Tourism section copies their Great Work lines (TOURISM WONDERS, a Collects card).
+  "world wonders" => [
+    [nil, ["SAME-TURN WONDERS"]],
   ],
   "policies" => [
     [nil, %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM

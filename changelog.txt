@@ -10,7 +10,7 @@ Format (also the source for player patch notes on the website):
   in quick-speed numbers, for players with no development knowledge. Bugs we introduced and fixed
   before a release are not player-facing.
 - Developer-only lines (skipped for patch notes): "- Note:", "- DLL:", "- Dev:".
-- Tags: tourism, world congress, espionage, policies, civs, buildings, units, promotions, religion,
+- Tags: tourism, world congress, espionage, policies, civs, buildings, world wonders, units, promotions, religion,
   city-states, diplomacy and trade, tiles and resources, game mechanics, ui, bugfix,
   combat, movement, naval, air, wonders, ruins.
 - The tag order is the website's section order; the last six tags are filters only (never a first tag).
@@ -472,7 +472,7 @@ Tags: game mechanics, diplomacy and trade
 
 SAME-TURN WONDERS
 -----------------
-Tags: game mechanics, wonders
+Tags: world wonders, game mechanics, wonders
 - Added: when several players finish the same World Wonder on the same turn: in Tournament mode nobody gets it and each gets Gold for its Production; in Casual mode everyone who finished it gets it
 - Added: a player never owns the same World Wonder twice: capturing a city with a wonder you already have destroys the captured copy
 - Dev: LEKMOD_WONDER_TIE_RULES: CvGame::isBuildingClassMaxedOut exception while cities process production (Both); look-ahead over other players' cities and a per-turn tie marker in CvCity::doProduction (Neither); duplicate check in CvPlayer::acquireCity. GameOptions IDs 69/70 (hidden, set by the lobby dropdown), 72 mode (hidden)
@@ -945,8 +945,7 @@ Subsection: Buildings
 
 TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
 -------------------------------------------
-Tags: buildings, wonders
-Subsection: Wonders and projects
+Tags: world wonders, wonders
 - Changed: needs Honor (the Statue of Zeus no longer does)
 - Changed: +3 Production, +3 Gold, +3 Culture (was +1 Culture) and +1 Great Engineer point
 - Changed: its +15% Production for ranged units now also covers naval ranged units and submarines (the +15 XP stays with land ranged units)
@@ -1890,62 +1889,27 @@ Tags: tourism, units
 - Changed: Great Writers, Artists and Musicians create a Great Work that fits in any empty Great Work slot (was: only slots of their own kind)
 - Note: comes from the shared slot type (GREAT WORKS above); this item updates the mission and unit texts
 
-TOURISM WONDERS (BUILDING_GREAT_LIBRARY, BUILDING_MOSQUE_OF_DJENNE, BUILDING_HAGIA_SOPHIA, BUILDING_STATUE_ZEUS, BUILDING_COLOSSUS, BUILDING_HANGING_GARDEN, BUILDING_PARTHENON, BUILDING_NOTRE_DAME, BUILDING_GLOBE_THEATER, BUILDING_BROADWAY, BUILDING_RED_FORT, BUILDING_CN_TOWER, BUILDING_EIFFEL_TOWER, BUILDING_CRISTO_REDENTOR, BUILDING_SISTINE_CHAPEL)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: tourism, buildings, wonders
-- Changed: Great Library:
-  - no Science of its own
-  - each Great Work in it gives +3 Science and +3 Tourism (2 slots)
-- Changed: Statue of Zeus (reworked):
-  - no longer needs Honor
-  - +10 resting Influence with city-states within 8 tiles
-  - enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
-  - 1 slot that comes filled
-  - no longer: its yields, Engineer points, +10% military production and the +15% against cities for all units
-- Changed: Hanging Gardens: 2 slots, both filled: +2 Food
-- Changed: Colossus:
-  - costs 250 (like the Oracle, was 185)
-  - 1 slot, filled: +4 Gold
-  - when built, +30 Influence with the closest coastal city-state you are at peace with
-- Changed: Great Mosque of Djenne:
-  - no Culture or Faith
-  - 2 Happiness (was 3)
-  - a free Mosque in the city
-  - 3 slots, 1 comes filled
-  - all filled: +10 Tourism
-- Changed: Parthenon: 2 slots, 1 comes filled; both filled: +3 Culture
-- Changed: Hagia Sophia:
-  - no free Temple and no Faith
-  - 3 slots, 1 comes filled
-  - all filled: +10 Faith
-- Changed: Notre Dame:
-  - no Faith and no Artist points
-  - 2 slots, 1 comes filled
-  - both filled: +4 Faith
-- Changed: Globe Theater:
-  - no Culture and no Writer points
-  - 2 slots, 1 comes filled
-  - each Great Work in it gives +1 Culture and +1 Tourism per era (Renaissance Era 4)
-- Changed: Sistine Chapel:
-  - +20% Culture in all cities (was 25%)
-  - Great Works in it yield double
-- Changed: Red Fort:
-  - no Tourism from Flight
-  - 3 slots, each Great Work in it gives +6 Tourism
-- Changed: Broadway (reworked):
-  - a free Great Musician
-  - 3 slots, 1 comes filled
-  - each Great Work in it gives +3 Tourism per era (Modern Era 18)
-  - no longer: its Culture
-- Changed: Eiffel Tower:
-  - +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
-  - no Merchant points
-- Changed: Cristo Redentor:
-  - 3 slots
-  - all filled: +40 Faith
-- Changed: CN Tower:
-  - 3 slots
-  - all filled: +50% Tourism toward civs with territory within 10 tiles of the city
+TOURISM WONDERS (COLLECTION_TOURISM_WONDERS)
+--------------------------------------------
+Tags: tourism, wonders
+Collects: world wonders
+- Changed: {Great Library} each Great Work in it gives +3 Science and +3 Tourism (2 slots)
+- Now: {Statue of Zeus} 1 Great Work slot that comes filled
+- Changed: {Hanging Gardens} 2 slots, both filled: +2 Food
+- Changed: {Colossus} 1 slot, filled: +4 Gold
+- Changed: {Great Mosque of Djenne} 3 slots, 1 comes filled; all filled: +10 Tourism
+- Changed: {Parthenon} 2 slots, 1 comes filled; both filled: +3 Culture
+- Changed: {Hagia Sophia} 3 slots, 1 comes filled; all filled: +10 Faith
+- Changed: {Notre Dame} 2 slots, 1 comes filled; both filled: +4 Faith
+- Changed: {Globe Theater} 2 slots, 1 comes filled; each Great Work in it gives +1 Culture and +1 Tourism per era (Renaissance Era 4)
+- Changed: {Sistine Chapel} Great Works in it yield double
+- Removed: {Red Fort} its Tourism from Flight
+- Changed: {Red Fort} 3 slots, each Great Work in it gives +6 Tourism
+- Now: {Broadway} 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
+- Changed: {Eiffel Tower} +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
+- Changed: {Cristo Redentor} 3 slots; all filled: +40 Faith
+- Changed: {CN Tower} 3 slots; all filled: +50% Tourism toward civs with territory within 10 tiles of the city
+- Now: {Angkor Wat} 2 Great Work slots that come filled
 - Dev: the combat preview calls every enemy aura "Fear Aura" with its source in brackets, e.g. "Fear Aura (Zeus)" (was "Nearby Reverse Great General"); auras don't stack, only the strongest counts
 - Dev: in the Great Works screen, hovering a building or wonder icon shows what Great Works inside it do
 - Note: Petra had no Tourism to remove. Colossus trade texts were already right (+2 Gold to you, +1 to the route owner)
@@ -1960,43 +1924,150 @@ Tags: tourism, buildings, wonders
 - Changed: 4 Gold maintenance (was 0)
 - DLL: Buildings.GreatWorkFilledGPRateModifier
 
-WORLD WONDERS (BUILDING_HUBBLE, BUILDING_GREAT_LIGHTHOUSE, BUILDING_ANGKOR_WAT, BUILDING_CHICHEN_ITZA, BUILDING_ALTHING, BUILDING_ARSENAL_OF_VENICE)
-----------------------------------------------------------------------------------------------------------------------------------------------------
-Tags: buildings, wonders
-Subsection: Wonders and projects
-- Changed: Great Lighthouse:
-  - naval units trained in the city start with +15 XP
-  - when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one
-  - no longer: +1 movement and +1 sight for naval units, the free Quinquereme
-  - keeps the free Lighthouse and +1 Gold on water tiles
-- Changed: Althing: its +1 Production and +1 Culture also apply to snow tiles
-- Changed: Chichen Itza:
-  - its city loses 1 Population whenever you enter a Golden Age
-  - 1 Scientist point instead of 1 Engineer point
-  - no longer: its 4 Happiness
-- Changed: Angkor Wat (reworked):
-  - available with Civil Service (was Education) and costs 201 like Chichen Itza (was 268)
-  - 1 Culture
-  - 1 Engineer point
-  - a free Garden
-  - farms with fresh water worked by the city yield +1 Faith
-  - 2 Great Work slots that come filled
-  - no longer: the free University, 5 Culture and 5 Science, the Scientist point
-- Changed: Hubble Space Telescope:
-  - costs 1050 (was 837)
-  - 5 Scientist points (was 3)
-  - no Science and no free Recycling Center
-  - keeps +100% Production toward Spaceship Parts
-  - Spaceship Parts built in any of your cities start with 15 XP
-- Removed: Arsenal of Venice (can no longer be built)
-- Note: Althing had no Tourism to remove
+GREAT LIBRARY (BUILDING_GREAT_LIBRARY)
+--------------------------------------
+Tags: world wonders, tourism, wonders
+- Removed: its own Science
+- Changed: each Great Work in it gives +3 Science and +3 Tourism (2 slots)
+
+STATUE OF ZEUS (BUILDING_STATUE_ZEUS)
+-------------------------------------
+Tags: world wonders, tourism, wonders
+- Now: 1 Great Work slot that comes filled
+- Now: +10 resting Influence with city-states within 8 tiles
+- Now: enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
+- Now: doesn't need Honor
+- Removed: its yields, Engineer points, +10% military production and the +15% against cities for all units
+
+HANGING GARDENS (BUILDING_HANGING_GARDEN)
+-----------------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: 2 slots, both filled: +2 Food
+
+COLOSSUS (BUILDING_COLOSSUS)
+----------------------------
+Tags: world wonders, tourism, wonders
+- Changed: costs 250 (like the Oracle, was 185)
+- Changed: 1 slot, filled: +4 Gold
+- Added: when built, +30 Influence with the closest coastal city-state you are at peace with
+
+GREAT MOSQUE OF DJENNE (BUILDING_MOSQUE_OF_DJENNE)
+--------------------------------------------------
+Tags: world wonders, tourism, wonders
+- Removed: its Culture and Faith
+- Changed: 2 Happiness (was 3)
+- Added: a free Mosque in the city
+- Changed: 3 slots, 1 comes filled; all filled: +10 Tourism
+
+PARTHENON (BUILDING_PARTHENON)
+------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: 2 slots, 1 comes filled; both filled: +3 Culture
+
+HAGIA SOPHIA (BUILDING_HAGIA_SOPHIA)
+------------------------------------
+Tags: world wonders, tourism, wonders
+- Removed: the free Temple and its Faith
+- Changed: 3 slots, 1 comes filled; all filled: +10 Faith
+
+NOTRE DAME (BUILDING_NOTRE_DAME)
+--------------------------------
+Tags: world wonders, tourism, wonders
+- Removed: its Faith and Artist points
+- Changed: 2 slots, 1 comes filled; both filled: +4 Faith
+
+GLOBE THEATER (BUILDING_GLOBE_THEATER)
+--------------------------------------
+Tags: world wonders, tourism, wonders
+- Removed: its Culture and Writer points
+- Changed: 2 slots, 1 comes filled; each Great Work in it gives +1 Culture and +1 Tourism per era (Renaissance Era 4)
+
+SISTINE CHAPEL (BUILDING_SISTINE_CHAPEL)
+----------------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: +20% Culture in all cities (was 25%)
+- Changed: Great Works in it yield double
+
+RED FORT (BUILDING_RED_FORT)
+----------------------------
+Tags: world wonders, tourism, wonders
+- Removed: its Tourism from Flight
+- Changed: 3 slots, each Great Work in it gives +6 Tourism
+
+BROADWAY (BUILDING_BROADWAY)
+----------------------------
+Tags: world wonders, tourism, wonders
+- Now: a free Great Musician
+- Now: 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
+- Removed: its Culture
+
+EIFFEL TOWER (BUILDING_EIFFEL_TOWER)
+------------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
+- Removed: its Merchant points
+
+CRISTO REDENTOR (BUILDING_CRISTO_REDENTOR)
+------------------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: 3 slots; all filled: +40 Faith
+
+CN TOWER (BUILDING_CN_TOWER)
+----------------------------
+Tags: world wonders, tourism, wonders
+- Changed: 3 slots; all filled: +50% Tourism toward civs with territory within 10 tiles of the city
+
+GREAT LIGHTHOUSE (BUILDING_GREAT_LIGHTHOUSE)
+--------------------------------------------
+Tags: world wonders, wonders, naval
+It keeps the free Lighthouse and +1 Gold on water tiles.
+- Added: naval units trained in the city start with +15 XP
+- Added: when built, the closest coastal city-state that could give you a trade route quest (met, at peace, reachable by a trade route, not yet connected) asks you for one
+- Removed: +1 movement and +1 sight for naval units, the free Quinquereme
 - DLL: Buildings.ClosestCoastalMinorTradeQuest, GoldenAgePopulationChange, Building_FreshWaterImprovementYieldChanges (LEKMOD_GREAT_WORK_WONDER_EFFECTS)
+
+ALTHING (BUILDING_ALTHING)
+--------------------------
+Tags: world wonders, wonders
+- Changed: its +1 Production and +1 Culture also apply to snow tiles
+- Note: Althing had no Tourism to remove
+
+CHICHEN ITZA (BUILDING_CHICHEN_ITZA)
+------------------------------------
+Tags: world wonders, wonders
+- Added: its city loses 1 Population whenever you enter a Golden Age
+- Changed: 1 Scientist point instead of 1 Engineer point
+- Removed: its 4 Happiness
+
+ANGKOR WAT (BUILDING_ANGKOR_WAT)
+--------------------------------
+Tags: world wonders, wonders
+- Now: available with Civil Service and costs 201, like Chichen Itza
+- Now: 1 Culture
+- Now: 1 Engineer point
+- Now: a free Garden
+- Now: farms with fresh water worked by the city yield +1 Faith
+- Now: 2 Great Work slots that come filled
+- Removed: the free University, 5 Culture and 5 Science, the Scientist point
+
+HUBBLE SPACE TELESCOPE (BUILDING_HUBBLE)
+----------------------------------------
+Tags: world wonders, wonders
+It keeps +100% Production toward Spaceship Parts.
+- Changed: costs 1050 (was 837)
+- Changed: 5 Scientist points (was 3)
+- Removed: its Science and the free Recycling Center
+- Added: Spaceship Parts built in any of your cities start with 15 XP
 - DLL: Building_LekmodGlobalUnitCombatFreeExperiences (LEKMOD_GLOBAL_UNITCOMBAT_XP_BUILDINGS; adds to the player-wide per-unit-type XP that policies use)
+
+ARSENAL OF VENICE (BUILDING_ARSENAL_OF_VENICE)
+----------------------------------------------
+Tags: world wonders, wonders
+- Removed: Arsenal of Venice (can no longer be built)
 
 TOWER OF BELEM (BUILDING_TOWER_OF_BELEM)
 ----------------------------------------
-Tags: buildings, naval, wonders
-Subsection: Wonders and projects
+Tags: world wonders, naval, wonders
 - Changed: costs 400 (was 300); must be built on the coast; 1 Merchant point; +5 City Strength
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
 - Removed: its Culture, Golden Age points and the yields for cities on the same or other landmasses
@@ -2455,7 +2526,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 
 KREMLIN (BUILDING_KREMLIN)
 --------------------------
-Tags: espionage, buildings, wonders
+Tags: world wonders, espionage, wonders
 - Added: enemy spies take 30% longer per steal in all your cities
 - Added: your guarding spies count 1 level higher
 - Added: enemy spies caught in your cities are always executed (no choice to send them home)
@@ -2464,14 +2535,14 @@ Tags: espionage, buildings, wonders
 
 GREAT FIREWALL (BUILDING_GREAT_FIREWALL)
 ----------------------------------------
-Tags: espionage, buildings, wonders
+Tags: world wonders, espionage, wonders
 - Added: other civilizations' spies and diplomats are sent home from its city and can't be placed there
 - Changed: enemy spies take 25% longer per steal in your other cities (was 25% weaker spies in the old spy system)
 - DLL: Buildings.BlockForeignSpies; the old EspionageModifier and GlobalEspionageModifier are set to 0 (unused by the spy rework)
 
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
 -----------------------------------------------------------
-Tags: espionage, buildings, wonders
+Tags: world wonders, espionage, wonders
 - Added: World Wonder at Telecommunications, 1600 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
@@ -2481,7 +2552,7 @@ Tags: espionage, buildings, wonders
 
 EXTRAORDINARY SESSION (NEW) (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
 -------------------------------------------------------------------
-Tags: world congress, buildings, wonders
+Tags: world wonders, world congress, wonders
 - Added: World Wonder at Globalization, 1600 Production
 - Added: +2 Delegates in the World Congress
 - Added: an extra World Leader vote 2 turns after it is built (3 turns if a regular vote falls on that turn); the regular votes keep their schedule
