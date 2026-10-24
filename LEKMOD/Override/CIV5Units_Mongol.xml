@@ -1390,7 +1390,7 @@
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_ZEALOT_HELP">
 			<Text>
-				Killing a unit yields [ICON_PEACE] Faith equal to its [ICON_STRENGTH] Combat Strength (max. 40).[NEWLINE]Barbarian kills stop counting from turn 80.
+				Killing a unit yields [ICON_PEACE] Faith equal to its [ICON_STRENGTH] Combat Strength (max. 40).[NEWLINE]Barbarian kills stop counting from the Renaissance Era.
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_ENVELOPMENT">
@@ -1718,7 +1718,7 @@
 			<Text>The Mansabdari system was a unique administrative structure established by Emperor Akbar that formed the backbone of the Mughal Empire's civil and military administration. Under this system, imperial officers known as mansabdars were assigned ranks (mansabs) that determined their status, responsibilities, and compensation. Each mansabdar maintained estates that served as centers of local governance and military recruitment. These estates not only strengthened imperial control but also served as cultural centers that promoted Mughal artistic and architectural styles. The system helped integrate diverse ethnic and religious groups into the empire's administrative framework, reflecting the Mughals' skill at incorporating various cultural traditions into their governance model.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">			
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From the Renaissance Era the Culture needs no garrison.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_STRATEGY">			
 			<Text>The Mansabdari Estate is available at a different technology than the Caravansary it replaces, requiring Currency rather than Horseback Riding. Beyond improving land trade routes, it provides significant defensive bonuses to your cities and additional [ICON_GOLD] Gold and [ICON_CULTURE] Culture when the city is garrisoned, encouraging a balanced approach to growth and defense.</Text>
@@ -116193,7 +116193,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_HONOR_HELP"> 
 			<Text>
-				Adopting Honor:[NEWLINE][ICON_BULLET]+33% [ICON_STRENGTH] Combat Strength[NEWLINE]     against [COLOR_POSITIVE_TEXT]Barbarians[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_CULTURE] Culture for each enemy unit[NEWLINE]     killed (max. 40; barbarian kills stop[NEWLINE]     counting from turn 80)[NEWLINE][ICON_BULLET]Unlocks building the Temple of[NEWLINE]     Artemis[NEWLINE][NEWLINE]Completing the Honor tree:[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] Food from [ICON_BUILDING_BARRACKS] Barracks[NEWLINE]     and [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]All non-air military units get the[NEWLINE]     Discipline promotion (+50%[NEWLINE]     Experience)[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_GENERAL] Great Generals with [ICON_PEACE][NEWLINE]     Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+				Adopting Honor:[NEWLINE][ICON_BULLET]+33% [ICON_STRENGTH] Combat Strength[NEWLINE]     against [COLOR_POSITIVE_TEXT]Barbarians[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_CULTURE] Culture for each enemy unit[NEWLINE]     killed (max. 40; barbarian kills stop[NEWLINE]     counting from the Renaissance[NEWLINE]     Era)[NEWLINE][ICON_BULLET]Unlocks building the Temple of[NEWLINE]     Artemis[NEWLINE][NEWLINE]Completing the Honor tree:[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] Food from [ICON_BUILDING_BARRACKS] Barracks[NEWLINE]     and [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]All non-air military units get the[NEWLINE]     Discipline promotion (+50%[NEWLINE]     Experience)[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_GENERAL] Great Generals with [ICON_PEACE][NEWLINE]     Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_LIBERTY"> 
@@ -117186,7 +117186,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_CASTE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +2 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from turn 80 on, every city gets this
+				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +2 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_TRADITION"> 
@@ -117322,7 +117322,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_OLIGARCHY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Oligarchy[ENDCOLOR][NEWLINE][ICON_BULLET]Free Walls in your first 2 cities that don't have Walls[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture; from turn 80 on, every city gets this
+				[COLOR_POSITIVE_TEXT]Oligarchy[ENDCOLOR][NEWLINE][ICON_BULLET]Free Walls in your first 2 cities that don't have Walls[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture; from the Renaissance Era on, every city gets this
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_OLIGARCHY_TEXT"> 
@@ -117848,7 +117848,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_THEOCRACY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Sacred Duty[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_BUILDING_TEMPLE] Temples cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Clearing a [COLOR_POSITIVE_TEXT]Barbarian Encampment[ENDCOLOR] gives +20 [ICON_GOLD] Gold[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; from turn 80 on, every city gets this[NEWLINE][ICON_BULLET]The [ICON_BUILDING_GRAND_TEMPLE] Grand Temple: +25% [ICON_GOLD] Gold in its city
+				[COLOR_POSITIVE_TEXT]Sacred Duty[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_BUILDING_TEMPLE] Temples cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]5 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET]Clearing a [COLOR_POSITIVE_TEXT]Barbarian Encampment[ENDCOLOR] gives +20 [ICON_GOLD] Gold[NEWLINE][ICON_BULLET]Cities with a garrisoned unit (not Recon) get +1 [ICON_PEACE] Faith and +1 [ICON_CULTURE] Culture; from the Renaissance Era on, every city gets this[NEWLINE][ICON_BULLET]The [ICON_BUILDING_GRAND_TEMPLE] Grand Temple: +25% [ICON_GOLD] Gold in its city
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_THEOCRACY_TEXT"> 
@@ -118056,7 +118056,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_WARRIOR_CODE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Warrior Code[ENDCOLOR][NEWLINE][ICON_BULLET]2 [ICON_UNIT_WARRIOR] Warriors appear immediately[NEWLINE][ICON_BULLET]10 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET][ICON_GOLD] Gold for each enemy unit killed (max. 40; barbarian kills stop counting from turn 80)
+				[COLOR_POSITIVE_TEXT]Warrior Code[ENDCOLOR][NEWLINE][ICON_BULLET]2 [ICON_UNIT_WARRIOR] Warriors appear immediately[NEWLINE][ICON_BULLET]10 units cost no [ICON_GOLD] Gold maintenance[NEWLINE][ICON_BULLET][ICON_GOLD] Gold for each enemy unit killed (max. 40; barbarian kills stop counting from the Renaissance Era)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_WORKERS_FACULTIES"> 
@@ -147340,7 +147340,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Atlatlist is the Mayan unique unit, replacing the Composite Bowman. It hits hardest at close range and moves quickly through Forest and Jungle.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From the Renaissance Era the Culture needs no garrison.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ALCAZABA_HELP">
 			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
@@ -147813,7 +147813,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- Specs to refine answers 2026-10-14 -->
 		<Replace Tag="TXT_KEY_BUILDING_MUGHALS_CARAVANSARY_HELP">
-			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From turn 80 the Culture needs no garrison.</Text>
+			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From the Renaissance Era the Culture needs no garrison.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_FINLAND">
 			<Text>+1 [ICON_CULTURE] Culture from [COLOR_GREEN]unimproved Forest[ENDCOLOR] tiles.</Text>
@@ -148402,7 +148402,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Combat rules</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_7_TEXT">
-			<Text>[ICON_BULLET]Cities heal 10 HP per turn (was 20); Walls, Castle, Arsenal and Command Bunker raise that, the best one counts. Walls also damage adjacent enemies.[NEWLINE][ICON_BULLET]Base city strength +1, the hill bonus for cities 5 -&gt; 3.[NEWLINE][ICON_BULLET]Embarked units defend with 40% of their best combat strength instead of a fixed value per era.[NEWLINE][ICON_BULLET]Ranged ships defend with their Ranged Strength against ranged attacks.[NEWLINE][ICON_BULLET]Spearmen and Pikemen get +33% against mounted units (was +50%).[NEWLINE][ICON_BULLET]From turn 80, killing barbarians gives no bonus yields any more.</Text>
+			<Text>[ICON_BULLET]Cities heal 10 HP per turn (was 20); Walls, Castle, Arsenal and Command Bunker raise that, the best one counts. Walls also damage adjacent enemies.[NEWLINE][ICON_BULLET]Base city strength +1, the hill bonus for cities 5 -&gt; 3.[NEWLINE][ICON_BULLET]Embarked units defend with 40% of their best combat strength instead of a fixed value per era.[NEWLINE][ICON_BULLET]Ranged ships defend with their Ranged Strength against ranged attacks.[NEWLINE][ICON_BULLET]Spearmen and Pikemen get +33% against mounted units (was +50%).[NEWLINE][ICON_BULLET]From the Renaissance Era on, killing barbarians gives no bonus yields any more.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_HEADER">
 			<Text>Miscellaneous game mechanics</Text>

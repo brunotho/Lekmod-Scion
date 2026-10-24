@@ -64,6 +64,18 @@ AIRSHIP (UNIT_AIRSHIP)
 Tags: units
 - Dev: new 3D art: the steampunk scenario's Steam Airship (ART_DEF_UNIT_SMOKEY_STEAM_AIRSHIP)
 
+BARBARIAN KILL BONUSES
+----------------------
+Tags: game mechanics, combat
+- Changed: killing barbarians stops giving bonus yields once you enter the Renaissance Era (was from turn 80)
+- DLL: LEKMOD_BARBARIAN_KILL_YIELDS_END_ERA "ERA_RENAISSANCE" (the player's current era)
+
+GARRISON YIELDS FROM BUILDINGS
+------------------------------
+Tags: game mechanics, buildings
+Weight: minor
+- Changed: garrison effects of policies and buildings count in every city once you enter the Renaissance Era (was from turn 80); free maintenance for garrisoned units (Military Caste) still needs a unit in the city
+- DLL: LEKMOD_POLICY_GARRISON_ATTACH_ERA "ERA_RENAISSANCE" (CvCity::IsPolicyGarrisonAttached, the owner's era)
 
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.

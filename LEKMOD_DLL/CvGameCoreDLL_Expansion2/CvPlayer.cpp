@@ -15127,10 +15127,10 @@ void CvPlayer::DoYieldBonusFromKill(YieldTypes eYield, UnitTypes eAttackingUnitT
 // Calls DoYieldBonusFromKill, and loops through the Yield types.
 #if defined(LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN)
 //	--------------------------------------------------------------------------------
-/// Barbarian kills stop giving yields from the end turn on
+/// Barbarian kills stop giving yields once this player enters the end era
 bool CvPlayer::LekmodNoBarbarianKillYields() const
 {
-	return GC.getGame().getGameTurn() >= LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN;
+	return GetCurrentEra() >= (EraTypes)GC.getInfoTypeForString(LEKMOD_BARBARIAN_KILL_YIELDS_END_ERA, true);
 }
 #endif
 

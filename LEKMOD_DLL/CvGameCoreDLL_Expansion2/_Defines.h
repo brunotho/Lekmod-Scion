@@ -1232,12 +1232,14 @@ TXT_KEY_LEAGUE_OVERVIEW_MEMBER_DETAILS_TRAIT_VOTES
 #define LEKMOD_FIX_BUILDING_RESOURCE_YIELD_CHANGE
 // Consolidate Garrison Yield effects
 #define LEKMOD_GARRISON_YIELD_EFFECTS
-// From this turn on, policy garrison effects (culture, production, happiness) work in every city, garrisoned or not. Building garrison effects still need a unit.
-#define LEKMOD_POLICY_GARRISON_ATTACH_TURN 80
+// From the owner's Renaissance Era on (was turn 80 until 2026-10-24), policy garrison effects (culture, production, happiness) work in every city, garrisoned or not. Building garrison effects still need a unit.
+#define LEKMOD_POLICY_GARRISON_ATTACH_TURN
+#define LEKMOD_POLICY_GARRISON_ATTACH_ERA "ERA_RENAISSANCE"
 // Ruins offer a choice of 2 rewards (3 with the goody hut picker promotion), with trade-off rewards and a free ancient tech
 #define LEKMOD_RUIN_CHOICE
-// From this turn on, killing barbarians gives no kill yields (ends "barbarian farming"; same turn as the garrison rule)
-#define LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN 80
+// From the player's Renaissance Era on (was turn 80), killing barbarians gives no kill yields (ends "barbarian farming"; same trigger as the garrison rule)
+#define LEKMOD_BARBARIAN_KILL_YIELDS_END_TURN
+#define LEKMOD_BARBARIAN_KILL_YIELDS_END_ERA "ERA_RENAISSANCE"
 // Great Work Yield stuff
 #define LEKMOD_GREAT_WORK_YIELD_EFFECTS
 // Convert invaild Promotions for a Unit combat to valid ones.

@@ -40,7 +40,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 - Embarked units defend with 40% of their best combat strength instead of a fixed value per era.
 - Ranged ships defend with their Ranged Strength against ranged attacks.
 - Spearmen and Pikemen get +33% against mounted units (was +50%).
-- From turn 80, killing barbarians gives no bonus yields any more.
+- From the Renaissance Era on, killing barbarians gives no bonus yields any more.
 
 ## Miscellaneous game mechanics
 - Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.

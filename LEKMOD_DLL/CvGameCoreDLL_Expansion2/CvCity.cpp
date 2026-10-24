@@ -14256,10 +14256,10 @@ int CvCity::GetLekmodNonCapitalSettlerModifier() const
 #endif
 #if defined(LEKMOD_POLICY_GARRISON_ATTACH_TURN)
 //	--------------------------------------------------------------------------------
-/// From the attach turn on, policy garrison effects count for every city
+/// From the owner's Renaissance Era on, policy garrison effects count for every city
 bool CvCity::IsPolicyGarrisonAttached() const
 {
-	return GC.getGame().getGameTurn() >= LEKMOD_POLICY_GARRISON_ATTACH_TURN;
+	return GET_PLAYER(getOwner()).GetCurrentEra() >= (EraTypes)GC.getInfoTypeForString(LEKMOD_POLICY_GARRISON_ATTACH_ERA, true);
 }
 #endif
 //	--------------------------------------------------------------------------------
