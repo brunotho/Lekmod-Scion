@@ -557,12 +557,18 @@ local function LekmodControlKey( controlType )
 	end
 	return " (" .. desc .. ")";
 end
+-- check boxes have no SetText: the label is their text button
+local function LekmodSetCheckLabel( control, text )
+	if control ~= nil and control.GetTextButton ~= nil then
+		control:GetTextButton():SetText( text );
+	end
+end
 function LekmodUpdateOptionLabels()
-	Controls.ShowYield:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_YIELD_ICONS" ) .. LekmodControlKey( "CONTROL_YIELDS" ) );
-	Controls.ShowResources:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_RESOURCE_ICONS" ) .. LekmodControlKey( "CONTROL_RESOURCE_ALL" ) );
-	Controls.ShowGrid:SetText( Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_HEX_GRID" ) .. LekmodControlKey( "CONTROL_TOGGLE_HEX_GRID" ) );
+	LekmodSetCheckLabel( Controls.ShowYield, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_YIELD_ICONS" ) .. LekmodControlKey( "CONTROL_YIELDS" ) );
+	LekmodSetCheckLabel( Controls.ShowResources, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_RESOURCE_ICONS" ) .. LekmodControlKey( "CONTROL_RESOURCE_ALL" ) );
+	LekmodSetCheckLabel( Controls.ShowGrid, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_HEX_GRID" ) .. LekmodControlKey( "CONTROL_TOGGLE_HEX_GRID" ) );
 	if Controls.LekmodFlagPromotions ~= nil then
-		Controls.LekmodFlagPromotions:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS" ) .. " (" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS" ) .. ")" );
+		LekmodSetCheckLabel( Controls.LekmodFlagPromotions, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS" ) .. " (" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS" ) .. ")" );
 		Controls.LekmodFlagPromotions:SetCheck( g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_FlagPromotions" ) ~= 0 );
 	end
 end

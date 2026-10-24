@@ -21,6 +21,49 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+MAP OPTIONS (MINIMAP_PANEL)
+---------------------------
+Tags: bugfix, ui
+- Fixed: the map options next to the minimap work again: they showed the strategic view's options, and the trade route and promotion options were missing
+- Dev: CheckBox has no SetText; labels go through GetTextButton() (the error stopped MiniMapPanel.lua at load)
+
+GEM CUTTER (BUILDING_GEMCUTTER)
+-------------------------------
+Tags: buildings
+Subsection: Buildings
+- Changed: needs Metal Casting (was Guilds)
+
+TRADING POST (BUILD_TRADING_POST)
+---------------------------------
+Tags: tiles and resources
+- Changed: Workers can build it from Trapping (was Guilds)
+
+HOTEL (BUILDING_HOTEL)
+----------------------
+Tags: tourism, buildings
+- Removed: +1 Culture from Lakes and Oases
+
+HAGIA SOPHIA (BUILDING_HAGIA_SOPHIA)
+------------------------------------
+Tags: world wonders, tourism, wonders
+- Changed: its 3 Great Work slots come empty (1 came filled)
+
+CHICHEN ITZA (BUILDING_CHICHEN_ITZA)
+------------------------------------
+Tags: world wonders, wonders
+- Added: +4 Happiness
+- Removed: its Scientist point
+
+CANNON (UNIT_CANNON)
+--------------------
+Tags: units
+- Dev: new 3D art: the Civil War scenario's Parrott gun (ART_DEF_UNIT_CONFEDERATE_ARTILLERY_PARROTT)
+
+AIRSHIP (UNIT_AIRSHIP)
+----------------------
+Tags: units
+- Dev: new 3D art: the steampunk scenario's Steam Airship (ART_DEF_UNIT_SMOKEY_STEAM_AIRSHIP)
+
 
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.

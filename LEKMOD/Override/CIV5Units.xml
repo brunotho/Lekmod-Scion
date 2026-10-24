@@ -291854,4 +291854,47 @@
 			<Set Cost="239" FaithCost="478"/>
 		</Update>
 	</Units>
+	<!-- LEKMOD: Oct 24 list, part 1 (2026-10-24): Gemcutter, Trading Post, Hagia Sophia, Hotel, Chichen Itza, Cannon and Airship art -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_GEMCUTTER"/>
+			<Set PrereqTech="TECH_METAL_CASTING"/>
+		</Update>
+	</Buildings>
+	<Builds>
+		<Update>
+			<Where Type="BUILD_TRADING_POST"/>
+			<Set PrereqTech="TECH_TRAPPING"/>
+		</Update>
+	</Builds>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_HAGIA_SOPHIA"/>
+			<Set FreeGreatWorkCount="0"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_CHICHEN_ITZA"/>
+			<Set Happiness="4" GreatPeopleRateChange="0"/>
+		</Update>
+	</Buildings>
+	<Building_FeatureYieldChanges>
+		<Delete BuildingType="BUILDING_HOTEL" FeatureType="FEATURE_OASIS"/>
+	</Building_FeatureYieldChanges>
+	<Building_LakePlotYieldChanges>
+		<Delete BuildingType="BUILDING_HOTEL"/>
+	</Building_LakePlotYieldChanges>
+	<Units>
+		<Update>
+			<Where Type="UNIT_CANNON"/>
+			<Set UnitArtInfo="ART_DEF_UNIT_CONFEDERATE_ARTILLERY_PARROTT"/>
+		</Update>
+	</Units>
+	<Units>
+		<Update>
+			<Where Type="UNIT_AIRSHIP"/>
+			<Set UnitArtInfo="ART_DEF_UNIT_SMOKEY_STEAM_AIRSHIP"/>
+		</Update>
+	</Units>
 </GameData>

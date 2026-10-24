@@ -19600,7 +19600,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HOTEL_HELP"> 
 			<Text>
-				50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders, and Improvements (Landmarks, Moai, Chateau) is added to the [ICON_TOURISM] Tourism output of the city.[NEWLINE][ICON_TOURISM] Tourism output from Great Works +50%.[NEWLINE][NEWLINE]Natural Wonders worked by this City produce +10 [ICON_CULTURE] Culture.[NEWLINE]+1 [ICON_CULTURE] Culture from Lake and Oasis tiles.
+				50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders, and Improvements (Landmarks, Moai, Chateau) is added to the [ICON_TOURISM] Tourism output of the city.[NEWLINE][ICON_TOURISM] Tourism output from Great Works +50%.[NEWLINE][NEWLINE]Natural Wonders worked by this City produce +10 [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HOTEL_STRATEGY"> 
@@ -121020,7 +121020,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>In range if this city had: {1_Buildings}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_WONDER_CHICHEN_ITZA_HELP">
-			<Text>Length of [ICON_GOLDEN_AGE] Golden Ages increased by 50%.[NEWLINE]This city loses 1 [ICON_CITIZEN] Population whenever your empire enters a Golden Age.</Text>
+			<Text>+4 [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE]Length of [ICON_GOLDEN_AGE] Golden Ages increased by 50%.[NEWLINE]This city loses 1 [ICON_CITIZEN] Population whenever your empire enters a Golden Age.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_HAPPINESS_NEGATIVE">
 			<Text>[ICON_HAPPINESS_4] Happiness: {1_Num}</Text>
@@ -144864,7 +144864,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HAGIA_SOPHIA_HELP"> 
 			<Text>
-				A free Great Prophet appears.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 1 Great Work.[NEWLINE]All 3 Great Work slots filled: +10 [ICON_PEACE] Faith.
+				A free Great Prophet appears.[NEWLINE][NEWLINE]All 3 Great Work slots filled: +10 [ICON_PEACE] Faith.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HANGINGGARDENS_DESC"> 
@@ -148258,7 +148258,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: tourism building tooltips match the effect (2026-10-15) -->
 		<Replace Tag="TXT_KEY_BUILDING_HOTEL_HELP">
-			<Text>50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]Natural Wonders worked by this City produce +10 [ICON_CULTURE] Culture.[NEWLINE]+1 [ICON_CULTURE] Culture from Lake and Oasis tiles.</Text>
+			<Text>50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]Natural Wonders worked by this City produce +10 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_AIRPORT_HELP">
 			<Text>Allows airlifts to or from this city.[NEWLINE][COLOR_POSITIVE_TEXT]Increases air unit capacity of the city from 6 to 10.[ENDCOLOR][NEWLINE]A plane that rebases from a city with an Airport to another city with an Airport can still act this turn (one such rebase per turn).[NEWLINE][NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.</Text>
