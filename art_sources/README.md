@@ -91,6 +91,13 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   the tool draws each size's base circle exactly (`circle_box`), takes the alpha from a circle drawn 8x larger and
   box-filtered (one antialiased pixel, like the base icons) and fills the whole cell with picture before masking, so
   no dark rim bleeds in. All 15 building and 5 unit icons were rebuilt. Promotion icons are a different pipeline.
+- **Second round the same day** (user screenshots `Screenshot 2026-10-24 025245/025319`: still not quite snug): matched
+  in the screenshots, the Monument covers exactly the same pixels (8..37) inside the same ring, with the same 2 px dark
+  strip at the right and bottom (the base circle sits off-centre in the banner ring). The difference was the base
+  mask's faint partial pixel on each side (alpha ~30 at 7 and ~20 at 38) against our hard edge. Building icons now take
+  the base game's own alpha masks (`tools/base_masks/building_<size>.png`, copied from `BuildingPortraits3_*_Exp2Patch.dds`;
+  32/80/214 scaled from 256), so the edge is identical. What still differs is the picture: base icons are bright up to
+  their edge, while dark art at the edge (the Fulling Mill's wood, MI6's suit) merges with the dark strip.
 - Watch out: the "4 px wider" circle (2026-10-14) was meant to hide the art's dark vignette inside the ring. The crop
   already stays 5% inside the picture, so that should not come back; if a dark gap shows inside the ring again, crop
   tighter (`MARGIN`, `ZOOM`) instead of growing the circle.

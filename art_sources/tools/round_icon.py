@@ -20,7 +20,7 @@ and writes <name>_<size>.dds (BC3, one mip) to the kind's output folder. The sou
 rerun. Without texconv.exe (e.g. a Linux cloud session) Pillow writes the BC3 file instead.
 """
 import os, struct, subprocess, sys, tempfile
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -35,6 +35,30 @@ KINDS = {
     'units': (os.path.join(REPO, 'LEKMOD', 'Art', 'Units'),
               (32, 45, 64, 80, 128, 256), (41, 42, 214, 215), {}),
 }
+
+
+# The base game's own circle masks (alpha of BuildingPortraits3_<size>_Exp2Patch.dds), copied into the repo so the
+# tool runs without the game. Buildings use them as their alpha (2026-10-24, user: our crisp circle still looked a
+# hair smaller than the Monument in the city banner; the base edge has a faint partial pixel on each side).
+MASK_DIR = os.path.join(HERE, 'base_masks')
+GAME_ICONS = r"C:\Program Files (x86)\Steam\steamapps\common\Sid Meier's Civilization V\Assets\UI\Art\Icons"
+
+
+def base_mask(kind, size):
+    """the base alpha mask for this size (measured sizes as they are, others scaled from 256), or None"""
+    if kind != 'buildings':
+        return None
+    exact = KINDS[kind][3]
+    src_size = size if size in exact else 256
+    path = os.path.join(MASK_DIR, 'building_%d.png' % src_size)
+    if not os.path.exists(path):
+        dds = os.path.join(GAME_ICONS, 'BuildingPortraits3_%d_Exp2Patch.dds' % src_size)
+        if not os.path.exists(dds):
+            return None
+        os.makedirs(MASK_DIR, exist_ok=True)
+        Image.open(dds).convert('RGBA').getchannel('A').crop((0, 0, src_size, src_size)).save(path)
+    m = Image.open(path).convert('L')
+    return m if src_size == size else m.resize((size, size), Image.LANCZOS)
 
 
 def circle_box(kind, size):
@@ -62,7 +86,7 @@ WHITE_BACKGROUND = {# round pictures on white (2026-10-22; appletree, war_colleg
                     'self_propelled_artillery': (22, 22, 24), 'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
 
-def icon(full, crop, size, cbox, poly=None):
+def icon(full, crop, size, cbox, poly=None, circle=None):
     """full: the source; crop: the source square shown in the circle; cbox: the circle's pixel box at this size;
     poly: source polygon of a picture part drawn outside the circle (breakout).
     The picture is scaled with Lanczos over the whole cell (no dark rim bleeds in at the circle's edge); the alpha is
@@ -85,9 +109,12 @@ def icon(full, crop, size, cbox, poly=None):
     mask = Image.new('L', (big, big), 0)
     if poly:
         ImageDraw.Draw(mask).polygon([(px * k + ox, py * ky + oy) for px, py in poly], fill=255)
-    ImageDraw.Draw(mask).ellipse((l, t, r - 1, b - 1), fill=255)
+    if circle is None:
+        ImageDraw.Draw(mask).ellipse((l, t, r - 1, b - 1), fill=255)
     rgb = canvas.convert('RGB').resize((size, size), Image.LANCZOS)
     alpha = mask.resize((size, size), Image.BOX).point(lambda v: 0 if v < 8 else v)
+    if circle is not None:
+        alpha = ImageChops.lighter(alpha, circle)
     rgb.putalpha(alpha)
     return rgb
 
@@ -156,7 +183,7 @@ def build(kind, name):
     tmp = tempfile.mkdtemp()
     for sz in sizes:
         p = os.path.join(tmp, '%s_%d.png' % (name, sz))
-        img = icon(src, box, sz, circle_box(kind, sz), BREAKOUT.get(name))
+        img = icon(src, box, sz, circle_box(kind, sz), BREAKOUT.get(name), base_mask(kind, sz))
         if not os.path.exists(TEXCONV):
             write_bc3(img, os.path.join(out_dir, '%s_%d.dds' % (name, sz)))
             continue
