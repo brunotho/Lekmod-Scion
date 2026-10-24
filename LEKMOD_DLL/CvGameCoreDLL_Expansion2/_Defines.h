@@ -1830,6 +1830,9 @@ Diversify Spain and Australia's NW Discovery bonus
 // Just War missionaries spread from 2 tiles, Outremer moves in the turn it is finished, Shield Wall only against
 // units next to the Gadraught, UAE era bonus grows per era, Celt chop Faith shown, Unit_LekmodBlockedPromotions
 #define LEKMOD_SPECS_2026_10_23
+// LEKMOD (user, 2026-10-24, NEW SPECS AGAIN list 4): Cannon long-range damage (UnitPromotions.LekmodFarRangedDamageMod/Distance),
+// Battering Ram, Carroccio, Mercantile trade Gold, Rationalism rework, Angkor Wat / Alhambra / Forbidden Palace, locked Great Work slots
+#define LEKMOD_SPECS_2026_10_24
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

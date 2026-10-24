@@ -148481,6 +148481,15 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_PRODUCTION] Production; +1 more each with Iron Working, Gunpowder and Dynamite.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to another Harjis.</Text>
 		</Row>
 	</Language_en_US>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): Cannon Long Range -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_LONG_RANGE">
+			<Text>Long Range</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_LONG_RANGE_HELP">
+			<Text>Ranged attacks on targets 3 tiles away deal 50% less damage.</Text>
+		</Row>
+	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
 	<Language_RU_RU>

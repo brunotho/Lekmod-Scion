@@ -57,6 +57,7 @@ Tags: world wonders, wonders
 CANNON (UNIT_CANNON)
 --------------------
 Tags: units
+- Changed: Cannon and its unique replacement (Mughal Cannon): Range 3 (was 2); they start with Long Range (half damage against targets 3 tiles away)
 - Dev: new 3D art: the Civil War scenario's Parrott gun (ART_DEF_UNIT_CONFEDERATE_ARTILLERY_PARROTT)
 
 AIRSHIP (UNIT_AIRSHIP)
@@ -76,6 +77,13 @@ Tags: game mechanics, buildings
 Weight: minor
 - Changed: garrison effects of policies and buildings count in every city once you enter the Renaissance Era (was from turn 80); free maintenance for garrisoned units (Military Caste) still needs a unit in the city
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_ERA "ERA_RENAISSANCE" (CvCity::IsPolicyGarrisonAttached, the owner's era)
+
+LONG RANGE (NEW) (PROMOTION_LEKMOD_LONG_RANGE)
+----------------------------------------------
+Tags: promotions, units, combat
+- New: PROMOTION_LEKMOD_LONG_RANGE
+  - the Cannon and its unique replacement start with it; lost on upgrade
+- DLL: UnitPromotions.LekmodFarRangedDamageMod/LekmodFarRangedDistance (CvUnit::GetRangeCombatDamage, so the combat preview shows it too); promotion ID 394
 
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.

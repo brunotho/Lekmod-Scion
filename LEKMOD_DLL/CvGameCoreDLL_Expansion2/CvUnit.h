@@ -737,6 +737,9 @@ public:
 	bool IsLekmodExpandedZOC() const;
 	bool IsLekmodCivilianFor(PromotionTypes ePromotion) const;
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	int GetLekmodFarRangedDamageMod(const CvPlot* pTargetPlot) const;
+#endif
 	int GetLekmodAttackFullHPMod(const CvUnit* pDefender) const;
 	void LekmodApplySpawnRandomPromotions();
 #endif

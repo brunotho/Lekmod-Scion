@@ -214323,6 +214323,8 @@
 		<Column name="LekmodSameTileDisembark" type="boolean" default="false"/>
 		<Column name="LekmodExpandedZOC" type="boolean" default="false"/>
 		<Column name="LekmodCiviliansToo" type="boolean" default="false"/>
+		<Column name="LekmodFarRangedDamageMod" type="integer" default="0"/>
+		<Column name="LekmodFarRangedDistance" type="integer" default="0"/>
 	</Table>
 	<UnitPromotions>
 		<Delete />
@@ -291895,6 +291897,40 @@
 		<Update>
 			<Where Type="UNIT_AIRSHIP"/>
 			<Set UnitArtInfo="ART_DEF_UNIT_SMOKEY_STEAM_AIRSHIP"/>
+		</Update>
+	</Units>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): Cannon range 3, Long Range promotion (394): -50% damage on targets 3 tiles away -->
+	<UnitPromotions>
+		<Row>
+			<ID>394</ID>
+			<Type>PROMOTION_LEKMOD_LONG_RANGE</Type>
+			<Description>TXT_KEY_PROMOTION_LEKMOD_LONG_RANGE</Description>
+			<Help>TXT_KEY_PROMOTION_LEKMOD_LONG_RANGE_HELP</Help>
+			<Sound>AS2D_IF_LEVELUP</Sound>
+			<CannotBeChosen>true</CannotBeChosen>
+			<LostWithUpgrade>true</LostWithUpgrade>
+			<PortraitIndex>34</PortraitIndex>
+			<IconAtlas>PROMOTION_ATLAS</IconAtlas>
+			<LekmodFarRangedDamageMod>-50</LekmodFarRangedDamageMod>
+			<LekmodFarRangedDistance>3</LekmodFarRangedDistance>
+			<PediaType>PEDIA_ATTRIBUTES</PediaType>
+			<PediaEntry>TXT_KEY_PROMOTION_LEKMOD_LONG_RANGE</PediaEntry>
+		</Row>
+	</UnitPromotions>
+	<Unit_FreePromotions>
+		<Row>
+			<UnitType>UNIT_CANNON</UnitType>
+			<PromotionType>PROMOTION_LEKMOD_LONG_RANGE</PromotionType>
+		</Row>
+		<Row>
+			<UnitType>UNIT_MUGHALS_CANNON</UnitType>
+			<PromotionType>PROMOTION_LEKMOD_LONG_RANGE</PromotionType>
+		</Row>
+	</Unit_FreePromotions>
+	<Units>
+		<Update>
+			<Where Class="UNITCLASS_CANNON"/>
+			<Set Range="3"/>
 		</Update>
 	</Units>
 </GameData>

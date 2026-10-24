@@ -252,6 +252,10 @@ CvPromotionEntry::CvPromotionEntry():
 	m_bLekmodExpandedZOC(false),
 	m_bLekmodCiviliansToo(false),
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_iLekmodFarRangedDamageMod(0),
+	m_iLekmodFarRangedDistance(0),
+#endif
 #endif
 #ifdef LEKMOD_CIV_PROMOTION_EFFECTS_J
 	m_iLekmodAttackFullHPMod(0),
@@ -950,6 +954,10 @@ bool CvPromotionEntry::CacheResults(Database::Results& kResults, CvDatabaseUtili
 #ifdef LEKMOD_POST_CHANGES
 	m_bLekmodExpandedZOC = kResults.GetBool("LekmodExpandedZOC");
 	m_bLekmodCiviliansToo = kResults.GetBool("LekmodCiviliansToo");
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_iLekmodFarRangedDamageMod = kResults.GetInt("LekmodFarRangedDamageMod");
+	m_iLekmodFarRangedDistance = kResults.GetInt("LekmodFarRangedDistance");
 #endif
 #endif
 #ifdef LEKMOD_CIV_PROMOTION_EFFECTS_J
@@ -2361,6 +2369,17 @@ bool CvPromotionEntry::IsLekmodSameTileDisembark() const
 	return m_bLekmodSameTileDisembark;
 }
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+/// Ranged attacks on targets at least GetLekmodFarRangedDistance() tiles away deal this % more (negative: less) damage (Cannon)
+int CvPromotionEntry::GetLekmodFarRangedDamageMod() const
+{
+	return m_iLekmodFarRangedDamageMod;
+}
+int CvPromotionEntry::GetLekmodFarRangedDistance() const
+{
+	return m_iLekmodFarRangedDistance;
+}
+#endif
 #ifdef LEKMOD_POST_CHANGES
 /// Enemy units next to this unit lose all their moves when they move (Expanded ZOC)
 bool CvPromotionEntry::IsLekmodExpandedZOC() const
@@ -2397,6 +2416,9 @@ bool CvPromotionEntry::HasLekmodCivEffect() const
 #endif
 #ifdef LEKMOD_POST_CHANGES
 		|| m_bLekmodExpandedZOC
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+		|| m_iLekmodFarRangedDamageMod != 0
 #endif
 #ifdef LEKMOD_SPREAD_ABILITIES
 		|| m_iLekmodHealRateMod != 0

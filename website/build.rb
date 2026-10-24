@@ -171,7 +171,7 @@ SECTION_LAYOUT = {
     ["Promotions that come with units, policies or abilities (never offered as a pick)",
      ["DISCIPLINE", "FEAR AURA", "ZEALOT", "ALTITUDE TRAINING", "SITTING DUCKS", "SWIFT TRANSPORT", "MARAUDER",
       "IAIJUTSU", "HATAMOTO", "ONE GOOD EYE / STARGAZING", "FAST SWIMMER", "SKYRANGER / EXTENDED PARADROP",
-      "GLUTTON", "EMBARKATION WITH DEFENSE", "SPEAR THROW"]],
+      "GLUTTON", "EMBARKATION WITH DEFENSE", "SPEAR THROW", "LONG RANGE"]],
   ],
   "tiles and resources" => [
     [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],

@@ -271,6 +271,10 @@ public:
 	bool IsLekmodExpandedZOC() const;
 	bool IsLekmodCiviliansToo() const;
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	int GetLekmodFarRangedDamageMod() const;
+	int GetLekmodFarRangedDistance() const;
+#endif
 	int GetLekmodAttackFullHPMod() const;
 	bool IsLekmodPostCombatOnSpawn() const;
 #endif
@@ -593,6 +597,10 @@ protected:
 #ifdef LEKMOD_POST_CHANGES
 	bool m_bLekmodExpandedZOC;
 	bool m_bLekmodCiviliansToo;
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	int m_iLekmodFarRangedDamageMod;
+	int m_iLekmodFarRangedDistance;
 #endif
 	int m_iLekmodAttackFullHPMod;
 	bool m_bLekmodPostCombatOnSpawn;

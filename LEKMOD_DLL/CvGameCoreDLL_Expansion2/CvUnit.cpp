@@ -16005,6 +16005,13 @@ int CvUnit::GetRangeCombatDamage(const CvUnit* pDefender, CvCity* pCity, bool bI
 	else
 		iAttackerDamage = int(fAttackerDamage);
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	{
+		int iFarMod = GetLekmodFarRangedDamageMod(pDefender ? pDefender->plot() : (pCity ? pCity->plot() : NULL));
+		if (iFarMod != 0)
+			iAttackerDamage = iAttackerDamage * std::max(0, 100 + iFarMod) / 100;
+	}
+#endif
 	// Bring it back out of hundreds
 	iAttackerDamage /= 100;
 
@@ -18036,6 +18043,27 @@ bool CvUnit::IsLekmodExpandedZOC() const
 	return false;
 }
 #endif
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+//	--------------------------------------------------------------------------------
+/// Damage % for a ranged attack on pTargetPlot from the unit's tile (Cannon: -50% at 3 tiles)
+int CvUnit::GetLekmodFarRangedDamageMod(const CvPlot* pTargetPlot) const
+{
+	if (pTargetPlot == NULL)
+		return 0;
+	int iDistance = plotDistance(getX(), getY(), pTargetPlot->getX(), pTargetPlot->getY());
+	int iMod = 0;
+	const std::vector<PromotionTypes>& aPromotions = LekmodCivPromotions();
+	for (uint i = 0; i < aPromotions.size(); i++)
+	{
+		if (!isHasPromotion(aPromotions[i]))
+			continue;
+		CvPromotionEntry* pkPromotion = GC.getPromotionInfo(aPromotions[i]);
+		if (pkPromotion->GetLekmodFarRangedDamageMod() != 0 && iDistance >= pkPromotion->GetLekmodFarRangedDistance())
+			iMod += pkPromotion->GetLekmodFarRangedDamageMod();
+	}
+	return iMod;
+}
 #endif
 //	--------------------------------------------------------------------------------
 int CvUnit::GetLekmodFarFromCityMod() const
