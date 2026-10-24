@@ -145895,7 +145895,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_TEMPLE_ARTEMIS_HELP"> 
-			<Text>Requires Honor.[NEWLINE][NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_CULTURE] Culture in the city.[NEWLINE]+1 [ICON_GREAT_PEOPLE] Great Engineer point per turn.[NEWLINE][NEWLINE]Ranged units (land, mounted, naval and submarines) built in the city: +15% [ICON_PRODUCTION] Production.[NEWLINE]Land ranged units (also mounted) built in the city: +15 Experience.</Text>
+			<Text>Requires Honor.[NEWLINE][NEWLINE]+3 [ICON_PRODUCTION] Production, +3 [ICON_GOLD] Gold and +3 [ICON_CULTURE] Culture in the city.[NEWLINE]+1 [ICON_GREAT_PEOPLE] Great Engineer point per turn.[NEWLINE][NEWLINE]Land ranged units (also mounted) built in the city: +15% [ICON_PRODUCTION] Production and +15 Experience.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_TEMPLE_ARTEMIS_QUOTE"> 
 			<Text>

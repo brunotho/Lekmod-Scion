@@ -169,6 +169,11 @@ CHAT EMOJI PICKER
 Tags: ui
 - Changed: the chat emoji picker also lists every chat emote (Kappa, Pog, KEKW and the others)
 
+TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
+-------------------------------------------
+Tags: world wonders, wonders
+- Changed: its +15% Production no longer covers naval ranged units and submarines; only land ranged units (also mounted), like its +15 XP
+
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).

@@ -292261,4 +292261,9 @@
 			<CityTile>true</CityTile>
 		</Row>
 	</Building_GreatWorkFilledYields>
+	<!-- LEKMOD: Oct 24 list (30): Temple of Artemis Production only for land ranged units -->
+	<Building_UnitCombatProductionModifiers>
+		<Delete BuildingType="BUILDING_TEMPLE_ARTEMIS" UnitCombatType="UNITCOMBAT_NAVALRANGED"/>
+		<Delete BuildingType="BUILDING_TEMPLE_ARTEMIS" UnitCombatType="UNITCOMBAT_SUBMARINE"/>
+	</Building_UnitCombatProductionModifiers>
 </GameData>
