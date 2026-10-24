@@ -2858,6 +2858,7 @@ Tags: civs, units
 - Dev: the Merchant of Venice's "buy City-State" button has a new icon (a heart); 2026-10-23: centred to a quarter pixel (build_action_icon.py draws 4x and scales down; at 45 px it sat half a pixel left)
 - DLL: Traits.LekmodGreatArtsRateModifier (Writer/Artist/Musician rate)
 - Dev: until 2026-10-20 the new UA sat on the unplayable base-game Venice (CIVILIZATION_VENICE); the playable Venice (CIVILIZATION_VENEZ) still had Serenissima, so 1.0.0 as published plays with the old UA. Its leader now has TRAIT_SUPER_CITY_STATE; the Serenissima Lua is off
+- Dev: 2026-10-24: the unplayable base-game Venice (CIVILIZATION_VENICE, leader LEADER_ENRICO_DANDOLO; 83 data rows) is deleted; its leader texts stay (Venice's leader uses them) and so does TRAIT_SUPER_CITY_STATE
 
 INDIA (CIVILIZATION_INDIA)
 --------------------------

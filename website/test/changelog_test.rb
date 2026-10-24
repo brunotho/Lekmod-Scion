@@ -167,7 +167,8 @@ class RealChangelogTest < Minitest::Test
     assert_empty problems, problems.join("\n")
   end
 
-  # Some civs exist twice (Venice: the playable CIVILIZATION_VENEZ and the unplayable base-game CIVILIZATION_VENICE).
+  # Some civs existed twice (Venice: the playable CIVILIZATION_VENEZ and the unplayable base-game CIVILIZATION_VENICE,
+  # deleted 2026-10-24); Buganda is unplayable on purpose.
   # A civ card or a trait change on the unplayable copy never reaches the game (2026-10-20: Venice's new UA did).
   # A card for a civ that was made unplayable on purpose says so with a Removed line.
   def test_civ_changes_target_playable_civs

@@ -59692,10 +59692,6 @@
 			<CityName>TXT_KEY_CITY_NAME_WELDIYA</CityName> 
 		</Row>
 		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<CityName>TXT_KEY_CITY_NAME_VENICE</CityName> 
-		</Row>
-		<Row> 
 			<CivilizationType>CIVILIZATION_MOROCCO</CivilizationType> 
 			<CityName>TXT_KEY_CITY_NAME_MARRAKECH</CityName> 
 		</Row>
@@ -69172,10 +69168,6 @@
 			<BuildingClassType>BUILDINGCLASS_PALACE</BuildingClassType> 
 		</Row>
 		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<BuildingClassType>BUILDINGCLASS_PALACE</BuildingClassType> 
-		</Row>
-		<Row> 
 			<CivilizationType>CIVILIZATION_ZULU</CivilizationType> 
 			<BuildingClassType>BUILDINGCLASS_PALACE</BuildingClassType> 
 		</Row>
@@ -69651,10 +69643,6 @@
 		</Row>
 		<Row> 
 			<CivilizationType>CIVILIZATION_SHOSHONE</CivilizationType> 
-			<TechType>TECH_AGRICULTURE</TechType> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
 			<TechType>TECH_AGRICULTURE</TechType> 
 		</Row>
 		<Row> 
@@ -70222,12 +70210,6 @@
 		</Row>
 		<Row> 
 			<CivilizationType>CIVILIZATION_SHOSHONE</CivilizationType> 
-			<UnitClassType>UNITCLASS_SETTLER</UnitClassType> 
-			<UnitAIType>UNITAI_SETTLE</UnitAIType> 
-			<Count>1</Count> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
 			<UnitClassType>UNITCLASS_SETTLER</UnitClassType> 
 			<UnitAIType>UNITAI_SETTLE</UnitAIType> 
 			<Count>1</Count> 
@@ -70858,10 +70840,6 @@
 			<LeaderheadType>LEADER_POCATELLO</LeaderheadType> 
 		</Row>
 		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<LeaderheadType>LEADER_ENRICO_DANDOLO</LeaderheadType> 
-		</Row>
-		<Row> 
 			<CivilizationType>CIVILIZATION_ZULU</CivilizationType> 
 			<LeaderheadType>LEADER_SHAKA</LeaderheadType> 
 		</Row>
@@ -71325,10 +71303,6 @@
 		<Row> 
 			<CivilizationType>CIVILIZATION_SHOSHONE</CivilizationType> 
 			<ReligionType>RELIGION_PROTESTANTISM</ReligionType> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<ReligionType>RELIGION_CHRISTIANITY</ReligionType> 
 		</Row>
 		<Row> 
 			<CivilizationType>CIVILIZATION_ZULU</CivilizationType> 
@@ -73234,46 +73208,6 @@
 		<Row> 
 			<CivilizationType>CIVILIZATION_SHOSHONE</CivilizationType> 
 			<SpyName>TXT_KEY_SPY_NAME_SHOSHONE_9</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_0</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_1</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_2</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_3</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_4</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_5</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_6</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_7</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_8</SpyName> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<SpyName>TXT_KEY_SPY_NAME_VENICE_9</SpyName> 
 		</Row>
 		<Row> 
 			<CivilizationType>CIVILIZATION_ZULU</CivilizationType> 
@@ -76233,10 +76167,6 @@
 			<StartAlongOcean>true</StartAlongOcean> 
 		</Row>
 		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<StartAlongOcean>true</StartAlongOcean> 
-		</Row>
-		<Row> 
 			<CivilizationType>CIVILIZATION_VENEZ</CivilizationType> 
 			<StartAlongOcean>true</StartAlongOcean> 
 		</Row>
@@ -77037,16 +76967,6 @@
 			<CivilizationType>CIVILIZATION_SHOSHONE</CivilizationType> 
 			<UnitClassType>UNITCLASS_CAVALRY</UnitClassType> 
 			<UnitType>UNIT_SHOSHONE_COMANCHE_RIDERS</UnitType> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<UnitClassType>UNITCLASS_MERCHANT</UnitClassType> 
-			<UnitType>UNIT_VENETIAN_MERCHANT</UnitType> 
-		</Row>
-		<Row> 
-			<CivilizationType>CIVILIZATION_VENICE</CivilizationType> 
-			<UnitClassType>UNITCLASS_GALLEASS</UnitClassType> 
-			<UnitType>UNIT_VENETIAN_GALLEASS</UnitType> 
 		</Row>
 		<Row> 
 			<CivilizationType>CIVILIZATION_ZULU</CivilizationType> 
@@ -78485,29 +78405,6 @@
 			<DawnOfManQuote>TXT_KEY_CIV5_DAWN_SHOSHONE_TEXT</DawnOfManQuote> 
 			<DawnOfManImage>DOM_Pocatello.dds</DawnOfManImage> 
 			<DawnOfManAudio>AS2D_DOM_SPEECH_SHOSHONE</DawnOfManAudio> 
-			<PackageID>6DA0763641234018B6436575B4EC336B</PackageID> 
-		</Row>
-		<Row> 
-			<ID>43</ID> 
-			<Type>CIVILIZATION_VENICE</Type> 
-			<Description>TXT_KEY_CIV_VENICE_DESC</Description> 
-			<CivilopediaTag>TXT_KEY_CIV5_VENICE</CivilopediaTag> 
-			<Playable>false</Playable> 
-			<AIPlayable>false</AIPlayable> 
-			<ShortDescription>TXT_KEY_CIV_VENICE_SHORT_DESC</ShortDescription> 
-			<Adjective>TXT_KEY_CIV_VENICE_ADJECTIVE</Adjective> 
-			<DefaultPlayerColor>PLAYERCOLOR_VENICE</DefaultPlayerColor> 
-			<ArtDefineTag>ART_DEF_CIVILIZATION_VENICE</ArtDefineTag> 
-			<ArtStyleType>ARTSTYLE_GRECO_ROMAN</ArtStyleType> 
-			<ArtStyleSuffix>_MED</ArtStyleSuffix> 
-			<ArtStylePrefix>MEDITERRANEAN</ArtStylePrefix> 
-			<PortraitIndex>7</PortraitIndex> 
-			<IconAtlas>EXPANSION2_CIV_COLOR_ATLAS</IconAtlas> 
-			<AlphaIconAtlas>EXPANSION2_CIV_ALPHA_ATLAS</AlphaIconAtlas> 
-			<MapImage>MapVenice360x410.dds</MapImage> 
-			<DawnOfManQuote>TXT_KEY_CIV5_DAWN_VENICE_TEXT</DawnOfManQuote> 
-			<DawnOfManImage>DOM_Enrico_Dandolo.dds</DawnOfManImage> 
-			<DawnOfManAudio>AS2D_DOM_SPEECH_VENICE</DawnOfManAudio> 
 			<PackageID>6DA0763641234018B6436575B4EC336B</PackageID> 
 		</Row>
 		<Row> 
@@ -105417,36 +105314,6 @@
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_FIRST_GREETING</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_FIRSTGREETING%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_DEFEATED</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_DEFEATED%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_GREETING_POLITE_HELLO</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_GREETING_POLITE_HELLO%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_GREETING_NEUTRAL_HELLO</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_GREETING_NEUTRAL_HELLO%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_GREETING_HOSTILE_HELLO</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_GREETING_HOSTILE_HELLO%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<ResponseType>RESPONSE_FIRST_GREETING</ResponseType> 
 			<Response>TXT_KEY_LEADER_GAJAH_MADA_FIRSTGREETING%</Response> 
@@ -105633,12 +105500,6 @@
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_HOSTILE_AGGRESSIVE_MILITARY_WARNING</ResponseType> 
-			<Response>TXT_KEY_ENRICO_DANDOLO_HOSTILE_AGGRESSIVE_MILITARY_WARNING%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<ResponseType>RESPONSE_HOSTILE_AGGRESSIVE_MILITARY_WARNING</ResponseType> 
 			<Response>TXT_KEY_GAJAH_MADA_HOSTILE_AGGRESSIVE_MILITARY_WARNING%</Response> 
@@ -105690,12 +105551,6 @@
 			<LeaderType>LEADER_CASIMIR</LeaderType> 
 			<ResponseType>RESPONSE_EXPANSION_SERIOUS_WARNING</ResponseType> 
 			<Response>TXT_KEY_CASIMIR_EXPANSION_SERIOUS_WARNING%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_EXPANSION_SERIOUS_WARNING</ResponseType> 
-			<Response>TXT_KEY_ENRICO_DANDOLO_EXPANSION_SERIOUS_WARNING%</Response> 
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
@@ -105759,12 +105614,6 @@
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_REQUEST</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_RESPONSE_REQUEST%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<ResponseType>RESPONSE_REQUEST</ResponseType> 
 			<Response>TXT_KEY_LEADER_GAJAH_MADA_RESPONSE_REQUEST%</Response> 
@@ -105810,12 +105659,6 @@
 			<LeaderType>LEADER_CASIMIR</LeaderType> 
 			<ResponseType>RESPONSE_LUXURY_TRADE</ResponseType> 
 			<Response>TXT_KEY_LEADER_CASIMIR_LUXURY_TRADE%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_LUXURY_TRADE</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_LUXURY_TRADE%</Response> 
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
@@ -105876,12 +105719,6 @@
 			<LeaderType>LEADER_CASIMIR</LeaderType> 
 			<ResponseType>RESPONSE_OPEN_BORDERS_EXCHANGE</ResponseType> 
 			<Response>TXT_KEY_LEADER_CASIMIR_OPEN_BORDERS_EXCHANGE%</Response> 
-			<Bias>1</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<ResponseType>RESPONSE_OPEN_BORDERS_EXCHANGE</ResponseType> 
-			<Response>TXT_KEY_LEADER_ENRICO_DANDOLO_OPEN_BORDERS_EXCHANGE%</Response> 
 			<Bias>1</Bias> 
 		</Row>
 		<Row> 
@@ -149350,196 +149187,6 @@
 			<Flavor>5</Flavor> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_OFFENSE</FlavorType> 
-			<Flavor>3</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_DEFENSE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_CITY_DEFENSE</FlavorType> 
-			<Flavor>8</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_MILITARY_TRAINING</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_RECON</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_RANGED</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_MOBILE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_NAVAL</FlavorType> 
-			<Flavor>7</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_NAVAL_RECON</FlavorType> 
-			<Flavor>6</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_NAVAL_GROWTH</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_NAVAL_TILE_IMPROVEMENT</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_AIR</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_EXPANSION</FlavorType> 
-			<Flavor>3</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_GROWTH</FlavorType> 
-			<Flavor>6</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_TILE_IMPROVEMENT</FlavorType> 
-			<Flavor>6</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_INFRASTRUCTURE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_PRODUCTION</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_GOLD</FlavorType> 
-			<Flavor>8</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_SCIENCE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_CULTURE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_HAPPINESS</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_GREAT_PEOPLE</FlavorType> 
-			<Flavor>7</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_WONDER</FlavorType> 
-			<Flavor>6</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_RELIGION</FlavorType> 
-			<Flavor>7</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_DIPLOMACY</FlavorType> 
-			<Flavor>7</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_SPACESHIP</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_WATER_CONNECTION</FlavorType> 
-			<Flavor>6</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_NUKE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_USE_NUKE</FlavorType> 
-			<Flavor>4</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_ESPIONAGE</FlavorType> 
-			<Flavor>7</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_ANTIAIR</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_AIR_CARRIER</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_I_LAND_TRADE_ROUTE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_I_SEA_TRADE_ROUTE</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_ARCHAEOLOGY</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_I_TRADE_ORIGIN</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_I_TRADE_DESTINATION</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<FlavorType>FLAVOR_AIRLIFT</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<FlavorType>FLAVOR_OFFENSE</FlavorType> 
 			<Flavor>5</Flavor> 
@@ -153711,11 +153358,6 @@
 		</Row>
 		<Row> 
 			<LeaderType>LEADER_ELIZABETH</LeaderType> 
-			<FlavorType>FLAVOR_TOURISM</FlavorType> 
-			<Flavor>5</Flavor> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
 			<FlavorType>FLAVOR_TOURISM</FlavorType> 
 			<Flavor>5</Flavor> 
 		</Row>
@@ -166606,41 +166248,6 @@
 			<Bias>5</Bias> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_WAR</MajorCivApproachType> 
-			<Bias>3</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_HOSTILE</MajorCivApproachType> 
-			<Bias>4</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_DECEPTIVE</MajorCivApproachType> 
-			<Bias>7</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_GUARDED</MajorCivApproachType> 
-			<Bias>5</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_AFRAID</MajorCivApproachType> 
-			<Bias>5</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_FRIENDLY</MajorCivApproachType> 
-			<Bias>7</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MajorCivApproachType>MAJOR_CIV_APPROACH_NEUTRAL</MajorCivApproachType> 
-			<Bias>5</Bias> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<MajorCivApproachType>MAJOR_CIV_APPROACH_WAR</MajorCivApproachType> 
 			<Bias>5</Bias> 
@@ -170270,31 +169877,6 @@
 			<Bias>6</Bias> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MinorCivApproachType>MINOR_CIV_APPROACH_IGNORE</MinorCivApproachType> 
-			<Bias>3</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MinorCivApproachType>MINOR_CIV_APPROACH_FRIENDLY</MinorCivApproachType> 
-			<Bias>7</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MinorCivApproachType>MINOR_CIV_APPROACH_PROTECTIVE</MinorCivApproachType> 
-			<Bias>5</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MinorCivApproachType>MINOR_CIV_APPROACH_CONQUEST</MinorCivApproachType> 
-			<Bias>3</Bias> 
-		</Row>
-		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<MinorCivApproachType>MINOR_CIV_APPROACH_BULLY</MinorCivApproachType> 
-			<Bias>3</Bias> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<MinorCivApproachType>MINOR_CIV_APPROACH_IGNORE</MinorCivApproachType> 
 			<Bias>4</Bias> 
@@ -172364,10 +171946,6 @@
 			<TraitType>TRAIT_SOLIDARITY</TraitType> 
 		</Row>
 		<Row> 
-			<LeaderType>LEADER_ENRICO_DANDOLO</LeaderType> 
-			<TraitType>TRAIT_SUPER_CITY_STATE</TraitType> 
-		</Row>
-		<Row> 
 			<LeaderType>LEADER_GAJAH_MADA</LeaderType> 
 			<TraitType>TRAIT_SPICE</TraitType> 
 		</Row>
@@ -173662,32 +173240,6 @@
 			<Chattiness>5</Chattiness> 
 			<Meanness>4</Meanness> 
 			<PortraitIndex>4</PortraitIndex> 
-			<IconAtlas>EXPANSION2_LEADER_ATLAS</IconAtlas> 
-			<PackageID>6DA0763641234018B6436575B4EC336B</PackageID> 
-		</Row>
-		<Row> 
-			<ID>38</ID> 
-			<Type>LEADER_ENRICO_DANDOLO</Type> 
-			<Description>TXT_KEY_LEADER_ENRICO_DANDOLO</Description> 
-			<Civilopedia>TXT_KEY_LEADER_ENRICO_DANDOLO_PEDIA</Civilopedia> 
-			<CivilopediaTag>TXT_KEY_CIVILOPEDIA_LEADERS_ENRICO_DANDOLO</CivilopediaTag> 
-			<ArtDefineTag>Venice_Dandolo_Scene.xml</ArtDefineTag> 
-			<VictoryCompetitiveness>5</VictoryCompetitiveness> 
-			<WonderCompetitiveness>3</WonderCompetitiveness> 
-			<MinorCivCompetitiveness>7</MinorCivCompetitiveness> 
-			<Boldness>3</Boldness> 
-			<DiploBalance>5</DiploBalance> 
-			<WarmongerHate>5</WarmongerHate> 
-			<WorkAgainstWillingness>0</WorkAgainstWillingness> 
-			<WorkWithWillingness>0</WorkWithWillingness> 
-			<DenounceWillingness>6</DenounceWillingness> 
-			<DoFWillingness>7</DoFWillingness> 
-			<Loyalty>3</Loyalty> 
-			<Neediness>5</Neediness> 
-			<Forgiveness>5</Forgiveness> 
-			<Chattiness>7</Chattiness> 
-			<Meanness>3</Meanness> 
-			<PortraitIndex>7</PortraitIndex> 
 			<IconAtlas>EXPANSION2_LEADER_ATLAS</IconAtlas> 
 			<PackageID>6DA0763641234018B6436575B4EC336B</PackageID> 
 		</Row>
