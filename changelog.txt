@@ -103,6 +103,12 @@ Tags: units, combat
 - DLL: Units.LekmodNoExperience, LekmodDeathUnhappiness (added to the player's units unhappiness in CvUnit::kill, taken back by Retire), LekmodRetireInCapital (MISSION_LEKMOD_RETIRE, ID 60), LekmodCapitalOnly (CvCity::canTrain)
 - Dev: unit 277, class 121; art from JFD's Papal States (ART_DEF_UNIT_JFD_CARROCCIO, JFD_PAPAL_STATES_INNOCENT_ATLAS 2, JFD_UNIT_FLAG_CARROCCIO_ATLAS)
 
+MERCANTILE CITY-STATES (MINOR_CIV_TRAIT_MERCANTILE)
+---------------------------------------------------
+Tags: city-states, diplomacy and trade
+- Added: your trade routes to a Mercantile City-State you are friends or allies with yield double Gold
+- DLL: CvPlayerTrade::GetTradeConnectionValueTimes100 doubles the origin's Gold after all modifiers (LEKMOD_SPECS_2026_10_24)
+
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).

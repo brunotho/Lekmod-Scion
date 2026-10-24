@@ -3102,6 +3102,18 @@ int CvPlayerTrade::GetTradeConnectionValueTimes100(const TradeConnection& kTrade
 
 		iTotalValue *= iModifier;
 		iTotalValue /= 100;
+#ifdef LEKMOD_SPECS_2026_10_24
+		// Mercantile City-States: a friend's or ally's trade route to them yields double Gold
+		if (eYield == YIELD_GOLD && bAsOriginPlayer && kTradeConnection.m_eDestOwner != NO_PLAYER && kTradeConnection.m_eOriginOwner != NO_PLAYER)
+		{
+			CvPlayer& kDest = GET_PLAYER(kTradeConnection.m_eDestOwner);
+			if (kDest.isMinorCiv() && kDest.GetMinorCivAI()->GetTrait() == MINOR_CIV_TRAIT_MERCANTILE
+				&& kDest.GetMinorCivAI()->IsFriends(kTradeConnection.m_eOriginOwner))
+			{
+				iTotalValue *= 2;
+			}
+		}
+#endif
 	}
 
 	return iTotalValue;
