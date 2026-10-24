@@ -708,7 +708,8 @@ Controls.EmotePickerButton:RegisterCallback( Mouse.eLClick, function() Controls.
 local g_LekmodEmotes = { ICON_HAPPINESS_1 = true, ICON_HAPPINESS_2 = true, ICON_HAPPINESS_3 = true, ICON_HAPPINESS_4 = true,
     ICON_HAPPINESS_GLOBAL = true, ICON_SABA_PING = true, ICON_HMM = true, ICON_KEKW = true, ICON_KEK_WAIT = true, ICON_FOOD = true };
 for i in GameInfo.IconFontMapping('1 ORDER BY LENGTH(IconFontTexture), rowid') do
-  if g_LekmodEmotes[i.IconName] or string.find(i.IconName, "G12", 1, true) then
+  -- LEKMOD (2026-10-24): plus every chat emote (the icons of the emote texture, e.g. Kappa, Pog)
+  if g_LekmodEmotes[i.IconName] or string.find(i.IconName, "G12", 1, true) or i.IconFontTexture == "ICON_EMOTE_TEXTURE_PATCH" then
     local ins = {};
     ContextPtr:BuildInstanceForControl('EmoteInstance', ins, Controls.EmoteStack);
     local emoteText = string.format('[%s]', i.IconName);
