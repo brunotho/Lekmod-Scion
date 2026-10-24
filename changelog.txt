@@ -174,6 +174,25 @@ TEMPLE OF ARTEMIS (BUILDING_TEMPLE_ARTEMIS)
 Tags: world wonders, wonders
 - Changed: its +15% Production no longer covers naval ranged units and submarines; only land ranged units (also mounted), like its +15 XP
 
+IDEOLOGY TENETS AND POLICY COSTS (LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY)
+------------------------------------------------------------------------
+Tags: policies
+- Added: the first tenet you adopt beyond the free ones makes every later policy cost 10% more, once per game (that tenet itself still costs the old price); the confirmation asks before it happens
+- DLL: CvPlayer::doAdoptPolicy sets the saved civ flag; CvPlayerPolicies::GetNextPolicyCost x1.10; Lua Player:LekmodHasIdeologyCostPenalty()
+
+AESTHETICS (POLICY_BRANCH_AESTHETICS)
+-------------------------------------
+Tags: policies, tourism
+- Added: adopting Aesthetics creates a Great Work in an empty slot (closest to the capital first; none if no slot is free)
+- DLL: Policies.LekmodFreeGreatWorks (CvPlayer::setHasPolicy, LekmodGrantGreatWorks)
+
+HAND-AXE (NEW) (UNIT_LEKMOD_HANDAXE)
+------------------------------------
+Tags: units, ruins
+- New: UNIT_LEKMOD_HANDAXE
+  - one time in five, the upgrade ruin offers it instead of the Spearman; it can't be trained
+- DLL: CvPlayer::LekmodGetRuinUpgradeUnit (the offer's roll 0-199 of 0-999, so the offer text and the result match); unit 278, class 122, the barbarian Hand-Axe's art and stats
+
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).

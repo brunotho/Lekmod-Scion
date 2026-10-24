@@ -280,6 +280,9 @@ CvPolicyEntry::CvPolicyEntry(void):
 	m_bImmediateMilitaristicGift(false),
 	m_iResistanceTimeModifier(0),
 	m_iConquestFreeUnitClass(NO_UNITCLASS),
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_iLekmodFreeGreatWorks(0),
+#endif
 	m_iNewCityFreeBuildingClass(NO_BUILDINGCLASS),
 	m_iNewCityFreeUnitClass(NO_UNITCLASS),
 	m_iFreeTilesNewCities(0),
@@ -817,6 +820,9 @@ bool CvPolicyEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility&
 	m_bImmediateMilitaristicGift = kResults.GetBool("ImmediateMilitaristicGift");
 	m_iResistanceTimeModifier = kResults.GetInt("ResistanceTimeModifier");
 	m_iConquestFreeUnitClass = GC.getInfoTypeForString(kResults.GetText("ConquestFreeUnitClass"), true);
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_iLekmodFreeGreatWorks = kResults.GetInt("LekmodFreeGreatWorks");
+#endif
 	m_iNewCityFreeBuildingClass = GC.getInfoTypeForString(kResults.GetText("NewCityFreeBuildingClass"), true);
 	m_iNewCityFreeUnitClass = GC.getInfoTypeForString(kResults.GetText("NewCityFreeUnitClass"), true);
 	m_iFreeTilesNewCities = kResults.GetInt("FreeTilesNewCities");
@@ -5426,6 +5432,14 @@ int CvPlayerPolicies::GetNextPolicyCost()
 	// Policy Cost Mod
 	iCost *= (100 + m_pPlayer->getPolicyCostModifier());
 	iCost /= 100;
+#ifdef LEKMOD_SPECS_2026_10_24
+	// went deeper into an ideology than its free tenets: 10% more for every later policy (once per game)
+	if (m_pPlayer->IsLekmodCivFlag(LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY))
+	{
+		iCost *= 110;
+		iCost /= 100;
+	}
+#endif
 
 	// Game Speed Mod
 	iCost *= GC.getGame().getGameSpeedInfo().getCulturePercent();

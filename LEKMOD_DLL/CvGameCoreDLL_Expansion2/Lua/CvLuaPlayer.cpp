@@ -1006,6 +1006,9 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 #ifdef LEKMOD_SPY_REWORK
 	Method(LekmodGetCaughtSpies);
 	Method(LekmodGetSpyStealInfo);
+#ifdef LEKMOD_SPECS_2026_10_24
+	Method(LekmodHasIdeologyCostPenalty);
+#endif
 	Method(LekmodGetCoupInfo);
 	Method(LekmodGetDiplomatLevelIn);
 	Method(LekmodGetSweepCost);
@@ -11917,6 +11920,16 @@ int CvLuaPlayer::lLekmodGetCaughtSpies(lua_State* L)
 	}
 	return 1;
 }
+#ifdef LEKMOD_SPECS_2026_10_24
+//------------------------------------------------------------------------------
+// bool LekmodHasIdeologyCostPenalty(): later policies already cost 10% more (a tenet beyond the free ones was taken)
+int CvLuaPlayer::lLekmodHasIdeologyCostPenalty(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+	lua_pushboolean(L, pkPlayer->IsLekmodCivFlag(LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY));
+	return 1;
+}
+#endif
 //------------------------------------------------------------------------------
 // table LekmodGetSpyStealInfo(int iSpy): Strength, Defense, Turns, Chance, Catch, Level, FullTech
 int CvLuaPlayer::lLekmodGetSpyStealInfo(lua_State* L)

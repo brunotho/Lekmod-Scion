@@ -1301,7 +1301,13 @@ Controls.No:RegisterCallback( Mouse.eLClick, OnNo );
 
 function ChooseTenet(tenet, name)
 	g_SelectedTenet = tenet;
-	Controls.LabelConfirmTenet:LocalizeAndSetText("TXT_KEY_POLICYSCREEN_CONFIRM_TENET", name);
+	-- LEKMOD (2026-10-24): the first tenet beyond the free ones raises all later policy costs by 10% (once per game)
+	local strConfirm = Locale.ConvertTextKey("TXT_KEY_POLICYSCREEN_CONFIRM_TENET", name);
+	local pLekmodPlayer = Players[Game.GetActivePlayer()];
+	if (pLekmodPlayer.LekmodHasIdeologyCostPenalty ~= nil and not pLekmodPlayer:LekmodHasIdeologyCostPenalty() and pLekmodPlayer:GetNumFreeTenets() == 0) then
+		strConfirm = strConfirm .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CONFIRM_TENET_COST_PENALTY");
+	end
+	Controls.LabelConfirmTenet:SetText(strConfirm);
 	Controls.TenetConfirm:SetHide(false);
 end
 

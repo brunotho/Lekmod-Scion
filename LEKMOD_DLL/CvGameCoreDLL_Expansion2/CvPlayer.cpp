@@ -8895,6 +8895,12 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 			eUpgradeUnitClass = (UnitClassTypes) pUnit->getUnitInfo().GetGoodyHutUpgradeUnitClass();
 			eUpgradeUnit = (UnitTypes) getCivilizationInfo().getCivilizationUnits(eUpgradeUnitClass);
 		}
+#ifdef LEKMOD_SPECS_2026_10_24
+		if (pUnit != NULL)
+		{
+			eUpgradeUnit = LekmodGetRuinUpgradeUnit(pUnit, LekmodGoodyRand(1000, "Goody Upgrade Rand"));
+		}
+#endif
 		
 		if(eUpgradeUnit != NO_UNIT)
 		{
@@ -9528,6 +9534,24 @@ CvString CvPlayer::LekmodGetRuinTradeText(int iPay, int iGain, int iRoll) const
 }
 
 // One-line text of an offer, with the exact numbers the player will get
+#ifdef LEKMOD_SPECS_2026_10_24
+/// The unit an upgrade ruin turns pUnit into: one roll in five (0..199 of 0..999), a unit that would become a Spearman becomes a Hand-Axe instead
+UnitTypes CvPlayer::LekmodGetRuinUpgradeUnit(const CvUnit* pUnit, int iRoll) const
+{
+	if (pUnit == NULL)
+		return NO_UNIT;
+	const UnitClassTypes eUpgradeUnitClass = (UnitClassTypes)pUnit->getUnitInfo().GetGoodyHutUpgradeUnitClass();
+	if (eUpgradeUnitClass == NO_UNITCLASS)
+		return NO_UNIT;
+	if (iRoll >= 0 && iRoll < 200 && eUpgradeUnitClass == (UnitClassTypes)GC.getInfoTypeForString("UNITCLASS_SPEARMAN", true))
+	{
+		const UnitTypes eHandAxe = (UnitTypes)GC.getInfoTypeForString("UNIT_LEKMOD_HANDAXE", true);
+		if (eHandAxe != NO_UNIT)
+			return eHandAxe;
+	}
+	return (UnitTypes)getCivilizationInfo().getCivilizationUnits(eUpgradeUnitClass);
+}
+#endif
 CvString CvPlayer::LekmodGetRuinOfferText(GoodyTypes eGoody, int iRoll, int iPay, int iGain, CvUnit* pUnit) const
 {
 	CvGoodyInfo kGoodyInfo;
@@ -9580,6 +9604,9 @@ CvString CvPlayer::LekmodGetRuinOfferText(GoodyTypes eGoody, int iRoll, int iPay
 	{
 		UnitClassTypes eUpgradeUnitClass = (UnitClassTypes)pUnit->getUnitInfo().GetGoodyHutUpgradeUnitClass();
 		UnitTypes eUpgradeUnit = (eUpgradeUnitClass != NO_UNITCLASS) ? (UnitTypes)getCivilizationInfo().getCivilizationUnits(eUpgradeUnitClass) : NO_UNIT;
+#ifdef LEKMOD_SPECS_2026_10_24
+		eUpgradeUnit = LekmodGetRuinUpgradeUnit(pUnit, iRoll);
+#endif
 		if (eUpgradeUnit != NO_UNIT)
 			return GetLocalizedText("TXT_KEY_LEKMOD_RUIN_OFFER_UPGRADE", GC.getUnitInfo(eUpgradeUnit)->GetTextKey(), kGoodyInfo.getUnitDamage());
 	}
@@ -18692,6 +18719,12 @@ void CvPlayer::setHasPolicy(PolicyTypes eIndex, bool bNewValue)
 	{
 		m_pPlayerPolicies->SetPolicy(eIndex, bNewValue);
 		processPolicies(eIndex, bNewValue ? 1 : -1);
+#ifdef LEKMOD_SPECS_2026_10_24
+		// Policies.LekmodFreeGreatWorks: Great Works in empty slots near the capital when adopted (Aesthetics)
+		CvPolicyEntry* pkLekmodPolicy = GC.getPolicyInfo(eIndex);
+		if (bNewValue && pkLekmodPolicy != NULL && pkLekmodPolicy->GetLekmodFreeGreatWorks() > 0 && getCapitalCity() != NULL)
+			LekmodGrantGreatWorks(getCapitalCity(), pkLekmodPolicy->GetLekmodFreeGreatWorks());
+#endif
 	}
 }
 
@@ -18727,6 +18760,13 @@ void CvPlayer::doAdoptPolicy(PolicyTypes ePolicy)
 
 	bool bTenet = pkPolicyInfo->GetLevel() > 0;
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	// the first tenet that isn't one of the free ideology tenets raises all later policy costs by 10% (paid at the old price)
+	if (bTenet && !IsLekmodCivFlag(LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY) && !(GetNumFreeTenets() > 0))
+	{
+		SetLekmodCivFlag(LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY);
+	}
+#endif
 	// Pay Culture cost - if applicable
 	if (bTenet && GetNumFreeTenets() > 0)
 	{

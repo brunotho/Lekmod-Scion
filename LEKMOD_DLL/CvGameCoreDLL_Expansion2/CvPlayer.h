@@ -324,6 +324,9 @@ public:
 	void LekmodRevealNearestCityStates(CvPlot* pPlot, int iNum);
 	CvString LekmodGetRuinTradeText(int iPay, int iGain, int iRoll) const;
 	CvString LekmodGetRuinOfferText(GoodyTypes eGoody, int iRoll, int iPay, int iGain, CvUnit* pUnit) const;
+#ifdef LEKMOD_SPECS_2026_10_24
+	UnitTypes LekmodGetRuinUpgradeUnit(const CvUnit* pUnit, int iRoll) const;
+#endif
 	int LekmodFindPendingRuin(int iPlotIndex) const;
 	int LekmodGetNumPendingRuinOffers(int iPlotIndex) const;
 	GoodyTypes LekmodGetPendingRuinOffer(int iPlotIndex, int iOffer, CvString& strText) const;

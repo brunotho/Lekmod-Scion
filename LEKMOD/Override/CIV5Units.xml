@@ -187443,6 +187443,7 @@
 		<Column name="FreeTilesNewCities" type="integer" default="0"/> <!-- LEKMOD: every newly founded city claims N extra tiles -->
 		<Column name="ResistanceTimeModifier" type="integer" default="0"/> <!-- LEKMOD: % resistance time of captured cities (strongest counts) -->
 		<Column name="ConquestFreeUnitClass" type="text" reference="UnitClasses(Type)" default="NULL"/> <!-- LEKMOD: unit that appears in every captured city -->
+		<Column name="LekmodFreeGreatWorks" type="integer" default="0"/> <!-- LEKMOD: Great Works created in empty slots near the capital when adopted -->
 		<Column name="NewCityFreeBuildingClass" type="text" reference="BuildingClasses(Type)" default="NULL"/> <!-- LEKMOD: free building in every newly founded city -->
 		<Column name="NewCityFreeUnitClass" type="text" reference="UnitClasses(Type)" default="NULL"/> <!-- LEKMOD: unit that appears in every newly founded city -->
 		<Column name="EarlyBuildingProductionModifier" type="integer" default="0"/> <!-- LEKMOD: % Production toward buildings (not wonders) whose tech is before EarlyBuildingEraType -->
@@ -292266,4 +292267,97 @@
 		<Delete BuildingType="BUILDING_TEMPLE_ARTEMIS" UnitCombatType="UNITCOMBAT_NAVALRANGED"/>
 		<Delete BuildingType="BUILDING_TEMPLE_ARTEMIS" UnitCombatType="UNITCOMBAT_SUBMARINE"/>
 	</Building_UnitCombatProductionModifiers>
+	<!-- LEKMOD: Oct 24 list (31) Hand-Axe (unit 278, class 122; only from the upgrade ruin) and (32) Aesthetics opener: 1 free Great Work -->
+	<Policies>
+		<Update>
+			<Where Type="POLICY_AESTHETICS"/>
+			<Set LekmodFreeGreatWorks="1"/>
+		</Update>
+	</Policies>
+	<UnitClasses>
+		<Row>
+			<ID>122</ID>
+			<Type>UNITCLASS_LEKMOD_HANDAXE</Type>
+			<Description>TXT_KEY_UNIT_LEKMOD_HANDAXE</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<InstanceCostModifier>0</InstanceCostModifier>
+			<DefaultUnit>UNIT_LEKMOD_HANDAXE</DefaultUnit>
+		</Row>
+	</UnitClasses>
+	<Units>
+		<Row>
+			<ID>278</ID>
+			<Type>UNIT_LEKMOD_HANDAXE</Type>
+			<Description>TXT_KEY_UNIT_LEKMOD_HANDAXE</Description>
+			<Civilopedia>TXT_KEY_UNIT_LEKMOD_HANDAXE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_AXMAN_STRATEGY</Strategy>
+			<Help>TXT_KEY_UNIT_LEKMOD_HANDAXE_HELP</Help>
+			<Combat>9</Combat>
+			<RangedCombat>9</RangedCombat>
+			<Cost>56</Cost>
+			<Moves>2</Moves>
+			<Range>1</Range>
+			<BaseSightRange>2</BaseSightRange>
+			<Class>UNITCLASS_LEKMOD_HANDAXE</Class>
+			<CombatClass>UNITCOMBAT_ARCHER</CombatClass>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_RANGED</DefaultUnitAI>
+			<MilitarySupport>true</MilitarySupport>
+			<MilitaryProduction>true</MilitaryProduction>
+			<Pillage>true</Pillage>
+			<PrereqTech>TECH_THE_WHEEL</PrereqTech>
+			<ObsoleteTech>TECH_CHIVALRY</ObsoleteTech>
+			<GoodyHutUpgradeUnitClass>UNITCLASS_KNIGHT</GoodyHutUpgradeUnitClass>
+			<AdvancedStartCost>15</AdvancedStartCost>
+			<CombatLimit>100</CombatLimit>
+			<XPValueAttack>3</XPValueAttack>
+			<XPValueDefense>3</XPValueDefense>
+			<UnitArtInfo>ART_DEF_UNIT_HAND_AXE_BARBARIAN</UnitArtInfo>
+			<MoveRate>BIPED</MoveRate>
+			<UnitFlagIconOffset>9</UnitFlagIconOffset>
+			<PortraitIndex>9</PortraitIndex>
+			<IconAtlas>EXPANSION2_UNIT_ATLAS</IconAtlas>
+			<UnitFlagAtlas>EXPANSION2_UNIT_FLAG_ATLAS</UnitFlagAtlas>
+			<UpgradeOnly>true</UpgradeOnly>
+		</Row>
+	</Units>
+	<UnitGameplay2DScripts>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<SelectionSound>AS2D_SELECT_ARCHER</SelectionSound>
+			<FirstSelectionSound>AS2D_BIRTH_ARCHER</FirstSelectionSound>
+		</Row>
+	</UnitGameplay2DScripts>
+	<Unit_AITypes>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<UnitAIType>UNITAI_RANGED</UnitAIType>
+		</Row>
+	</Unit_AITypes>
+	<Unit_Flavors>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<FlavorType>FLAVOR_RANGED</FlavorType>
+			<Flavor>4</Flavor>
+		</Row>
+	</Unit_Flavors>
+	<Unit_FreePromotions>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<PromotionType>PROMOTION_ONLY_DEFENSIVE</PromotionType>
+		</Row>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<PromotionType>PROMOTION_NO_FORTIFY_VS_RANGED</PromotionType>
+		</Row>
+	</Unit_FreePromotions>
+	<Unit_ClassUpgrades>
+		<Delete UnitType="UNIT_LEKMOD_HANDAXE"/>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<UnitClassType>UNITCLASS_KNIGHT</UnitClassType>
+		</Row>
+	</Unit_ClassUpgrades>
 </GameData>

@@ -319,6 +319,9 @@ public:
 	int GetGoldPurchaseUnitClassEra(int iUnitClass) const;
 	int GetResistanceTimeModifier() const;
 	int GetConquestFreeUnitClass() const;
+#ifdef LEKMOD_SPECS_2026_10_24
+	int GetLekmodFreeGreatWorks() const { return m_iLekmodFreeGreatWorks; }
+#endif
 	int GetNewCityFreeBuildingClass() const;
 	int GetNewCityFreeUnitClass() const;
 	int GetFreeTilesNewCities() const;
@@ -708,6 +711,9 @@ private:
 	std::vector<int> m_aiGoldPurchaseUnitClassEra;
 	int m_iResistanceTimeModifier;
 	int m_iConquestFreeUnitClass;
+#ifdef LEKMOD_SPECS_2026_10_24
+	int m_iLekmodFreeGreatWorks;
+#endif
 	int m_iNewCityFreeBuildingClass;
 	int m_iNewCityFreeUnitClass;
 	int m_iFreeTilesNewCities;

@@ -1447,6 +1447,7 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_CIV_FLAG_FIRST_WRITER_USED 1
 #define LEKMOD_CIV_FLAG_FIRST_COASTAL_CITY 2 // Aksum: the Port of Adulis was given
 #define LEKMOD_CIV_FLAG_FIRST_UNIT_DOUBLED 4 // Brunei: the first Nelayan was doubled
+#define LEKMOD_CIV_FLAG_IDEOLOGY_COST_PENALTY 8 // the first tenet beyond the free ones: all later policies cost 10% more (LEKMOD_SPECS_2026_10_24)
 // Batch I (LEKMOD_CIV_TRAIT_FLAGS): trait ints for England's first Great Writer treatise (doubled), Venice's Writer/Artist/
 // Musician rate, Mexico's Gold for meeting City-States, Tonga's resting Influence with the first City-State pledged to;
 // saved player fields m_iLekmodCivFlags / m_iLekmodFirstPledgeMinor; Trait_LekmodBuildingClassOverrides.NoPolicyNeeded (China);
