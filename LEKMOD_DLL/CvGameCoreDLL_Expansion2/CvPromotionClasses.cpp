@@ -255,6 +255,10 @@ CvPromotionEntry::CvPromotionEntry():
 #ifdef LEKMOD_SPECS_2026_10_24
 	m_iLekmodFarRangedDamageMod(0),
 	m_iLekmodFarRangedDistance(0),
+	m_iLekmodFriendlyAuraMod(0),
+	m_iLekmodFriendlyAuraRange(0),
+	m_iLekmodDeathHealHP(0),
+	m_iLekmodDeathHealRange(0),
 #endif
 #endif
 #ifdef LEKMOD_CIV_PROMOTION_EFFECTS_J
@@ -958,6 +962,10 @@ bool CvPromotionEntry::CacheResults(Database::Results& kResults, CvDatabaseUtili
 #ifdef LEKMOD_SPECS_2026_10_24
 	m_iLekmodFarRangedDamageMod = kResults.GetInt("LekmodFarRangedDamageMod");
 	m_iLekmodFarRangedDistance = kResults.GetInt("LekmodFarRangedDistance");
+	m_iLekmodFriendlyAuraMod = kResults.GetInt("LekmodFriendlyAuraMod");
+	m_iLekmodFriendlyAuraRange = kResults.GetInt("LekmodFriendlyAuraRange");
+	m_iLekmodDeathHealHP = kResults.GetInt("LekmodDeathHealHP");
+	m_iLekmodDeathHealRange = kResults.GetInt("LekmodDeathHealRange");
 #endif
 #endif
 #ifdef LEKMOD_CIV_PROMOTION_EFFECTS_J
@@ -2419,6 +2427,7 @@ bool CvPromotionEntry::HasLekmodCivEffect() const
 #endif
 #ifdef LEKMOD_SPECS_2026_10_24
 		|| m_iLekmodFarRangedDamageMod != 0
+		|| m_iLekmodFriendlyAuraMod != 0 || m_iLekmodDeathHealHP != 0
 #endif
 #ifdef LEKMOD_SPREAD_ABILITIES
 		|| m_iLekmodHealRateMod != 0

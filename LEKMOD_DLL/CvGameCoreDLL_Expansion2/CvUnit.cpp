@@ -1683,6 +1683,13 @@ void CvUnit::kill(bool bDelay, PlayerTypes ePlayer /*= NO_PLAYER*/)
 		}
 	}
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	// killed by an enemy (not deleted, gifted or upgraded): Carroccios nearby heal the units next to them; only on the first kill call
+	if (ePlayer != NO_PLAYER && ePlayer != getOwner() && !m_bDeathDelay)
+	{
+		LekmodDoDeathHeal();
+	}
+#endif
 #ifdef ENHANCED_GRAPHS
 #ifdef LEKMOD_POLICY_REWORK
 	// Thoughts and Prayers: Culture when another player kills one of your military units (not upgrades or disbanding)
@@ -14884,6 +14891,15 @@ int CvUnit::GetGenericMaxStrengthModifier(const CvCombatInfo& kInfo, CvCombatMod
 			}
 		}
 	}
+#ifdef LEKMOD_SPECS_2026_10_24
+	// Carroccio: own units next to it fight better
+	iTempModifier = GetLekmodFriendlyAuraMod();
+	iModifier += iTempModifier;
+	if (kModifierList && iTempModifier)
+	{
+		GC.getGame().BuildCombatModHelpText(*kModifierList, "TXT_KEY_LEKMOD_COMBATMOD_CARROCCIO", iTempModifier);
+	}
+#endif
 	// Gadrauht: bonus for adjacent melee/gunpowder units attacking a wounded unit
 	if (bIsAttacker && pOtherUnit != NULL)
 	{
@@ -18077,6 +18093,113 @@ bool CvUnit::IsLekmodExpandedZOC() const
 #endif
 #ifdef LEKMOD_SPECS_2026_10_24
 //	--------------------------------------------------------------------------------
+/// Bonus from an own unit with a friendly aura within its range (Carroccio: +10% within 1 tile); the strongest one counts
+int CvUnit::GetLekmodFriendlyAuraMod() const
+{
+	const std::vector<PromotionTypes>& aPromotions = LekmodCivPromotions();
+	int iMaxRange = -1;
+	for (uint i = 0; i < aPromotions.size(); i++)
+	{
+		CvPromotionEntry* pkPromotion = GC.getPromotionInfo(aPromotions[i]);
+		if (pkPromotion->GetLekmodFriendlyAuraMod() != 0)
+			iMaxRange = std::max(iMaxRange, pkPromotion->GetLekmodFriendlyAuraRange());
+	}
+	if (iMaxRange < 0 || plot() == NULL)
+		return 0;
+	int iBest = 0;
+	for (int iDX = -iMaxRange; iDX <= iMaxRange; iDX++)
+	{
+		for (int iDY = -iMaxRange; iDY <= iMaxRange; iDY++)
+		{
+			CvPlot* pLoopPlot = plotXYWithRangeCheck(getX(), getY(), iDX, iDY, iMaxRange);
+			if (pLoopPlot == NULL)
+				continue;
+			const int iDistance = plotDistance(getX(), getY(), pLoopPlot->getX(), pLoopPlot->getY());
+			const IDInfo* pNode = pLoopPlot->headUnitNode();
+			while (pNode != NULL)
+			{
+				const CvUnit* pLoopUnit = ::getUnit(*pNode);
+				pNode = pLoopPlot->nextUnitNode(pNode);
+				if (pLoopUnit == NULL || pLoopUnit->getOwner() != getOwner())
+					continue;
+				for (uint i = 0; i < aPromotions.size(); i++)
+				{
+					CvPromotionEntry* pkPromotion = GC.getPromotionInfo(aPromotions[i]);
+					if (pkPromotion->GetLekmodFriendlyAuraMod() > iBest && iDistance <= pkPromotion->GetLekmodFriendlyAuraRange() && pLoopUnit->isHasPromotion(aPromotions[i]))
+						iBest = pkPromotion->GetLekmodFriendlyAuraMod();
+				}
+			}
+		}
+	}
+	return iBest;
+}
+/// This unit is killed by an enemy: every own unit with a death-heal promotion within its range heals the own units next to it (Carroccio)
+void CvUnit::LekmodDoDeathHeal() const
+{
+	const std::vector<PromotionTypes>& aPromotions = LekmodCivPromotions();
+	int iMaxRange = -1;
+	for (uint i = 0; i < aPromotions.size(); i++)
+	{
+		CvPromotionEntry* pkPromotion = GC.getPromotionInfo(aPromotions[i]);
+		if (pkPromotion->GetLekmodDeathHealHP() > 0)
+			iMaxRange = std::max(iMaxRange, pkPromotion->GetLekmodDeathHealRange());
+	}
+	if (iMaxRange < 0 || plot() == NULL)
+		return;
+	std::vector<CvUnit*> aHealers;
+	std::vector<int> aiHeal;
+	for (int iDX = -iMaxRange; iDX <= iMaxRange; iDX++)
+	{
+		for (int iDY = -iMaxRange; iDY <= iMaxRange; iDY++)
+		{
+			CvPlot* pLoopPlot = plotXYWithRangeCheck(getX(), getY(), iDX, iDY, iMaxRange);
+			if (pLoopPlot == NULL)
+				continue;
+			const int iDistance = plotDistance(getX(), getY(), pLoopPlot->getX(), pLoopPlot->getY());
+			const IDInfo* pNode = pLoopPlot->headUnitNode();
+			while (pNode != NULL)
+			{
+				CvUnit* pLoopUnit = ::getUnit(*pNode);
+				pNode = pLoopPlot->nextUnitNode(pNode);
+				if (pLoopUnit == NULL || pLoopUnit == this || pLoopUnit->getOwner() != getOwner() || pLoopUnit->isDelayedDeath())
+					continue;
+				for (uint i = 0; i < aPromotions.size(); i++)
+				{
+					CvPromotionEntry* pkPromotion = GC.getPromotionInfo(aPromotions[i]);
+					if (pkPromotion->GetLekmodDeathHealHP() > 0 && iDistance <= pkPromotion->GetLekmodDeathHealRange() && pLoopUnit->isHasPromotion(aPromotions[i]))
+					{
+						aHealers.push_back(pLoopUnit);
+						aiHeal.push_back(pkPromotion->GetLekmodDeathHealHP());
+						break;
+					}
+				}
+			}
+		}
+	}
+	// each healer heals the own units on its tile and the 6 next to it (itself too), except the dying unit
+	for (uint h = 0; h < aHealers.size(); h++)
+	{
+		CvUnit* pHealer = aHealers[h];
+		for (int iDX = -1; iDX <= 1; iDX++)
+		{
+			for (int iDY = -1; iDY <= 1; iDY++)
+			{
+				CvPlot* pLoopPlot = plotXYWithRangeCheck(pHealer->getX(), pHealer->getY(), iDX, iDY, 1);
+				if (pLoopPlot == NULL)
+					continue;
+				const IDInfo* pNode = pLoopPlot->headUnitNode();
+				while (pNode != NULL)
+				{
+					CvUnit* pLoopUnit = ::getUnit(*pNode);
+					pNode = pLoopPlot->nextUnitNode(pNode);
+					if (pLoopUnit == NULL || pLoopUnit == this || pLoopUnit->getOwner() != getOwner() || pLoopUnit->isDelayedDeath() || pLoopUnit->getDamage() <= 0)
+						continue;
+					pLoopUnit->changeDamage(-std::min(aiHeal[h], pLoopUnit->getDamage()));
+				}
+			}
+		}
+	}
+}
 /// Damage % for a ranged attack on pTargetPlot from the unit's tile (Cannon: -50% at 3 tiles)
 int CvUnit::GetLekmodFarRangedDamageMod(const CvPlot* pTargetPlot) const
 {

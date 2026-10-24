@@ -274,6 +274,10 @@ public:
 #ifdef LEKMOD_SPECS_2026_10_24
 	int GetLekmodFarRangedDamageMod() const;
 	int GetLekmodFarRangedDistance() const;
+	int GetLekmodFriendlyAuraMod() const { return m_iLekmodFriendlyAuraMod; }
+	int GetLekmodFriendlyAuraRange() const { return m_iLekmodFriendlyAuraRange; }
+	int GetLekmodDeathHealHP() const { return m_iLekmodDeathHealHP; }
+	int GetLekmodDeathHealRange() const { return m_iLekmodDeathHealRange; }
 #endif
 	int GetLekmodAttackFullHPMod() const;
 	bool IsLekmodPostCombatOnSpawn() const;
@@ -601,6 +605,10 @@ protected:
 #ifdef LEKMOD_SPECS_2026_10_24
 	int m_iLekmodFarRangedDamageMod;
 	int m_iLekmodFarRangedDistance;
+	int m_iLekmodFriendlyAuraMod;
+	int m_iLekmodFriendlyAuraRange;
+	int m_iLekmodDeathHealHP;
+	int m_iLekmodDeathHealRange;
 #endif
 	int m_iLekmodAttackFullHPMod;
 	bool m_bLekmodPostCombatOnSpawn;

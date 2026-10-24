@@ -116081,7 +116081,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_AESTHETICS_HELP"> 
 			<Text>
-				Adopting Aesthetics:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST][NEWLINE]     Artists and [ICON_GREAT_MUSICIAN] Musicians 20%[NEWLINE]     faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_UFFIZI] Uffizi[NEWLINE][ICON_BULLET]A [ICON_GREAT_WORK] Great Work appears in an[NEWLINE]     empty slot[NEWLINE][NEWLINE]Completing the Aesthetics tree:[NEWLINE][ICON_BULLET]3 Archaeologists appear[NEWLINE][ICON_BULLET]+50% [ICON_PRODUCTION] Production toward[NEWLINE]     Archaeologists[NEWLINE][ICON_BULLET]Reveals Antiquity Sites and[NEWLINE]     [COLOR_POSITIVE_TEXT]Hidden Antiquity Sites[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_TOURISM] Tourism from culture[NEWLINE]     buildings[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST][NEWLINE]     Artists and [ICON_GREAT_MUSICIAN] Musicians with[NEWLINE]     [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR][NEWLINE]     on[NEWLINE][ICON_BULLET]1 free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]
+				Adopting Aesthetics:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST][NEWLINE]     Artists and [ICON_GREAT_MUSICIAN] Musicians 20%[NEWLINE]     faster[NEWLINE][ICON_BULLET]A [ICON_GREAT_WORK] Great Work appears in an[NEWLINE]     empty slot[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_UFFIZI] Uffizi[NEWLINE][NEWLINE]Completing the Aesthetics tree:[NEWLINE][ICON_BULLET]3 Archaeologists appear[NEWLINE][ICON_BULLET]+50% [ICON_PRODUCTION] Production toward[NEWLINE]     Archaeologists[NEWLINE][ICON_BULLET]Reveals Antiquity Sites and[NEWLINE]     [COLOR_POSITIVE_TEXT]Hidden Antiquity Sites[ENDCOLOR][NEWLINE][ICON_BULLET]+20% [ICON_TOURISM] Tourism from culture[NEWLINE]     buildings[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST][NEWLINE]     Artists and [ICON_GREAT_MUSICIAN] Musicians with[NEWLINE]     [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR][NEWLINE]     on[NEWLINE][ICON_BULLET]1 free [COLOR_POSITIVE_TEXT]Social Policy[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_BRANCH_AMERICAN"> 
@@ -148492,13 +148492,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Carroccio</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_CARROCCIO_HELP">
-			<Text>Can only be trained in your [ICON_CAPITAL] Capital.[NEWLINE]Cannot attack and never gains experience.[NEWLINE][NEWLINE]If it is lost (killed, deleted or gifted), you lose 2 [ICON_HAPPINESS_1] Happiness for the rest of the game.[NEWLINE]Retire it in your [ICON_CAPITAL] Capital to remove it without that penalty.</Text>
+			<Text>Can only be trained in your [ICON_CAPITAL] Capital.[NEWLINE]Cannot attack and never gains experience.[NEWLINE][NEWLINE]Your units on its tile and next to it get +10% [ICON_STRENGTH] Combat Strength.[NEWLINE]When one of your units within 2 tiles is killed by an enemy, your units on its tile and next to it heal 5 HP.[NEWLINE][NEWLINE]If it is lost (killed, deleted or gifted), you lose 2 [ICON_HAPPINESS_1] Happiness for the rest of the game.[NEWLINE]Retire it in your [ICON_CAPITAL] Capital to remove it without that penalty.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_CARROCCIO_STRATEGY">
 			<Text>The Carroccio is a sturdy war cart that heals the units around it. Protect it: losing it costs Happiness for good. Bring it home to your Capital and retire it when it is no longer needed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_CARROCCIO_PEDIA">
-			<Text>Available to every civilization with Civil Service, trained only in the [ICON_CAPITAL] Capital. Becomes obsolete with Chivalry and does not upgrade.[NEWLINE][NEWLINE]14 [ICON_STRENGTH] Combat Strength, 2 [ICON_MOVES] Movement, 80 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]Starts with Cover I and Medic I. It cannot attack and never gains experience.[NEWLINE][NEWLINE]Losing it (killed, deleted or gifted to a City-State) costs 2 [ICON_HAPPINESS_1] Happiness for the rest of the game. The Retire action in your [ICON_CAPITAL] Capital removes it without that penalty.</Text>
+			<Text>Available to every civilization with Civil Service, trained only in the [ICON_CAPITAL] Capital. Becomes obsolete with Chivalry and does not upgrade.[NEWLINE][NEWLINE]14 [ICON_STRENGTH] Combat Strength, 2 [ICON_MOVES] Movement, 80 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]Starts with Cover I, Medic I and War Altar (+10% [ICON_STRENGTH] Combat Strength for your units on its tile and next to it; when one of your units within 2 tiles is killed by an enemy, those units heal 5 HP). It cannot attack and never gains experience.[NEWLINE][NEWLINE]Losing it (killed, deleted or gifted to a City-State) costs 2 [ICON_HAPPINESS_1] Happiness for the rest of the game. The Retire action in your [ICON_CAPITAL] Capital removes it without that penalty.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MISSION_LEKMOD_RETIRE">
 			<Text>Retire</Text>
@@ -148543,13 +148543,25 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Ranged unit with a range of 1. Can't be trained: an ancient ruin sometimes turns a Warrior into one (instead of a Spearman).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_HANDAXE_PEDIA">
-			<Text>Comes only from the upgrade ruin: one time in five, a unit that would become a Spearman becomes a Hand-Axe instead.[NEWLINE][NEWLINE]9 [ICON_STRENGTH] Combat Strength, 9 [ICON_RANGE_STRENGTH] Ranged Strength, Range 1, 2 [ICON_MOVES] Movement. It can't attack in melee. Upgrades to the Knight.</Text>
+			<Text>Comes only from the upgrade ruin: one time in five, a unit that would become a Spearman becomes a Hand-Axe instead.[NEWLINE][NEWLINE]9 [ICON_STRENGTH] Combat Strength, 9 [ICON_RANGE_STRENGTH] Ranged Strength, Range 1, 2 [ICON_MOVES] Movement. It can't attack in melee. Upgrades to the Composite Bowman.</Text>
 		</Row>
 	</Language_en_US>
 	<!-- LEKMOD: Oct 24 list (15) tenet cost penalty -->
 	<Language_en_US>
 		<Row Tag="TXT_KEY_LEKMOD_CONFIRM_TENET_COST_PENALTY">
 			<Text>[COLOR_WARNING_TEXT]This is your first tenet beyond the free ones: every later policy will cost 10% more for the rest of the game.[ENDCOLOR]</Text>
+		</Row>
+	</Language_en_US>
+	<!-- LEKMOD: Oct 24 list follow-up: War Altar -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_WAR_ALTAR">
+			<Text>War Altar</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_WAR_ALTAR_HELP">
+			<Text>Your units on this tile and next to it get +10% [ICON_STRENGTH] Combat Strength.[NEWLINE]When one of your units within 2 tiles is killed by an enemy, your units on this tile and next to it heal 5 HP.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_CARROCCIO">
+			<Text>Carroccio nearby: {1_Num}%</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>

@@ -214331,6 +214331,10 @@
 		<Column name="LekmodCiviliansToo" type="boolean" default="false"/>
 		<Column name="LekmodFarRangedDamageMod" type="integer" default="0"/>
 		<Column name="LekmodFarRangedDistance" type="integer" default="0"/>
+		<Column name="LekmodFriendlyAuraMod" type="integer" default="0"/>
+		<Column name="LekmodFriendlyAuraRange" type="integer" default="0"/>
+		<Column name="LekmodDeathHealHP" type="integer" default="0"/>
+		<Column name="LekmodDeathHealRange" type="integer" default="0"/>
 	</Table>
 	<UnitPromotions>
 		<Delete />
@@ -292358,6 +292362,44 @@
 		<Row>
 			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
 			<UnitClassType>UNITCLASS_KNIGHT</UnitClassType>
+		</Row>
+	</Unit_ClassUpgrades>
+	<!-- LEKMOD: Oct 24 list follow-up: Carroccio's War Altar promotion (395), Hand-Axe upgrades to the Composite Bowman -->
+	<UnitPromotions>
+		<Row>
+			<ID>395</ID>
+			<Type>PROMOTION_LEKMOD_WAR_ALTAR</Type>
+			<Description>TXT_KEY_PROMOTION_LEKMOD_WAR_ALTAR</Description>
+			<Help>TXT_KEY_PROMOTION_LEKMOD_WAR_ALTAR_HELP</Help>
+			<Sound>AS2D_IF_LEVELUP</Sound>
+			<CannotBeChosen>true</CannotBeChosen>
+			<PortraitIndex>59</PortraitIndex>
+			<IconAtlas>ABILITY_ATLAS</IconAtlas>
+			<LekmodFriendlyAuraMod>10</LekmodFriendlyAuraMod>
+			<LekmodFriendlyAuraRange>1</LekmodFriendlyAuraRange>
+			<LekmodDeathHealHP>5</LekmodDeathHealHP>
+			<LekmodDeathHealRange>2</LekmodDeathHealRange>
+			<PediaType>PEDIA_ATTRIBUTES</PediaType>
+			<PediaEntry>TXT_KEY_PROMOTION_LEKMOD_WAR_ALTAR</PediaEntry>
+		</Row>
+	</UnitPromotions>
+	<Unit_FreePromotions>
+		<Row>
+			<UnitType>UNIT_LEKMOD_CARROCCIO</UnitType>
+			<PromotionType>PROMOTION_LEKMOD_WAR_ALTAR</PromotionType>
+		</Row>
+	</Unit_FreePromotions>
+	<Units>
+		<Update>
+			<Where Type="UNIT_LEKMOD_HANDAXE"/>
+			<Set GoodyHutUpgradeUnitClass="UNITCLASS_COMPOSITE_BOWMAN"/>
+		</Update>
+	</Units>
+	<Unit_ClassUpgrades>
+		<Delete UnitType="UNIT_LEKMOD_HANDAXE"/>
+		<Row>
+			<UnitType>UNIT_LEKMOD_HANDAXE</UnitType>
+			<UnitClassType>UNITCLASS_COMPOSITE_BOWMAN</UnitClassType>
 		</Row>
 	</Unit_ClassUpgrades>
 </GameData>

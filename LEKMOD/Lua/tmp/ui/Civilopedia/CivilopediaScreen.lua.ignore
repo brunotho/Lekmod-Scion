@@ -140,18 +140,19 @@ Controls.ScrollPanel:CalculateInternalSize();
 Controls.LeftScrollPanel:CalculateInternalSize();
 
 -- LEKMOD: the NQ tab has no article list; its page uses the list's space too
-function LekmodSetFullWidth( bFull )
+function LekmodSetFullWidth( bFull, bHome )
 	Controls.LekmodListGlow:SetHide( bFull );
 	Controls.LekmodListDivider:SetHide( bFull );
 	Controls.LeftScrollPanel:SetHide( bFull );
 	Controls.NarrowStack:SetOffsetVal( bFull and 24 or 304, 0 );
-	Controls.SuperWideStack:SetOffsetVal( bFull and 20 or 320, 260 );
+	-- the home page has no picture (user, 2026-10-24): its boxes start right below the title
+	Controls.SuperWideStack:SetOffsetVal( bFull and 20 or 320, bHome and 76 or 260 );
 end
 
 function SetSelectedCategory( thisCategory )
 	print("SetSelectedCategory("..tostring(thisCategory)..")");
 	-- LEKMOD: the home page (Essentials, user 2026-10-23) and the NQ tab have no article list
-	LekmodSetFullWidth( thisCategory == CategoryLekmodNQ or thisCategory == CategoryHomePage );
+	LekmodSetFullWidth( thisCategory == CategoryLekmodNQ or thisCategory == CategoryHomePage, thisCategory == CategoryHomePage );
 	if selectedCategory ~= thisCategory then
 		selectedCategory = thisCategory;
 		-- set up tab
@@ -1502,19 +1503,25 @@ CivilopediaCategory[CategoryHomePage].DisplayHomePage = function()
 	ClearArticle();
 	Controls.ArticleID:SetText( Locale.ConvertTextKey("TXT_KEY_PEDIA_HOME_PAGE_LABEL") );	
 	
-	-- Update some circle logo
-	if IconHookup( 20, portraitSize, "TERRAIN_ATLAS", Controls.Portrait ) then
-		Controls.PortraitFrame:SetHide( false );
-	else
-		Controls.PortraitFrame:SetHide( true );
-	end
+	-- LEKMOD (2026-10-24, user): no picture; the intro is a full-width box at the top
+	Controls.PortraitFrame:SetHide( true );
+	LekmodSetFullWidth( true, true );
 
 	g_BBTextManager:ResetInstances();
 	
 	-- LEKMOD (2026-10-22): the home page shows the Essentials of the latest version (website Essentials page, copied
 	-- into the text file by tools/sync_pedia_essentials.py), one box per section; 2026-10-23 (user): headers in the
 	-- website's accent colour and the largest font, no base-game help box
-	UpdateTextBlock( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO" ), Controls.HomePageBlurbLabel, Controls.HomePageBlurbInnerFrame, Controls.HomePageBlurbFrame );
+	g_LekmodEssentialsManager:ResetInstances();
+	local introInstance = g_LekmodEssentialsManager:GetInstance();
+	if introInstance then
+		introInstance.BBTextHeader:SetText( "" );
+		introInstance.BBTextLabel:SetText( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO" ) );
+		local introHeight = introInstance.BBTextLabel:GetSize().y;
+		introInstance.BBTextInnerFrame:SetSize( { x = 940; y = introHeight + textPaddingFromInnerFrame; } );
+		introInstance.BBTextFrame:SetSize( { x = 936; y = introHeight + textPaddingFromInnerFrame - offsetsBetweenFrames; } );
+		introInstance.BBTextFrame:SetHide( false );
+	end
 	for iSection = 1, 50 do
 		local strHeaderKey = "TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_" .. iSection .. "_HEADER";
 		local strHeader = Locale.ConvertTextKey( strHeaderKey );
