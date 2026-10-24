@@ -3417,6 +3417,26 @@ function SelectBuildingOrWonderArticle( buildingID )
 		end
 		UpdateButtonFrame( buttonAdded, Controls.RequiredBuildingsInnerFrame, Controls.RequiredBuildingsFrame );
 
+		-- LEKMOD (2026-10-24): improvements this building unlocks (Builds.PrereqBuildingClass, e.g. the Canal Project's Canal)
+		g_ImprovementsManager:ResetInstances();
+		buttonAdded = 0;
+		for row in GameInfo.Builds( "PrereqBuildingClass = '" .. thisBuilding.BuildingClass .. "'" ) do
+			local thisImprovement = row.ImprovementType and GameInfo.Improvements[row.ImprovementType];
+			if thisImprovement then
+				local thisImprovementInstance = g_ImprovementsManager:GetInstance();
+				if thisImprovementInstance then
+					local textureOffset, textureSheet = IconLookup( thisImprovement.PortraitIndex, buttonSize, thisImprovement.IconAtlas );
+					if textureOffset == nil then
+						textureSheet = defaultErrorTextureSheet;
+						textureOffset = nullOffset;
+					end
+					UpdateSmallButton( buttonAdded, thisImprovementInstance.ImprovementImage, thisImprovementInstance.ImprovementButton, textureSheet, textureOffset, CategoryImprovements, Locale.ConvertTextKey( thisImprovement.Description ), thisImprovement.ID );
+					buttonAdded = buttonAdded + 1;
+				end
+			end
+		end
+		UpdateButtonFrame( buttonAdded, Controls.ImprovementsInnerFrame, Controls.ImprovementsFrame );
+
 		-- needed local resources
 		g_LocalResourcesManager:ResetInstances();
 		buttonAdded = 0;

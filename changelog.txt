@@ -109,6 +109,12 @@ Tags: city-states, diplomacy and trade
 - Added: your trade routes to a Mercantile City-State you are friends or allies with yield double Gold
 - DLL: CvPlayerTrade::GetTradeConnectionValueTimes100 doubles the origin's Gold after all modifiers (LEKMOD_SPECS_2026_10_24)
 
+CIVILOPEDIA
+-----------
+Tags: ui
+- Changed: the Canal Project's page links to the Canal improvement it unlocks
+- Dev: SelectBuildingOrWonderArticle shows the Improvements frame for Builds.PrereqBuildingClass of the building's class
+
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
