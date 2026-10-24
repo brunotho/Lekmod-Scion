@@ -64,6 +64,51 @@ g_InfluenceByPlayer = nil;		-- The data model for the "Influence by Player" tab.
 
 g_YourCultureSelectionMode = "ClickToMove";	-- Determines whether to use "click to move" or "click to view".
 
+-- LEKMOD (2026-10-24): several works picked with Shift+click, moved together into one building's empty slots
+g_LekmodMultiSelection = {};
+local function LekmodSameSlot(a, b)
+	return a.CityID == b.CityID and a.BuildingClassID == b.BuildingClassID and a.GreatWorkSlotIndex == b.GreatWorkSlotIndex;
+end
+function LekmodMultiSelectionIndex(slot)
+	for i, v in ipairs(g_LekmodMultiSelection) do
+		if (LekmodSameSlot(v, slot)) then return i; end
+	end
+	return nil;
+end
+function LekmodToggleMultiSelection(slot)
+	local i = LekmodMultiSelectionIndex(slot);
+	if (i ~= nil) then
+		table.remove(g_LekmodMultiSelection, i);
+	elseif (slot.GreatWorkIndex ~= -1 and not slot.Locked
+		and (#g_LekmodMultiSelection == 0 or g_LekmodMultiSelection[1].GreatWorkSlotType == slot.GreatWorkSlotType)) then
+		table.insert(g_LekmodMultiSelection, {CityID = slot.CityID, BuildingClassID = slot.BuildingClassID,
+			GreatWorkSlotIndex = slot.GreatWorkSlotIndex, GreatWorkSlotType = slot.GreatWorkSlotType});
+	end
+end
+-- the picked works go into the empty slots of the clicked building, as many as fit; the rest stay
+function LekmodMoveMultiSelection(target)
+	local playerID = Game.GetActivePlayer();
+	local freeSlots = {};
+	for _, v in ipairs(g_GreatWorkSlots) do
+		if (v.CityID == target.CityID and v.BuildingClassID == target.BuildingClassID and v.GreatWorkIndex == -1
+			and v.GreatWorkSlotType == g_LekmodMultiSelection[1].GreatWorkSlotType) then
+			table.insert(freeSlots, v);
+		end
+	end
+	table.sort(freeSlots, function(a, b) return a.GreatWorkSlotIndex < b.GreatWorkSlotIndex; end);
+	local n = 1;
+	for _, work in ipairs(g_LekmodMultiSelection) do
+		local dest = freeSlots[n];
+		if (dest == nil) then break; end
+		if (not (work.CityID == dest.CityID and work.BuildingClassID == dest.BuildingClassID)) then
+			Network.SendMoveGreatWorks(playerID, work.CityID, work.BuildingClassID, work.GreatWorkSlotIndex,
+				dest.CityID, dest.BuildingClassID, dest.GreatWorkSlotIndex);
+			n = n + 1;
+		end
+	end
+	g_LekmodMultiSelection = {};
+end
+
 g_CurrentGreatWorkSlot = nil;	-- The selected great work slot.
 g_GreatWorkSlots	= {};		-- A list of all great work slots.
 
@@ -596,13 +641,24 @@ function LekmodGreatWorkEffectText(building)
 		table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_MILITARY", building.GreatWorkMilitaryProductionModifier));
 	end
 	local perSlot, allFilled = {}, {};
+	-- LEKMOD (2026-10-24): rows on the city tile, in every city, or as % modifiers
+	local perSlotMod, allTile, allGlobal = {}, {}, {};
 	for row in GameInfo.Building_GreatWorkFilledYields{BuildingType = building.Type} do
 		local r = {YieldType = row.YieldType, Value = row.Yield, PerEra = LekmodIsTrue(row.PerEra)};
-		if (LekmodIsTrue(row.PerSlot)) then table.insert(perSlot, r); else table.insert(allFilled, r); end
+		if (LekmodIsTrue(row.Modifier)) then
+			r.Value = r.Value .. "%";
+			table.insert(perSlotMod, r);
+		elseif (LekmodIsTrue(row.CityTile)) then table.insert(allTile, r);
+		elseif (LekmodIsTrue(row.Global)) then table.insert(allGlobal, r);
+		elseif (LekmodIsTrue(row.PerSlot)) then table.insert(perSlot, r); else table.insert(allFilled, r); end
 	end
 	if (#perSlot > 0) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_PER_SLOT", LekmodYieldList(perSlot))); end
+	if (#perSlotMod > 0) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_PER_SLOT_MOD", LekmodYieldList(perSlotMod))); end
 	local count = building.GreatWorkCount or 0;
 	if (#allFilled > 0) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_ALL", count, LekmodYieldList(allFilled))); end
+	if (#allTile > 0) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_ALL_TILE", count, LekmodYieldList(allTile))); end
+	if (#allGlobal > 0) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_ALL_GLOBAL", count, LekmodYieldList(allGlobal))); end
+	if (LekmodIsTrue(building.LekmodLockedGreatWorkSlots)) then table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_LOCKED")); end
 	if ((building.GreatWorkFilledGPRateModifier or 0) ~= 0) then
 		table.insert(lines, Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_GP", count, building.GreatWorkFilledGPRateModifier));
 	end
@@ -805,6 +861,7 @@ function RefreshYourCulture()
 				LekmodToolTip = LekmodGreatWorkEffectText(building),
 				GreatWorkSlotType = building.GreatWorkSlotType,
 				GreatWorkSlotIcons = greatWorkSlotIcons[building.GreatWorkSlotType],
+				Locked = LekmodIsTrue(building.LekmodLockedGreatWorkSlots),
 			});
 		end
 	end
@@ -908,7 +965,8 @@ function RefreshYourCulture()
 					GreatWorkSlotType = wonder.GreatWorkSlotType,
 					GreatWorkSlotIcons = wonder.GreatWorkSlotIcons,
 					CityID = city:GetID(),
-					BuildingClassID = buildingClassID,		
+					BuildingClassID = buildingClassID,
+					Locked = wonder.Locked,
 				}				
 				
 				local greatWorks = {};
@@ -971,7 +1029,16 @@ function SortAndDisplayYourCulture()
     -- Utility function to determine best highlight texture
     function GetHighlightTexture(data)
 		local currentGreatWorkSlot = g_CurrentGreatWorkSlot;
-    
+		-- LEKMOD (2026-10-24): picked works shine, empty slots of the same type are the targets
+		if (#g_LekmodMultiSelection > 0) then
+			if (LekmodMultiSelectionIndex(data) ~= nil) then
+				return data.Icons.SelectedIcon;
+			elseif (data.GreatWorkIndex == -1 and data.GreatWorkSlotType == g_LekmodMultiSelection[1].GreatWorkSlotType) then
+				return "GreatWorks_Yellow_HL_34.dds";
+			end
+			return nil;
+		end
+
 		if(currentGreatWorkSlot ~= nil and data.GreatWorkSlotType == currentGreatWorkSlot.GreatWorkSlotType ) then
 			if(	currentGreatWorkSlot.CityID == data.CityID and 
 				currentGreatWorkSlot.BuildingClassID == data.BuildingClassID and
@@ -1180,10 +1247,22 @@ function SortAndDisplayYourCulture()
 					Icon = wonderInstance.WonderGreatWork4,
 					Highlight = wonderInstance.WonderGreatWork4HL,
 				},
-			};		
-			
+
+				-- LEKMOD (2026-10-24): fifth slot (Forbidden Palace)
+				{
+					Box = wonderInstance.WonderGreatWork5Box,
+					Icon = wonderInstance.WonderGreatWork5,
+					Highlight = wonderInstance.WonderGreatWork5HL,
+				},
+			};
+			-- LEKMOD (2026-10-24): padlock on filled locked slots
+			for i, v in ipairs(greatWorkControls) do
+				v.Lock = wonderInstance["WonderGreatWork" .. i .. "Lock"];
+			end
+
 			for _, v in ipairs(greatWorkControls) do
 				v.Box:SetHide(true);
+				if (v.Lock ~= nil) then v.Lock:SetHide(true); end
 			end
 			
 			local themeBonusControl = wonderInstance.WonderThemeBonus;
@@ -1211,15 +1290,21 @@ function SortAndDisplayYourCulture()
 						CityID = wonder.CityID,
 						BuildingClassID = wonder.BuildingClassID,
 						ThemeBonusControl = themeBonusControl,
+						Locked = (wonder.Locked and greatWork and greatWork.Index >= 0) or false,
 					};
-					
+
 					table.insert(g_GreatWorkSlots, selectionPoint);
-							
+
 					control.Box:SetHide(false);
-						
+					if (control.Lock ~= nil) then control.Lock:SetHide(not selectionPoint.Locked); end
+
 					if(greatWork.Index >= 0) then
 						control.Icon:SetTexture(icons.FilledIcon);
-						control.Icon:SetToolTipString(greatWork.ToolTip);
+						if (selectionPoint.Locked) then
+							control.Icon:SetToolTipString(greatWork.ToolTip .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_GW_SLOT_LOCKED"));
+						else
+							control.Icon:SetToolTipString(greatWork.ToolTip);
+						end
 					else
 						control.Icon:SetTexture(icons.EmptyIcon);
 						control.Icon:SetToolTipString(nil);
@@ -1271,12 +1356,19 @@ function SortAndDisplayYourCulture()
 			selectionPoint.Control:RegisterCallback(Mouse.eLClick, viewGreatWorks);			
 		else
 			selectionPoint.Control:RegisterCallback(Mouse.eLClick, function()
-				if(g_CurrentGreatWorkSlot and (g_CurrentGreatWorkSlot.GreatWorkSlotType == selectionPoint.GreatWorkSlotType)) then
-					
+				-- LEKMOD (2026-10-24): Shift+click picks several works; a plain click then moves them into the empty slots of the clicked building.
+				-- A work in a locked slot never leaves it (it can't be picked, and nothing can be swapped with it).
+				if (UIManager:GetShift()) then
+					g_CurrentGreatWorkSlot = nil;
+					LekmodToggleMultiSelection(selectionPoint);
+				elseif (#g_LekmodMultiSelection > 0) then
+					LekmodMoveMultiSelection(selectionPoint);
+				elseif(g_CurrentGreatWorkSlot and (g_CurrentGreatWorkSlot.GreatWorkSlotType == selectionPoint.GreatWorkSlotType)) then
+
 					local currentGreatWorkSlot = g_CurrentGreatWorkSlot;
-					if(	currentGreatWorkSlot.CityID ~= selectionPoint.CityID or
+					if(	(currentGreatWorkSlot.CityID ~= selectionPoint.CityID or
 						currentGreatWorkSlot.BuildingClassID ~= selectionPoint.BuildingClassID or
-						currentGreatWorkSlot.GreatWorkSlotIndex ~= selectionPoint.GreatWorkSlotIndex) then
+						currentGreatWorkSlot.GreatWorkSlotIndex ~= selectionPoint.GreatWorkSlotIndex) and not selectionPoint.Locked) then
 						
 						local activePlayer = Players[ Game.GetActivePlayer() ];
 						local activePlayerID = activePlayer:GetID();
@@ -1286,8 +1378,8 @@ function SortAndDisplayYourCulture()
 													selectionPoint.CityID, selectionPoint.BuildingClassID, selectionPoint.GreatWorkSlotIndex);
 					end												
 					-- Clear Selection
-					g_CurrentGreatWorkSlot = nil;	
-				else
+					g_CurrentGreatWorkSlot = nil;
+				elseif (not selectionPoint.Locked) then
 					g_CurrentGreatWorkSlot = selectionPoint;
 				end
 				

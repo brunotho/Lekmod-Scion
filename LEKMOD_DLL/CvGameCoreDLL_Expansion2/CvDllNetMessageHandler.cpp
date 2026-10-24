@@ -792,6 +792,15 @@ void CvDllNetMessageHandler::ResponseSetSwappableGreatWork(PlayerTypes ePlayer, 
 		}
 		else
 		{
+#ifdef LEKMOD_SPECS_2026_10_24
+			// a Great Work in a locked wonder slot can't be offered for a swap
+			{
+				int iLoop;
+				for (CvCity* pLoopCity = GET_PLAYER(ePlayer).firstCity(&iLoop); pLoopCity != NULL; pLoopCity = GET_PLAYER(ePlayer).nextCity(&iLoop))
+					if (pLoopCity->LekmodHoldsLockedGreatWork(iWorkIndex))
+						return;
+			}
+#endif
 			// does this player control this work
 			if (GET_PLAYER(ePlayer).GetCulture()->ControlsGreatWork(iWorkIndex))
 			{

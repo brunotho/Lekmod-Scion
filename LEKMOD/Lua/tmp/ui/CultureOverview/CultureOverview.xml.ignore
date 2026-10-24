@@ -555,18 +555,28 @@
           <Box Anchor="L,C" Size="32,32" Color="0,0,0,0" ID="WonderGreatWork1Box">
             <Button Anchor="L,T" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="WonderGreatWork1"/>
             <Image Anchor="L,T" Size="34,34" Offset="0,0" Texture="GreatWorks_Yellow_HL_34.dds" ID="WonderGreatWork1HL"/>
+            <Label Anchor="R,B" Offset="-3,-3" String="[ICON_LOCKED]" Hidden="1" ID="WonderGreatWork1Lock"/>
           </Box>
           <Box Anchor="L,C" Size="32,32" Color="0,0,0,0" ID="WonderGreatWork2Box">
             <Button Anchor="L,T" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="WonderGreatWork2"/>
             <Image Anchor="L,T" Size="34,34" Offset="0,0" Texture="GreatWorks_Yellow_HL_34.dds" ID="WonderGreatWork2HL"/>
+            <Label Anchor="R,B" Offset="-3,-3" String="[ICON_LOCKED]" Hidden="1" ID="WonderGreatWork2Lock"/>
           </Box>
           <Box Anchor="L,C" Size="32,32" Color="0,0,0,0" ID="WonderGreatWork3Box">
             <Button Anchor="L,T" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="WonderGreatWork3"/>
             <Image Anchor="L,T" Size="34,34" Offset="0,0" Texture="GreatWorks_Yellow_HL_34.dds" ID="WonderGreatWork3HL"/>
+            <Label Anchor="R,B" Offset="-3,-3" String="[ICON_LOCKED]" Hidden="1" ID="WonderGreatWork3Lock"/>
           </Box>
           <Box Anchor="L,C" Size="32,32" Color="0,0,0,0" ID="WonderGreatWork4Box">
             <Button Anchor="L,T" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="WonderGreatWork4"/>
             <Image Anchor="L,T" Size="34,34" Offset="0,0" Texture="GreatWorks_Yellow_HL_34.dds" ID="WonderGreatWork4HL"/>
+            <Label Anchor="R,B" Offset="-3,-3" String="[ICON_LOCKED]" Hidden="1" ID="WonderGreatWork4Lock"/>
+          </Box>
+          <!-- LEKMOD (2026-10-24): a fifth slot (Forbidden Palace) -->
+          <Box Anchor="L,C" Size="32,32" Color="0,0,0,0" ID="WonderGreatWork5Box">
+            <Button Anchor="L,T" Size="32,32" Offset="0,0" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="WonderGreatWork5"/>
+            <Image Anchor="L,T" Size="34,34" Offset="0,0" Texture="GreatWorks_Yellow_HL_34.dds" ID="WonderGreatWork5HL"/>
+            <Label Anchor="R,B" Offset="-3,-3" String="[ICON_LOCKED]" Hidden="1" ID="WonderGreatWork5Lock"/>
           </Box>
           <Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="30,34" ID="WonderThemeBox" Hidden="0">
             <Label Anchor="C,C" Offset="0,0" String="+0" Color0="Beige.255" Color1="Black.255" Font="TwCenMT20" FontStyle="Stroke" ID="WonderThemeBonus"/>

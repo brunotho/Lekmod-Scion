@@ -17,7 +17,7 @@
 #include "CvNotifications.h"
 #include "cvStopWatch.h"
 #include "CvCityManager.h"
-#ifdef LEKMOD_MINOR_CIV_PERSONALITIES
+#if defined(LEKMOD_MINOR_CIV_PERSONALITIES) || defined(LEKMOD_SPECS_2026_10_24)
 #include "CvMinorCivAI.h"
 #endif
 

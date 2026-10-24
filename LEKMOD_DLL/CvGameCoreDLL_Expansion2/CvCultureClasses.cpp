@@ -711,6 +711,11 @@ void CvGameCulture::MoveGreatWorks(PlayerTypes ePlayer, int iCity1, int iBuildin
 
 	int workType1 = pCity1->GetCityBuildings()->GetBuildingGreatWork((BuildingClassTypes)iBuildingClass1, iWorkIndex1);
 	int workType2 = pCity2->GetCityBuildings()->GetBuildingGreatWork((BuildingClassTypes)iBuildingClass2, iWorkIndex2);
+#ifdef LEKMOD_SPECS_2026_10_24
+	// a Great Work in a locked wonder slot never leaves it (Hagia Sophia, Alhambra, Sistine Chapel, Forbidden Palace)
+	if (pCity1->IsLekmodGreatWorkSlotLocked((BuildingClassTypes)iBuildingClass1, iWorkIndex1) || pCity2->IsLekmodGreatWorkSlotLocked((BuildingClassTypes)iBuildingClass2, iWorkIndex2))
+		return;
+#endif
 	pCity1->GetCityBuildings()->SetBuildingGreatWork((BuildingClassTypes)iBuildingClass1, iWorkIndex1, workType2);
 	pCity2->GetCityBuildings()->SetBuildingGreatWork((BuildingClassTypes)iBuildingClass2, iWorkIndex2, workType1);
 }

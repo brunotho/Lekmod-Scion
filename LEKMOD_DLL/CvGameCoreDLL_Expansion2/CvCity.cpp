@@ -3597,6 +3597,26 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 	{
 		return false;
 	}
+#ifdef LEKMOD_SPECS_2026_10_24
+	// another building of the same class in the city (a Baray from Angkor Wat) rules this one out (the Garden)
+	{
+		static std::vector<std::vector<BuildingTypes> > s_aClassMembers;
+		if (s_aClassMembers.empty())
+		{
+			s_aClassMembers.resize(GC.getNumBuildingClassInfos());
+			for (int iLoopBuilding = 0; iLoopBuilding < GC.getNumBuildingInfos(); iLoopBuilding++)
+			{
+				CvBuildingEntry* pkLoop = GC.getBuildingInfo((BuildingTypes)iLoopBuilding);
+				if (pkLoop != NULL && pkLoop->GetBuildingClassType() >= 0 && pkLoop->GetBuildingClassType() < GC.getNumBuildingClassInfos())
+					s_aClassMembers[pkLoop->GetBuildingClassType()].push_back((BuildingTypes)iLoopBuilding);
+			}
+		}
+		const std::vector<BuildingTypes>& aMembers = s_aClassMembers[pkBuildingInfo->GetBuildingClassType()];
+		for (uint iMember = 0; iMember < aMembers.size(); iMember++)
+			if (aMembers[iMember] != eBuilding && m_pCityBuildings->GetNumBuilding(aMembers[iMember]) > 0)
+				return false;
+	}
+#endif
 
 	if(m_pCityBuildings->GetNumBuilding(eBuilding) >= GC.getCITY_MAX_NUM_BUILDINGS())
 	{
@@ -8367,6 +8387,28 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 					m_pCityBuildings->SetNumFreeBuilding(eFreeBuildingThisCity, 1);
 				}
 			}
+#ifdef LEKMOD_SPECS_2026_10_24
+			// this exact building comes free (Angkor Wat: the Khmer Baray); it replaces the city's building of its class (the Garden)
+			{
+				const BuildingTypes eFreeSpecific = pBuildingInfo->GetLekmodFreeBuildingThisCityType();
+				CvBuildingEntry* pkFreeSpecific = (eFreeSpecific != NO_BUILDING) ? GC.getBuildingInfo(eFreeSpecific) : NULL;
+				if (pkFreeSpecific != NULL)
+				{
+					for (int iLoopBuilding = 0; iLoopBuilding < GC.getNumBuildingInfos(); iLoopBuilding++)
+					{
+						CvBuildingEntry* pkLoop = GC.getBuildingInfo((BuildingTypes)iLoopBuilding);
+						if (pkLoop == NULL || iLoopBuilding == (int)eFreeSpecific || pkLoop->GetBuildingClassType() != pkFreeSpecific->GetBuildingClassType())
+							continue;
+						if (m_pCityBuildings->GetNumRealBuilding((BuildingTypes)iLoopBuilding) > 0)
+							m_pCityBuildings->SetNumRealBuilding((BuildingTypes)iLoopBuilding, 0);
+						if (m_pCityBuildings->GetNumFreeBuilding((BuildingTypes)iLoopBuilding) > 0)
+							m_pCityBuildings->SetNumFreeBuilding((BuildingTypes)iLoopBuilding, 0);
+					}
+					m_pCityBuildings->SetNumRealBuilding(eFreeSpecific, 0);
+					m_pCityBuildings->SetNumFreeBuilding(eFreeSpecific, 1);
+				}
+			}
+#endif
 
 			// Free Great Work
 			GreatWorkType eGWType = pBuildingInfo->GetFreeGreatWork();
@@ -13126,6 +13168,13 @@ int CvCity::getBaseYieldRateModifier(YieldTypes eIndex, int iExtra, CvString* to
 	iModifier += iTempMod;
 	if(toolTipSink)
 		GC.getGame().BuildProdModHelpText(toolTipSink, "TXT_KEY_PRODMOD_YIELD_HAPPINESS", iTempMod);
+#ifdef LEKMOD_SPECS_2026_10_24
+	// Great Works in wonder slots (Alhambra: +10% Culture per filled slot)
+	iTempMod = GetLekmodFilledGreatWorkYieldOfKind(eIndex, 3);
+	iModifier += iTempMod;
+	if (toolTipSink && iTempMod != 0)
+		GC.getGame().BuildProdModHelpText(toolTipSink, "TXT_KEY_LEKMOD_PRODMOD_FILLED_GREAT_WORKS", iTempMod);
+#endif
 
 #ifdef LEKMOD_NATURAL_WONDER_EFFECTS
 	// City next to a natural wonder (e.g. Fountain of Youth)
@@ -15430,6 +15479,50 @@ int CvCity::GetLekmodFilledGreatWorkYield(YieldTypes eYield) const
 		{
 			if (aRows[j].m_eYield != eYield)
 				continue;
+#ifdef LEKMOD_SPECS_2026_10_24
+			if (aRows[j].m_bCityTile || aRows[j].m_bGlobal || aRows[j].m_bModifier)
+				continue;
+#endif
+			int iValue = aRows[j].m_bPerSlot ? aRows[j].m_iYield * iFilled : (bAll ? aRows[j].m_iYield : 0);
+			if (aRows[j].m_bPerEra)
+				iValue *= (int)GET_PLAYER(getOwner()).GetCurrentEra() + 1;
+			iTotal += iValue;
+		}
+	}
+#ifdef LEKMOD_SPECS_2026_10_24
+	// rows for every city of the owner (Angkor Wat), from whichever city holds the building
+	{
+		const CvPlayer& kOwner = GET_PLAYER(getOwner());
+		int iLoop;
+		for (const CvCity* pLoopCity = kOwner.firstCity(&iLoop); pLoopCity != NULL; pLoopCity = kOwner.nextCity(&iLoop))
+			iTotal += pLoopCity->GetLekmodFilledGreatWorkYieldOfKind(eYield, 2);
+	}
+#endif
+	return iTotal;
+}
+#ifdef LEKMOD_SPECS_2026_10_24
+/// Building_GreatWorkFilledYields rows of one kind: 1 = on the city tile, 2 = for every city of the owner, 3 = % modifier in this city
+int CvCity::GetLekmodFilledGreatWorkYieldOfKind(YieldTypes eYield, int iKind) const
+{
+	int iTotal = 0;
+	const std::vector<BuildingTypes>& aBuildings = LekmodWonderEffectBuildings();
+	for (uint i = 0; i < aBuildings.size(); i++)
+	{
+		CvBuildingEntry* pkInfo = GC.getBuildingInfo(aBuildings[i]);
+		const std::vector<LekmodGreatWorkFilledYield>& aRows = pkInfo->GetLekmodGreatWorkFilledYields();
+		if (aRows.empty())
+			continue;
+		int iFilled = GetLekmodGreatWorksInBuilding(aBuildings[i]);
+		if (iFilled <= 0)
+			continue;
+		const bool bAll = iFilled >= (int)pkInfo->GetGreatWorkCount();
+		for (uint j = 0; j < aRows.size(); j++)
+		{
+			if (aRows[j].m_eYield != eYield)
+				continue;
+			const int iRowKind = aRows[j].m_bCityTile ? 1 : (aRows[j].m_bGlobal ? 2 : (aRows[j].m_bModifier ? 3 : 0));
+			if (iRowKind != iKind)
+				continue;
 			int iValue = aRows[j].m_bPerSlot ? aRows[j].m_iYield * iFilled : (bAll ? aRows[j].m_iYield : 0);
 			if (aRows[j].m_bPerEra)
 				iValue *= (int)GET_PLAYER(getOwner()).GetCurrentEra() + 1;
@@ -15438,6 +15531,35 @@ int CvCity::GetLekmodFilledGreatWorkYield(YieldTypes eYield) const
 	}
 	return iTotal;
 }
+/// Buildings.LekmodLockedGreatWorkSlots: a Great Work placed in this slot stays there
+bool CvCity::IsLekmodGreatWorkSlotLocked(BuildingClassTypes eBuildingClass, int iSlot) const
+{
+	if (eBuildingClass == NO_BUILDINGCLASS || iSlot < 0)
+		return false;
+	const BuildingTypes eBuilding = (BuildingTypes)getCivilizationInfo().getCivilizationBuildings(eBuildingClass);
+	CvBuildingEntry* pkInfo = (eBuilding != NO_BUILDING) ? GC.getBuildingInfo(eBuilding) : NULL;
+	if (pkInfo == NULL || !pkInfo->IsLekmodLockedGreatWorkSlots())
+		return false;
+	return m_pCityBuildings->GetBuildingGreatWork(eBuildingClass, iSlot) != -1;
+}
+/// Is this Great Work in a locked slot of this city?
+bool CvCity::LekmodHoldsLockedGreatWork(int iGreatWorkIndex) const
+{
+	if (iGreatWorkIndex < 0)
+		return false;
+	for (int iClass = 0; iClass < GC.getNumBuildingClassInfos(); iClass++)
+	{
+		const BuildingTypes eBuilding = (BuildingTypes)getCivilizationInfo().getCivilizationBuildings((BuildingClassTypes)iClass);
+		CvBuildingEntry* pkInfo = (eBuilding != NO_BUILDING) ? GC.getBuildingInfo(eBuilding) : NULL;
+		if (pkInfo == NULL || !pkInfo->IsLekmodLockedGreatWorkSlots() || m_pCityBuildings->GetNumBuilding(eBuilding) <= 0)
+			continue;
+		for (int iSlot = 0; iSlot < pkInfo->GetGreatWorkCount(); iSlot++)
+			if (m_pCityBuildings->GetBuildingGreatWork((BuildingClassTypes)iClass, iSlot) == iGreatWorkIndex)
+				return true;
+	}
+	return false;
+}
+#endif
 
 /// Buildings.GreatWorkFilledGPRateModifier: more Great People in the city while all slots of the building are filled (National Epic)
 int CvCity::GetLekmodFilledGPRateModifier() const

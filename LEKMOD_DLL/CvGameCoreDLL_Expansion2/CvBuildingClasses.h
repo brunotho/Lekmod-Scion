@@ -115,11 +115,14 @@ struct LekmodBuildingTechTerrainYield
 // Building_GreatWorkFilledYields: city yields once all great work slots of the building are filled (or per filled slot), optionally x (era + 1)
 struct LekmodGreatWorkFilledYield
 {
-	LekmodGreatWorkFilledYield() : m_eYield(NO_YIELD), m_iYield(0), m_bPerSlot(false), m_bPerEra(false) {};
+	LekmodGreatWorkFilledYield() : m_eYield(NO_YIELD), m_iYield(0), m_bPerSlot(false), m_bPerEra(false), m_bCityTile(false), m_bGlobal(false), m_bModifier(false) {};
 	YieldTypes m_eYield;
 	int m_iYield;
 	bool m_bPerSlot;
 	bool m_bPerEra;
+	bool m_bCityTile;	// on the city tile (Forbidden Palace)
+	bool m_bGlobal;		// in every city of the owner (Angkor Wat)
+	bool m_bModifier;	// % yield modifier in the city (Alhambra)
 };
 // Building_FreshWaterImprovementYieldChanges: improved tiles with fresh water worked by the city yield more (Angkor Wat: farms +1 Faith)
 struct LekmodFreshWaterImprovementYield
@@ -327,6 +330,10 @@ public:
 	const std::vector<LekmodGreatWorkFilledYield>& GetLekmodGreatWorkFilledYields() const { return m_aLekmodGreatWorkFilledYields; }
 	const std::vector<std::pair<int, int> >& GetLekmodEraHappiness() const { return m_aLekmodEraHappiness; }
 	int GetGreatWorkFilledGPRateModifier() const { return m_iLekmodGreatWorkFilledGPRateModifier; }
+#ifdef LEKMOD_SPECS_2026_10_24
+	bool IsLekmodLockedGreatWorkSlots() const { return m_bLekmodLockedGreatWorkSlots; }
+	BuildingTypes GetLekmodFreeBuildingThisCityType() const;
+#endif
 	int GetGreatWorkFilledNearbyTourismMod() const { return m_iLekmodGreatWorkFilledNearbyTourismMod; }
 	int GetGreatWorkFilledNearbyTourismRange() const { return m_iLekmodGreatWorkFilledNearbyTourismRange; }
 	int GetNearbyMinorRestingInfluence() const { return m_iLekmodNearbyMinorRestingInfluence; }
@@ -758,6 +765,10 @@ private:
 	std::vector<LekmodGreatWorkFilledYield> m_aLekmodGreatWorkFilledYields;
 	std::vector<std::pair<int, int> > m_aLekmodEraHappiness;
 	int m_iLekmodGreatWorkFilledGPRateModifier;
+#ifdef LEKMOD_SPECS_2026_10_24
+	bool m_bLekmodLockedGreatWorkSlots;
+	CvString m_strLekmodFreeBuildingThisCityType;
+#endif
 	int m_iLekmodGreatWorkFilledNearbyTourismMod;
 	int m_iLekmodGreatWorkFilledNearbyTourismRange;
 	int m_iLekmodNearbyMinorRestingInfluence;

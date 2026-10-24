@@ -9858,6 +9858,10 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay)
 	if (ePlayer != NO_PLAYER && getOwner() == ePlayer && getWorkingCity() != NULL && getWorkingCity()->getOwner() == ePlayer)
 		iYield += getWorkingCity()->GetLekmodBuildingPlotYield(this, eYield);
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	if (ePlayer != NO_PLAYER && isCity() && getPlotCity() != NULL && getPlotCity()->getOwner() == ePlayer)
+		iYield += getPlotCity()->GetLekmodFilledGreatWorkYieldOfKind(eYield, 1);
+#endif
 #ifdef LEKMOD_TRAIT_PLOT_YIELDS
 	if (ePlayer != NO_PLAYER && getOwner() == ePlayer)
 		iYield += GET_PLAYER(ePlayer).GetPlayerTraits()->GetLekmodTraitPlotYield(this, eYield, (IsImprovementPillaged() ? NO_IMPROVEMENT : eImprovement));

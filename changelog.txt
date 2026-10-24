@@ -47,6 +47,7 @@ HAGIA SOPHIA (BUILDING_HAGIA_SOPHIA)
 ------------------------------------
 Tags: world wonders, tourism, wonders
 - Changed: its 3 Great Work slots come empty (1 came filled)
+- Added: its slots are locked (see Great Works)
 
 CHICHEN ITZA (BUILDING_CHICHEN_ITZA)
 ------------------------------------
@@ -121,6 +122,47 @@ Tags: policies
 - Changed: Free Thought needs Sovereignty (was Humanism); Humanism and Sovereignty swapped places in the tree
 - Changed: Scientific Revolution: a Great Scientist appears (was +20% Science in every city for 5 turns)
 - Changed: completing the tree gives +10% Science in all cities (was a free Great Scientist)
+
+GREAT WORKS (GREAT_WORK_SLOT_ART_ARTIFACT)
+------------------------------------------
+Tags: tourism, game mechanics
+- Added: locked slots: a Great Work placed in Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again; it can't be offered for a swap either
+- Added: the Great Works screen marks locked slots with a padlock
+- Note: when a captured duplicate wonder is destroyed (same-turn rule "Both"), its great works still move to free slots of the new owner
+- DLL: Buildings.LekmodLockedGreatWorkSlots (CvGameCulture::MoveGreatWorks, ResponseSetSwappableGreatWork)
+
+ANGKOR WAT (BUILDING_ANGKOR_WAT)
+--------------------------------
+Tags: world wonders, tourism, wonders
+- Now: available with Education and costs 268, like Notre Dame
+- Now: 1 Engineer point
+- Now: a free Baray (the Khmer Garden: +25% Great People instead of +20%, +2 Food, +2 Faith, no maintenance); it replaces the city's Garden, and the city can't build a Garden next to it
+- Now: 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
+- Removed: its Culture, the free Garden and the Faith from farms with fresh water
+- DLL: Buildings.LekmodFreeBuildingThisCityType (this exact building, not the civ's version of the class; CvCity::canConstruct rules out a second building of the same class); Building_GreatWorkFilledYields.Global
+
+ALHAMBRA (BUILDING_ALHAMBRA)
+----------------------------
+Tags: world wonders, tourism, wonders
+- Added: 3 Great Work slots (empty); each filled one gives +10% Culture in the city; its slots are locked (see Great Works)
+- Removed: +20% Culture in the city
+- DLL: Building_GreatWorkFilledYields.Modifier (CvCity::getBaseYieldRateModifier, tooltip line "Great Works in wonders")
+
+FORBIDDEN PALACE (BUILDING_FORBIDDEN_PALACE)
+--------------------------------------------
+Tags: world wonders, tourism, wonders
+- Added: 5 Great Work slots (empty); all 5 filled: +9 Science, +9 Culture, +9 Gold and +9 Tourism on the city tile; its slots are locked (see Great Works)
+- DLL: Building_GreatWorkFilledYields.CityTile (CvPlot::calculateYield; the city tile refreshes when a slot changes); the Great Works screen got a fifth wonder slot
+
+SISTINE CHAPEL (BUILDING_SISTINE_CHAPEL)
+----------------------------------------
+Tags: world wonders, tourism, wonders
+- Added: its slots are locked (see Great Works)
+
+GREAT WORKS SCREEN SELECTION
+----------------------------
+Tags: ui, tourism
+- Added: Shift + left click picks several Great Works; a left click on a building then moves them into its empty slots, as many as fit
 
 ## 1.0.0 (2026-10-24)
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.

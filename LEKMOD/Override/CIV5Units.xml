@@ -2283,6 +2283,9 @@
 		<Column name="Yield" type="integer" default="0" />
 		<Column name="PerSlot" type="boolean" default="false" />
 		<Column name="PerEra" type="boolean" default="false" />
+		<Column name="CityTile" type="boolean" default="false" />
+		<Column name="Global" type="boolean" default="false" />
+		<Column name="Modifier" type="boolean" default="false" />
 	</Table>
 	<!-- LEKMOD: global happiness (like Notre Dame) from this building for every era up to the owner's current era (cumulative) -->
 	<!-- LEKMOD: improved tiles with fresh water worked by the city yield more -->
@@ -43204,6 +43207,8 @@
 		<Column name="NearRiver" type="boolean" default="false" /> <!-- LEKMOD: the city must be on a river or next to a river tile -->
 		<Column name="NoMaintenanceOnRiver" type="boolean" default="false" /> <!-- LEKMOD: no Gold maintenance when the city is on a river -->
 		<Column name="GreatWorkFilledGPRateModifier" type="integer" default="0" /> <!-- LEKMOD: % Great People in the city while all great work slots of this building are filled -->
+		<Column name="LekmodLockedGreatWorkSlots" type="boolean" default="false" /> <!-- LEKMOD: Great Works placed in its slots stay there -->
+		<Column name="LekmodFreeBuildingThisCityType" type="text" default="NULL" /> <!-- LEKMOD: this exact building comes free and replaces the city building of its class -->
 		<Column name="GreatWorkFilledNearbyTourismMod" type="integer" default="0" /> <!-- LEKMOD: % Tourism toward civs owning a tile within GreatWorkFilledNearbyTourismRange, while all slots are filled -->
 		<Column name="GreatWorkFilledNearbyTourismRange" type="integer" default="0" />
 		<Column name="NearbyMinorRestingInfluence" type="integer" default="0" /> <!-- LEKMOD: resting influence with city-states whose capital is within NearbyMinorRange -->
@@ -49839,7 +49844,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_ANGKOR_WAT"/>
-			<Set FreeBuildingThisCity="BUILDINGCLASS_GARDEN" SpecialistType="SPECIALIST_ENGINEER" GreatPeopleRateChange="1" GreatWorkSlotType="GREAT_WORK_SLOT_ART_ARTIFACT" GreatWorkCount="2" FreeGreatWorkCount="2"/>
+			<Set SpecialistType="SPECIALIST_ENGINEER" GreatPeopleRateChange="1" GreatWorkSlotType="GREAT_WORK_SLOT_ART_ARTIFACT" GreatWorkCount="2" FreeGreatWorkCount="2"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_CHICHEN_ITZA"/>
@@ -292177,4 +292182,83 @@
 			<Yield>10</Yield>
 		</Row>
 	</Policy_YieldModifiers>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): Angkor Wat (from scratch), Alhambra, Forbidden Palace, locked Great Work slots -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_ANGKOR_WAT"/>
+			<Set PrereqTech="TECH_EDUCATION" Cost="400" SpecialistType="SPECIALIST_ENGINEER" GreatPeopleRateChange="1" GreatWorkSlotType="GREAT_WORK_SLOT_ART_ARTIFACT" GreatWorkCount="4" FreeGreatWorkCount="2" LekmodFreeBuildingThisCityType="BUILDING_BARAY"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_ALHAMBRA"/>
+			<Set GreatWorkSlotType="GREAT_WORK_SLOT_ART_ARTIFACT" GreatWorkCount="3" FreeGreatWorkCount="0" LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_FORBIDDEN_PALACE"/>
+			<Set GreatWorkSlotType="GREAT_WORK_SLOT_ART_ARTIFACT" GreatWorkCount="5" FreeGreatWorkCount="0" LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_HAGIA_SOPHIA"/>
+			<Set LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_SISTINE_CHAPEL"/>
+			<Set LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Building_YieldChanges>
+		<Delete BuildingType="BUILDING_ANGKOR_WAT"/>
+	</Building_YieldChanges>
+	<Building_FreshWaterImprovementYieldChanges>
+		<Delete BuildingType="BUILDING_ANGKOR_WAT"/>
+	</Building_FreshWaterImprovementYieldChanges>
+	<Building_YieldModifiers>
+		<Delete BuildingType="BUILDING_ALHAMBRA"/>
+	</Building_YieldModifiers>
+	<Building_GreatWorkFilledYields>
+		<Row>
+			<BuildingType>BUILDING_ANGKOR_WAT</BuildingType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+			<Global>true</Global>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_ALHAMBRA</BuildingType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+			<PerSlot>true</PerSlot>
+			<Modifier>true</Modifier>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_FORBIDDEN_PALACE</BuildingType>
+			<YieldType>YIELD_SCIENCE</YieldType>
+			<Yield>9</Yield>
+			<CityTile>true</CityTile>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_FORBIDDEN_PALACE</BuildingType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>9</Yield>
+			<CityTile>true</CityTile>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_FORBIDDEN_PALACE</BuildingType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>9</Yield>
+			<CityTile>true</CityTile>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_FORBIDDEN_PALACE</BuildingType>
+			<YieldType>YIELD_TOURISM</YieldType>
+			<Yield>9</Yield>
+			<CityTile>true</CityTile>
+		</Row>
+	</Building_GreatWorkFilledYields>
 </GameData>

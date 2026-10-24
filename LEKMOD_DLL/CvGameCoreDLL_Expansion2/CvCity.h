@@ -879,6 +879,11 @@ public:
 	int GetLekmodGreatWorksInBuilding(BuildingTypes eBuilding) const;
 	bool IsLekmodGreatWorkSlotsFilled(BuildingTypes eBuilding) const;
 	int GetLekmodFilledGreatWorkYield(YieldTypes eYield) const;
+#ifdef LEKMOD_SPECS_2026_10_24
+	int GetLekmodFilledGreatWorkYieldOfKind(YieldTypes eYield, int iKind) const;
+	bool LekmodHoldsLockedGreatWork(int iGreatWorkIndex) const;
+	bool IsLekmodGreatWorkSlotLocked(BuildingClassTypes eBuildingClass, int iSlot) const;
+#endif
 	int GetLekmodFilledGPRateModifier() const;
 	int GetLekmodEraHappiness() const;
 	PlayerTypes LekmodGetClosestCoastalMinor() const;

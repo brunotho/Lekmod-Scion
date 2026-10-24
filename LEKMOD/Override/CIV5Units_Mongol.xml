@@ -60716,9 +60716,7 @@ The second sack of Ulundi is considered by historians to be the definitive end o
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CO_CLICK_TO_MOVE_TT"> 
-			<Text>
-				Left click on great works to move them from location to another.
-			</Text>
+			<Text>Left click a Great Work, then left click another slot to move it there.[NEWLINE]Shift + left click picks several Great Works; then left click a building to move them into its empty slots (as many as fit).[NEWLINE][NEWLINE][ICON_LOCKED] Great Works in the locked slots of some wonders can't be moved out.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CO_CLICK_TO_VIEW"> 
 			<Text>
@@ -144569,9 +144567,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_ALHAMBRA_HELP"> 
-			<Text>
-				All newly-trained non-air Units in this City receive the [COLOR_POSITIVE_TEXT]Drill I[ENDCOLOR] Promotion, improving [ICON_STRENGTH] combat strength when fighting in [COLOR_POSITIVE_TEXT]ROUGH[ENDCOLOR] Terrain. Provides a free Castle in the city in which it is built. Boosts city [ICON_CULTURE] Culture output by 20%.
-			</Text>
+			<Text>All newly-trained non-air units in this city receive the [COLOR_POSITIVE_TEXT]Drill I[ENDCOLOR] promotion.[NEWLINE]A free Castle in the city.[NEWLINE][NEWLINE]+10% [ICON_CULTURE] Culture in the city for each Great Work in its 3 slots.[NEWLINE]Great Works placed here can't be moved out again.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_ALHAMBRA_QUOTE"> 
 			<Text>
@@ -144599,9 +144595,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_ANGKOR_WAT_HELP"> 
-			<Text>
-				Provides a free Garden in the city.[NEWLINE]Farms with fresh water worked by this city yield +1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 2 Great Works.
-			</Text>
+			<Text>A free Baray in the city: a Garden with +25% [ICON_GREAT_PEOPLE] Great People generation (instead of +20%), +2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith, without [ICON_GOLD] Gold maintenance. It replaces the city's Garden, and the city can't build a Garden next to it.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 2 Great Works.[NEWLINE]All 4 Great Work slots filled: +1 [ICON_FOOD] Food in every city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_BIGBEN_DESC"> 
 			<Text>
@@ -144764,9 +144758,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_FORBIDDEN_PALACE_HELP"> 
-			<Text>
-				Requires Patronage. Grants 2 additional Delegates in the World Congress (3 from the Atomic Era). -10% [ICON_HAPPINESS_4] Unhappiness from [ICON_CITIZEN] Citizens in non-occupied Cities.
-			</Text>
+			<Text>Requires Patronage.[NEWLINE]Grants 2 additional Delegates in the World Congress (3 from the Atomic Era).[NEWLINE]-10% [ICON_HAPPINESS_4] Unhappiness from [ICON_CITIZEN] Citizens in non-occupied Cities.[NEWLINE][NEWLINE]All 5 Great Work slots filled: +9 [ICON_RESEARCH] Science, +9 [ICON_CULTURE] Culture, +9 [ICON_GOLD] Gold and +9 [ICON_TOURISM] Tourism on the city tile.[NEWLINE]Great Works placed here can't be moved out again.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_GLOBE_THEATER_HELP"> 
 			<Text>
@@ -144859,9 +144851,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HAGIA_SOPHIA_HELP"> 
-			<Text>
-				A free Great Prophet appears.[NEWLINE][NEWLINE]All 3 Great Work slots filled: +10 [ICON_PEACE] Faith.
-			</Text>
+			<Text>A free Great Prophet appears.[NEWLINE][NEWLINE]All 3 Great Work slots filled: +10 [ICON_PEACE] Faith.[NEWLINE]Great Works placed here can't be moved out again.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HANGINGGARDENS_DESC"> 
 			<Text>
@@ -145807,9 +145797,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_SISTINE_CHAPEL_HELP"> 
-			<Text>
-				+20% [ICON_CULTURE] Culture in all cities.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Great Works in this wonder yield double.
-			</Text>
+			<Text>+20% [ICON_CULTURE] Culture in all cities.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Great Works in this wonder yield double.[NEWLINE]Great Works placed here can't be moved out again.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_STATUEOFLIBERTY_DESC"> 
 			<Text>
@@ -148520,6 +148508,30 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_MISSION_LEKMOD_RETIRE_DISABLED_HELP">
 			<Text>Only possible in your [ICON_CAPITAL] Capital.</Text>
+		</Row>
+	</Language_en_US>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): Great Work wonder effects -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_GWFX_PER_SLOT_MOD">
+			<Text>[ICON_GREAT_WORK] Each Great Work here: {1_Yields} in this city</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_GWFX_ALL_TILE">
+			<Text>[ICON_GREAT_WORK] All {1_Num} slots filled: {2_Yields} on the city tile</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_GWFX_ALL_GLOBAL">
+			<Text>[ICON_GREAT_WORK] All {1_Num} slots filled: {2_Yields} in every city</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_GWFX_LOCKED">
+			<Text>[ICON_LOCKED] Great Works placed here can't be moved out again</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PRODMOD_FILLED_GREAT_WORKS">
+			<Text>[NEWLINE][ICON_BULLET]Great Works in wonders: {1_Num}%</Text>
+		</Row>
+	</Language_en_US>
+	<!-- LEKMOD: Oct 24 list (2026-10-24): locked Great Work slots -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_GW_SLOT_LOCKED">
+			<Text>[ICON_LOCKED] Locked: this Great Work stays in this wonder.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>

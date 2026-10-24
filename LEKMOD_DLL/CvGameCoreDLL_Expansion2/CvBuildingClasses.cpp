@@ -128,6 +128,9 @@ CvBuildingEntry::CvBuildingEntry(void):
 #endif
 #ifdef LEKMOD_GREAT_WORK_WONDER_EFFECTS
 	m_iLekmodGreatWorkFilledGPRateModifier(0),
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_bLekmodLockedGreatWorkSlots(false),
+#endif
 	m_iLekmodGreatWorkFilledNearbyTourismMod(0),
 	m_iLekmodGreatWorkFilledNearbyTourismRange(0),
 	m_iLekmodNearbyMinorRestingInfluence(0),
@@ -597,6 +600,13 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 #endif
 #ifdef LEKMOD_GREAT_WORK_WONDER_EFFECTS
 	m_iLekmodGreatWorkFilledGPRateModifier = kResults.GetInt("GreatWorkFilledGPRateModifier");
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_bLekmodLockedGreatWorkSlots = kResults.GetBool("LekmodLockedGreatWorkSlots");
+	{
+		const char* szFree = kResults.GetText("LekmodFreeBuildingThisCityType");
+		m_strLekmodFreeBuildingThisCityType = (szFree != NULL) ? szFree : "";
+	}
+#endif
 	m_iLekmodGreatWorkFilledNearbyTourismMod = kResults.GetInt("GreatWorkFilledNearbyTourismMod");
 	m_iLekmodGreatWorkFilledNearbyTourismRange = kResults.GetInt("GreatWorkFilledNearbyTourismRange");
 	m_iLekmodNearbyMinorRestingInfluence = kResults.GetInt("NearbyMinorRestingInfluence");
@@ -1448,7 +1458,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 		if(pResults == NULL)
 		{
 			pResults = kUtility.PrepareResults(strKey,
-				"select Yields.ID, Yield, PerSlot, PerEra from Building_GreatWorkFilledYields "
+				"select Yields.ID, Yield, PerSlot, PerEra, CityTile, Global, Modifier from Building_GreatWorkFilledYields "
 				"inner join Yields on Yields.Type = YieldType "
 				"where BuildingType = ?");
 		}
@@ -1460,6 +1470,9 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 			kEntry.m_iYield = pResults->GetInt(1);
 			kEntry.m_bPerSlot = pResults->GetBool(2);
 			kEntry.m_bPerEra = pResults->GetBool(3);
+			kEntry.m_bCityTile = pResults->GetBool(4);
+			kEntry.m_bGlobal = pResults->GetBool(5);
+			kEntry.m_bModifier = pResults->GetBool(6);
 			m_aLekmodGreatWorkFilledYields.push_back(kEntry);
 		}
 	}
@@ -3561,6 +3574,16 @@ const std::vector<BuildingFreeTerrainYields>& CvBuildingEntry::GetFreeTerrainYie
 #endif
 #ifdef LEKMOD_BUILDING_FILLED_SLOT_TOURISM
 /// % Tourism in the city while all of this building's Great Work slots are filled (Dance Hall)
+#ifdef LEKMOD_SPECS_2026_10_24
+/// Buildings.LekmodFreeBuildingThisCityType: this exact building comes free in the city (it replaces the city's building of its class);
+/// resolved when first asked, since buildings can name buildings that load after them
+BuildingTypes CvBuildingEntry::GetLekmodFreeBuildingThisCityType() const
+{
+	if (m_strLekmodFreeBuildingThisCityType.empty())
+		return NO_BUILDING;
+	return (BuildingTypes)GC.getInfoTypeForString(m_strLekmodFreeBuildingThisCityType.c_str(), true);
+}
+#endif
 int CvBuildingEntry::GetLekmodGreatWorkFilledTourismModifier() const
 {
 	return m_iLekmodGreatWorkFilledTourismModifier;
@@ -4845,6 +4868,10 @@ void CvCityBuildings::SetBuildingGreatWork(BuildingClassTypes eBuildingClass, in
 				}
 			}
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+			if (m_pCity != NULL && m_pCity->plot() != NULL)
+				m_pCity->plot()->updateYield();
+#endif
 			GC.GetEngineUserInterface()->setDirty(CityInfo_DIRTY_BIT, true);
 			GC.GetEngineUserInterface()->setDirty(GreatWorksScreen_DIRTY_BIT, true);
 			return;
@@ -4865,6 +4892,10 @@ void CvCityBuildings::SetBuildingGreatWork(BuildingClassTypes eBuildingClass, in
 #endif
 	}
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	if (m_pCity != NULL && m_pCity->plot() != NULL)
+		m_pCity->plot()->updateYield();
+#endif
 	GC.GetEngineUserInterface()->setDirty(CityInfo_DIRTY_BIT, true);
 	GC.GetEngineUserInterface()->setDirty(GreatWorksScreen_DIRTY_BIT, true);
 }
