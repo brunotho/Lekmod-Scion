@@ -806,6 +806,9 @@ void CvUnitMission::ContinueMission(UnitHandle hUnit, int iSteps, int iETA)
 #ifdef LEKMOD_SPREAD_ABILITIES
 					|| kMissionData.eMissionType == CvTypes::getMISSION_LEKMOD_BLESS()
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+					|| kMissionData.eMissionType == CvTypes::getMISSION_LEKMOD_RETIRE()
+#endif
 					)
 #else
 					kMissionData.eMissionType == CvTypes::getMISSION_CHANGE_ADMIRAL_PORT() ||
@@ -1362,6 +1365,15 @@ bool CvUnitMission::CanStartMission(UnitHandle hUnit, int iMission, int iData1, 
 		}
 	}
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	else if (iMission == CvTypes::getMISSION_LEKMOD_RETIRE())
+	{
+		if (hUnit->canLekmodRetire(pPlot, bTestVisible))
+		{
+			return true;
+		}
+	}
+#endif
 	return false;
 }
 
@@ -1857,6 +1869,15 @@ void CvUnitMission::StartMission(UnitHandle hUnit)
 			else if (pkQueueData->eMissionType == CvTypes::getMISSION_LEKMOD_BLESS())
 			{
 				if (hUnit->lekmodBless())
+				{
+					bAction = true;
+				}
+			}
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+			else if (pkQueueData->eMissionType == CvTypes::getMISSION_LEKMOD_RETIRE())
+			{
+				if (hUnit->lekmodRetire())
 				{
 					bAction = true;
 				}

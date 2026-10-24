@@ -1889,6 +1889,13 @@ void CvUnit::kill(bool bDelay, PlayerTypes ePlayer /*= NO_PLAYER*/)
 	{
 		GET_PLAYER(getOwner()).ChangeUnhappinessFromUnits(-getUnitInfo().GetUnhappiness());
 	}
+#ifdef LEKMOD_SPECS_2026_10_24
+	// Carroccio: losing it (death, deletion, gift) costs Happiness for good; units unhappiness is in hundredths
+	if (getUnitInfo().GetLekmodDeathUnhappiness() != 0)
+	{
+		GET_PLAYER(getOwner()).ChangeUnhappinessFromUnits(getUnitInfo().GetLekmodDeathUnhappiness() * 100);
+	}
+#endif
 
 	GET_PLAYER(getOwner()).changeExtraUnitCost(-(getUnitInfo().GetExtraMaintenanceCost()));
 
@@ -10864,6 +10871,30 @@ void CvUnit::PerformNeutralCultureBomb(int iRadius)
 
 
 
+#ifdef LEKMOD_SPECS_2026_10_24
+//	--------------------------------------------------------------------------------
+/// Retire (Carroccio): only in the owner's capital
+bool CvUnit::canLekmodRetire(const CvPlot* pPlot, bool bTestVisible) const
+{
+	if (!m_pUnitInfo->IsLekmodRetireInCapital() || pPlot == NULL)
+		return false;
+	if (bTestVisible)
+		return true;
+	const CvCity* pCity = pPlot->getPlotCity();
+	return pCity != NULL && pCity->getOwner() == getOwner() && pCity->isCapital();
+}
+//	--------------------------------------------------------------------------------
+/// Removes the unit without its death unhappiness (kill adds it, so it is taken back first)
+bool CvUnit::lekmodRetire()
+{
+	if (!canLekmodRetire(plot()))
+		return false;
+	if (m_pUnitInfo->GetLekmodDeathUnhappiness() != 0)
+		GET_PLAYER(getOwner()).ChangeUnhappinessFromUnits(-m_pUnitInfo->GetLekmodDeathUnhappiness() * 100);
+	kill(true);
+	return true;
+}
+#endif
 //	--------------------------------------------------------------------------------
 bool CvUnit::canGoldenAge(const CvPlot* pPlot, bool bTestVisible) const
 {
@@ -19999,6 +20030,12 @@ int CvUnit::getExperience() const
 void CvUnit::setExperience(int iNewValue, int iMax)
 {
 	VALIDATE_OBJECT
+#ifdef LEKMOD_SPECS_2026_10_24
+	if (m_pUnitInfo->IsLekmodNoExperience())
+	{
+		iNewValue = 0;
+	}
+#endif
 	if((getExperience() != iNewValue) && (getExperience() < ((iMax == -1) ? INT_MAX : iMax)))
 	{
 		int iExperienceChange = iNewValue - getExperience();
@@ -20062,6 +20099,12 @@ void CvUnit::setExperience(int iNewValue, int iMax)
 void CvUnit::changeExperience(int iChange, int iMax, bool bFromCombat, bool bInBorders, bool bUpdateGlobal)
 {
 	VALIDATE_OBJECT
+#ifdef LEKMOD_SPECS_2026_10_24
+	if (m_pUnitInfo->IsLekmodNoExperience())
+	{
+		return;
+	}
+#endif
 	// Barbs don't get XP or Promotions
 	if(isBarbarian() && iChange > 0)
 	{

@@ -81,6 +81,9 @@ const MissionTypes getMISSION_RETRAIN();
 #ifdef LEKMOD_SPREAD_ABILITIES
 const MissionTypes getMISSION_LEKMOD_BLESS();
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+const MissionTypes getMISSION_LEKMOD_RETIRE();
+#endif
 const unsigned int getNUM_MISSION_TYPES();
 
 const GreatWorkArtifactClass getARTIFACT_ANCIENT_RUIN();

@@ -137,6 +137,12 @@ public:
 	int GetLekmodBlessSpreadCost() const;
 	int GetLekmodGoldenAgeSpreadCost() const;
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	bool IsLekmodNoExperience() const;
+	int GetLekmodDeathUnhappiness() const;
+	bool IsLekmodRetireInCapital() const;
+	bool IsLekmodCapitalOnly() const;
+#endif
 #ifdef LEKMOD_UNIT_IDEOLOGY_PROMOTIONS
 	const std::vector<std::pair<int, int> >& GetLekmodIdeologyPromotions() const;
 #endif
@@ -318,6 +324,12 @@ private:
 	int m_iLekmodBlessPromotion;
 	int m_iLekmodBlessSpreadCost;
 	int m_iLekmodGoldenAgeSpreadCost;
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	bool m_bLekmodNoExperience;
+	int m_iLekmodDeathUnhappiness;
+	bool m_bLekmodRetireInCapital;
+	bool m_bLekmodCapitalOnly;
 #endif
 #ifdef LEKMOD_UNIT_IDEOLOGY_PROMOTIONS
 	std::vector<std::pair<int, int> > m_aLekmodIdeologyPromotions; // policy branch, promotion

@@ -402,6 +402,10 @@ public:
 	void PerformCultureBomb(int iRadius);
 	void PerformNeutralCultureBomb(int iRadius);
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	bool canLekmodRetire(const CvPlot* pPlot, bool bTestVisible = false) const;
+	bool lekmodRetire();
+#endif
 	bool canGoldenAge(const CvPlot* pPlot, bool bTestVisible = false) const;
 #ifdef LEKMOD_SPREAD_ABILITIES
 	bool canLekmodBless(const CvPlot* pPlot, bool bTestVisible = false) const;

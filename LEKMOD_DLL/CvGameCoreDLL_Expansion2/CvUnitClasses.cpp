@@ -134,6 +134,12 @@ CvUnitEntry::CvUnitEntry(void) :
 	m_iLekmodBlessSpreadCost(0),
 	m_iLekmodGoldenAgeSpreadCost(0),
 #endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_bLekmodNoExperience(false),
+	m_iLekmodDeathUnhappiness(0),
+	m_bLekmodRetireInCapital(false),
+	m_bLekmodCapitalOnly(false),
+#endif
 	m_piPrereqAndTechs(NULL),
 	m_piResourceQuantityRequirements(NULL),
 	m_piProductionTraits(NULL),
@@ -353,6 +359,12 @@ bool CvUnitEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility& k
 	m_iLekmodBlessPromotion = GC.getInfoTypeForString(kResults.GetText("LekmodBlessPromotion"), true);
 	m_iLekmodBlessSpreadCost = kResults.GetInt("LekmodBlessSpreadCost");
 	m_iLekmodGoldenAgeSpreadCost = kResults.GetInt("LekmodGoldenAgeSpreadCost");
+#endif
+#ifdef LEKMOD_SPECS_2026_10_24
+	m_bLekmodNoExperience = kResults.GetBool("LekmodNoExperience");
+	m_iLekmodDeathUnhappiness = kResults.GetInt("LekmodDeathUnhappiness");
+	m_bLekmodRetireInCapital = kResults.GetBool("LekmodRetireInCapital");
+	m_bLekmodCapitalOnly = kResults.GetBool("LekmodCapitalOnly");
 #endif
 #if defined(MISC_CHANGES) // CvUnitClasses
 	szTextVal = kResults.GetText("PolicyBranchType");
@@ -1154,6 +1166,28 @@ int CvUnitEntry::GetLekmodMinorConvertInfluence() const
 {
 	return m_iLekmodMinorConvertInfluence;
 }
+#ifdef LEKMOD_SPECS_2026_10_24
+/// Never gains experience (Carroccio)
+bool CvUnitEntry::IsLekmodNoExperience() const
+{
+	return m_bLekmodNoExperience;
+}
+/// Permanent unhappiness for the owner when the unit dies, is deleted or gifted (not when retired)
+int CvUnitEntry::GetLekmodDeathUnhappiness() const
+{
+	return m_iLekmodDeathUnhappiness;
+}
+/// Can be retired (removed without the death unhappiness) in the capital
+bool CvUnitEntry::IsLekmodRetireInCapital() const
+{
+	return m_bLekmodRetireInCapital;
+}
+/// Only the capital can train it
+bool CvUnitEntry::IsLekmodCapitalOnly() const
+{
+	return m_bLekmodCapitalOnly;
+}
+#endif
 int CvUnitEntry::GetLekmodBlessPromotion() const
 {
 	return m_iLekmodBlessPromotion;

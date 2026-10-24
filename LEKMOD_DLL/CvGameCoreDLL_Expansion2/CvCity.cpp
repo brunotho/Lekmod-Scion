@@ -3419,6 +3419,12 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 	}
 #endif
 
+#ifdef LEKMOD_SPECS_2026_10_24
+	if (pkUnitEntry->IsLekmodCapitalOnly() && !isCapital())
+	{
+		return false;
+	}
+#endif
 	if (!bWillPurchase && pkUnitEntry->IsPurchaseOnly())
 	{
 		return false;
