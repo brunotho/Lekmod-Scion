@@ -1840,7 +1840,7 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_SPECS_2026_10_27
 #define LEKMOD_SPECS_2026_10_27
 // % of the usual delay before kill yields (Zealot Faith, Honor Culture, ...), XP and Great General points float up (user, 2026-10-27: faster)
-#define LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 70
+#define LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

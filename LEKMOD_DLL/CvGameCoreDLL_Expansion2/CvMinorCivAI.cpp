@@ -2950,7 +2950,7 @@ void CvMinorCivAI::DoFirstContactWithMajor(TeamTypes eTeam, bool bSuppressMessag
 					{
 						char text[256] = {0};
 						sprintf_s(text, "[COLOR_YELLOW]+%d[ENDCOLOR][ICON_GOLD]", iPlayerGoldGift);
-						GC.GetEngineUserInterface()->AddPopupText(pLekmodMinorCapital->getX(), pLekmodMinorCapital->getY(), text, GC.getPOST_COMBAT_TEXT_DELAY());
+						GC.GetEngineUserInterface()->AddPopupText(pLekmodMinorCapital->getX(), pLekmodMinorCapital->getY(), text, GC.getPOST_COMBAT_TEXT_DELAY() * LEKMOD_KILL_YIELD_TEXT_DELAY_PCT / 100.0f);
 					}
 				}
 #endif

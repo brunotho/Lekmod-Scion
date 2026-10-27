@@ -78,12 +78,12 @@ FLOATING NUMBERS AFTER A KILL
 -----------------------------
 Tags: ui, combat
 - Changed: Experience, Great General points and kill yields (Zealot Faith, Honor Culture and the others) float up sooner after a fight, in the same order; the Gold for meeting a City-State too
-- DLL: LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 70 (CvPlayer kill yields, CvUnit XP and Great General points); City-State meeting Gold delay 2 -> 1
+- DLL: LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50 (CvPlayer kill yields, CvUnit XP and Great General points); City-State meeting Gold delay 2 -> 0.5 s (same percentage)
 
 MAYA (CIVILIZATION_MAYA)
 ------------------------
 Tags: civs
-- Dev: the UA text lists the Long Count turns from 35 to 293 (was 42 to 152); computed from the quick calendar the trait uses (cycles also end on turns 22 and 28, too early for Theology)
+- Dev: the UA text lists the Long Count turns from 35 to 152 (was 42 to 152); computed from the quick calendar the trait uses (cycles also end on turns 22 and 28, too early for Theology, and 293, too late)
 
 SEAPORT (BUILDING_SEAPORT)
 --------------------------

@@ -139188,7 +139188,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LONG_COUNT"> 
 			<Text>
-				After researching [ICON_TECH_THEOLOGY] Theology, receive a bonus [ICON_GREAT_PEOPLE] Great Person at the end of every Maya Long Count calendar cycle.[NEWLINE]Cycles end on turns 35, 42, 48, 57, 67, 77, 88, 102, 122, 152 and 293.[NEWLINE]Each bonus person can only be chosen once.
+				After researching [ICON_TECH_THEOLOGY] Theology, receive a bonus [ICON_GREAT_PEOPLE] Great Person at the end of every Maya Long Count calendar cycle.[NEWLINE]Cycles end on turns 35, 42, 48, 57, 67, 77, 88, 102, 122 and 152.[NEWLINE]Each bonus person can only be chosen once.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LONG_COUNT_SHORT"> 
