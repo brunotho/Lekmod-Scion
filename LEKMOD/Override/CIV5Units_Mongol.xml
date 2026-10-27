@@ -12,21 +12,21 @@
 	<Language_en_US>
 		<!-- Version Number, Leave at top -->
 		<Row Tag="TXT_KEY_LEKMOD_VERSION">
-			<Text>LEKMOD SCION v1.0.0</Text>
+			<Text>LEKMOD SCION v1.0.1</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_MULTIPLAYER_STAGING_ROOM">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.0[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.1[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_AD_SETUP_ADVANCED_OPTIONS">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.0[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.1[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_GAME_SELECTION_SCREEN">
 			<Text>
-				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.0[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]LEKMOD SCION v1.0.1[ENDCOLOR]
 			</Text>
 		</Replace>
 		<!-- END VERSION -->
@@ -148344,13 +148344,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Changelog Essentials 1.0.0</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO">
-			<Text>The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.</Text>
+			<Text>The changes that alter how the game is played, in short, for Lekmod Scion 1.0.1 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_1_HEADER">
 			<Text>Great Works and Tourism</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_1_TEXT">
-			<Text>[ICON_BULLET]Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.[NEWLINE][ICON_BULLET]A Great Work gives 2 Culture and no Tourism by itself. Tourism comes from where it sits: the Amphitheater and the Opera House add Tourism to the Great Works in their city, and many wonders have their own slots with their own bonus when filled (some come with a Great Work already in them).[NEWLINE][ICON_BULLET]New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.[NEWLINE][ICON_BULLET]Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.[NEWLINE][ICON_BULLET]No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.[NEWLINE][ICON_BULLET]Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.</Text>
+			<Text>[ICON_BULLET]Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.[NEWLINE][ICON_BULLET]A Great Work gives 2 Culture and no Tourism by itself. Tourism comes from where it sits: the Amphitheater and the Opera House add Tourism to the Great Works in their city, and many wonders have their own slots with their own bonus when filled (some come with a Great Work already in them).[NEWLINE][ICON_BULLET]New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.[NEWLINE][ICON_BULLET]Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.[NEWLINE][ICON_BULLET]No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.[NEWLINE][ICON_BULLET]Great Works placed in the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.[NEWLINE][ICON_BULLET]Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_2_HEADER">
 			<Text>World Congress</Text>
@@ -148368,7 +148368,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Policies</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_4_TEXT">
-			<Text>[ICON_BULLET]You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).[NEWLINE][ICON_BULLET]Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.</Text>
+			<Text>[ICON_BULLET]You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).[NEWLINE][ICON_BULLET]Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.[NEWLINE][ICON_BULLET]The first tenet you pay for (beyond the free ones) makes every later policy cost 10% more.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_5_HEADER">
 			<Text>Strategic resources</Text>
@@ -148392,7 +148392,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Miscellaneous game mechanics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_TEXT">
-			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.</Text>
+			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; annex it from the city to raze it.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_HEADER">
 			<Text>Powercreep compensation</Text>

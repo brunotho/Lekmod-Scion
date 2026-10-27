@@ -1,4 +1,4 @@
-The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
+The changes that alter how the game is played, in short, for Lekmod Scion 1.0.1 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
 
 ## Great Works and Tourism
 - Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.
@@ -6,6 +6,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 - New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.
 - Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.
 - No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.
+- Great Works placed in the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.
 - Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.
 
 ## World Congress
@@ -23,6 +24,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 ## Policies
 - You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).
 - Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.
+- The first tenet you pay for (beyond the free ones) makes every later policy cost 10% more.
 
 ## Strategic resources
 - Strategic resources come in much bigger deposits (e.g. Iron 9, Oil 18, Aluminum 24), but most units and buildings need more of them (e.g. Knights 2 Horses and 1 Iron, Tanks 3 Oil, Battleships 6 Iron and 6 Oil).
@@ -45,10 +47,11 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.0 
 ## Miscellaneous game mechanics
 - Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.
 - In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
-- Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now).
-- Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can't be traded; Gold per turn deals last 10 or 20 turns.
+- Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.
+- Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.
 - Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
 - Ancient ruins let you choose between 2 rewards, with the amounts shown.
+- A conquered city that can't be given back to an earlier owner becomes a puppet right away; annex it from the city to raze it.
 
 ## Powercreep compensation
 - Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.
