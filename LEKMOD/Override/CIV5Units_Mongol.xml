@@ -1347,7 +1347,7 @@
 			<Text>Swift Transport</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_SWIFT_TRANSPORT_HELP">
-			<Text>Your embarked units on this ship's tile move with it (onto water tiles they can enter, not into cities) without spending their own movement.[NEWLINE]Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.</Text>
+			<Text>Your embarked units on this ship's tile move with it (onto water tiles they can enter, not into cities) and spend the same movement as the ship; a unit without movement left stays behind.[NEWLINE]Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_IAIJUTSU">
 			<Text>Iaijutsu</Text>
@@ -6576,7 +6576,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Pa</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_MAORI_PA_HELP">
-			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MC_MAORI_PA_PEDIA">
 			<Text>While almost any Maori village could be called a pa, today the word has come to refer to fortified hilltop villages almost exclusively. Ringed with palisades and terraces, these monumental structures announced the military power of a rangatira and his iwi to the world. Pa were built in strategic places throughout an iwi’s territory, in order to best guard its fertile lands. A simple pa might consist only of a single palisade, while a more complex pa would consist of multiple rings of palisades, earthen ramparts, ditches from which to defenders can mount ambushes, kumara patches, food storage areas, wells, underground passages, and decorative entryways. During the Musket Wars, a new type of pa was developed - the gunfighter pa. These forts were usually simpler than the older varieties, but could be constructed in a matter of days. The Gunfighter pa provided greater defense against attackers wielding firearms, as well as allowing defenders to the full advantage of their own muskets.</Text>
@@ -6585,7 +6585,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text> Construct a [LINK=IMPROVEMENT_MC_MAORI_PA]Pa[\LINK]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_MAORI_PA_HELP">
-			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be built on a hill.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_MAORI_PA_REC">
 			<Text>It will boost the [ICON_PRODUCTION] Military Unit Production of a city when worked, as well as increasing the [ICON_FOOD] Food yield of the tile and the [ICON_STRENGTH] Defensive Strength of units on it.</Text>
@@ -9375,7 +9375,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Caer</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production.[NEWLINE]+1 [ICON_CULTURE] Culture with Acoustics.[NEWLINE]+1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE]Receives additional yields from certain Policies.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production.[NEWLINE]+1 [ICON_CULTURE] Culture with Acoustics.[NEWLINE]+1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE]Receives additional yields from certain Policies.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIVILOPEDIA_MC_SCOTTISH_CLAN_CASTLE_PEDIA">
 			<Text>Caer</Text>
@@ -9384,7 +9384,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Construct a [LINK=IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE]Caer[\LINK]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>A Caer yields +3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production; +1 [ICON_CULTURE] Culture with Acoustics and +1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE][NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
+			<Text>A Caer yields +3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production; +1 [ICON_CULTURE] Culture with Acoustics and +1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE][NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILD_MC_SCOTTISH_CLAN_CASTLE_REC">
 			<Text>It will help with the defense of the tile!</Text>
@@ -21673,12 +21673,12 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CHATEAU_HELP"> 
 			<Text>
-				Constructs a Chateau which increases the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
+				Constructs a Chateau which increases the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CHATEAU_REC"> 
 			<Text>
-				A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]It will increase the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile. Also provides a defensive bonus.
+				A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]It will increase the [ICON_RESEARCH], [ICON_CULTURE] and [ICON_GOLD] yield of the tile. Also provides a defensive bonus.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CITADEL"> 
@@ -21897,7 +21897,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_MOTTE_BAILEY_HELP"> 
 			<Text>
-				Constructs a Motte and Bailey which increases the [ICON_FOOD] and [ICON_PRODUCTION] yield of the tile. Also provides +2 [ICON_CULTURE] Culture after [COLOR_CYAN]Flight[ENDCOLOR] is researched. [NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
+				Constructs a Motte and Bailey which increases the [ICON_FOOD] and [ICON_PRODUCTION] yield of the tile. Also provides +2 [ICON_CULTURE] Culture after [COLOR_CYAN]Flight[ENDCOLOR] is researched. [NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_MOTTE_BAILEY_REC"> 
@@ -44740,13 +44740,13 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CHATEAU_HELP"> 
 			<Text>
-				Unique French Improvement, available at [ICON_TECH_CHIVALRY] [COLOR_CYAN]Chivalry[ENDCOLOR]. Must be built next to a [COLOR_GREEN]Luxury[ENDCOLOR] resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.
+				Unique French Improvement, available at [ICON_TECH_CHIVALRY] [COLOR_CYAN]Chivalry[ENDCOLOR]. Must be built next to a [COLOR_GREEN]Luxury[ENDCOLOR] resource.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.
 				[NEWLINE][NEWLINE]+2 [ICON_CULTURE] Culture, +2 [ICON_RESEARCH] Science, and +1 [ICON_GOLD] Gold; Upon discovering [ICON_TECH_FLIGHT] [COLOR_CYAN]Flight[ENDCOLOR] provides an additional +2 [ICON_GOLD] Gold and +1 [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CHATEAU_TEXT"> 
 			<Text>
-				A chateau is a manor house or country home of gentry, usually without fortifications. In the Middle Ages, a chateau was largely self-sufficient, being supported by the lord's demesne (hereditary lands). In the 1600s, the wealthy and aristocratic French lords dotted the countryside with elegant, luxuriant, architecturally refined mansions such as the Chateau de Maisons. Today, the term chateau is loosely used; for instance, it is common for any winery or inn, no matter how humble, to prefix its name with "Chateau."[NEWLINE][NEWLINE]A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa. It provides one additional [ICON_GOLD] Gold and 2 [ICON_CULTURE] Culture. It also provides the same +50% defense bonus as a Fort. When Flight is researched its [ICON_CULTURE] Culture yield increases by 1 and its [ICON_GOLD] Gold output rises by 2. Must be built in French territory.
+				A chateau is a manor house or country home of gentry, usually without fortifications. In the Middle Ages, a chateau was largely self-sufficient, being supported by the lord's demesne (hereditary lands). In the 1600s, the wealthy and aristocratic French lords dotted the countryside with elegant, luxuriant, architecturally refined mansions such as the Chateau de Maisons. Today, the term chateau is loosely used; for instance, it is common for any winery or inn, no matter how humble, to prefix its name with "Chateau."[NEWLINE][NEWLINE]A Chateau must be built next to a Luxury resource.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa. It provides one additional [ICON_GOLD] Gold and 2 [ICON_CULTURE] Culture. It also provides the same +50% defense bonus as a Fort. When Flight is researched its [ICON_CULTURE] Culture yield increases by 1 and its [ICON_GOLD] Gold output rises by 2. Must be built in French territory.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CITADEL_TEXT">
@@ -44907,7 +44907,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_FORT_TEXT"> 
 			<Text>
-				A Fort gives no yields and connects no resource.[NEWLINE]Units on it get +50% [ICON_STRENGTH] Defensive Strength (not in enemy territory).[NEWLINE][NEWLINE]Can be built next to other Forts.[NEWLINE]The Kasbah, Chateau, Motte and Bailey, Caer and Pa give the same +50% defense; they can't be built next to a Fort or to each other.
+				A Fort gives no yields and connects no resource.[NEWLINE]Units on it get +50% [ICON_STRENGTH] Defensive Strength (not in enemy territory).[NEWLINE][NEWLINE]Can be built next to other Forts.[NEWLINE]The Kasbah, Chateau, Motte and Bailey, Caer and Pa give the same +50% defense; they can be built next to Forts, but not next to each other.
 			</Text>
 		</Replace>
 			<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CANAL_TEXT"> 
@@ -44956,7 +44956,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_HELP"> 
-			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).</Text>
+			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_KASBAH_TEXT"> 
 			<Text>
@@ -45045,7 +45045,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_MOTTE_BAILEY_HELP"> 
 			<Text>
-				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Requires [ICON_TECH_ENGINEERING] [COLOR_CYAN]Engineering[ENDCOLOR] to build.[NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] May be constructed on Resources, but does not Connect them to the Empire's Trade Network.
+				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Requires [ICON_TECH_ENGINEERING] [COLOR_CYAN]Engineering[ENDCOLOR] to build.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] May be constructed on Resources, but does not Connect them to the Empire's Trade Network.
                 [NEWLINE][NEWLINE]+1 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production, upon discovering [ICON_TECH_FLIGHT] [COLOR_CYAN]Flight[ENDCOLOR] the Motte and Bailey gains an additional +2 [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
@@ -122044,7 +122044,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_1_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_DOUBLE_HELP"> 
 			<Text>
@@ -147944,7 +147944,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Roads can be built from the start of the game.[NEWLINE]Workers that start their turn on a Road or Railroad get +1 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Cities connected to the [ICON_CAPITAL] Capital yield +1 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MC_CHAIN_OF_THE_EARTH">
-			<Text>Harbors are available at [ICON_TECH_OPTICS] Optics.[NEWLINE]Seaports are available at [ICON_TECH_COMPASS] Compass and don't need a Harbor.[NEWLINE]+25% [ICON_PRODUCTION] Production towards Harbors and Seaports.[NEWLINE][NEWLINE]Receive a free Worker and a free Baghlah upon researching [ICON_TECH_SAILING] Sailing.</Text>
+			<Text>Harbors are available at [ICON_TECH_OPTICS] Optics.[NEWLINE]Seaports are available at [ICON_TECH_COMPASS] Compass.[NEWLINE]+25% [ICON_PRODUCTION] Production towards Harbors and Seaports.[NEWLINE][NEWLINE]Receive a free Worker and a free Baghlah upon researching [ICON_TECH_SAILING] Sailing.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_PRAIRIE">
 			<Text>Your starting Settler has +1 [ICON_MOVES] Movement on the first turn.[NEWLINE]Your starting Warrior and all Recon and Archer units start with Scouting I (+1 Sight).</Text>
@@ -148338,10 +148338,10 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<!-- LEKMOD ESSENTIALS BEGIN (generated by tools/sync_pedia_essentials.py from website/data/essentials.txt) -->
 		<Replace Tag="TXT_KEY_PEDIA_HOME_PAGE_LABEL">
-			<Text>Changelog Essentials 1.0.0</Text>
+			<Text>Changelog Essentials 1.0.1</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PEDIA_CATEGORY_1_LABEL">
-			<Text>Changelog Essentials 1.0.0</Text>
+			<Text>Changelog Essentials 1.0.1</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO">
 			<Text>The changes that alter how the game is played, in short, for Lekmod Scion 1.0.1 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.</Text>
@@ -148392,7 +148392,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Miscellaneous game mechanics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_TEXT">
-			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; annex it from the city to raze it.</Text>
+			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_HEADER">
 			<Text>Powercreep compensation</Text>

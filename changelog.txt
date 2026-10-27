@@ -50,8 +50,10 @@ Tags: diplomacy and trade
 CAPTURED CITIES (CITY_CAPTURE_POPUP)
 ------------------------------------
 Tags: game mechanics, combat
-- Changed: a conquered city that can't be liberated becomes a puppet right away, without the choice popup; you can still annex it from the city, and to raze it you annex it first. The popup still comes when the city can be given back to its earlier owner (a City-State or another player)
+- Changed: a conquered city that can't be liberated becomes a puppet right away, without the choice popup. The popup still comes when the city can be given back to its earlier owner (a City-State or another player)
+- Added: clicking one of your puppets offers Raze next to Annex
 - DLL: CvPlayer::acquireCity puppets in the synced code when bConquest and no liberation target (eLiberatedPlayer); City-State buyouts keep the popup
+- Dev: the puppet popup is Lua/LekmodAnnexCityPopup.lua, included by Lekmod's GenericPopup.lua override (standard UI only; ui_check skips it with EUI)
 
 CITY-STATE FIRST MEETING GOLD (MINOR_CIV_CONTACT_GOLD)
 ------------------------------------------------------
@@ -70,6 +72,7 @@ SEAPORT (BUILDING_SEAPORT)
 Tags: buildings, naval
 Subsection: Buildings
 - Changed: no longer needs a Harbor in the city
+- Dev: Oman's ability text no longer says its Seaports don't need a Harbor (now true for everyone)
 
 NAVAL MELEE CITY ATTACKS (PROMOTION_CITY_MOVEMENT_PENALTY)
 ----------------------------------------------------------
@@ -79,12 +82,23 @@ Tags: units, naval, combat, movement
 COASTAL RAIDER LINE (PROMOTION_COASTAL_RAIDER_1/2/3)
 ----------------------------------------------------
 Tags: promotions, naval, combat
-- Changed: only Coastal Raider I takes 1 off the extra Movement of a city attack, which removes it; levels II and III no longer do
+- Changed: no Coastal Raider level changes the extra Movement of a city attack any more (each level took 1 off)
 
 FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
 ---------------------------------------------------------
 Tags: tiles and resources, combat
-- Changed: Forts can be built next to other Forts again; the Kasbah, Chateau, Motte and Bailey, Caer and Pa still can't be built next to a Fort or to each other
+- Changed: Forts can be built next to other Forts again, and the Kasbah, Chateau, Motte and Bailey, Caer and Pa can be built next to Forts; they still can't be built next to each other
+
+SWIFT TRANSPORT (PROMOTION_SWIFT_TRANSPORT)
+-------------------------------------------
+Tags: promotions, naval, movement
+- Changed: units the ship carries along spend the same Movement as the ship; a unit without Movement left stays behind (they rode along for free)
+- DLL: LEKMOD_SPECS_2026_10_27 in CvUnit::move (LEKMOD_SWIFT_TRANSPORT_CARRY)
+
+SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
+--------------------------------------------------------
+Tags: units
+- Dev: its own map flag from the user's silhouette (art_sources/units/self_propelled_artillery/flag, art_sources/tools/build_unit_flag.py)
 
 GEM CUTTER (BUILDING_GEMCUTTER)
 -------------------------------

@@ -51,7 +51,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 1.0.1 
 - Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.
 - Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
 - Ancient ruins let you choose between 2 rewards, with the amounts shown.
-- A conquered city that can't be given back to an earlier owner becomes a puppet right away; annex it from the city to raze it.
+- A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.
 
 ## Powercreep compensation
 - Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.

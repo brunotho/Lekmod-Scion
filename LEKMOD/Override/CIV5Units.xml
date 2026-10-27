@@ -291327,7 +291327,7 @@
 	<Improvements>
 		<Update>
 			<Where Type="IMPROVEMENT_FORT"/>
-			<Set DefenseModifier="50" NoTwoAdjacent="0" LekmodCountsAsFort="1"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="0" LekmodCountsAsFort="0"/>
 		</Update>
 		<Update>
 			<Where Type="IMPROVEMENT_KASBAH"/>
@@ -292403,7 +292403,7 @@
 		</Row>
 	</Unit_ClassUpgrades>
 	<!-- LEKMOD: Oct 27 list (2026-10-27): Fine Arts gives each guild 1 more slot (policy-granted dummies 306-308, classes 208-210, instead of the free
-	     Scriptorium/Gallery/Conservatory); Seaport needs no Harbor; naval melee city attacks cost 1 extra Movement (Coastal Raider I removes it) -->
+	     Scriptorium/Gallery/Conservatory); Seaport needs no Harbor; naval melee city attacks cost 1 extra Movement (Coastal Raider no longer changes it) -->
 	<BuildingClasses>
 		<Row>
 			<ID>208</ID>
@@ -292521,6 +292521,10 @@
 			<Set CityMovementPenalty="1"/>
 		</Update>
 		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_1"/>
+			<Set CityMovementPenalty="0"/>
+		</Update>
+		<Update>
 			<Where Type="PROMOTION_COASTAL_RAIDER_2"/>
 			<Set CityMovementPenalty="0"/>
 		</Update>
@@ -292529,4 +292533,14 @@
 			<Set CityMovementPenalty="0"/>
 		</Update>
 	</UnitPromotions>
+	<!-- LEKMOD (2026-10-27): Self-Propelled Artillery map flag (user's silhouette, art_sources/units/self_propelled_artillery/flag) -->
+	<IconTextureAtlases>
+		<Row><Atlas>LEKMOD_SPA_FLAG</Atlas><IconSize>32</IconSize><Filename>self_propelled_artillery_flag_32.dds</Filename><IconsPerRow>1</IconsPerRow><IconsPerColumn>1</IconsPerColumn></Row>
+	</IconTextureAtlases>
+	<Units>
+		<Update>
+			<Where Type="UNIT_SELF_PROPELLED_ARTILLERY"/>
+			<Set UnitFlagAtlas="LEKMOD_SPA_FLAG" UnitFlagIconOffset="0"/>
+		</Update>
+	</Units>
 </GameData>

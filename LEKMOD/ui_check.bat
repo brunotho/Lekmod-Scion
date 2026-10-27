@@ -167,6 +167,10 @@ IF NOT EXIST "%euifolder%\NotificationPanel\DiploCorner.xml" (
   copy /y "%patchfolder%\Lua\tmp\eui\NotificationPanel\DiploCorner.xml.ignore" "%patchfolder%\Lua\UI\DiploCorner.xml" > nul
 )
 REM --------------------------------------------------------------------------------------------------
+REM LEKMOD (2026-10-27): GenericPopup includes LekmodAnnexCityPopup (Raze on puppets); standard UI only
+IF NOT EXIST "%euifolder%" (
+  copy /y "%patchfolder%\Lua\tmp\ui\Popups\GenericPopup.lua.ignore" "%patchfolder%\Lua\UI\GenericPopup.lua" > nul
+)
 IF NOT EXIST "%euifolder%\NotificationPanel\DiploList.lua" (
   copy /y "%patchfolder%\Lua\tmp\ui\NotificationPanel\DiploList.lua.ignore" "%patchfolder%\Lua\UI\DiploList.lua" > nul
 )
