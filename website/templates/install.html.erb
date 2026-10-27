@@ -1,31 +1,49 @@
 <main class="content narrow prose">
   <h1>Installation</h1>
-  <p class="lead">Lekmod Scion runs on Windows with Sid Meier's Civilization V: Brave New World and all DLCs (map packs not needed). Both the standard interface and EUI up to version 1.28 work. Linux (Proton) is untested; macOS is not supported.</p>
+  <p class="lead">Lekmod Scion changes Civilization V. You install two things: the <strong>mod</strong> (the game changes) and the <strong>map</strong> (the map type the mod is made for). It takes about five minutes.</p>
 
-  <h2>Find your game folder</h2>
-  <p>In Steam, right-click Civilization V, choose <strong>Properties</strong>, then <strong>Installed Files</strong> (older Steam: <strong>Local Files</strong>) and <strong>Browse</strong>. Usually it is:</p>
-  <p><code>C:\Program Files (x86)\Steam\steamapps\common\Sid Meier's Civilization V</code></p>
+  <h2>What you need</h2>
+  <ul>
+    <li>A Windows PC (Mac doesn't work; Linux hasn't been tried).</li>
+    <li>Sid Meier's Civilization V with the <strong>Brave New World</strong> expansion and all DLCs, bought on Steam. The map packs are not needed.</li>
+  </ul>
 
-  <h2>Install the mod</h2>
+  <h2>Step 1: Open your Civilization V folder</h2>
   <ol>
-    <li><a href="<%= MOD_RELEASES %>" data-latest-asset="brunotho/Lekmod-Scion">Download the newest mod zip</a>.</li>
-    <li>Open <code>Assets\DLC</code> in your game folder. <strong>Delete every older Lekmod folder there</strong> (an older Lekmod Scion, or upstream Lekmod such as <code>LEKMODv35_4</code>). Only one Lekmod may be installed at a time: two of them replace the same game files and the game breaks.</li>
-    <li>Extract the zip into <code>Assets\DLC</code>. You get a folder named after the version, for example <code>Assets\DLC\Lekmod Scion 1.0.0\</code>.</li>
-    <li>Open that folder and run <code>ui_check.bat</code>. It copies the interface files that fit your setup (standard interface or EUI). Run it again whenever you install or remove EUI.</li>
-    <li>Start the game. The main menu shows <strong>LEKMOD SCION</strong> with its version.</li>
+    <li>Open <strong>Steam</strong> and go to your <strong>Library</strong>.</li>
+    <li><strong>Right-click</strong> on <strong>Sid Meier's Civilization V</strong>.</li>
+    <li>Click <strong>Manage</strong>, then <strong>Browse local files</strong>. (On some Steam versions: <strong>Properties</strong> &rarr; <strong>Installed Files</strong> &rarr; <strong>Browse</strong>.)</li>
+  </ol>
+  <p>A window with the game's files opens. Keep it open; you need it in the next steps. Inside it you will see a folder called <strong>Assets</strong>.</p>
+
+  <h2>Step 2: Install the mod</h2>
+  <ol>
+    <li><a href="<%= MOD_RELEASES %>" data-latest-asset="brunotho/Lekmod-Scion">Click here to download the mod</a>. You get one file whose name ends in <strong>.zip</strong> (a packed folder), usually in your <strong>Downloads</strong> folder.</li>
+    <li>In the game window from step 1, open <strong>Assets</strong>, then <strong>DLC</strong>.</li>
+    <li>If you see a folder there whose name starts with <strong>Lekmod</strong> or <strong>LEKMOD</strong> (an older version of this mod or of the original Lekmod), <strong>delete it</strong>. Only one Lekmod can be installed at a time, otherwise the game breaks. Don't delete anything else.</li>
+    <li>Go to the downloaded file, <strong>right-click</strong> it and choose <strong>Extract All…</strong>. As the place to extract to, choose the <strong>DLC</strong> folder from the step before (click <strong>Browse…</strong> to find it), then click <strong>Extract</strong>.</li>
+    <li>In the DLC folder there is now a folder like <strong>Lekmod Scion 1.0.1</strong>. Open it and <strong>double-click <code>ui_check.bat</code></strong>. A black window opens for a moment and closes again: that's correct. It sets up the mod's screens for you.</li>
+  </ol>
+  <p>If Windows warns that it "protected your PC" when you start <code>ui_check.bat</code>: click <strong>More info</strong>, then <strong>Run anyway</strong>. It only changes files inside the mod's own folder.</p>
+
+  <h2>Step 3: Install the map</h2>
+  <ol>
+    <li><a href="<%= MAP_RELEASES %>" data-latest-asset="brunotho/lekmap-scion">Click here to download the map</a> (again a <strong>.zip</strong> file).</li>
+    <li>In the game window from step 1, open <strong>Assets</strong>, then <strong>Maps</strong>. If there is an older folder named <strong>Lekmap Scion</strong>, delete it.</li>
+    <li>Right-click the downloaded map file, choose <strong>Extract All…</strong>, pick the <strong>Maps</strong> folder as the place to extract to, and click <strong>Extract</strong>.</li>
   </ol>
 
-  <h2>Install the map</h2>
+  <h2>Step 4: Play</h2>
   <ol>
-    <li><a href="<%= MAP_RELEASES %>" data-latest-asset="brunotho/lekmap-scion">Download the newest map zip</a>.</li>
-    <li>Open <code>Assets\Maps</code> in your game folder and delete older Lekmap Scion folders.</li>
-    <li>Extract the zip into <code>Assets\Maps</code>, for example <code>Assets\Maps\Lekmap Scion 1.0.0\</code>.</li>
-    <li>In the game, <strong>Multiplayer &rarr; New Game</strong> picks the map automatically. In the full setup screens it is listed as <strong>Lekmap Scion</strong> with its version, for example <strong>Lekmap Scion 1.0.0</strong>.</li>
+    <li>Start Civilization V. The main menu shows <strong>LEKMOD SCION</strong> and the version. If it does, the mod works.</li>
+    <li>For a game with friends: <strong>Multiplayer</strong> &rarr; <strong>New Game</strong>. The map is picked for you.</li>
   </ol>
 
-  <h2>If the game crashes before the main menu</h2>
-  <p>Windows 11's <strong>Smart App Control</strong> can block the mod's game file, because it is not signed. The game's log (<code>Documents\My Games\Sid Meier's Civilization 5\Logs\GameCore.log</code>) then says <em>"An Application Control policy has blocked this file"</em>. Turning Smart App Control off (Windows Security &rarr; App &amp; browser control) fixes it; note that Windows does not let you turn it back on without reinstalling.</p>
+  <h2>Updating to a new version</h2>
+  <p>Everyone in a multiplayer game needs exactly the same version. To update, do steps 2 and 3 again: delete the old folders first, then extract the new files and double-click <code>ui_check.bat</code> again. Games saved with an older version usually can't be loaded in a newer one.</p>
 
-  <h2>Updating</h2>
-  <p>Every player in a multiplayer game needs the same mod and map version. To update, repeat the steps above: delete the old folder first, then extract the new one and run <code>ui_check.bat</code> again. Saved games from an older version usually don't load in a newer one.</p>
+  <h2>If something goes wrong</h2>
+  <p><strong>The main menu doesn't say LEKMOD SCION.</strong> The mod folder is in the wrong place. It must be directly inside <strong>Assets &rarr; DLC</strong>, for example <code>Assets\DLC\Lekmod Scion 1.0.1</code>. If extracting created a folder inside a folder, move the inner one up.</p>
+  <p><strong>The game closes before the main menu appears.</strong> On Windows 11, a security feature called <strong>Smart App Control</strong> can block the mod because it isn't signed by a company. You can switch it off: open <strong>Windows Security</strong> &rarr; <strong>App &amp; browser control</strong> &rarr; <strong>Smart App Control</strong> &rarr; <strong>Off</strong>. Be aware that Windows won't let you switch it back on later without reinstalling Windows.</p>
+  <p><strong>Some screens look wrong or empty.</strong> Double-click <code>ui_check.bat</code> in the mod folder again. If you use the interface mod <strong>EUI</strong> (Enhanced User Interface; most players don't), versions up to 1.28 work; run <code>ui_check.bat</code> again after installing or removing it.</p>
 </main>
