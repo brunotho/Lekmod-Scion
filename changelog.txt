@@ -253,7 +253,7 @@ Tags: ui
 - Added: the Options screen has a "Lek Options" tab with all of Lekmod's own settings (promotion and build hotkey letters, muting the chat sound); it takes the place of the Multiplayer tab (turn notification e-mails)
 - Dev: standard UI only (EUI has its own OptionsMenu); the Multiplayer panel stays in the XML, its tab button is hidden
 - Added: your units show small icons of the promotions you picked under their flag on the map; other players' units show Expanded ZOC when they have it. Switch it with Alt+P, in Lek Options or in the map options next to the minimap
-- Changed: the City-State screen shows the unique unit and trait building icons larger
+- Dev: the City-State screen's unique unit and trait building icons were made larger during development
 - Changed: a greyed-out build button says when the improvement can only be built on Hills (Malagasy Holy Site)
 - Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default and switched in Lek Options instead
 - Dev: UnitFlagManager (standard UI) LekmodPromoStack, 32 px icons; option LEK_FlagPromotions, unset = on; the row sits 6 px higher when the crossed swords (attacked this turn) aren't shown; LuaEvents.LekmodFlagPromotionsChanged; option LEK_ShowTileRecommendations (unset = hidden; InGame g_ShowWorkerRecommendation and the minimap defaults read it)
