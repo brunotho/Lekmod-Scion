@@ -16429,7 +16429,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_CULTURE_HEADING4_BODY"> 
-			<Text>Turn x era - 2 [ICON_CULTURE] Culture, from turn 6.[NEWLINE]A ruin trade can give (turn + 10 to 14) x era Culture: always more than this reward.</Text>
+			<Text>Turn x era - 2 [ICON_CULTURE] Culture, from turn 6.[NEWLINE]A ruin trade can give a quarter more than this plus 2 to 4 x era Culture: always more than this reward.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_CULTURE_HEADING4_TITLE"> 
 			<Text>
@@ -16566,7 +16566,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_SURVIVORS_HEADING4_BODY"> 
-			<Text>Pay one thing for another.[NEWLINE][NEWLINE]Price: 5-8 [ICON_FOOD] Food from your capital, 40-70 [ICON_GOLD] Gold, or 5-8 [ICON_CULTURE] Culture. A quarter less for the city-states or Mobility.[NEWLINE]Reward: 75-105 [ICON_GOLD] Gold, 27-37 [ICON_RESEARCH] Science, (turn + 10 to 14) [ICON_CULTURE] Culture, the location of the 3 nearest city-states you haven't seen yet, or Mobility for the unit (Mobility only comes from trades).[NEWLINE][NEWLINE]All amounts are multiplied by the era. A bigger price comes with a bigger reward.[NEWLINE]Only offered when you can pay. Gold for Gold and Culture for Culture never come up.</Text>
+			<Text>Pay one thing for another.[NEWLINE][NEWLINE]Price: 5-8 [ICON_FOOD] Food from your capital, 40-70 [ICON_GOLD] Gold, or 5-8 [ICON_CULTURE] Culture. A quarter less for the city-states or Mobility.[NEWLINE]Reward: 75-105 [ICON_GOLD] Gold, 27-37 [ICON_RESEARCH] Science, a quarter more [ICON_CULTURE] Culture than the Culture ruin plus 2-4, the location of the 3 nearest city-states you haven't seen yet, or Mobility for the unit (Mobility only comes from trades).[NEWLINE][NEWLINE]All amounts are multiplied by the era. A bigger price comes with a bigger reward.[NEWLINE]Only offered when you can pay. Gold for Gold and Culture for Culture never come up.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BARBARIAN_SURVIVORS_HEADING4_TITLE"> 
 			<Text>Trade</Text>
@@ -120263,19 +120263,19 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>National Wonder, available with Plastics.[NEWLINE][NEWLINE]Reveals all [ICON_RES_URANIUM] Uranium on the map for your team, as Atomic Theory does. Mining and using it still needs Atomic Theory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MIDAS_TOUCH">
-			<Text>[ICON_BULLET]+1 [ICON_GOLD] Gold from all Luxury resources</Text>
+			<Text>+1 [ICON_GOLD] Gold from all [COLOR_POSITIVE_TEXT]Luxury resources[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MIDAS_TOUCH_SHORT">
 			<Text>Midas Touch</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_NECTAR_GODS">
-			<Text>[ICON_BULLET]+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_RES_WINE] Wine, [ICON_RES_SUGAR] Sugar and [ICON_RES_SPICES] Spices</Text>
+			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_RES_WINE] Wine, [ICON_RES_SUGAR] Sugar and [ICON_RES_SPICES] Spices</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_NECTAR_GODS_SHORT">
 			<Text>Nectar of the Gods</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SONGS_LEVIATHAN">
-			<Text>[ICON_BULLET]+2 [ICON_PEACE] Faith from [ICON_RES_WHALE] Whales</Text>
+			<Text>+2 [ICON_PEACE] Faith from [ICON_RES_WHALE] Whales</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SONGS_LEVIATHAN_SHORT">
 			<Text>Songs of the Leviathan</Text>
@@ -120287,13 +120287,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Harvest Confluence</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SACRED_CRAFTWORK">
-			<Text>[ICON_BULLET]+1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture from [ICON_RES_HARDWOOD] Hardwood[NEWLINE][ICON_BULLET]+1 [ICON_PEACE] Faith from [COLOR_POSITIVE_TEXT]Forests[ENDCOLOR], [ICON_RES_CORAL] Coral and [ICON_RES_PEARLS] Pearls</Text>
+			<Text>+1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture from [ICON_RES_HARDWOOD] Hardwood[NEWLINE]+1 [ICON_PEACE] Faith from [COLOR_POSITIVE_TEXT]Forests[ENDCOLOR], [ICON_RES_CORAL] Coral and [ICON_RES_PEARLS] Pearls</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SACRED_CRAFTWORK_SHORT">
 			<Text>Sacred Craftwork</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OFFERING_PLENTY">
-			<Text>[ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHEAT] Wheat, [ICON_BUILDING_GRANARY] Granaries and [ICON_BUILDING_LIGHTHOUSE] Lighthouses[NEWLINE][ICON_BULLET]Granaries and Lighthouses -1 [ICON_FOOD] Food</Text>
+			<Text>+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHEAT] Wheat, [ICON_BUILDING_GRANARY] Granaries and [ICON_BUILDING_LIGHTHOUSE] Lighthouses[NEWLINE]-1 [ICON_FOOD] Food from [ICON_BUILDING_GRANARY] Granaries and [ICON_BUILDING_LIGHTHOUSE] Lighthouses</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OFFERING_PLENTY_SHORT">
 			<Text>Offering of Plenty</Text>

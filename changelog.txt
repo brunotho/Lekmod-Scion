@@ -42,6 +42,22 @@ Tags: civs, bugfix
 - Fixed: the tiles Tonga's ability reveals at the start show at once; before, the fog stayed until you selected a unit
 - Dev: Lekmod_tonga.lua calls Map.UpdateDeferredFog() after the reveal (SetRevealed only queues the fog redraw)
 
+ANCIENT RUINS (GOODY_LEKMOD_TRADE)
+----------------------------------
+Tags: game mechanics, ruins
+- Changed: a ruin trade for Culture gives a quarter more than the Culture ruin plus 2-4 x era Culture (was turn + 10-14 x era); on turn 5 that is 5-7 Culture instead of 15-20, around turn 40 it stays about 50
+- DLL: CvPlayer::LekmodGetRuinTradeAmount gain kind 2 = max(1, turn x era - 2) x 5/4 + (2 + roll x 3/1000) x era; pedia ruin pages updated
+
+PANTHEON TEXTS (BELIEF_LEKMOD_*)
+--------------------------------
+Tags: religion
+- Dev: Midas Touch, Nectar of the Gods, Offering of Plenty, Sacred Craftwork and Songs of the Leviathan lost their bullet points and read like the other pantheons (one effect per line, as Stone Circles); Offering of Plenty's Food line reads "-1 Food from Granaries and Lighthouses" (user, 2026-10-27)
+
+BANNER AND FLAG ICONS (UI)
+--------------------------
+Tags: ui
+- Dev: City-State quest icons on the city banner sit 3 px lower, level with the pledge shields; promotion icons on unit flags sit 3 px lower (lift 6 -> 3 px) (user, 2026-10-27)
+
 SWITZERLAND (CIVILIZATION_SWISS)
 --------------------------------
 Tags: civs

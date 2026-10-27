@@ -1859,7 +1859,7 @@ local LEKMOD_FLAG_PROMO_MAX = 8;
 -- the row's offset under the flag: -10 with the crossed swords (attacked this turn) shown, LIFT px higher without
 -- them, which roughly halves the gap to the flag (user, 2026-10-23)
 local LEKMOD_FLAG_PROMO_Y = -10;
-local LEKMOD_FLAG_PROMO_LIFT = 6;
+local LEKMOD_FLAG_PROMO_LIFT = 3;
 local g_LekmodExpandedZOC = GameInfo.UnitPromotions["PROMOTION_LEKMOD_EXPANDED_ZOC"];
 local g_LekmodFlagOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
 local g_LekmodFlagPickable = nil;
