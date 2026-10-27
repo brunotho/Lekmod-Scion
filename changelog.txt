@@ -53,10 +53,30 @@ PANTHEON TEXTS (BELIEF_LEKMOD_*)
 Tags: religion
 - Dev: Midas Touch, Nectar of the Gods, Offering of Plenty, Sacred Craftwork and Songs of the Leviathan lost their bullet points and read like the other pantheons (one effect per line, as Stone Circles); Offering of Plenty's Food line reads "-1 Food from Granaries and Lighthouses" (user, 2026-10-27)
 
+JESUIT EDUCATION (BELIEF_JESUIT_EDUCATION)
+------------------------------------------
+Tags: religion
+Subsection: Reformation beliefs
+- Fixed: Great Prophets keep appearing from Faith until your religion is enhanced; before, taking it early could leave you without the Prophet needed to enhance
+- DLL: CvGameReligions::LekmodIsProphetSpawnBlocked needs the founded religion to be enhanced
+
+WORK ETHIC (BELIEF_WORK_ETHIC)
+------------------------------
+Tags: religion
+Subsection: Reformation beliefs
+- Fixed: Great Prophets keep appearing from Faith until your religion is enhanced; before, taking it early could leave you without the Prophet needed to enhance
+
+QUEUED ORDERS (MISSION_QUEUE)
+-----------------------------
+Tags: game mechanics, movement
+- Removed: Shift + click no longer queues an order behind a unit's current one (shift-moves, which the No Quitters rules forbid); the new order replaces the old one
+- DLL: LEKMOD_NO_QUEUED_ORDERS in CvUnitMission::PushMission (manual orders of human players never append)
+
 BANNER AND FLAG ICONS (UI)
 --------------------------
 Tags: ui
-- Dev: City-State quest icons on the city banner sit 3 px lower, level with the pledge shields; promotion icons on unit flags sit 3 px lower (lift 6 -> 3 px) (user, 2026-10-27)
+- Dev: the belief choice screen (Reformation, short searches) starts its rows at the left edge when the list needs no scroll bar, instead of leaving the scroll bar's empty strip (user, 2026-10-27)
+- Dev:City-State quest icons on the city banner sit 3 px lower, level with the pledge shields; promotion icons on unit flags sit 3 px lower (lift 6 -> 3 px) (user, 2026-10-27)
 
 SWITZERLAND (CIVILIZATION_SWISS)
 --------------------------------

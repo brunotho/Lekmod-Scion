@@ -91,6 +91,13 @@ void CvUnitMission::PushMission(UnitHandle hUnit, MissionTypes eMission, int iDa
 
 	CvAssert(hUnit->getOwner() != NO_PLAYER);
 
+#ifdef LEKMOD_NO_QUEUED_ORDERS
+	// Shift + click sends bAppend; a player's order always replaces the queue
+	if(bManual && CvPreGame::isHuman(hUnit->getOwner()))
+	{
+		bAppend = false;
+	}
+#endif
 	if(!bAppend)
 	{
 		hUnit->ClearMissionQueue();

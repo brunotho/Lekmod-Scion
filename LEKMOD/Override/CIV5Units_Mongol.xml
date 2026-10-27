@@ -17257,7 +17257,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_JESUIT_EDUCATION"> 
 			<Text>
-				May buy [COLOR_POSITIVE_TEXT]Libraries[ENDCOLOR], [COLOR_POSITIVE_TEXT]Universities[ENDCOLOR], [COLOR_POSITIVE_TEXT]Observatories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Public Schools[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Research Labs[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]These buildings yield +2 [ICON_PEACE] Faith, [COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] +10 [ICON_PEACE] Faith[NEWLINE]Great Prophets no longer appear from [ICON_PEACE] Faith
+				May buy [COLOR_POSITIVE_TEXT]Libraries[ENDCOLOR], [COLOR_POSITIVE_TEXT]Universities[ENDCOLOR], [COLOR_POSITIVE_TEXT]Observatories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Public Schools[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Research Labs[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]These buildings yield +2 [ICON_PEACE] Faith, [COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] +10 [ICON_PEACE] Faith[NEWLINE]Once your religion is enhanced, Great Prophets no longer appear from [ICON_PEACE] Faith
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_JESUIT_EDUCATION_SHORT"> 
@@ -17977,7 +17977,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_WORK_ETHIC"> 
 			<Text>
-				May buy [COLOR_POSITIVE_TEXT]Workshops[ENDCOLOR], [COLOR_POSITIVE_TEXT]Windmills[ENDCOLOR], [COLOR_POSITIVE_TEXT]Factories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Hydro Plants[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Workers[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]Great Prophets no longer appear from [ICON_PEACE] Faith
+				May buy [COLOR_POSITIVE_TEXT]Workshops[ENDCOLOR], [COLOR_POSITIVE_TEXT]Windmills[ENDCOLOR], [COLOR_POSITIVE_TEXT]Factories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Hydro Plants[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Workers[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]Once your religion is enhanced, Great Prophets no longer appear from [ICON_PEACE] Faith
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_WORK_ETHIC_SHORT"> 
@@ -17987,7 +17987,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_WORK_ETHIC"> 
 			<Text>
-				May buy [COLOR_POSITIVE_TEXT]Workshops[ENDCOLOR], [COLOR_POSITIVE_TEXT]Windmills[ENDCOLOR], [COLOR_POSITIVE_TEXT]Factories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Hydro Plants[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Workers[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]Great Prophets no longer appear from [ICON_PEACE] Faith
+				May buy [COLOR_POSITIVE_TEXT]Workshops[ENDCOLOR], [COLOR_POSITIVE_TEXT]Windmills[ENDCOLOR], [COLOR_POSITIVE_TEXT]Factories[ENDCOLOR], [COLOR_POSITIVE_TEXT]Hydro Plants[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Workers[ENDCOLOR] with [ICON_PEACE] Faith (130% of the [ICON_PRODUCTION] Production cost)[NEWLINE]Once your religion is enhanced, Great Prophets no longer appear from [ICON_PEACE] Faith
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_WORK_ETHIC_SHORT"> 

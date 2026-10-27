@@ -1417,7 +1417,8 @@ bool CvGameReligions::LekmodIsProphetSpawnBlocked(PlayerTypes ePlayer) const
 	if (eReligion <= RELIGION_PANTHEON)
 		return false;
 	const CvReligion* pReligion = GetReligion(eReligion, ePlayer);
-	if (pReligion == NULL)
+	// Reformation can come before the religion is enhanced; Prophets keep spawning until then (user 2026-10-27)
+	if (pReligion == NULL || !pReligion->m_bEnhanced)
 		return false;
 	CvBeliefXMLEntries* pkBeliefs = GC.GetGameBeliefs();
 	for (int iBelief = 0; iBelief < pkBeliefs->GetNumBeliefs(); iBelief++)

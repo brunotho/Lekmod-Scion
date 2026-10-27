@@ -1838,7 +1838,8 @@ Diversify Spain and Australia's NW Discovery bonus
 // a conquered city that can't be liberated is puppeted without the capture popup, floating Gold when meeting a City-State,
 // no river trade bonus for coastal cities; Swift Transport: carried units spend the ship's Movement per step
 #define LEKMOD_SPECS_2026_10_27
-#define LEKMOD_SPECS_2026_10_27
+// Shift + click no longer queues an order behind the unit's current one (human players): the new order replaces it (user, 2026-10-27; NQ forbids shift-moves)
+#define LEKMOD_NO_QUEUED_ORDERS
 // % of the usual delay before kill yields (Zealot Faith, Honor Culture, ...), XP and Great General points float up (user, 2026-10-27: faster)
 #define LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
