@@ -38,6 +38,27 @@ SWITZERLAND (CIVILIZATION_SWISS)
 Tags: civs
 - Changed: UA: other players' Demographics include your Gold again; only your Gold total stays hidden ("?") in the trade screen
 
+SEAPORT (BUILDING_SEAPORT)
+--------------------------
+Tags: buildings, naval
+Subsection: Buildings
+- Changed: no longer needs a Harbor in the city
+
+NAVAL MELEE CITY ATTACKS (PROMOTION_CITY_MOVEMENT_PENALTY)
+----------------------------------------------------------
+Tags: units, naval, combat, movement
+- Changed: a naval melee unit attacking a city spends 1 extra Movement (was 2)
+
+COASTAL RAIDER LINE (PROMOTION_COASTAL_RAIDER_1/2/3)
+----------------------------------------------------
+Tags: promotions, naval, combat
+- Changed: only Coastal Raider I takes 1 off the extra Movement of a city attack, which removes it; levels II and III no longer do
+
+FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
+---------------------------------------------------------
+Tags: tiles and resources, combat
+- Changed: Forts can be built next to other Forts again; the Kasbah, Chateau, Motte and Bailey, Caer and Pa still can't be built next to a Fort or to each other
+
 GEM CUTTER (BUILDING_GEMCUTTER)
 -------------------------------
 Tags: buildings
@@ -196,7 +217,9 @@ AESTHETICS (POLICY_BRANCH_AESTHETICS)
 -------------------------------------
 Tags: policies, tourism
 - Added: adopting Aesthetics creates a Great Work in an empty slot (closest to the capital first; none if no slot is free)
+- Changed: Fine Arts: every Writers' Guild, Artists' Guild and Musicians' Guild has 1 more specialist slot of its kind (was a free Scriptorium, Gallery and Conservatory in your first 5 cities)
 - DLL: Policies.LekmodFreeGreatWorks (CvPlayer::setHasPolicy, LekmodGrantGreatWorks)
+- Dev: the extra slots are hidden policy-granted buildings 306-308 (classes 208-210) through Policy_BuildingClassFreeBuildings; the Scriptorium, Gallery and Conservatory rows stay but nothing grants them
 
 HAND-AXE (NEW) (UNIT_LEKMOD_HANDAXE)
 ------------------------------------

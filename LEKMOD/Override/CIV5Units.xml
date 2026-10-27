@@ -281555,7 +281555,7 @@
 		</Update>
 		<Update>
 			<Where Type="POLICY_FINE_ARTS"/>
-			<Set NumCitiesFreeAestheticsSchools="5" GreatWorkYieldModifier="50"/>
+			<Set NumCitiesFreeAestheticsSchools="0" GreatWorkYieldModifier="50"/>
 		</Update>
 		<Update>
 			<Where Type="POLICY_AESTHETICS_FINISHER"/>
@@ -291327,7 +291327,7 @@
 	<Improvements>
 		<Update>
 			<Where Type="IMPROVEMENT_FORT"/>
-			<Set DefenseModifier="50" NoTwoAdjacent="1" LekmodCountsAsFort="1"/>
+			<Set DefenseModifier="50" NoTwoAdjacent="0" LekmodCountsAsFort="1"/>
 		</Update>
 		<Update>
 			<Where Type="IMPROVEMENT_KASBAH"/>
@@ -292402,4 +292402,131 @@
 			<UnitClassType>UNITCLASS_COMPOSITE_BOWMAN</UnitClassType>
 		</Row>
 	</Unit_ClassUpgrades>
+	<!-- LEKMOD: Oct 27 list (2026-10-27): Fine Arts gives each guild 1 more slot (policy-granted dummies 306-308, classes 208-210, instead of the free
+	     Scriptorium/Gallery/Conservatory); Seaport needs no Harbor; naval melee city attacks cost 1 extra Movement (Coastal Raider I removes it) -->
+	<BuildingClasses>
+		<Row>
+			<ID>208</ID>
+			<Type>BUILDINGCLASS_LEKMOD_FINE_ARTS_WRITERS</Type>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_WRITERS</Description>
+			<DefaultBuilding>BUILDING_LEKMOD_FINE_ARTS_WRITERS</DefaultBuilding>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+		</Row>
+		<Row>
+			<ID>209</ID>
+			<Type>BUILDINGCLASS_LEKMOD_FINE_ARTS_ARTISTS</Type>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_ARTISTS</Description>
+			<DefaultBuilding>BUILDING_LEKMOD_FINE_ARTS_ARTISTS</DefaultBuilding>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+		</Row>
+		<Row>
+			<ID>210</ID>
+			<Type>BUILDINGCLASS_LEKMOD_FINE_ARTS_MUSICIANS</Type>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_MUSICIANS</Description>
+			<DefaultBuilding>BUILDING_LEKMOD_FINE_ARTS_MUSICIANS</DefaultBuilding>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>306</ID>
+			<Type>BUILDING_LEKMOD_FINE_ARTS_WRITERS</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_FINE_ARTS_WRITERS</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_WRITERS</Description>
+			<Civilopedia>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Civilopedia>
+			<Strategy>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Strategy>
+			<Help>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<NeverCapture>true</NeverCapture>
+			<NukeImmune>true</NukeImmune>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<SpecialistType>SPECIALIST_WRITER</SpecialistType>
+			<SpecialistCount>1</SpecialistCount>
+			<LekmodPolicyGranted>true</LekmodPolicyGranted>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<IconAtlas>EXPANSION2_BUILDING_ATLAS</IconAtlas>
+			<PortraitIndex>7</PortraitIndex>
+		</Row>
+		<Row>
+			<ID>307</ID>
+			<Type>BUILDING_LEKMOD_FINE_ARTS_ARTISTS</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_FINE_ARTS_ARTISTS</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_ARTISTS</Description>
+			<Civilopedia>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Civilopedia>
+			<Strategy>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Strategy>
+			<Help>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<NeverCapture>true</NeverCapture>
+			<NukeImmune>true</NukeImmune>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<SpecialistType>SPECIALIST_ARTIST</SpecialistType>
+			<SpecialistCount>1</SpecialistCount>
+			<LekmodPolicyGranted>true</LekmodPolicyGranted>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<IconAtlas>EXPANSION2_BUILDING_ATLAS</IconAtlas>
+			<PortraitIndex>5</PortraitIndex>
+		</Row>
+		<Row>
+			<ID>308</ID>
+			<Type>BUILDING_LEKMOD_FINE_ARTS_MUSICIANS</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_FINE_ARTS_MUSICIANS</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_MUSICIANS</Description>
+			<Civilopedia>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Civilopedia>
+			<Strategy>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Strategy>
+			<Help>TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<NeverCapture>true</NeverCapture>
+			<NukeImmune>true</NukeImmune>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<SpecialistType>SPECIALIST_MUSICIAN</SpecialistType>
+			<SpecialistCount>1</SpecialistCount>
+			<LekmodPolicyGranted>true</LekmodPolicyGranted>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<IconAtlas>EXPANSION2_BUILDING_ATLAS</IconAtlas>
+			<PortraitIndex>6</PortraitIndex>
+		</Row>
+	</Buildings>
+	<Policy_BuildingClassFreeBuildings>
+		<Row>
+			<PolicyType>POLICY_FINE_ARTS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_WRITERS_GUILD</BuildingClassType>
+			<BuildingType>BUILDING_LEKMOD_FINE_ARTS_WRITERS</BuildingType>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_FINE_ARTS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARTISTS_GUILD</BuildingClassType>
+			<BuildingType>BUILDING_LEKMOD_FINE_ARTS_ARTISTS</BuildingType>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_FINE_ARTS</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_MUSICIANS_GUILD</BuildingClassType>
+			<BuildingType>BUILDING_LEKMOD_FINE_ARTS_MUSICIANS</BuildingType>
+		</Row>
+	</Policy_BuildingClassFreeBuildings>
+	<Building_ClassesNeededInCity>
+		<Delete BuildingType="BUILDING_SEAPORT" BuildingClassType="BUILDINGCLASS_HARBOR"/>
+	</Building_ClassesNeededInCity>
+	<UnitPromotions>
+		<Update>
+			<Where Type="PROMOTION_CITY_MOVEMENT_PENALTY"/>
+			<Set CityMovementPenalty="1"/>
+		</Update>
+		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_2"/>
+			<Set CityMovementPenalty="0"/>
+		</Update>
+		<Update>
+			<Where Type="PROMOTION_COASTAL_RAIDER_3"/>
+			<Set CityMovementPenalty="0"/>
+		</Update>
+	</UnitPromotions>
 </GameData>

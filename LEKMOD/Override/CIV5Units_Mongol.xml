@@ -2611,7 +2611,7 @@
 			<Text>Movement Penalty Attacking Cities</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_CITY_MOVEMENT_PENALTY_HELP">
-			<Text>Unit spends 2 additional [ICON_MOVES] Moves attacking a City (total 3).</Text>
+			<Text>Unit spends 1 additional [ICON_MOVES] Movement attacking a City (total 2).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_GAME_OPTION_NO_SCIENTIST_SAVING">
 			<Text>No Scientist Saving</Text>
@@ -21788,7 +21788,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_FORT_HELP"> 
 			<Text>
-				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.
+				+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Can be built next to other Forts.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILD_CANAL_HELP"> 
@@ -44907,7 +44907,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_FORT_TEXT"> 
 			<Text>
-				A Fort gives no yields and connects no resource.[NEWLINE]Units on it get +50% [ICON_STRENGTH] Defensive Strength (not in enemy territory).[NEWLINE][NEWLINE]Cannot be built next to a Fort, Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE]Those unique improvements give the same +50% defense.
+				A Fort gives no yields and connects no resource.[NEWLINE]Units on it get +50% [ICON_STRENGTH] Defensive Strength (not in enemy territory).[NEWLINE][NEWLINE]Can be built next to other Forts.[NEWLINE]The Kasbah, Chateau, Motte and Bailey, Caer and Pa give the same +50% defense; they can't be built next to a Fort or to each other.
 			</Text>
 		</Replace>
 			<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_CANAL_TEXT"> 
@@ -116759,7 +116759,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_FINE_ARTS_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]A free Scriptorium, Gallery and Conservatory in your first 5 cities[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
+				[COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]Writers' Guilds, Artists' Guilds and Musicians' Guilds have 1 more specialist slot[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_FINE_ARTS_TEXT"> 
@@ -122062,7 +122062,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_2_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_3"> 
 			<Text>
@@ -122070,7 +122070,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COASTAL_RAIDER_3_HELP"> 
-			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].[NEWLINE]Attacking a city costs 1 less extra [ICON_MOVES] Movement.</Text>
+			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking [COLOR_POSITIVE_TEXT]Cities[ENDCOLOR].</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_COMBAT1"> 
 			<Text>
@@ -148562,6 +148562,18 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_CARROCCIO">
 			<Text>Carroccio nearby: {1_Num}%</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_WRITERS">
+			<Text>Fine Arts: Writers' Guild slot</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_ARTISTS">
+			<Text>Fine Arts: Artists' Guild slot</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_MUSICIANS">
+			<Text>Fine Arts: Musicians' Guild slot</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_FINE_ARTS_HELP">
+			<Text>1 more specialist slot for this city's guild, from the Fine Arts policy.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>
