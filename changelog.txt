@@ -2816,7 +2816,9 @@ Tags: civs, units, buildings
 COLOMBIA (CIVILIZATION_COLOMBIA)
 --------------------------------
 Tags: civs, units
-- Added: UA: +1 Gold from Lumbermills
+- Changed: UA:
+  - +1 Gold from Lumbermills
+  - no longer: +1 Science from Lumbermills after Chemistry
 - Reworked: UNIT_COLOMBIAN_CAVALRY
   | 34 Strength · 4 Movement · costs 150 · needs 3 Horses and 1 Iron[NEWLINE]Replaces the Cavalry. Starts with Shock I and Shock II.
 

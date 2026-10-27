@@ -1852,7 +1852,7 @@ GameEvents.PlayerAdoptPolicy.Add(YugoslaviaUAAdopt);
 Events.SequenceGameInitComplete.Add(YugoslaviaInit);
 end
 -- =======================================================================================================================
--- Colombia UA : Add a dummy building to give science from lumbermills on tech, add golden age points on city capture
+-- Colombia UA : add golden age points on city capture
 -- =======================================================================================================================
 local iCiv = GameInfoTypes["CIVILIZATION_COLOMBIA"]
 local bIsActive = JFD_IsCivilisationActive(iCiv)
@@ -1865,21 +1865,7 @@ if (bIsActive and iCiv) then
 			pPlayer:ChangeGoldenAgeProgressMeter(iGoldenagepointsColombia)
 		end
 	end
-    function ColombiaTrait(iPlayer)
-        local player = Players[iPlayer];
-		local pCity = player:GetCapitalCity();
-        if (player:IsEverAlive() and player:GetCivilizationType() == GameInfoTypes["CIVILIZATION_COLOMBIA"]) then
-            if Teams[player:GetTeam()]:IsHasTech(GameInfoTypes["TECH_CHEMISTRY"]) then
-				if pCity:IsCapital() then
-					pCity:SetNumRealBuilding(GameInfoTypes["BUILDING_COLOMBIA_TRAIT"], 1);
-				end
-            end
-        end
-    end
 	GameEvents.CityCaptureComplete.Add(ColombiaCityCaptureGoldenAgePoints)
-    GameEvents.TeamSetHasTech.Add(ColombiaTrait)
-    GameEvents.CityCaptureComplete.Add(ColombiaTrait)
-    GameEvents.PlayerCityFounded.Add(ColombiaTrait)
 end
 
 -- =======================================================================================================================

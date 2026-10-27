@@ -3122,12 +3122,6 @@
 			<IsCapitalOnly>true</IsCapitalOnly>
 		</Row>
 		<!-- BUILDING_ULUG (Timurid capital court) is given by Traits.LekmodFirstCityBuilding since 2026-10-14, so it stays with the city when captured -->
-		<Row>  
-			<BuildingType>BUILDING_COLOMBIA_TRAIT</BuildingType>
-			<CivilizationType>CIVILIZATION_COLOMBIA</CivilizationType>
-			<TechType>TECH_CHEMISTRY</TechType>
-			<IsCapitalOnly>true</IsCapitalOnly>
-		</Row>
 		<Row>
 			<BuildingType>BUILDING_ECONOMIC_UNION_GOLD</BuildingType>
 			<PolicyType>POLICY_ECONOMIC_UNION</PolicyType>
@@ -3300,13 +3294,6 @@
 		<BuildingType>BUILDING_BOLIVIA_TRAIT_PRODUCTION</BuildingType>
 		<ImprovementType>IMPROVEMENT_MINE</ImprovementType>
 		<YieldType>YIELD_PRODUCTION</YieldType>
-		<Yield>1</Yield>
-	</Row>
-	
-	<Row>
-		<BuildingType>BUILDING_COLOMBIA_TRAIT</BuildingType>
-		<ImprovementType>IMPROVEMENT_LUMBERMILL</ImprovementType>
-		<YieldType>YIELD_SCIENCE</YieldType>
 		<Yield>1</Yield>
 	</Row>
 	

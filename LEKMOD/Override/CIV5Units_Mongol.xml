@@ -147248,7 +147248,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Stable.[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_HORSE] Horses also yield +2 [ICON_PEACE] Faith.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_INDEPENDENCE">
-			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_BUILD_LUMBERMILL] Lumbermills.[NEWLINE]+1 more [ICON_RESEARCH] Science from them after [ICON_TECH_CHEMISTRY] Chemistry.</Text>
+			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_BUILD_LUMBERMILL] Lumbermills.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COLOMBIAN_CAVALRY">
 			<Text>Replaces the Cavalry. Starts with Shock I and Shock II.</Text>
