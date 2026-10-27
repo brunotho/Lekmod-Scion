@@ -21,6 +21,12 @@ Format (also the source for player patch notes on the website):
 
 ## UNRELEASED (next version)
 
+LEK OPTIONS (OPTIONS_MENU)
+--------------------------
+Tags: bugfix, ui
+- Fixed: the Options screen loads fully again; its setup stopped at the tile recommendations switch, so that switch and the settings after it didn't work
+- Dev: the checkbox ID LekmodTileRecommendationsCheckbox had 33 characters; Civ V creates no control for IDs that long (base game IDs stay at 31 or fewer), renamed LekmodTileRecsCheckbox
+
 MAP OPTIONS (MINIMAP_PANEL)
 ---------------------------
 Tags: bugfix, ui
