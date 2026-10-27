@@ -36,7 +36,7 @@ Tags: bugfix, ui
 SWITZERLAND (CIVILIZATION_SWISS)
 --------------------------------
 Tags: civs
-- Changed: UA: other players' Demographics include your Gold again; only your Gold total stays hidden ("?") in the trade screen
+- Changed: UA: only your stored Gold stays hidden ("?" in the trade screen); your Gold per turn shows in the trade screen again, and other players' Demographics include your Gold again
 
 GOLD TRADING (TRADE_ITEM_GOLD)
 ------------------------------

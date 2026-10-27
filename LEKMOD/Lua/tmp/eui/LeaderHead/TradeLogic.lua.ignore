@@ -862,7 +862,7 @@ function ResetDisplay( diploMessage )
 	-- Them pocket Gold Per Turn
 	SetEnabledAndTextAndToolTip( Controls.ThemPocketGoldPerTurn,
 		g_Deal:IsPossibleToTradeItem( g_iThem, g_iUs, TradeableItems.TRADE_ITEM_GOLD_PER_TURN, 1, g_iDealDuration ), -- 1 here is 1 GPT, which is the minimum possible
-		LekmodGoldText( g_iThem, g_pThem:CalculateGoldRate() ) .. " " .. Locale.ConvertTextKey("TXT_KEY_DIPLO_GOLD_PER_TURN"),
+		g_pThem:CalculateGoldRate() .. " " .. Locale.ConvertTextKey("TXT_KEY_DIPLO_GOLD_PER_TURN"),
 		Locale.ConvertTextKey("TXT_KEY_LEKMOD_DIPLO_GPT_TT", GameDefines.GOLD_PER_TURN_DEAL_DURATION or g_iDealDuration) )
 
 
@@ -1190,7 +1190,7 @@ function DisplayDeal(...)
 				Controls.ThemTableGoldPerTurn:SetHide( false )
 				Controls.ThemGoldPerTurnTurns:LocalizeAndSetText( "TXT_KEY_DIPLO_TURNS", duration )
 				Controls.ThemGoldPerTurnAmount:SetText( data1 )
-				Controls.ThemTableGoldPerTurn:LocalizeAndSetToolTip( "TXT_KEY_DIPLO_CURRENT_GPT", LekmodGoldText(g_iThem, g_pThem:CalculateGoldRate() - data1) )
+				Controls.ThemTableGoldPerTurn:LocalizeAndSetToolTip( "TXT_KEY_DIPLO_CURRENT_GPT", g_pThem:CalculateGoldRate() - data1 )
 			end
 
 		elseif TradeableItems.TRADE_ITEM_CITIES == itemType then
@@ -2456,7 +2456,7 @@ function LekmodSyncGoldPerTurnLong()
 	for _, side in ipairs( sides ) do
 		local pocket = Controls[ side[1] .. "PocketGoldPerTurn" ];
 		local pocketLong = Controls[ side[1] .. "PocketGoldPerTurnLong" ];
-		local strGold = LekmodGoldText( side[2], side[3]:CalculateGoldRate() ) .. " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_GOLD_PER_TURN" );
+		local strGold = side[3]:CalculateGoldRate() .. " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_GOLD_PER_TURN" );
 		pocket:SetText( strGold .. " " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_TURNS_SUFFIX", iShort ) );
 		pocketLong:SetText( strGold .. " " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_TURNS_SUFFIX", iLong ) );
 		local bDisabled = pocket:IsDisabled();
