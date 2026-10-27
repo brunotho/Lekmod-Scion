@@ -156,7 +156,6 @@ LONG RANGE (NEW) (PROMOTION_LEKMOD_LONG_RANGE)
 ----------------------------------------------
 Tags: promotions, units, combat
 - New: PROMOTION_LEKMOD_LONG_RANGE
-  | Ranged attacks on targets 3 tiles away deal 50% less damage.
   - the Cannon and its unique replacement start with it; lost on upgrade
 - DLL: UnitPromotions.LekmodFarRangedDamageMod/LekmodFarRangedDistance (CvUnit::GetRangeCombatDamage, so the combat preview shows it too); promotion ID 394
 
@@ -164,7 +163,6 @@ BATTERING RAM (NEW) (UNIT_LEKMOD_BATTERING_RAM)
 -----------------------------------------------
 Tags: units, combat
 - New: UNIT_LEKMOD_BATTERING_RAM
-  | 10 Strength · 2 Movement · costs 60 · needs 4 Iron[NEWLINE]Medieval siege unit that attacks cities in melee.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Needs 4 [ICON_RES_IRON] Iron.
   - every civilization can train it from Engineering; obsolete with Chivalry; no upgrades
   - starts with +200% against cities, Cover I, -1 Sight and -33% Strength when defending
 - Dev: unit 276, class 120; the Huns' old Gods & Kings art (ART_DEF_UNIT_U_HUNS_BATTERING_RAM, EXPANSION_UNIT_ATLAS_1 2)
@@ -173,7 +171,6 @@ CARROCCIO (NEW) (UNIT_LEKMOD_CARROCCIO)
 ---------------------------------------
 Tags: units, combat
 - New: UNIT_LEKMOD_CARROCCIO
-  | 14 Strength · 2 Movement · costs 80[NEWLINE]Can only be trained in your [ICON_CAPITAL] Capital.[NEWLINE]Cannot attack and never gains experience.[NEWLINE][NEWLINE]Your units on its tile and next to it get +10% [ICON_STRENGTH] Combat Strength.[NEWLINE]When one of your units within 2 tiles is killed by an enemy, your units on its tile and next to it heal 5 HP.[NEWLINE][NEWLINE]If it is lost (killed, deleted or gifted), you lose 2 [ICON_HAPPINESS_1] Happiness for the rest of the game.[NEWLINE]Retire it in your [ICON_CAPITAL] Capital to remove it without that penalty.
   - every civilization can train it from Civil Service, only in the capital; obsolete with Chivalry; no upgrades
   - starts with Cover I, Medic I and War Altar
 - Changed: the Happiness tooltip's "from units" line now counts the Happiness lost with Carroccios
@@ -269,7 +266,6 @@ HAND-AXE (NEW) (UNIT_LEKMOD_HANDAXE)
 ------------------------------------
 Tags: units, ruins
 - New: UNIT_LEKMOD_HANDAXE
-  | 9 Strength · 9 Ranged Strength · 2 Movement · costs 37[NEWLINE]Ranged unit with a range of 1. Can't be trained: an ancient ruin sometimes turns a Warrior into one (instead of a Spearman).
   - one time in five, the upgrade ruin offers it instead of the Spearman; it can't be trained
 - DLL: CvPlayer::LekmodGetRuinUpgradeUnit (the offer's roll 0-199 of 0-999, so the offer text and the result match); unit 278, class 122, the barbarian Hand-Axe's art and stats
 
@@ -277,7 +273,6 @@ WAR ALTAR (NEW) (PROMOTION_LEKMOD_WAR_ALTAR)
 --------------------------------------------
 Tags: promotions, units, combat
 - New: PROMOTION_LEKMOD_WAR_ALTAR
-  | Your units on this tile and next to it get +10% [ICON_STRENGTH] Combat Strength.[NEWLINE]When one of your units within 2 tiles is killed by an enemy, your units on this tile and next to it heal 5 HP.
   - the Carroccio starts with it
 - DLL: UnitPromotions.LekmodFriendlyAuraMod/Range (CvUnit::GetLekmodFriendlyAuraMod, combat preview line "Carroccio nearby"), LekmodDeathHealHP/Range (CvUnit::LekmodDoDeathHeal on the first kill call with an enemy killer); promotion ID 395
 
