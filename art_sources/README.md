@@ -61,6 +61,7 @@ from the sources, so it can be run any number of times (nothing gets shifted or 
   (fixed radius in the tool's `RADIUS`); the game draws its own frame.
 - The tool takes the **largest** picture directly in the unit's folder, so other pictures (e.g. a map flag source) go in a subfolder (`flag/`). Until 2026-10-15 the 1254 px flag source sat next to the 256 px Vanguard Corps portrait, and the 2026-10-14 rebuild turned every portrait size into the flag silhouette (user saw it in the tech tree). Without texconv (cloud session) the tool writes BC3 with Pillow.
 - **Map flag**: a white silhouette on transparency, scaled to 18 px tall, placed at x = centre + 2 px, y = 4 px in a 32 px canvas (it must stay inside the tapering flag shape), BC3 with one mip. The game tints it in the player's colours. (Barlas Cavalry and Bajoras keep the Sipahi/Knight flags.)
+  Since 2026-10-27: `python art_sources/tools/build_unit_flag.py <source.png> <name> [--max-w 22 --max-h 18 --cy 12]` (fits the silhouette into max-w x max-h, centre at x 18, y cy; writes `LEKMOD/Art/Units/<name>_32.dds` and a preview PNG next to the source, delete it). Used for the Self-Propelled Artillery (wide vehicle: 22x14 px); the source goes into `units/<name>/flag/`.
 
 ## Building icons
 - Sources: `buildings/<name>/<name>_<size>.dds` as delivered by the user (OneDrive art inbox, see CLAUDE.md section 7):
