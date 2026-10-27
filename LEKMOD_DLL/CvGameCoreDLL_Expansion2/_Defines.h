@@ -1842,6 +1842,11 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_NO_QUEUED_ORDERS
 // % of the usual delay before kill yields (Zealot Faith, Honor Culture, ...), XP and Great General points float up (user, 2026-10-27: faster)
 #define LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50
+// Special City-States (user, 2026-10-27, New Specs): a 6th City-State type (Science), 0/1/2 special City-States per game
+// that replace regular ones, map placement among the players, self-liberation (see the tracker row "New Specs (2): Special City-States")
+#define LEKMOD_SPECIAL_CITY_STATES
+// Science City-States: Science per turn = this x era number (Ancient = 1) for friends, doubled for allies
+#define LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA 3
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

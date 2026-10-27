@@ -83200,6 +83200,14 @@
 			<Blue>0.55</Blue>
 			<Alpha>1</Alpha>
 		</Row>
+		<Row>
+			<ID>384</ID>
+			<Type>COLOR_CS_TRAIT_SCIENTIFIC</Type>
+			<Red>0.40</Red>
+			<Green>0.78</Green>
+			<Blue>1.0</Blue>
+			<Alpha>1</Alpha>
+		</Row>
 	</Colors> 
 
 	<Table name="Commands">
@@ -175481,6 +175489,15 @@
 			<TraitTitleIcon>CityStatePopupTop400.dds</TraitTitleIcon> 
 			<BackgroundImage>citystatebackgroundreligious.dds</BackgroundImage> 
 		</Row>
+		<!-- LEKMOD: Science City-States (Special City-States, 2026-10-27); the pictures are the Religious ones until own art exists -->
+		<Row>
+			<ID>5</ID>
+			<Type>MINOR_TRAIT_SCIENTIFIC</Type>
+			<Description>TXT_KEY_MINOR_TRAIT_SCIENTIFIC</Description>
+			<TraitIcon>CityStateReligious.dds</TraitIcon>
+			<TraitTitleIcon>CityStatePopupTop400.dds</TraitTitleIcon>
+			<BackgroundImage>citystatebackgroundreligious.dds</BackgroundImage>
+		</Row>
 	</MinorCivTraits> 
 
 	<Table name="MinorCivTraits_Status">
@@ -177150,6 +177167,7 @@
 		<Column name="ArtStyleSuffix" type="text"  default="NULL"/>
 		<Column name="ArtStylePrefix" type="text"  default="NULL"/>
 		<Column name="MinorCivTrait" type="text"  notnull="true" />
+		<Column name="LekmodSpecial" type="boolean" default="false"/>
 	</Table> 
 	<MinorCivilizations>
 		<Delete />
@@ -187136,6 +187154,13 @@
 			<Type>PLAYERCOLOR_CS_MILITARISTIC</Type>
 			<PrimaryColor>COLOR_PLAYER_MINOR_ICON</PrimaryColor>
 			<SecondaryColor>COLOR_CS_TRAIT_MILITARISTIC</SecondaryColor>
+			<TextColor>COLOR_PLAYER_PEACH_TEXT</TextColor>
+		</Row>
+		<Row>
+			<ID>189</ID>
+			<Type>PLAYERCOLOR_CS_SCIENTIFIC</Type>
+			<PrimaryColor>COLOR_PLAYER_MINOR_ICON</PrimaryColor>
+			<SecondaryColor>COLOR_CS_TRAIT_SCIENTIFIC</SecondaryColor>
 			<TextColor>COLOR_PLAYER_PEACH_TEXT</TextColor>
 		</Row>
 	</PlayerColors> 
@@ -292526,4 +292551,181 @@
 			<Set UnitFlagAtlas="LEKMOD_SPA_FLAG" UnitFlagIconOffset="0"/>
 		</Update>
 	</Units>
+	<!-- LEKMOD: Special City-States (2026-10-27, step 1): 8 special City-States (IDs 59-66). The DLL draws 0/1/2 of them per game
+	     (LEKMOD_SPECIAL_CITY_STATES); the map places them among the players. Their own effects come in steps 2-5. -->
+	<MinorCivilizations>
+		<Row>
+			<ID>59</ID>
+			<Type>MINOR_CIV_LEKMOD_STPETERSBURG</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_CULTURED</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_EUROPEAN</ArtStyleType>
+			<ArtStyleSuffix>_EURO</ArtStyleSuffix>
+			<ArtStylePrefix>EUROPEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_CULTURED</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>60</ID>
+			<Type>MINOR_CIV_LEKMOD_SHANGHAI</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_CULTURED</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_ASIAN</ArtStyleType>
+			<ArtStyleSuffix>_ASIA</ArtStyleSuffix>
+			<ArtStylePrefix>ASIAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_CULTURED</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>61</ID>
+			<Type>MINOR_CIV_LEKMOD_FLORENCE</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_FLORENCE</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_FLORENCE_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_FLORENCE</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_FLORENCE_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_CULTURED</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_GRECO_ROMAN</ArtStyleType>
+			<ArtStyleSuffix>_MED</ArtStyleSuffix>
+			<ArtStylePrefix>MEDITERRANEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_CULTURED</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>62</ID>
+			<Type>MINOR_CIV_LEKMOD_SPARTA</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_SPARTA</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_SPARTA_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_SPARTA</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_SPARTA_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_MILITARISTIC</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_GRECO_ROMAN</ArtStyleType>
+			<ArtStyleSuffix>_MED</ArtStyleSuffix>
+			<ArtStylePrefix>MEDITERRANEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_MILITARISTIC</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>63</ID>
+			<Type>MINOR_CIV_LEKMOD_BERLIN</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_BERLIN</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_BERLIN_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_BERLIN</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_BERLIN_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_MILITARISTIC</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_EUROPEAN</ArtStyleType>
+			<ArtStyleSuffix>_EURO</ArtStyleSuffix>
+			<ArtStylePrefix>EUROPEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_MILITARISTIC</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>64</ID>
+			<Type>MINOR_CIV_LEKMOD_CAMBRIDGE</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_SCIENTIFIC</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_EUROPEAN</ArtStyleType>
+			<ArtStyleSuffix>_EURO</ArtStyleSuffix>
+			<ArtStylePrefix>EUROPEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_SCIENTIFIC</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>65</ID>
+			<Type>MINOR_CIV_LEKMOD_BAIKONUR</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_SCIENTIFIC</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_MIDDLE_EAST</ArtStyleType>
+			<ArtStyleSuffix>_ASIA</ArtStyleSuffix>
+			<ArtStylePrefix>ASIAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_SCIENTIFIC</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+		<Row>
+			<ID>66</ID>
+			<Type>MINOR_CIV_LEKMOD_LUBECK</Type>
+			<Description>TXT_KEY_CITYSTATE_LEKMOD_LUBECK</Description>
+			<Civilopedia>TXT_KEY_CITYSTATE_LEKMOD_LUBECK_TEXT</Civilopedia>
+			<ShortDescription>TXT_KEY_CITYSTATE_LEKMOD_LUBECK</ShortDescription>
+			<Adjective>TXT_KEY_CITYSTATE_LEKMOD_LUBECK_ADJ</Adjective>
+			<ArtDefineTag>ART_DEF_CIVILIZATION_MINOR</ArtDefineTag>
+			<DefaultPlayerColor>PLAYERCOLOR_CS_MERCANTILE</DefaultPlayerColor>
+			<ArtStyleType>ARTSTYLE_EUROPEAN</ArtStyleType>
+			<ArtStyleSuffix>_EURO</ArtStyleSuffix>
+			<ArtStylePrefix>EUROPEAN</ArtStylePrefix>
+			<MinorCivTrait>MINOR_TRAIT_MERCANTILE</MinorCivTrait>
+			<LekmodSpecial>true</LekmodSpecial>
+		</Row>
+	</MinorCivilizations>
+	<MinorCivilization_CityNames>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_FLORENCE</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_SPARTA</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_BERLIN</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_CAMBRIDGE</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BAIKONUR</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR</CityName></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><CityName>TXT_KEY_CITYSTATE_LEKMOD_LUBECK</CityName></Row>
+	</MinorCivilization_CityNames>
+	<MinorCivilization_Flavors>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><FlavorType>FLAVOR_CITY_DEFENSE</FlavorType><Flavor>5</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_STPETERSBURG</MinorCivType><FlavorType>FLAVOR_CULTURE</FlavorType><Flavor>10</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><FlavorType>FLAVOR_CITY_DEFENSE</FlavorType><Flavor>5</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SHANGHAI</MinorCivType><FlavorType>FLAVOR_CULTURE</FlavorType><Flavor>10</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><FlavorType>FLAVOR_CITY_DEFENSE</FlavorType><Flavor>5</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_FLORENCE</MinorCivType><FlavorType>FLAVOR_CULTURE</FlavorType><Flavor>10</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_CITY_DEFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_DEFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_OFFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_SPARTA</MinorCivType><FlavorType>FLAVOR_MILITARY_TRAINING</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_CITY_DEFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_DEFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_OFFENSE</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BERLIN</MinorCivType><FlavorType>FLAVOR_MILITARY_TRAINING</FlavorType><Flavor>7</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_CAMBRIDGE</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_CAMBRIDGE</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_CAMBRIDGE</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_CAMBRIDGE</MinorCivType><FlavorType>FLAVOR_SCIENCE</FlavorType><Flavor>10</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BAIKONUR</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BAIKONUR</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BAIKONUR</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_BAIKONUR</MinorCivType><FlavorType>FLAVOR_SCIENCE</FlavorType><Flavor>10</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_EXPANSION</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_NUKE</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
+		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_GOLD</FlavorType><Flavor>10</Flavor></Row>
+	</MinorCivilization_Flavors>
 </GameData>

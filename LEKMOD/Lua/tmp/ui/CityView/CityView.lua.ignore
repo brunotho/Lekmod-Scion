@@ -1631,6 +1631,9 @@ function OnCityViewUpdate()
 			end
 		end
 
+		-- LEKMOD_SPECIAL_CITY_STATES: Liberate a City-State's city you hold (also one you conquered yourself)
+		LekmodUpdateLiberateButton(pCity);
+
 		-- Stop city razing
 		if (pCity:IsRazing()) then
 			g_bRazeButtonDisabled = false;
@@ -2498,6 +2501,63 @@ Controls.ReturnToMapButton:RegisterCallback( Mouse.eLClick, OnReturnToMapButton)
 
 -------------------------------------------------
 -------------------------------------------------
+-- LEKMOD_SPECIAL_CITY_STATES: Liberate button. Two clicks: the first one asks for confirmation.
+local g_iLekmodLiberateConfirmCity = -1;
+function LekmodLiberateTarget(pCity)
+	if (pCity == nil or Controls.LekmodLiberateButton == nil) then
+		return -1;
+	end
+	local iPlayer = Game.GetActivePlayer();
+	if (pCity:GetOwner() ~= iPlayer or pCity:IsRazing()) then
+		return -1;
+	end
+	local iOriginal = pCity:GetOriginalOwner();
+	if (iOriginal == iPlayer or iOriginal < 0 or Players[iOriginal] == nil or not Players[iOriginal]:IsMinorCiv()) then
+		return -1;
+	end
+	return iOriginal;
+end
+function LekmodUpdateLiberateButton(pCity)
+	if (Controls.LekmodLiberateButton == nil) then
+		return;
+	end
+	local iTarget = LekmodLiberateTarget(pCity);
+	if (iTarget < 0) then
+		g_iLekmodLiberateConfirmCity = -1;
+		Controls.LekmodLiberateButton:SetHide(true);
+		return;
+	end
+	if (g_iLekmodLiberateConfirmCity ~= pCity:GetID()) then
+		g_iLekmodLiberateConfirmCity = -1;
+	end
+	Controls.LekmodLiberateButton:SetHide(false);
+	Controls.LekmodLiberateButton:SetDisabled(not Players[Game.GetActivePlayer()]:IsTurnActive());
+	if (g_iLekmodLiberateConfirmCity == pCity:GetID()) then
+		Controls.LekmodLiberateLabel:LocalizeAndSetText("TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_CONFIRM_TEXT");
+	else
+		Controls.LekmodLiberateLabel:LocalizeAndSetText("TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TEXT");
+	end
+	Controls.LekmodLiberateButton:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TT", Players[iTarget]:GetCivilizationShortDescriptionKey()));
+end
+function OnLekmodLiberateButton()
+	local pCity = UI.GetHeadSelectedCity();
+	local iTarget = LekmodLiberateTarget(pCity);
+	if (iTarget < 0 or not Players[Game.GetActivePlayer()]:IsTurnActive()) then
+		return;
+	end
+	if (g_iLekmodLiberateConfirmCity ~= pCity:GetID()) then
+		g_iLekmodLiberateConfirmCity = pCity:GetID();
+		LekmodUpdateLiberateButton(pCity);
+		return;
+	end
+	g_iLekmodLiberateConfirmCity = -1;
+	Network.SendLiberateMinor(iTarget, pCity:GetID());
+	OnReturnToMapButton();
+end
+if (Controls.LekmodLiberateButton ~= nil) then
+	Controls.LekmodLiberateButton:RegisterCallback(Mouse.eLClick, OnLekmodLiberateButton);
+end
+
 function OnRazeButton()
 
 	local pCity = UI.GetHeadSelectedCity();

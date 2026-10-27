@@ -583,6 +583,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 		else if (strTrait == "MINOR_CIV_TRAIT_MARITIME") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_MARITIME;
 		else if (strTrait == "MINOR_CIV_TRAIT_MERCANTILE") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_MERCANTILE;
 		else if (strTrait == "MINOR_CIV_TRAIT_RELIGIOUS") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_RELIGIOUS;
+		else if (strTrait == "MINOR_CIV_TRAIT_SCIENTIFIC") m_iLekmodMinorCivTrait = MINOR_CIV_TRAIT_SCIENTIFIC;
 		// eras are resolved when first needed (GetLekmodEraLevel)
 		const char* aszCols[3] = { "LekmodEraLevel1", "LekmodEraLevel2", "LekmodEraLevel3" };
 		for (int i = 0; i < 3; i++)

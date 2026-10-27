@@ -820,6 +820,7 @@ int CvLuaEnums::pRegister(lua_State* L)
 	RegisterEnum(MINOR_CIV_TRAIT_MARITIME);
 	RegisterEnum(MINOR_CIV_TRAIT_MERCANTILE);
 	RegisterEnum(MINOR_CIV_TRAIT_RELIGIOUS);
+	RegisterEnum(MINOR_CIV_TRAIT_SCIENTIFIC);
 	RegisterEnum(NUM_MINOR_CIV_TRAIT_TYPES);
 	EnumEnd(L);
 

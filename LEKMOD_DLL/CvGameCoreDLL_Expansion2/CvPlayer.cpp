@@ -4079,6 +4079,26 @@ bool CvPlayer::isCityNameValid(CvString& szName, bool bTestDestroyed) const
 {
 	const CvCity* pLoopCity;
 	int iLoop;
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Special City-States are named after real cities that majors also have in their lists (Berlin, St. Petersburg ...):
+	// while such a City-State is in the game, no major may use its names
+	if(!isMinorCiv())
+	{
+		for(int iMinor = MAX_MAJOR_CIVS; iMinor < MAX_CIV_PLAYERS; iMinor++)
+		{
+			if(!GET_PLAYER((PlayerTypes)iMinor).isMinorCiv())
+				continue;
+			CvMinorCivInfo* pkMinorInfo = GC.getMinorCivInfo(CvPreGame::minorCivType((PlayerTypes)iMinor));
+			if(pkMinorInfo == NULL || !pkMinorInfo->IsLekmodSpecial())
+				continue;
+			for(int iName = 0; iName < pkMinorInfo->getNumCityNames(); iName++)
+			{
+				if(GetLocalizedText(pkMinorInfo->getCityNames(iName).c_str()) == szName)
+					return false;
+			}
+		}
+	}
+#endif
 
 	if(bTestDestroyed)
 	{
@@ -4131,6 +4151,10 @@ void CvPlayer::DoLiberatePlayer(PlayerTypes ePlayer, int iOldCityID)
 
 	// Who originally took out this team?
 	TeamTypes eConquerorTeam = GET_TEAM(eLiberatedTeam).GetKilledByTeam();
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Self-liberation (the city screen's Liberate button): the liberator is the one who conquered this City-State
+	const bool bLekmodSelfLiberation = GET_PLAYER(ePlayer).isMinorCiv() && (GET_PLAYER(ePlayer).IsEverConqueredBy(m_eID) || eConquerorTeam == eTeam);
+#endif
 
 	if (!GET_PLAYER(ePlayer).isAlive())
 	{
@@ -4295,7 +4319,11 @@ void CvPlayer::DoLiberatePlayer(PlayerTypes ePlayer, int iOldCityID)
 	// Is this a Minor we have liberated?
 	if(GET_PLAYER(ePlayer).isMinorCiv())
 	{
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+		GET_PLAYER(ePlayer).GetMinorCivAI()->DoLiberationByMajor(eOldOwner, eConquerorTeam, bLekmodSelfLiberation);
+#else
 		GET_PLAYER(ePlayer).GetMinorCivAI()->DoLiberationByMajor(eOldOwner, eConquerorTeam);
+#endif
 	}
 
 	// slewis
@@ -24680,6 +24708,13 @@ bool CvPlayer::IsGetsScienceFromPlayer(PlayerTypes ePlayer) const
 	{
 		return true;
 	}
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	if(GET_PLAYER(ePlayer).isMinorCiv() && GET_PLAYER(ePlayer).GetMinorCivAI()->GetTrait() == MINOR_CIV_TRAIT_SCIENTIFIC &&
+	   (GET_PLAYER(ePlayer).GetMinorCivAI()->IsAllies(GetID()) || GET_PLAYER(ePlayer).GetMinorCivAI()->IsFriends(GetID())))
+	{
+		return true;
+	}
+#endif
 
 	return m_pabGetsScienceFromPlayer[ePlayer];
 }

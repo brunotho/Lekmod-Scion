@@ -421,7 +421,7 @@ public:
 	bool IsPlayerHasOpenBorders(PlayerTypes ePlayer);
 	bool IsPlayerHasOpenBordersAutomatically(PlayerTypes ePlayer);
 
-	void DoLiberationByMajor(PlayerTypes eLiberator, TeamTypes eConquerorTeam);
+	void DoLiberationByMajor(PlayerTypes eLiberator, TeamTypes eConquerorTeam, bool bLekmodNoInfluence = false);
 
 	// Protection
 	void DoChangeProtectionFromMajor(PlayerTypes eMajor, bool bProtect, bool bPledgeNowBroken = false);
@@ -866,6 +866,9 @@ public:
 	void setArtStyleSuffix(const char* szVal);
 
 	int GetMinorCivTrait() const;
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	bool IsLekmodSpecial() const { return m_bLekmodSpecial; }
+#endif
 
 	// Deprecated Members
 	const char* getAdjectiveKeyWide() const;
@@ -882,6 +885,9 @@ protected:
 	int m_iArtStyleType;
 	int m_iNumLeaders;				 // the number of leaders the Civ has, this is needed so that random leaders can be generated easily
 	int m_iMinorCivTrait;
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	bool m_bLekmodSpecial;
+#endif
 
 	bool m_bAIPlayable;
 	bool m_bPlayable;

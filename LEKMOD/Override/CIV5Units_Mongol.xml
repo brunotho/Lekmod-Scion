@@ -148582,6 +148582,99 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>1 more specialist slot for this city's guild, from the Fine Arts policy.</Text>
 		</Row>
 	</Language_en_US>
+	<!-- LEKMOD: Special City-States (2026-10-27, step 1) -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG">
+			<Text>St. Petersburg</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG_ADJ">
+			<Text>Petersburger</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI">
+			<Text>Shanghai</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI_ADJ">
+			<Text>Shanghainese</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_FLORENCE">
+			<Text>Florence</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_FLORENCE_ADJ">
+			<Text>Florentine</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_FLORENCE_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SPARTA">
+			<Text>Sparta</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SPARTA_ADJ">
+			<Text>Spartan</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SPARTA_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BERLIN">
+			<Text>Berlin</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BERLIN_ADJ">
+			<Text>Berliner</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BERLIN_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE">
+			<Text>Cambridge</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE_ADJ">
+			<Text>Cantabrigian</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR">
+			<Text>Baikonur</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR_ADJ">
+			<Text>Baikonur</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_LUBECK">
+			<Text>Lübeck</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_LUBECK_ADJ">
+			<Text>Lübeck</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_LUBECK_TEXT">
+			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_MINOR_TRAIT_SCIENTIFIC">
+			<Text>Scientific City-States</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_STATE_SCIENTIFIC_ADJECTIVE">
+			<Text>Scientific</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_STATE_SCIENTIFIC_TT">
+			<Text>A befriended [COLOR_POSITIVE_TEXT]Scientific[ENDCOLOR] City-State will increase your [ICON_RESEARCH] Science.[NEWLINE]Friends: 3 [ICON_RESEARCH] Science per turn per era (Ancient Era 3, Classical Era 6, ...).[NEWLINE]Allies: twice as much.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TEXT">
+			<Text>Liberate</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_CONFIRM_TEXT">
+			<Text>Click again</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TT">
+			<Text>Give this city back to {1_CityStateName}: it becomes an independent City-State again.[NEWLINE]You get no [ICON_INFLUENCE] Influence for liberating a City-State you conquered yourself.[NEWLINE][NEWLINE]Click twice to confirm.</Text>
+		</Row>
+	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
 	<Language_RU_RU>

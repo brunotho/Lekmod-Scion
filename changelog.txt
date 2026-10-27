@@ -200,6 +200,34 @@ Tags: ui
 - Dev: not in the player notes (user, 2026-10-23): the loading screen shows all of your civilization's unique items (up to 5, two per row; was 2)
 - Dev: Lekmod's own LoadScreen.lua/.xml (Lua/tmp/ui/FrontEnd, both UIs via ui_check.bat); UniqueBonuses no longer resumes a finished coroutine (with more slots than items it returned an error text as a name)
 
+SPECIAL CITY-STATES (NEW) (LEKMOD_SPECIAL_CITY_STATES)
+------------------------------------------------------
+Tags: city-states
+- Now: each game has 0, 1 or 2 special City-States (25% / 50% / 25% chance), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck
+- Now: each one takes the place of a regular City-State, so the number of City-States stays as set
+- Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
+- Now: while a special City-State is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
+- Note: their own effects (auctions, Florence, Baikonur, Lübeck, Berlin, Cambridge) are not in yet; for now they play like regular City-States of their type
+- DLL: LEKMOD_SPECIAL_CITY_STATES: MinorCivilizations.LekmodSpecial (IDs 59-66); CvGame::init swaps specials the engine drew for unused regular ones, then draws 0/1/2 into random slots (CvRandom seeded from the pregame map and sync seeds); CvPlayer::isCityNameValid keeps majors off their names
+- Dev: the map (Lekmap Scion, AssignStartingPlots:LekPlaceSpecialCityStates) places them first: centre = the land plot whose farthest start is nearest, sites within 80% of that radius, at least 5 tiles from every start, most equally far from the two nearest starts; Lua.log line "### LekSpecialCS"
+- Dev: MINOR_CIV_FLORENCE was Ljubljana in game, so Florence is a new City-State (MINOR_CIV_LEKMOD_FLORENCE)
+
+SCIENTIFIC CITY-STATES (NEW) (MINOR_CIV_TRAIT_SCIENTIFIC)
+---------------------------------------------------------
+Tags: city-states
+- Now: a sixth City-State type; Cambridge and Baikonur are Scientific
+- Now: friends get 3 Science per turn per era (Ancient Era 3, Classical Era 6, ...); allies get twice as much
+- DLL: MinorCivTraitTypes gets MINOR_CIV_TRAIT_SCIENTIFIC (trait row ID 5); its Science goes through the Scholasticism path (CvPlayer::IsGetsScienceFromPlayer, CvMinorCivAI::GetScienceFriendshipBonusTimes100), LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA 3
+- Dev: light blue map color (COLOR_CS_TRAIT_SCIENTIFIC 384, PLAYERCOLOR_CS_SCIENTIFIC 189); the City-State screen uses the Religious pictures until own art exists
+
+LIBERATING A CITY-STATE YOU HOLD (NEW) (LEKMOD_SELF_LIBERATION)
+---------------------------------------------------------------
+Tags: city-states
+- Added: the city screen of a City-State's city you hold has a Liberate button (above Raze): the city becomes an independent City-State again, also when you conquered it yourself
+- Added: liberating a City-State you conquered yourself gives no Influence; liberating one that another player conquered still does
+- DLL: CvPlayer::DoLiberatePlayer detects self-liberation (the City-State was conquered by the liberator or its team) and passes it to CvMinorCivAI::DoLiberationByMajor, which then skips the liberator's Influence; the button sends the existing liberate message
+- Dev: standard UI only for now (EUI's city screen has no button yet); two clicks to confirm
+
 MARITIME CITY-STATES (BUILDING_LEKMOD_APPLETREE)
 ------------------------------------------------
 Tags: city-states

@@ -4349,6 +4349,7 @@ CivilopediaCategory[CategoryCityStates].SelectArticle = function( cityStateID, s
 			MINOR_TRAIT_MILITARISTIC = "TXT_KEY_CITYSTATE_MILITARISTIC_HEADING3_BODY",
 			MINOR_TRAIT_RELIGIOUS = "TXT_KEY_CONCEPT_CITY_STATE_RELIGIOUS_SUMMARY",
 			MINOR_TRAIT_MERCANTILE = "TXT_KEY_CONCEPT_CITY_STATE_MERCANTILE_SUMMARY",
+			MINOR_TRAIT_SCIENTIFIC = "TXT_KEY_CITY_STATE_SCIENTIFIC_TT",
 		};
 		local trait = GameInfo.MinorCivTraits[thisCityState.MinorCivTrait];
 		local traitTextKey = lekmodTraitTexts[thisCityState.MinorCivTrait];

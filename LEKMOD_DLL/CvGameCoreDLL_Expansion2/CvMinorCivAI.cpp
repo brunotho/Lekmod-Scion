@@ -2559,7 +2559,7 @@ const std::vector<LekmodCSImprovementRow>& LekmodCSImprovementRows()
 	if (!s_bInit)
 	{
 		s_bInit = true;
-		static const char* aszTraits[NUM_MINOR_CIV_TRAIT_TYPES] = { "MINOR_CIV_TRAIT_CULTURED", "MINOR_CIV_TRAIT_MILITARISTIC", "MINOR_CIV_TRAIT_MARITIME", "MINOR_CIV_TRAIT_MERCANTILE", "MINOR_CIV_TRAIT_RELIGIOUS" };
+		static const char* aszTraits[NUM_MINOR_CIV_TRAIT_TYPES] = { "MINOR_CIV_TRAIT_CULTURED", "MINOR_CIV_TRAIT_MILITARISTIC", "MINOR_CIV_TRAIT_MARITIME", "MINOR_CIV_TRAIT_MERCANTILE", "MINOR_CIV_TRAIT_RELIGIOUS", "MINOR_CIV_TRAIT_SCIENTIFIC" };
 		Database::Connection* db = GC.GetGameDatabase();
 		Database::Results kResults;
 		if (db != NULL && db->Execute(kResults, "SELECT Lekmod_MinorCivImprovements.MinorCivTrait, Lekmod_MinorCivImprovements.ImprovementType, Lekmod_MinorCivImprovements.EraType, Lekmod_MinorCivImprovements.MaxCount, Lekmod_MinorCivImprovements.MinMountainsWithin2, Lekmod_MinorCivImprovements.NextToCity FROM Lekmod_MinorCivImprovements ORDER BY Lekmod_MinorCivImprovements.rowid"))
@@ -7874,7 +7874,7 @@ bool CvMinorCivAI::IsPlayerHasOpenBordersAutomatically(PlayerTypes ePlayer)
 
 
 /// Major liberates a Minor by recapturing its City!
-void CvMinorCivAI::DoLiberationByMajor(PlayerTypes eLiberator, TeamTypes eConquerorTeam)
+void CvMinorCivAI::DoLiberationByMajor(PlayerTypes eLiberator, TeamTypes eConquerorTeam, bool bLekmodNoInfluence)
 {
 	Localization::String strMessage = Localization::Lookup("TXT_KEY_NOTIFICATION_MINOR_LIBERATION");
 	strMessage << GetPlayer()->getNameKey() << GET_PLAYER(eLiberator).getNameKey();
@@ -7916,9 +7916,16 @@ void CvMinorCivAI::DoLiberationByMajor(PlayerTypes eLiberator, TeamTypes eConque
 	}
 
 	// Influence for liberator - raise to ally status
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	if(!bLekmodNoInfluence) // self-liberation: no Influence
+	{
+#endif
 	int iNewInfluence = max(iHighestOtherMajorInfluence + GC.getMINOR_LIBERATION_FRIENDSHIP(), GetBaseFriendshipWithMajor(eLiberator) + GC.getMINOR_LIBERATION_FRIENDSHIP());
 	iNewInfluence = max(GetAlliesThreshold(), iNewInfluence); // Must be at least enough to make us allies
 	SetFriendshipWithMajor(eLiberator, iNewInfluence);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	}
+#endif
 
 	// Notification for liberator
 	strMessage = Localization::Lookup("TXT_KEY_NOTIFICATION_MINOR_LIBERATION_YOU");
@@ -8395,6 +8402,17 @@ int CvMinorCivAI::GetScienceFriendshipBonusTimes100(PlayerTypes eMajor, EraTypes
 		iResult += pPolicies->GetMinorAllyYieldBonus(eCurrentEra, YIELD_SCIENCE);
 	else if (IsFriends(eMajor))
 		iResult += pPolicies->GetMinorFriendYieldBonus(eCurrentEra, YIELD_SCIENCE);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Science City-States: 3 x era number (Ancient = 1) for friends, doubled for allies
+	if (GetTrait() == MINOR_CIV_TRAIT_SCIENTIFIC && eCurrentEra != NO_ERA)
+	{
+		const int iTrait = /*3*/ LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA * ((int)eCurrentEra + 1) * 100;
+		if (IsAllies(eMajor))
+			iResult += 2 * iTrait;
+		else if (IsFriends(eMajor))
+			iResult += iTrait;
+	}
+#endif
 
 	return iResult;
 }
@@ -12828,6 +12846,9 @@ CvMinorCivInfo::CvMinorCivInfo() :
 	m_iDefaultPlayerColor(NO_PLAYERCOLOR),
 	m_iArtStyleType(NO_ARTSTYLE),
 	m_iMinorCivTrait(NO_MINOR_CIV_TRAIT_TYPE),
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	m_bLekmodSpecial(false),
+#endif
 #ifdef AUI_WARNING_FIXES
 	m_iNumLeaders(0),
 	m_bAIPlayable(false),
@@ -12985,6 +13006,9 @@ bool CvMinorCivInfo::CacheResults(Database::Results& kResults, CvDatabaseUtility
 
 	szTextVal = kResults.GetText("MinorCivTrait");
 	m_iMinorCivTrait = GC.getInfoTypeForString(szTextVal, true);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	m_bLekmodSpecial = kResults.GetBool("LekmodSpecial");
+#endif
 
 	//Arrays
 	const char* szType = GetType();

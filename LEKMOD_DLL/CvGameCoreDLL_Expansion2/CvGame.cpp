@@ -748,6 +748,68 @@ void CvGame::InitPlayers()
 		iNumMinors = kWorldInfo.getDefaultMinorCivs();
 	}
 
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Special City-States (MinorCivilizations.LekmodSpecial): 0, 1 or 2 per game (25% / 50% / 25%), each replacing a regular one.
+	// The engine's own draw may pick a special one as a regular City-State: it is swapped for an unused regular one first.
+	// Seeded from the pregame seeds so that every machine draws the same.
+	if(iNumMinors > 0)
+	{
+		CvRandom kRand;
+		kRand.init(CvPreGame::mapRandomSeed() ^ (CvPreGame::syncRandomSeed() * 7919) ^ 0x5EC1A1);
+		const int iNumInfos = GC.getNumMinorCivInfos();
+		std::vector<int> aiSpecial;
+		std::vector<bool> abUsed(iNumInfos, false);
+		for(int iInfo = 0; iInfo < iNumInfos; iInfo++)
+		{
+			CvMinorCivInfo* pkInfo = GC.getMinorCivInfo((MinorCivTypes)iInfo);
+			if(pkInfo != NULL && pkInfo->IsLekmodSpecial())
+				aiSpecial.push_back(iInfo);
+		}
+		const int iFirstSlot = MAX_MAJOR_CIVS;
+		const int iEndSlot = std::min(MAX_MAJOR_CIVS + iNumMinors, (int)MAX_CIV_PLAYERS);
+		for(int iSlot = iFirstSlot; iSlot < iEndSlot; iSlot++)
+		{
+			const int iType = (int)CvPreGame::minorCivType((PlayerTypes)iSlot);
+			if(iType >= 0 && iType < iNumInfos)
+				abUsed[iType] = true;
+		}
+		for(int iSlot = iFirstSlot; iSlot < iEndSlot; iSlot++)
+		{
+			const int iType = (int)CvPreGame::minorCivType((PlayerTypes)iSlot);
+			CvMinorCivInfo* pkInfo = (iType >= 0 && iType < iNumInfos) ? GC.getMinorCivInfo((MinorCivTypes)iType) : NULL;
+			if(pkInfo == NULL || !pkInfo->IsLekmodSpecial())
+				continue;
+			std::vector<int> aiFree;
+			for(int iInfo = 0; iInfo < iNumInfos; iInfo++)
+			{
+				CvMinorCivInfo* pkFree = GC.getMinorCivInfo((MinorCivTypes)iInfo);
+				if(pkFree != NULL && !pkFree->IsLekmodSpecial() && !abUsed[iInfo])
+					aiFree.push_back(iInfo);
+			}
+			if(aiFree.empty())
+				break;
+			const int iNew = aiFree[kRand.get((unsigned short)aiFree.size(), "Lekmod special City-State swap")];
+			CvPreGame::setMinorCivType((PlayerTypes)iSlot, (MinorCivTypes)iNew);
+			abUsed[iNew] = true;
+		}
+		const int iRoll = kRand.get(100, "Lekmod number of special City-States");
+		int iCount = (iRoll < 25) ? 0 : ((iRoll < 75) ? 1 : 2);
+		iCount = std::min(iCount, (int)aiSpecial.size());
+		iCount = std::min(iCount, iEndSlot - iFirstSlot);
+		std::vector<int> aiSlots;
+		for(int iSlot = iFirstSlot; iSlot < iEndSlot; iSlot++)
+			aiSlots.push_back(iSlot);
+		for(int i = 0; i < iCount; i++)
+		{
+			const int iSpecialIndex = kRand.get((unsigned short)aiSpecial.size(), "Lekmod special City-State type");
+			const int iSlotIndex = kRand.get((unsigned short)aiSlots.size(), "Lekmod special City-State slot");
+			CvPreGame::setMinorCivType((PlayerTypes)aiSlots[iSlotIndex], (MinorCivTypes)aiSpecial[iSpecialIndex]);
+			aiSpecial.erase(aiSpecial.begin() + iSpecialIndex);
+			aiSlots.erase(aiSlots.begin() + iSlotIndex);
+		}
+	}
+#endif
+
 	PlayerTypes eMinorPlayer;
 
 	// Players
