@@ -5,7 +5,8 @@
       "Bash(gh run:*)",
       "Bash(gh workflow run:*)",
       "Bash(gh api:*)",
-      "Bash(gh run watch *)"
+      "Bash(gh run watch *)",
+      "mcp__claude_ai_Notion__notion-update-page"
     ]
   }
 }

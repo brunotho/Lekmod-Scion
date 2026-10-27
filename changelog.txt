@@ -116,7 +116,7 @@ Tags: promotions, naval, movement
 SELF-PROPELLED ARTILLERY (UNIT_SELF_PROPELLED_ARTILLERY)
 --------------------------------------------------------
 Tags: units
-- Dev: its own map flag from the user's silhouette (art_sources/units/self_propelled_artillery/flag, art_sources/tools/build_unit_flag.py)
+- Dev: its own map flag from the user's silhouette (v2, 2026-10-27: chunkier, 20x18 px; art_sources/units/self_propelled_artillery/flag, art_sources/tools/build_unit_flag.py)
 
 GEM CUTTER (BUILDING_GEMCUTTER)
 -------------------------------
