@@ -1852,23 +1852,6 @@ GameEvents.PlayerAdoptPolicy.Add(YugoslaviaUAAdopt);
 Events.SequenceGameInitComplete.Add(YugoslaviaInit);
 end
 -- =======================================================================================================================
--- Colombia UA : add golden age points on city capture
--- =======================================================================================================================
-local iCiv = GameInfoTypes["CIVILIZATION_COLOMBIA"]
-local bIsActive = JFD_IsCivilisationActive(iCiv)
-
-if (bIsActive and iCiv) then
-	function ColombiaCityCaptureGoldenAgePoints(iOldOwner, bIsCapital, iX, iY, iNewOwner, iPop, bConquest)
-		local pPlayer = Players[iNewOwner]
-		if (pPlayer:GetCivilizationType() == iCiv) then
-			local iGoldenagepointsColombia = 125 * GameInfo.GameSpeeds[Game.GetGameSpeedType()].GoldenAgePercent / 100
-			pPlayer:ChangeGoldenAgeProgressMeter(iGoldenagepointsColombia)
-		end
-	end
-	GameEvents.CityCaptureComplete.Add(ColombiaCityCaptureGoldenAgePoints)
-end
-
--- =======================================================================================================================
 -- Phoenicia UA : Add +1 Population after Optics on new cities
 -- =======================================================================================================================
 
