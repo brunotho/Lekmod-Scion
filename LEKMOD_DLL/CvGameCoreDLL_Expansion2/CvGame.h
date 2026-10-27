@@ -466,7 +466,23 @@ public:
 	void LekmodDoAuctions();
 	bool LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold);
 	bool LekmodGiveGreatWork(PlayerTypes ePlayer);
+	// Cambridge: Great Works offered (pairs player, Great Work index), held like Gold; while the payout is pending the winner is Cambridge's ally
+	std::vector<int> m_aiLekmodCambridgeWorks;
+	int LekmodCambridgeNumWorks(PlayerTypes ePlayer) const;
+	bool LekmodOfferGreatWork(PlayerTypes ePlayer, int iWork);
+	void LekmodReturnCambridgeWorks(PlayerTypes ePlayer, bool bReturn);
+	PlayerTypes LekmodCambridgeAlly(PlayerTypes eMinor);
+	void LekmodSetCambridgeLock(bool bOn);
 	void LekmodAuctionNotify(PlayerTypes eOnly, int iMinor, const char* szMessage, const char* szSummary);
+	// Berlin: Clausewitz's Legacy (saved: LBF_* fields)
+	enum LekmodBerlinField { LBF_STATE, LBF_DEADLINE, LBF_HEIR, LBF_RETRY_TURN, LBF_COOLDOWN_END, NUM_LEKMOD_BERLIN_FIELDS };
+	enum LekmodBerlinState { LBS_WAITING, LBS_ANNOUNCED, LBS_HEIR };
+	std::vector<int> m_aiLekmodBerlin;
+	int& LekmodBerlin(int iField);
+	PlayerTypes LekmodBerlinMinor() const;
+	CvCity* LekmodBerlinCity() const;
+	void LekmodDoBerlin();
+	bool LekmodUseBerlinLegacy(PlayerTypes ePlayer, int iCityID);
 #endif
 	void LekmodMarkWonderTie(BuildingClassTypes eClass);
 	static void LekmodResetWonderTieData();

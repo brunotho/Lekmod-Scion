@@ -1852,6 +1852,15 @@ Diversify Spain and Australia's NW Discovery bonus
 // Shanghai's exhibition: +% Culture in every city of the winner for this many turns
 #define LEKMOD_EXHIBITION_CULTURE_PERCENT 30
 #define LEKMOD_EXHIBITION_TURNS 10
+// Berlin: the heir event (deadline after N turns, retry no sooner than N turns after a deadline nobody met), the ability (turns, cooldown)
+#define LEKMOD_BERLIN_DEADLINE_TURNS 7
+#define LEKMOD_BERLIN_RETRY_TURNS 3
+#define LEKMOD_BERLIN_LEGACY_TURNS 3
+#define LEKMOD_BERLIN_COOLDOWN_TURNS 20
+// Cambridge's research investment: a Great Work offered counts as this much Gold; payout after N turns: M turns of the winner's Science
+#define LEKMOD_CAMBRIDGE_GREAT_WORK_VALUE 400
+#define LEKMOD_CAMBRIDGE_PAYOUT_TURNS 10
+#define LEKMOD_CAMBRIDGE_SCIENCE_TURNS 5
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

@@ -6604,6 +6604,17 @@ int CvMinorCivAI::GetEffectiveFriendshipWithMajorTimes100(PlayerTypes ePlayer)
 	CvAssertMsg(ePlayer < MAX_MAJOR_CIVS, "ePlayer is expected to be within maximum bounds (invalid Index)");
 	if(ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS) return 0; // as defined during Reset()
 
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Cambridge's investment: the winner counts as having more Influence than anyone else (at least the ally threshold) until the payout
+	if (GC.getGame().LekmodCambridgeAlly(GetPlayer()->GetID()) == ePlayer && !IsAtWarWithPlayersTeam(ePlayer))
+	{
+		int iHighest = GetAlliesThreshold() * 100;
+		for (int iMajor = 0; iMajor < MAX_MAJOR_CIVS; iMajor++)
+			if (iMajor != (int)ePlayer)
+				iHighest = std::max(iHighest, GetEffectiveFriendshipWithMajorTimes100((PlayerTypes)iMajor) + 100);
+		return std::max(iHighest, GetBaseFriendshipWithMajorTimes100(ePlayer));
+	}
+#endif
 	// Are we at war?
 	if(IsAtWarWithPlayersTeam(ePlayer))
 		return (100 * /*-60*/GC.getMINOR_FRIENDSHIP_AT_WAR());

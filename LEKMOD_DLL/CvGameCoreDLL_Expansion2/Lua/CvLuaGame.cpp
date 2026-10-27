@@ -212,6 +212,7 @@ void CvLuaGame::RegisterMembers(lua_State* L)
 	Method(LekmodSetRegionalLuxury);
 	Method(LekmodIsRegionalLuxury);
 	Method(LekmodGetAuctions);
+	Method(LekmodGetBerlin);
 #endif
 #endif
 
@@ -1357,8 +1358,28 @@ int CvLuaGame::lLekmodGetAuctions(lua_State* L)
 		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_WINNER)); lua_setfield(L, -2, "Winner");
 		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_END_TURN)); lua_setfield(L, -2, "EndTurn");
 		lua_pushinteger(L, (iPlayer >= 0 && iPlayer < MAX_MAJOR_CIVS) ? kGame.LekmodAuction(iAuction, CvGame::LAF_BIDS + iPlayer) : 0); lua_setfield(L, -2, "MyBid");
+		lua_pushinteger(L, (iPlayer >= 0 && iPlayer < MAX_MAJOR_CIVS) ? kGame.LekmodCambridgeNumWorks((PlayerTypes)iPlayer) : 0); lua_setfield(L, -2, "MyWorks");
 		lua_rawseti(L, -2, iIndex++);
 	}
+	return 1;
+}
+// Game.LekmodGetBerlin(): {State (0 waiting, 1 announced, 2 heir chosen), Deadline, Heir, CooldownEnd, CityOwner, CityID}; nil without Berlin
+int CvLuaGame::lLekmodGetBerlin(lua_State* L)
+{
+	CvGame& kGame = GC.getGame();
+	if (kGame.LekmodBerlinMinor() == NO_PLAYER)
+	{
+		lua_pushnil(L);
+		return 1;
+	}
+	CvCity* pCity = kGame.LekmodBerlinCity();
+	lua_createtable(L, 0, 6);
+	lua_pushinteger(L, kGame.LekmodBerlin(CvGame::LBF_STATE)); lua_setfield(L, -2, "State");
+	lua_pushinteger(L, kGame.LekmodBerlin(CvGame::LBF_DEADLINE)); lua_setfield(L, -2, "Deadline");
+	lua_pushinteger(L, kGame.LekmodBerlin(CvGame::LBF_HEIR)); lua_setfield(L, -2, "Heir");
+	lua_pushinteger(L, kGame.LekmodBerlin(CvGame::LBF_COOLDOWN_END)); lua_setfield(L, -2, "CooldownEnd");
+	lua_pushinteger(L, pCity ? (int)pCity->getOwner() : -1); lua_setfield(L, -2, "CityOwner");
+	lua_pushinteger(L, pCity ? pCity->GetID() : -1); lua_setfield(L, -2, "CityID");
 	return 1;
 }
 int CvLuaGame::lLekmodIsRegionalLuxury(lua_State* L)

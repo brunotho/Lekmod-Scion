@@ -10,7 +10,30 @@ include("InstanceManager");
 local g_Instances = InstanceManager:new("AuctionInstance", "Root", Controls.AuctionStack);
 local g_iShownTurn = -1;
 local g_tSent = {}; -- auctions this machine already sent a bid for (until the bid arrives back)
-local g_aKinds = { [0] = "GREAT_WORKS", [1] = "EXHIBITION", [2] = "VETERAN_GENERAL" };
+local g_aKinds = { [0] = "GREAT_WORKS", [1] = "EXHIBITION", [2] = "VETERAN_GENERAL", [3] = "CAMBRIDGE" };
+local CAMBRIDGE = 3;
+local GREAT_WORK_VALUE = 400; -- LEKMOD_CAMBRIDGE_GREAT_WORK_VALUE
+local g_tWorkInstances = {}; -- per auction row: the instance manager of its Great Work list
+
+-- the active player's Great Works: { {Index, Name}, ... }
+local function MyGreatWorks()
+	local aWorks = {};
+	local pPlayer = Players[Game.GetActivePlayer()];
+	for pCity in pPlayer:Cities() do
+		for building in GameInfo.Buildings() do
+			if ((building.GreatWorkCount or 0) > 0 and pCity:IsHasBuilding(building.ID)) then
+				local iClass = GameInfo.BuildingClasses[building.BuildingClass].ID;
+				for iSlot = 0, building.GreatWorkCount - 1 do
+					local iWork = pCity:GetBuildingGreatWork(iClass, iSlot);
+					if (iWork ~= nil and iWork >= 0) then
+						table.insert(aWorks, { Index = iWork, Name = Game.GetGreatWorkName(iWork) .. " (" .. pCity:GetName() .. ")" });
+					end
+				end
+			end
+		end
+	end
+	return aWorks;
+end
 
 local function Close()
 	UIManager:DequeuePopup(ContextPtr);
@@ -45,10 +68,29 @@ local function Refresh()
 		local strMinor = Players[a.Minor]:GetCivilizationShortDescriptionKey();
 		inst.Heading:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_HEADING_" .. g_aKinds[a.Index], strMinor));
 		inst.Description:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_RULES_" .. g_aKinds[a.Index]));
+		-- Cambridge: Great Works to offer (400 Gold each)
+		local tChecks = {};
+		if (g_tWorkInstances[inst.WorkStack] == nil) then
+			g_tWorkInstances[inst.WorkStack] = InstanceManager:new("WorkInstance", "Check", inst.WorkStack);
+		end
+		local workIM = g_tWorkInstances[inst.WorkStack];
+		workIM:ResetInstances();
+		if (a.Index == CAMBRIDGE and a.MyBid <= 0 and g_tSent[a.Index] == nil and pPlayer:IsTurnActive()) then
+			for _, w in ipairs(MyGreatWorks()) do
+				local wi = workIM:GetInstance();
+				wi.Check:GetTextButton():SetText(w.Name);
+				wi.Check:SetCheck(false);
+				table.insert(tChecks, { Check = wi.Check, Index = w.Index });
+			end
+		end
+		inst.WorkStack:CalculateSize();
+		inst.WorkStack:ReprocessAnchoring();
 		local bBid = (a.MyBid > 0);
 		local bCanBid = (not bBid) and (g_tSent[a.Index] == nil) and pPlayer:IsTurnActive();
 		inst.BidRow:SetHide(not bCanBid);
-		if (bBid) then
+		if (bBid and a.Index == CAMBRIDGE) then
+			inst.Status:SetText(Locale.Lookup("TXT_KEY_LEKMOD_CAMBRIDGE_YOUR_OFFER", a.MyBid - a.MyWorks * GREAT_WORK_VALUE, a.MyWorks, a.MyBid));
+		elseif (bBid) then
 			inst.Status:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_YOUR_BID", a.MyBid));
 		elseif (g_tSent[a.Index] ~= nil) then
 			inst.Status:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_SENDING"));
@@ -59,11 +101,20 @@ local function Refresh()
 		inst.BidButton:RegisterCallback(Mouse.eLClick, function()
 			local iGold = tonumber(inst.BidEdit:GetText()) or 0;
 			iGold = math.floor(iGold);
-			if (iGold <= 0 or iGold > pPlayer:GetGold() or not pPlayer:IsTurnActive()) then
+			local aOffered = {};
+			for _, c in ipairs(tChecks) do
+				if (c.Check:IsChecked()) then
+					table.insert(aOffered, c.Index);
+				end
+			end
+			if (iGold < 0 or iGold > pPlayer:GetGold() or (iGold == 0 and #aOffered == 0) or not pPlayer:IsTurnActive()) then
 				inst.Status:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_BAD_BID", pPlayer:GetGold()));
 				return;
 			end
 			g_tSent[iAuction] = iGold;
+			for _, iWork in ipairs(aOffered) do
+				Network.SendGiftUnit(iWork, -28); -- Cambridge: held like the Gold, before the Gold message closes the offer
+			end
 			Network.SendGiftUnit(iGold * 4 + iAuction, -26);
 			Refresh();
 		end);

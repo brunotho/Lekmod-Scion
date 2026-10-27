@@ -311,6 +311,10 @@
     </Image>
     <Label Anchor="C,C" Offset="0,-2" String="TXT_KEY_CITYVIEW_BUY_TILE" Color0="255.255.200.255" Color1="0.0.0.128" Color2="255.255.200.255" Font="TwCenMT18" FontStyle="Shadow" ID="BuyPlotText"/>
   </GridButton>
+  <!-- LEKMOD_SPECIAL_CITY_STATES: BERLIN'S HEIR: CLAUSEWITZ'S LEGACY (above the liberate button) -->
+  <GridButton Anchor="C,B" Size="260,45" Offset="0,300" ID="LekmodBerlinButton" Style="BaseButton" Hidden="1">
+    <Label Anchor="C,C" Offset="0,-2" String="TXT_KEY_LEKMOD_BERLIN_BUTTON" Color0="255.255.200.255" Color1="0.0.0.128" Color2="255.255.200.255" Font="TwCenMT24" FontStyle="SoftShadow"/>
+  </GridButton>
   <!-- LEKMOD_SPECIAL_CITY_STATES: LIBERATE A CITY-STATE'S CITY (above the raze button) -->
   <GridButton Anchor="C,B" Size="160,45" Offset="0,250" ID="LekmodLiberateButton" Style="BaseButton" Hidden="1">
     <Label Anchor="C,C" Offset="0,-2" ID="LekmodLiberateLabel" String="TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TEXT" Color0="255.255.200.255" Color1="0.0.0.128" Color2="255.255.200.255" Font="TwCenMT24" FontStyle="SoftShadow"/>

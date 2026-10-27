@@ -754,6 +754,8 @@ void CvGame::InitPlayers()
 	// Seeded from the pregame seeds so that every machine draws the same.
 	m_aiLekmodRegionalLuxuries.clear();
 	m_aiLekmodAuctions.clear();
+	m_aiLekmodBerlin.clear();
+	m_aiLekmodCambridgeWorks.clear();
 	if(iNumMinors > 0)
 	{
 		CvRandom kRand;
@@ -8312,6 +8314,7 @@ int CvGame::LekmodAuctionKindForMinor(MinorCivTypes eMinorType, EraTypes& eFirst
 	if (strType == "MINOR_CIV_LEKMOD_STPETERSBURG") { iKind = LEKMOD_AUCTION_GREAT_WORKS; szFirst = "ERA_RENAISSANCE"; szLast = "ERA_MODERN"; }
 	else if (strType == "MINOR_CIV_LEKMOD_SHANGHAI") { iKind = LEKMOD_AUCTION_EXHIBITION; szFirst = "ERA_RENAISSANCE"; szLast = "ERA_MODERN"; }
 	else if (strType == "MINOR_CIV_LEKMOD_SPARTA") { iKind = LEKMOD_AUCTION_VETERAN_GENERAL; szFirst = "ERA_CLASSICAL"; szLast = "ERA_RENAISSANCE"; }
+	else if (strType == "MINOR_CIV_LEKMOD_CAMBRIDGE") { iKind = LEKMOD_AUCTION_CAMBRIDGE; szFirst = "ERA_INDUSTRIAL"; szLast = "ERA_MODERN"; }
 	if (iKind == -1)
 		return -1;
 	eFirstEra = (EraTypes)GC.getInfoTypeForString(szFirst, true);
@@ -8380,9 +8383,108 @@ bool CvGame::LekmodGiveGreatWork(PlayerTypes ePlayer)
 	}
 	return false;
 }
+int CvGame::LekmodCambridgeNumWorks(PlayerTypes ePlayer) const
+{
+	int iCount = 0;
+	for (uint i = 0; i + 1 < m_aiLekmodCambridgeWorks.size(); i += 2)
+		if (m_aiLekmodCambridgeWorks[i] == (int)ePlayer)
+			iCount++;
+	return iCount;
+}
+// A Great Work the player owns leaves its slot and is held for Cambridge's investment (before the Gold part of the offer)
+bool CvGame::LekmodOfferGreatWork(PlayerTypes ePlayer, int iWork)
+{
+	const int iAuction = LEKMOD_AUCTION_CAMBRIDGE;
+	if (ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS || !GET_PLAYER(ePlayer).isAlive() || !GET_PLAYER(ePlayer).isHuman())
+		return false;
+	if (LekmodAuction(iAuction, LAF_STATE) != LAS_OPEN || LekmodAuction(iAuction, LAF_OPEN_TURN) != getGameTurn() || LekmodAuction(iAuction, LAF_BIDS + ePlayer) > 0)
+		return false;
+	CvPlayer& kPlayer = GET_PLAYER(ePlayer);
+	int iLoop;
+	for (CvCity* pCity = kPlayer.firstCity(&iLoop); pCity != NULL; pCity = kPlayer.nextCity(&iLoop))
+	{
+		for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+		{
+			const BuildingTypes eBuilding = (BuildingTypes)iBuilding;
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
+			if (pkBuilding == NULL || pkBuilding->GetGreatWorkCount() <= 0 || pCity->GetCityBuildings()->GetNumBuilding(eBuilding) <= 0)
+				continue;
+			const int iBuildingClass = pkBuilding->GetBuildingClassType();
+			for (int iSlot = 0; iSlot < pkBuilding->GetGreatWorkCount(); iSlot++)
+			{
+				if (pCity->GetCityBuildings()->GetBuildingGreatWork((BuildingClassTypes)iBuildingClass, iSlot) == iWork)
+				{
+					pCity->GetCityBuildings()->SetBuildingGreatWork((BuildingClassTypes)iBuildingClass, iSlot, NO_GREAT_WORK);
+					m_aiLekmodCambridgeWorks.push_back((int)ePlayer);
+					m_aiLekmodCambridgeWorks.push_back(iWork);
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+// Cambridge: the player's held Great Works go back into free slots (bReturn) or are given up (the winner)
+void CvGame::LekmodReturnCambridgeWorks(PlayerTypes ePlayer, bool bReturn)
+{
+	std::vector<int> aiKeep;
+	CvPlayer& kPlayer = GET_PLAYER(ePlayer);
+	for (uint i = 0; i + 1 < m_aiLekmodCambridgeWorks.size(); i += 2)
+	{
+		if (m_aiLekmodCambridgeWorks[i] != (int)ePlayer)
+		{
+			aiKeep.push_back(m_aiLekmodCambridgeWorks[i]);
+			aiKeep.push_back(m_aiLekmodCambridgeWorks[i + 1]);
+			continue;
+		}
+		const int iWork = m_aiLekmodCambridgeWorks[i + 1];
+		CvCity* pCapital = kPlayer.getCapitalCity();
+		if (!bReturn || pCapital == NULL || !kPlayer.isAlive())
+			continue;
+		BuildingClassTypes eBuildingClass = NO_BUILDINGCLASS;
+		int iSlot = -1;
+		const GreatWorkSlotType eSlotType = CultureHelpers::GetGreatWorkSlot(GetGameCulture()->GetGreatWorkType(iWork));
+		CvCity* pCity = kPlayer.GetCulture()->GetClosestAvailableGreatWorkSlot(pCapital->getX(), pCapital->getY(), eSlotType, &eBuildingClass, &iSlot);
+		if (pCity != NULL)
+			pCity->GetCityBuildings()->SetBuildingGreatWork(eBuildingClass, iSlot, iWork);
+	}
+	m_aiLekmodCambridgeWorks = aiKeep;
+}
+// The winner of Cambridge's investment is its ally until the payout (CvMinorCivAI::GetEffectiveFriendshipWithMajorTimes100)
+PlayerTypes CvGame::LekmodCambridgeAlly(PlayerTypes eMinor)
+{
+	const int iAuction = LEKMOD_AUCTION_CAMBRIDGE;
+	if ((int)m_aiLekmodAuctions.size() < NUM_LEKMOD_AUCTIONS * LEKMOD_AUCTION_STRIDE)
+		return NO_PLAYER;
+	if (LekmodAuction(iAuction, LAF_STATE) != LAS_DONE || LekmodAuction(iAuction, LAF_MINOR) != (int)eMinor || LekmodAuction(iAuction, LAF_END_TURN) <= 0)
+		return NO_PLAYER;
+	const int iWinner = LekmodAuction(iAuction, LAF_WINNER);
+	return (iWinner >= 0 && iWinner < MAX_MAJOR_CIVS) ? (PlayerTypes)iWinner : NO_PLAYER;
+}
+// Start (payout turn set) or end (payout turn cleared) the ally lock, and let the City-State re-evaluate its friends and ally
+void CvGame::LekmodSetCambridgeLock(bool bOn)
+{
+	const int iAuction = LEKMOD_AUCTION_CAMBRIDGE;
+	const PlayerTypes eMinor = (PlayerTypes)LekmodAuction(iAuction, LAF_MINOR);
+	const int iWinner = LekmodAuction(iAuction, LAF_WINNER);
+	if (iWinner < 0 || iWinner >= MAX_MAJOR_CIVS || eMinor < MAX_MAJOR_CIVS || eMinor >= MAX_CIV_PLAYERS)
+		return;
+	CvMinorCivAI* pMinorAI = GET_PLAYER(eMinor).GetMinorCivAI();
+	const int iBefore = pMinorAI->GetEffectiveFriendshipWithMajor((PlayerTypes)iWinner);
+	if (bOn)
+		LekmodAuction(iAuction, LAF_END_TURN) = getGameTurn() + LEKMOD_CAMBRIDGE_PAYOUT_TURNS;
+	else
+		LekmodAuction(iAuction, LAF_END_TURN) = 0;
+	const int iAfter = pMinorAI->GetEffectiveFriendshipWithMajor((PlayerTypes)iWinner);
+	if (GET_PLAYER(eMinor).isAlive() && iBefore != iAfter)
+		pMinorAI->DoFriendshipChangeEffects((PlayerTypes)iWinner, iBefore, iAfter);
+}
 bool CvGame::LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold)
 {
-	if (iAuction < 0 || iAuction >= NUM_LEKMOD_AUCTIONS || ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS || iGold <= 0)
+	if (iAuction < 0 || iAuction >= NUM_LEKMOD_AUCTIONS || ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS || iGold < 0)
+		return false;
+	const int iWorkValue = (iAuction == LEKMOD_AUCTION_CAMBRIDGE) ? LekmodCambridgeNumWorks(ePlayer) * LEKMOD_CAMBRIDGE_GREAT_WORK_VALUE : 0;
+	if (iGold + iWorkValue <= 0)
 		return false;
 	CvPlayer& kPlayer = GET_PLAYER(ePlayer);
 	if (!kPlayer.isAlive() || !kPlayer.isHuman()) // AIs never bid
@@ -8393,7 +8495,7 @@ bool CvGame::LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold)
 		return false;
 	const int iMinor = LekmodAuction(iAuction, LAF_MINOR);
 	kPlayer.GetTreasury()->ChangeGold(-iGold); // held until the result
-	LekmodAuction(iAuction, LAF_BIDS + ePlayer) = iGold;
+	LekmodAuction(iAuction, LAF_BIDS + ePlayer) = iGold + iWorkValue;
 	LekmodAuction(iAuction, LAF_INFLUENCE + ePlayer) = (iMinor >= MAX_MAJOR_CIVS && iMinor < MAX_CIV_PLAYERS) ? GET_PLAYER((PlayerTypes)iMinor).GetMinorCivAI()->GetEffectiveFriendshipWithMajor(ePlayer) : 0;
 	return true;
 }
@@ -8419,6 +8521,33 @@ void CvGame::LekmodDoAuctions()
 				LekmodAuctionNotify((PlayerTypes)iWinner, iMinor, strMessage.toUTF8(), strSummary.toUTF8());
 			}
 		}
+		// Cambridge's payout
+		if (iAuction == LEKMOD_AUCTION_CAMBRIDGE && LekmodAuction(iAuction, LAF_STATE) == LAS_DONE && LekmodAuction(iAuction, LAF_END_TURN) > 0 && LekmodAuction(iAuction, LAF_END_TURN) <= iTurn)
+		{
+			const int iWinner = LekmodAuction(iAuction, LAF_WINNER);
+			CvCity* pCambridge = (iMinor >= MAX_MAJOR_CIVS && iMinor < MAX_CIV_PLAYERS) ? GET_PLAYER((PlayerTypes)iMinor).getCapitalCity() : NULL;
+			const bool bSafe = (pCambridge != NULL && GET_PLAYER((PlayerTypes)iMinor).isAlive());
+			LekmodSetCambridgeLock(false);
+			if (iWinner >= 0 && iWinner < MAX_MAJOR_CIVS && GET_PLAYER((PlayerTypes)iWinner).isAlive())
+			{
+				CvPlayer& kWinner = GET_PLAYER((PlayerTypes)iWinner);
+				int iScience = 0;
+				if (bSafe)
+				{
+					iScience = kWinner.GetScienceYieldFromPreviousTurns(iTurn, LEKMOD_CAMBRIDGE_SCIENCE_TURNS);
+					const TechTypes eTech = kWinner.GetPlayerTechs()->GetCurrentResearch();
+					if (eTech == NO_TECH)
+						kWinner.changeOverflowResearch(iScience);
+					else
+						GET_TEAM(kWinner.getTeam()).GetTeamTechs()->ChangeResearchProgress(eTech, iScience, (PlayerTypes)iWinner);
+				}
+				Localization::String strMessage = Localization::Lookup(bSafe ? "TXT_KEY_LEKMOD_CAMBRIDGE_PAYOUT" : "TXT_KEY_LEKMOD_CAMBRIDGE_LOST");
+				strMessage << szMinorKey << iScience;
+				Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_AUCTION_SUMMARY");
+				strSummary << szMinorKey;
+				LekmodAuctionNotify((PlayerTypes)iWinner, iMinor, strMessage.toUTF8(), strSummary.toUTF8());
+			}
+		}
 		if (LekmodAuction(iAuction, LAF_STATE) != LAS_OPEN || LekmodAuction(iAuction, LAF_OPEN_TURN) >= iTurn)
 			continue;
 		// resolve: the highest bid among the living bidders
@@ -8435,12 +8564,24 @@ void CvGame::LekmodDoAuctions()
 		}
 		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_AUCTION_SUMMARY");
 		strSummary << szMinorKey;
+		if (aiTop.empty() && iAuction == LEKMOD_AUCTION_CAMBRIDGE)
+		{
+			for (int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
+				if (LekmodCambridgeNumWorks((PlayerTypes)iPlayer) > 0)
+					LekmodReturnCambridgeWorks((PlayerTypes)iPlayer, true);
+		}
 		if (aiTop.empty())
 		{
 			Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_AUCTION_NO_BIDS");
 			strMessage << szMinorKey;
 			LekmodAuctionNotify(NO_PLAYER, iMinor, strMessage.toUTF8(), strSummary.toUTF8());
 			continue;
+		}
+		if (iAuction == LEKMOD_AUCTION_CAMBRIDGE)
+		{
+			for (int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
+				if (LekmodAuction(iAuction, LAF_BIDS + iPlayer) <= 0 && LekmodCambridgeNumWorks((PlayerTypes)iPlayer) > 0)
+					LekmodReturnCambridgeWorks((PlayerTypes)iPlayer, true);
 		}
 		// St. Petersburg with a tie for first: every tied bidder gets one Great Work and 67% back
 		const bool bSharedFirst = (iAuction == LEKMOD_AUCTION_GREAT_WORKS && aiTop.size() > 1);
@@ -8487,6 +8628,11 @@ void CvGame::LekmodDoAuctions()
 					kBidder.ChangeJONSCultureCityModifier(LEKMOD_EXHIBITION_CULTURE_PERCENT);
 					LekmodAuction(iAuction, LAF_END_TURN) = iTurn + LEKMOD_EXHIBITION_TURNS;
 				}
+				else if (iAuction == LEKMOD_AUCTION_CAMBRIDGE)
+				{
+					LekmodReturnCambridgeWorks((PlayerTypes)iPlayer, false); // given to Cambridge
+					LekmodSetCambridgeLock(true);
+				}
 				else if (iAuction == LEKMOD_AUCTION_VETERAN_GENERAL)
 				{
 					const BuildingTypes eGeneral = (BuildingTypes)GC.getInfoTypeForString("BUILDING_LEKMOD_VETERAN_GENERAL", true);
@@ -8494,11 +8640,16 @@ void CvGame::LekmodDoAuctions()
 						kBidder.getCapitalCity()->GetCityBuildings()->SetNumRealBuilding(eGeneral, 1);
 				}
 			}
+			else if (iAuction == LEKMOD_AUCTION_CAMBRIDGE)
+			{
+				iRefund = iBid - LekmodCambridgeNumWorks((PlayerTypes)iPlayer) * LEKMOD_CAMBRIDGE_GREAT_WORK_VALUE;
+				LekmodReturnCambridgeWorks((PlayerTypes)iPlayer, true);
+			}
 			else
 				iRefund = (iAuction == LEKMOD_AUCTION_GREAT_WORKS) ? iBid * 90 / 100 : iBid;
 			if (iRefund > 0)
 				kBidder.GetTreasury()->ChangeGold(iRefund);
-			Localization::String strMessage = Localization::Lookup(bWon ? (iAuction == LEKMOD_AUCTION_GREAT_WORKS ? "TXT_KEY_LEKMOD_AUCTION_YOU_WON_WORKS" : "TXT_KEY_LEKMOD_AUCTION_YOU_WON") : "TXT_KEY_LEKMOD_AUCTION_YOU_LOST");
+			Localization::String strMessage = Localization::Lookup(bWon ? (iAuction == LEKMOD_AUCTION_GREAT_WORKS ? "TXT_KEY_LEKMOD_AUCTION_YOU_WON_WORKS" : (iAuction == LEKMOD_AUCTION_CAMBRIDGE ? "TXT_KEY_LEKMOD_CAMBRIDGE_YOU_WON" : "TXT_KEY_LEKMOD_AUCTION_YOU_WON")) : (iAuction == LEKMOD_AUCTION_CAMBRIDGE ? "TXT_KEY_LEKMOD_CAMBRIDGE_YOU_LOST" : "TXT_KEY_LEKMOD_AUCTION_YOU_LOST"));
 			strMessage << szMinorKey << iBid << iRefund << iWorks;
 			LekmodAuctionNotify((PlayerTypes)iPlayer, iMinor, strMessage.toUTF8(), strSummary.toUTF8());
 		}
@@ -8539,13 +8690,116 @@ void CvGame::LekmodDoAuctions()
 			LekmodAuction(iAuction, LAF_BIDS + iPlayer) = 0;
 			LekmodAuction(iAuction, LAF_INFLUENCE + iPlayer) = 0;
 		}
-		const char* aszOpen[3] = { "TXT_KEY_LEKMOD_AUCTION_OPEN_GREAT_WORKS", "TXT_KEY_LEKMOD_AUCTION_OPEN_EXHIBITION", "TXT_KEY_LEKMOD_AUCTION_OPEN_VETERAN_GENERAL" };
+		const char* aszOpen[NUM_LEKMOD_AUCTIONS] = { "TXT_KEY_LEKMOD_AUCTION_OPEN_GREAT_WORKS", "TXT_KEY_LEKMOD_AUCTION_OPEN_EXHIBITION", "TXT_KEY_LEKMOD_AUCTION_OPEN_VETERAN_GENERAL", "TXT_KEY_LEKMOD_AUCTION_OPEN_CAMBRIDGE" };
 		Localization::String strMessage = Localization::Lookup(aszOpen[iAuction]);
 		strMessage << kMinor.getNameKey();
 		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_AUCTION_SUMMARY");
 		strSummary << kMinor.getNameKey();
 		LekmodAuctionNotify(NO_PLAYER, iMinor, strMessage.toUTF8(), strSummary.toUTF8());
 	}
+}
+int& CvGame::LekmodBerlin(int iField)
+{
+	if ((int)m_aiLekmodBerlin.size() < NUM_LEKMOD_BERLIN_FIELDS)
+	{
+		m_aiLekmodBerlin.resize(NUM_LEKMOD_BERLIN_FIELDS, 0);
+		m_aiLekmodBerlin[LBF_HEIR] = -1;
+	}
+	return m_aiLekmodBerlin[iField];
+}
+// The player slot of Berlin in this game (alive or not), NO_PLAYER without Berlin
+PlayerTypes CvGame::LekmodBerlinMinor() const
+{
+	for (int iMinor = MAX_MAJOR_CIVS; iMinor < MAX_CIV_PLAYERS; iMinor++)
+	{
+		if (!GET_PLAYER((PlayerTypes)iMinor).isMinorCiv())
+			continue;
+		CvMinorCivInfo* pkInfo = GC.getMinorCivInfo(CvPreGame::minorCivType((PlayerTypes)iMinor));
+		if (pkInfo != NULL && CvString(pkInfo->GetType()) == "MINOR_CIV_LEKMOD_BERLIN")
+			return (PlayerTypes)iMinor;
+	}
+	return NO_PLAYER;
+}
+// Berlin's city, whoever holds it now
+CvCity* CvGame::LekmodBerlinCity() const
+{
+	const PlayerTypes eBerlin = LekmodBerlinMinor();
+	if (eBerlin == NO_PLAYER)
+		return NULL;
+	for (int iPlayer = 0; iPlayer < MAX_CIV_PLAYERS; iPlayer++)
+	{
+		CvPlayer& kPlayer = GET_PLAYER((PlayerTypes)iPlayer);
+		if (!kPlayer.isAlive())
+			continue;
+		int iLoop;
+		for (CvCity* pCity = kPlayer.firstCity(&iLoop); pCity != NULL; pCity = kPlayer.nextCity(&iLoop))
+			if (pCity->getOriginalOwner() == eBerlin)
+				return pCity;
+	}
+	return NULL;
+}
+// Once per game turn: the heir event (3% per turn in the Industrial to Information Era, deadline 7 turns later; whoever holds Berlin then is the heir)
+void CvGame::LekmodDoBerlin()
+{
+	const PlayerTypes eBerlin = LekmodBerlinMinor();
+	if (eBerlin == NO_PLAYER)
+		return;
+	const int iTurn = getGameTurn();
+	CvCity* pCity = LekmodBerlinCity();
+	const char* szCity = pCity ? pCity->getNameKey() : GET_PLAYER(eBerlin).getNameKey();
+	Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_SUMMARY");
+	if (LekmodBerlin(LBF_STATE) == LBS_WAITING)
+	{
+		const EraTypes eEra = LekmodGetSpecialCityStateEra();
+		const EraTypes eFirst = (EraTypes)GC.getInfoTypeForString("ERA_INDUSTRIAL", true);
+		const EraTypes eLast = (EraTypes)GC.getInfoTypeForString("ERA_FUTURE", true); // the Information Era
+		if (pCity == NULL || eEra < eFirst || eEra > eLast || iTurn < LekmodBerlin(LBF_RETRY_TURN))
+			return;
+		if (getJonRandNum(100, "Lekmod Berlin event") >= LEKMOD_AUCTION_CHANCE_PERCENT)
+			return;
+		LekmodBerlin(LBF_STATE) = LBS_ANNOUNCED;
+		LekmodBerlin(LBF_DEADLINE) = iTurn + LEKMOD_BERLIN_DEADLINE_TURNS;
+		Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_ANNOUNCED");
+		strMessage << szCity << LekmodBerlin(LBF_DEADLINE);
+		LekmodAuctionNotify(NO_PLAYER, eBerlin, strMessage.toUTF8(), strSummary.toUTF8());
+	}
+	else if (LekmodBerlin(LBF_STATE) == LBS_ANNOUNCED && iTurn >= LekmodBerlin(LBF_DEADLINE))
+	{
+		const PlayerTypes eHolder = pCity ? pCity->getOwner() : NO_PLAYER;
+		if (eHolder != NO_PLAYER && eHolder < MAX_MAJOR_CIVS)
+		{
+			LekmodBerlin(LBF_STATE) = LBS_HEIR;
+			LekmodBerlin(LBF_HEIR) = eHolder;
+			Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_HEIR");
+			strMessage << szCity << GET_PLAYER(eHolder).getCivilizationShortDescriptionKey();
+			LekmodAuctionNotify(NO_PLAYER, eBerlin, strMessage.toUTF8(), strSummary.toUTF8());
+		}
+		else
+		{
+			LekmodBerlin(LBF_STATE) = LBS_WAITING;
+			LekmodBerlin(LBF_RETRY_TURN) = LekmodBerlin(LBF_DEADLINE) + LEKMOD_BERLIN_RETRY_TURNS;
+			Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_NO_HEIR");
+			strMessage << szCity;
+			LekmodAuctionNotify(NO_PLAYER, eBerlin, strMessage.toUTF8(), strSummary.toUTF8());
+		}
+	}
+}
+// The heir uses the ability from Berlin's city screen: the temporary attack bonus of Clausewitz's Legacy for 3 more turns
+// (the same bonus as the policy, so the strength never adds up, the turns do); 20 turns cooldown kept by the city
+bool CvGame::LekmodUseBerlinLegacy(PlayerTypes ePlayer, int iCityID)
+{
+	CvCity* pCity = LekmodBerlinCity();
+	if (pCity == NULL || pCity->getOwner() != ePlayer || pCity->GetID() != iCityID)
+		return false;
+	if (LekmodBerlin(LBF_STATE) != LBS_HEIR || LekmodBerlin(LBF_HEIR) != (int)ePlayer || getGameTurn() < LekmodBerlin(LBF_COOLDOWN_END))
+		return false;
+	GET_PLAYER(ePlayer).ChangeAttackBonusTurns(LEKMOD_BERLIN_LEGACY_TURNS);
+	LekmodBerlin(LBF_COOLDOWN_END) = getGameTurn() + LEKMOD_BERLIN_COOLDOWN_TURNS;
+	Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_USED");
+	strMessage << LEKMOD_BERLIN_LEGACY_TURNS;
+	Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_SUMMARY");
+	LekmodAuctionNotify(ePlayer, pCity->getOwner(), strMessage.toUTF8(), strSummary.toUTF8());
+	return true;
 }
 void CvGame::LekmodSetRegionalLuxury(ResourceTypes eResource)
 {
@@ -8969,6 +9223,7 @@ void CvGame::doTurn()
 	incrementElapsedGameTurns();
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	LekmodDoAuctions();
+	LekmodDoBerlin();
 #endif
 #ifdef AVOID_UNIT_SPLIT_MID_TURN
 	for (iI = 0; iI < MAX_PLAYERS; iI++)
@@ -11450,6 +11705,8 @@ void CvGame::Read(FDataStream& kStream)
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	kStream >> m_aiLekmodRegionalLuxuries;
 	kStream >> m_aiLekmodAuctions;
+	kStream >> m_aiLekmodBerlin;
+	kStream >> m_aiLekmodCambridgeWorks;
 #endif
 
 	//when loading from file, we need to reset m_lastTurnAICivsProcessed 
@@ -11685,6 +11942,8 @@ void CvGame::Write(FDataStream& kStream) const
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	kStream << m_aiLekmodRegionalLuxuries;
 	kStream << m_aiLekmodAuctions;
+	kStream << m_aiLekmodBerlin;
+	kStream << m_aiLekmodCambridgeWorks;
 #endif
 }
 

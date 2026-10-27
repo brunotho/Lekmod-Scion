@@ -928,6 +928,15 @@ void CvDllNetMessageHandler::ResponseGiftUnit(PlayerTypes ePlayer, PlayerTypes e
 		GC.getGame().LekmodPlaceBid(ePlayer, ((int)eMinor) % 4, ((int)eMinor) / 4);
 		GC.GetEngineUserInterface()->setDirty(GameData_DIRTY_BIT, true);
 		return;
+	case -28: // Cambridge: offer a Great Work (eMinor = its index); the Gold message (-26) follows and closes the offer
+		if (GC.getGame().LekmodOfferGreatWork(ePlayer, (int)eMinor))
+			GC.GetEngineUserInterface()->setDirty(GreatWorksScreen_DIRTY_BIT, true);
+		GC.GetEngineUserInterface()->setDirty(GameData_DIRTY_BIT, true);
+		return;
+	case -27: // Berlin: the heir uses Clausewitz's Legacy (eMinor = Berlin's city ID)
+		if (GC.getGame().LekmodUseBerlinLegacy(ePlayer, (int)eMinor))
+			GC.GetEngineUserInterface()->setDirty(CityInfo_DIRTY_BIT, true);
+		return;
 #endif
 	default:
 		break;

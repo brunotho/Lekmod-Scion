@@ -148783,6 +148783,60 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Auction running: place a bid</Text>
 		</Row>
 	</Language_en_US>
+	<!-- LEKMOD: Special City-States step 4 (2026-10-28): Berlin -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_SUMMARY">
+			<Text>Clausewitz's Legacy</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_ANNOUNCED">
+			<Text>Clausewitz's unfinished work is about to be published in {1_City}: whoever holds the city at the start of turn {2_Num} becomes his heir for the rest of the game.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_HEIR">
+			<Text>{2_Civ} held {1_City} and is now Clausewitz's heir.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_NO_HEIR">
+			<Text>Nobody held {1_City} in time: Clausewitz's legacy waits for another chance.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_USED">
+			<Text>Clausewitz's Legacy: your melee attacks get +25% [ICON_STRENGTH] Combat Strength for {1_Num} more turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON">
+			<Text>Clausewitz's Legacy</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_TT">
+			<Text>Your melee attacks get +25% [ICON_STRENGTH] Combat Strength for 3 turns (melee, gunpowder, armored, mounted melee and naval melee units).[NEWLINE]It does not add to the same bonus from the Clausewitz's Legacy policy or the Clausewitz Book Club; the turns add up.[NEWLINE][NEWLINE]Can be used again after 20 turns. Only while you hold Berlin.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_WAIT">
+			<Text>Ready again in {1_Num} turns.</Text>
+		</Row>
+	</Language_en_US>
+	<!-- LEKMOD: Special City-States step 5 (2026-10-28): Cambridge -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_OPEN_CAMBRIDGE">
+			<Text>Cambridge asks for a research endowment: offer [ICON_GOLD] Gold and Great Works (worth 400 Gold each) this turn; the highest offer is announced at the start of the next turn.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_HEADING_CAMBRIDGE">
+			<Text>{1_CityState}: research endowment</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_RULES_CAMBRIDGE">
+			<Text>One sealed offer per civilization: Gold and/or Great Works (each counts as 400 Gold). Both are held right away until the result next turn.[NEWLINE]The highest offer wins and pays everything it offered; a tie goes to the civilization with more [ICON_INFLUENCE] Influence with Cambridge when it offered, then to chance. Everyone else gets their Gold and Great Works back.[NEWLINE]For 10 turns the winner is Cambridge's ally whatever the Influence. After that it gets 5 turns of its [ICON_RESEARCH] Science, but only if Cambridge was not captured in the meantime.[NEWLINE][NEWLINE]Tick the Great Works to offer, enter the Gold (0 is fine with works), press Bid.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_YOUR_OFFER">
+			<Text>Your sealed offer: {1_Num} [ICON_GOLD] Gold and {2_Num} Great Works, worth {3_Num} Gold (held until the result next turn).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_YOU_WON">
+			<Text>Your endowment of {2_Num} (Gold and Great Works) won Cambridge's favour: you are its ally for 10 turns, then you get 5 turns of [ICON_RESEARCH] Science if Cambridge is still independent.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_YOU_LOST">
+			<Text>Your offer to {1_CityState} did not win: your {3_Num} [ICON_GOLD] Gold and your Great Works came back (Great Works only where a slot was free).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_PAYOUT">
+			<Text>The research you endowed in {1_CityState} pays off: +{2_Num} [ICON_RESEARCH] Science.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_LOST">
+			<Text>{1_CityState} was captured before your endowment paid off: the Science is lost.</Text>
+		</Row>
+	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
 	<Language_RU_RU>

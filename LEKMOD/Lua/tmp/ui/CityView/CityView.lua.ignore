@@ -1633,6 +1633,7 @@ function OnCityViewUpdate()
 
 		-- LEKMOD_SPECIAL_CITY_STATES: Liberate a City-State's city you hold (also one you conquered yourself)
 		LekmodUpdateLiberateButton(pCity);
+		LekmodUpdateBerlinButton(pCity);
 
 		-- Stop city razing
 		if (pCity:IsRazing()) then
@@ -2501,6 +2502,37 @@ Controls.ReturnToMapButton:RegisterCallback( Mouse.eLClick, OnReturnToMapButton)
 
 -------------------------------------------------
 -------------------------------------------------
+-- LEKMOD_SPECIAL_CITY_STATES: Berlin's heir uses Clausewitz's Legacy here (Game.LekmodGetBerlin, network code -27)
+function LekmodUpdateBerlinButton(pCity)
+	if (Controls.LekmodBerlinButton == nil) then
+		return;
+	end
+	local berlin = (Game.LekmodGetBerlin ~= nil) and Game.LekmodGetBerlin() or nil;
+	local iPlayer = Game.GetActivePlayer();
+	if (pCity == nil or berlin == nil or berlin.State ~= 2 or berlin.Heir ~= iPlayer or berlin.CityOwner ~= iPlayer or berlin.CityID ~= pCity:GetID() or pCity:GetOwner() ~= iPlayer) then
+		Controls.LekmodBerlinButton:SetHide(true);
+		return;
+	end
+	Controls.LekmodBerlinButton:SetHide(false);
+	local iWait = berlin.CooldownEnd - Game.GetGameTurn();
+	local strTT = Locale.ConvertTextKey("TXT_KEY_LEKMOD_BERLIN_BUTTON_TT");
+	if (iWait > 0) then
+		strTT = strTT .. "[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BERLIN_BUTTON_WAIT", iWait) .. "[ENDCOLOR]";
+	end
+	Controls.LekmodBerlinButton:SetDisabled(iWait > 0 or not Players[iPlayer]:IsTurnActive());
+	Controls.LekmodBerlinButton:SetToolTipString(strTT);
+end
+function OnLekmodBerlinButton()
+	local pCity = UI.GetHeadSelectedCity();
+	if (pCity ~= nil and Players[Game.GetActivePlayer()]:IsTurnActive()) then
+		Network.SendGiftUnit(pCity:GetID(), -27);
+		Controls.LekmodBerlinButton:SetDisabled(true);
+	end
+end
+if (Controls.LekmodBerlinButton ~= nil) then
+	Controls.LekmodBerlinButton:RegisterCallback(Mouse.eLClick, OnLekmodBerlinButton);
+end
+
 -- LEKMOD_SPECIAL_CITY_STATES: Liberate button. Two clicks: the first one asks for confirmation.
 local g_iLekmodLiberateConfirmCity = -1;
 function LekmodLiberateTarget(pCity)
