@@ -148083,7 +148083,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>{1_Improvement} can't be built on this tile.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_TRAIT_SWISS_BANKS_DESC">
-			<Text>Other players can't see your [ICON_GOLD] Gold: it shows as "?" in the trade screen, and the Demographics of other players leave you out of the [ICON_GOLD] Gold row.[NEWLINE][NEWLINE]Each of your World Congress proposals that passed gives you 2 Delegates instead of 1.[NEWLINE][NEWLINE]No unit maintenance while you are not at war with any civilization or City-State.[NEWLINE][NEWLINE]Mints, Markets, Banks and Stock Exchanges yield +1 [ICON_CULTURE] Culture and +1 [ICON_RESEARCH] Science.</Text>
+			<Text>Other players can't see your [ICON_GOLD] Gold: it shows as "?" in the trade screen.[NEWLINE][NEWLINE]Each of your World Congress proposals that passed gives you 2 Delegates instead of 1.[NEWLINE][NEWLINE]No unit maintenance while you are not at war with any civilization or City-State.[NEWLINE][NEWLINE]Mints, Markets, Banks and Stock Exchanges yield +1 [ICON_CULTURE] Culture and +1 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SWISS_SKI_RESORT_HELP">
 			<Text>Replaces the Stadium. Costs less, needs no [ICON_GOLD] Gold maintenance and no Zoo; available with Electricity (instead of Refrigeration).[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_HAPPINESS_1] Happiness (instead of +2).[NEWLINE]Mountain tiles worked by the city yield +5 [ICON_CULTURE] Culture, +5 [ICON_GOLD] Gold and +5 [ICON_TOURISM] Tourism.</Text>

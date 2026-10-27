@@ -33,6 +33,11 @@ Tags: bugfix, ui
 - Fixed: the map options next to the minimap work again: they showed the strategic view's options, and the trade route and promotion options were missing
 - Dev: CheckBox has no SetText; labels go through GetTextButton() (the error stopped MiniMapPanel.lua at load)
 
+SWITZERLAND (CIVILIZATION_SWISS)
+--------------------------------
+Tags: civs
+- Changed: UA: other players' Demographics include your Gold again; only your Gold total stays hidden ("?") in the trade screen
+
 GEM CUTTER (BUILDING_GEMCUTTER)
 -------------------------------
 Tags: buildings

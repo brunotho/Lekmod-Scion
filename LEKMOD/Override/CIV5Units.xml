@@ -210891,7 +210891,7 @@
 		<Column name="LekmodNoUnitCostAtPeace" type="integer" default="0"/>
 		<Column name="LekmodAllPantheons" type="integer" default="0"/>
 		<Column name="LekmodKeepFeatureOnBuild" type="text" reference="Features(Type)" default="NULL"/>
-		<Column name="LekmodHiddenGold" type="integer" default="0"/> <!-- Lua only: Demographics and the trade screen hide this player's Gold from others -->
+		<Column name="LekmodHiddenGold" type="integer" default="0"/> <!-- Lua only: the trade screen hides this player's Gold total from others -->
 		<Column name="LekmodOceanWithoutAstronomy" type="integer" default="0"/>
 		<Column name="LekmodFoundClaimResource" type="text" reference="Resources(Type)" default="NULL"/>
 		<Column name="LekmodFoundClaimResourceRange" type="integer" default="0"/>

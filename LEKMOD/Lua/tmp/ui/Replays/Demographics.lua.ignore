@@ -15,23 +15,6 @@ local m_LiteracyTable = {};
 
 local m_bIsEndGame = (ContextPtr:GetID() == "EndGameDemographics");
 
--- LEKMOD: Switzerland hides its Gold from other players (Traits.LekmodHiddenGold): their Gold row leaves it out
-local m_bLekmodGoldRow = false;
-function LekmodHidesGold( iPlayer )
-	if m_bIsEndGame or iPlayer == Game.GetActivePlayer() then return false end
-	local pPlayer = Players[iPlayer]
-	if pPlayer == nil then return false end
-	local pLeader = GameInfo.Leaders[pPlayer:GetLeaderType()]
-	if pLeader == nil then return false end
-	for row in GameInfo.Leader_Traits{ LeaderType = pLeader.Type } do
-		local pTrait = GameInfo.Traits[row.TraitType]
-		if pTrait ~= nil and pTrait.LekmodHiddenGold ~= nil and pTrait.LekmodHiddenGold > 0 then return true end
-	end
-	return false
-end
-function LekmodSkip( i )
-	return m_bLekmodGoldRow and LekmodHidesGold( i )
-end
 
 
 ----------------------------------------------------------------
@@ -67,8 +50,7 @@ function GetBest( table, iPlayer )
     for i = 0, GameDefines.MAX_MAJOR_CIVS do
 		local pPlayer = Players[i];
         -- exclude AI from Demographics
-        if LekmodSkip( i ) then
-        elseif Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
+        if Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
             if((pPlayer:IsAlive() and not Game.IsNetworkMultiPlayer() or pPlayer:IsHuman()) and not pPlayer:IsMinorCiv()) then
                 if( highest == nil or table[i] > highest ) then
                     highest = table[i];
@@ -98,8 +80,7 @@ function GetAverage( table, iPlayer )
     for i = 0, GameDefines.MAX_MAJOR_CIVS do
        	local pPlayer = Players[i];
         -- exclude AI from Demographics
-        if LekmodSkip( i ) then
-        elseif Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
+        if Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
             if((pPlayer:IsAlive() and not Game.IsNetworkMultiPlayer() or pPlayer:IsHuman()) and not pPlayer:IsMinorCiv()) then
                 count = count + 1;
                 accum = accum + table[i];
@@ -124,8 +105,7 @@ function GetWorst( table, iPlayer )
     for i = 0, GameDefines.MAX_MAJOR_CIVS do
         local pPlayer = Players[i];
         -- exclude AI from Demographics
-        if LekmodSkip( i ) then
-        elseif Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
+        if Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
             if((pPlayer:IsAlive() and not Game.IsNetworkMultiPlayer() or pPlayer:IsHuman()) and not pPlayer:IsMinorCiv()) then
                 if( lowest == nil or table[i] <= lowest ) then
                     lowest = table[i];
@@ -155,8 +135,7 @@ function GetRank( table, iPlayer )
     for i = 0, GameDefines.MAX_MAJOR_CIVS do
         local pPlayer = Players[i];
         -- exclude AI from Demographics
-        if LekmodSkip( i ) then
-        elseif Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
+        if Game.IsOption("GAMEOPTION_AI_GIMP_NO_DEMOGRAPHICS") then
             if((pPlayer:IsAlive() and not Game.IsNetworkMultiPlayer() or pPlayer:IsHuman()) and not pPlayer:IsMinorCiv()) then
                 if( table[i] > playerVal ) then
                     rank = rank + 1;
@@ -291,7 +270,6 @@ end
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 function BuildGoldEntry( iPlayer )
-    m_bLekmodGoldRow = true;
     local instance = {};
     ContextPtr:BuildInstanceForControl( "Entry", instance, Controls.MainStack );
     
@@ -314,7 +292,6 @@ function BuildGoldEntry( iPlayer )
     instance.WorstTT:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_DEMOGRAPHICS_GOLD_MEASURE") );
     
     instance.Rank:SetText( Locale.ToNumber(GetRank( m_GoldTable, iPlayer ), "#") );
-    m_bLekmodGoldRow = false;
 end
 
 
