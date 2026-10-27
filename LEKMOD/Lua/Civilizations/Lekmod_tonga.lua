@@ -67,6 +67,11 @@ function lekmod_tonga_ua()
          lekmod_tonga_explore(player)
       end
    end
+   -- Redraw the fog now; with the patchy reveal it otherwise stayed until a unit was selected (user, 2026-10-27)
+   Map.UpdateDeferredFog()
+   if UI ~= nil and UI.RequestMinimapBroadcast ~= nil then
+      UI:RequestMinimapBroadcast()
+   end
 
 end
 ------------------------------------------------------------------------------------------------------------------------

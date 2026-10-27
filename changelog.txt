@@ -36,6 +36,12 @@ Tags: bugfix, ui
 - Fixed: the map options next to the minimap work again: they showed the strategic view's options, and the trade route and promotion options were missing
 - Dev: CheckBox has no SetText; labels go through GetTextButton() (the error stopped MiniMapPanel.lua at load)
 
+TONGA (CIVILIZATION_TONGA)
+--------------------------
+Tags: civs, bugfix
+- Fixed: the tiles Tonga's ability reveals at the start show at once; before, the fog stayed until you selected a unit
+- Dev: Lekmod_tonga.lua calls Map.UpdateDeferredFog() after the reveal (SetRevealed only queues the fog redraw)
+
 SWITZERLAND (CIVILIZATION_SWISS)
 --------------------------------
 Tags: civs
