@@ -9386,8 +9386,9 @@ int CvPlayer::LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll, int iGa
 		{
 		case 0: return LekmodRoundTo5((75 + iRoll * 31 / 1000) * iEra);
 		case 1: return (27 + iRoll * 11 / 1000) * iEra;
-		// Always more than the free Culture ruin, so the trade is never strictly worse
-		case 2: return GC.getGame().getElapsedGameTurns() * iEra + (10 + iRoll * 5 / 1000) * iEra;
+		// Always more than the free Culture ruin, so the trade is never strictly worse, but small early
+		// (user 2026-10-27: 15 Culture on turn 5 was too much; was turn x era + 10-15 x era)
+		case 2: return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 2) * 5 / 4 + (2 + iRoll * 3 / 1000) * iEra;
 		}
 	}
 	return 0;
