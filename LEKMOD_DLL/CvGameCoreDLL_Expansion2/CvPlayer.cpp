@@ -8008,10 +8008,10 @@ static int LekmodRuinFood(int iEra, int iCapitalPop)
 	return 5 + (int)(2.0 * iEra * 1.1 * iCapitalPop);
 }
 
-// Culture ruin: turn x era - 2 (at least 1)
+// Culture ruin: turn x era - 3 (at least 1; user 2026-10-27, was - 2)
 static int LekmodRuinCulture(int iEra)
 {
-	return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 2);
+	return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 3);
 }
 
 // Gold of the science ruin: not always there and not tied to the Science. A second value is mixed from the
@@ -9388,7 +9388,7 @@ int CvPlayer::LekmodGetRuinTradeAmount(int iKind, bool bGain, int iRoll, int iGa
 		case 1: return (27 + iRoll * 11 / 1000) * iEra;
 		// Always more than the free Culture ruin, so the trade is never strictly worse, but small early
 		// (user 2026-10-27: 15 Culture on turn 5 was too much; was turn x era + 10-15 x era)
-		case 2: return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 2) * 5 / 4 + (2 + iRoll * 3 / 1000) * iEra;
+		case 2: return std::max(1, GC.getGame().getElapsedGameTurns() * iEra - 3) * 5 / 4 + (2 + iRoll * 3 / 1000) * iEra;
 		}
 	}
 	return 0;

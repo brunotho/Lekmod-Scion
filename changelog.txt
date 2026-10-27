@@ -45,8 +45,9 @@ Tags: civs, bugfix
 ANCIENT RUINS (GOODY_LEKMOD_TRADE)
 ----------------------------------
 Tags: game mechanics, ruins
-- Changed: a ruin trade for Culture gives a quarter more than the Culture ruin plus 2-4 x era Culture (was turn + 10-14 x era); on turn 5 that is 5-7 Culture instead of 15-20, around turn 40 it stays about 50
-- DLL: CvPlayer::LekmodGetRuinTradeAmount gain kind 2 = max(1, turn x era - 2) x 5/4 + (2 + roll x 3/1000) x era; pedia ruin pages updated
+- Changed: the Culture ruin gives turn x era - 3 Culture (was - 2): 7 on turn 10, 17 on turn 20
+- Changed: a ruin trade for Culture gives a quarter more than the Culture ruin plus 2-4 x era Culture (was turn + 10-14 x era); on turn 5 that is 4-6 Culture instead of 15-20, on turn 20 23-25, on turn 40 48-50
+- DLL: LekmodRuinCulture = max(1, turn x era - 3); CvPlayer::LekmodGetRuinTradeAmount gain kind 2 = LekmodRuinCulture x 5/4 + (2 + roll x 3/1000) x era; pedia ruin pages updated
 
 PANTHEON TEXTS (BELIEF_LEKMOD_*)
 --------------------------------
@@ -71,6 +72,12 @@ QUEUED ORDERS (MISSION_QUEUE)
 Tags: game mechanics, movement
 - Removed: Shift + click no longer queues an order behind a unit's current one (shift-moves, which the No Quitters rules forbid); the new order replaces the old one
 - DLL: LEKMOD_NO_QUEUED_ORDERS in CvUnitMission::PushMission (manual orders of human players never append)
+
+UNIT HOTKEYS (CONTROL_NEXTUNIT)
+-------------------------------
+Tags: ui
+- Removed: the keys that switch between the units on one tile (Ctrl + period / Ctrl + comma, numpad * and numpad /); period and comma still jump to the next unit that needs orders and the last unit
+- Dev: Controls rows CONTROL_NEXTUNIT / CONTROL_PREVUNIT have no HotKey/HotKeyAlt any more (user, 2026-10-27)
 
 BANNER AND FLAG ICONS (UI)
 --------------------------

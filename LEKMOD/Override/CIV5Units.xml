@@ -94473,8 +94473,6 @@
 			<Type>CONTROL_NEXTUNIT</Type> 
 			<Description>TXT_KEY_ACTION_PREVIOUS_PLOT_UNIT_HELP</Description> 
 			<Help>TXT_KEY_ACTION_NEXT_UNIT_HELP</Help> 
-			<HotKey>KB_PERIOD</HotKey> 
-			<HotKeyAlt>KB_NUMPADSTAR</HotKeyAlt> 
 			<HotKeyPriority>0</HotKeyPriority> 
 			<HotKeyPriorityAlt>0</HotKeyPriorityAlt> 
 			<AltDown>false</AltDown> 
@@ -94489,8 +94487,6 @@
 			<Type>CONTROL_PREVUNIT</Type> 
 			<Description>TXT_KEY_ACTION_PREVIOUS_PLOT_UNIT_HELP</Description> 
 			<Help>TXT_KEY_ACTION_PREVIOUS_UNIT_HELP</Help> 
-			<HotKey>KB_COMMA</HotKey> 
-			<HotKeyAlt>KB_NUMPADSLASH</HotKeyAlt> 
 			<HotKeyPriority>0</HotKeyPriority> 
 			<HotKeyPriorityAlt>0</HotKeyPriorityAlt> 
 			<AltDown>false</AltDown> 
