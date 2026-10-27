@@ -923,6 +923,12 @@ void CvDllNetMessageHandler::ResponseGiftUnit(PlayerTypes ePlayer, PlayerTypes e
 			GET_PLAYER(eMinor).GetMinorCivAI()->LekmodDoBuyGreatWork(ePlayer);
 		return;
 #endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	case -26: // special City-State auction: a sealed Gold bid (eMinor = Gold * 4 + auction)
+		GC.getGame().LekmodPlaceBid(ePlayer, ((int)eMinor) % 4, ((int)eMinor) / 4);
+		GC.GetEngineUserInterface()->setDirty(GameData_DIRTY_BIT, true);
+		return;
+#endif
 	default:
 		break;
 	}

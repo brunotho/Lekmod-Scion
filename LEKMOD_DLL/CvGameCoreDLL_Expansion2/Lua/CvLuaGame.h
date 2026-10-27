@@ -198,6 +198,7 @@ protected:
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	static int lLekmodSetRegionalLuxury(lua_State* L);
 	static int lLekmodIsRegionalLuxury(lua_State* L);
+	static int lLekmodGetAuctions(lua_State* L);
 #endif
 #endif
 

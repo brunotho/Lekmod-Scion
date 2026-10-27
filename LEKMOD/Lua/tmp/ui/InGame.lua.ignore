@@ -1528,6 +1528,7 @@ ContextPtr:LoadNewContext("Lekmod_policies")
 ContextPtr:LoadNewContext("Lekmod_improvements")
 ContextPtr:LoadNewContext("Lekmod_buildings")
 ContextPtr:LoadNewContext("LekmodWorldLeaderVote") -- LEKMOD: World Leader vote screen (Lua/LekmodWorldLeaderVote.lua)
+ContextPtr:LoadNewContext("LekmodAuction") -- LEKMOD: special City-State auctions (Lua/LekmodAuction.lua)
 
 -- Lekmod Civilization
 ContextPtr:LoadNewContext("Lekmod_tonga")

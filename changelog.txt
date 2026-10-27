@@ -207,10 +207,38 @@ Tags: city-states
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: while a special City-State is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
-- Note: Baikonur, Florence and Lübeck have their own buildings (see their cards); the auctions (St. Petersburg, Shanghai, Sparta), Berlin and Cambridge are not in yet, so those play like regular City-States of their type
+- Now: St. Petersburg, Shanghai and Sparta hold auctions (see their cards): during one turn every civilization may place one sealed Gold bid, the Gold is held right away, and the result comes at the start of the next turn; only the winner is announced. Computer players never bid
+- Now: the era windows of special City-States follow the average era of the civilizations
+- Note: Berlin and Cambridge have no special effect yet and play like regular City-States of their type
 - DLL: LEKMOD_SPECIAL_CITY_STATES: MinorCivilizations.LekmodSpecial (IDs 59-66); CvGame::init swaps specials the engine drew for unused regular ones, then draws 0/1/2 into random slots (CvRandom seeded from the pregame map and sync seeds); CvPlayer::isCityNameValid keeps majors off their names
 - Dev: the map (Lekmap Scion, AssignStartingPlots:LekPlaceSpecialCityStates) places them first: centre = the land plot whose farthest start is nearest, sites within 80% of that radius, at least 5 tiles from every start, most equally far from the two nearest starts; Lua.log line "### LekSpecialCS"
 - Dev: MINOR_CIV_FLORENCE was Ljubljana in game, so Florence is a new City-State (MINOR_CIV_LEKMOD_FLORENCE)
+
+ST. PETERSBURG (NEW) (MINOR_CIV_LEKMOD_STPETERSBURG)
+----------------------------------------------------
+Tags: city-states, tourism
+- Now: from the Renaissance to the Modern Era, each turn has a 3% chance (once per game) that St. Petersburg auctions 3 Great Works as one lot
+- Now: the highest bid wins all 3 Great Works; they go into free Great Work slots (a work without a free slot is lost)
+- Now: if several civilizations tie for the highest bid, each of them gets one Great Work and 67% of its bid back
+- Now: everyone else gets 90% of their bid back
+- DLL: CvGame::LekmodDoAuctions (after the turn number advances; saved in CvGame, m_aiLekmodAuctions), CvGame::LekmodPlaceBid via network code -26 (Gold * 4 + auction), CvGame::LekmodGiveGreatWork (writing, art or music, whichever has a free slot)
+- Dev: popup Lua/LekmodAuction.lua (own context, both UIs; opens at turn start while an auction runs, again from the City-State screen's button); announcements use the important notification type NOTIFICATION_DIPLOMACY_DECLARATION
+
+SHANGHAI (NEW) (MINOR_CIV_LEKMOD_SHANGHAI)
+------------------------------------------
+Tags: city-states
+- Now: from the Renaissance to the Modern Era, each turn has a 3% chance (once per game) that Shanghai auctions the hosting of an art exhibition
+- Now: the highest bid wins +30% Culture in all its cities for 10 turns
+- Now: a tie goes to the civilization with more Influence with Shanghai when it bid, then to chance; everyone else gets their Gold back
+- DLL: CvPlayer::ChangeJONSCultureCityModifier +30 for the winner, -30 again 10 turns later (LEKMOD_EXHIBITION_CULTURE_PERCENT, LEKMOD_EXHIBITION_TURNS)
+
+SPARTA (NEW) (MINOR_CIV_LEKMOD_SPARTA)
+--------------------------------------
+Tags: city-states, combat
+- Now: from the Classical to the Renaissance Era, each turn has a 3% chance (once per game) that a veteran general of Sparta offers his services
+- New: BUILDING_LEKMOD_VETERAN_GENERAL
+  - the highest bid wins it in its capital; a tie goes to the civilization with more Influence with Sparta when it bid, then to chance; everyone else gets their Gold back
+- Dev: building 312 (class 214), Building_DomainFreeExperiences 15 for land, sea and air, NeverCapture; icon borrowed from the War College
 
 BAIKONUR (NEW) (MINOR_CIV_LEKMOD_BAIKONUR)
 ------------------------------------------

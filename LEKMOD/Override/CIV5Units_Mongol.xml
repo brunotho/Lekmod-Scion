@@ -148699,6 +148699,90 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Whoever holds Lübeck: your regional luxuries give +1 [ICON_HAPPINESS_1] Happiness, and every other civilization's give -1 (also luxuries they get by trade).[NEWLINE]Regional luxuries are the ones the map gave to the players' starting regions.[NEWLINE]No effect while Lübeck is independent.[NEWLINE][NEWLINE]Lübeck gets it once the civilizations are in the Renaissance Era on average.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 	</Language_en_US>
+	<!-- LEKMOD: Special City-States step 3 (2026-10-28): auctions -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_VETERAN_GENERAL">
+			<Text>Veteran General</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_VETERAN_GENERAL_HELP">
+			<Text>Units trained in this city start with +15 XP.[NEWLINE][NEWLINE]Won in Sparta's auction.[NEWLINE]Destroyed when the city is captured.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_SUMMARY">
+			<Text>Auction in {1_CityState}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_OPEN_GREAT_WORKS">
+			<Text>{1_CityState} auctions a whole collection: 3 Great Works as one lot.[NEWLINE]Place a sealed [ICON_GOLD] Gold bid this turn (City-State screen or the auction window); the result comes at the start of the next turn.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_OPEN_EXHIBITION">
+			<Text>{1_CityState} looks for the host of an art exhibition: +30% [ICON_CULTURE] Culture in all cities for 10 turns.[NEWLINE]Place a sealed [ICON_GOLD] Gold bid this turn (City-State screen or the auction window); the result comes at the start of the next turn.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_OPEN_VETERAN_GENERAL">
+			<Text>A veteran general of {1_CityState} offers his services: units trained in your capital start with +15 XP.[NEWLINE]Place a sealed [ICON_GOLD] Gold bid this turn (City-State screen or the auction window); the result comes at the start of the next turn.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_NO_BIDS">
+			<Text>Nobody bid in the auction of {1_CityState}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_YOU_WON_WORKS">
+			<Text>You won the auction of {1_CityState} with {2_Num} [ICON_GOLD] Gold ({3_Num} Gold back).[NEWLINE]{4_Num} Great Works were placed in your free slots.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_YOU_WON">
+			<Text>You won the auction of {1_CityState} with {2_Num} [ICON_GOLD] Gold.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_YOU_LOST">
+			<Text>You did not win the auction of {1_CityState}: {3_Num} of your {2_Num} [ICON_GOLD] Gold came back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_SHARED">
+			<Text>The auction of {1_CityState} ended in a tie: {2_Num} civilizations bid the same highest amount and get one Great Work each.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_WINNER">
+			<Text>{2_Civ} won the auction of {1_CityState}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_EXHIBITION_ENDS">
+			<Text>The art exhibition you won in the auction of {1_CityState} is over.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_TITLE">
+			<Text>City-State auction</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_HEADING_GREAT_WORKS">
+			<Text>{1_CityState}: a collection of 3 Great Works</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_HEADING_EXHIBITION">
+			<Text>{1_CityState}: host the art exhibition</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_HEADING_VETERAN_GENERAL">
+			<Text>{1_CityState}: a veteran general</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_RULES_GREAT_WORKS">
+			<Text>One sealed bid per civilization; the Gold is held until the result next turn.[NEWLINE]The highest bid wins all 3 Great Works; they go into your free Great Work slots, and a work without a free slot is lost.[NEWLINE]If several civilizations tie for the highest bid, each of them gets one Great Work and 67% of its bid back.[NEWLINE]Everyone else gets 90% of their bid back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_RULES_EXHIBITION">
+			<Text>One sealed bid per civilization; the Gold is held until the result next turn.[NEWLINE]The highest bid wins: +30% [ICON_CULTURE] Culture in all your cities for 10 turns.[NEWLINE]A tie goes to the civilization with more [ICON_INFLUENCE] Influence with the City-State when it bid, then to chance.[NEWLINE]Everyone else gets their Gold back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_RULES_VETERAN_GENERAL">
+			<Text>One sealed bid per civilization; the Gold is held until the result next turn.[NEWLINE]The highest bid wins a Veteran General in your capital: units trained there start with +15 XP. It is destroyed if your capital is captured.[NEWLINE]A tie goes to the civilization with more [ICON_INFLUENCE] Influence with the City-State when it bid, then to chance.[NEWLINE]Everyone else gets their Gold back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_YOUR_BID">
+			<Text>Your sealed bid: {1_Num} [ICON_GOLD] Gold (held until the result next turn).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_SENDING">
+			<Text>Sending your bid ...</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_NO_BID_YET">
+			<Text>You have not bid yet: enter an amount and press Bid.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BAD_BID">
+			<Text>Enter an amount between 1 and {1_Num} (your Gold).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_GOLD">
+			<Text>Your [ICON_GOLD] Gold: {1_Num}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BID_BUTTON">
+			<Text>Bid</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_OPEN_BUTTON">
+			<Text>Auction running: place a bid</Text>
+		</Row>
+	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
 	<Language_RU_RU>

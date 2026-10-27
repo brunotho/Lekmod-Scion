@@ -455,6 +455,18 @@ public:
 	void LekmodSetRegionalLuxury(ResourceTypes eResource);
 	bool LekmodIsRegionalLuxury(ResourceTypes eResource) const;
 	std::vector<int> m_aiLekmodRegionalLuxuries;
+	// Auctions of the special City-States (St. Petersburg, Shanghai, Sparta; Cambridge reserved): sealed Gold bids during one turn,
+	// resolved at the start of the next. Saved as one flat list: LEKMOD_AUCTION_STRIDE ints per auction (see LekmodAuctionField).
+	enum LekmodAuctionKind { LEKMOD_AUCTION_GREAT_WORKS, LEKMOD_AUCTION_EXHIBITION, LEKMOD_AUCTION_VETERAN_GENERAL, LEKMOD_AUCTION_CAMBRIDGE, NUM_LEKMOD_AUCTIONS };
+	enum LekmodAuctionField { LAF_STATE, LAF_MINOR, LAF_OPEN_TURN, LAF_WINNER, LAF_END_TURN, LAF_BIDS, LAF_INFLUENCE = LAF_BIDS + MAX_MAJOR_CIVS, LEKMOD_AUCTION_STRIDE = LAF_INFLUENCE + MAX_MAJOR_CIVS };
+	enum LekmodAuctionState { LAS_NONE, LAS_OPEN, LAS_DONE };
+	std::vector<int> m_aiLekmodAuctions;
+	int& LekmodAuction(int iAuction, int iField);
+	static int LekmodAuctionKindForMinor(MinorCivTypes eMinorType, EraTypes& eFirstEra, EraTypes& eLastEra);
+	void LekmodDoAuctions();
+	bool LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold);
+	bool LekmodGiveGreatWork(PlayerTypes ePlayer);
+	void LekmodAuctionNotify(PlayerTypes eOnly, int iMinor, const char* szMessage, const char* szSummary);
 #endif
 	void LekmodMarkWonderTie(BuildingClassTypes eClass);
 	static void LekmodResetWonderTieData();

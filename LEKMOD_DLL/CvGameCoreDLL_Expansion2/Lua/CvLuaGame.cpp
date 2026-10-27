@@ -211,6 +211,7 @@ void CvLuaGame::RegisterMembers(lua_State* L)
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	Method(LekmodSetRegionalLuxury);
 	Method(LekmodIsRegionalLuxury);
+	Method(LekmodGetAuctions);
 #endif
 #endif
 
@@ -1336,6 +1337,29 @@ int CvLuaGame::lLekmodSetRegionalLuxury(lua_State* L)
 {
 	GC.getGame().LekmodSetRegionalLuxury((ResourceTypes)lua_tointeger(L, 1));
 	return 0;
+}
+// Game.LekmodGetAuctions(iPlayer): { {Index, State (0 none, 1 open, 2 done), Minor, OpenTurn, Winner, EndTurn, MyBid}, ... } for the auctions that ever opened
+int CvLuaGame::lLekmodGetAuctions(lua_State* L)
+{
+	const int iPlayer = lua_tointeger(L, 1);
+	CvGame& kGame = GC.getGame();
+	lua_createtable(L, 0, 0);
+	int iIndex = 1;
+	for (int iAuction = 0; iAuction < CvGame::NUM_LEKMOD_AUCTIONS; iAuction++)
+	{
+		if (kGame.LekmodAuction(iAuction, CvGame::LAF_STATE) == CvGame::LAS_NONE)
+			continue;
+		lua_createtable(L, 0, 7);
+		lua_pushinteger(L, iAuction); lua_setfield(L, -2, "Index");
+		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_STATE)); lua_setfield(L, -2, "State");
+		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_MINOR)); lua_setfield(L, -2, "Minor");
+		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_OPEN_TURN)); lua_setfield(L, -2, "OpenTurn");
+		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_WINNER)); lua_setfield(L, -2, "Winner");
+		lua_pushinteger(L, kGame.LekmodAuction(iAuction, CvGame::LAF_END_TURN)); lua_setfield(L, -2, "EndTurn");
+		lua_pushinteger(L, (iPlayer >= 0 && iPlayer < MAX_MAJOR_CIVS) ? kGame.LekmodAuction(iAuction, CvGame::LAF_BIDS + iPlayer) : 0); lua_setfield(L, -2, "MyBid");
+		lua_rawseti(L, -2, iIndex++);
+	}
+	return 1;
 }
 int CvLuaGame::lLekmodIsRegionalLuxury(lua_State* L)
 {

@@ -696,6 +696,23 @@ function OnDisplay()
 		end
 	end
 
+	-- LEKMOD_SPECIAL_CITY_STATES: this City-State's auction runs this turn
+	if (Controls.LekmodAuctionButton ~= nil) then
+		local bAuction = false;
+		if (Game.LekmodGetAuctions ~= nil) then
+			for _, a in ipairs(Game.LekmodGetAuctions(iActivePlayer)) do
+				if (a.State == 1 and a.Minor == g_iMinorCivID and a.OpenTurn == Game.GetGameTurn()) then
+					bAuction = true;
+				end
+			end
+		end
+		Controls.LekmodAuctionButton:SetHide(not bAuction);
+		if (bAuction) then
+			Controls.LekmodAuctionLabel:SetText("[COLOR_POSITIVE_TEXT]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_AUCTION_OPEN_BUTTON") .. "[ENDCOLOR]");
+			SetButtonSize(Controls.LekmodAuctionLabel, Controls.LekmodAuctionButton, Controls.LekmodAuctionAnim, Controls.LekmodAuctionButtonHL);
+		end
+	end
+
 	Controls.DescriptionLabel:SetText(strText);
 	
 	SetButtonSize(Controls.PeaceLabel, Controls.PeaceButton, Controls.PeaceAnim, Controls.PeaceButtonHL);
@@ -875,6 +892,9 @@ function OnLekmodGreatWorkButtonClicked()
 end
 if (Controls.LekmodGreatWorkButton ~= nil) then
 	Controls.LekmodGreatWorkButton:RegisterCallback( Mouse.eLClick, OnLekmodGreatWorkButtonClicked );
+end
+if (Controls.LekmodAuctionButton ~= nil) then
+	Controls.LekmodAuctionButton:RegisterCallback( Mouse.eLClick, function() LuaEvents.LekmodShowAuctions(); end );
 end
 
 

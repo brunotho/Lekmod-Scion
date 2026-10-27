@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LEKMOD: special City-State auctions (St. Petersburg, Shanghai, Sparta). Opens by itself on the turn an auction runs;
+     the City-State screen has a button to open it again. One row per running auction: a sealed Gold bid, once. -->
+<Context ColorSet="Beige_Black_Alpha" Font="TwCenMT18" FontStyle="Shadow">
+	<Instance Name="AuctionInstance">
+		<Stack Anchor="L,T" Padding="8" StackGrowth="Bottom" ID="Root">
+			<Label Anchor="L,T" Font="TwCenMT22" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Heading"/>
+			<Label Anchor="L,T" WrapWidth="500" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Description"/>
+			<Stack Anchor="L,T" Padding="10" StackGrowth="Right" ID="BidRow">
+				<Box Anchor="L,C" Size="92,26" Color="255,255,200,255" ConsumeMouseButton="1" ConsumeMouseOver="1">
+					<Box Anchor="C,C" Size="90,24" Color="0,0,0,255">
+						<EditBox EditMode="1" Size="86,22" Anchor="C,C" Font="TwCenMT18" NumberInput="1" MaxLength="6" ID="BidEdit"/>
+					</Box>
+				</Box>
+				<GridButton Style="BaseButton" Size="180,34" Anchor="L,C" ID="BidButton">
+					<Label Anchor="C,C" String="TXT_KEY_LEKMOD_AUCTION_BID_BUTTON" ColorSet="Beige_Black" Font="TwCenMT20" FontStyle="Shadow"/>
+				</GridButton>
+			</Stack>
+			<Label Anchor="L,T" WrapWidth="500" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Status"/>
+		</Stack>
+	</Instance>
+	<Box Color="Black.200" Size="Full.Full" ID="Background" ConsumeMouseOver="1">
+		<Grid Size="580,400" Anchor="C,C" Offset="0,0" Padding="0,20" Style="Grid9DetailFive140" ID="Frame">
+			<Box Style="MenuLeftSideTreatment"/>
+			<Box Style="MenuRightSideTreatment"/>
+			<Image Anchor="C,T" AnchorSide="I.O" Offset="0,-14" Size="256,64" Texture="Top512IconTrim.dds"/>
+			<Stack Anchor="C,T" Offset="0,44" Padding="16" StackGrowth="Bottom" ID="Content">
+				<Label Anchor="C,T" Font="TwCenMT24" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_AUCTION_TITLE" ID="Title"/>
+				<Stack Anchor="L,T" Padding="20" StackGrowth="Bottom" ID="AuctionStack"/>
+				<Label Anchor="L,T" WrapWidth="500" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Gold"/>
+				<GridButton Style="BaseButton" Size="300,42" Anchor="C,T" ID="CloseButton">
+					<Label Anchor="C,C" String="TXT_KEY_CLOSE" ColorSet="Beige_Black" Font="TwCenMT24" FontStyle="Shadow"/>
+				</GridButton>
+			</Stack>
+		</Grid>
+	</Box>
+</Context>

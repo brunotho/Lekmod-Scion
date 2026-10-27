@@ -292844,4 +292844,42 @@
 			<IconAtlas>EXPANSION2PATCH_BUILDING_ATLAS</IconAtlas>
 		</Row>
 	</Buildings>
+	<!-- LEKMOD: Special City-States step 3 (2026-10-28): Sparta's auction prize, placed in the winner's capital by CvGame::LekmodDoAuctions -->
+	<BuildingClasses>
+		<Row>
+			<ID>214</ID>
+			<Type>BUILDINGCLASS_LEKMOD_VETERAN_GENERAL</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_VETERAN_GENERAL</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_VETERAN_GENERAL</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>312</ID>
+			<Type>BUILDING_LEKMOD_VETERAN_GENERAL</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_VETERAN_GENERAL</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_VETERAN_GENERAL</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_VETERAN_GENERAL_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<NeverCapture>true</NeverCapture>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<PortraitIndex>0</PortraitIndex>
+			<IconAtlas>LEKMOD_WAR_COLLEGE_ATLAS</IconAtlas>
+		</Row>
+	</Buildings>
+	<Building_DomainFreeExperiences>
+		<Row><BuildingType>BUILDING_LEKMOD_VETERAN_GENERAL</BuildingType><DomainType>DOMAIN_LAND</DomainType><Experience>15</Experience></Row>
+		<Row><BuildingType>BUILDING_LEKMOD_VETERAN_GENERAL</BuildingType><DomainType>DOMAIN_SEA</DomainType><Experience>15</Experience></Row>
+		<Row><BuildingType>BUILDING_LEKMOD_VETERAN_GENERAL</BuildingType><DomainType>DOMAIN_AIR</DomainType><Experience>15</Experience></Row>
+	</Building_DomainFreeExperiences>
 </GameData>
