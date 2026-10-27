@@ -1836,7 +1836,7 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_SPECS_2026_10_24
 // LEKMOD (user, 2026-10-27, NEW SPECS AGAIN list 5): lump-sum Gold trades once either player knows Banking (no DoF needed),
 // a conquered city that can't be liberated is puppeted without the capture popup, floating Gold when meeting a City-State,
-// no river trade bonus for coastal cities
+// no river trade bonus for coastal cities; Swift Transport: carried units spend the ship's Movement per step
 #define LEKMOD_SPECS_2026_10_27
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED

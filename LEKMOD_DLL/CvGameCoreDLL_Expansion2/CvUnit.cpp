@@ -4184,7 +4184,11 @@ void CvUnit::move(CvPlot& targetPlot, bool bShow)
 		{
 			CvUnit* pLoopUnit = ::getUnit(*pLekmodNode);
 			pLekmodNode = pOldPlot->nextUnitNode(pLekmodNode);
-			if (pLoopUnit != NULL && pLoopUnit != this && pLoopUnit->getOwner() == getOwner() && pLoopUnit->isEmbarked() && pLoopUnit->getDomainType() == DOMAIN_LAND && !pLoopUnit->isDelayedDeath())
+			if (pLoopUnit != NULL && pLoopUnit != this && pLoopUnit->getOwner() == getOwner() && pLoopUnit->isEmbarked() && pLoopUnit->getDomainType() == DOMAIN_LAND && !pLoopUnit->isDelayedDeath()
+#ifdef LEKMOD_SPECS_2026_10_27
+				&& pLoopUnit->getMoves() > 0 // carried units pay their own way (user, 2026-10-27): without moves left they stay behind
+#endif
+				)
 				apLekmodCarried.push_back(pLoopUnit);
 		}
 	}
@@ -4196,7 +4200,13 @@ void CvUnit::move(CvPlot& targetPlot, bool bShow)
 		CvUnit* pCarried = apLekmodCarried[iCarried];
 		// only units that are still there and may stand on the new tile (stacking, ocean before Astronomy, enemies)
 		if (pCarried->plot() == pOldPlot && pCarried->canMoveInto(targetPlot, CvUnit::MOVEFLAG_DESTINATION))
+		{
 			pCarried->setXY(targetPlot.getX(), targetPlot.getY(), true, true, bShow && targetPlot.isVisibleToWatchingHuman(), bShow);
+#ifdef LEKMOD_SPECS_2026_10_27
+			// the same Movement the ship spent on this step
+			pCarried->changeMoves(-std::min(iMoveCost, pCarried->getMoves()));
+#endif
+		}
 	}
 #endif
 }
