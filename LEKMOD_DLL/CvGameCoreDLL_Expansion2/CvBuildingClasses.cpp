@@ -119,6 +119,15 @@ CvBuildingEntry::CvBuildingEntry(void):
 #endif
 #ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
 	m_iLekmodMinorCivTrait(-1),
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	m_iLekmodSpecialMinorCiv(-1),
+	m_iLekmodSpecialEra(-1),
+	m_iLekmodGlobalGreatScientistRate(0),
+	m_iLekmodGlobalGreatArtsRate(0),
+	m_iLekmodRegionalLuxuryHappiness(0),
+	m_iLekmodCollectArtTurns(0),
+	m_iLekmodCollectArtEra(-1),
+#endif
 #endif
 	m_bNearRiver(false),
 	m_bNoMaintenanceOnRiver(false),
@@ -591,6 +600,20 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 			const char* szEra = kResults.GetText(aszCols[i]);
 			m_astrLekmodEraLevel[i] = szEra ? szEra : "";
 		}
+	}
+#endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	{
+		const char* szText = kResults.GetText("LekmodSpecialMinorCiv");
+		m_iLekmodSpecialMinorCiv = (szText && szText[0]) ? GC.getInfoTypeForString(szText, true) : -1;
+		szText = kResults.GetText("LekmodSpecialEra");
+		m_iLekmodSpecialEra = (szText && szText[0]) ? GC.getInfoTypeForString(szText, true) : -1;
+		szText = kResults.GetText("LekmodCollectArtEra");
+		m_iLekmodCollectArtEra = (szText && szText[0]) ? GC.getInfoTypeForString(szText, true) : -1;
+		m_iLekmodGlobalGreatScientistRate = kResults.GetInt("LekmodGlobalGreatScientistRate");
+		m_iLekmodGlobalGreatArtsRate = kResults.GetInt("LekmodGlobalGreatArtsRate");
+		m_iLekmodRegionalLuxuryHappiness = kResults.GetInt("LekmodRegionalLuxuryHappiness");
+		m_iLekmodCollectArtTurns = kResults.GetInt("LekmodCollectArtTurns");
 	}
 #endif
 	m_bNearRiver = kResults.GetBool("NearRiver");

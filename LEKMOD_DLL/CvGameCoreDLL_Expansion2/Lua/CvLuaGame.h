@@ -195,6 +195,10 @@ protected:
 	static int lIsUnitedNationsActive(lua_State* L);
 #ifdef LEKMOD_CONGRESS_CYCLE
 	static int lLekmodIsBlackout(lua_State* L);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	static int lLekmodSetRegionalLuxury(lua_State* L);
+	static int lLekmodIsRegionalLuxury(lua_State* L);
+#endif
 #endif
 
 	// DEPRECATED

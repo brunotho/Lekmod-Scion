@@ -7897,6 +7897,55 @@ void CvCity::processResource(ResourceTypes eResource, int iChange)
 
 
 //	--------------------------------------------------------------------------------
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+// Florence: an art Great Work into the next empty slot of this building when the newest one is iTurns old (the first one at once)
+void CvCity::LekmodCollectArtGreatWork(BuildingTypes eBuilding, int iTurns)
+{
+	CvBuildingEntry* pBuildingInfo = GC.getBuildingInfo(eBuilding);
+	CvGameCulture* pCulture = GC.getGame().GetGameCulture();
+	if (pBuildingInfo == NULL || pCulture == NULL || pBuildingInfo->GetGreatWorkCount() <= 0)
+		return;
+	const BuildingClassTypes eClass = (BuildingClassTypes)pBuildingInfo->GetBuildingClassType();
+	int iEmptySlot = -1;
+	int iNewestTurn = -1;
+	for (int iSlot = 0; iSlot < pBuildingInfo->GetGreatWorkCount(); iSlot++)
+	{
+		const int iWork = m_pCityBuildings->GetBuildingGreatWork(eClass, iSlot);
+		if (iWork == NO_GREAT_WORK)
+		{
+			if (iEmptySlot == -1)
+				iEmptySlot = iSlot;
+		}
+		else if (iWork >= 0 && iWork < (int)pCulture->m_CurrentGreatWorks.size())
+			iNewestTurn = std::max(iNewestTurn, pCulture->m_CurrentGreatWorks[iWork].m_iTurnFounded);
+	}
+	if (iEmptySlot == -1 || (iNewestTurn >= 0 && GC.getGame().getGameTurn() - iNewestTurn < iTurns))
+		return;
+	// an artist's work that nobody has made yet
+	const UnitTypes eArtist = (UnitTypes)GC.getInfoTypeForString("UNIT_ARTIST", true);
+	CvUnitEntry* pkArtist = (eArtist != NO_UNIT) ? GC.getUnitInfo(eArtist) : NULL;
+	if (pkArtist == NULL || pkArtist->GetNumUnitNames() <= 0)
+		return;
+	const int iNumNames = pkArtist->GetNumUnitNames();
+	const int iOffset = GC.getGame().getJonRandNum(iNumNames, "Lekmod Florence collection");
+	for (int i = 0; i < iNumNames; i++)
+	{
+		const int iIndex = (iOffset + i) % iNumNames;
+		CvString strName = pkArtist->GetUnitNames(iIndex);
+		const GreatWorkType eWork = pkArtist->GetGreatWorks(iIndex);
+		if (eWork == NO_GREAT_WORK || GC.getGame().isGreatPersonBorn(strName))
+			continue;
+		GC.getGame().addGreatPersonBornName(strName);
+		Localization::String name = Localization::Lookup(strName);
+		CvString strBuffer;
+		strBuffer.Format("%s (%s)", name.toUTF8(), pkArtist->GetDescription());
+		const int iWork = pCulture->CreateGreatWork(eWork, (GreatWorkClass)GC.getInfoTypeForString("GREAT_WORK_ART"), getOwner(), GET_PLAYER(getOwner()).GetCurrentEra(), strBuffer);
+		m_pCityBuildings->SetBuildingGreatWork(eClass, iEmptySlot, iWork);
+		return;
+	}
+}
+#endif
+
 void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, bool bObsolete, bool /*bApplyingAllCitiesBonus*/)
 {
 	VALIDATE_OBJECT

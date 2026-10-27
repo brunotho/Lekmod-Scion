@@ -842,6 +842,17 @@ function LekmodShowTraitIcons(pPlayer)
 		table.insert(aIcons, { building.PortraitIndex, building.IconAtlas,
 			Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT", Locale.ConvertTextKey(building.Description), strState, Locale.ConvertTextKey(building.Help)) });
 	end
+	-- LEKMOD_SPECIAL_CITY_STATES: the special City-State's own building (Baikonur Cosmodrome, Medici Collection, Hanseatic Diet)
+	local minorInfo = GameInfo.MinorCivilizations[pPlayer:GetMinorCivType()];
+	if (minorInfo ~= nil and minorInfo.LekmodSpecial) then
+		for special in GameInfo.Buildings{ LekmodSpecialMinorCiv = minorInfo.Type } do
+			local pCity = pPlayer:GetCapitalCity();
+			local bHas = (pCity ~= nil and pCity:IsHasBuilding(special.ID));
+			local strState = Locale.ConvertTextKey(bHas and "TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS" or "TXT_KEY_LEKMOD_CS_SPECIAL_BUILDING_NOT_YET");
+			table.insert(aIcons, { special.PortraitIndex, special.IconAtlas,
+				Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT", Locale.ConvertTextKey(special.Description), strState, Locale.ConvertTextKey(special.Help)) });
+		end
+	end
 	local aControls = { Controls.LekmodTraitIcon1, Controls.LekmodTraitIcon2 };
 	for i, control in ipairs(aControls) do
 		local info = aIcons[i];

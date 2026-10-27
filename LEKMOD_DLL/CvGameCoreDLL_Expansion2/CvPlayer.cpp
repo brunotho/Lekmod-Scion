@@ -5335,6 +5335,11 @@ void CvPlayer::doTurn()
 #ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
 	LekmodDoMinorTraitBuildings();
 #endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	LekmodDoSpecialCityStateBuildings();
+	if (!isMinorCiv())
+		recomputeGreatPeopleModifiers(); // special City-State buildings change hands by capture
+#endif
 #if defined(LEKMOD_RUIN_CHOICE)
 	LekmodResolvePendingRuins();
 #endif
@@ -9940,6 +9945,98 @@ void CvPlayer::LekmodDoMinorTraitBuildings()
 				pLoopCity->GetCityBuildings()->SetNumRealBuilding(eBuilding, iLevel);
 		}
 	}
+}
+#endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+// Buildings of the special City-States (Buildings.LekmodSpecialMinorCiv)
+static const std::vector<int>& LekmodSpecialCSBuildings()
+{
+	static std::vector<int> s_aiBuildings;
+	static bool s_bInit = false;
+	if (!s_bInit)
+	{
+		s_bInit = true;
+		for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+		{
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)iBuilding);
+			if (pkBuilding && pkBuilding->GetLekmodSpecialMinorCiv() != -1)
+				s_aiBuildings.push_back(iBuilding);
+		}
+	}
+	return s_aiBuildings;
+}
+// Every turn: the city first owned by a special City-State gets its building once the special era is reached (whoever holds it then);
+// Florence's building collects an art Great Work every few turns while a City-State holds it
+void CvPlayer::LekmodDoSpecialCityStateBuildings()
+{
+	const std::vector<int>& aiBuildings = LekmodSpecialCSBuildings();
+	if (aiBuildings.empty() || !isAlive())
+		return;
+	const EraTypes eGameEra = GC.getGame().LekmodGetSpecialCityStateEra();
+	int iLoop;
+	for (CvCity* pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
+	{
+		const PlayerTypes eOriginal = pLoopCity->getOriginalOwner();
+		if (eOriginal < MAX_MAJOR_CIVS || eOriginal >= MAX_CIV_PLAYERS || !GET_PLAYER(eOriginal).isMinorCiv())
+			continue;
+		const int iMinorType = (int)GET_PLAYER(eOriginal).GetMinorCivAI()->GetMinorCivType();
+		for (uint i = 0; i < aiBuildings.size(); i++)
+		{
+			const BuildingTypes eBuilding = (BuildingTypes)aiBuildings[i];
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
+			if (pkBuilding->GetLekmodSpecialMinorCiv() != iMinorType)
+				continue;
+			if (pLoopCity->GetCityBuildings()->GetNumBuilding(eBuilding) <= 0)
+			{
+				if (pkBuilding->GetLekmodSpecialEra() == -1 || (int)eGameEra >= pkBuilding->GetLekmodSpecialEra())
+					pLoopCity->GetCityBuildings()->SetNumRealBuilding(eBuilding, 1);
+				else
+					continue;
+			}
+			if (isMinorCiv() && pkBuilding->GetLekmodCollectArtTurns() > 0 &&
+				(pkBuilding->GetLekmodCollectArtEra() == -1 || (int)eGameEra >= pkBuilding->GetLekmodCollectArtEra()))
+				pLoopCity->LekmodCollectArtGreatWork(eBuilding, pkBuilding->GetLekmodCollectArtTurns());
+		}
+	}
+}
+// Empire-wide Great Person rates from special City-State buildings this player holds
+int CvPlayer::LekmodSpecialCSGreatPersonRate(bool bArts) const
+{
+	int iTotal = 0;
+	const std::vector<int>& aiBuildings = LekmodSpecialCSBuildings();
+	for (uint i = 0; i < aiBuildings.size(); i++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)aiBuildings[i]);
+		const int iRate = bArts ? pkBuilding->GetLekmodGlobalGreatArtsRate() : pkBuilding->GetLekmodGlobalGreatScientistRate();
+		if (iRate != 0)
+			iTotal += iRate * countNumBuildings((BuildingTypes)aiBuildings[i]);
+	}
+	return iTotal;
+}
+// Lübeck: the holder's regional luxuries +N Happiness, everybody else's -N (only while a major civ holds it)
+int CvPlayer::LekmodRegionalLuxuryHappinessChange(ResourceTypes eResource) const
+{
+	if (!GC.getGame().LekmodIsRegionalLuxury(eResource))
+		return 0;
+	int iChange = 0;
+	const std::vector<int>& aiBuildings = LekmodSpecialCSBuildings();
+	for (uint i = 0; i < aiBuildings.size(); i++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)aiBuildings[i]);
+		const int iHappiness = pkBuilding->GetLekmodRegionalLuxuryHappiness();
+		if (iHappiness == 0)
+			continue;
+		for (int iMajor = 0; iMajor < MAX_MAJOR_CIVS; iMajor++)
+		{
+			const CvPlayer& kHolder = GET_PLAYER((PlayerTypes)iMajor);
+			if (kHolder.isAlive() && kHolder.getBuildingClassCount((BuildingClassTypes)pkBuilding->GetBuildingClassType()) > 0)
+			{
+				iChange += (iMajor == (int)GetID()) ? iHappiness : -iHappiness;
+				break;
+			}
+		}
+	}
+	return iChange;
 }
 #endif
 void CvPlayer::LekmodResolvePendingRuins()
@@ -17576,7 +17673,12 @@ int CvPlayer::GetHappinessFromLuxury(ResourceTypes eResource) const
 		// NQMP GJS - New Netherlands UA gives +1 Happiness per unique Luxury for the empire BEGIN
 #ifdef LEKMOD_CONGRESS_CYCLE
 			// Import Tariffs: luxuries give less Happiness
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+			// Lübeck: regional luxuries (never below 0)
+			return std::max(0, (iBaseHappiness + GetPlayerTraits()->GetExtraHappinessPerLuxury() + LekmodRegionalLuxuryHappinessChange(eResource)) * (100 + GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_LUXURY_HAPPINESS)) / 100);
+#else
 			return (iBaseHappiness + GetPlayerTraits()->GetExtraHappinessPerLuxury()) * (100 + GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_LUXURY_HAPPINESS)) / 100;
+#endif
 #else
 			return iBaseHappiness + GetPlayerTraits()->GetExtraHappinessPerLuxury();
 #endif
@@ -20104,6 +20206,15 @@ void CvPlayer::recomputeGreatPeopleModifiers()
 #endif
 	m_iGreatMerchantRateModifier += m_pPlayerPolicies->GetNumericModifier(POLICYMOD_GREAT_MERCHANT_RATE);
 	m_iGreatScientistRateModifier += m_pPlayerPolicies->GetNumericModifier(POLICYMOD_GREAT_SCIENTIST_RATE);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	{
+		m_iGreatScientistRateModifier += LekmodSpecialCSGreatPersonRate(false); // Baikonur
+		const int iArts = LekmodSpecialCSGreatPersonRate(true); // Florence
+		m_iGreatWriterRateModifier += iArts;
+		m_iGreatArtistRateModifier += iArts;
+		m_iGreatMusicianRateModifier += iArts;
+	}
+#endif
 	m_iDomesticGreatGeneralRateModifier += m_pPlayerPolicies->GetNumericModifier(POLICYMOD_DOMESTIC_GREAT_GENERAL_RATE);
 
 	// Next add in buildings

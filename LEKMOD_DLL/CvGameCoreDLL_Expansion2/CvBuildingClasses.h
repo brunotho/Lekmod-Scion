@@ -319,6 +319,16 @@ public:
 	int GetLekmodMinorCivTrait() const;
 	int GetLekmodEraLevel(EraTypes eEra) const;
 #endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Special City-State buildings (the city of one special City-State gets it; kept on capture)
+	int GetLekmodSpecialMinorCiv() const { return m_iLekmodSpecialMinorCiv; }
+	int GetLekmodSpecialEra() const { return m_iLekmodSpecialEra; }
+	int GetLekmodGlobalGreatScientistRate() const { return m_iLekmodGlobalGreatScientistRate; }
+	int GetLekmodGlobalGreatArtsRate() const { return m_iLekmodGlobalGreatArtsRate; }
+	int GetLekmodRegionalLuxuryHappiness() const { return m_iLekmodRegionalLuxuryHappiness; }
+	int GetLekmodCollectArtTurns() const { return m_iLekmodCollectArtTurns; }
+	int GetLekmodCollectArtEra() const { return m_iLekmodCollectArtEra; }
+#endif
 #endif
 	bool IsNearRiver() const;
 	bool IsNoMaintenanceOnRiver() const;
@@ -754,6 +764,15 @@ private:
 #ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
 	int m_iLekmodMinorCivTrait;
 	CvString m_astrLekmodEraLevel[3];
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	int m_iLekmodSpecialMinorCiv;
+	int m_iLekmodSpecialEra;
+	int m_iLekmodGlobalGreatScientistRate;
+	int m_iLekmodGlobalGreatArtsRate;
+	int m_iLekmodRegionalLuxuryHappiness;
+	int m_iLekmodCollectArtTurns;
+	int m_iLekmodCollectArtEra;
+#endif
 #endif
 	bool m_bNearRiver;
 	bool m_bNoMaintenanceOnRiver;

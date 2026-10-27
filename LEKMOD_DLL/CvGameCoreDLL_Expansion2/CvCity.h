@@ -314,6 +314,9 @@ public:
 
 	void processResource(ResourceTypes eResource, int iChange);
 	void processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, bool bObsolete = false, bool bApplyingAllCitiesBonus = false);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	void LekmodCollectArtGreatWork(BuildingTypes eBuilding, int iTurns);
+#endif
 	void processProcess(ProcessTypes eProcess, int iChange);
 	void processSpecialist(SpecialistTypes eSpecialist, int iChange);
 

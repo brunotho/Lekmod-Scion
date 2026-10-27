@@ -752,6 +752,7 @@ void CvGame::InitPlayers()
 	// Special City-States (MinorCivilizations.LekmodSpecial): 0, 1 or 2 per game (25% / 50% / 25%), each replacing a regular one.
 	// The engine's own draw may pick a special one as a regular City-State: it is swapped for an unused regular one first.
 	// Seeded from the pregame seeds so that every machine draws the same.
+	m_aiLekmodRegionalLuxuries.clear();
 	if(iNumMinors > 0)
 	{
 		CvRandom kRand;
@@ -8275,6 +8276,35 @@ void CvGame::incrementBuildingClassCreatedCount(BuildingClassTypes eIndex)
 
 #ifdef LEKMOD_WONDER_TIE_RULES
 // Not saved: only meaningful inside one turn's production pass (saves and loads happen between passes)
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+EraTypes CvGame::LekmodGetSpecialCityStateEra() const
+{
+	int iSum = 0;
+	int iCount = 0;
+	for(int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
+	{
+		const CvPlayer& kPlayer = GET_PLAYER((PlayerTypes)iPlayer);
+		if(kPlayer.isAlive() && !kPlayer.isMinorCiv() && !kPlayer.isBarbarian())
+		{
+			iSum += (int)kPlayer.GetCurrentEra();
+			iCount++;
+		}
+	}
+	return (iCount > 0) ? (EraTypes)(iSum / iCount) : (EraTypes)0;
+}
+void CvGame::LekmodSetRegionalLuxury(ResourceTypes eResource)
+{
+	if(eResource != NO_RESOURCE && !LekmodIsRegionalLuxury(eResource))
+		m_aiLekmodRegionalLuxuries.push_back((int)eResource);
+}
+bool CvGame::LekmodIsRegionalLuxury(ResourceTypes eResource) const
+{
+	for(uint i = 0; i < m_aiLekmodRegionalLuxuries.size(); i++)
+		if(m_aiLekmodRegionalLuxuries[i] == (int)eResource)
+			return true;
+	return false;
+}
+#endif
 std::vector<int> CvGame::s_aiLekmodWonderMaxedTurn;
 std::vector<int> CvGame::s_aiLekmodWonderTieTurn;
 std::vector<int> CvGame::s_aiLekmodCityProductionTurn;
@@ -11159,6 +11189,10 @@ void CvGame::Read(FDataStream& kStream)
 #endif
 #endif
 
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	kStream >> m_aiLekmodRegionalLuxuries;
+#endif
+
 	//when loading from file, we need to reset m_lastTurnAICivsProcessed 
 	//so that updateMoves() can turn active players after loading an autosave in simultaneous turns multiplayer.
 	m_lastTurnAICivsProcessed = -1;
@@ -11388,6 +11422,9 @@ void CvGame::Write(FDataStream& kStream) const
 #ifdef AUI_GAME_PLAYER_BASED_TURN_LENGTH
 	kStream << m_aiMaxTurnLengths;
 #endif
+#endif
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	kStream << m_aiLekmodRegionalLuxuries;
 #endif
 }
 

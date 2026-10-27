@@ -448,6 +448,14 @@ public:
 	static void LekmodSetWonderTieWindow(bool bOpen);
 	static bool LekmodIsWonderTieWindow();
 	bool LekmodIsWonderTiedThisTurn(BuildingTypes eBuilding, const CvCity* pCity);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	// Era windows of the special City-States: the average era of the living major civs (rounded down)
+	EraTypes LekmodGetSpecialCityStateEra() const;
+	// Luxuries the map assigned to the players' regions (the map script reports them while it places resources)
+	void LekmodSetRegionalLuxury(ResourceTypes eResource);
+	bool LekmodIsRegionalLuxury(ResourceTypes eResource) const;
+	std::vector<int> m_aiLekmodRegionalLuxuries;
+#endif
 	void LekmodMarkWonderTie(BuildingClassTypes eClass);
 	static void LekmodResetWonderTieData();
 	static std::vector<int> s_aiLekmodWonderMaxedTurn;

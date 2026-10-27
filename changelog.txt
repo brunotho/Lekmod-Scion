@@ -207,10 +207,30 @@ Tags: city-states
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: while a special City-State is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
-- Note: their own effects (auctions, Florence, Baikonur, Lübeck, Berlin, Cambridge) are not in yet; for now they play like regular City-States of their type
+- Note: Baikonur, Florence and Lübeck have their own buildings (see their cards); the auctions (St. Petersburg, Shanghai, Sparta), Berlin and Cambridge are not in yet, so those play like regular City-States of their type
 - DLL: LEKMOD_SPECIAL_CITY_STATES: MinorCivilizations.LekmodSpecial (IDs 59-66); CvGame::init swaps specials the engine drew for unused regular ones, then draws 0/1/2 into random slots (CvRandom seeded from the pregame map and sync seeds); CvPlayer::isCityNameValid keeps majors off their names
 - Dev: the map (Lekmap Scion, AssignStartingPlots:LekPlaceSpecialCityStates) places them first: centre = the land plot whose farthest start is nearest, sites within 80% of that radius, at least 5 tiles from every start, most equally far from the two nearest starts; Lua.log line "### LekSpecialCS"
 - Dev: MINOR_CIV_FLORENCE was Ljubljana in game, so Florence is a new City-State (MINOR_CIV_LEKMOD_FLORENCE)
+
+BAIKONUR (NEW) (MINOR_CIV_LEKMOD_BAIKONUR)
+------------------------------------------
+Tags: city-states, wonders
+- New: BUILDING_LEKMOD_BAIKONUR_COSMODROME
+- Dev: building 309 (class 211), Buildings.LekmodSpecialMinorCiv; GlobalSpaceProductionModifier 30, LekmodGlobalGreatScientistRate 10 (CvPlayer::recomputeGreatPeopleModifiers, refreshed every turn); icon borrowed from the Spaceship Factory
+
+FLORENCE (NEW) (MINOR_CIV_LEKMOD_FLORENCE)
+------------------------------------------
+Tags: city-states, tourism
+- New: BUILDING_LEKMOD_MEDICI_COLLECTION
+- DLL: CvCity::LekmodCollectArtGreatWork: an artist's unused Great Work into the next empty slot when the newest work in the building is 10 turns old (no saved state; the first one at once), only while a City-State holds the city
+- Dev: building 310 (class 212), LekmodCollectArtTurns 10, LekmodCollectArtEra ERA_RENAISSANCE, LekmodGlobalGreatArtsRate 10; icon borrowed from the Uffizi
+
+LÜBECK (NEW) (MINOR_CIV_LEKMOD_LUBECK)
+--------------------------------------
+Tags: city-states
+- New: BUILDING_LEKMOD_HANSEATIC_DIET
+- DLL: CvPlayer::GetHappinessFromLuxury adds LekmodRegionalLuxuryHappinessChange (never below 0); the map reports the regional luxuries with Game.LekmodSetRegionalLuxury (saved in CvGame, m_aiLekmodRegionalLuxuries; Lua.log "### LekRegionalLux")
+- Dev: building 311 (class 213), LekmodSpecialEra ERA_RENAISSANCE = the average era of the living major civs (CvGame::LekmodGetSpecialCityStateEra, used for every special City-State window); icon borrowed from the Hanse
 
 SCIENTIFIC CITY-STATES (NEW) (MINOR_CIV_TRAIT_SCIENTIFIC)
 ---------------------------------------------------------

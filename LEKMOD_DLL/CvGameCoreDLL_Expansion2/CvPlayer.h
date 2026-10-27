@@ -337,6 +337,11 @@ public:
 #endif
 #ifdef LEKMOD_MINOR_TRAIT_BUILDINGS
 	void LekmodDoMinorTraitBuildings();
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	void LekmodDoSpecialCityStateBuildings();
+	int LekmodSpecialCSGreatPersonRate(bool bArts) const;
+	int LekmodRegionalLuxuryHappinessChange(ResourceTypes eResource) const;
+#endif
 #endif
 
 #ifdef LEKMOD_NEW_ANCIENT_RUIN_REWARDS

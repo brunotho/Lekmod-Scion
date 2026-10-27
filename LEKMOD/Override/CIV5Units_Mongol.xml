@@ -148675,6 +148675,30 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Give this city back to {1_CityStateName}: it becomes an independent City-State again.[NEWLINE]You get no [ICON_INFLUENCE] Influence for liberating a City-State you conquered yourself.[NEWLINE][NEWLINE]Click twice to confirm.</Text>
 		</Row>
 	</Language_en_US>
+	<!-- LEKMOD: Special City-States step 2 (2026-10-27) -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_CS_SPECIAL_BUILDING_NOT_YET">
+			<Text>not yet</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME">
+			<Text>Baikonur Cosmodrome</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME_HELP">
+			<Text>+10% [ICON_GREAT_PEOPLE] Great Scientist points in all your cities.[NEWLINE]+30% [ICON_PRODUCTION] Production towards spaceship parts in all your cities.[NEWLINE][NEWLINE]Baikonur has it from the start; the effects go to whoever holds the city.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION">
+			<Text>Medici Collection</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION_HELP">
+			<Text>5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]+10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET">
+			<Text>Hanseatic Diet</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET_HELP">
+			<Text>Whoever holds Lübeck: your regional luxuries give +1 [ICON_HAPPINESS_1] Happiness, and every other civilization's give -1 (also luxuries they get by trade).[NEWLINE]Regional luxuries are the ones the map gave to the players' starting regions.[NEWLINE]No effect while Lübeck is independent.[NEWLINE][NEWLINE]Lübeck gets it once the civilizations are in the Renaissance Era on average.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+		</Row>
+	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
 	<Language_RU_RU>

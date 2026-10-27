@@ -208,6 +208,10 @@ void CvLuaGame::RegisterMembers(lua_State* L)
 	Method(IsUnitedNationsActive);
 #ifdef LEKMOD_CONGRESS_CYCLE
 	Method(LekmodIsBlackout);
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+	Method(LekmodSetRegionalLuxury);
+	Method(LekmodIsRegionalLuxury);
+#endif
 #endif
 
 	Method(GetNumVictoryVotesTallied);
@@ -1327,6 +1331,18 @@ int CvLuaGame::lGetVotesNeededForDiploVictory(lua_State* L)
 //------------------------------------------------------------------------------
 //bool LekmodIsBlackout(int iObserver = -1); Demographics are disabled (Blackout proposal; for iObserver also when
 //another civ owns a building with Buildings.DemographicsBlackout, the Ministry of Truth)
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+int CvLuaGame::lLekmodSetRegionalLuxury(lua_State* L)
+{
+	GC.getGame().LekmodSetRegionalLuxury((ResourceTypes)lua_tointeger(L, 1));
+	return 0;
+}
+int CvLuaGame::lLekmodIsRegionalLuxury(lua_State* L)
+{
+	lua_pushboolean(L, GC.getGame().LekmodIsRegionalLuxury((ResourceTypes)lua_tointeger(L, 1)));
+	return 1;
+}
+#endif
 int CvLuaGame::lLekmodIsBlackout(lua_State* L)
 {
 	bool bBlackout = GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_BLACKOUT) != 0;

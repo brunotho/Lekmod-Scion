@@ -43343,6 +43343,13 @@
 	<Column name="LekmodEraLevel1" type="text" reference="Eras(Type)" default="NULL"/> <!-- LEKMOD: copies held = era thresholds of the owner reached -->
 	<Column name="LekmodEraLevel2" type="text" reference="Eras(Type)" default="NULL"/>
 	<Column name="LekmodEraLevel3" type="text" reference="Eras(Type)" default="NULL"/>
+	<Column name="LekmodSpecialMinorCiv" type="text" reference="MinorCivilizations(Type)" default="NULL"/>
+	<Column name="LekmodSpecialEra" type="text" reference="Eras(Type)" default="NULL"/>
+	<Column name="LekmodGlobalGreatScientistRate" type="integer" default="0"/>
+	<Column name="LekmodGlobalGreatArtsRate" type="integer" default="0"/>
+	<Column name="LekmodRegionalLuxuryHappiness" type="integer" default="0"/>
+	<Column name="LekmodCollectArtTurns" type="integer" default="0"/>
+	<Column name="LekmodCollectArtEra" type="text" reference="Eras(Type)" default="NULL"/>
     	<Column name="GreatWorkFilledTourismModifier" type="integer" default="0"/>
     	<Column name="FreePlotPurchase" type="boolean" default="false"/>
     	<Column name="LekmodTimedBuilding" type="text" reference="Buildings(Type)" default="NULL"/>
@@ -292728,4 +292735,113 @@
 		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_WONDER</FlavorType><Flavor>0</Flavor></Row>
 		<Row><MinorCivType>MINOR_CIV_LEKMOD_LUBECK</MinorCivType><FlavorType>FLAVOR_GOLD</FlavorType><Flavor>10</Flavor></Row>
 	</MinorCivilization_Flavors>
+	<!-- LEKMOD: Special City-States step 2 (2026-10-27): the special City-States' own buildings (309-311, classes 211-213),
+	     given by LekmodDoSpecialCityStateBuildings to the city first owned by that City-State; kept on capture. Icons borrowed for now. -->
+	<BuildingClasses>
+		<Row>
+			<ID>211</ID>
+			<Type>BUILDINGCLASS_LEKMOD_BAIKONUR_COSMODROME</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_BAIKONUR_COSMODROME</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>309</ID>
+			<Type>BUILDING_LEKMOD_BAIKONUR_COSMODROME</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_BAIKONUR_COSMODROME</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<ConquestProb>100</ConquestProb>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<GlobalSpaceProductionModifier>30</GlobalSpaceProductionModifier>
+			<LekmodGlobalGreatScientistRate>10</LekmodGlobalGreatScientistRate>
+			<LekmodSpecialMinorCiv>MINOR_CIV_LEKMOD_BAIKONUR</LekmodSpecialMinorCiv>
+			<PortraitIndex>54</PortraitIndex>
+			<IconAtlas>BW_ATLAS_1</IconAtlas>
+		</Row>
+	</Buildings>
+	<BuildingClasses>
+		<Row>
+			<ID>212</ID>
+			<Type>BUILDINGCLASS_LEKMOD_MEDICI_COLLECTION</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_MEDICI_COLLECTION</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>310</ID>
+			<Type>BUILDING_LEKMOD_MEDICI_COLLECTION</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_MEDICI_COLLECTION</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<ConquestProb>100</ConquestProb>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkSlotType>GREAT_WORK_SLOT_ART_ARTIFACT</GreatWorkSlotType>
+			<GreatWorkCount>5</GreatWorkCount>
+			<LekmodGlobalGreatArtsRate>10</LekmodGlobalGreatArtsRate>
+			<LekmodCollectArtTurns>10</LekmodCollectArtTurns>
+			<LekmodCollectArtEra>ERA_RENAISSANCE</LekmodCollectArtEra>
+			<LekmodSpecialMinorCiv>MINOR_CIV_LEKMOD_FLORENCE</LekmodSpecialMinorCiv>
+			<PortraitIndex>12</PortraitIndex>
+			<IconAtlas>EXPANSION2_WONDER_ATLAS</IconAtlas>
+		</Row>
+	</Buildings>
+	<BuildingClasses>
+		<Row>
+			<ID>213</ID>
+			<Type>BUILDINGCLASS_LEKMOD_HANSEATIC_DIET</Type>
+			<DefaultBuilding>BUILDING_LEKMOD_HANSEATIC_DIET</DefaultBuilding>
+			<Description>TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET</Description>
+			<MaxGlobalInstances>-1</MaxGlobalInstances>
+			<MaxTeamInstances>-1</MaxTeamInstances>
+			<MaxPlayerInstances>-1</MaxPlayerInstances>
+			<ExtraPlayerInstances>0</ExtraPlayerInstances>
+			<NoLimit>false</NoLimit>
+			<Monument>false</Monument>
+		</Row>
+	</BuildingClasses>
+	<Buildings>
+		<Row>
+			<ID>311</ID>
+			<Type>BUILDING_LEKMOD_HANSEATIC_DIET</Type>
+			<BuildingClass>BUILDINGCLASS_LEKMOD_HANSEATIC_DIET</BuildingClass>
+			<Description>TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET</Description>
+			<Help>TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET_HELP</Help>
+			<Cost>-1</Cost>
+			<HurryCostModifier>-1</HurryCostModifier>
+			<ConquestProb>100</ConquestProb>
+			<NukeImmune>true</NukeImmune>
+			<Sellable>false</Sellable>
+			<ArtDefineTag>MONUMENT</ArtDefineTag>
+			<GreatWorkCount>-1</GreatWorkCount>
+			<LekmodSpecialEra>ERA_RENAISSANCE</LekmodSpecialEra>
+			<LekmodRegionalLuxuryHappiness>1</LekmodRegionalLuxuryHappiness>
+			<LekmodSpecialMinorCiv>MINOR_CIV_LEKMOD_LUBECK</LekmodSpecialMinorCiv>
+			<PortraitIndex>0</PortraitIndex>
+			<IconAtlas>EXPANSION2PATCH_BUILDING_ATLAS</IconAtlas>
+		</Row>
+	</Buildings>
 </GameData>
