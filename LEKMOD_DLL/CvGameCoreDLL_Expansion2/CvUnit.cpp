@@ -20195,6 +20195,9 @@ void CvUnit::setExperience(int iNewValue, int iMax)
 				Localization::String localizedText = Localization::Lookup("TXT_KEY_EXPERIENCE_POPUP");
 				localizedText << iExperienceChange;
 				float fDelay = GC.getPOST_COMBAT_TEXT_DELAY();
+#ifdef LEKMOD_SPECS_2026_10_27
+				fDelay = fDelay * LEKMOD_KILL_YIELD_TEXT_DELAY_PCT / 100.0f; // keeps XP before the faster kill yields
+#endif
 
 				int iX = m_iX;
 				int iY = m_iY;
@@ -20396,6 +20399,9 @@ void CvUnit::ReportGGPoints(int iPoints, bool bAdmiral)
 		}
 		// Pop it up just after the XP text
 		float fDelay = GC.getPOST_COMBAT_TEXT_DELAY() + 0.5f;
+#ifdef LEKMOD_SPECS_2026_10_27
+		fDelay = fDelay * LEKMOD_KILL_YIELD_TEXT_DELAY_PCT / 100.0f; // same order as before, sooner
+#endif
 		DLLUI->AddPopupText(iX, iY, localizedText.toUTF8(), fDelay);
 	}
 }

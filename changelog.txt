@@ -67,6 +67,24 @@ Tags: diplomacy and trade
 - Changed: coastal cities no longer get the +25% Gold for being on a river from international caravan routes, so it doesn't add to the coastal bonus any more
 - DLL: CvPlayerTrade::GetTradeConnectionRiverValueModifierTimes100 (the city whose share it is: isCoastal)
 
+DISMISS ALL NOTIFICATIONS
+-------------------------
+Tags: ui
+- Added: a Lek Options switch "Only important notifications": the other notifications are dismissed right away (they stay in the notification log)
+- Changed: City-State alliance changes stand out among the notifications (yellow glow, gold icon)
+- Dev: buckets in NotificationPanel.lua (g_LekmodImportant, standard UI) and on the Notion page "Notification buckets"; option LEK_ImportantNotificationsOnly (unset = off); alliance changes are NOTIFICATION_MINOR with "Ally of" in the summary
+
+FLOATING NUMBERS AFTER A KILL
+-----------------------------
+Tags: ui, combat
+- Changed: Experience, Great General points and kill yields (Zealot Faith, Honor Culture and the others) float up sooner after a fight, in the same order; the Gold for meeting a City-State too
+- DLL: LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 70 (CvPlayer kill yields, CvUnit XP and Great General points); City-State meeting Gold delay 2 -> 1
+
+MAYA (CIVILIZATION_MAYA)
+------------------------
+Tags: civs
+- Dev: the UA text lists the Long Count turns from 35 to 293 (was 42 to 152); computed from the quick calendar the trait uses (cycles also end on turns 22 and 28, too early for Theology)
+
 SEAPORT (BUILDING_SEAPORT)
 --------------------------
 Tags: buildings, naval

@@ -139188,7 +139188,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LONG_COUNT"> 
 			<Text>
-				After researching [ICON_TECH_THEOLOGY] Theology, receive a bonus [ICON_GREAT_PEOPLE] Great Person at the end of every Maya Long Count calendar cycle.[NEWLINE]Cycles end around turns 42, 48, 57, 67, 77, 88, 102, 122 and 152.[NEWLINE]Each bonus person can only be chosen once.
+				After researching [ICON_TECH_THEOLOGY] Theology, receive a bonus [ICON_GREAT_PEOPLE] Great Person at the end of every Maya Long Count calendar cycle.[NEWLINE]Cycles end on turns 35, 42, 48, 57, 67, 77, 88, 102, 122, 152 and 293.[NEWLINE]Each bonus person can only be chosen once.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_LONG_COUNT_SHORT"> 
@@ -147894,6 +147894,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT">
 			<Text>No sound when a multiplayer chat message arrives. The message still shows.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS">
+			<Text>Only important notifications</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS_TT">
+			<Text>The notifications on the right only show choices you have to make, Great People, wonders, war and peace, units lost, spies, ancient ruins, City-State alliance changes, culture victory warnings and multiplayer messages.[NEWLINE]The others still go into the notification log.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPTIONS_TAB">
 			<Text>Lek Options</Text>

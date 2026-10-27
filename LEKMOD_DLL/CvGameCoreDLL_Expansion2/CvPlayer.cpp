@@ -15682,6 +15682,9 @@ void CvPlayer::ReportYieldFromKill(YieldTypes eYield, int iValue, int iX, int iY
 #else
 			float fDelay = GC.getPOST_COMBAT_TEXT_DELAY() * (1.5f + ((float)iDelay * 0.5f)); // 1.5 is added to avoid overlapping with XP + Gen./Admr. text
 #endif
+#ifdef LEKMOD_SPECS_2026_10_27
+			fDelay = fDelay * LEKMOD_KILL_YIELD_TEXT_DELAY_PCT / 100.0f; // kill yields float up sooner (user, 2026-10-27)
+#endif
 			sprintf_s(text, yieldString, iValue);
 			GC.GetEngineUserInterface()->AddPopupText(iX, iY, text, fDelay);
 		}
