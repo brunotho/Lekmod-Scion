@@ -213,6 +213,7 @@ void CvLuaGame::RegisterMembers(lua_State* L)
 	Method(LekmodIsRegionalLuxury);
 	Method(LekmodGetAuctions);
 	Method(LekmodGetBerlin);
+	Method(LekmodTestSpecialCityStates);
 #endif
 #endif
 
@@ -1364,6 +1365,11 @@ int CvLuaGame::lLekmodGetAuctions(lua_State* L)
 	return 1;
 }
 // Game.LekmodGetBerlin(): {State (0 waiting, 1 announced, 2 heir chosen), Deadline, Heir, CooldownEnd, CityOwner, CityID}; nil without Berlin
+int CvLuaGame::lLekmodTestSpecialCityStates(lua_State* /*L*/)
+{
+	GC.getGame().LekmodTestSpecialCityStates();
+	return 0;
+}
 int CvLuaGame::lLekmodGetBerlin(lua_State* L)
 {
 	CvGame& kGame = GC.getGame();

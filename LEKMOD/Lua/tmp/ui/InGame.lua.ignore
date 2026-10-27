@@ -496,6 +496,14 @@ function InputHandler( uiMsg, wParam, lParam )
 		LuaEvents.LekmodDismissAllNotifications();
 		return true;
 	end
+	-- LEKMOD (2026-10-28): test aid for the special City-States, single player only: Ctrl+Alt+A opens their auctions now
+	-- and announces Berlin's deadline for the next turn (Game.LekmodTestSpecialCityStates does nothing in multiplayer)
+	if uiMsg == KeyEvents.KeyDown and wParam == Keys.A and UIManager:GetAlt() and UIManager:GetControl() and not UIManager:GetShift()
+		and not Game:IsNetworkMultiPlayer() and Game.LekmodTestSpecialCityStates ~= nil then
+		Game.LekmodTestSpecialCityStates();
+		LuaEvents.LekmodShowAuctions();
+		return true;
+	end
 	-- LEKMOD: Shift + F-key toggles a panel of the top-left corner (next to the related screen's F-key)
 	if uiMsg == KeyEvents.KeyDown and UIManager:GetShift() and not UIManager:GetControl() and not UIManager:GetAlt()
 		and LekmodInfoCornerHotkey( wParam ) then

@@ -200,6 +200,7 @@ protected:
 	static int lLekmodIsRegionalLuxury(lua_State* L);
 	static int lLekmodGetAuctions(lua_State* L);
 	static int lLekmodGetBerlin(lua_State* L);
+	static int lLekmodTestSpecialCityStates(lua_State* L);
 #endif
 #endif
 
