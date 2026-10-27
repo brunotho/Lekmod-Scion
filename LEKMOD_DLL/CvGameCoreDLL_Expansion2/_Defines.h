@@ -1834,6 +1834,10 @@ Diversify Spain and Australia's NW Discovery bonus
 // LEKMOD (user, 2026-10-24, NEW SPECS AGAIN list 4): Cannon long-range damage (UnitPromotions.LekmodFarRangedDamageMod/Distance),
 // Battering Ram, Carroccio, Mercantile trade Gold, Rationalism rework, Angkor Wat / Alhambra / Forbidden Palace, locked Great Work slots
 #define LEKMOD_SPECS_2026_10_24
+// LEKMOD (user, 2026-10-27, NEW SPECS AGAIN list 5): lump-sum Gold trades once either player knows Banking (no DoF needed),
+// a conquered city that can't be liberated is puppeted without the capture popup, floating Gold when meeting a City-State,
+// no river trade bonus for coastal cities
+#define LEKMOD_SPECS_2026_10_27
 // "Instant heals" cannot be taken on built or purchased units that have available promotions or after durationing promotion
 #define PROMOTION_INSTA_HEAL_LOCKED
 /// Gifted units can't attack if they have already attacked this turn

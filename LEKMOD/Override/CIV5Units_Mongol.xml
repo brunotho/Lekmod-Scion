@@ -64443,7 +64443,7 @@ The second sack of Ulundi is considered by historians to be the definitive end o
 		</Replace>
 		<Replace Tag="TXT_KEY_DIPLO_NEED_DOF_TT_ONE_LINE"> 
 			<Text>
-				Gold cannot be traded.
+				Lump sums of Gold can be traded once you or the other player know Banking.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_DIPLO_NEED_WRITING_TT"> 

@@ -38,6 +38,30 @@ SWITZERLAND (CIVILIZATION_SWISS)
 Tags: civs
 - Changed: UA: other players' Demographics include your Gold again; only your Gold total stays hidden ("?") in the trade screen
 
+GOLD TRADING (TRADE_ITEM_GOLD)
+------------------------------
+Tags: diplomacy and trade
+- Changed: lump sums of Gold can be traded again once you or the other player know Banking (no Declaration of Friendship needed)
+- DLL: LEKMOD_SPECS_2026_10_27 in CvDeal::IsPossibleToTradeItem (either team has TECH_BANKING; the DoF check is skipped)
+
+CAPTURED CITIES (CITY_CAPTURE_POPUP)
+------------------------------------
+Tags: game mechanics, combat
+- Changed: a conquered city that can't be liberated becomes a puppet right away, without the choice popup; you can still annex it from the city, and to raze it you annex it first. The popup still comes when the city can be given back to its earlier owner (a City-State or another player)
+- DLL: CvPlayer::acquireCity puppets in the synced code when bConquest and no liberation target (eLiberatedPlayer); City-State buyouts keep the popup
+
+CITY-STATE FIRST MEETING GOLD (MINOR_CIV_CONTACT_GOLD)
+------------------------------------------------------
+Tags: ui, city-states
+- Added: the Gold for meeting a City-State floats over the City-State
+- DLL: CvMinorCivAI::DoFirstContactWithMajor, AddPopupText for the active player
+
+TRADE ROUTE RIVER BONUS
+-----------------------
+Tags: diplomacy and trade
+- Changed: coastal cities no longer get the +25% Gold for being on a river from international caravan routes, so it doesn't add to the coastal bonus any more
+- DLL: CvPlayerTrade::GetTradeConnectionRiverValueModifierTimes100 (the city whose share it is: isCoastal)
+
 SEAPORT (BUILDING_SEAPORT)
 --------------------------
 Tags: buildings, naval

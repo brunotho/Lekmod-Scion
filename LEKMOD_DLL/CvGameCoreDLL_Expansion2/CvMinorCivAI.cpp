@@ -2941,6 +2941,19 @@ void CvMinorCivAI::DoFirstContactWithMajor(TeamTypes eTeam, bool bSuppressMessag
 				const int iPlayerGoldGift = iGoldGift;
 #endif
 				GET_PLAYER(ePlayer).GetTreasury()->ChangeGold(iPlayerGoldGift);
+#ifdef LEKMOD_SPECS_2026_10_27
+				// floating "+N Gold" over the City-State for the player who met it
+				if (iPlayerGoldGift > 0 && ePlayer == GC.getGame().getActivePlayer())
+				{
+					CvCity* pLekmodMinorCapital = m_pPlayer->getCapitalCity();
+					if (pLekmodMinorCapital != NULL)
+					{
+						char text[256] = {0};
+						sprintf_s(text, "[COLOR_YELLOW]+%d[ENDCOLOR][ICON_GOLD]", iPlayerGoldGift);
+						GC.GetEngineUserInterface()->AddPopupText(pLekmodMinorCapital->getX(), pLekmodMinorCapital->getY(), text, GC.getPOST_COMBAT_TEXT_DELAY() * 2);
+					}
+				}
+#endif
 
 				// Faith gift
 				if(iFaithGift > 0)

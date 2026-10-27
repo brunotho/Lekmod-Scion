@@ -3703,6 +3703,27 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bGift, bool bP
 				}
 				else if (pNewCity->getOriginalOwner() != GetID() || GetPlayerTraits()->IsNoAnnexing() || bIsMinorCivBuyout)
 				{
+#ifdef LEKMOD_SPECS_2026_10_27
+					// A conquered city nobody can be given back to becomes a puppet at once (synced: runs on every machine);
+					// annexing works from the city as usual. The popup stays for liberation and for City-State buyouts.
+					if (bConquest && !bIsMinorCivBuyout && eLiberatedPlayer == NO_PLAYER)
+					{
+#ifdef AUI_CITIZENS_MID_TURN_ASSIGN_RUNS_SELF_CONSISTENCY
+						pNewCity->DoCreatePuppet(false);
+#else
+						pNewCity->DoCreatePuppet();
+#endif
+						if (iCaptureGold > 0 || iCaptureCulture > 0 || iCaptureGreatWorks > 0)
+						{
+							if (iCaptureCulture == 0 && iCaptureGreatWorks == 0)
+								strBuffer = GetLocalizedText("TXT_KEY_POPUP_GOLD_CITY_CAPTURE", iCaptureGold, pNewCity->getNameKey());
+							else
+								strBuffer = GetLocalizedText("TXT_KEY_POPUP_GOLD_AND_CULTURE_CITY_CAPTURE", iCaptureGold, iCaptureCulture, iCaptureGreatWorks, pNewCity->getNameKey());
+							GC.GetEngineUserInterface()->AddCityMessage(0, pNewCity->GetIDInfo(), GetID(), true, GC.getEVENT_MESSAGE_TIME(), strBuffer);
+						}
+					}
+					else
+#endif
 					if(GC.getGame().getActivePlayer() == GetID())
 					{
 						int iTemp[5] = { pNewCity->GetID(), iCaptureGold, iCaptureCulture, iCaptureGreatWorks, eLiberatedPlayer };

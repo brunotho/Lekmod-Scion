@@ -2983,6 +2983,11 @@ int CvPlayerTrade::GetTradeConnectionRiverValueModifierTimes100(const TradeConne
 		{
 			if (pTradeCity)
 				iModifier = pTradeCityPlot->isRiver() ? 25 : 0;
+#ifdef LEKMOD_SPECS_2026_10_27
+			// coastal cities don't get the river bonus (they have the coastal one instead)
+			if (pTradeCity && pTradeCity->isCoastal(GC.getMIN_WATER_SIZE_FOR_OCEAN()))
+				iModifier = 0;
+#endif
 		}
 	}
 	else // Internal Trade

@@ -375,15 +375,28 @@ bool CvDeal::IsPossibleToTradeItem(PlayerTypes ePlayer, PlayerTypes eToPlayer, T
 			return false;
 #endif
 #ifdef LEKMOD_NO_GOLD_TRADE
+#ifdef LEKMOD_SPECS_2026_10_27
+		// Lump-sum gold can be traded once either player knows Banking (no Declaration of Friendship needed)
+		{
+			const TechTypes eLekmodBanking = (TechTypes)GC.getInfoTypeForString("TECH_BANKING", true);
+			if (eLekmodBanking == NO_TECH)
+				return false;
+			if (!GET_TEAM(pFromPlayer->getTeam()).GetTeamTechs()->HasTech(eLekmodBanking) && !GET_TEAM(pToPlayer->getTeam()).GetTeamTechs()->HasTech(eLekmodBanking))
+				return false;
+		}
+#else
 		// Lump-sum gold can't be traded at all (also not with a DoF or in peace deals); Gold per Turn still can
 		return false;
 #endif
+#endif
+#if !(defined(LEKMOD_NO_GOLD_TRADE) && defined(LEKMOD_SPECS_2026_10_27))
 		// DoF has not been made with this player
 		if (!this->IsPeaceTreatyTrade(eToPlayer) && !this->IsPeaceTreatyTrade(ePlayer))
 		{
 			if (pFromPlayer->getTeam() != pToPlayer->getTeam() && (!pFromPlayer->GetDiplomacyAI()->IsDoFAccepted(eToPlayer) || !pToPlayer->GetDiplomacyAI()->IsDoFAccepted(ePlayer)))
 				return false;
 		}
+#endif
 
 		// Can't trade more Gold than you have
 		int iGold = iData1;
