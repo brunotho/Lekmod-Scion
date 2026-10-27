@@ -135,8 +135,10 @@ function RefreshList()
 	end
 	
 	local bTickTock = false;
+	local lekmodRows = {};
 	for i, belief in ipairs(availableBeliefs) do
 		local itemInstance = g_ItemManager:GetInstance();
+		table.insert(lekmodRows, itemInstance);
 		itemInstance.Name:SetText(belief.Name);
 		--itemInstance.Button:SetToolTipString(belief.Description);
 		itemInstance.Description:SetText(belief.Description);
@@ -164,6 +166,28 @@ function RefreshList()
 		bTickTock = not bTickTock;
 	end
 	
+	Controls.ItemStack:CalculateSize();
+
+	-- LEKMOD: a list without a scroll bar (e.g. the Reformation beliefs) starts at the left edge instead of
+	-- leaving the scroll bar's empty strip, so the rows join the panel's left side (user, 2026-10-27)
+	local _, stackHeight = Controls.ItemStack:GetSizeVal();
+	local _, panelHeight = Controls.ItemScrollPanel:GetSizeVal();
+	local scrollBarWidth = 18;
+	local extra = 0;
+	if (stackHeight <= panelHeight) then
+		extra = scrollBarWidth;
+	end
+	Controls.ItemStack:SetOffsetVal(scrollBarWidth - extra, 0);
+	for _, itemInstance in ipairs(lekmodRows) do
+		local buttonWidth, buttonHeight = itemInstance.Button:GetSizeVal();
+		itemInstance.Button:SetSizeVal(418 + extra, buttonHeight);
+		itemInstance.Box:SetSizeVal(438 + extra, buttonHeight);
+		itemInstance.BounceAnim:SetSizeVal(438 + extra, buttonHeight + 5);
+		itemInstance.BounceGrid:SetSizeVal(438 + extra, buttonHeight + 5);
+		itemInstance.Name:SetOffsetVal(10 + extra, 7);
+		itemInstance.Description:SetOffsetVal(10 + extra, 28);
+	end
+
 	Controls.ItemStack:CalculateSize();
 	Controls.ItemStack:ReprocessAnchoring();
 	Controls.ItemScrollPanel:CalculateInternalSize();
