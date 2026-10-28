@@ -8461,6 +8461,37 @@ PlayerTypes CvGame::LekmodCambridgeAlly(PlayerTypes eMinor)
 	const int iWinner = LekmodAuction(iAuction, LAF_WINNER);
 	return (iWinner >= 0 && iWinner < MAX_MAJOR_CIVS) ? (PlayerTypes)iWinner : NO_PLAYER;
 }
+// Cambridge's investment winner may keep units on Cambridge's city tile until the payout (not while at war with Cambridge)
+bool CvGame::LekmodMayStandInCity(PlayerTypes eUnitOwner, const CvCity* pCity)
+{
+	if (pCity == NULL || eUnitOwner < 0 || eUnitOwner >= MAX_MAJOR_CIVS || !GET_PLAYER(pCity->getOwner()).isMinorCiv())
+		return false;
+	if (LekmodCambridgeAlly(pCity->getOwner()) != eUnitOwner)
+		return false;
+	return !GET_TEAM(GET_PLAYER(eUnitOwner).getTeam()).isAtWar(pCity->getTeam());
+}
+// Units of other players on Cambridge's city tile that may no longer stand there move to the nearest valid tile
+void CvGame::LekmodEjectCambridgeGuests()
+{
+	const int iMinor = LekmodAuction(LEKMOD_AUCTION_CAMBRIDGE, LAF_MINOR);
+	if (iMinor < MAX_MAJOR_CIVS || iMinor >= MAX_CIV_PLAYERS || LekmodAuction(LEKMOD_AUCTION_CAMBRIDGE, LAF_STATE) == LAS_NONE)
+		return;
+	CvCity* pCity = GET_PLAYER((PlayerTypes)iMinor).getCapitalCity();
+	CvPlot* pPlot = pCity ? pCity->plot() : NULL;
+	if (pPlot == NULL || pPlot->getNumUnits() <= 0)
+		return;
+	IDInfoVector currentUnits;
+	if (pPlot->getUnits(&currentUnits) <= 0)
+		return;
+	for (IDInfoVector::const_iterator itr = currentUnits.begin(); itr != currentUnits.end(); ++itr)
+	{
+		CvUnit* pLoopUnit = ::getUnit(*itr);
+		if (pLoopUnit == NULL || pLoopUnit->getOwner() == pCity->getOwner() || LekmodMayStandInCity(pLoopUnit->getOwner(), pCity))
+			continue;
+		if (!pLoopUnit->jumpToNearestValidPlot())
+			pLoopUnit->kill(false);
+	}
+}
 // Start (payout turn set) or end (payout turn cleared) the ally lock, and let the City-State re-evaluate its friends and ally
 void CvGame::LekmodSetCambridgeLock(bool bOn)
 {
@@ -8478,6 +8509,8 @@ void CvGame::LekmodSetCambridgeLock(bool bOn)
 	const int iAfter = pMinorAI->GetEffectiveFriendshipWithMajor((PlayerTypes)iWinner);
 	if (GET_PLAYER(eMinor).isAlive() && iBefore != iAfter)
 		pMinorAI->DoFriendshipChangeEffects((PlayerTypes)iWinner, iBefore, iAfter);
+	if (!bOn)
+		LekmodEjectCambridgeGuests();
 }
 bool CvGame::LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold)
 {
@@ -8503,6 +8536,7 @@ bool CvGame::LekmodPlaceBid(PlayerTypes ePlayer, int iAuction, int iGold)
 void CvGame::LekmodDoAuctions()
 {
 	const int iTurn = getGameTurn();
+	LekmodEjectCambridgeGuests();
 	for (int iAuction = 0; iAuction < NUM_LEKMOD_AUCTIONS; iAuction++)
 	{
 		const int iMinor = LekmodAuction(iAuction, LAF_MINOR);

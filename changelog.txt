@@ -256,8 +256,8 @@ Tags: city-states
 - Now: in the Industrial or Modern Era, each turn has a 3% chance (once per game) that Cambridge asks for a research endowment
 - Now: offers are Gold and/or Great Works (each worth 400 Gold); the highest offer wins and pays everything, a tie goes to more Influence with Cambridge, then to chance; everyone else gets their Gold and Great Works back
 - Now: for 10 turns the winner is Cambridge's ally whatever the Influence; then it gets 5 turns of its Science, unless Cambridge was captured in the meantime
-- DLL: offered works leave their slots (network code -28, before the Gold message -26 closes the offer; saved in m_aiLekmodCambridgeWorks); the ally lock raises the winner's effective Influence above everyone else's in CvMinorCivAI::GetEffectiveFriendshipWithMajorTimes100 until the payout
-- Note: the spec also lets the winner keep units in Cambridge; not in yet (question on Specs to refine)
+- Now: during those 10 turns the winner may also move units into Cambridge and keep them there (they don't defend the city); they are moved out when the 10 turns end or if it goes to war with Cambridge
+- DLL: offered works leave their slots (network code -28, before the Gold message -26 closes the offer; saved in m_aiLekmodCambridgeWorks); the ally lock raises the winner's effective Influence above everyone else's in CvMinorCivAI::GetEffectiveFriendshipWithMajorTimes100 until the payout; units on the city tile: CvGame::LekmodMayStandInCity in CvUnit::canMoveInto and PathDestValid, CvGame::LekmodEjectCambridgeGuests every turn and at the end
 
 BAIKONUR (NEW) (MINOR_CIV_LEKMOD_BAIKONUR)
 ------------------------------------------

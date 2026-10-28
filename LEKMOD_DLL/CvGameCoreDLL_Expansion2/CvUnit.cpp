@@ -3171,7 +3171,11 @@ bool CvUnit::canMoveInto(const CvPlot& plot, byte bMoveFlags) const
 		if(!(bMoveFlags & MOVEFLAG_ATTACK) && !(bMoveFlags & MOVEFLAG_DECLARE_WAR))
 #endif
 		{
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+			if(plot.isCity() && plot.getPlotCity()->getOwner() != getOwner() && !GC.getGame().LekmodMayStandInCity(getOwner(), plot.getPlotCity()))
+#else
 			if(plot.isCity() && plot.getPlotCity()->getOwner() != getOwner())
+#endif
 				return false;
 #endif
 		}

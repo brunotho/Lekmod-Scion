@@ -1239,7 +1239,12 @@ int PathDestValid(int iToX, int iToY, const void* pointer, CvAStar* finder)
 		CvCity* pCity = pToPlot->getPlotCity();
 		if(pCity)
 		{
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+			if(pCacheData->getOwner() != pCity->getOwner() && !GET_TEAM(eTeam).isAtWar(pCity->getTeam()) && !(finder->GetInfo() & MOVE_IGNORE_STACKING)
+				&& !GC.getGame().LekmodMayStandInCity(pCacheData->getOwner(), pCity))
+#else
 			if(pCacheData->getOwner() != pCity->getOwner() && !GET_TEAM(eTeam).isAtWar(pCity->getTeam()) && !(finder->GetInfo() & MOVE_IGNORE_STACKING))
+#endif
 			{
 				return FALSE;
 			}

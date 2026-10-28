@@ -473,6 +473,8 @@ public:
 	void LekmodReturnCambridgeWorks(PlayerTypes ePlayer, bool bReturn);
 	PlayerTypes LekmodCambridgeAlly(PlayerTypes eMinor);
 	void LekmodSetCambridgeLock(bool bOn);
+	bool LekmodMayStandInCity(PlayerTypes eUnitOwner, const CvCity* pCity);
+	void LekmodEjectCambridgeGuests();
 	void LekmodAuctionNotify(PlayerTypes eOnly, int iMinor, const char* szMessage, const char* szSummary);
 	// Berlin: Clausewitz's Legacy (saved: LBF_* fields)
 	enum LekmodBerlinField { LBF_STATE, LBF_DEADLINE, LBF_HEIR, LBF_RETRY_TURN, LBF_COOLDOWN_END, NUM_LEKMOD_BERLIN_FIELDS };
