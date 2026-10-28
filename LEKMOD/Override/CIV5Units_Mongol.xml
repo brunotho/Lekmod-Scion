@@ -39277,7 +39277,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_CULTURED_TT"> 
 			<Text>
-				A befriended [COLOR_POSITIVE_TEXT]Cultured[ENDCOLOR] City-State will provide you gifts of [ICON_CULTURE] Culture, allowing you to obtain Social Policies more quickly.
+				A befriended [COLOR_POSITIVE_TEXT]Cultured[ENDCOLOR] City-State will provide you gifts of [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_DIPLO_HELLO_PEACE_FRIENDLY"> 
@@ -39813,7 +39813,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_RELIGIOUS_TT"> 
 			<Text>
-				A befriended [COLOR_POSITIVE_TEXT]Religious[ENDCOLOR] City-State will increase your [ICON_PEACE] Faith, allowing you to empower your religion with new beliefs and units.
+				A befriended [COLOR_POSITIVE_TEXT]Religious[ENDCOLOR] City-State will provide you gifts of [ICON_PEACE] Faith.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_RESOURCES_TT"> 
@@ -148663,7 +148663,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Scientific</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITY_STATE_SCIENTIFIC_TT">
-			<Text>A befriended [COLOR_POSITIVE_TEXT]Scientific[ENDCOLOR] City-State will increase your [ICON_RESEARCH] Science.[NEWLINE]Friends: 3 [ICON_RESEARCH] Science per turn per era (Ancient Era 3, Classical Era 6, ...).[NEWLINE]Allies: twice as much.</Text>
+			<Text>A befriended [COLOR_POSITIVE_TEXT]Scientific[ENDCOLOR] City-State will provide you gifts of [ICON_RESEARCH] Science.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TEXT">
 			<Text>Liberate</Text>

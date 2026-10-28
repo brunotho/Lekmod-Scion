@@ -295,6 +295,7 @@ SCIENTIFIC CITY-STATES (NEW) (MINOR_CIV_TRAIT_SCIENTIFIC)
 Tags: city-states
 - Now: a sixth City-State type; Cambridge and Baikonur are Scientific
 - Now: friends get 3 Science per turn per era (Ancient Era 3, Classical Era 6, ...); allies get twice as much
+- Dev: 2026-10-28 (user): the City-State trait tooltips only say what the City-State gives (the Cultured and Religious ones lost their "allowing you to ..." explanations); Scientific is worded like Cultured
 - DLL: MinorCivTraitTypes gets MINOR_CIV_TRAIT_SCIENTIFIC (trait row ID 5); its Science goes through the Scholasticism path (CvPlayer::IsGetsScienceFromPlayer, CvMinorCivAI::GetScienceFriendshipBonusTimes100), LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA 3
 - Dev: light blue map color (COLOR_CS_TRAIT_SCIENTIFIC 384, PLAYERCOLOR_CS_SCIENTIFIC 189); the City-State screen uses the Religious pictures until own art exists; the trait icon (city banner, lists) is a flask like the Research Info button's, drawn by art_sources/tools/build_cs_scientific_icon.py (CityStateScientific.dds; the first version keyed out of the button looked blotchy)
 
