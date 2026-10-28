@@ -17,6 +17,7 @@ TEXCONV = r"C:/Users/bbruno/civ-tools/texconv.exe"
 SIZE = 32
 SS = 16
 SHIFT = (0.5, -1.0)  # px at 32: up and right a bit
+SCALE = 0.9  # user 2026-10-28: 10% smaller, it touched the banner circle
 
 N = SIZE * SS
 
@@ -43,7 +44,12 @@ d.polygon(lip, fill=glass)
 # liquid in the lower part, with a little shine line
 d.polygon([P(10.2, 18.5), P(21.8, 18.5), P(24.6, 23.6), P(24.2, 25.5), P(7.8, 25.5), P(7.4, 23.6)], fill=liquid)
 d.line([P(14.5, 8), P(14.5, 13.5)], fill=(255, 255, 255, 200), width=int(1.0 * SS))
-out = big.resize((SIZE, SIZE), Image.LANCZOS)
+# shrink around the flask's own centre, keeping the shift
+small = big.resize((int(N * SCALE), int(N * SCALE)), Image.LANCZOS)
+cx, cy = (N / 2 + SHIFT[0] * SS), (N / 2 + SHIFT[1] * SS)
+scaled = Image.new("RGBA", (N, N), (0, 0, 0, 0))
+scaled.paste(small, (int(cx - cx * SCALE), int(cy - cy * SCALE)), small)
+out = scaled.resize((SIZE, SIZE), Image.LANCZOS)
 os.makedirs(OUT_DIR, exist_ok=True)
 png = os.path.join(OUT_DIR, "CityStateScientific.png")
 out.save(png)
