@@ -39437,7 +39437,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_MERCANTILE_TT"> 
 			<Text>
-				A befriended [COLOR_POSITIVE_TEXT]Mercantile[ENDCOLOR] City-State will provide extra [ICON_HAPPINESS_1] Happiness in your empire and double [ICON_GOLD] Gold from your trade routes to it, and manufactures special luxury resources which cannot be acquired any other way.
+				A befriended [COLOR_POSITIVE_TEXT]Mercantile[ENDCOLOR] City-State will provide extra [ICON_HAPPINESS_1] Happiness in your empire and double [ICON_GOLD] Gold from your trade routes to it, and manufactures special luxury resources which cannot be acquired any other way (they give only 2 [ICON_HAPPINESS_1] Happiness each).
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_MET"> 
@@ -148327,13 +148327,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Military units trained in this city get +5 XP (+10 from the Renaissance Era, +15 from the Modern Era).[NEWLINE]The city gets +2 [ICON_STRENGTH] Combat Strength (+4 from the Renaissance Era, +6 from the Modern Era).[NEWLINE]The era is the one of the city's owner.[NEWLINE][NEWLINE]Militaristic City-States get it in the Classical Era.[NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT">
-			<Text>{1_Name} ({2_State})[NEWLINE][NEWLINE]{3_Help}</Text>
+			<Text>{1_Name}[NEWLINE]{2_State}[NEWLINE][NEWLINE]{3_Help}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS">
-			<Text>this City-State has it</Text>
+			<Text>This City-State has it.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_NOT_YET">
-			<Text>not yet: comes in the Classical Era</Text>
+			<Text>Not yet: this City-State gets it in the {1_Era}.[NEWLINE]City-States are in the era of the {2_Rank} civilization.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_UNIQUE_UNIT_TT">
 			<Text>This City-State knows the {1_Name}.[NEWLINE]Its Ally gets it as a gift; whoever captures the City-State can train it while holding the city.[NEWLINE][NEWLINE]{2_Help}</Text>
@@ -148678,7 +148678,7 @@ The ship has weather'd every rack; the prize we sought is won."
 	<!-- LEKMOD: Special City-States step 2 (2026-10-27) -->
 	<Language_en_US>
 		<Row Tag="TXT_KEY_LEKMOD_CS_SPECIAL_BUILDING_NOT_YET">
-			<Text>not yet</Text>
+			<Text>Not yet.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME">
 			<Text>Baikonur Cosmodrome</Text>
@@ -148797,11 +148797,14 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_TT">
 			<Text>Click to close. The notification stays in the notification list.</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_LABEL">
-			<Text>Era:</Text>
+		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_RANK_1">
+			<Text>most advanced</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_TT">
-			<Text>All City-States are in the same era.[NEWLINE]A City-State knows every technology that at least {1_Num} of the {2_Num} civilizations know; its era is the era of the newest of these.[NEWLINE][NEWLINE]This era decides when City-States get their buildings (Appletree, War College, ...), their improvements and the events of special City-States.</Text>
+		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_RANK_2">
+			<Text>second most advanced</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_RANK_3">
+			<Text>third most advanced</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
 			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>

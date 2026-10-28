@@ -249,23 +249,6 @@ function OnDisplay()
 	Controls.PersonalityInfo:SetToolTipString(strPersonalityTT);
 	Controls.PersonalityLabel:SetToolTipString(strPersonalityTT);
 
-	-- LEKMOD (2026-10-28): the City-State era (City-States know every tech that 40% of the civilizations know, CvTeam::DoMinorCivTech)
-	if (Controls.LekmodEraInfo ~= nil) then
-		local era = GameInfo.Eras[pPlayer:GetCurrentEra()];
-		Controls.LekmodEraInfo:SetText(era and Locale.ConvertTextKey(era.Description) or "");
-		local iMajors = 0;
-		for iTeam = 0, GameDefines.MAX_CIV_TEAMS - 1 do
-			local pTeam = Teams[iTeam];
-			if (pTeam ~= nil and pTeam:IsAlive() and not pTeam:IsMinorCiv() and not pTeam:IsBarbarian()) then
-				iMajors = iMajors + 1;
-			end
-		end
-		local iNeeded = math.max(1, math.floor(iMajors * GameDefines.MINOR_CIV_TECH_PERCENT / 100));
-		local strEraTT = Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_ERA_TT", iNeeded, iMajors);
-		Controls.LekmodEraInfo:SetToolTipString(strEraTT);
-		Controls.LekmodEraLabel:SetToolTipString(strEraTT);
-	end
-	
 	-- Ally Status
 	local iAlly = pPlayer:GetAlly();
 	local bHideIcon = true;
@@ -853,6 +836,24 @@ local g_LekmodTraitBuildings = {
 	[MinorCivTraitTypes.MINOR_CIV_TRAIT_MARITIME] = "BUILDING_LEKMOD_APPLETREE",
 	[MinorCivTraitTypes.MINOR_CIV_TRAIT_MILITARISTIC] = "BUILDING_LEKMOD_WAR_COLLEGE",
 };
+-- LEKMOD (2026-10-28): "This City-State gets it in the X Era." plus the City-State era rule: City-States know every tech that
+-- 40% of the civilizations know (rounded down, at least 1; CvTeam::DoMinorCivTech), i.e. they are in the era of the Nth most advanced one
+function LekmodCityStateEraText(strEra)
+	local era = strEra and GameInfo.Eras[strEra];
+	local iMajors = 0;
+	for iTeam = 0, GameDefines.MAX_CIV_TEAMS - 1 do
+		local pTeam = Teams[iTeam];
+		if (pTeam ~= nil and pTeam:IsAlive() and not pTeam:IsMinorCiv() and not pTeam:IsBarbarian()) then
+			iMajors = iMajors + 1;
+		end
+	end
+	local iRank = math.min(3, math.max(1, math.floor(iMajors * GameDefines.MINOR_CIV_TECH_PERCENT / 100)));
+	local strRank = Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_ERA_RANK_" .. iRank);
+	if (era == nil) then
+		return Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_SPECIAL_BUILDING_NOT_YET");
+	end
+	return Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_NOT_YET", era.Description, strRank);
+end
 function LekmodShowTraitIcons(pPlayer)
 	if (Controls.LekmodTraitIcon1 == nil or pPlayer == nil) then
 		return;
@@ -872,7 +873,7 @@ function LekmodShowTraitIcons(pPlayer)
 	if (building ~= nil) then
 		local pCity = pPlayer:GetCapitalCity();
 		local bHas = (pCity ~= nil and pCity:IsHasBuilding(building.ID));
-		local strState = Locale.ConvertTextKey(bHas and "TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS" or "TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_NOT_YET");
+		local strState = bHas and Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS") or LekmodCityStateEraText(building.LekmodEraLevel1);
 		table.insert(aIcons, { building.PortraitIndex, building.IconAtlas,
 			Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT", Locale.ConvertTextKey(building.Description), strState, Locale.ConvertTextKey(building.Help)) });
 	end
@@ -882,7 +883,7 @@ function LekmodShowTraitIcons(pPlayer)
 		for special in GameInfo.Buildings{ LekmodSpecialMinorCiv = minorInfo.Type } do
 			local pCity = pPlayer:GetCapitalCity();
 			local bHas = (pCity ~= nil and pCity:IsHasBuilding(special.ID));
-			local strState = Locale.ConvertTextKey(bHas and "TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS" or "TXT_KEY_LEKMOD_CS_SPECIAL_BUILDING_NOT_YET");
+			local strState = bHas and Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_HAS") or LekmodCityStateEraText(special.LekmodSpecialEra);
 			table.insert(aIcons, { special.PortraitIndex, special.IconAtlas,
 				Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_TRAIT_BUILDING_TT", Locale.ConvertTextKey(special.Description), strState, Locale.ConvertTextKey(special.Help)) });
 		end
