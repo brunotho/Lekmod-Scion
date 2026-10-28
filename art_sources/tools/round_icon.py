@@ -82,6 +82,30 @@ BREAKOUT = {'self_propelled_artillery': [(830, 415), (900, 375), (965, 350), (98
                                          (1042, 400), (1040, 430), (1025, 448), (1000, 455), (930, 495), (890, 540),
                                          (830, 550)]}
 # sources delivered as a cut-out on white: the white connected to the edges becomes this background colour
+# a gold rim painted over the circle's edge, like the frame the Civilopedia draws around its pictures (user, 2026-10-28:
+# dark picture edges merge with the tech tree and production list backgrounds; tried on MI6 first)
+GOLD_RIM = {'mi6'}
+RIM_WIDTH = 0.045  # of the icon size; at least 1.5 px
+
+
+def gold_rim(img, cbox):
+    """paint a gold ring (dark outer edge, bright middle) just inside the circle"""
+    size = img.size[0]
+    s = 8
+    l, t, r, b = [v * s for v in cbox]
+    w = max(1.5, size * RIM_WIDTH) * s
+    ring = Image.new('RGBA', (size * s, size * s), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ring)
+    d.ellipse((l, t, r - 1, b - 1), outline=(120, 85, 35, 255), width=int(w))
+    d.ellipse((l + w * 0.2, t + w * 0.2, r - 1 - w * 0.2, b - 1 - w * 0.2), outline=(205, 160, 80, 255), width=int(w * 0.6))
+    d.ellipse((l + w * 0.4, t + w * 0.4, r - 1 - w * 0.4, b - 1 - w * 0.4), outline=(245, 215, 140, 255), width=max(1, int(w * 0.2)))
+    ring = ring.resize((size, size), Image.LANCZOS)
+    out = img.copy()
+    out.alpha_composite(ring)
+    out.putalpha(img.getchannel('A'))  # the ring stays inside the circle's own edge
+    return out
+
+
 WHITE_BACKGROUND = {# round pictures on white (2026-10-22; appletree, war_college, ministry_of_truth came on black on 2026-10-23)
                     'self_propelled_artillery': (22, 22, 24), 'jongmyo_shrine': (22, 22, 24), 'mi6': (22, 22, 24)}
 
@@ -184,6 +208,8 @@ def build(kind, name):
     for sz in sizes:
         p = os.path.join(tmp, '%s_%d.png' % (name, sz))
         img = icon(src, box, sz, circle_box(kind, sz), BREAKOUT.get(name), base_mask(kind, sz))
+        if name in GOLD_RIM and sz <= 128:  # the Civilopedia frames the big picture itself
+            img = gold_rim(img, circle_box(kind, sz))
         if not os.path.exists(TEXCONV):
             write_bc3(img, os.path.join(out_dir, '%s_%d.dds' % (name, sz)))
             continue

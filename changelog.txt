@@ -2527,6 +2527,7 @@ Tags: ui
 - Dev: art_sources/tools/round_icon.py (replaces round_building_icon.py) crops each source to its picture and draws the circle 4 px wider than the base layout
 - Dev: 2026-10-24: the circles are now exactly the base game's at every size (the 4 px wider circle sat half a pixel up-left at 45 px: no gap at the top of the city banner ring, one below, a flattened top-left) and have a crisp one-pixel edge; all building icons and unit portraits rebuilt; building icons then took the base game's own circle masks (identical edge)
 - Dev: 2026-10-23: new pictures for the Appletree, War College, Ministry of Truth, Fulling Mill and MI6 (user art; replaced sources in old/)
+- Dev: 2026-10-28: MI6's small icons (128 px and below) get a gold rim like the Civilopedia frame, so the dark picture edge doesn't merge with the tech tree (round_icon.py GOLD_RIM; a trial)
 - Dev: 2026-10-23: our promotion icons sit 1 px further left at 64 px (shift 4 instead of 8 px at 256; they looked a hair right of centre in the promotion choice); the Apollo Program's Science building uses the project's icon, the Gymnasium's second (dummy) building the Gymnasium's icon
 
 TOURISM ON TILES (ui)
