@@ -148770,6 +148770,30 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_NO_BID_YET">
 			<Text>You have not bid yet: enter an amount and press Bid.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_STPETERSBURG">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]From the Renaissance to the Modern Era, St. Petersburg may auction 3 Great Works to the highest Gold bid.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_SHANGHAI">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]From the Renaissance to the Modern Era, Shanghai may auction an art exhibition.[NEWLINE]The highest Gold bid wins +30% [ICON_CULTURE] Culture in all its cities for 10 turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_SPARTA">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]From the Classical to the Renaissance Era, Sparta may auction a veteran general.[NEWLINE]The highest Gold bid wins it: units trained in its capital start with +15 XP.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_BERLIN">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]From the Industrial Era, Berlin may announce Clausewitz's unfinished work.[NEWLINE]Whoever holds Berlin 7 turns later can use Clausewitz's Legacy there: +25% [ICON_STRENGTH] Combat Strength for melee attacks for 3 turns, every 20 turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_CAMBRIDGE">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]In the Industrial or Modern Era, Cambridge may ask for a research endowment in Gold and Great Works.[NEWLINE]The highest offer becomes its ally for 10 turns, then gets 5 turns of its [ICON_RESEARCH] Science.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_BAIKONUR">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Baikonur Cosmodrome: +10% [ICON_GREAT_PEOPLE] Great Scientist points and +30% [ICON_PRODUCTION] Production towards spaceship parts.[NEWLINE]For whoever holds Baikonur, or its ally while it is independent.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_FLORENCE">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Medici Collection: from the Renaissance Era, Florence collects a Great Work of Art every 10 turns into its 5 slots.[NEWLINE]Whoever holds Florence with all 5 slots filled gets +10% [ICON_GREAT_PEOPLE] Great Writer, Artist and Musician points.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_LUBECK">
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Hanseatic Diet (from the Renaissance Era): whoever holds Lübeck gets +1 [ICON_HAPPINESS_1] Happiness from its regional luxuries, and every other civilization -1.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
 			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>
 		</Row>

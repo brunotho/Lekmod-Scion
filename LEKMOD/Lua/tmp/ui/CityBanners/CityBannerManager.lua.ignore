@@ -234,6 +234,11 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 		if (religionToolTip ~= "") then
 			strToolTip = strToolTip .. "[NEWLINE]----------------[NEWLINE]" .. religionToolTip;
 		end
+		-- LEKMOD_SPECIAL_CITY_STATES: a special City-State's ability (also after it was captured)
+		local strSpecialKey = LekmodSpecialCityStateKey(city);
+		if (strSpecialKey ~= nil) then
+			strToolTip = strToolTip .. "[NEWLINE]----------------[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_" .. strSpecialKey);
+		end
 		controls.BannerButton:SetToolTipString(strToolTip);
 	
 		if (controls.ReligiousIcon ~= nil) then
@@ -548,6 +553,9 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 				
 				controls.MinorIndicator:SetColor( originalColor );
 				controls.MinorIndicator:SetHide( false );
+				if (controls.LekmodSpecialStar ~= nil) then
+					controls.LekmodSpecialStar:SetHide( LekmodSpecialCityStateKey(city) == nil );
+				end
 			--    controls.MinorOccupiedSpacer:SetHide( false );
 			--    controls.NameStack:SetOffsetX( -7 );
 			else
@@ -574,6 +582,21 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 	controls.IconsStack:ReprocessAnchoring();
 end
 
+
+----------------------------------------------------------------
+-- LEKMOD_SPECIAL_CITY_STATES: "STPETERSBURG" etc. when the city was founded by a special City-State, else nil
+----------------------------------------------------------------
+function LekmodSpecialCityStateKey( city )
+	local pOriginal = Players[ city:GetOriginalOwner() ];
+	if (pOriginal == nil or not pOriginal:IsMinorCiv()) then
+		return nil;
+	end
+	local info = GameInfo.MinorCivilizations[ pOriginal:GetMinorCivType() ];
+	if (info == nil or not info.LekmodSpecial) then
+		return nil;
+	end
+	return (string.gsub( info.Type, "^MINOR_CIV_LEKMOD_", "" ));
+end
 
 ----------------------------------------------------------------
 -- LEKMOD: shields for pledges to protect a city-state (your own one blue, other players' red)
