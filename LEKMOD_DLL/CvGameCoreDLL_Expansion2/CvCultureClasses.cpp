@@ -919,6 +919,10 @@ CvCity *CvPlayerCulture::GetClosestAvailableGreatWorkSlot(int iX, int iY, GreatW
 	BuildingClassTypes eBuildingClassReturned = NO_BUILDINGCLASS; // Passed by reference below
 	int iSlotReturned = -1; // Passed by reference below
 
+#ifdef LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
+	// pass 0: only cities with a free slot that isn't locked (a city returns its unlocked slots first); pass 1: any free slot
+	for (int iLekmodPass = 0; iLekmodPass < 2 && pBestCity == NULL; iLekmodPass++)
+#endif
 	for (CvCity* pCity = m_pPlayer->firstCity(&iLoop); pCity != NULL; pCity = m_pPlayer->nextCity(&iLoop))
 	{
 		int iDistance = plotDistance (iX, iY, pCity->getX(), pCity->getY());
@@ -927,6 +931,15 @@ CvCity *CvPlayerCulture::GetClosestAvailableGreatWorkSlot(int iX, int iY, GreatW
 		{
 			if (pCity->GetCityBuildings()->GetNextAvailableGreatWorkSlot(eGreatWorkSlot, &eBuildingClassReturned, &iSlotReturned))
 			{
+#ifdef LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
+				if (iLekmodPass == 0)
+				{
+					const BuildingTypes eLekmodBuilding = (BuildingTypes)GC.getCivilizationInfo(pCity->getCivilizationType())->getCivilizationBuildings(eBuildingClassReturned);
+					CvBuildingEntry* pkLekmodInfo = (eLekmodBuilding != NO_BUILDING) ? GC.getBuildingInfo(eLekmodBuilding) : NULL;
+					if (pkLekmodInfo != NULL && pkLekmodInfo->IsLekmodLockedGreatWorkSlots())
+						continue;
+				}
+#endif
 				iBestDistance = iDistance;
 				pBestCity = pCity;
 				*eBuildingClass = eBuildingClassReturned;

@@ -1844,6 +1844,8 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50
 // Special City-States (user, 2026-10-27, New Specs): a 6th City-State type (Science), 0/1/2 special City-States per game
 // that replace regular ones, map placement among the players, self-liberation (see the tracker row "New Specs (2): Special City-States")
+// New Great Works go into locked slots (Hagia Sophia etc.) only when no other slot of the type is free (user, 2026-10-28)
+#define LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
 #define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242

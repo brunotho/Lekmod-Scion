@@ -5148,6 +5148,10 @@ bool CvCityBuildings::GetNextAvailableGreatWorkSlot(GreatWorkSlotType eGreatWork
 bool CvCityBuildings::GetNextAvailableGreatWorkSlot(GreatWorkSlotType eGreatWorkSlot, BuildingClassTypes *eBuildingClass, int *iSlot) const
 #endif
 {
+#ifdef LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
+	// Locked slots (Buildings.LekmodLockedGreatWorkSlots) only when no other slot is free: pass 0 skips them, pass 1 takes only them
+	for (int iLekmodPass = 0; iLekmodPass < 2; iLekmodPass++)
+#endif
 	if (eBuildingClass && iSlot)
 	{
 #ifdef AUI_WARNING_FIXES
@@ -5170,6 +5174,10 @@ bool CvCityBuildings::GetNextAvailableGreatWorkSlot(GreatWorkSlotType eGreatWork
 			{
 				if (GetNumBuilding(eBuilding) > 0)
 				{
+#ifdef LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
+					if (GC.getBuildingInfo(eBuilding)->IsLekmodLockedGreatWorkSlots() != (iLekmodPass == 1))
+						continue;
+#endif
 #ifdef AUI_WARNING_FIXES
 					pBuildingInfo = GC.getBuildingInfo(eBuilding);
 					if (pBuildingInfo && pBuildingInfo->GetGreatWorkSlotType() == eGreatWorkSlot)
