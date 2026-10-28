@@ -1,4 +1,4 @@
-The changes that alter how the game is played, in short, for Lekmod Scion 0.1.1 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
+The changes that alter how the game is played, in short, for Lekmod Scion 0.1.2 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
 
 ## Great Works and Tourism
 - Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.
