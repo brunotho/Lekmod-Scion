@@ -35,6 +35,8 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.1 
 - Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.
 - City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.
 - Trade route and resource quests pay part of their Influence over time.
+- Each game has 0, 1 or 2 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).
+- A sixth City-State type, Scientific, gives Science to its friends and allies.
 
 ## Combat rules
 - Cities heal 10 HP per turn (was 20); Walls, Castle, Arsenal and Command Bunker raise that, the best one counts. Walls also damage adjacent enemies.

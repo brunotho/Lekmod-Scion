@@ -62,6 +62,9 @@ def check(version, map_dir):
         problems.append("scion_versions.json has no entry v%s" % version)
     if read(LEGACY_VERSIONS_JSON) != read(VERSIONS_JSON):
         problems.append("rosebranch_versions.json differs from scion_versions.json (copy it over)")
+    # the in-game Civilopedia home page must match website/data/essentials.txt (user, 2026-10-28)
+    if subprocess.run([sys.executable, os.path.join(REPO, "tools", "sync_pedia_essentials.py"), "--check"], capture_output=True).returncode != 0:
+        problems.append("Civilopedia essentials differ from website/data/essentials.txt (run python tools/sync_pedia_essentials.py)")
     log = read(CHANGELOG)
     if not re.search(r"^## (UNRELEASED|%s)\b" % re.escape(version), log, re.M):
         problems.append("changelog.txt has neither an UNRELEASED block nor ## %s" % version)

@@ -7,6 +7,10 @@ LEKMOD ESSENTIALS markers) is replaced each time. Keys:
   TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO      the paragraph before the first heading
   TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_<n>_HEADER / _<n>_TEXT   one per "## " section, n from 1
 CivilopediaScreen.lua (home page) shows sections 1, 2, ... until a key is missing.
+
+The website Essentials and the in-game Civilopedia page must always match (user, 2026-10-28): run this after every
+edit of essentials.txt (and after a version change: the page title names the newest release). `--check` changes
+nothing and exits 1 if the game texts are out of date; tools/release.py check runs it.
 """
 import os
 import re
@@ -43,7 +47,7 @@ def rows():
     return out
 
 
-def main():
+def main(check=False):
     b = open(DST, 'rb').read()
     crlf = b'\r\n' in b
     s = b.decode('utf-8', errors='surrogateescape').replace('\r\n', '\n')
@@ -60,9 +64,18 @@ def main():
         s = s.replace(anchor, block + anchor)
     if crlf:
         s = s.replace('\n', '\r\n')
-    open(DST, 'wb').write(s.encode('utf-8', errors='surrogateescape'))
+    new = s.encode('utf-8', errors='surrogateescape')
+    if check:
+        if new != b:
+            print('essentials OUT OF SYNC: run python tools/sync_pedia_essentials.py')
+            return 1
+        print('essentials in sync')
+        return 0
+    open(DST, 'wb').write(new)
     print('essentials synced:', len(rows()), 'texts')
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    sys.exit(main(check='--check' in sys.argv[1:]))

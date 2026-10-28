@@ -148386,7 +148386,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>City-States</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_6_TEXT">
-			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.</Text>
+			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.[NEWLINE][ICON_BULLET]Each game has 0, 1 or 2 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).[NEWLINE][ICON_BULLET]A sixth City-State type, Scientific, gives Science to its friends and allies.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_7_HEADER">
 			<Text>Combat rules</Text>
