@@ -206,6 +206,7 @@
           <Button  Size="32,32" Offset="0,6" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="BuildingFilledGreatWorkSlot2" Hidden="True"/>
           <Button  Size="32,32" Offset="0,6" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="BuildingFilledGreatWorkSlot3" Hidden="True"/>
           <Button  Size="32,32" Offset="0,6" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="BuildingFilledGreatWorkSlot4" Hidden="True"/>
+          <Button  Size="32,32" Offset="0,6" Texture="assets\UI\Art\Icons\GreatWorks.dds" ID="BuildingFilledGreatWorkSlot5" Hidden="True"/>
         </Stack>
       </Image>
       <Box Anchor="L,B" Color="27.53.64.255" Offset="0,0" Size="254,2"/>

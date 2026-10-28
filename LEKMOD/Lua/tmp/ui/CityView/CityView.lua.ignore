@@ -354,7 +354,7 @@ function AddBuildingButton( pCity, building )
 		
 		-- Great Work Slots		
 		-- Hide all slots.
-		local iMaxGreatWorkSlots = 4;
+		local iMaxGreatWorkSlots = 5; -- LEKMOD: 5 (Medici Collection)
 		for i = 1, iMaxGreatWorkSlots, 1 do
 			local filledGreatWorkSlot = controlTable["BuildingFilledGreatWorkSlot" .. i];
 			filledGreatWorkSlot:SetHide(true);

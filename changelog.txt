@@ -239,7 +239,7 @@ Tags: city-states, combat
 - New: BUILDING_LEKMOD_VETERAN_GENERAL
   | Units trained in this city start with +15 XP.[NEWLINE][NEWLINE]Won in Sparta's auction.[NEWLINE]Destroyed when the city is captured.
   - the highest bid wins it in its capital; a tie goes to the civilization with more Influence with Sparta when it bid, then to chance; everyone else gets their Gold back
-- Dev: building 312 (class 214), Building_DomainFreeExperiences 15 for land, sea and air, NeverCapture; icon borrowed from the War College
+- Dev: building 312 (class 214), Building_DomainFreeExperiences 15 for land, sea and air, NeverCapture; icon = the Great General portrait; GreatWorkCount 0 (with -1 the city screen listed it nowhere; same for the Cosmodrome and the Hanseatic Diet)
 
 BERLIN (NEW) (MINOR_CIV_LEKMOD_BERLIN)
 --------------------------------------
@@ -275,6 +275,7 @@ Tags: city-states, tourism
   | 5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]+10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.
 - DLL: CvCity::LekmodCollectArtGreatWork: an artist's unused Great Work into the next empty slot when the newest work in the building is 10 turns old (no saved state; the first one at once), only while a City-State holds the city
 - Dev: building 310 (class 212), LekmodCollectArtTurns 10, LekmodCollectArtEra ERA_RENAISSANCE, LekmodGlobalGreatArtsRate 10; icon borrowed from the Uffizi
+- Dev: the standard city screen had only 4 Great Work slot icons per building (the 5th raised a Lua error); BuildingFilledGreatWorkSlot5 added to CityView.xml and CityView_small.xml
 - DLL: the Great Person bonus counts only Medici Collections with every slot filled (CvPlayer::LekmodSpecialCSGreatPersonRate, refreshed every turn)
 
 LÜBECK (NEW) (MINOR_CIV_LEKMOD_LUBECK)

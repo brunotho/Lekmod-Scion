@@ -292764,7 +292764,7 @@
 			<NukeImmune>true</NukeImmune>
 			<Sellable>false</Sellable>
 			<ArtDefineTag>MONUMENT</ArtDefineTag>
-			<GreatWorkCount>-1</GreatWorkCount>
+			<GreatWorkCount>0</GreatWorkCount>
 			<GlobalSpaceProductionModifier>30</GlobalSpaceProductionModifier>
 			<LekmodGlobalGreatScientistRate>10</LekmodGlobalGreatScientistRate>
 			<LekmodSpecialMinorCiv>MINOR_CIV_LEKMOD_BAIKONUR</LekmodSpecialMinorCiv>
@@ -292836,7 +292836,7 @@
 			<NukeImmune>true</NukeImmune>
 			<Sellable>false</Sellable>
 			<ArtDefineTag>MONUMENT</ArtDefineTag>
-			<GreatWorkCount>-1</GreatWorkCount>
+			<GreatWorkCount>0</GreatWorkCount>
 			<LekmodSpecialEra>ERA_RENAISSANCE</LekmodSpecialEra>
 			<LekmodRegionalLuxuryHappiness>1</LekmodRegionalLuxuryHappiness>
 			<LekmodSpecialMinorCiv>MINOR_CIV_LEKMOD_LUBECK</LekmodSpecialMinorCiv>
@@ -292872,9 +292872,9 @@
 			<NukeImmune>true</NukeImmune>
 			<Sellable>false</Sellable>
 			<ArtDefineTag>MONUMENT</ArtDefineTag>
-			<GreatWorkCount>-1</GreatWorkCount>
-			<PortraitIndex>0</PortraitIndex>
-			<IconAtlas>LEKMOD_WAR_COLLEGE_ATLAS</IconAtlas>
+			<GreatWorkCount>0</GreatWorkCount>
+			<PortraitIndex>48</PortraitIndex>
+			<IconAtlas>UNIT_ATLAS_2</IconAtlas>
 		</Row>
 	</Buildings>
 	<Building_DomainFreeExperiences>
