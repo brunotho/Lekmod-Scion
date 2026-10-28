@@ -148275,19 +148275,19 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: City-State personalities back to v34.11 (2026-10-15) -->
 		<Replace Tag="TXT_KEY_CITY_STATE_PERSONALITY_FRIENDLY_TT">
-			<Text>A [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] City-State never asks you to conquer another City-State.[NEWLINE]It asks for road connections more often.</Text>
+			<Text>A [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] City-State asks for road connections more often.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_PERSONALITY_NEUTRAL_TT">
-			<Text>A [COLOR_POSITIVE_TEXT]Neutral[ENDCOLOR] City-State has no special rules.[NEWLINE]It rarely asks you to conquer another City-State.</Text>
+			<Text>A [COLOR_POSITIVE_TEXT]Neutral[ENDCOLOR] City-State has no special rules.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_PERSONALITY_HOSTILE_TT">
-			<Text>[ICON_INFLUENCE] Influence with a [COLOR_POSITIVE_TEXT]Hostile[ENDCOLOR] City-State drops by 1.5 per turn instead of 1.[NEWLINE]It asks you to conquer other City-States more often and gives out quests less often.[NEWLINE]It is harder to demand tribute from.</Text>
+			<Text>[ICON_INFLUENCE] Influence with a [COLOR_POSITIVE_TEXT]Hostile[ENDCOLOR] City-State drops by 1.5 per turn instead of 1.[NEWLINE]It gives out quests less often, and rarely asks for road connections or for finding natural wonders.[NEWLINE]It is harder to demand tribute from.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_PERSONALITY_IRRATIONAL_TT">
-			<Text>An [COLOR_POSITIVE_TEXT]Irrational[ENDCOLOR] City-State is more random in the quests it gives.</Text>
+			<Text>An [COLOR_POSITIVE_TEXT]Irrational[ENDCOLOR] City-State has no special rules.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CONCEPT_LEKMOD_CS_PERSONALITIES_SUMMARY">
-			<Text>Every City-State has a personality, shown on its screen.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR]: never asks you to conquer another City-State.[NEWLINE]Asks for road connections more often.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Neutral[ENDCOLOR]: no special rules.[NEWLINE]Rarely asks you to conquer another City-State.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Hostile[ENDCOLOR]: [ICON_INFLUENCE] Influence drops by 1.5 per turn instead of 1.[NEWLINE]Asks you to conquer other City-States more often and gives out quests less often.[NEWLINE]Harder to demand tribute from.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Irrational[ENDCOLOR]: more random in the quests it gives.</Text>
+			<Text>Every City-State has a personality, shown on its screen.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR]: asks for road connections more often.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Neutral[ENDCOLOR]: no special rules.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Hostile[ENDCOLOR]: [ICON_INFLUENCE] Influence drops by 1.5 per turn instead of 1.[NEWLINE]Gives out quests less often, and rarely asks for road connections or for finding natural wonders.[NEWLINE]Harder to demand tribute from.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Irrational[ENDCOLOR]: no special rules.</Text>
 		</Replace>
 		<!-- LEKMOD: unit list and Military Overview promotions column (2026-10-19) -->
 		<Row Tag="TXT_KEY_LEKMOD_UNIT_LIST_PROMOTIONS">
