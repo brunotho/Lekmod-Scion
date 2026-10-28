@@ -302,7 +302,7 @@ Tags: city-states
 - Added: the city screen of a City-State's city you hold has a Liberate button (above Raze): the city becomes an independent City-State again, also when you conquered it yourself
 - Added: liberating a City-State you conquered yourself gives no Influence; liberating one that another player conquered still does
 - DLL: CvPlayer::DoLiberatePlayer detects self-liberation (the City-State was conquered by the liberator or its team) and passes it to CvMinorCivAI::DoLiberationByMajor, which then skips the liberator's Influence; the button sends the existing liberate message
-- Dev: standard UI only for now (EUI's city screen has no button yet); two clicks to confirm
+- Dev: standard UI only for now (EUI's city screen has no button yet); two clicks to confirm; the confirmation resets when the city screen opens or closes and at turn start (user, 2026-10-28: it stayed armed)
 
 MARITIME CITY-STATES (BUILDING_LEKMOD_APPLETREE)
 ------------------------------------------------

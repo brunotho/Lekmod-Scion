@@ -2589,6 +2589,16 @@ end
 if (Controls.LekmodLiberateButton ~= nil) then
 	Controls.LekmodLiberateButton:RegisterCallback(Mouse.eLClick, OnLekmodLiberateButton);
 end
+-- the confirmation step resets when the city screen opens or closes and at every turn start
+function LekmodResetLiberateConfirm()
+	g_iLekmodLiberateConfirmCity = -1;
+	if (Controls.LekmodLiberateLabel ~= nil) then
+		Controls.LekmodLiberateLabel:LocalizeAndSetText("TXT_KEY_CITYVIEW_LEKMOD_LIBERATE_BUTTON_TEXT");
+	end
+end
+Events.SerialEventEnterCityScreen.Add(LekmodResetLiberateConfirm);
+Events.SerialEventExitCityScreen.Add(LekmodResetLiberateConfirm);
+Events.ActivePlayerTurnStart.Add(LekmodResetLiberateConfirm);
 
 function OnRazeButton()
 
