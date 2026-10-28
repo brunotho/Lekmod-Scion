@@ -148591,7 +148591,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Petersburger</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_STPETERSBURG_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI">
 			<Text>Shanghai</Text>
@@ -148600,7 +148600,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Shanghainese</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SHANGHAI_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_FLORENCE">
 			<Text>Florence</Text>
@@ -148609,7 +148609,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Florentine</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_FLORENCE_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SPARTA">
 			<Text>Sparta</Text>
@@ -148618,7 +148618,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Spartan</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_SPARTA_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BERLIN">
 			<Text>Berlin</Text>
@@ -148627,7 +148627,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Berliner</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BERLIN_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE">
 			<Text>Cambridge</Text>
@@ -148636,7 +148636,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Cantabrigian</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_CAMBRIDGE_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR">
 			<Text>Baikonur</Text>
@@ -148645,7 +148645,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Baikonur</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_BAIKONUR_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_LUBECK">
 			<Text>Lübeck</Text>
@@ -148654,7 +148654,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Lübeck</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYSTATE_LEKMOD_LUBECK_TEXT">
-			<Text>A special City-State. Each game has 0, 1 or 2 special City-States (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
+			<Text>A City-State with a unique ability. Each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25%), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck. Each takes the place of a regular City-State and is placed among the players' starting locations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MINOR_TRAIT_SCIENTIFIC">
 			<Text>Scientific City-States</Text>

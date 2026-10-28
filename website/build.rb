@@ -189,6 +189,15 @@ SECTION_LAYOUT = {
     [nil, %w[TRADITION LIBERTY HONOR PIETY PATRONAGE AESTHETICS COMMERCE EXPANSIONISM RATIONALISM
              AUTOCRACY FREEDOM ORDER]],
   ],
+  # City-States (user, 2026-10-28): the new concept first (its rules, then the eight City-States: auctions first),
+  # then what changed per City-State type, then the rest.
+  "city-states" => [
+    ["City-States with unique abilities", ["CITY-STATES WITH UNIQUE ABILITIES", "ST. PETERSBURG", "SHANGHAI", "SPARTA",
+                                           "CAMBRIDGE", "BERLIN", "BAIKONUR", "FLORENCE", "LÜBECK"]],
+    ["City-State types", ["SCIENTIFIC CITY-STATES", "CITY-STATE BONUSES PER ERA (MARITIME / CULTURED / RELIGIOUS)", "MARITIME CITY-STATES",
+                          "MARITIME CITY-STATE FOOD", "MERCANTILE CITY-STATES", "MERCANTILE CITY-STATE LUXURIES",
+                          "MILITARISTIC CITY-STATES", "MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE"]],
+  ],
 }.freeze
 # Sections whose cards name their own block with a "Subsection:" line, in this order (alphabetical inside).
 SUBSECTION_ORDER = {
