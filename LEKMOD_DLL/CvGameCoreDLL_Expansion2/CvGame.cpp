@@ -798,6 +798,9 @@ void CvGame::InitPlayers()
 		}
 		const int iRoll = kRand.get(100, "Lekmod number of special City-States");
 		int iCount = (iRoll < 25) ? 0 : ((iRoll < 75) ? 1 : 2);
+#ifdef LEKMOD_SPECIAL_CITY_STATES_TEST_ALL
+		iCount = (int)aiSpecial.size();
+#endif
 		iCount = std::min(iCount, (int)aiSpecial.size());
 		iCount = std::min(iCount, iEndSlot - iFirstSlot);
 		std::vector<int> aiSlots;
