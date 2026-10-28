@@ -8876,15 +8876,24 @@ bool CvGame::LekmodUseBerlinLegacy(PlayerTypes ePlayer, int iCityID)
 	LekmodAuctionNotify(ePlayer, pCity->getOwner(), strMessage.toUTF8(), strSummary.toUTF8());
 	return true;
 }
-void CvGame::LekmodSetRegionalLuxury(ResourceTypes eResource)
+void CvGame::LekmodSetRegionalLuxury(ResourceTypes eResource, PlayerTypes ePlayer)
 {
-	if(eResource != NO_RESOURCE && !LekmodIsRegionalLuxury(eResource))
-		m_aiLekmodRegionalLuxuries.push_back((int)eResource);
+	if(eResource == NO_RESOURCE || LekmodIsRegionalLuxuryOf(eResource, ePlayer))
+		return;
+	m_aiLekmodRegionalLuxuries.push_back((int)eResource);
+	m_aiLekmodRegionalLuxuries.push_back((int)ePlayer);
 }
 bool CvGame::LekmodIsRegionalLuxury(ResourceTypes eResource) const
 {
-	for(uint i = 0; i < m_aiLekmodRegionalLuxuries.size(); i++)
+	for(uint i = 0; i + 1 < m_aiLekmodRegionalLuxuries.size(); i += 2)
 		if(m_aiLekmodRegionalLuxuries[i] == (int)eResource)
+			return true;
+	return false;
+}
+bool CvGame::LekmodIsRegionalLuxuryOf(ResourceTypes eResource, PlayerTypes ePlayer) const
+{
+	for(uint i = 0; i + 1 < m_aiLekmodRegionalLuxuries.size(); i += 2)
+		if(m_aiLekmodRegionalLuxuries[i] == (int)eResource && m_aiLekmodRegionalLuxuries[i + 1] == (int)ePlayer)
 			return true;
 	return false;
 }

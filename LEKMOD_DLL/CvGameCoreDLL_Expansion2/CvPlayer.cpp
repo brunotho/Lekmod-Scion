@@ -10058,7 +10058,8 @@ int CvPlayer::LekmodSpecialCSAllySpaceProductionModifier() const
 	}
 	return iTotal;
 }
-// Lübeck: the holder's regional luxuries +N Happiness, everybody else's -N (only while a major civ holds it)
+// Lübeck: luxuries of the holder's start region give +N Happiness to everyone who has them (also by trade),
+// all other regional luxuries -N (only while a major civ holds Lübeck)
 int CvPlayer::LekmodRegionalLuxuryHappinessChange(ResourceTypes eResource) const
 {
 	if (!GC.getGame().LekmodIsRegionalLuxury(eResource))
@@ -10076,7 +10077,7 @@ int CvPlayer::LekmodRegionalLuxuryHappinessChange(ResourceTypes eResource) const
 			const CvPlayer& kHolder = GET_PLAYER((PlayerTypes)iMajor);
 			if (kHolder.isAlive() && kHolder.getBuildingClassCount((BuildingClassTypes)pkBuilding->GetBuildingClassType()) > 0)
 			{
-				iChange += (iMajor == (int)GetID()) ? iHappiness : -iHappiness;
+				iChange += GC.getGame().LekmodIsRegionalLuxuryOf(eResource, (PlayerTypes)iMajor) ? iHappiness : -iHappiness;
 				break;
 			}
 		}

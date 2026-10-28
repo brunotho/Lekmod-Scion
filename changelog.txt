@@ -285,7 +285,7 @@ LÜBECK (NEW) (MINOR_CIV_LEKMOD_LUBECK)
 Tags: city-states
 - New: BUILDING_LEKMOD_HANSEATIC_DIET
   | Whoever holds Lübeck: your regional luxuries give +1 [ICON_HAPPINESS_1] Happiness, and every other civilization's give -1 (also luxuries they get by trade).[NEWLINE]Regional luxuries are the ones the map gave to the players' starting regions.[NEWLINE]No effect while Lübeck is independent.[NEWLINE][NEWLINE]Lübeck gets it once the civilizations are in the Renaissance Era on average.[NEWLINE][NEWLINE]Not destroyed when the city is captured.
-- DLL: CvPlayer::GetHappinessFromLuxury adds LekmodRegionalLuxuryHappinessChange (never below 0); the map reports the regional luxuries with Game.LekmodSetRegionalLuxury (saved in CvGame, m_aiLekmodRegionalLuxuries; Lua.log "### LekRegionalLux")
+- DLL: CvPlayer::GetHappinessFromLuxury adds LekmodRegionalLuxuryHappinessChange (never below 0): +N if the luxury belongs to the holder's start region (CvGame::LekmodIsRegionalLuxuryOf), else -N, for every player alike (user, 2026-10-28: luxury-based, not civ-based); the map reports each regional luxury with its region's player via Game.LekmodSetRegionalLuxury(resource, player) (saved in CvGame, m_aiLekmodRegionalLuxuries; Lua.log "### LekRegionalLux")
 - Dev: building 311 (class 213), LekmodSpecialEra ERA_RENAISSANCE in the era of the city's holder (like the War College); the other special City-State windows use the average era of the living major civs (CvGame::LekmodGetSpecialCityStateEra); icon borrowed from the Hanse
 
 SCIENTIFIC CITY-STATES (NEW) (MINOR_CIV_TRAIT_SCIENTIFIC)

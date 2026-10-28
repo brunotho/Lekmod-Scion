@@ -148696,7 +148696,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Hanseatic Diet</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET_HELP">
-			<Text>Whoever holds Lübeck: your regional luxuries give +1 [ICON_HAPPINESS_1] Happiness, and every other civilization's give -1 (also luxuries they get by trade).[NEWLINE]Regional luxuries are the ones the map gave to the players' starting regions.[NEWLINE]No effect while Lübeck is independent.[NEWLINE][NEWLINE]Lübeck gets it in the Renaissance Era (the era of whoever holds the city).[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+			<Text>While a civilization holds Lübeck, the regional luxuries of its starting region give +1 [ICON_HAPPINESS_1] Happiness to everyone who has them (also by trade).[NEWLINE]All other regional luxuries give -1 [ICON_HAPPINESS_1] Happiness to everyone.[NEWLINE]Regional luxuries are the ones the map gave to the players' starting regions.[NEWLINE]No effect while Lübeck is independent.[NEWLINE][NEWLINE]Lübeck gets it in the Renaissance Era (the era of whoever holds the city).[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 	</Language_en_US>
 	<!-- LEKMOD: Special City-States step 3 (2026-10-28): auctions -->
@@ -148792,7 +148792,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Medici Collection: from the Renaissance Era, Florence collects a Great Work of Art every 10 turns into its 5 slots.[NEWLINE]Whoever holds Florence with all 5 slots filled gets +10% [ICON_GREAT_PEOPLE] Great Writer, Artist and Musician points.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_LUBECK">
-			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Hanseatic Diet (from the Renaissance Era): whoever holds Lübeck gets +1 [ICON_HAPPINESS_1] Happiness from its regional luxuries, and every other civilization -1.</Text>
+			<Text>[COLOR_YELLOW]Special City-State[ENDCOLOR][NEWLINE]Hanseatic Diet (from the Renaissance Era): the regional luxuries of whoever holds Lübeck give +1 [ICON_HAPPINESS_1] Happiness to everyone who has them; all other regional luxuries give -1.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
 			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>

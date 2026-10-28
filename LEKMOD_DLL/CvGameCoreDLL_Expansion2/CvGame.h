@@ -451,9 +451,11 @@ public:
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	// Era windows of the special City-States: the average era of the living major civs (rounded down)
 	EraTypes LekmodGetSpecialCityStateEra() const;
-	// Luxuries the map assigned to the players' regions (the map script reports them while it places resources)
-	void LekmodSetRegionalLuxury(ResourceTypes eResource);
+	// Luxuries the map assigned to the players' regions (the map script reports them while it places resources):
+	// pairs (resource, player whose start region got it; -1 unknown). A luxury can belong to several regions.
+	void LekmodSetRegionalLuxury(ResourceTypes eResource, PlayerTypes ePlayer);
 	bool LekmodIsRegionalLuxury(ResourceTypes eResource) const;
+	bool LekmodIsRegionalLuxuryOf(ResourceTypes eResource, PlayerTypes ePlayer) const;
 	std::vector<int> m_aiLekmodRegionalLuxuries;
 	// Auctions of the special City-States (St. Petersburg, Shanghai, Sparta; Cambridge reserved): sealed Gold bids during one turn,
 	// resolved at the start of the next. Saved as one flat list: LEKMOD_AUCTION_STRIDE ints per auction (see LekmodAuctionField).

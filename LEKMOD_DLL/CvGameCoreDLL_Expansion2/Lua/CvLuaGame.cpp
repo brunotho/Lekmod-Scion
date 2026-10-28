@@ -1337,7 +1337,7 @@ int CvLuaGame::lGetVotesNeededForDiploVictory(lua_State* L)
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 int CvLuaGame::lLekmodSetRegionalLuxury(lua_State* L)
 {
-	GC.getGame().LekmodSetRegionalLuxury((ResourceTypes)lua_tointeger(L, 1));
+	GC.getGame().LekmodSetRegionalLuxury((ResourceTypes)lua_tointeger(L, 1), (PlayerTypes)luaL_optint(L, 2, -1));
 	return 0;
 }
 // Game.LekmodGetAuctions(iPlayer): { {Index, State (0 none, 1 open, 2 done), Minor, OpenTurn, Winner, EndTurn, MyBid}, ... } for the auctions that ever opened
