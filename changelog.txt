@@ -3740,6 +3740,7 @@ MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE (MINOR_CIV_TRAIT_MILITARISTIC)
 Tags: city-states, units
 - Added: while you hold a captured Militaristic City-State, you can train its unique unit; if you lose the City-State, units in production lose their Production (the normal version stays available)
 - DLL: CvPlayer::LekmodHasCapturedMilitaristicUU, checked in CvPlayer::canTrain and (for the city itself) CvCity::canTrain
+- Dev: the Militaristic trait tooltip and the City-State screen's unit tooltip say that the unit can be trained after capturing the City-State (user, 2026-10-28)
 
 EXPANDED ZOC (NEW) (PROMOTION_LEKMOD_EXPANDED_ZOC)
 --------------------------------------------------

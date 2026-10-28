@@ -39457,7 +39457,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_MILITARISTIC_TT"> 
 			<Text>
-				A befriended [COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR] City-State will provide you occasional gifts of advanced military units.[NEWLINE][NEWLINE]They know the secrets of the [COLOR_POSITIVE_TEXT]{@1_UniqueUnitName}[ENDCOLOR].  If you are their Ally and have researched {@2_PrereqTech}, they will provide that unit as their gift.
+				A befriended [COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR] City-State will provide you occasional gifts of advanced military units.[NEWLINE][NEWLINE]They know the secrets of the [COLOR_POSITIVE_TEXT]{@1_UniqueUnitName}[ENDCOLOR].[NEWLINE]If you are their Ally and have researched {@2_PrereqTech}, they will provide that unit as their gift.[NEWLINE][NEWLINE]If you capture this City-State, you can train the {@1_UniqueUnitName} yourself while you hold it.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CITY_STATE_NOBODY"> 
@@ -148336,7 +148336,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>not yet: comes in the Classical Era</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CS_UNIQUE_UNIT_TT">
-			<Text>This City-State knows the {1_Name}.[NEWLINE][NEWLINE]{2_Help}</Text>
+			<Text>This City-State knows the {1_Name}.[NEWLINE]Its Ally gets it as a gift; whoever captures the City-State can train it while holding the city.[NEWLINE][NEWLINE]{2_Help}</Text>
 		</Row>
 		<!-- LEKMOD: the NQ Civilopedia tab (page texts: LEKMOD NQ RULES block, tools/sync_pedia_nq.py) -->
 		<Row Tag="TXT_KEY_PEDIA_CATEGORY_17_LABEL">
