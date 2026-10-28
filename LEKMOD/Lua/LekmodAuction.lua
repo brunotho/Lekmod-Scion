@@ -21,7 +21,9 @@ local function MyGreatWorks()
 	local pPlayer = Players[Game.GetActivePlayer()];
 	for pCity in pPlayer:Cities() do
 		for building in GameInfo.Buildings() do
-			if ((building.GreatWorkCount or 0) > 0 and pCity:IsHasBuilding(building.ID)) then
+			-- works in locked slots (Hagia Sophia etc.) can't be offered
+			local bLocked = (building.LekmodLockedGreatWorkSlots == true or building.LekmodLockedGreatWorkSlots == 1);
+			if ((building.GreatWorkCount or 0) > 0 and not bLocked and pCity:IsHasBuilding(building.ID)) then
 				local iClass = GameInfo.BuildingClasses[building.BuildingClass].ID;
 				for iSlot = 0, building.GreatWorkCount - 1 do
 					local iWork = pCity:GetBuildingGreatWork(iClass, iSlot);

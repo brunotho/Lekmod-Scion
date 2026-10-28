@@ -8410,7 +8410,8 @@ bool CvGame::LekmodOfferGreatWork(PlayerTypes ePlayer, int iWork)
 		{
 			const BuildingTypes eBuilding = (BuildingTypes)iBuilding;
 			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
-			if (pkBuilding == NULL || pkBuilding->GetGreatWorkCount() <= 0 || pCity->GetCityBuildings()->GetNumBuilding(eBuilding) <= 0)
+			// works in locked slots (Hagia Sophia etc.) stay where they are
+			if (pkBuilding == NULL || pkBuilding->GetGreatWorkCount() <= 0 || pkBuilding->IsLekmodLockedGreatWorkSlots() || pCity->GetCityBuildings()->GetNumBuilding(eBuilding) <= 0)
 				continue;
 			const int iBuildingClass = pkBuilding->GetBuildingClassType();
 			for (int iSlot = 0; iSlot < pkBuilding->GetGreatWorkCount(); iSlot++)
