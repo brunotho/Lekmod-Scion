@@ -175501,7 +175501,7 @@
 			<ID>5</ID>
 			<Type>MINOR_TRAIT_SCIENTIFIC</Type>
 			<Description>TXT_KEY_MINOR_TRAIT_SCIENTIFIC</Description>
-			<TraitIcon>CityStateReligious.dds</TraitIcon>
+			<TraitIcon>CityStateScientific.dds</TraitIcon>
 			<TraitTitleIcon>CityStatePopupTop400.dds</TraitTitleIcon>
 			<BackgroundImage>citystatebackgroundreligious.dds</BackgroundImage>
 		</Row>

@@ -157,3 +157,8 @@ were deleted on 2026-10-17 (user: one image only); they are in the git history i
 - Tourism (`YieldAtlas_128_Tourism.dds`, upstream Lekmod 2026-08-08) had a camera in the 5+ cell. Since 2026-10-12
   `python art_sources/tools/tourism_yield_atlas.py` rebuilds it from `yield_icons/tourism_yield_atlas_upstream.dds`
   with the single suitcase scaled x2 in that cell (user: players know Tourism as the suitcase).
+
+## City-State trait icons
+
+- `CityStateScientific.dds` (32x32, B8G8R8A8, `LEKMOD/Art/Lekmod (v 1)/Art/CityStates/`): the flask of the base Research Info button (`main_tech_button_base_45.png`, extracted from `Resource/DX9/Expansion2UITextures.fpk`), keyed out of its dark disc by brightness. Rebuild: `python art_sources/tools/build_cs_scientific_icon.py`.
+- The base trait icons (`CityStateReligious.dds` etc.) are stored in a Firaxis-compressed form in the `.fpk` and can't be read for reference (2026-10-28).

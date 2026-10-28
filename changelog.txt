@@ -292,7 +292,7 @@ Tags: city-states
 - Now: a sixth City-State type; Cambridge and Baikonur are Scientific
 - Now: friends get 3 Science per turn per era (Ancient Era 3, Classical Era 6, ...); allies get twice as much
 - DLL: MinorCivTraitTypes gets MINOR_CIV_TRAIT_SCIENTIFIC (trait row ID 5); its Science goes through the Scholasticism path (CvPlayer::IsGetsScienceFromPlayer, CvMinorCivAI::GetScienceFriendshipBonusTimes100), LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA 3
-- Dev: light blue map color (COLOR_CS_TRAIT_SCIENTIFIC 384, PLAYERCOLOR_CS_SCIENTIFIC 189); the City-State screen uses the Religious pictures until own art exists
+- Dev: light blue map color (COLOR_CS_TRAIT_SCIENTIFIC 384, PLAYERCOLOR_CS_SCIENTIFIC 189); the City-State screen uses the Religious pictures until own art exists; the trait icon (city banner, lists) is the flask of the Research Info button (CityStateScientific.dds, art_sources/tools/build_cs_scientific_icon.py)
 
 LIBERATING A CITY-STATE YOU HOLD (NEW) (LEKMOD_SELF_LIBERATION)
 ---------------------------------------------------------------
