@@ -148780,7 +148780,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]From the Classical to the Renaissance Era, Sparta may auction a veteran general.[NEWLINE]The highest Gold bid wins it: units trained in its capital start with +15 XP.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_BERLIN">
-			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]From the Industrial Era, Berlin may announce Clausewitz's unfinished work.[NEWLINE]Whoever holds Berlin 7 turns later can use Clausewitz's Legacy there: +25% [ICON_STRENGTH] Combat Strength for melee attacks for 3 turns, every 20 turns.</Text>
+			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]From the Industrial Era, Berlin may announce Clausewitz's unfinished work.[NEWLINE]Whoever holds Berlin 7 turns later can use Clausewitz's Legacy there: +25% [ICON_STRENGTH] Combat Strength for melee attacks for 3 turns, with a 20-turn cooldown.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_CAMBRIDGE">
 			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]In the Industrial or Modern Era, Cambridge may ask for a research endowment in Gold and Great Works.[NEWLINE]The highest offer becomes its ally for 10 turns, then gets 5 turns of its [ICON_RESEARCH] Science.</Text>
@@ -148834,10 +148834,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Clausewitz's Legacy</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_TT">
-			<Text>Your melee attacks get +25% [ICON_STRENGTH] Combat Strength for 3 turns (melee, gunpowder, armored, mounted melee and naval melee units).[NEWLINE]It does not add to the same bonus from the Clausewitz's Legacy policy or the Clausewitz Book Club; the turns add up.[NEWLINE][NEWLINE]Can be used again after 20 turns. Only while you hold Berlin.</Text>
+			<Text>Your melee attacks get +25% [ICON_STRENGTH] Combat Strength for 3 turns (melee, gunpowder, armored, mounted melee and naval melee units).[NEWLINE]It does not add to the same bonus from the Clausewitz's Legacy policy or the Clausewitz Book Club; the turns add up.[NEWLINE][NEWLINE]Cooldown: 20 turns.[NEWLINE]Only while you hold Berlin.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_WAIT">
-			<Text>Ready again in {1_Num} turns.</Text>
+			<Text>Cooldown: ready again in {1_Num} turns.</Text>
 		</Row>
 	</Language_en_US>
 	<!-- LEKMOD: Special City-States step 5 (2026-10-28): Cambridge -->

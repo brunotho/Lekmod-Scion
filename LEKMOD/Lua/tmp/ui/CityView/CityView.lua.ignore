@@ -2521,6 +2521,14 @@ function LekmodUpdateBerlinButton(pCity)
 	end
 	Controls.LekmodBerlinButton:SetDisabled(iWait > 0 or not Players[iPlayer]:IsTurnActive());
 	Controls.LekmodBerlinButton:SetToolTipString(strTT);
+	-- the cooldown's turns left in the label: "Clausewitz's Legacy (19)"
+	if (Controls.LekmodBerlinLabel ~= nil) then
+		local strLabel = Locale.ConvertTextKey("TXT_KEY_LEKMOD_BERLIN_BUTTON");
+		if (iWait > 0) then
+			strLabel = strLabel .. " (" .. iWait .. ")";
+		end
+		Controls.LekmodBerlinLabel:SetText(strLabel);
+	end
 end
 function OnLekmodBerlinButton()
 	local pCity = UI.GetHeadSelectedCity();

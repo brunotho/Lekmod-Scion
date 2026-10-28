@@ -250,10 +250,10 @@ BERLIN (NEW) (MINOR_CIV_LEKMOD_BERLIN)
 Tags: city-states, combat
 - Now: from the Industrial to the Information Era, each turn has a 3% chance that Clausewitz's unfinished work is announced: whoever holds Berlin 7 turns later becomes his heir for the rest of the game
 - Now: if no civilization holds Berlin by then, the announcement can come again (3% per turn, at least 3 turns after the deadline)
-- Now: the heir, while holding Berlin, can use Clausewitz's Legacy in Berlin's city screen: +25% Combat Strength for melee attacks for 3 turns, again after 20 turns (the cooldown belongs to the city and keeps running while someone else holds it)
+- Now: the heir, while holding Berlin, can use Clausewitz's Legacy in Berlin's city screen: +25% Combat Strength for melee attacks for 3 turns, with a 20-turn cooldown (the cooldown belongs to the city and keeps running while someone else holds it); the button shows Clausewitz's portrait and the turns left
 - Now: it is the same bonus as the Clausewitz's Legacy policy, so they don't add up in strength, only in turns; with the Clausewitz Book Club the higher bonus counts
 - DLL: CvGame::LekmodDoBerlin / LekmodUseBerlinLegacy (saved in CvGame, m_aiLekmodBerlin), network code -27; the ability adds CvPlayer::ChangeAttackBonusTurns(3)
-- Dev: city screen button LekmodBerlinButton (standard UI only); Clausewitz picture not used yet
+- Dev: city screen button LekmodBerlinButton (standard UI only) with the round portrait LekmodClausewitz45.dds (art_sources/tools/build_clausewitz_icon.py, gold rim) and the cooldown in its label
 
 CAMBRIDGE (NEW) (MINOR_CIV_LEKMOD_CAMBRIDGE)
 --------------------------------------------
