@@ -487,7 +487,6 @@ public:
 	CvCity* LekmodBerlinCity() const;
 	void LekmodDoBerlin();
 	bool LekmodUseBerlinLegacy(PlayerTypes ePlayer, int iCityID);
-	void LekmodTestSpecialCityStates(); // single player only (test hotkey Ctrl+Alt+A)
 #endif
 	void LekmodMarkWonderTie(BuildingClassTypes eClass);
 	static void LekmodResetWonderTieData();

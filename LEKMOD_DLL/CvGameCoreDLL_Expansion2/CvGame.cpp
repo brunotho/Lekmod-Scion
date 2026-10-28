@@ -798,9 +798,6 @@ void CvGame::InitPlayers()
 		}
 		const int iRoll = kRand.get(100, "Lekmod number of special City-States");
 		int iCount = (iRoll < 25) ? 0 : ((iRoll < 75) ? 1 : 2);
-#ifdef LEKMOD_SPECIAL_CITY_STATES_TEST_ALL
-		iCount = (int)aiSpecial.size();
-#endif
 		iCount = std::min(iCount, (int)aiSpecial.size());
 		iCount = std::min(iCount, iEndSlot - iFirstSlot);
 		std::vector<int> aiSlots;
@@ -8841,44 +8838,6 @@ void CvGame::LekmodDoBerlin()
 }
 // The heir uses the ability from Berlin's city screen: the temporary attack bonus of Clausewitz's Legacy for 3 more turns
 // (the same bonus as the policy, so the strength never adds up, the turns do); 20 turns cooldown kept by the city
-// Test aid, single player only: every auction whose City-State is in the game and that never ran opens now (whatever the era),
-// and Berlin's deadline is announced for the next turn
-void CvGame::LekmodTestSpecialCityStates()
-{
-	if (isNetworkMultiPlayer())
-		return;
-	for (int iMinor = MAX_MAJOR_CIVS; iMinor < MAX_CIV_PLAYERS; iMinor++)
-	{
-		CvPlayer& kMinor = GET_PLAYER((PlayerTypes)iMinor);
-		if (!kMinor.isAlive() || !kMinor.isMinorCiv())
-			continue;
-		EraTypes eFirst = NO_ERA;
-		EraTypes eLast = NO_ERA;
-		const int iAuction = LekmodAuctionKindForMinor(kMinor.GetMinorCivAI()->GetMinorCivType(), eFirst, eLast);
-		if (iAuction < 0 || LekmodAuction(iAuction, LAF_STATE) != LAS_NONE)
-			continue;
-		LekmodAuction(iAuction, LAF_STATE) = LAS_OPEN;
-		LekmodAuction(iAuction, LAF_MINOR) = iMinor;
-		LekmodAuction(iAuction, LAF_OPEN_TURN) = getGameTurn();
-		LekmodAuction(iAuction, LAF_WINNER) = -1;
-		for (int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
-		{
-			LekmodAuction(iAuction, LAF_BIDS + iPlayer) = 0;
-			LekmodAuction(iAuction, LAF_INFLUENCE + iPlayer) = 0;
-		}
-	}
-	if (LekmodBerlinMinor() != NO_PLAYER && LekmodBerlin(LBF_STATE) == LBS_WAITING)
-	{
-		LekmodBerlin(LBF_STATE) = LBS_ANNOUNCED;
-		LekmodBerlin(LBF_DEADLINE) = getGameTurn() + 1;
-		CvCity* pBerlin = LekmodBerlinCity();
-		Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_ANNOUNCED");
-		strMessage << (pBerlin ? pBerlin->getNameKey() : GET_PLAYER(LekmodBerlinMinor()).getNameKey()) << LekmodBerlin(LBF_DEADLINE);
-		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_SUMMARY");
-		LekmodAuctionNotify(NO_PLAYER, LekmodBerlinMinor(), strMessage.toUTF8(), strSummary.toUTF8());
-	}
-	GC.GetEngineUserInterface()->setDirty(GameData_DIRTY_BIT, true);
-}
 bool CvGame::LekmodUseBerlinLegacy(PlayerTypes ePlayer, int iCityID)
 {
 	CvCity* pCity = LekmodBerlinCity();

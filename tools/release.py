@@ -65,8 +65,6 @@ def check(version, map_dir):
     log = read(CHANGELOG)
     if not re.search(r"^## (UNRELEASED|%s)\b" % re.escape(version), log, re.M):
         problems.append("changelog.txt has neither an UNRELEASED block nor ## %s" % version)
-    if re.search(r"^#define LEKMOD_SPECIAL_CITY_STATES_TEST_ALL\b", open(os.path.join(REPO, "LEKMOD_DLL", "CvGameCoreDLL_Expansion2", "_Defines.h"), "rb").read().decode("latin-1"), re.M):
-        problems.append("_Defines.h: LEKMOD_SPECIAL_CITY_STATES_TEST_ALL is on (test switch: all special City-States every game)")
     dirty = [l[3:] for l in git(["status", "--porcelain"]).splitlines() if l[3:] not in ALLOWED_DIRTY]
     if dirty:
         problems.append("mod repo has uncommitted changes: %s" % ", ".join(dirty[:8]))
