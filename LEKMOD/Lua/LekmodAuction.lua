@@ -123,6 +123,19 @@ local function Refresh()
 	Controls.Gold:SetText(Locale.Lookup("TXT_KEY_LEKMOD_AUCTION_GOLD", pPlayer:GetGold()));
 	Controls.AuctionStack:CalculateSize();
 	Controls.AuctionStack:ReprocessAnchoring();
+	-- the auction list scrolls when it doesn't fit: the window (title, Gold line, Close button: about 230 px) stays on the screen
+	local _, screenY = UIManager:GetScreenSizeVal();
+	local _, stackY = Controls.AuctionStack:GetSizeVal();
+	local maxY = math.max(200, screenY - 330);
+	local scrollY = math.min(stackY, maxY);
+	local bScroll = (stackY > maxY);
+	Controls.AuctionScroll:SetSizeVal(540, scrollY);
+	Controls.AuctionScrollBar:SetSizeY(math.max(0, scrollY - 36));
+	Controls.AuctionScrollBar:SetHide(not bScroll);
+	Controls.AuctionScrollUp:SetHide(not bScroll);
+	Controls.AuctionScrollDown:SetHide(not bScroll);
+	Controls.AuctionScroll:CalculateInternalSize();
+	Controls.AuctionScroll:ReprocessAnchoring();
 	Controls.Content:CalculateSize();
 	Controls.Content:ReprocessAnchoring();
 	local width, height = Controls.Content:GetSizeVal();
@@ -134,6 +147,7 @@ local function Show()
 		return;
 	end
 	Refresh();
+	Controls.AuctionScroll:SetScrollValue(0);
 	UIManager:QueuePopup(ContextPtr, PopupPriority.VoteResults);
 end
 LuaEvents.LekmodShowAuctions.Add(Show);
