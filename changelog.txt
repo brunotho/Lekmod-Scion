@@ -2463,6 +2463,7 @@ POLICY TEXTS (POLICY_BRANCH_*)
 ------------------------------
 Tags: policies, ui
 - Changed: policy and ideology tooltips list their effects as bullet points, one effect per line
+- Changed: when choosing a tenet, the tenets are listed alphabetically
 - Dev: some unit and building texts showed a gap where an icon was missing (icon/text fix, not in the player notes)
 
 RATIONALISM (POLICY_BRANCH_RATIONALISM)

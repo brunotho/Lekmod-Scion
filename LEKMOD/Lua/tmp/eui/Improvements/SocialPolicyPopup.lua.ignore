@@ -1076,6 +1076,20 @@ function OnYes( )
 end
 Controls.Yes:RegisterCallback( Mouse.eLClick, OnYes );
 
+-- LEKMOD (2026-10-28): the tenets of a level, sorted by name
+function LekmodSortedTenets(player, iLevel)
+	local aTenets = {};
+	for _, v in ipairs(player:GetAvailableTenets(iLevel)) do
+		local tenet = GameInfo.Policies[v];
+		table.insert(aTenets, { ID = v, Name = tenet and Locale.ConvertTextKey(tenet.Description) or "" });
+	end
+	table.sort(aTenets, function(a, b) return Locale.Compare(a.Name, b.Name) == -1; end);
+	local aIDs = {};
+	for _, t in ipairs(aTenets) do
+		table.insert(aIDs, t.ID);
+	end
+	return aIDs;
+end
 function OnNo( )
 	Controls.PolicyConfirm:SetHide(true);
 	Controls.BGBlock:SetHide(false);
@@ -1097,7 +1111,7 @@ if bnw_mode then
 
 			g_TenetInstanceManager:ResetInstances();
 
-			for _,v in ipairs(player:GetAvailableTenets(iLevel)) do
+			for _,v in ipairs(LekmodSortedTenets(player, iLevel)) do
 				local tenet = GameInfo.Policies[v];
 				if tenet then
 					local entry = g_TenetInstanceManager:GetInstance();
