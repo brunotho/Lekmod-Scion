@@ -815,6 +815,7 @@ Tags: ui
 - Added: a Lek Options switch "Only important notifications": the other notifications are dismissed right away (they stay in the notification log)
 - Changed: City-State alliance changes stand out among the notifications (yellow glow, gold icon)
 - Fixed: City-State alliance notifications can be dismissed again (right click, Dismiss all)
+- Dev: 2026-10-28 (user): the alliance notification pulses 30% slower (yellow glow Speed 1.5 -> 1.05, red corner glow 1 -> 0.7)
 - Dev: buckets in NotificationPanel.lua (g_LekmodImportant, standard UI) and on the Notion page "Notification buckets"; option LEK_ImportantNotificationsOnly (unset = off); alliance changes are NOTIFICATION_MINOR with "Ally of" in the summary
 
 TILE TOOLTIP: UNIMPROVED RESOURCES
