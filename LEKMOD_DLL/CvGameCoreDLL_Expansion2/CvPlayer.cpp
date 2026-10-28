@@ -10000,17 +10000,61 @@ void CvPlayer::LekmodDoSpecialCityStateBuildings()
 		}
 	}
 }
+// Special City-State buildings in cities of independent City-States this player is allied with (Baikonur: its effects go to the ally)
+int CvPlayer::LekmodSpecialCSAllyBuildingCount(BuildingTypes eBuilding) const
+{
+	int iCount = 0;
+	for (int iMinor = MAX_MAJOR_CIVS; iMinor < MAX_CIV_PLAYERS; iMinor++)
+	{
+		CvPlayer& kMinor = GET_PLAYER((PlayerTypes)iMinor);
+		if (!kMinor.isAlive() || !kMinor.isMinorCiv() || kMinor.GetMinorCivAI()->GetAlly() != GetID())
+			continue;
+		int iLoop;
+		for (CvCity* pLoopCity = kMinor.firstCity(&iLoop); pLoopCity != NULL; pLoopCity = kMinor.nextCity(&iLoop))
+			iCount += pLoopCity->GetCityBuildings()->GetNumBuilding(eBuilding);
+	}
+	return iCount;
+}
 // Empire-wide Great Person rates from special City-State buildings this player holds
+// Baikonur (Great Scientists): also while allied with the independent City-State that has it
+// Florence (Great Writers, Artists, Musicians): only while all the building's Great Work slots are filled
 int CvPlayer::LekmodSpecialCSGreatPersonRate(bool bArts) const
 {
 	int iTotal = 0;
 	const std::vector<int>& aiBuildings = LekmodSpecialCSBuildings();
 	for (uint i = 0; i < aiBuildings.size(); i++)
 	{
-		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)aiBuildings[i]);
+		const BuildingTypes eBuilding = (BuildingTypes)aiBuildings[i];
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
 		const int iRate = bArts ? pkBuilding->GetLekmodGlobalGreatArtsRate() : pkBuilding->GetLekmodGlobalGreatScientistRate();
-		if (iRate != 0)
-			iTotal += iRate * countNumBuildings((BuildingTypes)aiBuildings[i]);
+		if (iRate == 0)
+			continue;
+		if (bArts)
+		{
+			const BuildingClassTypes eClass = (BuildingClassTypes)pkBuilding->GetBuildingClassType();
+			int iLoop;
+			for (const CvCity* pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
+			{
+				if (pLoopCity->GetCityBuildings()->GetNumBuilding(eBuilding) > 0 &&
+					(int)pLoopCity->GetCityBuildings()->GetNumGreatWorksInBuilding(eClass) >= (int)pkBuilding->GetGreatWorkCount())
+					iTotal += iRate;
+			}
+		}
+		else
+			iTotal += iRate * (countNumBuildings(eBuilding) + LekmodSpecialCSAllyBuildingCount(eBuilding));
+	}
+	return iTotal;
+}
+// Space production from special City-State buildings of independent City-States this player is allied with (Baikonur)
+int CvPlayer::LekmodSpecialCSAllySpaceProductionModifier() const
+{
+	int iTotal = 0;
+	const std::vector<int>& aiBuildings = LekmodSpecialCSBuildings();
+	for (uint i = 0; i < aiBuildings.size(); i++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)aiBuildings[i]);
+		if (pkBuilding->GetGlobalSpaceProductionModifier() != 0)
+			iTotal += pkBuilding->GetGlobalSpaceProductionModifier() * LekmodSpecialCSAllyBuildingCount((BuildingTypes)aiBuildings[i]);
 	}
 	return iTotal;
 }

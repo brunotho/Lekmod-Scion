@@ -148684,13 +148684,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Baikonur Cosmodrome</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_BAIKONUR_COSMODROME_HELP">
-			<Text>+10% [ICON_GREAT_PEOPLE] Great Scientist points in all your cities.[NEWLINE]+30% [ICON_PRODUCTION] Production towards spaceship parts in all your cities.[NEWLINE][NEWLINE]Baikonur has it from the start; the effects go to whoever holds the city.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+			<Text>+10% [ICON_GREAT_PEOPLE] Great Scientist points in all your cities.[NEWLINE]+30% [ICON_PRODUCTION] Production towards spaceship parts in all your cities.[NEWLINE][NEWLINE]Baikonur has it from the start.[NEWLINE]The effects go to whoever holds the city, or to Baikonur's ally while it is independent.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION">
 			<Text>Medici Collection</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION_HELP">
-			<Text>5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]+10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+			<Text>5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]While all 5 slots are filled: +10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET">
 			<Text>Hanseatic Diet</Text>

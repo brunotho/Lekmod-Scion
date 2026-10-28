@@ -340,6 +340,8 @@ public:
 #ifdef LEKMOD_SPECIAL_CITY_STATES
 	void LekmodDoSpecialCityStateBuildings();
 	int LekmodSpecialCSGreatPersonRate(bool bArts) const;
+	int LekmodSpecialCSAllyBuildingCount(BuildingTypes eBuilding) const;
+	int LekmodSpecialCSAllySpaceProductionModifier() const;
 	int LekmodRegionalLuxuryHappinessChange(ResourceTypes eResource) const;
 #endif
 #endif

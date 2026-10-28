@@ -265,6 +265,7 @@ Tags: city-states, wonders
 - New: BUILDING_LEKMOD_BAIKONUR_COSMODROME
   | +10% [ICON_GREAT_PEOPLE] Great Scientist points in all your cities.[NEWLINE]+30% [ICON_PRODUCTION] Production towards spaceship parts in all your cities.[NEWLINE][NEWLINE]Baikonur has it from the start; the effects go to whoever holds the city.[NEWLINE][NEWLINE]Not destroyed when the city is captured.
 - Dev: building 309 (class 211), Buildings.LekmodSpecialMinorCiv; GlobalSpaceProductionModifier 30, LekmodGlobalGreatScientistRate 10 (CvPlayer::recomputeGreatPeopleModifiers, refreshed every turn); icon borrowed from the Spaceship Factory
+- DLL: while Baikonur is independent its ally gets the effects (CvPlayer::LekmodSpecialCSAllyBuildingCount; the space modifier via LekmodSpecialCSAllySpaceProductionModifier in CvCity's unit production modifier)
 
 FLORENCE (NEW) (MINOR_CIV_LEKMOD_FLORENCE)
 ------------------------------------------
@@ -273,6 +274,7 @@ Tags: city-states, tourism
   | 5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]+10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.
 - DLL: CvCity::LekmodCollectArtGreatWork: an artist's unused Great Work into the next empty slot when the newest work in the building is 10 turns old (no saved state; the first one at once), only while a City-State holds the city
 - Dev: building 310 (class 212), LekmodCollectArtTurns 10, LekmodCollectArtEra ERA_RENAISSANCE, LekmodGlobalGreatArtsRate 10; icon borrowed from the Uffizi
+- DLL: the Great Person bonus counts only Medici Collections with every slot filled (CvPlayer::LekmodSpecialCSGreatPersonRate, refreshed every turn)
 
 LÜBECK (NEW) (MINOR_CIV_LEKMOD_LUBECK)
 --------------------------------------

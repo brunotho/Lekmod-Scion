@@ -7056,6 +7056,9 @@ int CvCity::getProductionModifier(UnitTypes eUnit, CvString* toolTipSink) const
 		}
 
 		iTempMod = thisPlayer.getSpaceProductionModifier();
+#ifdef LEKMOD_SPECIAL_CITY_STATES
+		iTempMod += thisPlayer.LekmodSpecialCSAllySpaceProductionModifier(); // Baikonur's ally
+#endif
 		iMultiplier += iTempMod;
 		if(toolTipSink && iTempMod)
 		{
