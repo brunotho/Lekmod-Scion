@@ -292882,4 +292882,18 @@
 		<Row><BuildingType>BUILDING_LEKMOD_VETERAN_GENERAL</BuildingType><DomainType>DOMAIN_SEA</DomainType><Experience>15</Experience></Row>
 		<Row><BuildingType>BUILDING_LEKMOD_VETERAN_GENERAL</BuildingType><DomainType>DOMAIN_AIR</DomainType><Experience>15</Experience></Row>
 	</Building_DomainFreeExperiences>
+	<!-- LEKMOD: Special City-States (2026-10-28): the star as a font icon for tooltips ([ICON_LEKMOD_SPECIAL_CS]) -->
+	<IconFontTextures>
+		<Row>
+			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_SPECIAL_CS</IconFontTexture>
+			<IconFontTextureFile>LekmodSpecialCityStateStarFontIcon_22</IconFontTextureFile>
+		</Row>
+	</IconFontTextures>
+	<IconFontMapping>
+		<Row>
+			<IconName>ICON_LEKMOD_SPECIAL_CS</IconName>
+			<IconMapping>1</IconMapping>
+			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_SPECIAL_CS</IconFontTexture>
+		</Row>
+	</IconFontMapping>
 </GameData>

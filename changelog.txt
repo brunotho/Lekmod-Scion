@@ -213,7 +213,7 @@ Tags: city-states
 - Now: the auctions, Berlin's announcement and Florence's collecting follow the average era of the civilizations; buildings in the city (Lübeck's Hanseatic Diet, like the War College) follow the era of whoever holds it
 - DLL: LEKMOD_SPECIAL_CITY_STATES: MinorCivilizations.LekmodSpecial (IDs 59-66); CvGame::init swaps specials the engine drew for unused regular ones, then draws 0/1/2 into random slots (CvRandom seeded from the pregame map and sync seeds); CvPlayer::isCityNameValid keeps majors off their names
 - Dev: the map (Lekmap Scion, AssignStartingPlots:LekPlaceSpecialCityStates) places them first: centre = the land plot whose farthest start is nearest, sites within 80% of that radius, at least 5 tiles from every start, most equally far from the two nearest starts; Lua.log line "### LekSpecialCS"
-- Dev: star and ability tooltip on the city banner: standard UI only (CityBannerManager, LekmodSpecialCityStateKey; texts TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_*; star art art_sources/tools/build_cs_special_star.py)
+- Dev: star and ability tooltip on the city banner: standard UI only (CityBannerManager, LekmodSpecialCityStateKey; texts TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_*, headed by the star as font icon [ICON_LEKMOD_SPECIAL_CS] (IconFontTextures/IconFontMapping rows at the end of CIV5Units.xml, glyph file LekmodSpecialCityStateStarFontIcon_22.ggxml); star art art_sources/tools/build_cs_special_star.py)
 - Dev: MINOR_CIV_FLORENCE was Ljubljana in game, so Florence is a new City-State (MINOR_CIV_LEKMOD_FLORENCE)
 
 ST. PETERSBURG (NEW) (MINOR_CIV_LEKMOD_STPETERSBURG)
