@@ -807,6 +807,13 @@ Cities claim plain water tiles as readily as plain flat land when their borders 
 - Changed: buying a water tile with gold costs the same as buying flat land at the same distance (it was more expensive)
 - Dev: Terrains.InfluenceCost Coast 2 -> 1, Ocean 3 -> 1 (influence pathfinder, used by CvCity::GetBuyablePlotList and CvCity::GetBuyPlotCost)
 
+ANNOUNCEMENT BANNER (NEW) (LEKMOD_ANNOUNCEMENT_BANNER)
+-----------------------------------------------------
+Tags: ui
+- Added: big announcements also appear for a few seconds as a banner at the top of the screen: special City-State events, world wonders other civilizations complete, and declarations of war (click it to close it; the notification stays)
+- Note: standard UI and EUI
+- Dev: Lua/LekmodAnnouncementBanner.lua/.xml (own context, loaded by InGame.lua); special City-State notifications carry iExtraGameData LEKMOD_ANNOUNCEMENT_BANNER_MARKER (4242, CvGame::LekmodAuctionNotify); 5 seconds each with a 0.6 s fade, queued; notifications rebroadcast while loading are skipped (ready after LoadScreenClose)
+
 DISMISS ALL NOTIFICATIONS
 -------------------------
 Tags: ui

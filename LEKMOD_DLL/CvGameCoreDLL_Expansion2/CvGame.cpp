@@ -8333,7 +8333,7 @@ void CvGame::LekmodAuctionNotify(PlayerTypes eOnly, int iMinor, const char* szMe
 			continue;
 		CvPlayer& kPlayer = GET_PLAYER((PlayerTypes)iPlayer);
 		if (kPlayer.isAlive() && kPlayer.GetNotifications())
-			kPlayer.GetNotifications()->Add(NOTIFICATION_DIPLOMACY_DECLARATION, szMessage, szSummary, pCity ? pCity->getX() : -1, pCity ? pCity->getY() : -1, -1);
+			kPlayer.GetNotifications()->Add(NOTIFICATION_DIPLOMACY_DECLARATION, szMessage, szSummary, pCity ? pCity->getX() : -1, pCity ? pCity->getY() : -1, -1, LEKMOD_ANNOUNCEMENT_BANNER_MARKER);
 	}
 }
 // A Great Work (writing, art or music, whichever has a free slot) for St. Petersburg's auction; false if no slot is free

@@ -148794,6 +148794,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_LUBECK">
 			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]Hanseatic Diet (from the Renaissance Era): the regional luxuries of whoever holds Lübeck give +1 [ICON_HAPPINESS_1] Happiness to everyone who has them; all other regional luxuries give -1.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_TT">
+			<Text>Click to close. The notification stays in the notification list.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
 			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>
 		</Row>

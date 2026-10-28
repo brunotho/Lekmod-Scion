@@ -1845,6 +1845,8 @@ Diversify Spain and Australia's NW Discovery bonus
 // Special City-States (user, 2026-10-27, New Specs): a 6th City-State type (Science), 0/1/2 special City-States per game
 // that replace regular ones, map placement among the players, self-liberation (see the tracker row "New Specs (2): Special City-States")
 #define LEKMOD_SPECIAL_CITY_STATES
+// iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
+#define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242
 // TEST ONLY (user, 2026-10-28): every game gets all special City-States (as many as there are City-State slots).
 // Switch off before a release (tools/release.py check flags it).
 #define LEKMOD_SPECIAL_CITY_STATES_TEST_ALL
