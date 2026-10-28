@@ -1296,7 +1296,7 @@ function SortAndDisplayYourCulture()
 					table.insert(g_GreatWorkSlots, selectionPoint);
 
 					control.Box:SetHide(false);
-					if (control.Lock ~= nil) then control.Lock:SetHide(not selectionPoint.Locked); end
+					if (control.Lock ~= nil) then control.Lock:SetHide(not wonder.Locked); end -- LEKMOD (2026-10-28): also on empty locked slots
 
 					if(greatWork.Index >= 0) then
 						control.Icon:SetTexture(icons.FilledIcon);
@@ -1307,7 +1307,11 @@ function SortAndDisplayYourCulture()
 						end
 					else
 						control.Icon:SetTexture(icons.EmptyIcon);
-						control.Icon:SetToolTipString(nil);
+						if (wonder.Locked) then
+							control.Icon:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_GWFX_LOCKED"));
+						else
+							control.Icon:SetToolTipString(nil);
+						end
 					end	
 				end
 			end

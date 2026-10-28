@@ -2141,6 +2141,7 @@ Tags: tourism, game mechanics
 - DLL: LEKMOD_GENERIC_GREAT_WORKS (AI no longer rearranges great works; the Royal Library's free work uses its own slot type)
 - Added: locked slots: a Great Work placed in Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again; it can't be offered for a swap either
 - Added: the Great Works screen marks locked slots with a padlock
+- Dev: 2026-10-28 (user): the padlock also shows on empty locked slots, which say so in their tooltip
 - Note: when a captured duplicate wonder is destroyed (same-turn rule "Both"), its great works still move to free slots of the new owner
 - DLL: Buildings.LekmodLockedGreatWorkSlots (CvGameCulture::MoveGreatWorks, ResponseSetSwappableGreatWork)
 
