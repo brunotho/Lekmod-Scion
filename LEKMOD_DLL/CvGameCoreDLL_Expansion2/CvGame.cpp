@@ -8283,20 +8283,37 @@ void CvGame::incrementBuildingClassCreatedCount(BuildingClassTypes eIndex)
 #ifdef LEKMOD_WONDER_TIE_RULES
 // Not saved: only meaningful inside one turn's production pass (saves and loads happen between passes)
 #ifdef LEKMOD_SPECIAL_CITY_STATES
+// The City-State era (user, 2026-10-28: one readable rule, shown on the City-State screen): City-States get every tech that
+// MINOR_CIV_TECH_PERCENT (40%) of the living major teams know, rounded down, at least 1 (CvTeam::DoMinorCivTech), so their era
+// is the newest era among those techs. Computed from the majors, so it also works while no City-State is alive.
+// Used for the special City-State events (until 2026-10-28: the average era of the living majors).
 EraTypes CvGame::LekmodGetSpecialCityStateEra() const
 {
-	int iSum = 0;
-	int iCount = 0;
-	for(int iPlayer = 0; iPlayer < MAX_MAJOR_CIVS; iPlayer++)
+	int iMajorTeams = 0;
+	for(int iTeam = 0; iTeam < MAX_CIV_TEAMS; iTeam++)
 	{
-		const CvPlayer& kPlayer = GET_PLAYER((PlayerTypes)iPlayer);
-		if(kPlayer.isAlive() && !kPlayer.isMinorCiv() && !kPlayer.isBarbarian())
-		{
-			iSum += (int)kPlayer.GetCurrentEra();
-			iCount++;
-		}
+		const CvTeam& kTeam = GET_TEAM((TeamTypes)iTeam);
+		if(kTeam.isAlive() && !kTeam.isMinorCiv() && !kTeam.isBarbarian())
+			iMajorTeams++;
 	}
-	return (iCount > 0) ? (EraTypes)(iSum / iCount) : (EraTypes)0;
+	const int iNeeded = std::max(1, iMajorTeams * GC.getMINOR_CIV_TECH_PERCENT() / 100);
+	int iEra = 0;
+	for(int iTech = 0; iTech < GC.getNumTechInfos(); iTech++)
+	{
+		CvTechEntry* pkTech = GC.getTechInfo((TechTypes)iTech);
+		if(pkTech == NULL || pkTech->GetEra() <= iEra)
+			continue;
+		int iKnown = 0;
+		for(int iTeam = 0; iTeam < MAX_CIV_TEAMS && iKnown < iNeeded; iTeam++)
+		{
+			const CvTeam& kTeam = GET_TEAM((TeamTypes)iTeam);
+			if(kTeam.isAlive() && !kTeam.isMinorCiv() && !kTeam.isBarbarian() && kTeam.GetTeamTechs()->HasTech((TechTypes)iTech))
+				iKnown++;
+		}
+		if(iKnown >= iNeeded)
+			iEra = pkTech->GetEra();
+	}
+	return (EraTypes)iEra;
 }
 int& CvGame::LekmodAuction(int iAuction, int iField)
 {

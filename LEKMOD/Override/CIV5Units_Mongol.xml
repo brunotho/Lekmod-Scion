@@ -148690,7 +148690,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Medici Collection</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MEDICI_COLLECTION_HELP">
-			<Text>5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]While all 5 slots are filled: +10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once the civilizations are in the Renaissance Era on average, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
+			<Text>5 [ICON_GREAT_WORK] Great Work of Art slots.[NEWLINE]While all 5 slots are filled: +10% [ICON_GREAT_PEOPLE] Great Writer, Great Artist and Great Musician points in all your cities.[NEWLINE][NEWLINE]While Florence is independent, it adds a Great Work of Art every 10 turns once City-States are in the Renaissance Era, until all slots are full.[NEWLINE]Whoever captures Florence keeps the collected Great Works, but the collecting stops.[NEWLINE][NEWLINE]Not destroyed when the city is captured.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_HANSEATIC_DIET">
 			<Text>Hanseatic Diet</Text>
@@ -148796,6 +148796,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_TT">
 			<Text>Click to close. The notification stays in the notification list.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_LABEL">
+			<Text>Era:</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CS_ERA_TT">
+			<Text>All City-States are in the same era.[NEWLINE]A City-State knows every technology that at least {1_Num} of the {2_Num} civilizations know; its era is the era of the newest of these.[NEWLINE][NEWLINE]This era decides when City-States get their buildings (Appletree, War College, ...), their improvements and the events of special City-States.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
 			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>

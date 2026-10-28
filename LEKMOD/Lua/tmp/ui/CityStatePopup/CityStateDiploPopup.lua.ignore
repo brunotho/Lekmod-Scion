@@ -248,6 +248,23 @@ function OnDisplay()
 	Controls.PersonalityInfo:SetText(strPersonalityText);
 	Controls.PersonalityInfo:SetToolTipString(strPersonalityTT);
 	Controls.PersonalityLabel:SetToolTipString(strPersonalityTT);
+
+	-- LEKMOD (2026-10-28): the City-State era (City-States know every tech that 40% of the civilizations know, CvTeam::DoMinorCivTech)
+	if (Controls.LekmodEraInfo ~= nil) then
+		local era = GameInfo.Eras[pPlayer:GetCurrentEra()];
+		Controls.LekmodEraInfo:SetText(era and Locale.ConvertTextKey(era.Description) or "");
+		local iMajors = 0;
+		for iTeam = 0, GameDefines.MAX_CIV_TEAMS - 1 do
+			local pTeam = Teams[iTeam];
+			if (pTeam ~= nil and pTeam:IsAlive() and not pTeam:IsMinorCiv() and not pTeam:IsBarbarian()) then
+				iMajors = iMajors + 1;
+			end
+		end
+		local iNeeded = math.max(1, math.floor(iMajors * GameDefines.MINOR_CIV_TECH_PERCENT / 100));
+		local strEraTT = Locale.ConvertTextKey("TXT_KEY_LEKMOD_CS_ERA_TT", iNeeded, iMajors);
+		Controls.LekmodEraInfo:SetToolTipString(strEraTT);
+		Controls.LekmodEraLabel:SetToolTipString(strEraTT);
+	end
 	
 	-- Ally Status
 	local iAlly = pPlayer:GetAlly();
