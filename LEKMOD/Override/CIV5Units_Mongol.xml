@@ -148770,6 +148770,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_NO_BID_YET">
 			<Text>You have not bid yet: enter an amount and press Bid.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BUTTON_TT">
+			<Text>A City-State is holding an auction this turn.[NEWLINE]Click to place your bid.[NEWLINE][NEWLINE]This goes away once you have bid or the turn ends.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_AUCTION_BAD_BID">
 			<Text>Enter an amount between 1 and {1_Num} (your Gold).</Text>
 		</Row>

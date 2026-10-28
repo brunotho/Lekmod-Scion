@@ -116,6 +116,7 @@ local function Refresh()
 				Network.SendGiftUnit(iWork, -28); -- Cambridge: held like the Gold, before the Gold message closes the offer
 			end
 			Network.SendGiftUnit(iGold * 4 + iAuction, -26);
+			LuaEvents.LekmodAuctionBidSent(iAuction); -- the big notification prompt goes away
 			Refresh();
 		end);
 	end

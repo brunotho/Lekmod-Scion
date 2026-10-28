@@ -556,7 +556,8 @@ function RemoveNotificationID( Id )
         
         local instance = g_Instances[ Id ];
         if( instance ~= nil ) then
-			Controls.SmallStack:ReleaseChild( instance[ name .. "Container" ] );
+			-- LEKMOD: City-State ally changes use their own item (OnNotificationAdded), not the type's
+			Controls.SmallStack:ReleaseChild( instance[ name .. "Container" ] or instance.CityStateAllyContainer );
 		    g_Instances[ Id ] = nil;
 		end
         
@@ -652,6 +653,33 @@ function OnNotificationsActivePlayerChanged( iActivePlayer, iPrevActivePlayer )
 	ProcessStackSizes();
 end
 Events.GameplaySetActivePlayer.Add(OnNotificationsActivePlayerChanged);
+
+----------------------------------------------------------------
+-- LEKMOD: special City-State auctions: a big prompt while an auction runs that you have not bid on yet.
+-- It can't be dismissed; it goes away once your bid is sent or the auction is over. Click = the auction popup (LekmodAuction.lua).
+----------------------------------------------------------------
+local g_LekmodAuctionSent = {}; -- auctions this machine sent a bid for this turn (until the bid arrives back)
+function LekmodUpdateAuctionButton()
+	local bShow = false;
+	local iPlayer = Game.GetActivePlayer();
+	local pPlayer = Players[iPlayer];
+	if Game.LekmodGetAuctions ~= nil and pPlayer ~= nil and pPlayer:IsTurnActive() then
+		for _, a in ipairs( Game.LekmodGetAuctions( iPlayer ) ) do
+			if a.State == 1 and a.OpenTurn == Game.GetGameTurn() and a.MyBid <= 0 and not g_LekmodAuctionSent[ a.Index ] then
+				bShow = true;
+			end
+		end
+	end
+	if Controls.LekmodAuctionButton:IsHidden() == bShow then
+		Controls.LekmodAuctionButton:SetHide( not bShow );
+		ProcessStackSizes();
+	end
+end
+Controls.LekmodAuctionButton:RegisterCallback( Mouse.eLClick, function() LuaEvents.LekmodShowAuctions(); end );
+Events.ActivePlayerTurnStart.Add( function() g_LekmodAuctionSent = {}; LekmodUpdateAuctionButton(); end );
+Events.ActivePlayerTurnEnd.Add( LekmodUpdateAuctionButton );
+Events.SerialEventGameDataDirty.Add( LekmodUpdateAuctionButton );
+LuaEvents.LekmodAuctionBidSent.Add( function( iAuction ) g_LekmodAuctionSent[ iAuction ] = true; LekmodUpdateAuctionButton(); end );
 
 
 UI.RebroadcastNotifications();
