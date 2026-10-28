@@ -401,7 +401,7 @@
 		</Row>
 		<Row Tag="TXT_KEY_ATTACKMOD_CLAUZWITZ">
 			<Text>
-				Temporary Attack Bonus ({1_TurnsLeft})
+				Clausewitz's Legacy ({1_TurnsLeft})
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_ATTACKMOD_HEAVY_CHARGE_DOWNHILL">

@@ -2536,6 +2536,7 @@ Tags: policies
 - Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't)
 - DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty) ignores the Influence block and the 10-20 turn tribute penalty (LEKMOD_POLICY_REWORK)
 - Dev: LEKMOD_CLAUSEWITZ_MELEE_ONLY in CvUnit::GetMaxAttackStrength(kInfo) also excludes air sweeps. The combat preview uses the same function (LEKMOD_COMBAT_PREDICTOR_IMPROVEMENTS), so it matches.
+- Dev: the combat preview line TXT_KEY_ATTACKMOD_CLAUZWITZ says "Clausewitz's Legacy (turns)" instead of "Temporary Attack Bonus" for every source (policy, Berlin, user 2026-10-28)
 
 FREEDOM (POLICY_BRANCH_FREEDOM)
 -------------------------------
