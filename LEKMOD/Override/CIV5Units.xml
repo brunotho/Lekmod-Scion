@@ -288779,7 +288779,7 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_TUNISIA_CASTLE"/>
-			<Set CityVisionChange="2"/>
+			<Set CityVisionChange="3"/>
 		</Update>
 	</Buildings>
 	<!-- LEKMOD: Phase 6 C++ batch J (2026-10-14): Morocco UA Children of the Desert (new) and Kasbah rework -->

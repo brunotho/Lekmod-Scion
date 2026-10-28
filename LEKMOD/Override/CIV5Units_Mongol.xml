@@ -147524,7 +147524,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Start the game with nearby Coastal tiles and Islands already explored.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_TUNISIA_CASTLE_HELP">
-			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 2 tiles farther, and terrain does not block its view.</Text>
+			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 4 tiles far, and terrain does not block its view.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_BARLAS_CAVALRY">
 			<Text>Barlas Cavalry</Text>
