@@ -9988,7 +9988,8 @@ void CvPlayer::LekmodDoSpecialCityStateBuildings()
 				continue;
 			if (pLoopCity->GetCityBuildings()->GetNumBuilding(eBuilding) <= 0)
 			{
-				if (pkBuilding->GetLekmodSpecialEra() == -1 || (int)eGameEra >= pkBuilding->GetLekmodSpecialEra())
+				// the building comes with the era of whoever holds the city (like the War College): Lübeck's own era while independent
+				if (pkBuilding->GetLekmodSpecialEra() == -1 || (int)GetCurrentEra() >= pkBuilding->GetLekmodSpecialEra())
 					pLoopCity->GetCityBuildings()->SetNumRealBuilding(eBuilding, 1);
 				else
 					continue;

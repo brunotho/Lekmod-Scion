@@ -525,7 +525,7 @@ function getBuildings()
 							WHERE	MaxPlayerInstances = -1 AND
 									MaxTeamInstances = -1 AND
 									MaxGlobalInstances = -1 AND
-									GreatWorkCount > 0 AND
+									GreatWorkCount > 0 AND GreatWorkCount <= 3 AND -- LEKMOD: columns hold 1-3 slots; bigger ones (Medici Collection) are listed like wonders
 									CivilizationType IS NULL
 						]]) do
 		gwBuildings[row.BuildingClass] = row;
@@ -549,7 +549,7 @@ function getBuildings()
 							WHERE	MaxPlayerInstances = -1 AND
 									MaxTeamInstances = -1 AND
 									MaxGlobalInstances = -1 AND
-									GreatWorkCount > 0 AND
+									GreatWorkCount > 0 AND GreatWorkCount <= 3 AND -- LEKMOD: columns hold 1-3 slots; bigger ones (Medici Collection) are listed like wonders
 									CivilizationType = ?
 						]], GameInfo.Civilizations[Game.GetActiveCivilizationType()].Type) do
 		gwBuildings[row.BuildingClass] = row;

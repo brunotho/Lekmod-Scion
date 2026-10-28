@@ -8850,6 +8850,11 @@ void CvGame::LekmodTestSpecialCityStates()
 	{
 		LekmodBerlin(LBF_STATE) = LBS_ANNOUNCED;
 		LekmodBerlin(LBF_DEADLINE) = getGameTurn() + 1;
+		CvCity* pBerlin = LekmodBerlinCity();
+		Localization::String strMessage = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_ANNOUNCED");
+		strMessage << (pBerlin ? pBerlin->getNameKey() : GET_PLAYER(LekmodBerlinMinor()).getNameKey()) << LekmodBerlin(LBF_DEADLINE);
+		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_BERLIN_SUMMARY");
+		LekmodAuctionNotify(NO_PLAYER, LekmodBerlinMinor(), strMessage.toUTF8(), strSummary.toUTF8());
 	}
 	GC.GetEngineUserInterface()->setDirty(GameData_DIRTY_BIT, true);
 }
