@@ -2135,7 +2135,12 @@ void CvMinorCivAI::DoPickPersonality()
 	CvFlavorManager* pFlavorManager = m_pPlayer->GetFlavorManager();
 	int* pFlavors = pFlavorManager->GetAllPersonalityFlavors();
 
+#ifdef LEKMOD_NO_IRRATIONAL_CITY_STATES
+	// Irrational is not drawn any more: its only effect (more tribute quests) belongs to a quest that is switched off (user, 2026-10-28)
+	MinorCivPersonalityTypes eRandPersonality = (MinorCivPersonalityTypes) GC.getGame().getJonRandNum(MINOR_CIV_PERSONALITY_IRRATIONAL, "Minor Civ AI: Picking Personality for this Game (should happen only once per player)");
+#else
 	MinorCivPersonalityTypes eRandPersonality = (MinorCivPersonalityTypes) GC.getGame().getJonRandNum(NUM_MINOR_CIV_PERSONALITY_TYPES, "Minor Civ AI: Picking Personality for this Game (should happen only once per player)");
+#endif
 	m_ePersonality = eRandPersonality;
 
 	switch(eRandPersonality)

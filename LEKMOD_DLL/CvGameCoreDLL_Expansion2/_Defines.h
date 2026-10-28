@@ -1846,6 +1846,8 @@ Diversify Spain and Australia's NW Discovery bonus
 // that replace regular ones, map placement among the players, self-liberation (see the tracker row "New Specs (2): Special City-States")
 // New Great Works go into locked slots (Hagia Sophia etc.) only when no other slot of the type is free (user, 2026-10-28)
 #define LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
+// City-States are Friendly, Neutral or Hostile; Irrational is no longer drawn (user, 2026-10-28; the enum and its texts stay for later effects)
+#define LEKMOD_NO_IRRATIONAL_CITY_STATES
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
 #define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242

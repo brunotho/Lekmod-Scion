@@ -3742,11 +3742,11 @@ Tags: city-states
 CITY-STATE PERSONALITIES (MINOR_CIV_PERSONALITY_*)
 --------------------------------------------------
 Tags: city-states
-City-States are back to the four personalities of LEKMOD v34.11: Friendly, Neutral, Hostile and Irrational.
-- Removed: Wealthy, Impoverished, Pirate Republic, Theocratic, Pacifistic and Isolationist City-States
+City-States have three personalities: Friendly, Neutral and Hostile.
+- Removed: Wealthy, Impoverished, Pirate Republic, Theocratic, Pacifistic, Isolationist and Irrational City-States
 - Changed: Friendly City-States ask for road connections more often; they no longer slow Influence decay or give more quest Influence
 - Changed: Hostile City-States: Influence drops by 1.5 per turn, fewer quests overall (rarely road or natural wonder quests), harder to demand tribute from
-- Dev: personality tooltips and the Civilopedia page describe the actual rules; 2026-10-28: the conquest quest is switched off (QUEST_DISABLED_KILL_CITY_STATE), so the texts no longer mention it, and Irrational's only effect (more tribute quests) is switched off too, so it reads "no special rules"
+- Dev: personality tooltips and the Civilopedia page describe the actual rules; 2026-10-28: the conquest quest is switched off (QUEST_DISABLED_KILL_CITY_STATE), so the texts no longer mention it, and Irrational's only effect (more tribute quests) is switched off too, so Irrational is no longer drawn (LEKMOD_NO_IRRATIONAL_CITY_STATES; enum and texts kept for later effects)
 - DLL: LEKMOD_MINOR_CIV_PERSONALITIES switched off (the v35 data-driven personalities); the v34.11 code paths are its #else branches
 
 MILITARISTIC CITY-STATES: UNIQUE UNIT ON CAPTURE (MINOR_CIV_TRAIT_MILITARISTIC)
