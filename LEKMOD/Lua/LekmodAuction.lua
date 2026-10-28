@@ -26,7 +26,7 @@ local function MyGreatWorks()
 				for iSlot = 0, building.GreatWorkCount - 1 do
 					local iWork = pCity:GetBuildingGreatWork(iClass, iSlot);
 					if (iWork ~= nil and iWork >= 0) then
-						table.insert(aWorks, { Index = iWork, Name = Game.GetGreatWorkName(iWork) .. " (" .. pCity:GetName() .. ")" });
+						table.insert(aWorks, { Index = iWork, Name = Locale.ConvertTextKey(Game.GetGreatWorkName(iWork)) .. " (" .. pCity:GetName() .. ")" });
 					end
 				end
 			end

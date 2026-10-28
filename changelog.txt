@@ -225,6 +225,7 @@ Tags: city-states, tourism
 - Now: everyone else gets 90% of their bid back
 - DLL: CvGame::LekmodDoAuctions (after the turn number advances; saved in CvGame, m_aiLekmodAuctions), CvGame::LekmodPlaceBid via network code -26 (Gold * 4 + auction), CvGame::LekmodGiveGreatWork (writing, art or music, whichever has a free slot)
 - Dev: popup Lua/LekmodAuction.lua (own context, both UIs; opens at turn start while an auction runs, again from the City-State screen's button); announcements use the important notification type NOTIFICATION_DIPLOMACY_DECLARATION
+- Dev: Cambridge's Great Work list showed raw text keys; names are localized now (2026-10-28)
 
 SHANGHAI (NEW) (MINOR_CIV_LEKMOD_SHANGHAI)
 ------------------------------------------
