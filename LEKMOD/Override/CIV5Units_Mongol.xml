@@ -148004,7 +148004,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>MI6</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MI6_HELP">
-			<Text>Replaces the National Intelligence Agency.[NEWLINE][NEWLINE]Like the National Intelligence Agency:[NEWLINE]Provides 1 more spy and levels up all your existing spies.[NEWLINE]Enemy spies are 15% less effective.[NEWLINE]Must have a Constabulary in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]A dead [ICON_SPY] Spy is replaced 1 turn sooner.[NEWLINE][ICON_RESEARCH] Science stolen by your spies also gives the same amount of [ICON_GOLD] Gold.[NEWLINE]The first successful coup in each [ICON_CITY_STATE] City-State gives 150 [ICON_GOLD] Gold per era (150 in the Ancient Era, 300 in the Classical Era, ...).</Text>
+			<Text>Replaces the National Intelligence Agency.[NEWLINE][NEWLINE]Like the National Intelligence Agency:[NEWLINE]Provides 1 more spy and levels up all your existing spies.[NEWLINE]Enemy spies are 15% less effective.[NEWLINE]Must have a Constabulary in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]A dead [ICON_SPY] Spy is replaced 1 turn sooner.[NEWLINE][ICON_RESEARCH] Science stolen by your spies also gives the same amount of [ICON_GOLD] Gold.[NEWLINE]The first successful coup in each [ICON_CITY_STATE] City-State gives 150 [ICON_GOLD] Gold per era (600 in the Renaissance Era, 750 in the Industrial Era, ...).</Text>
 		</Row>
 		<!-- Phase 6 C++ batch J -->
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_PLAINS_RIDER">
