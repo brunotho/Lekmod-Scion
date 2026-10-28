@@ -148789,7 +148789,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]Baikonur Cosmodrome: +10% [ICON_GREAT_PEOPLE] Great Scientist points and +30% [ICON_PRODUCTION] Production towards spaceship parts.[NEWLINE]For whoever holds Baikonur, or its ally while it is independent.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_FLORENCE">
-			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]Medici Collection: from the Renaissance Era, Florence collects a Great Work of Art every 10 turns into its 5 slots.[NEWLINE]Whoever holds Florence with all 5 slots filled gets +10% [ICON_GREAT_PEOPLE] Great Writer, Artist and Musician points.</Text>
+			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]Florence has the Medici Collection, a building with 5 Great Work of Art slots; from the Renaissance Era Florence fills one every 10 turns.[NEWLINE]While all 5 slots are filled, the Medici Collection gives its holder +10% [ICON_GREAT_PEOPLE] Great Writer, Artist and Musician points.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_LUBECK">
 			<Text>[ICON_LEKMOD_SPECIAL_CS][NEWLINE]Hanseatic Diet (from the Renaissance Era): the regional luxuries of whoever holds Lübeck give +1 [ICON_HAPPINESS_1] Happiness to everyone who has them; all other regional luxuries give -1.</Text>
