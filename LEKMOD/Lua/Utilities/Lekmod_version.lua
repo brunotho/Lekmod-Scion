@@ -6,7 +6,7 @@ LekmodVersion = LekmodVersion or {}
 
 -- Technical version for MP lobby name / update checks (display titles live in TXT_KEY_LEKMOD_*).
 -- Lekmod Scion (2026-10-17): our own line, based on upstream LEKMOD v35.4; test builds are 0.1.x, 1.0.0 is the first real release (user, 2026-10-27)
-LekmodVersion.LOCAL_VERSION = "v0.1.2"
+LekmodVersion.LOCAL_VERSION = "v0.1.3"
 
 -- Plain lobby chat posted by clients that skipped ui_check.bat (Steam invite bypasses the legal screen).
 LekmodVersion.UI_CHECK_CHAT = "UI_CHECK NOT LAUNCHED"

@@ -23,7 +23,7 @@ Format (also the source for player patch notes on the website):
 ## UNRELEASED (next version)
 
 
-## 0.1.2 (2026-10-28)
+## 0.1.3 (2026-10-30)
 
 - Dev: ported from the old fork (based on v34.11) onto LEKMOD v35.4; the fork's World Congress changes were not carried over.
 - Dev: our promotion IDs are 344-364 (v35.4 uses up to 343).
