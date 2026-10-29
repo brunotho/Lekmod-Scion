@@ -279,6 +279,10 @@ public:
 	const std::vector<int>& GetLekmodFreeBuildingRows() const;
 	int GetLekmodPolicyImprovementYield(const CvPlot* pPlot, ImprovementTypes eImprovement, YieldTypes eYield) const;
 	void LekmodDoPolicyWaterUnits(PolicyTypes ePolicy);
+#ifdef LEKMOD_SPECS_2026_10_29
+	void LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest);
+	void LekmodDoPolicyStarReveal(PolicyTypes ePolicy);
+#endif
 	int GetLekmodBuildingClassHappinessUntilIdeology(BuildingClassTypes eClass) const;
 	int GetLekmodAllyUUPurchaseMod() const;
 #ifdef LEKMOD_CIV_TRAIT_FLAGS

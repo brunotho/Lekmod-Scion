@@ -3616,6 +3616,10 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bGift, bool bP
 			}
 #endif
 
+#ifdef LEKMOD_SPECS_2026_10_29
+			if (bConquest)
+				LekmodGrantPolicyBuildings(pNewCity, true);
+#endif
 			int iInfluenceReduction = GetCulture()->GetInfluenceCityConquestReduction(eOldOwner);
 
 #ifdef NQ_DIABLE_RESISTANCE_TIME_VIA_POLICIES
@@ -4013,6 +4017,47 @@ void CvPlayer::getCivilizationCityName(CvString& szBuffer, CivilizationTypes eCi
 	{
 		CvCivilizationInfo& kCivInfo = *pkCivilizationInfo;
 #ifdef LEKMOD_RANDOMIZE_CITY_NAMES
+#ifdef LEKMOD_SPECS_2026_10_29
+		// The capital keeps its name (Aksum and the Timurids also their 2nd one). Every later city: 80% a random free name
+		// among the first 12 of the list, 20% a random free name further down (the other group if one is empty).
+		// Deterministic (player, start plot, cities owned, turn) instead of the synced RNG: the function must give the
+		// same result wherever it is called.
+		const int iNumNames = kCivInfo.getNumCityNames();
+		int iFixedNames = 1;
+		if(eCivilization == (CivilizationTypes)GC.getInfoTypeForString("CIVILIZATION_AKSUM", true) ||
+		   eCivilization == (CivilizationTypes)GC.getInfoTypeForString("CIVILIZATION_TIMURIDS", true))
+		{
+			iFixedNames = 2;
+		}
+		for(int iI = 0; iI < MIN(iFixedNames, iNumNames) && szBuffer.empty(); iI++)
+		{
+			const CvString strCityName = kCivInfo.getCityNames(iI);
+			CvString strName = GetLocalizedText(strCityName.c_str());
+			if(isCityNameValid(strName, true))
+				szBuffer = strCityName;
+		}
+		if(szBuffer.empty())
+		{
+			std::vector<int> aiFront, aiBack;
+			for(int iI = 0; iI < iNumNames; iI++)
+			{
+				CvString strName = GetLocalizedText(kCivInfo.getCityNames(iI));
+				if(isCityNameValid(strName, true))
+					(iI < 12 ? aiFront : aiBack).push_back(iI);
+			}
+			CvPlot* pStartPlot = getStartingPlot();
+			unsigned int uiSeed = (unsigned int)(GetID() + 1) * 2654435761u + (unsigned int)(pStartPlot ? pStartPlot->GetPlotIndex() : 0) * 40503u
+				+ (unsigned int)getNumCities() * 97u + (unsigned int)GC.getGame().getGameTurn() * 7919u;
+			uiSeed = uiSeed * 1103515245u + 12345u;
+			const bool bFront = ((uiSeed >> 8) % 100u) < 80u;
+			const std::vector<int>& aiPick = (bFront ? (aiFront.empty() ? aiBack : aiFront) : (aiBack.empty() ? aiFront : aiBack));
+			if(!aiPick.empty())
+			{
+				uiSeed = uiSeed * 1103515245u + 12345u;
+				szBuffer = kCivInfo.getCityNames(aiPick[(uiSeed >> 8) % (unsigned int)aiPick.size()]);
+			}
+		}
+#else
 		// The capital keeps its name; all later names come in a shuffled order that is fixed for this player in this game.
 		// America, Russia, Aksum and the Timurids also keep their 2nd city name.
 		// Deterministic shuffle instead of the synced RNG: this function must give the same result wherever it is called.
@@ -4055,6 +4100,7 @@ void CvPlayer::getCivilizationCityName(CvString& szBuffer, CivilizationTypes eCi
 				break;
 			}
 		}
+#endif
 #else
 		for(int iI = 0; iI < kCivInfo.getNumCityNames(); iI++)
 		{
@@ -29467,6 +29513,9 @@ void CvPlayer::LekmodDoPolicyNewCityEffects(CvCity* pCity)
 {
 	if (pCity == NULL)
 		return;
+#ifdef LEKMOD_SPECS_2026_10_29
+	LekmodGrantPolicyBuildings(pCity, false);
+#endif
 	const CvPlayer& kPlayer = *this;
 	for (int iPolicy = 0; iPolicy < GC.getNumPolicyInfos(); iPolicy++)
 	{
@@ -29830,6 +29879,120 @@ int CvPlayer::GetLekmodResistanceTimeModifier() const
 	}
 	return std::max(-100, iValue);
 }
+#ifdef LEKMOD_SPECS_2026_10_29
+/// Policy_LekmodFreeBuildings: a specific building in a captured (bConquest) or newly founded city; it replaces the city's
+/// building of its class (Colonial Administration: the Slave Market instead of a Colosseum), so that one can't be built there
+/// any more (CvCity::canConstruct rules out a class that is already filled). Water buildings only go to coastal cities.
+void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
+{
+	if (pCity == NULL)
+		return;
+	for (int iPolicy = 0; iPolicy < GC.getNumPolicyInfos(); iPolicy++)
+	{
+		CvPolicyEntry* pkPolicy = GC.getPolicyInfo((PolicyTypes)iPolicy);
+		if (pkPolicy == NULL || pkPolicy->GetLekmodFreeBuildings().empty() || !GetPlayerPolicies()->HasPolicy((PolicyTypes)iPolicy) || GetPlayerPolicies()->IsPolicyBlocked((PolicyTypes)iPolicy))
+			continue;
+		const std::vector<int>& aiRows = pkPolicy->GetLekmodFreeBuildings();
+		for (uint i = 0; i + 2 < aiRows.size(); i += 3)
+		{
+			if ((bConquest ? aiRows[i + 1] : aiRows[i + 2]) == 0)
+				continue;
+			const BuildingTypes eBuilding = (BuildingTypes)aiRows[i];
+			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
+			if (pkBuilding == NULL || pCity->GetCityBuildings()->GetNumBuilding(eBuilding) > 0)
+				continue;
+			if (pkBuilding->IsWater() && !pCity->isCoastal(pkBuilding->GetMinAreaSize()))
+				continue;
+			for (int iLoop = 0; iLoop < GC.getNumBuildingInfos(); iLoop++)
+			{
+				CvBuildingEntry* pkLoop = GC.getBuildingInfo((BuildingTypes)iLoop);
+				if (pkLoop == NULL || iLoop == (int)eBuilding || pkLoop->GetBuildingClassType() != pkBuilding->GetBuildingClassType())
+					continue;
+				if (pCity->GetCityBuildings()->GetNumRealBuilding((BuildingTypes)iLoop) > 0)
+					pCity->GetCityBuildings()->SetNumRealBuilding((BuildingTypes)iLoop, 0);
+				if (pCity->GetCityBuildings()->GetNumFreeBuilding((BuildingTypes)iLoop) > 0)
+					pCity->GetCityBuildings()->SetNumFreeBuilding((BuildingTypes)iLoop, 0);
+			}
+			pCity->GetCityBuildings()->SetNumFreeBuilding(eBuilding, 1);
+		}
+	}
+}
+
+/// Policies.LekmodStarRevealLength (Expansionism opener): around the capital, a disk of radius 3 plus five rough arms of
+/// 15-20 tiles, like a hand-drawn star: they wobble a little, get thinner further out and fray at their tips.
+/// Uses the synced random numbers, so every machine reveals the same tiles.
+void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
+{
+	CvPolicyEntry* pkPolicy = GC.getPolicyInfo(ePolicy);
+	CvCity* pCapital = getCapitalCity();
+	if (pkPolicy == NULL || pkPolicy->GetLekmodStarRevealLength() <= 0 || pCapital == NULL)
+		return;
+	const int iMaxLength = pkPolicy->GetLekmodStarRevealLength();
+	const int iNumArms = 5;
+	const float fPi = 3.14159265f;
+	float afAngle[iNumArms];
+	float afWobblePhase[iNumArms];
+	int aiLength[iNumArms];
+	const float fStart = GC.getGame().getJonRandNum(360, "Lekmod star reveal angle") * fPi / 180.0f;
+	for (int iArm = 0; iArm < iNumArms; iArm++)
+	{
+		// evenly spread, each off by up to +-12 degrees
+		afAngle[iArm] = fStart + iArm * 2.0f * fPi / iNumArms + (GC.getGame().getJonRandNum(25, "Lekmod star reveal arm") - 12) * fPi / 180.0f;
+		afWobblePhase[iArm] = GC.getGame().getJonRandNum(628, "Lekmod star reveal wobble") / 100.0f;
+		aiLength[iArm] = iMaxLength - 5 + GC.getGame().getJonRandNum(6, "Lekmod star reveal length");
+	}
+	const int iCX = pCapital->getX();
+	const int iCY = pCapital->getY();
+	// hex grid to flat coordinates: odd rows are shifted half a tile to the right, rows are sqrt(3)/2 apart
+	const float fCenterX = iCX + ((iCY & 1) ? 0.5f : 0.0f);
+	const float fCenterY = iCY * 0.866f;
+	const TeamTypes eTeam = getTeam();
+	for (int iDX = -iMaxLength - 1; iDX <= iMaxLength + 1; iDX++)
+	{
+		for (int iDY = -iMaxLength - 1; iDY <= iMaxLength + 1; iDY++)
+		{
+			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iMaxLength + 1);
+			if (pPlot == NULL)
+				continue;
+			const int iDist = plotDistance(iCX, iCY, pPlot->getX(), pPlot->getY());
+			bool bReveal = iDist <= 3;
+			if (!bReveal)
+			{
+				// flat offset from the capital (unwrapped: plotXYWithRangeCheck already took the short way)
+				const int iRow = iCY + iDY;
+				const float fX = (iCX + iDX) + ((iRow & 1) ? 0.5f : 0.0f) - fCenterX;
+				const float fY = iRow * 0.866f - fCenterY;
+				const float fR = sqrt(fX * fX + fY * fY);
+				const float fTheta = atan2(fY, fX);
+				for (int iArm = 0; iArm < iNumArms && !bReveal; iArm++)
+				{
+					if (iDist > aiLength[iArm])
+						continue;
+					const float fArmAngle = afAngle[iArm] + 0.12f * sin(fR * 0.45f + afWobblePhase[iArm]);
+					float fDiff = fTheta - fArmAngle;
+					while (fDiff > fPi) fDiff -= 2.0f * fPi;
+					while (fDiff < -fPi) fDiff += 2.0f * fPi;
+					if (fDiff > fPi / 2 || fDiff < -fPi / 2)
+						continue;
+					// half width: 1.4 tiles at the disk, 0.6 at the tip
+					const float fShare = (float)(iDist - 3) / (float)MAX(1, aiLength[iArm] - 3);
+					const float fHalfWidth = 1.4f - 0.8f * fShare;
+					if (fabs(sin(fDiff)) * fR > fHalfWidth)
+						continue;
+					// the last third frays: fewer tiles the closer to the tip
+					if (fShare > 0.66f && GC.getGame().getJonRandNum(100, "Lekmod star reveal fray") < (int)((fShare - 0.66f) * 150.0f))
+						continue;
+					bReveal = true;
+				}
+			}
+			if (bReveal)
+				pPlot->setRevealed(eTeam, true);
+		}
+	}
+	GC.getMap().updateDeferredFog();
+}
+#endif
+
 /// On adoption: free units near or on water (Expansionism opener: Conquistador, Galleass)
 void CvPlayer::LekmodDoPolicyWaterUnits(PolicyTypes ePolicy)
 {
@@ -30146,6 +30309,9 @@ void CvPlayer::processPolicies(PolicyTypes ePolicy, int iChange)
 		if (pPolicy->IsNoExternalTradeRoutes())
 			GC.getGame().GetGameTrade()->LekmodCancelAllRoutesOfPlayer(GetID());
 		LekmodDoPolicyWaterUnits(ePolicy);
+#ifdef LEKMOD_SPECS_2026_10_29
+		LekmodDoPolicyStarReveal(ePolicy);
+#endif
 		if (pPolicy->GetGreatWorkYieldModifier() != 0)
 		{
 			int iCityLoop;

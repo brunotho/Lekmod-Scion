@@ -1854,6 +1854,10 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST
 // City-States are Friendly, Neutral or Hostile; Irrational is no longer drawn (user, 2026-10-28; the enum and its texts stay for later effects)
 #define LEKMOD_NO_IRRATIONAL_CITY_STATES
+// LEKMOD (user, 2026-10-29, New Specs list 8): Policy_LekmodFreeBuildings (a specific building in captured and/or newly founded
+// cities, replacing the city's building of its class; water buildings only in coastal cities: Colonial Administration's Slave Market,
+// Colonial Infrastructure's Feitoria), Policies.LekmodStarRevealLength (Expansionism: a star of revealed tiles around the capital)
+#define LEKMOD_SPECS_2026_10_29
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
 #define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242

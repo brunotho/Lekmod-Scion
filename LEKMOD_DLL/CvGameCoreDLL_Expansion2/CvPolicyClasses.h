@@ -322,6 +322,10 @@ public:
 #ifdef LEKMOD_SPECS_2026_10_24
 	int GetLekmodFreeGreatWorks() const { return m_iLekmodFreeGreatWorks; }
 #endif
+#ifdef LEKMOD_SPECS_2026_10_29
+	const std::vector<int>& GetLekmodFreeBuildings() const { return m_aiLekmodFreeBuildings; }
+	int GetLekmodStarRevealLength() const { return m_iLekmodStarRevealLength; }
+#endif
 	int GetNewCityFreeBuildingClass() const;
 	int GetNewCityFreeUnitClass() const;
 	int GetFreeTilesNewCities() const;
@@ -713,6 +717,10 @@ private:
 	int m_iConquestFreeUnitClass;
 #ifdef LEKMOD_SPECS_2026_10_24
 	int m_iLekmodFreeGreatWorks;
+#endif
+#ifdef LEKMOD_SPECS_2026_10_29
+	std::vector<int> m_aiLekmodFreeBuildings; // building, on conquest, on founding (triples)
+	int m_iLekmodStarRevealLength;
 #endif
 	int m_iNewCityFreeBuildingClass;
 	int m_iNewCityFreeUnitClass;

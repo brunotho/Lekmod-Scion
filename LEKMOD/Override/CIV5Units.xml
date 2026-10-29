@@ -187492,6 +187492,7 @@
 		<Column name="NoExternalTradeRoutes" type="boolean" default="false"/> <!-- LEKMOD: no routes with other civs/City-States; adopting ends all routes -->
 		<Column name="GreatWorkYieldModifier" type="integer" default="0"/> <!-- LEKMOD: % on great work yields (not their Happiness) -->
 		<Column name="FreeUnitClassOnWater" type="text" reference="UnitClasses(Type)" default="NULL"/> <!-- LEKMOD: on adoption, appears on the water tile closest to a city -->
+		<Column name="LekmodStarRevealLength" type="integer" default="0"/> <!-- LEKMOD: on adoption, a star of revealed tiles around the capital, arms up to this long -->
 	</Table> 
 	<Policies>
 		<Delete />
@@ -280850,6 +280851,11 @@
 		</Row>
 		<Row>
 			<PolicyType>POLICY_PROFESSIONAL_ARMY</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<ProductionModifier>100</ProductionModifier>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_PROFESSIONAL_ARMY</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_COLOSSEUM</BuildingClassType>
 			<ProductionModifier>30</ProductionModifier>
 		</Row>
@@ -280861,11 +280867,6 @@
 		<Row>
 			<PolicyType>POLICY_DISCIPLINE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_CIRCUS_MAXIMUS</BuildingClassType>
-			<ProductionModifier>100</ProductionModifier>
-		</Row>
-		<Row>
-			<PolicyType>POLICY_MILITARY_TRADITION</PolicyType>
-			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
 			<ProductionModifier>100</ProductionModifier>
 		</Row>
 		<Row>
@@ -280911,16 +280912,40 @@
 			<YieldChange>1</YieldChange>
 		</Row>
 		<Row>
+			<PolicyType>POLICY_PROFESSIONAL_ARMY</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_COLOSSEUM</BuildingClassType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_PROFESSIONAL_ARMY</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<YieldType>YIELD_PRODUCTION</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_PROFESSIONAL_ARMY</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
 			<PolicyType>POLICY_DISCIPLINE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_HEROIC_EPIC</BuildingClassType>
 			<YieldType>YIELD_PRODUCTION</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldChange>5</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_DISCIPLINE</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_HEROIC_EPIC</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>5</YieldChange>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_DISCIPLINE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_CIRCUS_MAXIMUS</BuildingClassType>
-			<YieldType>YIELD_PRODUCTION</YieldType>
-			<YieldChange>3</YieldChange>
+			<YieldType>YIELD_GOLD</YieldType>
+			<YieldChange>5</YieldChange>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_THEOCRACY</PolicyType>
@@ -281035,13 +281060,8 @@
 		<Delete PolicyType="POLICY_DISCIPLINE"/>
 		<Row>
 			<PolicyType>POLICY_DISCIPLINE</PolicyType>
-			<BuildingClassType>BUILDINGCLASS_HEROIC_EPIC</BuildingClassType>
-			<Happiness>3</Happiness>
-		</Row>
-		<Row>
-			<PolicyType>POLICY_DISCIPLINE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_CIRCUS_MAXIMUS</BuildingClassType>
-			<Happiness>3</Happiness>
+			<Happiness>5</Happiness>
 		</Row>
 	</Policy_BuildingClassHappiness>
 	<Policy_ImprovementYieldChanges>
@@ -281341,10 +281361,36 @@
 		<Column name="AdjacentMountain" type="boolean" default="false" />
 		<Column name="ExcludeLakes" type="boolean" default="false" />
 	</Table>
+	<!-- LEKMOD (2026-10-29): Policies.LekmodStarRevealLength, Policy_LekmodFreeBuildings (LEKMOD_SPECS_2026_10_29) -->
+	<Table name="Policy_LekmodFreeBuildings">
+		<Column name="PolicyType" type="text" reference="Policies(Type)"/>
+		<Column name="BuildingType" type="text" reference="Buildings(Type)"/>
+		<Column name="OnConquest" type="boolean" default="false"/>
+		<Column name="OnFound" type="boolean" default="false"/>
+	</Table>
+	<Policy_LekmodFreeBuildings>
+		<Row>
+			<PolicyType>POLICY_MARITIME_INFRASTRUCTURE</PolicyType>
+			<BuildingType>BUILDING_SLAVE</BuildingType>
+			<OnConquest>true</OnConquest>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_MERCHANT_NAVY</PolicyType>
+			<BuildingType>BUILDING_FEITORIA</BuildingType>
+			<OnFound>true</OnFound>
+		</Row>
+	</Policy_LekmodFreeBuildings>
+	<Policy_FreeUnitClasses>
+		<Row>
+			<PolicyType>POLICY_EXPLORATION</PolicyType>
+			<UnitClassType>UNITCLASS_SETTLER</UnitClassType>
+			<Count>1</Count>
+		</Row>
+	</Policy_FreeUnitClasses>
 	<Policies>
 		<Update>
 			<Where Type="POLICY_EXPLORATION"/>
-			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" FreeUnitClassNearWater="UNITCLASS_CONQUISTADOR" FreeUnitClassOnWater="UNITCLASS_GALLEASS"/>
+			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" IncludesOneShotFreeUnits="true" LekmodStarRevealLength="20"/>
 		</Update>
 		<Update>
 			<Where Type="POLICY_MARITIME_INFRASTRUCTURE"/>
@@ -281470,25 +281516,25 @@
 			<PolicyType>POLICY_MARITIME_INFRASTRUCTURE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_COURTHOUSE</BuildingClassType>
 			<YieldType>YIELD_FOOD</YieldType>
-			<Yield>3</Yield>
+			<Yield>2</Yield>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_MARITIME_INFRASTRUCTURE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_COURTHOUSE</BuildingClassType>
 			<YieldType>YIELD_PRODUCTION</YieldType>
-			<Yield>3</Yield>
+			<Yield>2</Yield>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_MARITIME_INFRASTRUCTURE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_CROWN_OFFICE</BuildingClassType>
 			<YieldType>YIELD_FOOD</YieldType>
-			<Yield>3</Yield>
+			<Yield>2</Yield>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_MARITIME_INFRASTRUCTURE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_LEKMOD_CROWN_OFFICE</BuildingClassType>
 			<YieldType>YIELD_PRODUCTION</YieldType>
-			<Yield>3</Yield>
+			<Yield>2</Yield>
 		</Row>
 	</Policy_CityYieldIfBuildingClass>
 	<Policy_CityHappinessIfBuildingClass>
@@ -282903,13 +282949,13 @@
 			<PolicyType>POLICY_PIETY_FINISHER</PolicyType>
 			<ImprovementType>IMPROVEMENT_HOLY_SITE</ImprovementType>
 			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>3</Yield>
+			<Yield>2</Yield>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_PIETY_FINISHER</PolicyType>
 			<ImprovementType>IMPROVEMENT_HOLY_SITE</ImprovementType>
-			<YieldType>YIELD_TOURISM</YieldType>
-			<Yield>1</Yield>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>2</Yield>
 		</Row>
 	</Policy_ImprovementYieldChanges>
 	<Policy_ImprovementCultureChanges>

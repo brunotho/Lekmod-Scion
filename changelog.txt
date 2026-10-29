@@ -1065,11 +1065,12 @@ Tags: ui, policies, religion
 CITY NAMES (Civilization_CityNames)
 -----------------------------------
 Tags: civs, ui
-- Changed: your capital keeps its name; every later city takes the next name from a shuffled list that differs each game
-- Dev: America, Russia, Aksum and the Timurids also keep their second city name (not in the player notes, user 2026-10-19)
+- Changed: your capital keeps its name; every later city gets a random free name: 80% of the time one of the first 12 names of the list, otherwise one further down
+- Dev: Aksum and the Timurids also keep their second city name (not in the player notes, user 2026-10-19); America and Russia no longer do (user 2026-10-29)
 - Removed: three joke-length city names (the long Maori, Welsh and Boer place names)
 - Fixed: ten city names without a text (Turkey, Khmer, Armenia, Venice) no longer show up as raw text keys
-- Dev: LEKMOD_RANDOMIZE_CITY_NAMES in CvPlayer::getCivilizationCityName; deterministic shuffle seeded by player ID and starting plot (no synced RNG, so it is safe wherever the function is called)
+- Dev: LEKMOD_RANDOMIZE_CITY_NAMES + LEKMOD_SPECS_2026_10_29 in CvPlayer::getCivilizationCityName; deterministic pick seeded by player ID, starting plot, city count and turn (no synced RNG, so it is safe wherever the function is called); before 2026-10-29 a shuffled order
+- Note: while a special City-State is in the game, no major civilization uses its names (Germany's capital is then not Berlin; the City-State keeps its name)
 
 PROMOTION TOOLTIPS (UPGRADES)
 -----------------------------
@@ -2456,6 +2457,7 @@ Tags: policies, combat
 - DLL: Policies.CampClearGold, Policies.FreeTilesExistingCities (LEKMOD_POLICY_REWORK); kill caps use Policy_YieldFromKills.Max; Policy_BuildingClassNoMaintenance (Sacred Duty, CvTreasury::GetBuildingGoldMaintenance)
 - Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
+- Dev: 2026-10-29 (user): Military Tradition lost +100% Armories; Professional Army: +100% Armories, Armories +1 Production +1 Culture, Colosseums +1 Gold; Hero Cult: Heroic Epic +5 Production +5 Culture (no Happiness), Circus Maximus +5 Happiness +5 Gold (no Production)
 - Dev: Military Tradition Courthouse yields 3 -> 2 each on 2026-10-21 (Colonial Administration's +3 replaces them, Policy_CityYieldIfBuildingClass takes the larger value); the Honor tooltips no longer mention the non-stacking, the Expansionism ones do
 
 PIETY (POLICY_BRANCH_PIETY)
@@ -2671,10 +2673,12 @@ Tags: policies, naval, units, buildings
   | [COLOR_POSITIVE_TEXT]Treasure Fleets[ENDCOLOR][NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_LIGHTHOUSE] Lighthouse: +1 [ICON_PRODUCTION] Production on Coast tiles without a resource[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_HARBOR] Harbor: +1 [ICON_GOLD] Gold on Coast tiles next to the city[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_SEAPORT] Seaport: +3 [ICON_PRODUCTION] Production on Coast tiles next to the city and to a Mountain[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
 - New: BUILDING_LEKMOD_CROWN_OFFICE
   | Given for free by the Expansionism policies Colonial Administration (captured cities) and Colonial Infrastructure (newly founded cities).[NEWLINE]Counts like a [ICON_BUILDING_COURTHOUSE] Courthouse for those two policies.[NEWLINE][NEWLINE]Cannot be built. Destroyed when the city is captured.
-- Removed: the Colonialism Governor's Mansion in newly founded cities
+- Dev: the Colonialism Governor's Mansion in newly founded cities is gone (not a player line: the tree is new, user 2026-10-29)
 - Dev: tree layout: Naval Tradition, Colonial Infrastructure, Colonial Administration on top; Navigation School bottom left, Treasure Fleets in the middle (the website shows the tree)
 - Note: the branch uses the Commerce branch picture until new Commerce art arrives
 - Dev: the No Quitters script that granted it was still loaded by InGame.lua; no longer loaded
+- DLL: Policy_LekmodFreeBuildings (a specific building in captured or newly founded cities, replacing the city's building of its class; water buildings only in coastal cities), Policies.LekmodStarRevealLength (CvPlayer::LekmodDoPolicyStarReveal), LEKMOD_SPECS_2026_10_29
+- Dev: 2026-10-29: the opener's free Conquistador and Galleass became a free Settler and the star-shaped reveal; Colonial Administration's Courthouse yields 3 -> 2 and the Slave Market; Colonial Infrastructure's Feitoria (user)
 - DLL: Policies.ResistanceTimeModifier, ConquestFreeUnitClass, NewCityFreeBuildingClass, NewCityFreeUnitClass, FreeTilesNewCities, EarlyBuildingProductionModifier/EarlyBuildingEraType, FreeUnitClassNearWater/FreeUnitClassOnWater; tables Policy_CityYieldIfBuildingClass, Policy_CityHappinessIfBuildingClass (largest value counts; Military Tradition and Military Caste moved there), Policy_BuildingTerrainYieldChanges (LEKMOD_POLICY_REWORK)
 
 WORLD CONGRESS SESSIONS (LEAGUE_SESSIONS)

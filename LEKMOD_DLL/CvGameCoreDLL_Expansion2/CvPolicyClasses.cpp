@@ -283,6 +283,9 @@ CvPolicyEntry::CvPolicyEntry(void):
 #ifdef LEKMOD_SPECS_2026_10_24
 	m_iLekmodFreeGreatWorks(0),
 #endif
+#ifdef LEKMOD_SPECS_2026_10_29
+	m_iLekmodStarRevealLength(0),
+#endif
 	m_iNewCityFreeBuildingClass(NO_BUILDINGCLASS),
 	m_iNewCityFreeUnitClass(NO_UNITCLASS),
 	m_iFreeTilesNewCities(0),
@@ -822,6 +825,9 @@ bool CvPolicyEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility&
 	m_iConquestFreeUnitClass = GC.getInfoTypeForString(kResults.GetText("ConquestFreeUnitClass"), true);
 #ifdef LEKMOD_SPECS_2026_10_24
 	m_iLekmodFreeGreatWorks = kResults.GetInt("LekmodFreeGreatWorks");
+#ifdef LEKMOD_SPECS_2026_10_29
+	m_iLekmodStarRevealLength = kResults.GetInt("LekmodStarRevealLength");
+#endif
 #endif
 	m_iNewCityFreeBuildingClass = GC.getInfoTypeForString(kResults.GetText("NewCityFreeBuildingClass"), true);
 	m_iNewCityFreeUnitClass = GC.getInfoTypeForString(kResults.GetText("NewCityFreeUnitClass"), true);
@@ -996,6 +1002,22 @@ bool CvPolicyEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility&
 		}
 		pResults->Reset();
 	}
+#ifdef LEKMOD_SPECS_2026_10_29
+	{
+		std::string strKey("Policy_LekmodFreeBuildings");
+		Database::Results* pResults = kUtility.GetResults(strKey);
+		if (pResults == NULL)
+			pResults = kUtility.PrepareResults(strKey, "select Buildings.ID, Policy_LekmodFreeBuildings.OnConquest, Policy_LekmodFreeBuildings.OnFound from Policy_LekmodFreeBuildings inner join Buildings on Buildings.Type = Policy_LekmodFreeBuildings.BuildingType where Policy_LekmodFreeBuildings.PolicyType = ?");
+		pResults->Bind(1, szPolicyType);
+		while (pResults->Step())
+		{
+			m_aiLekmodFreeBuildings.push_back(pResults->GetInt(0));
+			m_aiLekmodFreeBuildings.push_back(pResults->GetBool(1) ? 1 : 0);
+			m_aiLekmodFreeBuildings.push_back(pResults->GetBool(2) ? 1 : 0);
+		}
+		pResults->Reset();
+	}
+#endif
 	{
 		std::string strKey("Policy_CityHappinessIfBuildingClass");
 		Database::Results* pResults = kUtility.GetResults(strKey);
