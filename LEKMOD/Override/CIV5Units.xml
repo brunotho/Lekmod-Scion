@@ -43205,7 +43205,7 @@
 		<Column name="ClosestCoastalMinorInfluence" type="integer" default="0" />
 		<Column name="ClosestCoastalMinorTradeQuest" type="boolean" default="false" /> <!-- LEKMOD: when built, the closest coastal city-state at peace asks for a trade route -->
 		<Column name="EnemySpyStealSlower" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take % longer per steal in all of the owner's cities (unused since 2026-10-29) -->
-		<Column name="EnemySpyStealTurns" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take N more turns per steal in all of the owner's cities (Kremlin 5, Great Firewall 4) -->
+		<Column name="EnemySpyStealTurns" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take N more turns per steal in all of the owner's cities (Kremlin 5, Great Firewall 5) -->
 		<Column name="GuardLevelChange" type="integer" default="0" /> <!-- LEKMOD: the owner's guarding spies count this many levels higher (Kremlin) -->
 		<Column name="ExecuteCaughtSpies" type="boolean" default="false" /> <!-- LEKMOD: spies caught by the owner are executed without the Execute/Evict choice (Kremlin) -->
 		<Column name="BlockForeignSpies" type="boolean" default="false" /> <!-- LEKMOD: other civs' spies and diplomats are sent home from this city and can't enter it (Great Firewall) -->
@@ -49974,7 +49974,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_GREAT_FIREWALL"/>
-			<Set BlockForeignSpies="true" EnemySpyStealSlower="0" EnemySpyStealTurns="4" EspionageModifier="0" GlobalEspionageModifier="0"/>
+			<Set BlockForeignSpies="true" EnemySpyStealSlower="0" EnemySpyStealTurns="5" EspionageModifier="0" GlobalEspionageModifier="0"/>
 		</Update>
 	</Buildings>
 	<Building_UnitCombatProductionModifiers>
@@ -201635,7 +201635,7 @@
 			<GoldTrading>false</GoldTrading> 
 			<AllowEmbassyTradingAllowed>false</AllowEmbassyTradingAllowed> 
 			<OpenBordersTradingAllowed>false</OpenBordersTradingAllowed> 
-			<DefensivePactTradingAllowed>true</DefensivePactTradingAllowed> 
+			<DefensivePactTradingAllowed>false</DefensivePactTradingAllowed><!-- LEKMOD: the Non-Aggression Pact needs no tech (NEW_DEFENSIVE_PACT never checked it) --> 
 			<ResearchAgreementTradingAllowed>false</ResearchAgreementTradingAllowed> 
 			<TradeAgreementTradingAllowed>false</TradeAgreementTradingAllowed> 
 			<PermanentAllianceTradingAllowed>false</PermanentAllianceTradingAllowed> 

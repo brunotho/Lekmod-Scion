@@ -1382,11 +1382,8 @@ function ResetDisplay()
 		
 		local strDisabledTT = "";
 
-		if (not g_pUsTeam:IsDefensivePactTradingAllowed() and not g_pThemTeam:IsDefensivePactTradingAllowed()) then
-			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_NO_TECH" );
-		elseif (not g_pUsTeam:HasEmbassyAtTeam(g_iThemTeam) or not g_pThemTeam:HasEmbassyAtTeam(g_iUsTeam)) then
-			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_BOTH_NEED_EMBASSY_TT" );
-		elseif (g_pUsTeam:IsDefensivePact(g_iThemTeam)) then
+		-- LEKMOD: the pact needs no tech and no embassy, only a diplomat (NEW_DEFENSIVE_PACT, LEKMOD_DIPLOMAT_RULES)
+		if (g_pUsTeam:IsDefensivePact(g_iThemTeam)) then
 			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_EXISTS" );
 		elseif (LekmodNoDiplomatBetween ~= nil and LekmodNoDiplomatBetween(g_iUs, g_iThem)) then
 			strDisabledTT = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_NAP_NEEDS_DIPLOMAT" );

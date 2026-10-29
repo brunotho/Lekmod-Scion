@@ -2816,7 +2816,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
   - spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
   - a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
   - a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
-  - Kremlin +5 and Great Firewall +4 turns per steal in their owner's cities (shown with the city's defense); Iron Curtain +50% and Diplomatic Transparency +50% longer on top
+  - Kremlin and Great Firewall +5 turns per steal in their owner's cities (shown with the city's defense); Iron Curtain +50% and Diplomatic Transparency +50% longer on top
   - a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
   - level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
 - Now: getting caught:
@@ -2830,7 +2830,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
   - a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
   - diplomats are not expelled by war; a diplomat can only go to a civilization that gives you open borders and is set up there at once (it stays when the open borders end)
   - you can expel another civilization's diplomat from your capital (Espionage screen): it goes home, loses its progress toward the next level and 1 level (not below 1), and its owner can't send a diplomat to you for 5 turns
-  - a Non-Aggression Pact needs a diplomat of one side in the other's capital when it is made (it stays if the diplomat leaves later); still not possible once anyone reaches the Information Era
+  - a Non-Aggression Pact needs no technology and no embassy, only a diplomat of one side in the other's capital when it is made (it stays if the diplomat leaves later); still not possible once anyone reaches the Information Era
   - after Breakdown of International Relations, diplomats can't stay in other civilizations' capitals
   - when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
 - Now: the Espionage screen has a Rules tab, and agent tooltips explain timers, catch chances and levels
@@ -2844,6 +2844,8 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 - Dev: Iron Curtain's slower steals were ignored by the reworked steal timer; fixed
 - Fixed: a Tourism influence bonus over a City-State's ally could make the coup chance worse instead of better (high spy levels counted like the lowest one)
 - DLL: LEKMOD_DIPLOMAT_RULES (CvPlayerEspionage::LekmodExpelDiplomat, m_aiLekmodExpelBanUntil in player espionage save version 2, network code -29, Lua Player:LekmodGetHostedDiplomats / LekmodGetDiplomatBanTurns; Non-Aggression Pact check in CvDeal::IsPossibleToTradeItem)
+- Dev: 2026-10-29: the Espionage screen's spy/diplomat choice names why a diplomat can't go (no open borders, expel ban) and greys out the Diplomat button; before, the move silently did nothing
+- Dev: 2026-10-29: the trade screen no longer says the Non-Aggression Pact needs Chivalry or embassies (the game never checked either; Chivalry's pact flag is off so the tech tree doesn't show it)
 - DLL: LEKMOD_SPY_REWORK (CvPlayerEspionage::LekmodGetSpyStrength/LekmodGetCityDefense/LekmodGetStealInterval/LekmodGetCatchChance/LekmodSpyCaught), LEKMOD_DIPLOMAT_TRADE_GOLD_PER_LEVEL; LEKMOD_SPY_WONDERS (LekmodGetStealSlower, LekmodEvictBlockedAgents, LekmodInterrogate, LekmodPlayerBuildingValue)
 - Dev: EspionageOverview.lua is now a Lekmod template (Lua/tmp/ui/Espionage), copied by ui_check.bat
 - Dev: a failed full-tech steal shows a notification (nothing stolen, no level)
@@ -2862,7 +2864,7 @@ GREAT FIREWALL (BUILDING_GREAT_FIREWALL)
 ----------------------------------------
 Tags: world wonders, espionage, wonders
 - Added: other civilizations' spies and diplomats are sent home from its city and can't be placed there
-- Changed: enemy spies take 4 more turns per steal in your other cities, listed with the city's defense (was 25% weaker spies in the old spy system)
+- Changed: enemy spies take 5 more turns per steal in your other cities, listed with the city's defense (was 25% weaker spies in the old spy system)
 - DLL: Buildings.BlockForeignSpies; the old EspionageModifier and GlobalEspionageModifier are set to 0 (unused by the spy rework)
 
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)

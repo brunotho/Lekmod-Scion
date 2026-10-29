@@ -1,6 +1,24 @@
 -- edit:
 -- expandable MP Trade Panel size
 -- for EUI
+
+-- LEKMOD: a Non-Aggression Pact needs a diplomat of one side established in the other's capital
+function LekmodNoDiplomatBetween(iA, iB)
+	if (Players[iA].LekmodGetHostedDiplomats == nil) then
+		return false;
+	end
+	for _, entry in ipairs(Players[iA]:LekmodGetHostedDiplomats()) do
+		if (entry.OwnerID == iB and entry.Established) then
+			return false;
+		end
+	end
+	for _, entry in ipairs(Players[iB]:LekmodGetHostedDiplomats()) do
+		if (entry.OwnerID == iA and entry.Established) then
+			return false;
+		end
+	end
+	return true;
+end
 ------------------------------------------------------
 -- modified by bc1 from 1.0.3.276 brave new world code
 -- code is common using gk_mode and bnw_mode switches
@@ -924,12 +942,9 @@ function ResetDisplay( diploMessage )
 
 	toolTip = g_defensivePactToolTip
 --		toolTip = toolTip .. "[COLOR_POSITIVE_TEXT]" .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_EXISTS" ) .. "[ENDCOLOR]"
-	if not g_pUsTeam:IsDefensivePactTradingAllowed() and not g_pThemTeam:IsDefensivePactTradingAllowed() then
-		toolTip = toolTip .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_NO_TECH" )
-	elseif gk_mode and ( not g_pUsTeam:HasEmbassyAtTeam(g_iThemTeam) or not g_pThemTeam:HasEmbassyAtTeam(g_iUsTeam) ) then
-		toolTip = toolTip .. "[COLOR_WARNING_TEXT]" .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_BOTH_NEED_EMBASSY_TT" ) .. "[ENDCOLOR]"
---	else
---		toolTip = toolTip .. "[COLOR_WARNING_TEXT]" .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_NO_AGREEMENT" ) .. "[ENDCOLOR]"
+	-- LEKMOD: the pact needs no tech and no embassy, only a diplomat of one side in the other's capital
+	if LekmodNoDiplomatBetween( g_iUs, g_iThem ) then
+		toolTip = toolTip .. "[COLOR_WARNING_TEXT]" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_NAP_NEEDS_DIPLOMAT" ) .. "[ENDCOLOR]"
 	end
 	SetEnabledAndToolTip( Controls.UsPocketDefensivePact, g_Deal:IsPossibleToTradeItem( g_iUs, g_iThem, TradeableItems.TRADE_ITEM_DEFENSIVE_PACT, g_iDealDuration), toolTip )
 	SetEnabledAndToolTip( Controls.ThemPocketDefensivePact, g_Deal:IsPossibleToTradeItem( g_iThem, g_iUs, TradeableItems.TRADE_ITEM_DEFENSIVE_PACT, g_iDealDuration), toolTip )

@@ -266,6 +266,7 @@ function InputHandler( uiMsg, wParam, lParam )
 	            OnClose();
 	        else
 				Controls.ChooseConfirm:SetHide(true);
+				LekmodResetConfirmYes();
            	end
 			return true;
         end
@@ -1484,8 +1485,29 @@ function RefreshTheirCities(selectedAgentIndex, selectedAgentCurrentCityPlayerID
 
 			ApplyGenericEntrySettings(cityEntry, v, agent, bTickTock)
 			
+			-- LEKMOD: a diplomat in another civilization's capital needs its open borders and no recent expulsion;
+			-- the choice still shows, with the reason and the Diplomat button greyed out
+			local strNoDiplomat = nil;
+			if (bCheckDiplomat and not Players[v.PlayerID]:IsMinorCiv()) then
+				local iBanTurns = 0;
+				if (pActivePlayer.LekmodGetDiplomatBanTurns ~= nil) then
+					iBanTurns = pActivePlayer:LekmodGetDiplomatBanTurns(v.PlayerID);
+				end
+				if (not Teams[city:GetTeam()]:IsAllowsOpenBordersToTeam(Game.GetActiveTeam())) then
+					strNoDiplomat = Locale.Lookup("TXT_KEY_LEKMOD_EO_DIPLOMAT_NEEDS_OPEN_BORDERS_TT");
+				elseif (iBanTurns > 0) then
+					strNoDiplomat = Locale.Lookup("TXT_KEY_LEKMOD_EO_DIPLOMAT_BANNED_TT", Players[v.PlayerID]:GetCivilizationShortDescriptionKey(), iBanTurns);
+				end
+			end
+
 			if (bCheckDiplomat) then
 				cityEntry.CitySelectButton:RegisterCallback(Mouse.eLClick, function()
+					local strText = Locale.Lookup("TXT_KEY_SPY_BE_DIPLOMAT");
+					if (strNoDiplomat ~= nil) then
+						strText = strText .. "[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]" .. strNoDiplomat .. "[ENDCOLOR]";
+					end
+					Controls.Yes:SetDisabled(strNoDiplomat ~= nil);
+					Controls.YesString:SetAlpha((strNoDiplomat ~= nil) and 0.4 or 1);
 					g_ConfirmAction = function()
 						Network.SendMoveSpy(Game.GetActivePlayer(), selectedAgentIndex, v.PlayerID, v.CityID, true);
 						Refresh();
@@ -1494,7 +1516,7 @@ function RefreshTheirCities(selectedAgentIndex, selectedAgentCurrentCityPlayerID
 						Network.SendMoveSpy(Game.GetActivePlayer(), selectedAgentIndex, v.PlayerID, v.CityID, false);
 						Refresh();
 					end
-					Controls.ConfirmText:LocalizeAndSetText("TXT_KEY_SPY_BE_DIPLOMAT");
+					Controls.ConfirmText:SetText(strText);
 					Controls.ConfirmContent:CalculateSize();
 					local width, height = Controls.ConfirmContent:GetSizeVal();
 					Controls.ConfirmFrame:SetSizeVal(width + 60, height + 120);
@@ -1842,6 +1864,7 @@ Controls.LekmodLater:RegisterCallback(Mouse.eLClick, function()
 	g_LekmodCaughtDismissed = true;
 	Controls.LekmodLater:SetHide(true);
 	Controls.ChooseConfirm:SetHide(true);
+	LekmodResetConfirmYes();
 end);
 
 -- LEKMOD: other civilizations' diplomats in our capital (+1 Delegate each); the button asks about each in turn: Expel / Keep
@@ -1919,8 +1942,15 @@ function Refresh()
 end
 Events.SerialEventEspionageScreenDirty.Add(Refresh);
 
+-- LEKMOD: the diplomat choice may grey out the Yes button; every other confirmation gets it back
+function LekmodResetConfirmYes()
+	Controls.Yes:SetDisabled(false);
+	Controls.YesString:SetAlpha(1);
+end
+
 function OnYes( )
 	Controls.ChooseConfirm:SetHide(true);
+	LekmodResetConfirmYes();
 
 	if(g_ConfirmAction ~= nil) then
 		g_ConfirmAction();
@@ -1930,6 +1960,7 @@ Controls.Yes:RegisterCallback( Mouse.eLClick, OnYes );
 
 function OnNo( )
 	Controls.ChooseConfirm:SetHide(true);
+	LekmodResetConfirmYes();
 	Controls.LekmodLater:SetHide(true);
 	if (g_DenyAction ~= nil) then
 		g_DenyAction();
