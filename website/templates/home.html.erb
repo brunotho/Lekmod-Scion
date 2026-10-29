@@ -1,10 +1,17 @@
 <button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Sections</button>
 <aside class="sidebar" id="sidebar">
-  <ul>
+  <ul class="sections-nav">
 <% groups.each do |group, blocks| -%>
     <li><a href="#<%= slug(group) %>" data-section-link="<%= slug(group) %>"><%= h tag_label(group) %> <span class="count" data-count-for="<%= slug(group) %>"><%= blocks.sum { |bl| bl.cards.size } %></span></a></li>
 <% end -%>
   </ul>
+<% if essentials_toc && !essentials_toc.empty? -%>
+  <ul class="essentials-nav">
+<% essentials_toc.each do |id, title| -%>
+    <li><a href="#<%= id %>" data-section-link="<%= id %>"><%= h title %></a></li>
+<% end -%>
+  </ul>
+<% end -%>
 </aside>
 <main class="content" id="changelog">
   <h1>Mod changelog</h1>
@@ -18,6 +25,7 @@
 <% end -%>
     <button type="button" class="view-tab" role="tab" data-view="search" aria-selected="false">Search</button>
   </div>
+  <p class="version-note" id="version-note">Lekmod Scion <%= h versions.last[1] %> compared with <%= h versions.first[1] %>.</p>
 <% if essentials_html -%>
   <section class="essentials card prose" id="essentials">
     <%= essentials_html %>

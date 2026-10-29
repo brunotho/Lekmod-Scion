@@ -77,6 +77,9 @@
       });
       $("#no-results").hidden = anyVisible;
       clear.hidden = !(tags.length || words.length);
+      // say which versions are compared (user, 2026-10-29)
+      var note = $("#version-note");
+      if (note) note.textContent = "Lekmod Scion " + toSel.options[toSel.selectedIndex].text + " compared with " + fromSel.options[fromSel.selectedIndex].text + ".";
       writeUrl();
       updateActive();
     };
@@ -137,13 +140,14 @@
 
   // --- Sidebar: highlight the section in view; phone toggle ----------------------------------------
   function updateActive() {
-    var sections = $$("[data-section]").filter(function (s) { return !s.hidden; });
+    // only what is shown (the Essentials headings in that view, the changelog sections otherwise)
+    var sections = $$("[data-section], #essentials h3[id]").filter(function (s) { return !s.hidden && s.offsetParent !== null; });
     if (!sections.length) return;
     var line = (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h"), 10) || 56) + 24;
     var current = sections[0];
     sections.forEach(function (s) { if (s.getBoundingClientRect().top <= line) current = s; });
     $$("[data-section-link]").forEach(function (a) {
-      a.classList.toggle("active", a.dataset.sectionLink === current.dataset.section);
+      a.classList.toggle("active", a.dataset.sectionLink === (current.dataset.section || current.id));
     });
   }
   var ticking = false;

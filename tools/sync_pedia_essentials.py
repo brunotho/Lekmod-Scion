@@ -28,7 +28,7 @@ def rows():
     intro, sections = [], []
     for line in open(SRC, encoding='utf-8').read().replace('\r\n', '\n').split('\n'):
         line = line.rstrip()
-        if not line.strip():
+        if not line.strip() or line.startswith('!['):  # images are website-only
             continue
         if line.startswith('## '):
             sections.append([line[3:].strip(), []])

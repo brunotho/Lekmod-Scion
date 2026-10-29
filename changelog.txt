@@ -2806,26 +2806,31 @@ SPIES AND DIPLOMATS (ESPIONAGE)
 -------------------------------
 Tags: espionage, game mechanics
 Spies and diplomats are reworked: spies steal on a timer and risk getting caught by hidden guards, diplomats give steady bonuses; the Espionage screen explains it all on a Rules tab.
-- Now: spies and diplomats have levels 1 to 5; a spy gains a level for each successful steal, coup or caught enemy spy; a diplomat gains a level every 25 turns in the same city (moving keeps the level, restarts the count)
-- Now: spies placed in a city cost 3 Gold per turn per era from the Renaissance (3 / 6 / 9 / 12 / 15); diplomats are free
-- Now: spies and diplomats see around their city with a radius of strength minus visible defense (none at 0 or less), updated every turn
-- Now: spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
-- Now: a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
-- Now: a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
-- Now: effects that slow down steals add up and lengthen the steal timer: Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, Diplomatic Transparency +50%
-- Now: a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
-- Now: each steal can get the spy caught: 10% per Constabulary, Police Station and Intelligence Agency, plus a part from the guarding spy's level minus the spy's strength (-4 or less 0%, -3 5%, -2 10%, -1 20%, 0 33%, +1 50%, +2 67%, +3 83%, +4 or more 100%; at most 100% in total); the guarding spy is hidden from the attacker and doesn't slow the steals
-- Now: a caught enemy spy is held by the defender, who chooses in the Espionage screen to execute it or evict it (it returns home and keeps its level); without a choice it is executed when the turn ends (computer players always execute)
-- Now: level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
-- Now: a level 3+ spy guarding your own city can sweep it for 5 turns of that city's Science in Gold; every enemy spy there is caught with its usual catch chance
-- Now: a spy in a City-State is Meddling: it takes 0.2 per turn per level off every other civilization's Influence change there (above the resting point it falls faster, below it recovers more slowly; they don't learn whose spy it is), and it shows its coup chance
-- Now: a diplomat in another civilization's capital gives you 2% per level of that capital's Science (halved at war; only while they know a technology you lack) and +15% per level Gold on your trade routes to that city
-- Now: a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
-- Now: diplomats are not expelled by war; a diplomat can only go to a civilization that gives you open borders and is set up there at once (it stays when the open borders end)
-- Now: you can expel another civilization's diplomat from your capital (Espionage screen): it goes home, loses its progress toward the next level and 1 level (not below 1), and its owner can't send a diplomat to you for 5 turns
-- Now: a Non-Aggression Pact needs a diplomat of one side in the other's capital when it is made (it stays if the diplomat leaves later); still not possible once anyone reaches the Information Era
-- Now: after Breakdown of International Relations, diplomats can't stay in other civilizations' capitals
-- Now: when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
+- Now: levels, upkeep and sight:
+  - spies and diplomats have levels 1 to 5; a spy gains a level for each successful steal, coup or caught enemy spy; a diplomat gains a level every 25 turns in the same city (moving keeps the level, restarts the count)
+  - spies placed in a city cost 3 Gold per turn per era from the Renaissance (3 / 6 / 9 / 12 / 15); diplomats are free
+  - spies and diplomats see around their city with a radius of strength minus visible defense (none at 0 or less), updated every turn
+- Now: stealing:
+  - spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
+  - a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
+  - a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
+  - effects that slow down steals add up and lengthen the steal timer: Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, Diplomatic Transparency +50%
+  - a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
+  - level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
+- Now: getting caught:
+  - each steal can get the spy caught: 10% per Constabulary, Police Station and Intelligence Agency, plus a part from the guarding spy's level minus the spy's strength (-4 or less 0%, -3 5%, -2 10%, -1 20%, 0 33%, +1 50%, +2 67%, +3 83%, +4 or more 100%; at most 100% in total); the guarding spy is hidden from the attacker and doesn't slow the steals
+  - a caught enemy spy is held by the defender, who chooses in the Espionage screen to execute it or evict it (it returns home and keeps its level); without a choice it is executed when the turn ends (computer players always execute)
+  - a level 3+ spy guarding your own city can sweep it for 5 turns of that city's Science in Gold; every enemy spy there is caught with its usual catch chance
+- Now: spies in City-States:
+  - a spy in a City-State is Meddling: it takes 0.2 per turn per level off every other civilization's Influence change there (above the resting point it falls faster, below it recovers more slowly; they don't learn whose spy it is), and it shows its coup chance
+- Now: diplomats:
+  - a diplomat in another civilization's capital gives you 2% per level of that capital's Science (halved at war; only while they know a technology you lack) and +15% per level Gold on your trade routes to that city
+  - a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
+  - diplomats are not expelled by war; a diplomat can only go to a civilization that gives you open borders and is set up there at once (it stays when the open borders end)
+  - you can expel another civilization's diplomat from your capital (Espionage screen): it goes home, loses its progress toward the next level and 1 level (not below 1), and its owner can't send a diplomat to you for 5 turns
+  - a Non-Aggression Pact needs a diplomat of one side in the other's capital when it is made (it stays if the diplomat leaves later); still not possible once anyone reaches the Information Era
+  - after Breakdown of International Relations, diplomats can't stay in other civilizations' capitals
+  - when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
 - Now: the Espionage screen has a Rules tab, and agent tooltips explain timers, catch chances and levels
 - Removed: City-State elections (Rig Election), the Tourism bonus from diplomats, and the Potential column in the city lists
 - Dev: agent tooltips describe the current rules: a spying agent shows its steal timer, its catch chance from buildings (and what a hidden guard would add) and what makes up its strength and the city's visible defense; guards show the catch chance against each spy strength and the part from defense buildings; diplomats show their actual Science, Gold and Influence bonuses

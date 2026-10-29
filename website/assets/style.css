@@ -82,7 +82,15 @@ h2 { font-size: 1.35rem; margin: 32px 0 12px; }
 .view-tab[aria-selected="true"] { color: inherit; background: var(--card); border-color: var(--line); }
 html[data-view="full"] #controls, html[data-view="essentials"] #controls { display: none; }
 html[data-view="full"] #essentials, html[data-view="search"] #essentials { display: none; }
-html[data-view="essentials"] #changelog .group, html[data-view="essentials"] #no-results, html[data-view="essentials"] #sidebar ul { display: none; }
+html[data-view="essentials"] #changelog .group, html[data-view="essentials"] #no-results, html[data-view="essentials"] #sidebar ul.sections-nav { display: none; }
+#sidebar ul.essentials-nav { display: none; }
+html[data-view="essentials"] #sidebar ul.essentials-nav { display: block; }
+html[data-view="essentials"] #version-note { display: none; }
+.version-note { margin: 0.25rem 0 0.75rem; color: var(--muted, #888); font-size: 0.95em; }
+.essentials figure { margin: 0.75rem 0 1rem; }
+.essentials figure img { max-width: min(100%, 520px); height: auto; border-radius: 6px; display: block; }
+.essentials figcaption { font-size: 0.9em; opacity: 0.8; margin-top: 0.35rem; }
+.essentials h3[id] { scroll-margin-top: calc(var(--header-h, 56px) + 12px); }
 .essentials h3 { margin: 18px 0 4px; }
 .essentials h3:first-child { margin-top: 0; }
 .controls { display: grid; gap: 12px; margin-bottom: 8px; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }

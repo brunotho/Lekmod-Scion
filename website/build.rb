@@ -229,9 +229,12 @@ all_tags = order.select { |t| cards.any? { |c| c.tags.include?(t) } }
 versions = [["0", "LEKMOD v35.4 (fork point)"]] + releases.map { |r| [r.index.to_s, r.title] }
 # "Essentials" view of the home page: a hand-written short version of the latest release (user, 2026-10-21)
 essentials_path = File.join(SITE, "data", "essentials.txt")
-essentials_html = File.exist?(essentials_path) ? LooseList.to_html(File.read(essentials_path, encoding: "UTF-8")) : nil
+essentials_text = File.exist?(essentials_path) ? File.read(essentials_path, encoding: "UTF-8") : nil
+essentials_html = essentials_text && LooseList.to_html(essentials_text, id_prefix: "ess-")
+# the Essentials headings for the sidebar (user, 2026-10-29)
+essentials_toc = (essentials_text || "").scan(/^##\s+(.+)$/).map { |(t)| t = t.strip; ["ess-" + t.downcase.gsub(/[^a-z0-9]+/, "-").gsub(/\A-|-\z/, ""), t] }
 write_page(out, "index.html", "Changelog",
-           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases, essentials_html: essentials_html,
+           render("home", groups: groups, all_tags: all_tags, versions: versions, releases: releases, essentials_html: essentials_html, essentials_toc: essentials_toc,
                          policy_trees: PolicyTrees.load(File.join(ROOT, "LEKMOD", "Override"))),
            page_class: "with-sidebar")
 

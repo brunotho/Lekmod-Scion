@@ -148419,7 +148419,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Spies and diplomats</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_3_TEXT">
-			<Text>[ICON_BULLET]Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.[NEWLINE][ICON_BULLET]A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.[NEWLINE][ICON_BULLET]Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.[NEWLINE][ICON_BULLET]The Espionage screen explains every number on its Rules tab.</Text>
+			<Text>[ICON_BULLET]Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.[NEWLINE][ICON_BULLET]A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.[NEWLINE][ICON_BULLET]Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.[NEWLINE][ICON_BULLET]A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate, and you can expel it. A Non-Aggression Pact needs a diplomat between the two.[NEWLINE][ICON_BULLET]The Espionage screen explains every number on its Rules tab.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_4_HEADER">
 			<Text>Policies</Text>
