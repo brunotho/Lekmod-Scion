@@ -7,6 +7,8 @@
 	------------------------------------------------------------------------------------------------------- */
 
 #include "CvGameCoreDLLPCH.h"
+#include <queue>
+#include <functional>
 #include "CvGlobals.h"
 #include "CvArea.h"
 #include "CvMap.h"
@@ -29917,58 +29919,129 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 	}
 }
 
-/// Policies.LekmodExplorationReveal (Expansionism opener, user 2026-10-29): reveals
-/// - a straight line (1 tile wide) from the capital to every other civilization's capital, and
-/// - the shoreline of the capital's landmass: its land tiles next to the sea and the sea tiles next to them (lakes don't count).
-/// No random numbers: every machine reveals the same tiles.
+/// Expansionism reveal helpers: a deterministic hash and smooth value noise (no synced random numbers per plot needed)
+static unsigned int LekmodRevealHash(int iX, int iY, unsigned int uiSeed)
+{
+	unsigned int v = (unsigned int)iX * 374761393u + (unsigned int)iY * 668265263u + uiSeed * 144665u;
+	v = (v ^ (v >> 13)) * 1274126177u;
+	return v ^ (v >> 16);
+}
+static float LekmodRevealNoise(int iX, int iY, unsigned int uiSeed, float fCell)
+{
+	const float fX = iX / fCell, fY = iY / fCell;
+	const int iX0 = (int)floor(fX), iY0 = (int)floor(fY);
+	float fTX = fX - iX0, fTY = fY - iY0;
+	fTX = fTX * fTX * (3 - 2 * fTX);
+	fTY = fTY * fTY * (3 - 2 * fTY);
+	const float a00 = (LekmodRevealHash(iX0, iY0, uiSeed) & 0xffff) / 65535.0f;
+	const float a10 = (LekmodRevealHash(iX0 + 1, iY0, uiSeed) & 0xffff) / 65535.0f;
+	const float a01 = (LekmodRevealHash(iX0, iY0 + 1, uiSeed) & 0xffff) / 65535.0f;
+	const float a11 = (LekmodRevealHash(iX0 + 1, iY0 + 1, uiSeed) & 0xffff) / 65535.0f;
+	const float fA = a00 * (1 - fTX) + a10 * fTX;
+	const float fB = a01 * (1 - fTX) + a11 * fTX;
+	return fA * (1 - fTY) + fB * fTY;
+}
+
+/// Policies.LekmodExplorationReveal (Expansionism opener, user 2026-10-29): reveals what explorers would have seen:
+/// - the route a land explorer walks from the capital to every other civilization's capital (cheapest path: flat 1,
+///   hills/forest/jungle/marsh 2, water 4, no mountains or impassable tiles), with a glimpse to the side now and then
+///   and the tiles around each target capital;
+/// - the shoreline of the capital's landmass (its land tiles next to the sea and the sea tiles next to them; lakes don't
+///   count), shaped by smooth noise: short gaps here and there, 2 tiles deep in places, and every 9+ tiles a "landfall"
+///   (the tiles around one coastal land tile).
+/// One synced random number seeds it all, so every machine reveals the same tiles.
 void CvPlayer::LekmodDoPolicyExplorationReveal(PolicyTypes ePolicy)
 {
 	CvPolicyEntry* pkPolicy = GC.getPolicyInfo(ePolicy);
 	CvCity* pCapital = getCapitalCity();
 	if (pkPolicy == NULL || !pkPolicy->IsLekmodExplorationReveal() || pCapital == NULL)
 		return;
+	CvMap& kMap = GC.getMap();
 	const TeamTypes eTeam = getTeam();
-	const int iCX = pCapital->getX();
-	const int iCY = pCapital->getY();
+	const int iNumPlots = kMap.numPlots();
+	const unsigned int uiSeed = (unsigned int)GC.getGame().getJonRandNum(1000000, "Lekmod exploration reveal seed") + 1;
+	unsigned int uiRng = uiSeed;
 
-	// lines to the other capitals: odd rows shifted right ("odd-r" offset) -> cube coordinates, lerp and round
+	// routes to the other capitals (Dijkstra over plot indices)
+	std::vector<int> aiDist(iNumPlots), aiPrev(iNumPlots);
 	for (int iLoopPlayer = 0; iLoopPlayer < MAX_MAJOR_CIVS; iLoopPlayer++)
 	{
 		CvPlayer& kOther = GET_PLAYER((PlayerTypes)iLoopPlayer);
 		if (iLoopPlayer == (int)GetID() || !kOther.isAlive() || kOther.getCapitalCity() == NULL)
 			continue;
-		CvCity* pOtherCapital = kOther.getCapitalCity();
-		const int iTX = iCX + dxWrap(pOtherCapital->getX() - iCX); // unwrapped, the short way round
-		const int iTY = pOtherCapital->getY();
-		const float fQ0 = iCX - (iCY - (iCY & 1)) / 2.0f, fR0 = (float)iCY;
-		const float fQ1 = iTX - (iTY - (iTY & 1)) / 2.0f, fR1 = (float)iTY;
-		const int iSteps = MAX(1, plotDistance(iCX, iCY, pOtherCapital->getX(), pOtherCapital->getY()));
-		for (int iStep = 0; iStep <= iSteps; iStep++)
+		CvPlot* pTarget = kOther.getCapitalCity()->plot();
+		const int iStart = kMap.plotNum(pCapital->getX(), pCapital->getY());
+		const int iGoal = kMap.plotNum(pTarget->getX(), pTarget->getY());
+		std::fill(aiDist.begin(), aiDist.end(), MAX_INT);
+		std::fill(aiPrev.begin(), aiPrev.end(), -1);
+		std::priority_queue< std::pair<int, int>, std::vector< std::pair<int, int> >, std::greater< std::pair<int, int> > > queue;
+		aiDist[iStart] = 0;
+		queue.push(std::make_pair(0, iStart));
+		while (!queue.empty())
 		{
-			const float fT = (float)iStep / iSteps;
-			// a tiny nudge keeps the rounding off exact ties
-			const float fQ = fQ0 + (fQ1 - fQ0) * fT + 1e-4f, fR = fR0 + (fR1 - fR0) * fT + 2e-4f, fS = -fQ - fR;
-			int iQ = (int)floor(fQ + 0.5f), iR = (int)floor(fR + 0.5f), iS = (int)floor(fS + 0.5f);
-			const float fDQ = fabs(iQ - fQ), fDR = fabs(iR - fR), fDS = fabs(iS - fS);
-			if (fDQ > fDR && fDQ > fDS)
-				iQ = -iR - iS;
-			else if (fDR > fDS)
-				iR = -iQ - iS;
-			const int iX = iQ + (iR - (iR & 1)) / 2;
-			CvPlot* pPlot = GC.getMap().plot(iX, iR); // wraps the column itself
-			if (pPlot != NULL)
-				pPlot->setRevealed(eTeam, true);
+			const int iCost = queue.top().first;
+			const int iIndex = queue.top().second;
+			queue.pop();
+			if (iIndex == iGoal)
+				break;
+			if (iCost > aiDist[iIndex])
+				continue;
+			CvPlot* pPlot = kMap.plotByIndexUnchecked(iIndex);
+			for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
+			{
+				CvPlot* pNext = plotDirection(pPlot->getX(), pPlot->getY(), (DirectionTypes)iDir);
+				if (pNext == NULL)
+					continue;
+				const int iNext = kMap.plotNum(pNext->getX(), pNext->getY());
+				int iStep;
+				if (iNext == iGoal)
+					iStep = 10;
+				else if (pNext->isMountain() || pNext->isImpassable())
+					continue;
+				else if (pNext->isWater())
+					iStep = 40;
+				else if (pNext->isHills() || pNext->getFeatureType() != NO_FEATURE)
+					iStep = 20;
+				else
+					iStep = 10;
+				if (iCost + iStep < aiDist[iNext])
+				{
+					aiDist[iNext] = iCost + iStep;
+					aiPrev[iNext] = iIndex;
+					queue.push(std::make_pair(iCost + iStep, iNext));
+				}
+			}
+		}
+		if (aiDist[iGoal] == MAX_INT)
+			continue;
+		for (int iIndex = iGoal; iIndex != -1; iIndex = aiPrev[iIndex])
+		{
+			CvPlot* pPlot = kMap.plotByIndexUnchecked(iIndex);
+			pPlot->setRevealed(eTeam, true);
+			uiRng = uiRng * 1103515245u + 12345u;
+			if (((uiRng >> 8) % 100) < 30)
+			{
+				// a glimpse to the side
+				uiRng = uiRng * 1103515245u + 12345u;
+				CvPlot* pSide = plotDirection(pPlot->getX(), pPlot->getY(), (DirectionTypes)((uiRng >> 8) % NUM_DIRECTION_TYPES));
+				if (pSide != NULL)
+					pSide->setRevealed(eTeam, true);
+			}
+		}
+		for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
+		{
+			CvPlot* pAround = plotDirection(pTarget->getX(), pTarget->getY(), (DirectionTypes)iDir);
+			if (pAround != NULL)
+				pAround->setRevealed(eTeam, true);
 		}
 	}
 
 	// shoreline of the home landmass
 	const int iHomeArea = pCapital->plot()->getArea();
-	const int iNumPlots = GC.getMap().numPlots();
+	std::vector< std::pair<unsigned int, int> > aLandfallOrder;
 	for (int iPlot = 0; iPlot < iNumPlots; iPlot++)
 	{
-		CvPlot* pPlot = GC.getMap().plotByIndexUnchecked(iPlot);
-		if (pPlot == NULL)
-			continue;
+		CvPlot* pPlot = kMap.plotByIndexUnchecked(iPlot);
 		const bool bHomeLand = !pPlot->isWater() && pPlot->getArea() == iHomeArea;
 		const bool bSea = pPlot->isWater() && !pPlot->isLake();
 		if (!bHomeLand && !bSea)
@@ -29984,8 +30057,44 @@ void CvPlayer::LekmodDoPolicyExplorationReveal(PolicyTypes ePolicy)
 			else
 				bShore = !pAdjacent->isWater() && pAdjacent->getArea() == iHomeArea;
 		}
-		if (bShore)
-			pPlot->setRevealed(eTeam, true);
+		if (!bShore)
+			continue;
+		if (bHomeLand)
+			aLandfallOrder.push_back(std::make_pair(LekmodRevealHash(pPlot->getX(), pPlot->getY(), uiSeed + 7), iPlot));
+		const float fNoise = LekmodRevealNoise(pPlot->getX(), pPlot->getY(), uiSeed, 4.0f);
+		if (fNoise < 0.15f)
+			continue; // a stretch nobody looked at
+		pPlot->setRevealed(eTeam, true);
+		if (fNoise > 0.75f)
+		{
+			// 2 deep here
+			for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
+			{
+				CvPlot* pAdjacent = plotDirection(pPlot->getX(), pPlot->getY(), (DirectionTypes)iDir);
+				if (pAdjacent != NULL)
+					pAdjacent->setRevealed(eTeam, true);
+			}
+		}
+	}
+	// landfalls: coastal land tiles in a seeded order, at least 9 apart, each with the tiles around it
+	std::sort(aLandfallOrder.begin(), aLandfallOrder.end());
+	std::vector<CvPlot*> apLandfalls;
+	for (uint i = 0; i < aLandfallOrder.size(); i++)
+	{
+		CvPlot* pPlot = kMap.plotByIndexUnchecked(aLandfallOrder[i].second);
+		bool bFar = true;
+		for (uint j = 0; j < apLandfalls.size() && bFar; j++)
+			bFar = plotDistance(pPlot->getX(), pPlot->getY(), apLandfalls[j]->getX(), apLandfalls[j]->getY()) >= 9;
+		if (!bFar)
+			continue;
+		apLandfalls.push_back(pPlot);
+		pPlot->setRevealed(eTeam, true);
+		for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
+		{
+			CvPlot* pAdjacent = plotDirection(pPlot->getX(), pPlot->getY(), (DirectionTypes)iDir);
+			if (pAdjacent != NULL)
+				pAdjacent->setRevealed(eTeam, true);
+		}
 	}
 	GC.getMap().updateDeferredFog();
 }
