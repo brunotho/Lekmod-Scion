@@ -1844,8 +1844,7 @@ static bool LekmodCityHasBuildingClass(CvCity* pCity, const char* szClass)
 	const BuildingClassTypes eClass = (BuildingClassTypes)GC.getInfoTypeForString(szClass, true);
 	if (eClass == NO_BUILDINGCLASS)
 		return false;
-	const BuildingTypes eBuilding = (BuildingTypes)GET_PLAYER(pCity->getOwner()).getCivilizationInfo().getCivilizationBuildings(eClass);
-	return eBuilding != NO_BUILDING && pCity->GetCityBuildings()->GetNumBuilding(eBuilding) > 0;
+	return pCity->LekmodHasBuildingClass(eClass);
 }
 
 /// Visible defense of a city against the spies of eSpyOwner (sets the steal timer and the vision radius):

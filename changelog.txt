@@ -758,6 +758,13 @@ Tags: ui
 - Added: a Civ Colors choice in the lobby: High Contrast gives the players six easy-to-tell-apart color schemes instead of their civilizations' colors (also in single player's Advanced Setup)
 - Dev: LEKMOD_HIGH_CONTRAST_CIV_COLORS in CvGame::InitPlayers; GameOptions ID 68 GAMEOPTION_HIGH_CONTRAST_CIV_COLORS. Deterministic shuffle seeded by CvPreGame::syncRandomSeed() (same on every client)
 
+UNIQUE BUILDINGS OF OTHER CIVILIZATIONS
+---------------------------------------
+Tags: bugfix, buildings
+- Fixed: a unique building of another civilization in your city (captured, or a free Slave Market) now counts as the building it replaces when another building needs it: a city with a Slave Market can build a Zoo, a Circus Maximus or an Irish Pub
+- Dev: 2026-10-29: the free Feitoria from Colonial Infrastructure didn't get Treasure Fleets' Harbor Gold on Coast tiles (the policy effects of the rework looked up the civ's own building of the class); every building-class check of our own code now counts any building of the class (CvCity::LekmodHasBuildingClass): canConstruct/IsCanPurchase needed classes, canTrain building requirements, policy city yields/happiness/terrain yields/ideology Gold, policy promotions on training, belief improvement yields with a building, spy defense buildings
+- Dev: checked without change: Naval Tradition Harbor Happiness, Professional Army/Honor Colosseum yields, Garden beliefs (Baray) already count by class (upstream LEKMOD_NONCIV_BUILDINGCLASS_YIELD_CHANGE)
+
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air

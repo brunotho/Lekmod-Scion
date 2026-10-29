@@ -3492,7 +3492,8 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 			{
 				const BuildingTypes ePrereqBuilding = (BuildingTypes)(thisCivilization.getCivilizationBuildings(eBuildingClass));
 
-				if(GetCityBuildings()->GetNumBuilding(ePrereqBuilding) == 0)
+				// LEKMOD: any building of the class counts
+				if(!LekmodHasBuildingClass(eBuildingClass))
 				{
 					CvBuildingEntry* pkBuildingInfo = GC.getBuildingInfo(ePrereqBuilding);
 					if(pkBuildingInfo)
@@ -3687,7 +3688,8 @@ bool CvCity::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestVis
 
 			if(ePrereqBuilding != NO_BUILDING)
 			{
-				if(0 == m_pCityBuildings->GetNumBuilding(ePrereqBuilding) /* && (bContinue || (getFirstBuildingOrder(ePrereqBuilding) == -1))*/)
+				// LEKMOD: any building of the class counts (a free Slave Market for the Colosseum, a captured unique building)
+				if(!LekmodHasBuildingClass((BuildingClassTypes)iI))
 				{
 					return false;
 				}
@@ -13813,8 +13815,7 @@ int CvCity::GetLekmodPolicyBuildingCityYield(YieldTypes eYield) const
 		{
 			if (aiRows[i + 1] != eYield || aiRows[i + 2] <= iBest)
 				continue;
-			const BuildingTypes eBuilding = (BuildingTypes)kPlayer.getCivilizationInfo().getCivilizationBuildings(aiRows[i]);
-			if (eBuilding != NO_BUILDING && m_pCityBuildings->GetNumBuilding(eBuilding) > 0)
+			if (aiRows[i] != NO_BUILDINGCLASS && LekmodHasBuildingClass((BuildingClassTypes)aiRows[i]))
 				iBest = aiRows[i + 2];
 		}
 	}
@@ -13835,8 +13836,7 @@ int CvCity::GetLekmodPolicyBuildingCityHappiness() const
 		{
 			if (aiRows[i + 1] <= iBest)
 				continue;
-			const BuildingTypes eBuilding = (BuildingTypes)kPlayer.getCivilizationInfo().getCivilizationBuildings(aiRows[i]);
-			if (eBuilding != NO_BUILDING && m_pCityBuildings->GetNumBuilding(eBuilding) > 0)
+			if (aiRows[i] != NO_BUILDINGCLASS && LekmodHasBuildingClass((BuildingClassTypes)aiRows[i]))
 				iBest = aiRows[i + 1];
 		}
 	}
@@ -13877,8 +13877,8 @@ int CvCity::GetLekmodPolicyBuildingTerrainYield(const CvPlot* pPlot, YieldTypes 
 				if (!bMountain)
 					continue;
 			}
-			const BuildingTypes eBuilding = (BuildingTypes)kPlayer.getCivilizationInfo().getCivilizationBuildings(kRow.iBuildingClass);
-			if (eBuilding != NO_BUILDING && m_pCityBuildings->GetNumBuilding(eBuilding) > 0)
+			// any building of the class counts (a free Feitoria for the Harbor)
+			if (kRow.iBuildingClass != NO_BUILDINGCLASS && LekmodHasBuildingClass((BuildingClassTypes)kRow.iBuildingClass))
 				iValue += kRow.iValue;
 		}
 	}
@@ -13902,8 +13902,7 @@ int CvCity::GetLekmodEarlierIdeologyGold() const
 			const int iGold = pkPolicy->GetBuildingClassGoldPerEarlierIdeology(iClass);
 			if (iGold == 0)
 				continue;
-			const BuildingTypes eBuilding = (BuildingTypes)kPlayer.getCivilizationInfo().getCivilizationBuildings(iClass);
-			if (eBuilding != NO_BUILDING && m_pCityBuildings->GetNumBuilding(eBuilding) > 0)
+			if (LekmodHasBuildingClass((BuildingClassTypes)iClass))
 				iValue += iGold * iCount;
 		}
 	}
@@ -19189,8 +19188,7 @@ int CvCity::CreateUnit(UnitTypes eUnitType, UnitAITypes eAIType, bool bUseToSati
 		{
 			if (pUnit->getUnitCombatType() != aiRows[i])
 				continue;
-			const BuildingTypes eNeeded = (BuildingTypes)thisPlayer.getCivilizationInfo().getCivilizationBuildings(aiRows[i + 1]);
-			if (eNeeded != NO_BUILDING && GetCityBuildings()->GetNumBuilding(eNeeded) > 0)
+			if (aiRows[i + 1] != NO_BUILDINGCLASS && LekmodHasBuildingClass((BuildingClassTypes)aiRows[i + 1]))
 				pUnit->setHasPromotion((PromotionTypes)aiRows[i + 2], true);
 		}
 	}
@@ -19887,7 +19885,8 @@ bool CvCity::IsCanPurchase(bool bTestPurchaseCost, bool bTestTrainable, UnitType
 
 					if(ePrereqBuilding != NO_BUILDING)
 					{
-						if(0 == m_pCityBuildings->GetNumBuilding(ePrereqBuilding))
+						// LEKMOD: any building of the class counts (as in canConstruct)
+						if(!LekmodHasBuildingClass((BuildingClassTypes)iI))
 						{
 							return false;
 						}

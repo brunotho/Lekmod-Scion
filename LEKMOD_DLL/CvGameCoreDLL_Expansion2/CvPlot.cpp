@@ -9229,8 +9229,7 @@ int CvPlot::calculateImprovementYieldChange(ImprovementTypes eImprovement, Yield
 						{
 							if (aRows[j].a != eImprovement || aRows[j].c != eYield)
 								continue;
-							BuildingTypes eNeeded = (BuildingTypes)GET_PLAYER(pWorkingCity->getOwner()).getCivilizationInfo().getCivilizationBuildings(aRows[j].b);
-							if (eNeeded != NO_BUILDING && pWorkingCity->GetCityBuildings()->GetNumBuilding(eNeeded) > 0)
+							if (aRows[j].b != NO_BUILDINGCLASS && pWorkingCity->LekmodHasBuildingClass((BuildingClassTypes)aRows[j].b))
 								iReligionChange += aRows[j].d;
 						}
 					}
