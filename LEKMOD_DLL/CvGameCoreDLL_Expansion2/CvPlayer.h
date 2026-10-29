@@ -281,7 +281,7 @@ public:
 	void LekmodDoPolicyWaterUnits(PolicyTypes ePolicy);
 #ifdef LEKMOD_SPECS_2026_10_29
 	void LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest);
-	void LekmodDoPolicyStarReveal(PolicyTypes ePolicy);
+	void LekmodDoPolicyExplorationReveal(PolicyTypes ePolicy);
 #endif
 	int GetLekmodBuildingClassHappinessUntilIdeology(BuildingClassTypes eClass) const;
 	int GetLekmodAllyUUPurchaseMod() const;

@@ -1857,7 +1857,7 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_NO_IRRATIONAL_CITY_STATES
 // LEKMOD (user, 2026-10-29, New Specs list 8): Policy_LekmodFreeBuildings (a specific building in captured and/or newly founded
 // cities, replacing the city's building of its class; water buildings only in coastal cities: Colonial Administration's Slave Market,
-// Colonial Infrastructure's Feitoria), Policies.LekmodStarRevealLength (Expansionism: a star of revealed tiles around the capital)
+// Colonial Infrastructure's Feitoria), Policies.LekmodExplorationReveal (Expansionism: reveals the lines to every other capital and the home landmass's shoreline)
 #define LEKMOD_SPECS_2026_10_29
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner

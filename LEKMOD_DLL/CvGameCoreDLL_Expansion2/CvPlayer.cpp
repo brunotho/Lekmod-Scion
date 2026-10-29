@@ -29917,56 +29917,75 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 	}
 }
 
-/// Policies.LekmodStarRevealLength (Expansionism opener): a compass rose of revealed tiles around the capital: four slim arms
-/// north, east, south and west, this many tiles long, and four half as long on the diagonals, each about 3 tiles wide at the
-/// center and 1 at the tip; plus the disk of radius 3 around the capital. Fixed shape, no random numbers (user, 2026-10-29).
-void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
+/// Policies.LekmodExplorationReveal (Expansionism opener, user 2026-10-29): reveals
+/// - a straight line (1 tile wide) from the capital to every other civilization's capital, and
+/// - the shoreline of the capital's landmass: its land tiles next to the sea and the sea tiles next to them (lakes don't count).
+/// No random numbers: every machine reveals the same tiles.
+void CvPlayer::LekmodDoPolicyExplorationReveal(PolicyTypes ePolicy)
 {
 	CvPolicyEntry* pkPolicy = GC.getPolicyInfo(ePolicy);
 	CvCity* pCapital = getCapitalCity();
-	if (pkPolicy == NULL || pkPolicy->GetLekmodStarRevealLength() <= 0 || pCapital == NULL)
+	if (pkPolicy == NULL || !pkPolicy->IsLekmodExplorationReveal() || pCapital == NULL)
 		return;
-	const int iLong = pkPolicy->GetLekmodStarRevealLength();
-	const float fPi = 3.14159265f;
+	const TeamTypes eTeam = getTeam();
 	const int iCX = pCapital->getX();
 	const int iCY = pCapital->getY();
-	// hex grid to flat coordinates: odd rows are shifted half a tile to the right, rows are sqrt(3)/2 apart
-	const float fCenterX = iCX + ((iCY & 1) ? 0.5f : 0.0f);
-	const float fCenterY = iCY * 0.866f;
-	const TeamTypes eTeam = getTeam();
-	for (int iDX = -iLong - 1; iDX <= iLong + 1; iDX++)
+
+	// lines to the other capitals: odd rows shifted right ("odd-r" offset) -> cube coordinates, lerp and round
+	for (int iLoopPlayer = 0; iLoopPlayer < MAX_MAJOR_CIVS; iLoopPlayer++)
 	{
-		for (int iDY = -iLong - 1; iDY <= iLong + 1; iDY++)
+		CvPlayer& kOther = GET_PLAYER((PlayerTypes)iLoopPlayer);
+		if (iLoopPlayer == (int)GetID() || !kOther.isAlive() || kOther.getCapitalCity() == NULL)
+			continue;
+		CvCity* pOtherCapital = kOther.getCapitalCity();
+		const int iTX = iCX + dxWrap(pOtherCapital->getX() - iCX); // unwrapped, the short way round
+		const int iTY = pOtherCapital->getY();
+		const float fQ0 = iCX - (iCY - (iCY & 1)) / 2.0f, fR0 = (float)iCY;
+		const float fQ1 = iTX - (iTY - (iTY & 1)) / 2.0f, fR1 = (float)iTY;
+		const int iSteps = MAX(1, plotDistance(iCX, iCY, pOtherCapital->getX(), pOtherCapital->getY()));
+		for (int iStep = 0; iStep <= iSteps; iStep++)
 		{
-			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iLong + 1);
-			if (pPlot == NULL)
-				continue;
-			bool bReveal = plotDistance(iCX, iCY, pPlot->getX(), pPlot->getY()) <= 3;
-			if (!bReveal)
-			{
-				const int iRow = iCY + iDY;
-				const float fX = (iCX + iDX) + ((iRow & 1) ? 0.5f : 0.0f) - fCenterX;
-				const float fY = iRow * 0.866f - fCenterY;
-				const float fR = sqrt(fX * fX + fY * fY);
-				for (int iArm = 0; iArm < 8 && !bReveal; iArm++)
-				{
-					const float fLength = (iArm % 2 == 0) ? (float)iLong : iLong / 2.0f;
-					if (fR > fLength)
-						continue;
-					const float fArmX = cos(iArm * fPi / 4);
-					const float fArmY = sin(iArm * fPi / 4);
-					const float fAlong = fX * fArmX + fY * fArmY;
-					if (fAlong <= 0)
-						continue;
-					const float fAcross = fabs(fX * fArmY - fY * fArmX);
-					const float fShare = MIN(1.0f, MAX(0.0f, (fR - 3.0f) / (fLength - 3.0f)));
-					if (fAcross <= 1.3f - 0.8f * fShare)
-						bReveal = true;
-				}
-			}
-			if (bReveal)
+			const float fT = (float)iStep / iSteps;
+			// a tiny nudge keeps the rounding off exact ties
+			const float fQ = fQ0 + (fQ1 - fQ0) * fT + 1e-4f, fR = fR0 + (fR1 - fR0) * fT + 2e-4f, fS = -fQ - fR;
+			int iQ = (int)floor(fQ + 0.5f), iR = (int)floor(fR + 0.5f), iS = (int)floor(fS + 0.5f);
+			const float fDQ = fabs(iQ - fQ), fDR = fabs(iR - fR), fDS = fabs(iS - fS);
+			if (fDQ > fDR && fDQ > fDS)
+				iQ = -iR - iS;
+			else if (fDR > fDS)
+				iR = -iQ - iS;
+			const int iX = iQ + (iR - (iR & 1)) / 2;
+			CvPlot* pPlot = GC.getMap().plot(iX, iR); // wraps the column itself
+			if (pPlot != NULL)
 				pPlot->setRevealed(eTeam, true);
 		}
+	}
+
+	// shoreline of the home landmass
+	const int iHomeArea = pCapital->plot()->getArea();
+	const int iNumPlots = GC.getMap().numPlots();
+	for (int iPlot = 0; iPlot < iNumPlots; iPlot++)
+	{
+		CvPlot* pPlot = GC.getMap().plotByIndexUnchecked(iPlot);
+		if (pPlot == NULL)
+			continue;
+		const bool bHomeLand = !pPlot->isWater() && pPlot->getArea() == iHomeArea;
+		const bool bSea = pPlot->isWater() && !pPlot->isLake();
+		if (!bHomeLand && !bSea)
+			continue;
+		bool bShore = false;
+		for (int iDir = 0; iDir < NUM_DIRECTION_TYPES && !bShore; iDir++)
+		{
+			CvPlot* pAdjacent = plotDirection(pPlot->getX(), pPlot->getY(), (DirectionTypes)iDir);
+			if (pAdjacent == NULL)
+				continue;
+			if (bHomeLand)
+				bShore = pAdjacent->isWater() && !pAdjacent->isLake();
+			else
+				bShore = !pAdjacent->isWater() && pAdjacent->getArea() == iHomeArea;
+		}
+		if (bShore)
+			pPlot->setRevealed(eTeam, true);
 	}
 	GC.getMap().updateDeferredFog();
 }
@@ -30289,7 +30308,7 @@ void CvPlayer::processPolicies(PolicyTypes ePolicy, int iChange)
 			GC.getGame().GetGameTrade()->LekmodCancelAllRoutesOfPlayer(GetID());
 		LekmodDoPolicyWaterUnits(ePolicy);
 #ifdef LEKMOD_SPECS_2026_10_29
-		LekmodDoPolicyStarReveal(ePolicy);
+		LekmodDoPolicyExplorationReveal(ePolicy);
 #endif
 		if (pPolicy->GetGreatWorkYieldModifier() != 0)
 		{

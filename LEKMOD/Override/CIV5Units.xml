@@ -187482,7 +187482,7 @@
 		<Column name="NoExternalTradeRoutes" type="boolean" default="false"/> <!-- LEKMOD: no routes with other civs/City-States; adopting ends all routes -->
 		<Column name="GreatWorkYieldModifier" type="integer" default="0"/> <!-- LEKMOD: % on great work yields (not their Happiness) -->
 		<Column name="FreeUnitClassOnWater" type="text" reference="UnitClasses(Type)" default="NULL"/> <!-- LEKMOD: on adoption, appears on the water tile closest to a city -->
-		<Column name="LekmodStarRevealLength" type="integer" default="0"/> <!-- LEKMOD: on adoption, a star of revealed tiles around the capital, arms up to this long -->
+		<Column name="LekmodExplorationReveal" type="boolean" default="false"/> <!-- LEKMOD: on adoption, reveals the lines to every other capital and the home landmass's shoreline -->
 	</Table> 
 	<Policies>
 		<Delete />
@@ -281362,7 +281362,7 @@
 		<Column name="AdjacentMountain" type="boolean" default="false" />
 		<Column name="ExcludeLakes" type="boolean" default="false" />
 	</Table>
-	<!-- LEKMOD (2026-10-29): Policies.LekmodStarRevealLength, Policy_LekmodFreeBuildings (LEKMOD_SPECS_2026_10_29) -->
+	<!-- LEKMOD (2026-10-29): Policies.LekmodExplorationReveal, Policy_LekmodFreeBuildings (LEKMOD_SPECS_2026_10_29) -->
 	<Table name="Policy_LekmodFreeBuildings">
 		<Column name="PolicyType" type="text" reference="Policies(Type)"/>
 		<Column name="BuildingType" type="text" reference="Buildings(Type)"/>
@@ -281391,7 +281391,7 @@
 	<Policies>
 		<Update>
 			<Where Type="POLICY_EXPLORATION"/>
-			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" IncludesOneShotFreeUnits="true" LekmodStarRevealLength="20"/>
+			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" IncludesOneShotFreeUnits="true" LekmodExplorationReveal="true"/>
 		</Update>
 		<Update>
 			<Where Type="POLICY_MARITIME_INFRASTRUCTURE"/>

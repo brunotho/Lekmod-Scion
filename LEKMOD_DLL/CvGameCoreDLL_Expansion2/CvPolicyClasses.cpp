@@ -284,7 +284,7 @@ CvPolicyEntry::CvPolicyEntry(void):
 	m_iLekmodFreeGreatWorks(0),
 #endif
 #ifdef LEKMOD_SPECS_2026_10_29
-	m_iLekmodStarRevealLength(0),
+	m_bLekmodExplorationReveal(false),
 #endif
 	m_iNewCityFreeBuildingClass(NO_BUILDINGCLASS),
 	m_iNewCityFreeUnitClass(NO_UNITCLASS),
@@ -826,7 +826,7 @@ bool CvPolicyEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility&
 #ifdef LEKMOD_SPECS_2026_10_24
 	m_iLekmodFreeGreatWorks = kResults.GetInt("LekmodFreeGreatWorks");
 #ifdef LEKMOD_SPECS_2026_10_29
-	m_iLekmodStarRevealLength = kResults.GetInt("LekmodStarRevealLength");
+	m_bLekmodExplorationReveal = kResults.GetBool("LekmodExplorationReveal");
 #endif
 #endif
 	m_iNewCityFreeBuildingClass = GC.getInfoTypeForString(kResults.GetText("NewCityFreeBuildingClass"), true);
