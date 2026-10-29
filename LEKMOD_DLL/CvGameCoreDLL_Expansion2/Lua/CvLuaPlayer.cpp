@@ -12040,8 +12040,24 @@ int CvLuaPlayer::lLekmodGetSpyStealInfo(lua_State* L)
 	{
 		CvPlayerEspionage::LekmodParts aSlowerParts;
 		const int iSlower = (pCity && !bOwnCity) ? CvPlayerEspionage::LekmodGetStealSlower(pCity, &aSlowerParts) : 0;
-		lua_pushinteger(L, (CvPlayerEspionage::LekmodGetStealInterval(iStrength, iDefense) * (100 + iSlower) + 99) / 100);
+		CvPlayerEspionage::LekmodParts aTurnsParts;
+		const int iExtraTurns = pCity ? CvPlayerEspionage::LekmodGetStealExtraTurns(pCity, &aTurnsParts) : 0;
+		lua_pushinteger(L, ((CvPlayerEspionage::LekmodGetStealInterval(iStrength, iDefense) + (bOwnCity ? 0 : iExtraTurns)) * (100 + iSlower) + 99) / 100);
 		lua_setfield(L, t, "Turns");
+		lua_pushinteger(L, iExtraTurns);
+		lua_setfield(L, t, "ExtraTurns");
+		lua_createtable(L, 0, 0);
+		const int tTurns = lua_gettop(L);
+		for (uint i = 0; i < aTurnsParts.size(); i++)
+		{
+			lua_createtable(L, 0, 0);
+			lua_pushstring(L, aTurnsParts[i].first);
+			lua_setfield(L, -2, "Key");
+			lua_pushinteger(L, aTurnsParts[i].second);
+			lua_setfield(L, -2, "Value");
+			lua_rawseti(L, tTurns, i + 1);
+		}
+		lua_setfield(L, t, "ExtraTurnsParts");
 		lua_pushinteger(L, iSlower);
 		lua_setfield(L, t, "Slower");
 		lua_createtable(L, 0, 0);

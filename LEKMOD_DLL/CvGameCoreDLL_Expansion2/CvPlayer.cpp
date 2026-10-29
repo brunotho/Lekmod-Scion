@@ -29882,7 +29882,8 @@ int CvPlayer::GetLekmodResistanceTimeModifier() const
 #ifdef LEKMOD_SPECS_2026_10_29
 /// Policy_LekmodFreeBuildings: a specific building in a captured (bConquest) or newly founded city; it replaces the city's
 /// building of its class (Colonial Administration: the Slave Market instead of a Colosseum), so that one can't be built there
-/// any more (CvCity::canConstruct rules out a class that is already filled). Water buildings only go to coastal cities.
+/// any more (CvCity::canConstruct rules out a class that is already filled). Every such city gets it, coastal or not
+/// (Colonial Infrastructure's Feitoria needs no coast, as for Portugal).
 void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 {
 	if (pCity == NULL)
@@ -29901,8 +29902,6 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 			CvBuildingEntry* pkBuilding = GC.getBuildingInfo(eBuilding);
 			if (pkBuilding == NULL || pCity->GetCityBuildings()->GetNumBuilding(eBuilding) > 0)
 				continue;
-			if (pkBuilding->IsWater() && !pCity->isCoastal(pkBuilding->GetMinAreaSize()))
-				continue;
 			for (int iLoop = 0; iLoop < GC.getNumBuildingInfos(); iLoop++)
 			{
 				CvBuildingEntry* pkLoop = GC.getBuildingInfo((BuildingTypes)iLoop);
@@ -29918,8 +29917,8 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 	}
 }
 
-/// Policies.LekmodStarRevealLength (Expansionism opener): around the capital, a disk of radius 3 plus five rough arms of
-/// 15-20 tiles, like a hand-drawn star: they wobble a little, get thinner further out and fray at their tips.
+/// Policies.LekmodStarRevealLength (Expansionism opener): around the capital, a disk of radius 3 plus six rough arms of
+/// 15 tiles up to this length, like a hand-drawn star: they wobble a little, get thinner further out and fray at their tips.
 /// Uses the synced random numbers, so every machine reveals the same tiles.
 void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 {
@@ -29928,7 +29927,7 @@ void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 	if (pkPolicy == NULL || pkPolicy->GetLekmodStarRevealLength() <= 0 || pCapital == NULL)
 		return;
 	const int iMaxLength = pkPolicy->GetLekmodStarRevealLength();
-	const int iNumArms = 5;
+	const int iNumArms = 6;
 	const float fPi = 3.14159265f;
 	float afAngle[iNumArms];
 	float afWobblePhase[iNumArms];
@@ -29939,7 +29938,8 @@ void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 		// evenly spread, each off by up to +-12 degrees
 		afAngle[iArm] = fStart + iArm * 2.0f * fPi / iNumArms + (GC.getGame().getJonRandNum(25, "Lekmod star reveal arm") - 12) * fPi / 180.0f;
 		afWobblePhase[iArm] = GC.getGame().getJonRandNum(628, "Lekmod star reveal wobble") / 100.0f;
-		aiLength[iArm] = iMaxLength - 5 + GC.getGame().getJonRandNum(6, "Lekmod star reveal length");
+		const int iMinLength = MIN(15, iMaxLength);
+		aiLength[iArm] = iMinLength + GC.getGame().getJonRandNum(iMaxLength - iMinLength + 1, "Lekmod star reveal length");
 	}
 	const int iCX = pCapital->getX();
 	const int iCY = pCapital->getY();

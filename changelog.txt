@@ -5,6 +5,7 @@ Format (also the source for player patch notes on the website):
 - Each item: NAME (TYPE_KEY), dashed underline, "Tags: a, b" line, then a short player-facing summary.
 - The first tag is the item's group (the website's section header); further tags are filters.
 - Player-facing lines: the summary and "- Added:", "- Changed:", "- Removed:", "- Fixed:";
+  "- Picture: assets/<file> | <caption>" shows an image (file in website/assets);
   a reworked system's card says how it works now with "- Now:" lines (plain bullets), plus Removed/Fixed.
   They describe the net change compared to LEKMOD v35.4 (until 1.0.0 there is one block, renamed for each build),
   in quick-speed numbers, for players with no development knowledge. Bugs we introduced and fixed
@@ -207,6 +208,7 @@ Tags: city-states
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: they have a small star on their name tag, and hovering the name tag shows their unique ability
+- Picture: assets/special_city_state_star.jpg | The star on Cambridge's name tag marks a City-State with a unique ability.
 - Now: while one of them is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
 - Now: St. Petersburg, Shanghai, Sparta and Cambridge hold auctions (see their cards): during one turn every civilization may place one sealed Gold bid, the Gold is held right away, and the result comes at the start of the next turn; only the winner is announced. Computer players never bid
 - Now: while an auction runs that you have not bid on, a big notification (like Choose Production) shows it; it can't be dismissed and goes away once you bid or the turn ends
@@ -2814,7 +2816,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
   - spy strength = level, +1 with your level 3+ diplomat in that empire, + your tourism influence levels over them, +1 with Industrial Espionage
   - a city's visible defense = +1 Constabulary, +1 Police Station, +1 Intelligence Agency, + their tourism influence levels over you
   - a spy steals every 15 / 13 / 11 / 9 / 7 turns at strength minus visible defense 1 / 2 / 3 / 4 / 5+ (5 more turns per point below 1); the timer follows changes every turn
-  - effects that slow down steals add up and lengthen the steal timer: Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, Diplomatic Transparency +50%
+  - Kremlin +5 and Great Firewall +4 turns per steal in their owner's cities (shown with the city's defense); Iron Curtain +50% and Diplomatic Transparency +50% longer on top
   - a steal always succeeds and gives 8 turns of the city's Science toward a technology you pick; the victim always learns who stole
   - level 3+ spies can switch to full-tech steals: a whole technology of your choice instead of Science, it succeeds with the chance not to be caught times a share by the spy's level (level 3 half, level 4 three quarters, level 5+ all of it) and a failure gives nothing; the catch chance stays the same
 - Now: getting caught:
@@ -2850,17 +2852,17 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 KREMLIN (BUILDING_KREMLIN)
 --------------------------
 Tags: world wonders, espionage, wonders
-- Added: enemy spies take 30% longer per steal in all your cities
+- Added: enemy spies take 5 more turns per steal in all your cities (listed with the city's defense)
 - Added: your guarding spies count 1 level higher
 - Added: enemy spies caught in your cities are always executed (no choice to send them home)
 - Removed: +50% Production toward Armor units
-- DLL: Buildings.EnemySpyStealSlower, GuardLevelChange, ExecuteCaughtSpies (LEKMOD_SPY_WONDERS)
+- DLL: Buildings.EnemySpyStealTurns (CvPlayerEspionage::LekmodGetStealExtraTurns; until 2026-10-29 EnemySpyStealSlower 30%), GuardLevelChange, ExecuteCaughtSpies (LEKMOD_SPY_WONDERS)
 
 GREAT FIREWALL (BUILDING_GREAT_FIREWALL)
 ----------------------------------------
 Tags: world wonders, espionage, wonders
 - Added: other civilizations' spies and diplomats are sent home from its city and can't be placed there
-- Changed: enemy spies take 25% longer per steal in your other cities (was 25% weaker spies in the old spy system)
+- Changed: enemy spies take 4 more turns per steal in your other cities, listed with the city's defense (was 25% weaker spies in the old spy system)
 - DLL: Buildings.BlockForeignSpies; the old EspionageModifier and GlobalEspionageModifier are set to 0 (unused by the spy rework)
 
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)

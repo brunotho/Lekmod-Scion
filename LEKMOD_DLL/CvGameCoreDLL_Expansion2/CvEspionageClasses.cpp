@@ -2221,11 +2221,36 @@ int CvPlayerEspionage::LekmodGetStealSlower(CvCity* pCity, LekmodParts* pParts)
 	return std::max(0, iTotal);
 }
 
+/// Turns added to every steal in pCity by the owner's buildings (Buildings.EnemySpyStealTurns: Kremlin 5, Great Firewall 4),
+/// shown with the city's defense to both sides (2026-10-29: they were % like Iron Curtain before)
+int CvPlayerEspionage::LekmodGetStealExtraTurns(CvCity* pCity, LekmodParts* pParts)
+{
+	if (pCity == NULL)
+		return 0;
+	CvPlayer& kOwner = GET_PLAYER(pCity->getOwner());
+	if (kOwner.isMinorCiv() || kOwner.isBarbarian())
+		return 0;
+	int iTotal = 0;
+	for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+	{
+		CvBuildingEntry* pkBuilding = GC.getBuildingInfo((BuildingTypes)iBuilding);
+		if (pkBuilding == NULL || pkBuilding->GetEnemySpyStealTurns() == 0)
+			continue;
+		const int iValue = pkBuilding->GetEnemySpyStealTurns() * kOwner.countNumBuildings((BuildingTypes)iBuilding);
+		if (iValue == 0)
+			continue;
+		iTotal += iValue;
+		if (pParts)
+			pParts->push_back(std::make_pair(pkBuilding->GetDescriptionKey(), iValue));
+	}
+	return std::max(0, iTotal);
+}
+
 /// Turns per steal x100 for this spy in pCity: the interval from strength and defense, x (100 + slower)%
 int CvPlayerEspionage::LekmodGetStealTurnsTimes100(uint uiSpyIndex, CvCity* pCity)
 {
 	const int iStrength = LekmodGetSpyStrength(uiSpyIndex, pCity);
-	return LekmodGetStealInterval(iStrength, LekmodGetCityDefense(pCity, m_pPlayer->GetID())) * (100 + LekmodGetStealSlower(pCity));
+	return (LekmodGetStealInterval(iStrength, LekmodGetCityDefense(pCity, m_pPlayer->GetID())) + LekmodGetStealExtraTurns(pCity)) * (100 + LekmodGetStealSlower(pCity));
 }
 
 /// Our spies and diplomats leave cities that keep them out (Great Firewall), and our diplomats leave other civs while Blackout is active

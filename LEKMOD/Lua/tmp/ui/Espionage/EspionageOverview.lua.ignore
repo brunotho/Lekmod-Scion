@@ -1632,6 +1632,16 @@ local function LekmodDec(x100)
 	return (string.gsub(string.format("%.2f", x100 / 100), "%.?0+$", ""));
 end
 
+-- LEKMOD: turns the city owner's buildings add to every steal (Kremlin, Great Firewall), listed with the defense
+local function LekmodTurnsLines(info)
+	local str = "";
+	if (info.ExtraTurnsParts ~= nil) then
+		for _, part in ipairs(info.ExtraTurnsParts) do
+			str = str .. "[NEWLINE][ICON_BULLET] " .. Locale.Lookup("TXT_KEY_LEKMOD_EO_TURNS_PART", part.Value, Locale.Lookup(part.Key));
+		end
+	end
+	return str;
+end
 local function LekmodPartLines(parts)
 	local str = "";
 	for _, part in ipairs(parts) do
@@ -1677,7 +1687,7 @@ function LekmodStealInfoText(info)
 	str = str .. "[NEWLINE][ICON_BULLET] " .. Locale.Lookup("TXT_KEY_LEKMOD_EO_CAUGHT_GUARD",
 		LekmodGuardPart(1, info.Strength), LekmodGuardPart(5, info.Strength));
 	str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_YOUR_STRENGTH", info.Strength) .. LekmodPartLines(info.StrengthParts);
-	str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_THEIR_DEFENSE", info.Defense) .. LekmodPartLines(info.DefenseParts);
+	str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_THEIR_DEFENSE", info.Defense) .. LekmodPartLines(info.DefenseParts) .. LekmodTurnsLines(info);
 	str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_STEAL_RULE");
 	return str;
 end
@@ -1733,7 +1743,7 @@ local function LekmodAgentActivityRaw(pPlayer, agent, city)
 		else
 			str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_GUARD_HIDDEN");
 		end
-		str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_YOUR_DEFENSE", info.Defense) .. LekmodPartLines(info.DefenseParts);
+		str = str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_YOUR_DEFENSE", info.Defense) .. LekmodPartLines(info.DefenseParts) .. LekmodTurnsLines(info);
 		if (info.Level >= 3) then
 			return str .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_SWEEP_READY");
 		end

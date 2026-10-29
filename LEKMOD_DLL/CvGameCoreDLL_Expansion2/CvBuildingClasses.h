@@ -355,6 +355,7 @@ public:
 	int GetGoldenAgePopulationChange() const { return m_iLekmodGoldenAgePopulationChange; }
 #ifdef LEKMOD_SPY_WONDERS
 	int GetEnemySpyStealSlower() const { return m_iLekmodEnemySpyStealSlower; }
+	int GetEnemySpyStealTurns() const { return m_iLekmodEnemySpyStealTurns; }
 	int GetGuardLevelChange() const { return m_iLekmodGuardLevelChange; }
 	bool IsExecuteCaughtSpies() const { return m_bLekmodExecuteCaughtSpies; }
 	bool IsBlockForeignSpies() const { return m_bLekmodBlockForeignSpies; }
@@ -801,6 +802,7 @@ private:
 #endif
 #ifdef LEKMOD_SPY_WONDERS
 	int m_iLekmodEnemySpyStealSlower;
+	int m_iLekmodEnemySpyStealTurns;
 	int m_iLekmodGuardLevelChange;
 	bool m_bLekmodExecuteCaughtSpies;
 	bool m_bLekmodBlockForeignSpies;

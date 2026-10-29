@@ -84,6 +84,10 @@
 <% unless entry.lines.empty? -%>
         <ul class="lines">
 <% entry.lines.each do |line| -%>
+<% if line[:kind] == "Picture" -%>
+<% src, caption = line[:text].split(" | ", 2) -%>
+          <li class="picture"><figure><img src="<%= h src %>" alt="<%= h caption %>" loading="lazy"><% if caption %><figcaption><%= h caption %></figcaption><% end %></figure></li>
+<% next end -%>
 <% if line[:ref_name] -%>
           <li class="<%= line[:kind].downcase %> ref"><span class="kind"><%= line[:kind] %></span> <span><% if line[:ref_role] %><span class="role"><%= h line[:ref_role] %></span> <% end %><strong><%= h line[:ref_name] %></strong><div class="game-text"><%= GameText.to_html(line[:ref_text]) %></div><% if line[:items] %><ul class="sub"><% line[:items].each do |it| %><li><%= GameText.line_html(it) %></li><% end %></ul><% end %></span></li>
 <% next end -%>

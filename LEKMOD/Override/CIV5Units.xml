@@ -43204,7 +43204,8 @@
 		<Column name="NearbyEnemyCombatRange" type="integer" default="0" />
 		<Column name="ClosestCoastalMinorInfluence" type="integer" default="0" />
 		<Column name="ClosestCoastalMinorTradeQuest" type="boolean" default="false" /> <!-- LEKMOD: when built, the closest coastal city-state at peace asks for a trade route -->
-		<Column name="EnemySpyStealSlower" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take % longer per steal in all of the owner's cities (Kremlin, Great Firewall) -->
+		<Column name="EnemySpyStealSlower" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take % longer per steal in all of the owner's cities (unused since 2026-10-29) -->
+		<Column name="EnemySpyStealTurns" type="integer" default="0" /> <!-- LEKMOD: other civs' spies take N more turns per steal in all of the owner's cities (Kremlin 5, Great Firewall 4) -->
 		<Column name="GuardLevelChange" type="integer" default="0" /> <!-- LEKMOD: the owner's guarding spies count this many levels higher (Kremlin) -->
 		<Column name="ExecuteCaughtSpies" type="boolean" default="false" /> <!-- LEKMOD: spies caught by the owner are executed without the Execute/Evict choice (Kremlin) -->
 		<Column name="BlockForeignSpies" type="boolean" default="false" /> <!-- LEKMOD: other civs' spies and diplomats are sent home from this city and can't enter it (Great Firewall) -->
@@ -49969,11 +49970,11 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_KREMLIN"/>
-			<Set EnemySpyStealSlower="30" GuardLevelChange="1" ExecuteCaughtSpies="true"/>
+			<Set EnemySpyStealSlower="0" EnemySpyStealTurns="5" GuardLevelChange="1" ExecuteCaughtSpies="true"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_GREAT_FIREWALL"/>
-			<Set BlockForeignSpies="true" EnemySpyStealSlower="25" EspionageModifier="0" GlobalEspionageModifier="0"/>
+			<Set BlockForeignSpies="true" EnemySpyStealSlower="0" EnemySpyStealTurns="4" EspionageModifier="0" GlobalEspionageModifier="0"/>
 		</Update>
 	</Buildings>
 	<Building_UnitCombatProductionModifiers>
@@ -281390,7 +281391,7 @@
 	<Policies>
 		<Update>
 			<Where Type="POLICY_EXPLORATION"/>
-			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" IncludesOneShotFreeUnits="true" LekmodStarRevealLength="20"/>
+			<Set FreeTilesExistingCities="1" FreeTilesNewCities="1" IncludesOneShotFreeUnits="true" LekmodStarRevealLength="30"/>
 		</Update>
 		<Update>
 			<Where Type="POLICY_MARITIME_INFRASTRUCTURE"/>
@@ -292954,12 +292955,27 @@
 			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_SPECIAL_CS</IconFontTexture>
 			<IconFontTextureFile>LekmodSpecialCityStateStarFontIcon_22</IconFontTextureFile>
 		</Row>
+		<!-- LEKMOD (2026-10-29): building font icons (art_sources/tools/build_building_font_icons.py) -->
+		<Row>
+			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_BUILDINGS</IconFontTexture>
+			<IconFontTextureFile>LekmodBuildingFontIcons_22</IconFontTextureFile>
+		</Row>
 	</IconFontTextures>
 	<IconFontMapping>
 		<Row>
 			<IconName>ICON_LEKMOD_SPECIAL_CS</IconName>
 			<IconMapping>1</IconMapping>
 			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_SPECIAL_CS</IconFontTexture>
+		</Row>
+		<Row>
+			<IconName>ICON_BUILDING_LEKMOD_SLAVE_MARKET</IconName>
+			<IconMapping>1</IconMapping>
+			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_BUILDINGS</IconFontTexture>
+		</Row>
+		<Row>
+			<IconName>ICON_BUILDING_LEKMOD_FEITORIA</IconName>
+			<IconMapping>2</IconMapping>
+			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_BUILDINGS</IconFontTexture>
 		</Row>
 	</IconFontMapping>
 </GameData>

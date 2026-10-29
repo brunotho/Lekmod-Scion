@@ -223,6 +223,7 @@ public:
 	static int LekmodPlayerBuildingValue(PlayerTypes ePlayer, LekmodSpyBuildingStat eStat);
 	static bool LekmodCityBlocksSpies(CvCity* pCity);
 	static int LekmodGetStealSlower(CvCity* pCity, LekmodParts* pParts = NULL);
+	static int LekmodGetStealExtraTurns(CvCity* pCity, LekmodParts* pParts = NULL);
 	int LekmodGetStealTurnsTimes100(uint uiSpyIndex, CvCity* pCity);
 	void LekmodEvictBlockedAgents();
 	void LekmodInterrogate(PlayerTypes eSpyOwner);

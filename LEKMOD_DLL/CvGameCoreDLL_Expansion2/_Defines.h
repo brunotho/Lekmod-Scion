@@ -1797,7 +1797,8 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_SPY_FULL_TECH_SCIENCE 1000000
 #define LEKMOD_DIPLOMAT_TRADE_GOLD_PER_LEVEL 15 // % Gold on your trade routes to a capital with your diplomat, per level
 // LEKMOD (2026-10-13): spy wonders and leftovers of the spy rework. Steals in a city take longer by the sum of: the owner's
-// Policies.StealTechSlowerModifier (Iron Curtain 50), the owner's Buildings.EnemySpyStealSlower (Kremlin 30, Great Firewall 25)
+// Policies.StealTechSlowerModifier (Iron Curtain 50), the owner's Buildings.EnemySpyStealTurns (turns per steal: Kremlin 5, Great Firewall 4;
+// until 2026-10-29 EnemySpyStealSlower % 30/25)
 // and Resolutions.LekmodStealSlower while active (Diplomatic Transparency 50). Buildings.GuardLevelChange (Kremlin +1) raises the
 // owner's guards, Buildings.ExecuteCaughtSpies (Kremlin) executes caught spies without the Execute/Evict choice,
 // Buildings.BlockForeignSpies (Great Firewall) evicts other civs' spies and diplomats from the city and keeps them out,

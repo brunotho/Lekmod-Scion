@@ -87,7 +87,10 @@ html[data-view="essentials"] #changelog .group, html[data-view="essentials"] #no
 html[data-view="essentials"] #sidebar ul.essentials-nav { display: block; }
 html[data-view="essentials"] #version-note { display: none; }
 .version-note { margin: 0.25rem 0 0.75rem; color: var(--muted, #888); font-size: 0.95em; }
-.essentials figure { margin: 0.75rem 0 1rem; }
+.essentials figure, li.picture figure { margin: 0.75rem 0 1rem; }
+li.picture { list-style: none; }
+li.picture img { max-width: min(100%, 520px); height: auto; border-radius: 6px; display: block; }
+li.picture figcaption { font-size: 0.9em; opacity: 0.8; margin-top: 0.35rem; }
 .essentials figure img { max-width: min(100%, 520px); height: auto; border-radius: 6px; display: block; }
 .essentials figcaption { font-size: 0.9em; opacity: 0.8; margin-top: 0.35rem; }
 .essentials h3[id] { scroll-margin-top: calc(var(--header-h, 56px) + 12px); }

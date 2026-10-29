@@ -152,6 +152,7 @@ CvBuildingEntry::CvBuildingEntry(void):
 #endif
 #ifdef LEKMOD_SPY_WONDERS
 	m_iLekmodEnemySpyStealSlower(0),
+	m_iLekmodEnemySpyStealTurns(0),
 	m_iLekmodGuardLevelChange(0),
 	m_bLekmodExecuteCaughtSpies(false),
 	m_bLekmodBlockForeignSpies(false),
@@ -643,6 +644,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 #endif
 #ifdef LEKMOD_SPY_WONDERS
 	m_iLekmodEnemySpyStealSlower = kResults.GetInt("EnemySpyStealSlower");
+	m_iLekmodEnemySpyStealTurns = kResults.GetInt("EnemySpyStealTurns");
 	m_iLekmodGuardLevelChange = kResults.GetInt("GuardLevelChange");
 	m_bLekmodExecuteCaughtSpies = kResults.GetBool("ExecuteCaughtSpies");
 	m_bLekmodBlockForeignSpies = kResults.GetBool("BlockForeignSpies");
