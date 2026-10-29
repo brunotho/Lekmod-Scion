@@ -235,6 +235,9 @@ void CvPlayerEspionage::Reset()
 #endif
 	for(uint ui = 0; ui < MAX_MAJOR_CIVS; ui++)
 	{
+#ifdef LEKMOD_DIPLOMAT_RULES
+		m_aiLekmodExpelBanUntil[ui] = -1;
+#endif
 		m_aiMaxTechCost[ui] = -1;
 		m_aHeistLocations[ui].clear();
 	}
@@ -1516,6 +1519,18 @@ bool CvPlayerEspionage::CanMoveSpyTo(CvCity* pCity, uint uiSpyIndex, bool bAsDip
 		return false;
 	}
 #endif
+#ifdef LEKMOD_DIPLOMAT_RULES
+	// diplomats with another civ: its open borders, no Breakdown of International Relations, no recent expulsion
+	if (bAsDiplomat && !GET_PLAYER(pCity->getOwner()).isMinorCiv() && pCity->getOwner() != ePlayerID)
+	{
+		if (!GET_TEAM(pCity->getTeam()).IsAllowsOpenBordersToTeam(m_pPlayer->getTeam()))
+			return false;
+		if (GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_BREAKDOWN) != 0)
+			return false;
+		if (LekmodGetExpelBanTurns(pCity->getOwner()) > 0)
+			return false;
+	}
+#endif
 	if (bAsDiplomat)
 	{
 		// diplomatic spy must be in capital
@@ -2226,7 +2241,13 @@ void CvPlayerEspionage::LekmodEvictBlockedAgents()
 		if (pCity == NULL || pCity->getOwner() == m_pPlayer->GetID())
 			continue;
 		const bool bFirewall = LekmodCityBlocksSpies(pCity);
+#ifdef LEKMOD_DIPLOMAT_RULES
+		const bool bBreakdown = m_aSpyList[i].m_bIsDiplomat && !GET_PLAYER(pCity->getOwner()).isMinorCiv() && GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_BREAKDOWN) != 0;
+		const bool bNoDiplomats = (bBlackout || bBreakdown) && m_aSpyList[i].m_bIsDiplomat && !GET_PLAYER(pCity->getOwner()).isMinorCiv();
+#else
+		const bool bBreakdown = false;
 		const bool bNoDiplomats = bBlackout && m_aSpyList[i].m_bIsDiplomat && !GET_PLAYER(pCity->getOwner()).isMinorCiv();
+#endif
 		if (!bFirewall && !bNoDiplomats)
 			continue;
 		const int iName = m_aSpyList[i].m_iName;
@@ -2238,7 +2259,7 @@ void CvPlayerEspionage::LekmodEvictBlockedAgents()
 		{
 			Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_SPY_SENT_HOME_S");
 			strSummary << m_pPlayer->getCivilizationInfo().getSpyNames(iName);
-			Localization::String strText = Localization::Lookup(bFirewall ? "TXT_KEY_LEKMOD_SPY_SENT_HOME_FIREWALL" : "TXT_KEY_LEKMOD_SPY_SENT_HOME_BLACKOUT");
+			Localization::String strText = Localization::Lookup(bFirewall ? "TXT_KEY_LEKMOD_SPY_SENT_HOME_FIREWALL" : (bBreakdown ? "TXT_KEY_LEKMOD_SPY_SENT_HOME_BREAKDOWN" : "TXT_KEY_LEKMOD_SPY_SENT_HOME_BLACKOUT"));
 			strText << GetSpyRankName(eRank) << m_pPlayer->getCivilizationInfo().getSpyNames(iName) << pCity->getNameKey();
 			pNotifications->Add(NOTIFICATION_SPY_EVICTED, strText.toUTF8(), strSummary.toUTF8(), -1, -1, -1);
 		}
@@ -2445,6 +2466,59 @@ void CvPlayerEspionage::LekmodRemoveSight(uint uiSpyIndex)
 }
 
 /// An established diplomat of ours sits in this player's capital
+#ifdef LEKMOD_DIPLOMAT_RULES
+/// This player (the host) expels eDiplomatOwner's diplomat from its capital: it goes home, loses its progress and 1 level (not below
+/// the first), and eDiplomatOwner can't send a diplomat here for LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS turns
+bool CvPlayerEspionage::LekmodExpelDiplomat(PlayerTypes eDiplomatOwner)
+{
+	if (eDiplomatOwner < 0 || eDiplomatOwner >= MAX_MAJOR_CIVS || eDiplomatOwner == m_pPlayer->GetID())
+		return false;
+	CvCity* pCapital = m_pPlayer->getCapitalCity();
+	if (pCapital == NULL || pCapital->GetCityEspionage() == NULL)
+		return false;
+	const int iSpyIndex = pCapital->GetCityEspionage()->m_aiSpyAssignment[eDiplomatOwner];
+	CvPlayerEspionage* pOwnerEspionage = GET_PLAYER(eDiplomatOwner).GetEspionage();
+	if (iSpyIndex < 0 || iSpyIndex >= (int)pOwnerEspionage->m_aSpyList.size() || !pOwnerEspionage->m_aSpyList[iSpyIndex].m_bIsDiplomat)
+		return false;
+
+	CvEspionageSpy& kSpy = pOwnerEspionage->m_aSpyList[iSpyIndex];
+	pOwnerEspionage->ExtractSpyFromCity(iSpyIndex);
+	kSpy.m_iLekmodTurnsInCity = 0;
+	if ((int)kSpy.m_eRank > 0)
+		kSpy.m_eRank = (CvSpyRank)((int)kSpy.m_eRank - 1);
+	kSpy.m_bEvaluateReassignment = true;
+	pOwnerEspionage->m_aiLekmodExpelBanUntil[m_pPlayer->GetID()] = GC.getGame().getGameTurn() + LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS;
+
+	const char* szSpyName = GET_PLAYER(eDiplomatOwner).getCivilizationInfo().getSpyNames(kSpy.m_iName);
+	CvNotifications* pOwnerNotifications = GET_PLAYER(eDiplomatOwner).GetNotifications();
+	if (pOwnerNotifications)
+	{
+		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_DIPLOMAT_EXPELLED_S");
+		strSummary << szSpyName;
+		Localization::String strText = Localization::Lookup("TXT_KEY_LEKMOD_DIPLOMAT_EXPELLED");
+		strText << szSpyName << m_pPlayer->getCivilizationShortDescriptionKey() << LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS;
+		pOwnerNotifications->Add(NOTIFICATION_SPY_EVICTED, strText.toUTF8(), strSummary.toUTF8(), -1, -1, -1);
+	}
+	CvNotifications* pNotifications = m_pPlayer->GetNotifications();
+	if (pNotifications)
+	{
+		Localization::String strSummary = Localization::Lookup("TXT_KEY_LEKMOD_DIPLOMAT_YOU_EXPELLED_S");
+		Localization::String strText = Localization::Lookup("TXT_KEY_LEKMOD_DIPLOMAT_YOU_EXPELLED");
+		strText << szSpyName << GET_PLAYER(eDiplomatOwner).getCivilizationAdjectiveKey() << LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS;
+		pNotifications->Add(NOTIFICATION_SPY_EVICTED, strText.toUTF8(), strSummary.toUTF8(), -1, -1, -1);
+	}
+	return true;
+}
+
+/// Turns left before this player may send a diplomat to eHost again after an expulsion (0 = may)
+int CvPlayerEspionage::LekmodGetExpelBanTurns(PlayerTypes eHost) const
+{
+	if (eHost < 0 || eHost >= MAX_MAJOR_CIVS)
+		return 0;
+	return MAX(0, m_aiLekmodExpelBanUntil[eHost] - GC.getGame().getGameTurn());
+}
+#endif
+
 bool CvPlayerEspionage::LekmodHasDiplomatWith(PlayerTypes eOther)
 {
 	for (uint i = 0; i < m_aSpyList.size(); i++)
@@ -5147,6 +5221,22 @@ FDataStream& operator>>(FDataStream& loadFrom, CvPlayerEspionage& writeTo)
 		}
 	}
 #endif
+#ifdef LEKMOD_DIPLOMAT_RULES
+	for (uint ui = 0; ui < MAX_MAJOR_CIVS; ui++)
+		writeTo.m_aiLekmodExpelBanUntil[ui] = -1;
+	if (uiVersion >= 2)
+	{
+		int iNum = 0;
+		loadFrom >> iNum;
+		for (int i = 0; i < iNum; i++)
+		{
+			int iTurn;
+			loadFrom >> iTurn;
+			if (i < MAX_MAJOR_CIVS)
+				writeTo.m_aiLekmodExpelBanUntil[i] = iTurn;
+		}
+	}
+#endif
 	{ FILogFile* pDbg = LOGFILEMGR.GetLog("LoadDebug.log", FILogFile::kDontTimeStamp);
 	  pDbg->Msg("  [CvPlayerEspionage::Read END] spies=%d spyNames=%d stealableTechCivs=%d numTechsToStealCivs=%d heistCivs=%d spyMsgs=%d intrigueMsgs=%d",
 		(int)writeTo.m_aSpyList.size(), (int)writeTo.m_aiSpyListNameOrder.size(), (int)writeTo.m_aaPlayerStealableTechList.size(),
@@ -5159,7 +5249,7 @@ FDataStream& operator>>(FDataStream& loadFrom, CvPlayerEspionage& writeTo)
 FDataStream& operator<<(FDataStream& saveTo, const CvPlayerEspionage& readFrom)
 {
 #ifdef LEKMOD_SPY_REWORK
-	uint uiVersion = 1;
+	uint uiVersion = 2;
 #else
 	uint uiVersion = 0;
 #endif
@@ -5284,6 +5374,11 @@ FDataStream& operator<<(FDataStream& saveTo, const CvPlayerEspionage& readFrom)
 		saveTo << readFrom.m_aLekmodCaught[i].m_iCityY;
 		saveTo << readFrom.m_aLekmodCaught[i].m_iTurn;
 	}
+#endif
+#ifdef LEKMOD_DIPLOMAT_RULES
+	saveTo << (int)MAX_MAJOR_CIVS;
+	for (uint ui = 0; ui < MAX_MAJOR_CIVS; ui++)
+		saveTo << readFrom.m_aiLekmodExpelBanUntil[ui];
 #endif
 	{ FILogFile* pDbg = LOGFILEMGR.GetLog("SaveDebug.log", FILogFile::kDontTimeStamp);
 	  pDbg->Msg("  [CvPlayerEspionage::Write END] spies=%d spyNames=%d stealableTechCivs=%d numTechsToStealCivs=%d heistCivs=%d spyMsgs=%d intrigueMsgs=%d",

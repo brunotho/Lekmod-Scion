@@ -3830,6 +3830,17 @@
 			<AdvisorCounsel>TXT_KEY_AICITYSTRATEGY_SMALL_CITY</AdvisorCounsel> 
 			<AdvisorCounselImportance>1</AdvisorCounselImportance> 
 		</Row>
+		<!-- LEKMOD (2026-10-29): Rotating Presidency replaces Voice for the Voiceless (same availability) -->
+		<Row>
+			<ID>32</ID>
+			<Type>RESOLUTION_LEKMOD_ROTATING_PRESIDENCY</Type>
+			<Description>TXT_KEY_RESOLUTION_LEKMOD_ROTATING_PRESIDENCY</Description>
+			<Help>TXT_KEY_RESOLUTION_LEKMOD_ROTATING_PRESIDENCY_HELP</Help>
+			<VoterDecision>RESOLUTION_DECISION_YES_OR_NO</VoterDecision>
+			<ProposerDecision>RESOLUTION_DECISION_NONE</ProposerDecision>
+			<LekmodMinCongressEra>ERA_MODERN</LekmodMinCongressEra>
+			<LekmodRotatingPresidency>1</LekmodRotatingPresidency>
+		</Row>
 		<Row> 
 			<ID>32</ID> 
 			<Type>AICITYSTRATEGY_MANY_TECHS_STOLEN</Type> 
@@ -194333,7 +194344,7 @@
 		<Column name="LekmodCapturedCapitalVotes" type="integer" default="0"/>
 		<Column name="LekmodLuxuryHappinessPercent" type="integer" default="0"/>
 		<Column name="LekmodBlackout" type="integer" default="0"/>
-		<Column name="LekmodVoiceForTheVoiceless" type="integer" default="0"/>
+		<Column name="LekmodRotatingPresidency" type="integer" default="0"/>
 		<Column name="LekmodExperienceModifier" type="integer" default="0"/>
 		<Column name="LekmodAirExperienceModifier" type="integer" default="0"/>
 		<Column name="LekmodTargetVotes" type="integer" default="0"/>
@@ -195051,6 +195062,15 @@
 			<Where Type="RESOLUTION_NATURAL_HERITAGE_SITES"/>
 			<Set LekmodDisabled="true"/>
 		</Update>
+		<!-- LEKMOD (2026-10-29): Arts Funding and Sciences Funding removed -->
+		<Update>
+			<Where Type="RESOLUTION_ARTS_FUNDING"/>
+			<Set LekmodDisabled="true"/>
+		</Update>
+		<Update>
+			<Where Type="RESOLUTION_SCIENCES_FUNDING"/>
+			<Set LekmodDisabled="true"/>
+		</Update>
 	</Resolutions>
 	<!-- LEKMOD: new proposals (Diplo Wincon and Congress spec, favorites) -->
 	<Resolutions>
@@ -195149,7 +195169,7 @@
 			<VoterDecision>RESOLUTION_DECISION_YES_OR_NO</VoterDecision>
 			<ProposerDecision>RESOLUTION_DECISION_NONE</ProposerDecision>
 			<LekmodMinCongressEra>ERA_MODERN</LekmodMinCongressEra>
-			<LekmodVoiceForTheVoiceless>1</LekmodVoiceForTheVoiceless>
+			<LekmodDisabled>true</LekmodDisabled>
 		</Row>
 		<Row>
 			<ID>27</ID>

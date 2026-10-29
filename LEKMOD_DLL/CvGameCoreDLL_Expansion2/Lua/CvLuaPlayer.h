@@ -1006,6 +1006,10 @@ protected:
 	static int lGetEspionageSpies(lua_State* L);
 #ifdef LEKMOD_SPY_REWORK
 	static int lLekmodGetCaughtSpies(lua_State* L);
+#ifdef LEKMOD_DIPLOMAT_RULES
+	static int lLekmodGetHostedDiplomats(lua_State* L);
+	static int lLekmodGetDiplomatBanTurns(lua_State* L);
+#endif
 	static int lLekmodGetSpyStealInfo(lua_State* L);
 #ifdef LEKMOD_SPECS_2026_10_24
 	static int lLekmodHasIdeologyCostPenalty(lua_State* L);

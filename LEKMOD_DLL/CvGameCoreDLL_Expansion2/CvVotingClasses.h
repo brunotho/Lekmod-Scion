@@ -31,7 +31,7 @@ enum LekmodResolutionColumn
 	LRC_CAPTURED_CAPITAL_VOTES,		// LekmodCapturedCapitalVotes: votes per held original capital of another civ
 	LRC_LUXURY_HAPPINESS,			// LekmodLuxuryHappinessPercent: % Happiness from luxuries
 	LRC_BLACKOUT,					// LekmodBlackout: no Demographics
-	LRC_VOICE,						// LekmodVoiceForTheVoiceless: no host votes, fewest votes hosts, host +1
+	LRC_ROTATION,					// LekmodRotatingPresidency: no host votes, host and second proposer by a fixed rotation
 	LRC_EXPERIENCE,					// LekmodExperienceModifier: % XP (not air)
 	LRC_AIR_EXPERIENCE,				// LekmodAirExperienceModifier: % XP for air units
 	LRC_TARGET_VOTES,				// LekmodTargetVotes: votes of the chosen civ
@@ -758,7 +758,9 @@ public:
 	const std::vector<int>& LekmodGetLastLeaderVote() const { return m_aiLekmodLastLeaderVote; }
 	void LekmodDoEnactOneShot(CvEnactProposal* pProposal);
 	void LekmodDoExpiry();
-	void LekmodPickVoicelessHost();
+	void LekmodPickRotationHost();
+	PlayerTypes LekmodGetRotationSecond() const;
+	std::vector<int> m_aiLekmodRotation; // Rotating Presidency: next session index, second proposer, then the player order (saved)
 #endif
 
 private:

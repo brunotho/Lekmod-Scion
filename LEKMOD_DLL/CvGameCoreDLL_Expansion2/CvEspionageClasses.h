@@ -185,6 +185,11 @@ public:
 	void LekmodUpdateSight(uint uiSpyIndex);
 	void LekmodRemoveSight(uint uiSpyIndex);
 	bool LekmodHasDiplomatWith(PlayerTypes eOther);
+#ifdef LEKMOD_DIPLOMAT_RULES
+	bool LekmodExpelDiplomat(PlayerTypes eDiplomatOwner);
+	int LekmodGetExpelBanTurns(PlayerTypes eHost) const;
+	int m_aiLekmodExpelBanUntil[MAX_MAJOR_CIVS]; // per host: no diplomat with them before this turn (saved)
+#endif
 	struct LekmodCoupInfo // parts of the last GetCoupChanceOfSuccess result, for the interface (not saved)
 	{
 		int iAllyInfluence;

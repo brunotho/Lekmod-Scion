@@ -751,6 +751,11 @@ bool CvDeal::IsPossibleToTradeItem(PlayerTypes ePlayer, PlayerTypes eToPlayer, T
 			}
 		}
 #endif
+#ifdef LEKMOD_DIPLOMAT_RULES
+		// a Non-Aggression Pact needs a diplomat of one of us established in the other's capital
+		if (!GET_PLAYER(ePlayer).GetEspionage()->LekmodHasDiplomatWith(eToPlayer) && !GET_PLAYER(eToPlayer).GetEspionage()->LekmodHasDiplomatWith(ePlayer))
+			return false;
+#endif
 		// Already has DP
 #ifdef AUI_YIELDS_APPLIED_AFTER_TURN_NOT_BEFORE
 		bool bConsiderExistingDefensivePact = true;

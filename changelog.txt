@@ -252,7 +252,7 @@ Tags: city-states, combat
 - Now: from the Industrial to the Information Era, each turn has a 3% chance that Clausewitz's unfinished work is announced: whoever holds Berlin 7 turns later becomes his heir for the rest of the game
 - Now: if no civilization holds Berlin by then, the announcement can come again (3% per turn, at least 3 turns after the deadline)
 - Now: the heir, while holding Berlin, can use Clausewitz's Legacy in Berlin's city screen: +25% Combat Strength for melee attacks for 3 turns, with a 20-turn cooldown (the cooldown belongs to the city and keeps running while someone else holds it); the button shows Clausewitz's portrait and the turns left
-- Now: it is the same bonus as the Clausewitz's Legacy policy, so they don't add up in strength, only in turns; with the Clausewitz Book Club the higher bonus counts
+- Now: it is the same bonus as the Clausewitz's Legacy policy, so they don't add up in strength, only in turns; with the Clausewitz Doctrine the higher bonus counts
 - DLL: CvGame::LekmodDoBerlin / LekmodUseBerlinLegacy (saved in CvGame, m_aiLekmodBerlin), network code -27; the ability adds CvPlayer::ChangeAttackBonusTurns(3)
 - Dev: city screen button LekmodBerlinButton (standard UI only) with the round portrait LekmodClausewitz45.dds (art_sources/tools/build_clausewitz_icon.py, gold rim) and the cooldown in its label
 
@@ -2716,8 +2716,10 @@ Delegates now depend on the Congress era and on what you hold.
   - Big Ben and Oxford University: +1 Delegate each
   - Patronage finisher: +1 Delegate, +1 more per era from the Industrial Era (5 in the Information Era)
   - Globalization: +1 Delegate
-- Removed: Delegates from Diplomats
-- Note: World Leader placements (first and second place +1 permanent Delegate) are part of World Congress Sessions; World Religion, World Ideology, Embargo and Mandate of Occupation come with the proposal changes
+- Now: +1 Delegate for each other civilization's diplomat in your capital
+- Removed: Delegates from your own Diplomats after Globalization
+- Note: World Leader placements (first and second place +1 permanent Delegate) are part of World Congress Sessions; World Religion, World Ideology, Embargo and Right of Conquest come with the proposal changes
+- DLL: LEKMOD_DIPLOMAT_RULES: hosted diplomats' Delegates (LekmodHasDiplomatWith), vote source TXT_KEY_LEKMOD_LEAGUE_VOTES_HOSTED_DIPLOMATS
 - DLL: LEKMOD_CONGRESS_CYCLE vote tables in CvLeague::CalculateStartingVotesForMember; Member::iLekmodPassedProposals (league save version 16); Buildings.ExtraLeagueVotesAtomic, Policies.LeagueVotesPerEraFromIndustrial
 
 WORLD CONGRESS PROPOSALS (RESOLUTIONS_CHANGED)
@@ -2743,7 +2745,7 @@ Tags: world congress
   - Bronze +6 Happiness (was +3)
   - Silver a free Social Policy (was +3 Happiness and 30 Influence with City-States)
   - Gold +100% Tourism for 10 turns (was 20, and the free Social Policy moved to Silver)
-- Removed: International Space Station and Natural Heritage Sites proposals
+- Removed: International Space Station, Natural Heritage Sites, Arts Funding and Sciences Funding proposals
 - DLL: Resolutions.LekmodMinCongressEra, LekmodDisabled, LekmodNukeProductionModifier (LEKMOD_CONGRESS_CYCLE); project tier thresholds rounded to whole Production
 
 WORLD CONGRESS: NEW PROPOSALS (RESOLUTIONS_NEW)
@@ -2751,18 +2753,20 @@ WORLD CONGRESS: NEW PROPOSALS (RESOLUTIONS_NEW)
 Tags: world congress
 - Added: Payload Controls (Information Era): spaceship parts cost 50% more Production (also when hurried with Great Engineers)
 - DLL: Resolutions.LekmodNukeCostModifier (cost of nuclear weapons, like LekmodSpaceshipCostModifier); the old LekmodNukeProductionModifier is unused
-- Added: Clausewitz Book Club (Modern Era): +25% attack strength (melee) for everyone for 8 turns; doesn't stack with Clausewitz's Legacy
+- Added: Clausewitz Doctrine (Modern Era): +25% attack strength (melee) for everyone for 8 turns; doesn't stack with Clausewitz's Legacy
 - Added: International Development Fund (Modern Era): a free Social Policy for everyone except the civilization(s) with the most policies; everyone not in the most advanced era gets one of the cheapest technologies they can research that another civilization knows
-- Added: Breakdown of International Relations (every human player in the Information Era, Nuclear Fusion known): everyone at war, no peace, all other resolutions end, no further sessions, -33% Tourism, next World Leader vote 3 turns later
-- Added: Mandate of Occupation (Atomic Era): +1 Delegate per other civilization's original capital you hold
+- Added: Breakdown of International Relations (every human player in the Information Era, Nuclear Fusion known): everyone at war, no peace, all other resolutions end (also Diplomatic Transparency), all diplomats in other civilizations' capitals go home for good, no further sessions, -33% Tourism, next World Leader vote 3 turns later
+- Added: Right of Conquest (Atomic Era): +1 Delegate per other civilization's original capital you hold
 - Added: Import Tariffs (Modern Era): luxuries give half the Happiness for 3 turns
 - Added: Diplomatic Transparency (Modern Era): every civilization has live vision of the other civilizations' cities and the tiles within 2 of them; spies take 50% longer per steal
 - Added: Blackout (Information Era): the Demographics screen shows only the word BLACKOUT instead of its table; all diplomats in other civilizations' capitals are sent home and can't be placed there while it is active; ends Diplomatic Transparency
-- Added: Voice for the Voiceless (Modern Era): no host votes; the civilization with the fewest Delegates hosts; the host gets +1 Delegate
+- Added: Rotating Presidency (Modern Era): no host votes; the host and the second proposer rotate through the human players in alphabetical order of their civilizations (fixed the first time it passes); each session takes the next two places, and with an even number of players the second round swaps each pair (A/B, C/D, E/F, then B/A, D/C, F/E); civilizations that are gone drop out
+- Dev: Voice for the Voiceless (fewest Delegates hosts, host +1 Delegate) was replaced by Rotating Presidency before release (user, 2026-10-29); its row stays, disabled
+- DLL: Resolutions.LekmodRotatingPresidency (LRC_ROTATION), CvLeague::LekmodPickRotationHost, m_aiLekmodRotation (next session, second proposer, player order by civilization type key, so every machine agrees whatever the language); league save version 20
 - Added: War Games (Modern Era): +50% Experience (air units +25%), double unit maintenance, for 8 turns
 - Added: Pariah (Atomic Era): nobody can trade with the chosen civilization (peace still possible), its deals and foreign Trade Routes end, it has 2 Delegates less and +15% Combat Strength
 - Added: Brain Trust: the first civilization with a technology gets 10% of its cost in Gold; technologies other civilizations know are 5% faster per civilization that knows them
-- Added: Climate Change Reparations (every civilization in the Modern Era): 200 Gold per Factory paid once (not below 0); +1 Happiness per Factory; +30% Production toward Hydro, Nuclear and Solar Plants
+- Added: Green Deal (every civilization in the Modern Era): 200 Gold per Factory paid once (not below 0); +1 Happiness per Factory; +30% Production toward Hydro, Nuclear and Solar Plants
 - Added: Charter of Civil Liberties (Modern Era):
   - public opinion returns while it is active; influence still never forces an ideology switch
   - dissatisfaction: for each civilization of another ideology, the influence levels it is ahead of you (its level over you minus yours over it), minus the same for civilizations of your own ideology; counted from 1 to 5 (0 or less: no unhappiness)
@@ -2813,7 +2817,10 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 - Now: a spy in a City-State is Meddling: it takes 0.2 per turn per level off every other civilization's Influence change there (above the resting point it falls faster, below it recovers more slowly; they don't learn whose spy it is), and it shows its coup chance
 - Now: a diplomat in another civilization's capital gives you 2% per level of that capital's Science (halved at war; only while they know a technology you lack) and +15% per level Gold on your trade routes to that city
 - Now: a diplomat in a City-State gives +0.33 Influence per turn per level, and Influence below the resting point recovers 50% faster per level
-- Now: diplomats are not expelled by war, and are established at once with civilizations that give you open borders
+- Now: diplomats are not expelled by war; a diplomat can only go to a civilization that gives you open borders and is set up there at once (it stays when the open borders end)
+- Now: you can expel another civilization's diplomat from your capital (Espionage screen): it goes home, loses its progress toward the next level and 1 level (not below 1), and its owner can't send a diplomat to you for 5 turns
+- Now: a Non-Aggression Pact needs a diplomat of one side in the other's capital when it is made (it stays if the diplomat leaves later); still not possible once anyone reaches the Information Era
+- Now: after Breakdown of International Relations, diplomats can't stay in other civilizations' capitals
 - Now: when two civilizations each have a diplomat in the other's capital, each also sees what the other's level 3+ spies see in third civilizations' cities
 - Now: the Espionage screen has a Rules tab, and agent tooltips explain timers, catch chances and levels
 - Removed: City-State elections (Rig Election), the Tourism bonus from diplomats, and the Potential column in the city lists
@@ -2825,6 +2832,7 @@ Spies and diplomats are reworked: spies steal on a timer and risk getting caught
 - Dev: the Gold tooltip lists spy upkeep, and the Science tooltip lists diplomat Science
 - Dev: Iron Curtain's slower steals were ignored by the reworked steal timer; fixed
 - Fixed: a Tourism influence bonus over a City-State's ally could make the coup chance worse instead of better (high spy levels counted like the lowest one)
+- DLL: LEKMOD_DIPLOMAT_RULES (CvPlayerEspionage::LekmodExpelDiplomat, m_aiLekmodExpelBanUntil in player espionage save version 2, network code -29, Lua Player:LekmodGetHostedDiplomats / LekmodGetDiplomatBanTurns; Non-Aggression Pact check in CvDeal::IsPossibleToTradeItem)
 - DLL: LEKMOD_SPY_REWORK (CvPlayerEspionage::LekmodGetSpyStrength/LekmodGetCityDefense/LekmodGetStealInterval/LekmodGetCatchChance/LekmodSpyCaught), LEKMOD_DIPLOMAT_TRADE_GOLD_PER_LEVEL; LEKMOD_SPY_WONDERS (LekmodGetStealSlower, LekmodEvictBlockedAgents, LekmodInterrogate, LekmodPlayerBuildingValue)
 - Dev: EspionageOverview.lua is now a Lekmod template (Lua/tmp/ui/Espionage), copied by ui_check.bat
 - Dev: a failed full-tech steal shows a notification (nothing stolen, no level)

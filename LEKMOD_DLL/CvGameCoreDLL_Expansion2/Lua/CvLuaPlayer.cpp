@@ -1005,6 +1005,10 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 	Method(GetEspionageSpies);
 #ifdef LEKMOD_SPY_REWORK
 	Method(LekmodGetCaughtSpies);
+#ifdef LEKMOD_DIPLOMAT_RULES
+	Method(LekmodGetHostedDiplomats);
+	Method(LekmodGetDiplomatBanTurns);
+#endif
 	Method(LekmodGetSpyStealInfo);
 #ifdef LEKMOD_SPECS_2026_10_24
 	Method(LekmodHasIdeologyCostPenalty);
@@ -11888,6 +11892,49 @@ int CvLuaPlayer::lGetNumUnassignedSpies(lua_State* L)
 //------------------------------------------------------------------------------
 #ifdef LEKMOD_SPY_REWORK
 //------------------------------------------------------------------------------
+#ifdef LEKMOD_DIPLOMAT_RULES
+// table LekmodGetHostedDiplomats(): other civs' diplomats in this player's capital {OwnerID, Name, Level, Established}
+int CvLuaPlayer::lLekmodGetHostedDiplomats(lua_State* L)
+{
+	CvPlayerAI* pkThisPlayer = GetInstance(L);
+	lua_createtable(L, 0, 0);
+	int index = 1;
+	CvCity* pCapital = pkThisPlayer->getCapitalCity();
+	if (pCapital == NULL || pCapital->GetCityEspionage() == NULL)
+		return 1;
+	for (int iOwner = 0; iOwner < MAX_MAJOR_CIVS; iOwner++)
+	{
+		CvPlayerAI& kOwner = GET_PLAYER((PlayerTypes)iOwner);
+		if (iOwner == pkThisPlayer->GetID() || !kOwner.isAlive())
+			continue;
+		const int iSpy = pCapital->GetCityEspionage()->m_aiSpyAssignment[iOwner];
+		CvPlayerEspionage* pkOwnerEspionage = kOwner.GetEspionage();
+		if (iSpy < 0 || iSpy >= (int)pkOwnerEspionage->m_aSpyList.size() || !pkOwnerEspionage->m_aSpyList[iSpy].m_bIsDiplomat)
+			continue;
+		const CvEspionageSpy& kSpy = pkOwnerEspionage->m_aSpyList[iSpy];
+		lua_createtable(L, 0, 0);
+		const int t = lua_gettop(L);
+		lua_pushinteger(L, iOwner);
+		lua_setfield(L, t, "OwnerID");
+		lua_pushstring(L, kOwner.getCivilizationInfo().getSpyNames(kSpy.m_iName));
+		lua_setfield(L, t, "Name");
+		lua_pushinteger(L, (int)kSpy.m_eRank + 1);
+		lua_setfield(L, t, "Level");
+		lua_pushboolean(L, kSpy.m_eSpyState == SPY_STATE_SCHMOOZE);
+		lua_setfield(L, t, "Established");
+		lua_rawseti(L, -2, index++);
+	}
+	return 1;
+}
+// int LekmodGetDiplomatBanTurns(iHost): turns before this player may send a diplomat to iHost again (0 = may)
+int CvLuaPlayer::lLekmodGetDiplomatBanTurns(lua_State* L)
+{
+	CvPlayerAI* pkThisPlayer = GetInstance(L);
+	const int iHost = lua_tointeger(L, 2);
+	lua_pushinteger(L, pkThisPlayer->GetEspionage()->LekmodGetExpelBanTurns((PlayerTypes)iHost));
+	return 1;
+}
+#endif
 // table LekmodGetCaughtSpies(): enemy spies this player caught and has to judge {Entry, OwnerID, Name, CityName}
 int CvLuaPlayer::lLekmodGetCaughtSpies(lua_State* L)
 {

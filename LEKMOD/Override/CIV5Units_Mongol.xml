@@ -120611,7 +120611,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Spaceship parts cost 50% more [ICON_PRODUCTION] Production for all Civilizations (also when hurried with Great Engineers).[NEWLINE][NEWLINE]Available once the World Congress reaches the Information Era.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_CLAUSEWITZ_BOOK_CLUB">
-			<Text>Clausewitz Book Club</Text>
+			<Text>Clausewitz Doctrine</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_CLAUSEWITZ_BOOK_CLUB_HELP">
 			<Text>+25% [ICON_STRENGTH] Combat Strength when attacking (melee) for all Civilizations; does not stack with Clausewitz's Legacy.[NEWLINE]Ends after 8 turns.[NEWLINE][NEWLINE]Available once the World Congress reaches the Modern Era.</Text>
@@ -120629,7 +120629,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>All Civilizations are at war with each other and peace is not possible.[NEWLINE]All other active resolutions end and the World Congress holds no further sessions.[NEWLINE]All [ICON_TOURISM] Tourism -33%.[NEWLINE]The next World Leader vote is 3 turns later.[NEWLINE][NEWLINE]Available once every human player is in the Information Era and any Civilization discovers Nuclear Fusion.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_MANDATE_OF_OCCUPATION">
-			<Text>Mandate of Occupation</Text>
+			<Text>Right of Conquest</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_MANDATE_OF_OCCUPATION_HELP">
 			<Text>Each original capital of another Civilization you hold gives +1 Delegate.[NEWLINE][NEWLINE]Available once the World Congress reaches the Atomic Era.</Text>
@@ -120677,7 +120677,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The first Civilization to research a technology gets 10% of its cost in [ICON_GOLD] Gold.[NEWLINE]Technologies known by other Civilizations are researched 5% faster for each of them.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_CLIMATE_REPARATIONS">
-			<Text>Climate Change Reparations</Text>
+			<Text>Green Deal</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_CLIMATE_REPARATIONS_HELP">
 			<Text>Every Civilization pays 200 [ICON_GOLD] Gold per Factory (not below 0).[NEWLINE]+1 [ICON_HAPPINESS_1] Happiness per Factory.[NEWLINE]+30% [ICON_PRODUCTION] Production toward Hydro Plants, Nuclear Plants and Solar Plants.[NEWLINE][NEWLINE]Available once every Civilization is in the Modern Era.</Text>
@@ -120692,7 +120692,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>{@1_Resolution} has ended.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_ATTACKMOD_BOOK_CLUB">
-			<Text>Clausewitz Book Club</Text>
+			<Text>Clausewitz Doctrine</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_COMBATMOD_PARIAH">
 			<Text>Pariah</Text>
@@ -120729,6 +120729,57 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_SPY_SENT_HOME_BLACKOUT">
 			<Text>{@1_RankName} {@2_SpyName} had to leave {@3_CityName}.[NEWLINE]While Blackout (World Congress) is active, diplomats can't stay in other civilizations' capitals.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_SPY_SENT_HOME_BREAKDOWN">
+			<Text>{@1_RankName} {@2_SpyName} had to leave {@3_CityName}.[NEWLINE]After Breakdown of International Relations (World Congress), diplomats can't stay in other civilizations' capitals.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLOMAT_EXPELLED_S">
+			<Text>{1_SpyName} was expelled</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLOMAT_EXPELLED">
+			<Text>{@2_CivName} expelled your diplomat {1_SpyName}.[NEWLINE]It lost its progress and 1 level.[NEWLINE]You can't send a diplomat to {@2_CivName} for {3_Num} turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLOMAT_YOU_EXPELLED_S">
+			<Text>Diplomat expelled</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLOMAT_YOU_EXPELLED">
+			<Text>You expelled the {@2_CivAdjective} diplomat {1_SpyName}.[NEWLINE]They can't send a diplomat to you for {3_Num} turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_LEAGUE_VOTES_HOSTED_DIPLOMATS">
+			<Text>[NEWLINE][ICON_BULLET]{1_NumVotes} from other civilizations' diplomats in your capital</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMATS">
+			<Text>Diplomats in your capital</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMATS_TT">
+			<Text>Other civilizations' diplomats in your capital.[NEWLINE]Each gives you +1 Delegate in the World Congress.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMAT_LINE">
+			<Text>{@1_CivAdjective} diplomat {2_SpyName}, level {3_Num}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_EXPEL">
+			<Text>Expel</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_EXPEL_TT">
+			<Text>Send this diplomat home.[NEWLINE]It loses its progress and 1 level, and its owner can't send a diplomat to you for 5 turns.[NEWLINE]You lose the Delegate it gives you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_EXPEL_QUESTION">
+			<Text>Expel the {@1_CivAdjective} diplomat {2_SpyName}?</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_DIPLOMAT_BANNED_TT">
+			<Text>{@1_CivName} expelled your diplomat. You can send one again in {2_Num} turns.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EO_DIPLOMAT_NEEDS_OPEN_BORDERS_TT">
+			<Text>A diplomat can only go to a civilization that gives you open borders.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DIPLO_NAP_NEEDS_DIPLOMAT">
+			<Text>[NEWLINE][NEWLINE]A Non-Aggression Pact needs a diplomat of one of you in the other's capital.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_ROTATING_PRESIDENCY">
+			<Text>Rotating Presidency</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RESOLUTION_LEKMOD_ROTATING_PRESIDENCY_HELP">
+			<Text>No more host votes: the host and the second proposer rotate through the human players.[NEWLINE]The order is alphabetical by civilization and is set the first time this passes, for the rest of the game.[NEWLINE]Each session takes the next two places, so with an even number of players the second round swaps each pair (A/B, C/D, E/F, then B/A, D/C, F/E).[NEWLINE]A civilization that is gone drops out, and the rest move up.[NEWLINE][NEWLINE]Available once the World Congress reaches the Modern Era.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_INTERROGATION_S">
 			<Text>Technology from an interrogation</Text>
@@ -120902,7 +120953,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_CYAN]SPIES[ENDCOLOR][NEWLINE][NEWLINE][COLOR_CYAN]Stealing from another civilization[ENDCOLOR][NEWLINE][ICON_BULLET] Put a spy in one of their cities. It works toward a steal only while they know a technology you don't. If you catch up, its timer starts over.[NEWLINE][ICON_BULLET] Each steal gives you 8 turns of that city's [ICON_RESEARCH] Science toward one of their technologies (you pick which).[NEWLINE][ICON_BULLET] A steal always succeeds, and they always learn who did it.[NEWLINE][ICON_BULLET] Each steal can also get your spy caught. Its owner then decides to execute it or send it home.[NEWLINE][ICON_BULLET] From level 3 you can switch on "Full tech": the next steal tries for a whole technology of your choice instead. If it fails, you get nothing.[NEWLINE][ICON_BULLET] Full tech works as often as your spy stays uncaught, times a share by the stealing spy's level: level 3 half, level 4 three quarters, level 5 or more all of it. A level 5 spy against an undefended city always succeeds.[NEWLINE][NEWLINE][COLOR_CYAN]How fast a spy steals[ENDCOLOR][NEWLINE][ICON_BULLET] The stealing spy's level includes bonuses: +1 for each level of your cultural influence over them, +1 with your level 3+ diplomat in their capital, +1 with Industrial Espionage.[NEWLINE][ICON_BULLET] The city's defense: +1 each for a Constabulary, Police Station and Intelligence Agency, +1 for each level of their cultural influence over you. Guarding spies don't count here.[NEWLINE][ICON_BULLET] If the stealing spy's level is 1 above the city's defense, it steals every 15 turns. Each further level makes it 2 turns faster (7 turns at best). Each level below makes it 5 turns slower.[NEWLINE][ICON_BULLET] Some things make steals take longer in a civilization's cities (added together): Iron Curtain +50%, Kremlin +30%, Great Firewall +25%, and Diplomatic Transparency (World Congress) +50% everywhere.[NEWLINE][ICON_BULLET] No spy or diplomat can enter a city with the Great Firewall.[NEWLINE][ICON_BULLET] The timer follows every change right away: new defense buildings slow a running steal, new bonuses speed it up.[NEWLINE][ICON_BULLET] The spy also sees the tiles around the city: 1 tile for each level it is above the city's defense.[NEWLINE][NEWLINE][COLOR_CYAN]How likely a spy is caught[ENDCOLOR][NEWLINE][ICON_BULLET] Each defense building in the city (Constabulary, Police Station, Intelligence Agency) adds 10%.[NEWLINE][ICON_BULLET] A guarding spy adds more. How much depends on its level compared to the stealing spy's level:[NEWLINE]          guarding spy 4 or more levels lower:  0%[NEWLINE]          3 levels lower:  5%[NEWLINE]          2 levels lower:  10%[NEWLINE]          1 level lower:  20%[NEWLINE]          same level:  33%[NEWLINE]          1 level higher:  50%[NEWLINE]          2 levels higher:  67%[NEWLINE]          3 levels higher:  83%[NEWLINE]          4 or more levels higher:  100%[NEWLINE][ICON_BULLET] With the Kremlin, its owner's guarding spies count 1 level higher.[NEWLINE][ICON_BULLET] You never see whether a city has a guarding spy.[NEWLINE][ICON_BULLET] The total never goes above 100%.[NEWLINE][NEWLINE][COLOR_CYAN]Guarding your own city[ENDCOLOR][NEWLINE][ICON_BULLET] Put a spy in one of your own cities to guard it. Enemy spies there are caught more often (see above).[NEWLINE][ICON_BULLET] From level 3 the guard can sweep the city: pay 5 turns of the city's [ICON_RESEARCH] Science in [ICON_GOLD] Gold, and each enemy spy there gets a chance to be caught.[NEWLINE][ICON_BULLET] With the Kremlin, spies you catch are always executed. With Advanced Interrogation Techniques, each catch also steals a random technology from the spy's owner.[NEWLINE][NEWLINE][COLOR_CYAN]Spying in a City-State[ENDCOLOR][NEWLINE][ICON_BULLET] Every other civilization's [ICON_INFLUENCE] Influence there drops by 0.2 per level of your spy each turn, on top of its normal change. Above the resting point it falls faster, below it recovers more slowly. Quests and gifts are not affected.[NEWLINE][ICON_BULLET] Nobody learns whose spy it is.[NEWLINE][ICON_BULLET] The spy can also stage a coup.[NEWLINE][NEWLINE][COLOR_CYAN]Upkeep and levels[ENDCOLOR][NEWLINE][ICON_BULLET] A spy in a city costs 3 [ICON_GOLD] Gold per turn per era from the Renaissance on. Diplomats are free.[NEWLINE][ICON_BULLET] A spy gains a level for each successful steal, coup or caught enemy spy.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_EO_RULES_DIPLOMATS">
-			<Text>[COLOR_CYAN]DIPLOMATS[ENDCOLOR][NEWLINE][ICON_BULLET] A diplomat goes to another civilization's capital or to a City-State. It never steals, costs no upkeep and stays during wars.[NEWLINE][ICON_BULLET] It is set up at once with civilizations that give you open borders.[NEWLINE][ICON_BULLET] While Blackout (World Congress) is active, diplomats can't stay in other civilizations' capitals.[NEWLINE][ICON_BULLET] It gains a level every 25 turns in the same city. Moving it keeps its level.[NEWLINE][ICON_BULLET] It sees the tiles around its city, like a spy.[NEWLINE][NEWLINE][COLOR_CYAN]In a capital[ENDCOLOR][NEWLINE][ICON_BULLET] [ICON_RESEARCH] Science: 2% of the capital's Science per level of the diplomat, halved while you are at war with them. Only while they know a technology you don't.[NEWLINE][ICON_BULLET] [ICON_GOLD] Gold: +15% per level on your trade routes to that city.[NEWLINE][NEWLINE][COLOR_CYAN]From level 3[ENDCOLOR][NEWLINE][ICON_BULLET] Your stealing spies in that civilization count 1 level higher.[NEWLINE][ICON_BULLET] If they also have a diplomat in your capital, you both see what the other's level 3+ spies see in other civilizations' cities.[NEWLINE][NEWLINE][COLOR_CYAN]In a City-State[ENDCOLOR][NEWLINE][ICON_BULLET] [ICON_INFLUENCE] Influence: +0.33 per level of the diplomat each turn, on top of the normal change.[NEWLINE][ICON_BULLET] Influence below the resting point recovers 50% faster per level.</Text>
+			<Text>[COLOR_CYAN]DIPLOMATS[ENDCOLOR][NEWLINE][ICON_BULLET] A diplomat goes to another civilization's capital or to a City-State. It never steals, costs no upkeep and stays during wars.[NEWLINE][ICON_BULLET] It can only go to civilizations that give you open borders, and is set up there at once. Once set up, it stays when the open borders end.[NEWLINE][ICON_BULLET] While Blackout (World Congress) is active, and for good after Breakdown of International Relations, diplomats can't stay in other civilizations' capitals.[NEWLINE][ICON_BULLET] It gains a level every 25 turns in the same city. Moving it keeps its level.[NEWLINE][ICON_BULLET] It sees the tiles around its city, like a spy.[NEWLINE][NEWLINE][COLOR_CYAN]In a capital[ENDCOLOR][NEWLINE][ICON_BULLET] [ICON_RESEARCH] Science: 2% of the capital's Science per level of the diplomat, halved while you are at war with them. Only while they know a technology you don't.[NEWLINE][ICON_BULLET] [ICON_GOLD] Gold: +15% per level on your trade routes to that city.[NEWLINE][ICON_BULLET] A Non-Aggression Pact needs a diplomat of one of you in the other's capital when it is made. It stays if the diplomat leaves later.[NEWLINE][NEWLINE][COLOR_CYAN]Hosting diplomats[ENDCOLOR][NEWLINE][ICON_BULLET] Each other civilization's diplomat in your capital gives you +1 Delegate in the World Congress.[NEWLINE][ICON_BULLET] You can expel a diplomat from your capital (Espionage screen). It goes home, loses its progress toward the next level and 1 level (never below level 1), and its owner can't send a diplomat to you for 5 turns.[NEWLINE][NEWLINE][COLOR_CYAN]From level 3[ENDCOLOR][NEWLINE][ICON_BULLET] Your stealing spies in that civilization count 1 level higher.[NEWLINE][ICON_BULLET] If they also have a diplomat in your capital, you both see what the other's level 3+ spies see in other civilizations' cities.[NEWLINE][NEWLINE][COLOR_CYAN]In a City-State[ENDCOLOR][NEWLINE][ICON_BULLET] [ICON_INFLUENCE] Influence: +0.33 per level of the diplomat each turn, on top of the normal change.[NEWLINE][ICON_BULLET] Influence below the resting point recovers 50% faster per level.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_EO_STEAL_LINE">
 			<Text>Every {1_Num} turns: steals about {2_Num} [ICON_RESEARCH] Science (8 turns of this city's) toward one of their technologies. This always succeeds.</Text>
@@ -148843,7 +148894,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Clausewitz's Legacy</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_TT">
-			<Text>Your melee attacks get +25% [ICON_STRENGTH] Combat Strength for 3 turns (melee, gunpowder, armored, mounted melee and naval melee units).[NEWLINE]It does not add to the same bonus from the Clausewitz's Legacy policy or the Clausewitz Book Club; the turns add up.[NEWLINE][NEWLINE]Cooldown: 20 turns.[NEWLINE]Only while you hold Berlin.</Text>
+			<Text>Your melee attacks get +25% [ICON_STRENGTH] Combat Strength for 3 turns (melee, gunpowder, armored, mounted melee and naval melee units).[NEWLINE]It does not add to the same bonus from the Clausewitz's Legacy policy or the Clausewitz Doctrine; the turns add up.[NEWLINE][NEWLINE]Cooldown: 20 turns.[NEWLINE]Only while you hold Berlin.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_WAIT">
 			<Text>Cooldown: ready again in {1_Num} turns.</Text>

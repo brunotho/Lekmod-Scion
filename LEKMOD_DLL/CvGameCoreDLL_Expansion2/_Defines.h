@@ -1807,6 +1807,12 @@ Diversify Spain and Australia's NW Discovery bonus
 // on that turn), Policies.StealTechOnSpyCatch (Advanced Interrogation) steals a random technology from the owner of a caught spy,
 // and while Resolutions.LekmodBlackout is active, diplomats are sent home from other civs' capitals and can't go there.
 #define LEKMOD_SPY_WONDERS
+// Diplomat rules (2026-10-29): placing a diplomat with a civ needs its open borders; the host gets +1 Delegate per foreign
+// diplomat in its capital and may expel them (the diplomat goes home, loses its progress and 1 level, and its owner can't send
+// one there for LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS turns; network code -29); a Non-Aggression Pact needs a diplomat between the two;
+// Breakdown of International Relations sends every diplomat home and keeps them out.
+#define LEKMOD_DIPLOMAT_RULES
+#define LEKMOD_DIPLOMAT_EXPEL_BAN_TURNS 5
 /*ESPIONAGE CHANGES END*/
 
 // The number of free policies for accepting an ideology is set at the start of the turn.

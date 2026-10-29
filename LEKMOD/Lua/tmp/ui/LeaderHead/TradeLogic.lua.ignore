@@ -1,4 +1,22 @@
 -- edit:
+-- LEKMOD: a Non-Aggression Pact needs a diplomat of one side established in the other's capital
+function LekmodNoDiplomatBetween(iA, iB)
+	if (Players[iA].LekmodGetHostedDiplomats == nil) then
+		return false;
+	end
+	for _, entry in ipairs(Players[iA]:LekmodGetHostedDiplomats()) do
+		if (entry.OwnerID == iB and entry.Established) then
+			return false;
+		end
+	end
+	for _, entry in ipairs(Players[iB]:LekmodGetHostedDiplomats()) do
+		if (entry.OwnerID == iA and entry.Established) then
+			return false;
+		end
+	end
+	return true;
+end
+
 -- expandable MP Trade Panel size
 -- for vanilla UI
 ----------------------------------------------------------------        
@@ -1370,6 +1388,8 @@ function ResetDisplay()
 			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_BOTH_NEED_EMBASSY_TT" );
 		elseif (g_pUsTeam:IsDefensivePact(g_iThemTeam)) then
 			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_EXISTS" );
+		elseif (LekmodNoDiplomatBetween ~= nil and LekmodNoDiplomatBetween(g_iUs, g_iThem)) then
+			strDisabledTT = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_DIPLO_NAP_NEEDS_DIPLOMAT" );
 		else
 			strDisabledTT = " " .. Locale.ConvertTextKey( "TXT_KEY_DIPLO_DEF_PACT_NO_AGREEMENT" );
 		end

@@ -910,6 +910,13 @@ void CvDllNetMessageHandler::ResponseGiftUnit(PlayerTypes ePlayer, PlayerTypes e
 		GET_PLAYER(ePlayer).GetEspionage()->LekmodToggleFullTech((uint)eMinor);
 		GC.GetEngineUserInterface()->setDirty(EspionageScreen_DIRTY_BIT, true);
 		return;
+#ifdef LEKMOD_DIPLOMAT_RULES
+	case -29: // the host expels a diplomat from its capital (eMinor = the diplomat's owner)
+		GET_PLAYER(ePlayer).GetEspionage()->LekmodExpelDiplomat((PlayerTypes)eMinor);
+		GC.GetEngineUserInterface()->setDirty(EspionageScreen_DIRTY_BIT, true);
+		GC.GetEngineUserInterface()->setDirty(LeagueScreen_DIRTY_BIT, true);
+		return;
+#endif
 #endif
 #ifdef LEKMOD_CIV_TRAIT_FLAGS
 	case -24: // Mexico: tribute for Influence (eMinor = the City-State)

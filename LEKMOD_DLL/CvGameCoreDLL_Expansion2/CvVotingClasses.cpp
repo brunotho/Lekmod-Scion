@@ -1962,6 +1962,7 @@ CvLeague::CvLeague(void)
 	m_iLekmodVoteTurn = MAX_INT;
 	m_iLekmodLeaderVoteTurn = -1;
 	m_iLekmodPrivilegeTurn = -1;
+	m_aiLekmodRotation.clear();
 	m_bLekmodHostSession = false;
 #ifdef LEKMOD_SPY_WONDERS
 	m_iLekmodExtraLeaderVoteTurn = -1;
@@ -2107,7 +2108,7 @@ void CvLeague::DoTurn(LeagueSpecialSessionTypes eTriggeredSpecialSession)
 			m_bLekmodHostSession = false;
 			StartSession();
 		}
-		else if (iTurn == m_iLekmodVoteTurn - 4 && GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_VOICE) == 0)
+		else if (iTurn == m_iLekmodVoteTurn - 4 && GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_ROTATION) == 0)
 		{
 			LekmodStartHostSession();
 		}
@@ -3865,7 +3866,7 @@ int CvLeague::CalculateStartingVotesForMember(PlayerTypes ePlayer, bool bForceUp
 		if (IsHostMember(ePlayer))
 		{
 #ifdef LEKMOD_CONGRESS_CYCLE
-			iHostVotes += s_aiLekmodHostVotes[LekmodCongressEraIndex()] + (GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_VOICE) != 0 ? 1 : 0);
+			iHostVotes += s_aiLekmodHostVotes[LekmodCongressEraIndex()];
 #else
 			iHostVotes += pInfo->GetHostDelegates();
 #endif
@@ -3896,7 +3897,14 @@ int CvLeague::CalculateStartingVotesForMember(PlayerTypes ePlayer, bool bForceUp
 			PlayerTypes eMajor = (PlayerTypes) i;
 			if (GET_PLAYER(eMajor).isAlive())
 			{
-#ifdef LEKMOD_CONGRESS_CYCLE
+#ifdef LEKMOD_DIPLOMAT_RULES
+				// +1 per other civ's diplomat established in our capital
+				if (eMajor != ePlayer && GET_PLAYER(eMajor).GetEspionage()->LekmodHasDiplomatWith(ePlayer))
+				{
+					iDiplomatVotes += 1;
+				}
+				if (false)
+#elif defined(LEKMOD_CONGRESS_CYCLE)
 				if (false) // no Delegates from Diplomats
 #else
 				if (GET_PLAYER(ePlayer).GetEspionage()->IsMyDiplomatVisitingThem(eMajor))
@@ -4052,9 +4060,14 @@ int CvLeague::CalculateStartingVotesForMember(PlayerTypes ePlayer, bool bForceUp
 			}
 			if (iDiplomatVotes > 0)
 			{
+#ifdef LEKMOD_DIPLOMAT_RULES
+				Localization::String sTemp = Localization::Lookup("TXT_KEY_LEKMOD_LEAGUE_VOTES_HOSTED_DIPLOMATS");
+				sTemp << iDiplomatVotes;
+#else
 				Localization::String sTemp = Localization::Lookup("TXT_KEY_LEAGUE_OVERVIEW_MEMBER_DETAILS_DIPLOMAT_VOTES");
 				sTemp << iDiplomatVotes;
 				sTemp << GET_PLAYER(ePlayer).GetExtraVotesPerDiplomat();
+#endif
 				pMember->sVoteSources += sTemp.toUTF8();
 			}
 			if (iWonderVotes > 0)
@@ -6079,7 +6092,7 @@ void CvLeague::CheckProjectAchievements()
 static const char* s_aszLekmodResolutionColumns[NUM_LEKMOD_RESOLUTION_COLUMNS] =
 {
 	"LekmodDurationTurns", "LekmodSpaceshipCostModifier", "LekmodAttackModifier", "LekmodDevelopmentFund", "LekmodBreakdown",
-	"LekmodCapturedCapitalVotes", "LekmodLuxuryHappinessPercent", "LekmodBlackout", "LekmodVoiceForTheVoiceless", "LekmodExperienceModifier",
+	"LekmodCapturedCapitalVotes", "LekmodLuxuryHappinessPercent", "LekmodBlackout", "LekmodRotatingPresidency", "LekmodExperienceModifier",
 	"LekmodAirExperienceModifier", "LekmodTargetVotes", "LekmodTargetCombatModifier", "LekmodTargetNoTrade", "LekmodFirstTechGoldPercent",
 	"LekmodTechDiscountPerCiv", "LekmodClimateReparations", "LekmodHappinessPerFactory", "LekmodTransparency", "LekmodTourismModifier",
 	"LekmodCivilLiberties", "LekmodNukeCostModifier", "LekmodStealSlower"
@@ -6356,27 +6369,74 @@ void CvLeague::LekmodDoExpiry()
 	}
 }
 
-/// Voice for the Voiceless: the human member with the fewest votes hosts (ties at random)
-void CvLeague::LekmodPickVoicelessHost()
+/// Rotating Presidency: the human civs in alphabetical order (fixed the first time it is enacted, AIs skipped);
+/// each session takes the next two places as host and second proposer, so with an even count the second round swaps the pairs
+/// (ABCDEF: A/B, C/D, E/F, B/A, D/C, F/E, ...). Civs that are gone drop out and the rest move up.
+void CvLeague::LekmodPickRotationHost()
 {
-	std::vector<PlayerTypes> vBest;
-	int iFewest = MAX_INT;
-	for (uint i = 0; i < m_vMembers.size(); i++)
+	if (m_aiLekmodRotation.empty())
 	{
-		PlayerTypes ePlayer = m_vMembers[i].ePlayer;
-		if (!GET_PLAYER(ePlayer).isAlive() || GET_PLAYER(ePlayer).isMinorCiv() || !LekmodIsHostCandidate(ePlayer))
-			continue;
-		const int iVotes = CalculateStartingVotesForMember(ePlayer);
-		if (iVotes < iFewest)
+		std::vector< std::pair<CvString, int> > vOrder;
+		for (uint i = 0; i < m_vMembers.size(); i++)
 		{
-			iFewest = iVotes;
-			vBest.clear();
+			PlayerTypes ePlayer = m_vMembers[i].ePlayer;
+			CvPlayer& kPlayer = GET_PLAYER(ePlayer);
+			if (!kPlayer.isAlive() || kPlayer.isMinorCiv() || !kPlayer.isHuman())
+				continue;
+			// the civilization's type key: the same on every machine whatever the language (Venice = CIVILIZATION_VENEZ)
+			CvCivilizationInfo* pCiv = GC.getCivilizationInfo(kPlayer.getCivilizationType());
+			vOrder.push_back(std::make_pair(CvString(pCiv ? pCiv->GetType() : ""), (int)ePlayer));
 		}
-		if (iVotes == iFewest)
-			vBest.push_back(ePlayer);
+		std::sort(vOrder.begin(), vOrder.end());
+		m_aiLekmodRotation.push_back(0);
+		m_aiLekmodRotation.push_back(NO_PLAYER);
+		for (uint i = 0; i < vOrder.size(); i++)
+			m_aiLekmodRotation.push_back(vOrder[i].second);
 	}
-	if (!vBest.empty())
-		SetHostMember(vBest.size() == 1 ? vBest[0] : vBest[GC.getGame().getJonRandNum((int)vBest.size(), "Lekmod voiceless host")]);
+
+	std::vector<PlayerTypes> vLiving;
+	for (uint i = 2; i < m_aiLekmodRotation.size(); i++)
+	{
+		PlayerTypes ePlayer = (PlayerTypes)m_aiLekmodRotation[i];
+		if (ePlayer >= 0 && ePlayer < MAX_MAJOR_CIVS && GET_PLAYER(ePlayer).isAlive() && GET_PLAYER(ePlayer).isHuman() && IsMember(ePlayer))
+			vLiving.push_back(ePlayer);
+	}
+	m_aiLekmodRotation[1] = NO_PLAYER;
+	const int iNum = (int)vLiving.size();
+	if (iNum == 0)
+		return;
+
+	const int iSession = m_aiLekmodRotation[0];
+	m_aiLekmodRotation[0] = iSession + 1;
+	if (iNum == 1)
+	{
+		SetHostMember(vLiving[0]);
+		return;
+	}
+	int iHost, iSecond;
+	if (iNum % 2 == 1)
+	{
+		iHost = (2 * iSession) % iNum;
+		iSecond = (2 * iSession + 1) % iNum;
+	}
+	else
+	{
+		const int iPairs = iNum / 2;
+		const int iPair = iSession % iPairs;
+		const bool bSwapped = ((iSession / iPairs) % 2) == 1;
+		iHost = 2 * iPair + (bSwapped ? 1 : 0);
+		iSecond = 2 * iPair + (bSwapped ? 0 : 1);
+	}
+	m_aiLekmodRotation[1] = vLiving[iSecond];
+	SetHostMember(vLiving[iHost]);
+}
+
+/// Rotating Presidency: this session's second proposer (NO_PLAYER when the rotation isn't running)
+PlayerTypes CvLeague::LekmodGetRotationSecond() const
+{
+	if (m_aiLekmodRotation.size() < 2 || GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_ROTATION) == 0)
+		return NO_PLAYER;
+	return (PlayerTypes)m_aiLekmodRotation[1];
 }
 #endif
 
@@ -6405,11 +6465,11 @@ void CvLeague::LekmodDoTurnLate()
 		}
 	}
 
-	// Voice for the Voiceless: no host vote; the civ with the fewest votes hosts and proposals open
-	if (!IsInSession() && iTurn == m_iLekmodVoteTurn - 3 && m_iLekmodPrivilegeTurn < iTurn && GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_VOICE) != 0
+	// Rotating Presidency: no host vote; the rotation names the host (and the second proposer) and proposals open
+	if (!IsInSession() && iTurn == m_iLekmodVoteTurn - 3 && m_iLekmodPrivilegeTurn < iTurn && GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_ROTATION) != 0
 		&& GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_BREAKDOWN) == 0)
 	{
-		LekmodPickVoicelessHost();
+		LekmodPickRotationHost();
 		LekmodStartProposals(iTurn, /*bCallForProposals*/ true);
 	}
 	LekmodDoExpiry();
@@ -6583,6 +6643,13 @@ void CvLeague::LekmodAutoPropose(PlayerTypes ePlayer)
 /// Most votes among members without a privilege; ties at random
 CvLeague::Member* CvLeague::LekmodPickSecondProposer()
 {
+	const PlayerTypes eRotationSecond = LekmodGetRotationSecond();
+	if (eRotationSecond != NO_PLAYER)
+	{
+		Member* pSecond = GetMember(eRotationSecond);
+		if (pSecond != NULL && !pSecond->bMayPropose && CanEverPropose(eRotationSecond) && eRotationSecond != GetHostMember())
+			return pSecond;
+	}
 	std::vector<Member*> vBest;
 	int iBestVotes = -1;
 	for (uint i = 0; i < m_vMembers.size(); i++)
@@ -8443,6 +8510,18 @@ FDataStream& operator>>(FDataStream& loadFrom, CvLeague& writeTo)
 		writeTo.m_iLekmodExtraLeaderVoteTurn = iExtraLeaderVoteTurn;
 #endif
 	}
+	writeTo.m_aiLekmodRotation.clear();
+	if (uiVersion >= 20)
+	{
+		int iNumEntries = 0;
+		loadFrom >> iNumEntries;
+		for (int i = 0; i < iNumEntries; i++)
+		{
+			int iEntry;
+			loadFrom >> iEntry;
+			writeTo.m_aiLekmodRotation.push_back(iEntry);
+		}
+	}
 	if (uiVersion < 15)
 	{
 		writeTo.m_iLekmodVoteTurn = (writeTo.m_iTurnsUntilSession == MAX_INT) ? MAX_INT : GC.getGame().getGameTurn() + writeTo.m_iTurnsUntilSession;
@@ -8459,7 +8538,7 @@ FDataStream& operator>>(FDataStream& loadFrom, CvLeague& writeTo)
 FDataStream& operator<<(FDataStream& saveTo, const CvLeague& readFrom)
 {
 #ifdef LEKMOD_CONGRESS_CYCLE
-	uint uiVersion = 19;
+	uint uiVersion = 20;
 #else
 	uint uiVersion = 14;
 #endif
@@ -8569,6 +8648,9 @@ FDataStream& operator<<(FDataStream& saveTo, const CvLeague& readFrom)
 #else
 	saveTo << -1;
 #endif
+	saveTo << (int)readFrom.m_aiLekmodRotation.size();
+	for (uint i = 0; i < readFrom.m_aiLekmodRotation.size(); i++)
+		saveTo << readFrom.m_aiLekmodRotation[i];
 #endif
 
 	return saveTo;

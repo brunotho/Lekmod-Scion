@@ -1834,6 +1834,50 @@ Controls.LekmodLater:RegisterCallback(Mouse.eLClick, function()
 	Controls.ChooseConfirm:SetHide(true);
 end);
 
+-- LEKMOD: other civilizations' diplomats in our capital (+1 Delegate each); the button asks about each in turn: Expel / Keep
+function LekmodPromptExpel(diplomats, index)
+	local entry = diplomats[index];
+	if (entry == nil) then
+		return;
+	end
+	local adjective = Players[entry.OwnerID]:GetCivilizationAdjectiveKey();
+	g_ConfirmAction = function()
+		Network.SendGiftUnit(entry.OwnerID, -29);
+	end
+	g_DenyAction = function()
+		LekmodPromptExpel(diplomats, index + 1);
+	end
+	Controls.ConfirmText:SetText(Locale.Lookup("TXT_KEY_LEKMOD_EO_EXPEL_QUESTION", adjective, entry.Name) .. "[NEWLINE][NEWLINE]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_EXPEL_TT"));
+	Controls.ConfirmContent:CalculateSize();
+	local width, height = Controls.ConfirmContent:GetSizeVal();
+	Controls.ConfirmFrame:SetSizeVal(width + 60, height + 120);
+	Controls.ChooseConfirm:SetHide(false);
+	Controls.YesString:LocalizeAndSetText("TXT_KEY_LEKMOD_EO_EXPEL");
+	Controls.NoString:LocalizeAndSetText("TXT_KEY_NO_BUTTON");
+end
+
+function LekmodRefreshHostedDiplomats()
+	if (Controls.LekmodHostedButton == nil) then
+		return;
+	end
+	local pPlayer = Players[Game.GetActivePlayer()];
+	if (pPlayer.LekmodGetHostedDiplomats == nil) then
+		Controls.LekmodHostedButton:SetHide(true);
+		return;
+	end
+	local diplomats = pPlayer:LekmodGetHostedDiplomats();
+	Controls.LekmodHostedButton:SetHide(#diplomats == 0);
+	Controls.LekmodHostedLabel:SetText(Locale.Lookup("TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMATS") .. ": " .. #diplomats);
+	local tips = { Locale.Lookup("TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMATS_TT"), "" };
+	for _, entry in ipairs(diplomats) do
+		table.insert(tips, "[ICON_BULLET]" .. Locale.Lookup("TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMAT_LINE", Players[entry.OwnerID]:GetCivilizationAdjectiveKey(), entry.Name, entry.Level));
+	end
+	Controls.LekmodHostedButton:SetToolTipString(table.concat(tips, "[NEWLINE]"));
+	Controls.LekmodHostedButton:RegisterCallback(Mouse.eLClick, function()
+		LekmodPromptExpel(diplomats, 1);
+	end);
+end
+
 function Refresh()
 	
 	function TestEspionageStarted()
@@ -1861,6 +1905,7 @@ function Refresh()
 		RefreshIntrigue();
 		LekmodPromptCaughtSpy();
 	end
+	LekmodRefreshHostedDiplomats();
 end
 Events.SerialEventEspionageScreenDirty.Add(Refresh);
 
