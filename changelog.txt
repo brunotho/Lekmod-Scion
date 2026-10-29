@@ -2680,7 +2680,7 @@ Tags: policies, naval, units, buildings
 - Note: the branch uses the Commerce branch picture until new Commerce art arrives
 - Dev: the No Quitters script that granted it was still loaded by InGame.lua; no longer loaded
 - DLL: Policy_LekmodFreeBuildings (a specific building in captured or newly founded cities, replacing the city's building of its class; water buildings only in coastal cities), Policies.LekmodStarRevealLength (CvPlayer::LekmodDoPolicyStarReveal), LEKMOD_SPECS_2026_10_29
-- Dev: 2026-10-29: the opener's free Conquistador and Galleass became a free Settler and the star-shaped reveal (first five then six wobbly frayed arms, then a clean filled five-pointed star, points 20 tiles out, user); Colonial Administration's Courthouse yields 3 -> 2 and the Slave Market; Colonial Infrastructure's Feitoria (user)
+- Dev: 2026-10-29: the opener's free Conquistador and Galleass became a free Settler and the star-shaped reveal (first five then six wobbly frayed arms, then a clean filled five-pointed star, then a compass rose: arms 20 tiles N/E/S/W and 10 on the diagonals, user); Colonial Administration's Courthouse yields 3 -> 2 and the Slave Market; Colonial Infrastructure's Feitoria (user)
 - DLL: Policies.ResistanceTimeModifier, ConquestFreeUnitClass, NewCityFreeBuildingClass, NewCityFreeUnitClass, FreeTilesNewCities, EarlyBuildingProductionModifier/EarlyBuildingEraType, FreeUnitClassNearWater/FreeUnitClassOnWater; tables Policy_CityYieldIfBuildingClass, Policy_CityHappinessIfBuildingClass (largest value counts; Military Tradition and Military Caste moved there), Policy_BuildingTerrainYieldChanges (LEKMOD_POLICY_REWORK)
 
 WORLD CONGRESS SESSIONS (LEAGUE_SESSIONS)

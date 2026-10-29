@@ -29917,40 +29917,28 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 	}
 }
 
-/// Policies.LekmodStarRevealLength (Expansionism opener): a clean five-pointed star of revealed tiles around the capital,
-/// the way a child draws one: points this many tiles out, the inner corners at 45% of that (a fat star), turned at random.
-/// The disk of radius 3 around the capital is always revealed. Uses the synced random numbers (one roll for the turn).
+/// Policies.LekmodStarRevealLength (Expansionism opener): a compass rose of revealed tiles around the capital: four slim arms
+/// north, east, south and west, this many tiles long, and four half as long on the diagonals, each about 3 tiles wide at the
+/// center and 1 at the tip; plus the disk of radius 3 around the capital. Fixed shape, no random numbers (user, 2026-10-29).
 void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 {
 	CvPolicyEntry* pkPolicy = GC.getPolicyInfo(ePolicy);
 	CvCity* pCapital = getCapitalCity();
 	if (pkPolicy == NULL || pkPolicy->GetLekmodStarRevealLength() <= 0 || pCapital == NULL)
 		return;
-	const int iOuter = pkPolicy->GetLekmodStarRevealLength();
-	const float fOuter = (float)iOuter;
-	const float fInner = fOuter * 0.45f;
+	const int iLong = pkPolicy->GetLekmodStarRevealLength();
 	const float fPi = 3.14159265f;
-	const float fStart = GC.getGame().getJonRandNum(72, "Lekmod star reveal angle") * fPi / 180.0f; // 5-fold: 72 degrees cover all turns
-	// the ten corners: points and inner corners alternating, the first point straight up plus the turn
-	float afX[10], afY[10];
-	for (int i = 0; i < 10; i++)
-	{
-		const float fA = -fPi / 2 + fStart + i * fPi / 5;
-		const float fR = (i % 2 == 0) ? fOuter : fInner;
-		afX[i] = fR * cos(fA);
-		afY[i] = fR * sin(fA);
-	}
 	const int iCX = pCapital->getX();
 	const int iCY = pCapital->getY();
 	// hex grid to flat coordinates: odd rows are shifted half a tile to the right, rows are sqrt(3)/2 apart
 	const float fCenterX = iCX + ((iCY & 1) ? 0.5f : 0.0f);
 	const float fCenterY = iCY * 0.866f;
 	const TeamTypes eTeam = getTeam();
-	for (int iDX = -iOuter - 1; iDX <= iOuter + 1; iDX++)
+	for (int iDX = -iLong - 1; iDX <= iLong + 1; iDX++)
 	{
-		for (int iDY = -iOuter - 1; iDY <= iOuter + 1; iDY++)
+		for (int iDY = -iLong - 1; iDY <= iLong + 1; iDY++)
 		{
-			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iOuter + 1);
+			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iLong + 1);
 			if (pPlot == NULL)
 				continue;
 			bool bReveal = plotDistance(iCX, iCY, pPlot->getX(), pPlot->getY()) <= 3;
@@ -29959,11 +29947,21 @@ void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 				const int iRow = iCY + iDY;
 				const float fX = (iCX + iDX) + ((iRow & 1) ? 0.5f : 0.0f) - fCenterX;
 				const float fY = iRow * 0.866f - fCenterY;
-				// point in polygon (even-odd rule over the ten edges)
-				for (int i = 0, j = 9; i < 10; j = i++)
+				const float fR = sqrt(fX * fX + fY * fY);
+				for (int iArm = 0; iArm < 8 && !bReveal; iArm++)
 				{
-					if (((afY[i] > fY) != (afY[j] > fY)) && (fX < (afX[j] - afX[i]) * (fY - afY[i]) / (afY[j] - afY[i]) + afX[i]))
-						bReveal = !bReveal;
+					const float fLength = (iArm % 2 == 0) ? (float)iLong : iLong / 2.0f;
+					if (fR > fLength)
+						continue;
+					const float fArmX = cos(iArm * fPi / 4);
+					const float fArmY = sin(iArm * fPi / 4);
+					const float fAlong = fX * fArmX + fY * fArmY;
+					if (fAlong <= 0)
+						continue;
+					const float fAcross = fabs(fX * fArmY - fY * fArmX);
+					const float fShare = MIN(1.0f, MAX(0.0f, (fR - 3.0f) / (fLength - 3.0f)));
+					if (fAcross <= 1.3f - 0.8f * fShare)
+						bReveal = true;
 				}
 			}
 			if (bReveal)
