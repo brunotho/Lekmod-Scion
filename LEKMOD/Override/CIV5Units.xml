@@ -48723,7 +48723,7 @@
 			<PortraitIndex>0</PortraitIndex>
 			<IconAtlas>LEKMOD_MINISTRY_OF_TRUTH_ATLAS</IconAtlas>
 		</Row>
-		<!-- LEKMOD: Extraordinary Session (NEW world wonder): Globalization, 1300 Production on quick; +2 votes, an extra World Leader vote 2 turns after it is built -->
+		<!-- LEKMOD: Extraordinary Session (NEW world wonder): Globalization, 1100 Production on quick; +2 votes, an extra World Leader vote 2 turns after it is built -->
 		<Row>
 			<ID>277</ID>
 			<Type>BUILDING_LEKMOD_EXTRAORDINARY_SESSION</Type>
@@ -48733,7 +48733,7 @@
 			<Strategy>TXT_KEY_BUILDING_LEKMOD_EXTRAORDINARY_SESSION_HELP</Strategy>
 			<Help>TXT_KEY_BUILDING_LEKMOD_EXTRAORDINARY_SESSION_HELP</Help>
 			<NukeImmune>true</NukeImmune>
-			<Cost>1941</Cost>
+			<Cost>1642</Cost>
 			<HurryCostModifier>-1</HurryCostModifier>
 			<ConquestProb>100</ConquestProb>
 			<PrereqTech>TECH_GLOBALIZATION</PrereqTech>
@@ -49841,7 +49841,7 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_HUBBLE"/>
-			<Set Cost="1568" GreatPeopleRateChange="5"/>
+			<Set Cost="1642" GreatPeopleRateChange="5"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_GREAT_LIGHTHOUSE"/>
@@ -291877,7 +291877,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_LEKMOD_MINISTRY_OF_TRUTH"/>
-			<Set Cost="1941"/>
+			<Set Cost="1642"/>
 		</Update>
 	</Buildings>
 	<!-- Giant Death Robot can't pick Sentry (Unit_LekmodBlockedPromotions, LEKMOD_SPECS_2026_10_23) -->

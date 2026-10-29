@@ -2352,7 +2352,7 @@ HUBBLE SPACE TELESCOPE (BUILDING_HUBBLE)
 ----------------------------------------
 Tags: world wonders, wonders
 It keeps +100% Production toward Spaceship Parts.
-- Changed: costs 1050 (was 837)
+- Changed: costs 1100 (was 837)
 - Changed: 5 Scientist points (was 3)
 - Removed: its Science and the free Recycling Center
 - Added: Spaceship Parts built in any of your cities start with 15 XP
@@ -2649,7 +2649,7 @@ Tags: policies
 - Dev: Aesthetics tooltips say "culture buildings" (Monument, Amphitheater, Opera House, Museum, Broadcast Tower) instead of listing them
 - Note: Flourishing of the Arts' World Wonder Culture and Tourism were 34.11 effects missing in 35.x (its tooltip already promised them)
 - DLL: Policies.GreatWorkYieldModifier, Resources.PolicyRevealOr (LEKMOD_POLICY_REWORK)
-- Removed: Cultural Centers: +1 Happiness from each Guild
+- Dev: Cultural Centers: +1 Happiness from each Guild is gone (not a player line: Aesthetics is rebuilt from scratch, user 2026-10-29)
 - Dev: opener 25% -> 20% and the finisher text without "even before Archaeology" (2026-10-22) show in the branch text above
 - Dev: (development step, covered by the line or tooltip above) adopting Aesthetics creates a Great Work in an empty slot (closest to the capital first; none if no slot is free)
 - Dev: (development step, covered by the line or tooltip above) Fine Arts: every Writers' Guild, Artists' Guild and Musicians' Guild has 1 more specialist slot of its kind (was a free Scriptorium, Gallery and Conservatory in your first 5 cities)
@@ -2866,7 +2866,7 @@ Tags: world wonders, espionage, wonders
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
 -----------------------------------------------------------
 Tags: world wonders, espionage, wonders
-- Added: World Wonder at Telecommunications, 1300 Production
+- Added: World Wonder at Telecommunications, 1100 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
 - Added: other players' Demographics screens are blacked out
@@ -2876,7 +2876,7 @@ Tags: world wonders, espionage, wonders
 EXTRAORDINARY SESSION (NEW) (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
 -------------------------------------------------------------------
 Tags: world wonders, world congress, wonders
-- Added: World Wonder at Globalization, 1300 Production
+- Added: World Wonder at Globalization, 1100 Production
 - Added: +2 Delegates in the World Congress
 - Added: an extra World Leader vote 2 turns after it is built (3 turns if a regular vote falls on that turn); the regular votes keep their schedule
 - DLL: Buildings.ExtraWorldLeaderVote, CvLeague::LekmodScheduleExtraLeaderVote (m_iLekmodExtraLeaderVoteTurn, league save version 19)
