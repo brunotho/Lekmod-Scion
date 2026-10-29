@@ -30028,11 +30028,19 @@ void CvPlayer::LekmodDoPolicyExplorationReveal(PolicyTypes ePolicy)
 					pSide->setRevealed(eTeam, true);
 			}
 		}
-		for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
+		// the core of their empire, looked at with more care: everything within 2 tiles, most tiles 3 out, some 4 out
+		for (int iDX = -4; iDX <= 4; iDX++)
 		{
-			CvPlot* pAround = plotDirection(pTarget->getX(), pTarget->getY(), (DirectionTypes)iDir);
-			if (pAround != NULL)
-				pAround->setRevealed(eTeam, true);
+			for (int iDY = -4; iDY <= 4; iDY++)
+			{
+				CvPlot* pAround = plotXYWithRangeCheck(pTarget->getX(), pTarget->getY(), iDX, iDY, 4); // hex-space offsets, so all of them is the 4-tile hexagon
+				if (pAround == NULL)
+					continue;
+				const int iRange = plotDistance(pTarget->getX(), pTarget->getY(), pAround->getX(), pAround->getY());
+				const int iRoll = (int)(LekmodRevealHash(pAround->getX(), pAround->getY(), uiSeed + 13) % 100);
+				if (iRange <= 2 || (iRange == 3 && iRoll < 70) || (iRange == 4 && iRoll < 25))
+					pAround->setRevealed(eTeam, true);
+			}
 		}
 	}
 
