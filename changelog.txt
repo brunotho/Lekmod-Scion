@@ -902,7 +902,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
 - Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
-- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Reworked: {Rationalism} POLICY_BRANCH_RATIONALISM
   | Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER] Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]+10% [ICON_RESEARCH] Science in all cities[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources provide double the resource
 - Reworked: {Autocracy} POLICY_THIRD_ALTERNATIVE
@@ -1603,7 +1603,7 @@ A late-game settler that founds ready-made frontier cities.
 CONQUISTADOR (UNIT_SPANISH_CONQUISTADOR, UNIT_CONQUISTADOR_SHARED)
 ------------------------------------------------------------------
 Tags: units, civs, policies
-- Changed: 17 Strength (was 16), costs 71 Production (was 92), needs 2 Horses and 1 Iron
+- Changed: costs 71 Production (was 92), needs 2 Horses and 1 Iron
 - Changed: a city it founds starts with 2 more Population
 - Removed: its extra sight
 - Added: disembarking costs only 1 movement (Amphibious II)
@@ -1814,7 +1814,7 @@ URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
 ----------------------------------------------------------------
 Tags: buildings, wonders
 Subsection: Wonders and projects
-- Added: Uranium Mapping Project (Plastics, cost 335): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
 - DLL: LEKMOD_BUILDING_OBSOLETE_NO_CONSTRUCT (Buildings.ObsoleteTech blocks construction)
@@ -2849,7 +2849,7 @@ Tags: world wonders, espionage, wonders
 MINISTRY OF TRUTH (NEW) (BUILDING_LEKMOD_MINISTRY_OF_TRUTH)
 -----------------------------------------------------------
 Tags: world wonders, espionage, wonders
-- Added: World Wonder at Telecommunications, 1600 Production
+- Added: World Wonder at Telecommunications, 1300 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
 - Added: other players' Demographics screens are blacked out
@@ -2859,7 +2859,7 @@ Tags: world wonders, espionage, wonders
 EXTRAORDINARY SESSION (NEW) (BUILDING_LEKMOD_EXTRAORDINARY_SESSION)
 -------------------------------------------------------------------
 Tags: world wonders, world congress, wonders
-- Added: World Wonder at Globalization, 1600 Production
+- Added: World Wonder at Globalization, 1300 Production
 - Added: +2 Delegates in the World Congress
 - Added: an extra World Leader vote 2 turns after it is built (3 turns if a regular vote falls on that turn); the regular votes keep their schedule
 - DLL: Buildings.ExtraWorldLeaderVote, CvLeague::LekmodScheduleExtraLeaderVote (m_iLekmodExtraLeaderVoteTurn, league save version 19)

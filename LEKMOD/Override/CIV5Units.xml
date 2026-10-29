@@ -48609,7 +48609,7 @@
 			<Help>TXT_KEY_BUILDING_URANIUM_MAPPING_PROJECT_HELP</Help>
 			<NeverCapture>true</NeverCapture>
 			<NukeImmune>true</NukeImmune>
-			<Cost>500</Cost>
+			<Cost>375</Cost>
 			<HurryCostModifier>-1</HurryCostModifier>
 			<PrereqTech>TECH_PLASTIC</PrereqTech>
 			<RevealResource>RESOURCE_URANIUM</RevealResource>
@@ -48712,7 +48712,7 @@
 			<PortraitIndex>0</PortraitIndex>
 			<IconAtlas>LEKMOD_MINISTRY_OF_TRUTH_ATLAS</IconAtlas>
 		</Row>
-		<!-- LEKMOD: Extraordinary Session (NEW world wonder): Globalization, 1600 Production on quick; +2 votes, an extra World Leader vote 2 turns after it is built -->
+		<!-- LEKMOD: Extraordinary Session (NEW world wonder): Globalization, 1300 Production on quick; +2 votes, an extra World Leader vote 2 turns after it is built -->
 		<Row>
 			<ID>277</ID>
 			<Type>BUILDING_LEKMOD_EXTRAORDINARY_SESSION</Type>
@@ -48722,7 +48722,7 @@
 			<Strategy>TXT_KEY_BUILDING_LEKMOD_EXTRAORDINARY_SESSION_HELP</Strategy>
 			<Help>TXT_KEY_BUILDING_LEKMOD_EXTRAORDINARY_SESSION_HELP</Help>
 			<NukeImmune>true</NukeImmune>
-			<Cost>2389</Cost>
+			<Cost>1941</Cost>
 			<HurryCostModifier>-1</HurryCostModifier>
 			<ConquestProb>100</ConquestProb>
 			<PrereqTech>TECH_GLOBALIZATION</PrereqTech>
@@ -275246,7 +275246,7 @@
 			<Civilopedia>TXT_KEY_CIV5_SPAIN_CONQUISTADOR_TEXT</Civilopedia>
 			<Strategy>TXT_KEY_CIV5_SPAIN_CONQUISTADOR_STRATEGY</Strategy>
 			<Help>TXT_KEY_CIV5_SPAIN_CONQUISTADOR_HELP</Help>
-			<Combat>17</Combat>
+			<Combat>16</Combat>
 			<Cost>0</Cost>
 			<FaithCost>270</FaithCost>
 			<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
@@ -275280,7 +275280,7 @@
 			<Civilopedia>TXT_KEY_CIV5_SPAIN_CONQUISTADOR_TEXT</Civilopedia>
 			<Strategy>TXT_KEY_CIV5_SPAIN_CONQUISTADOR_STRATEGY</Strategy>
 			<Help>TXT_KEY_UNIT_HELP_CONQUISTADOR_SHARED</Help>
-			<Combat>17</Combat>
+			<Combat>16</Combat>
 			<Cost>0</Cost>
 			<FaithCost>270</FaithCost>
 			<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
@@ -291811,7 +291811,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_LEKMOD_MINISTRY_OF_TRUTH"/>
-			<Set Cost="2389"/>
+			<Set Cost="1941"/>
 		</Update>
 	</Buildings>
 	<!-- Giant Death Robot can't pick Sentry (Unit_LekmodBlockedPromotions, LEKMOD_SPECS_2026_10_23) -->
@@ -291993,7 +291993,7 @@
 			<Civilopedia>TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_PEDIA</Civilopedia>
 			<Strategy>TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_STRATEGY</Strategy>
 			<Help>TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_HELP</Help>
-			<Combat>10</Combat>
+			<Combat>11</Combat>
 			<Cost>90</Cost>
 			<FaithCost>180</FaithCost>
 			<RequiresFaithPurchaseEnabled>true</RequiresFaithPurchaseEnabled>
