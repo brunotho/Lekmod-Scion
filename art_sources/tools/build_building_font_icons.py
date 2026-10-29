@@ -20,7 +20,14 @@ tex = Image.new("RGBA", (TEX, TEX), (0, 0, 0, 0))
 glyphs = []
 for n, (idx, _name) in enumerate(ICONS):
     x, y = (idx % 8) * 64, (idx // 8) * 64
-    icon = atlas.crop((x, y, x + 64, y + 64)).resize((SIZE, SIZE), Image.LANCZOS)
+    cell = atlas.crop((x, y, x + 64, y + 64))
+    # the round picture sits inside the 64 px cell with a transparent margin: crop to the circle so it fills the
+    # glyph like the base game's building font icons (a whole cell came out much smaller, user 2026-10-29)
+    box = cell.split()[3].point(lambda a: 255 if a > 127 else 0).getbbox() or (0, 0, 64, 64)
+    side = max(box[2] - box[0], box[3] - box[1])
+    cx, cy = (box[0] + box[2]) / 2.0, (box[1] + box[3]) / 2.0
+    box = (int(round(cx - side / 2.0)), int(round(cy - side / 2.0)), int(round(cx + side / 2.0)), int(round(cy + side / 2.0)))
+    icon = cell.crop(box).resize((SIZE, SIZE), Image.LANCZOS)
     u, v = (n * SIZE) % (TEX - TEX % SIZE), (n * SIZE) // (TEX - TEX % SIZE) * SIZE
     tex.paste(icon, (u, v))
     glyphs.append('        <glyph ch="%d" u="%d" v="%d" width="%d" height="%d" a="0" b="%d" c="0" originx="0" originy="%d" />'

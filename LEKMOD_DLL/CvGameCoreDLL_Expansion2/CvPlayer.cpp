@@ -29917,29 +29917,28 @@ void CvPlayer::LekmodGrantPolicyBuildings(CvCity* pCity, bool bConquest)
 	}
 }
 
-/// Policies.LekmodStarRevealLength (Expansionism opener): around the capital, a disk of radius 3 plus six rough arms of
-/// 15 tiles up to this length, like a hand-drawn star: they wobble a little, get thinner further out and fray at their tips.
-/// Uses the synced random numbers, so every machine reveals the same tiles.
+/// Policies.LekmodStarRevealLength (Expansionism opener): a clean five-pointed star of revealed tiles around the capital,
+/// the way a child draws one: points this many tiles out, the inner corners at 45% of that (a fat star), turned at random.
+/// The disk of radius 3 around the capital is always revealed. Uses the synced random numbers (one roll for the turn).
 void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 {
 	CvPolicyEntry* pkPolicy = GC.getPolicyInfo(ePolicy);
 	CvCity* pCapital = getCapitalCity();
 	if (pkPolicy == NULL || pkPolicy->GetLekmodStarRevealLength() <= 0 || pCapital == NULL)
 		return;
-	const int iMaxLength = pkPolicy->GetLekmodStarRevealLength();
-	const int iNumArms = 6;
+	const int iOuter = pkPolicy->GetLekmodStarRevealLength();
+	const float fOuter = (float)iOuter;
+	const float fInner = fOuter * 0.45f;
 	const float fPi = 3.14159265f;
-	float afAngle[iNumArms];
-	float afWobblePhase[iNumArms];
-	int aiLength[iNumArms];
-	const float fStart = GC.getGame().getJonRandNum(360, "Lekmod star reveal angle") * fPi / 180.0f;
-	for (int iArm = 0; iArm < iNumArms; iArm++)
+	const float fStart = GC.getGame().getJonRandNum(72, "Lekmod star reveal angle") * fPi / 180.0f; // 5-fold: 72 degrees cover all turns
+	// the ten corners: points and inner corners alternating, the first point straight up plus the turn
+	float afX[10], afY[10];
+	for (int i = 0; i < 10; i++)
 	{
-		// evenly spread, each off by up to +-12 degrees
-		afAngle[iArm] = fStart + iArm * 2.0f * fPi / iNumArms + (GC.getGame().getJonRandNum(25, "Lekmod star reveal arm") - 12) * fPi / 180.0f;
-		afWobblePhase[iArm] = GC.getGame().getJonRandNum(628, "Lekmod star reveal wobble") / 100.0f;
-		const int iMinLength = MIN(15, iMaxLength);
-		aiLength[iArm] = iMinLength + GC.getGame().getJonRandNum(iMaxLength - iMinLength + 1, "Lekmod star reveal length");
+		const float fA = -fPi / 2 + fStart + i * fPi / 5;
+		const float fR = (i % 2 == 0) ? fOuter : fInner;
+		afX[i] = fR * cos(fA);
+		afY[i] = fR * sin(fA);
 	}
 	const int iCX = pCapital->getX();
 	const int iCY = pCapital->getY();
@@ -29947,42 +29946,24 @@ void CvPlayer::LekmodDoPolicyStarReveal(PolicyTypes ePolicy)
 	const float fCenterX = iCX + ((iCY & 1) ? 0.5f : 0.0f);
 	const float fCenterY = iCY * 0.866f;
 	const TeamTypes eTeam = getTeam();
-	for (int iDX = -iMaxLength - 1; iDX <= iMaxLength + 1; iDX++)
+	for (int iDX = -iOuter - 1; iDX <= iOuter + 1; iDX++)
 	{
-		for (int iDY = -iMaxLength - 1; iDY <= iMaxLength + 1; iDY++)
+		for (int iDY = -iOuter - 1; iDY <= iOuter + 1; iDY++)
 		{
-			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iMaxLength + 1);
+			CvPlot* pPlot = plotXYWithRangeCheck(iCX, iCY, iDX, iDY, iOuter + 1);
 			if (pPlot == NULL)
 				continue;
-			const int iDist = plotDistance(iCX, iCY, pPlot->getX(), pPlot->getY());
-			bool bReveal = iDist <= 3;
+			bool bReveal = plotDistance(iCX, iCY, pPlot->getX(), pPlot->getY()) <= 3;
 			if (!bReveal)
 			{
-				// flat offset from the capital (unwrapped: plotXYWithRangeCheck already took the short way)
 				const int iRow = iCY + iDY;
 				const float fX = (iCX + iDX) + ((iRow & 1) ? 0.5f : 0.0f) - fCenterX;
 				const float fY = iRow * 0.866f - fCenterY;
-				const float fR = sqrt(fX * fX + fY * fY);
-				const float fTheta = atan2(fY, fX);
-				for (int iArm = 0; iArm < iNumArms && !bReveal; iArm++)
+				// point in polygon (even-odd rule over the ten edges)
+				for (int i = 0, j = 9; i < 10; j = i++)
 				{
-					if (iDist > aiLength[iArm])
-						continue;
-					const float fArmAngle = afAngle[iArm] + 0.12f * sin(fR * 0.45f + afWobblePhase[iArm]);
-					float fDiff = fTheta - fArmAngle;
-					while (fDiff > fPi) fDiff -= 2.0f * fPi;
-					while (fDiff < -fPi) fDiff += 2.0f * fPi;
-					if (fDiff > fPi / 2 || fDiff < -fPi / 2)
-						continue;
-					// half width: 1.4 tiles at the disk, 0.6 at the tip
-					const float fShare = (float)(iDist - 3) / (float)MAX(1, aiLength[iArm] - 3);
-					const float fHalfWidth = 1.4f - 0.8f * fShare;
-					if (fabs(sin(fDiff)) * fR > fHalfWidth)
-						continue;
-					// the last third frays: fewer tiles the closer to the tip
-					if (fShare > 0.66f && GC.getGame().getJonRandNum(100, "Lekmod star reveal fray") < (int)((fShare - 0.66f) * 150.0f))
-						continue;
-					bReveal = true;
+					if (((afY[i] > fY) != (afY[j] > fY)) && (fX < (afX[j] - afX[i]) * (fY - afY[i]) / (afY[j] - afY[i]) + afX[i]))
+						bReveal = !bReveal;
 				}
 			}
 			if (bReveal)
