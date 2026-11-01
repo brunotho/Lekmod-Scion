@@ -1328,9 +1328,21 @@ Tags: promotions
 - Note: not granted to any unit yet (planned: Expansionism opener, Chile)
 - Dev: VisibilityChange=1
 
-AIR PROMOTION NAMES
--------------------
-Tags: promotions, air
+BOMBARDMENT (LAND) LINE (NEW) (PROMOTION_BOMBARDMENT_LAND_1/2/3)
+----------------------------------------------------------------
+Tags: promotions, combat
+- New: PROMOTION_BOMBARDMENT_LAND_1
+  | +25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].
+  - for siege units after Accuracy II or Barrage II
+- New: PROMOTION_BOMBARDMENT_LAND_2
+  | +25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].
+- New: PROMOTION_BOMBARDMENT_LAND_3
+  | +25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].
+
+AIR AND NAVAL PROMOTION NAMES
+-----------------------------
+Tags: promotions, air, naval
+- Changed: the ships' Bombardment I-III are now Bombardment I-III (Naval)
 - Changed: promotions that have a land or sea version with a similar name now end in "(Air)", so they are not confused:
   - Siege I-III (Air), for bombers (was Siege I-III)
   - Bombardment I-III (Air), for bombers (was Bombardment I-III)

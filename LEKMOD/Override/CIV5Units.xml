@@ -282057,7 +282057,7 @@
 			<PolicyType>POLICY_LEKMOD_FIVE_YEAR_OFFENSIVE</PolicyType>
 			<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
 			<BuildingClassType>BUILDINGCLASS_REFINERY</BuildingClassType>
-			<PromotionType>PROMOTION_BOMBARDMENT_1</PromotionType>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_1</PromotionType>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_LEKMOD_FIVE_YEAR_OFFENSIVE</PolicyType>
@@ -283003,7 +283003,92 @@
 			<Where Type="PROMOTION_HELI_REPAIR"/>
 			<Set Description="TXT_KEY_PROMOTION_HELI_REPAIR" PediaEntry="TXT_KEY_PROMOTION_HELI_REPAIR"/>
 		</Update>
+		<Row>
+			<ID>396</ID>
+			<Type>PROMOTION_BOMBARDMENT_LAND_1</Type>
+			<Description>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_1</Description>
+			<Help>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_1_HELP</Help>
+			<PortraitIndex>10</PortraitIndex>
+			<IconAtlas>PROMOTION_ATLAS</IconAtlas>
+			<OrderPriority>2</OrderPriority>
+			<Sound>AS2D_IF_LEVELUP</Sound>
+			<PediaType>PEDIA_RANGED</PediaType>
+			<PediaEntry>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_1</PediaEntry>
+		</Row>
+		<Row>
+			<ID>397</ID>
+			<Type>PROMOTION_BOMBARDMENT_LAND_2</Type>
+			<Description>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_2</Description>
+			<Help>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_2_HELP</Help>
+			<PortraitIndex>11</PortraitIndex>
+			<IconAtlas>PROMOTION_ATLAS</IconAtlas>
+			<OrderPriority>2</OrderPriority>
+			<Sound>AS2D_IF_LEVELUP</Sound>
+			<PediaType>PEDIA_RANGED</PediaType>
+			<PediaEntry>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_2</PediaEntry>
+		</Row>
+		<Row>
+			<ID>398</ID>
+			<Type>PROMOTION_BOMBARDMENT_LAND_3</Type>
+			<Description>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_3</Description>
+			<Help>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_3_HELP</Help>
+			<PortraitIndex>12</PortraitIndex>
+			<IconAtlas>PROMOTION_ATLAS</IconAtlas>
+			<OrderPriority>2</OrderPriority>
+			<Sound>AS2D_IF_LEVELUP</Sound>
+			<PediaType>PEDIA_RANGED</PediaType>
+			<PediaEntry>TXT_KEY_PROMOTION_BOMBARDMENT_LAND_3</PediaEntry>
+		</Row>
 	</UnitPromotions>
+	<UnitPromotions_Domains>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_1</PromotionType>
+			<DomainType>DOMAIN_LAND</DomainType>
+			<Attack>25</Attack>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_2</PromotionType>
+			<DomainType>DOMAIN_LAND</DomainType>
+			<Attack>25</Attack>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_3</PromotionType>
+			<DomainType>DOMAIN_LAND</DomainType>
+			<Attack>25</Attack>
+		</Row>
+	</UnitPromotions_Domains>
+	<UnitPromotions_UnitCombats>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_1</PromotionType>
+			<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_2</PromotionType>
+			<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_3</PromotionType>
+			<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
+		</Row>
+	</UnitPromotions_UnitCombats>
+	<UnitPromotions_PromotionPrereqOrs>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_1</PromotionType>
+			<PrerequisitePromotion>PROMOTION_ACCURACY_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_1</PromotionType>
+			<PrerequisitePromotion>PROMOTION_BARRAGE_2</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_2</PromotionType>
+			<PrerequisitePromotion>PROMOTION_BOMBARDMENT_LAND_1</PrerequisitePromotion>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_BOMBARDMENT_LAND_3</PromotionType>
+			<PrerequisitePromotion>PROMOTION_BOMBARDMENT_LAND_2</PrerequisitePromotion>
+		</Row>
+	</UnitPromotions_PromotionPrereqOrs>
 	<!-- Argentina: Gaucho needs 3 Horses 1 Iron -->
 	<Unit_ResourceQuantityRequirements>
 		<Delete UnitType="UNIT_ARGENTINA_KNIGHT"/>

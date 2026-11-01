@@ -2802,9 +2802,7 @@
 	
 	<!-- Naval Anti-land promo nerf v31 -->
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_1"> 
-			<Text>
-				Bombardment I
-			</Text>
+			<Text>Bombardment I (Naval)</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_1_HELP"> 
 			<Text>
@@ -2812,9 +2810,7 @@
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_2"> 
-			<Text>
-				Bombardment II
-			</Text>
+			<Text>Bombardment II (Naval)</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_2_HELP"> 
 			<Text>
@@ -2822,9 +2818,7 @@
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_3"> 
-			<Text>
-				Bombardment III
-			</Text>
+			<Text>Bombardment III (Naval)</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_BOMBARDMENT_NAVAL_3_HELP"> 
 			<Text>
@@ -120521,7 +120515,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Five Year Offensive</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_FIVE_YEAR_OFFENSIVE_HELP">
-			<Text>[COLOR_POSITIVE_TEXT]Five Year Offensive[ENDCOLOR][NEWLINE]Provides 15 [ICON_RES_OIL] Oil and 15 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]+100% [ICON_PRODUCTION] Production toward Refineries and Recycling Centers.[NEWLINE]Siege units trained in a city with a Refinery start with Bombardment I (Air) and Cover I.</Text>
+			<Text>[COLOR_POSITIVE_TEXT]Five Year Offensive[ENDCOLOR][NEWLINE]Provides 15 [ICON_RES_OIL] Oil and 15 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]+100% [ICON_PRODUCTION] Production toward Refineries and Recycling Centers.[NEWLINE]Siege units trained in a city with a Refinery start with Bombardment I (Land) and Cover I.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PRODMOD_ALLIED_CS_TOURISM">
 			<Text>[NEWLINE][ICON_BULLET]Allied City-States: {1_Num}%</Text>
@@ -147235,6 +147229,24 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Row>
 		<!-- LEKMOD: Phase 6 civs (2026-10-13) -->
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_1">
+			<Text>Bombardment I (Land)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_1_HELP">
+			<Text>+25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_2">
+			<Text>Bombardment II (Land)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_2_HELP">
+			<Text>+25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_3">
+			<Text>Bombardment III (Land)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_PROMOTION_BOMBARDMENT_LAND_3_HELP">
+			<Text>+25% [ICON_STRENGTH] Attack Strength against [COLOR_POSITIVE_TEXT]Land Units[ENDCOLOR].</Text>
+		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_AIR_LOGISTICS">
 			<Text>Logistics (Air)</Text>
 		</Row>

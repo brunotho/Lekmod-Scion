@@ -167,7 +167,7 @@ SECTION_LAYOUT = {
     ["Promotions you can pick", ["AMPHIBIOUS LINE", "ENVELOPMENT", "EXPANDED ZOC", "MOUNTAINEERING", "WOODSMAN",
                                  "AMBUSH FORMATION", "MOBILITY", "HEAL INSTANTLY", "COASTAL RAIDER LINE",
                                  "BOARDING PARTY LINE", "ARMOR PLATING LINE", "SAMBUCA", "SUPPLY SHIP", "REPAIR CREW",
-                                 "BUNKER BUSTING", "CARPET BOMBING", "AIR PROMOTION NAMES", "SORTIE"]],
+                                 "BUNKER BUSTING", "CARPET BOMBING", "BOMBARDMENT (LAND) LINE", "AIR AND NAVAL PROMOTION NAMES", "SORTIE"]],
     ["Promotions that come with units, policies or abilities (never offered as a pick)",
      ["DISCIPLINE", "FEAR AURA", "ZEALOT", "ALTITUDE TRAINING", "SITTING DUCKS", "SWIFT TRANSPORT", "MARAUDER",
       "IAIJUTSU", "HATAMOTO", "ONE GOOD EYE / STARGAZING", "FAST SWIMMER", "SKYRANGER / EXTENDED PARADROP",
