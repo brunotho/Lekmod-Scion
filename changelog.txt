@@ -849,8 +849,6 @@ TOURISM IN POLICIES AND IDEOLOGIES (COLLECTION_TOURISM_POLICIES)
 ----------------------------------------------------------------
 Tags: tourism, policies
 Collects: policies
-- Reworked: {Piety} POLICY_BRANCH_PIETY
-  | Adopting Piety:[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith from the [ICON_BUILDING_PALACE] Palace[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_SHRINE] Shrines and [ICON_BUILDING_TEMPLE] Temples[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_MOSQUE_OF_DJENNE] Great Mosque of Djenne[NEWLINE][NEWLINE]Completing the Piety tree:[NEWLINE][ICON_BULLET]A [ICON_PROPHET] Great Prophet appears[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Holy Sites[ENDCOLOR] provide +1 [ICON_FOOD] Food, +2 [ICON_GOLD] Gold and +2 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]A free [ICON_BUILDING_GARDEN] Garden in your first 5 cities[NEWLINE][ICON_BULLET]Buy 1 [ICON_GREAT_PEOPLE] Great Person of each kind (not the [ICON_GREAT_SCIENTIST] Great Scientist) with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
 - Reworked: {Aesthetics} POLICY_FLOURISHING_OF_ARTS
   | [COLOR_POSITIVE_TEXT]Flourishing of the Arts[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture and +1 [ICON_TOURISM] Tourism from every [COLOR_POSITIVE_TEXT]World Wonder[ENDCOLOR][NEWLINE][ICON_BULLET]Starts a 6-turn [ICON_GOLDEN_AGE] Golden Age
 - Reworked: {Aesthetics} POLICY_ARTISTIC_GENIUS
