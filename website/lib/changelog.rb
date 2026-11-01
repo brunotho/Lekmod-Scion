@@ -7,7 +7,7 @@ module Changelog
   # New / Reworked: the line names an item type (TRAIT_X, UNIT_X, ...); the website shows its in-game text
   # (GameRefs), frozen into the changelog ("  | text") when a release is prepared.
   # Now: a line of a reworked system's state card ("how it works now"), shown as a plain bullet without a label.
-  # Picture: "assets/file.jpg | caption", an image on the card (user, 2026-10-29: the special City-State star)
+  # Picture: "assets/file.jpg | alt text", an image to the right of the card, like a policy tree (user, 2026-11-01: no visible caption)
   PLAYER_KINDS = %w[New Reworked Now Added Changed Removed Fixed Picture].freeze
   REF_KINDS = %w[New Reworked].freeze
   DEV_KINDS = %w[Note DLL Dev].freeze

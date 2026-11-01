@@ -67,8 +67,9 @@
 <% end -%>
 <% block.cards.each do |card| -%>
 <% tree = card.group == "policies" && policy_trees[card.name] -%>
-    <article class="card<%= ' minor' if card.minor %><%= ' has-tree' if tree %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
-<% if tree -%>
+<% picture = card.entries.flat_map(&:lines).find { |l| l[:kind] == "Picture" } -%>
+    <article class="card<%= ' minor' if card.minor %><%= ' has-tree' if tree || picture %>" data-tags="<%= h card.tags.join('|') %>" data-search="<%= h card.search_text %>">
+<% if tree || picture -%>
       <div class="card-main">
 <% end -%>
       <h3><%= h card.name %><% if card.fresh %> <span class="new-badge">(NEW)</span><% end %></h3>
@@ -84,10 +85,7 @@
 <% unless entry.lines.empty? -%>
         <ul class="lines">
 <% entry.lines.each do |line| -%>
-<% if line[:kind] == "Picture" -%>
-<% src, caption = line[:text].split(" | ", 2) -%>
-          <li class="picture"><figure><img src="<%= h src %>" alt="<%= h caption %>" loading="lazy"><% if caption %><figcaption><%= h caption %></figcaption><% end %></figure></li>
-<% next end -%>
+<% next if line[:kind] == "Picture" -%>
 <% if line[:ref_name] -%>
           <li class="<%= line[:kind].downcase %> ref"><span class="kind"><%= line[:kind] %></span> <span><% if line[:ref_role] %><span class="role"><%= h line[:ref_role] %></span> <% end %><strong><%= h line[:ref_name] %></strong><div class="game-text"><%= GameText.to_html(line[:ref_text]) %></div><% if line[:items] %><ul class="sub"><% line[:items].each do |it| %><li><%= GameText.line_html(it) %></li><% end %></ul><% end %></span></li>
 <% next end -%>
@@ -97,9 +95,14 @@
 <% end -%>
       </div>
 <% end -%>
-<% if tree -%>
+<% if tree || picture -%>
       </div>
+<% end -%>
+<% if tree -%>
       <%= policy_tree_html(tree) %>
+<% elsif picture -%>
+<% src, alt = picture[:text].split(" | ", 2) -%>
+      <img class="card-picture" src="<%= h src %>" alt="<%= h alt.to_s %>" loading="lazy">
 <% end -%>
     </article>
 <% end -%>
