@@ -18107,7 +18107,7 @@ bool CvUnit::IsLekmodExpandedZOC() const
 #endif
 #ifdef LEKMOD_SPECS_2026_10_24
 //	--------------------------------------------------------------------------------
-/// Bonus from an own unit with a friendly aura within its range (Carroccio: +10% within 1 tile); the strongest one counts
+/// Bonus from an own unit with a friendly aura within its range, not on this unit's own tile (Carroccio: +10% on the 6 tiles around it); the strongest one counts
 int CvUnit::GetLekmodFriendlyAuraMod() const
 {
 	const std::vector<PromotionTypes>& aPromotions = LekmodCivPromotions();
@@ -18126,7 +18126,7 @@ int CvUnit::GetLekmodFriendlyAuraMod() const
 		for (int iDY = -iMaxRange; iDY <= iMaxRange; iDY++)
 		{
 			CvPlot* pLoopPlot = plotXYWithRangeCheck(getX(), getY(), iDX, iDY, iMaxRange);
-			if (pLoopPlot == NULL)
+			if (pLoopPlot == NULL || pLoopPlot == plot())
 				continue;
 			const int iDistance = plotDistance(getX(), getY(), pLoopPlot->getX(), pLoopPlot->getY());
 			const IDInfo* pNode = pLoopPlot->headUnitNode();

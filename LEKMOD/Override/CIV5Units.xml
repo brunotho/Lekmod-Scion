@@ -280072,7 +280072,7 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_XCOM_SQUAD"/>
-			<Set Combat="120" Moves="3" Cost="536"/>
+			<Set Combat="110" Moves="3" Cost="536"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_YUGO_M84"/>
@@ -282994,6 +282994,16 @@
 		</Update>
 	</Improvement_Yields>
 	<!-- LEKMOD: Phase 6 civs (2026-10-13). Costs: spec numbers are quick speed, the table holds standard (quick = x0.67); unit Faith costs stay 2x Production. -->
+	<UnitPromotions>
+		<Update>
+			<Where Type="PROMOTION_AIR_LOGISTICS"/>
+			<Set Description="TXT_KEY_PROMOTION_AIR_LOGISTICS" PediaEntry="TXT_KEY_PROMOTION_AIR_LOGISTICS"/>
+		</Update>
+		<Update>
+			<Where Type="PROMOTION_HELI_REPAIR"/>
+			<Set Description="TXT_KEY_PROMOTION_HELI_REPAIR" PediaEntry="TXT_KEY_PROMOTION_HELI_REPAIR"/>
+		</Update>
+	</UnitPromotions>
 	<!-- Argentina: Gaucho needs 3 Horses 1 Iron -->
 	<Unit_ResourceQuantityRequirements>
 		<Delete UnitType="UNIT_ARGENTINA_KNIGHT"/>
@@ -291130,7 +291140,7 @@
 			<MaxCount>2</MaxCount>
 		</Row>
 		<Row>
-			<MinorCivTrait>MINOR_CIV_TRAIT_MERCANTILE</MinorCivTrait>
+			<MinorCivTrait>MINOR_CIV_TRAIT_CULTURED</MinorCivTrait>
 			<ImprovementType>IMPROVEMENT_CHATEAU</ImprovementType>
 			<EraType>ERA_MEDIEVAL</EraType>
 			<MaxCount>2</MaxCount>
@@ -291153,6 +291163,18 @@
 			<EraType>ERA_MEDIEVAL</EraType>
 			<MaxCount>1</MaxCount>
 			<NextToCity>true</NextToCity>
+		</Row>
+		<Row>
+			<MinorCivTrait>MINOR_CIV_TRAIT_CULTURED</MinorCivTrait>
+			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
+			<EraType>ERA_CLASSICAL</EraType>
+			<MaxCount>2</MaxCount>
+		</Row>
+		<Row>
+			<MinorCivTrait>MINOR_CIV_TRAIT_RELIGIOUS</MinorCivTrait>
+			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
+			<EraType>ERA_CLASSICAL</EraType>
+			<MaxCount>2</MaxCount>
 		</Row>
 	</Lekmod_MinorCivImprovements>
 	<!-- POST (2026-10-16): Merchant of Venice buy-City-State button uses the user's heart icon -->

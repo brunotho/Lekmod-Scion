@@ -208,7 +208,7 @@ Tags: city-states
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: they have a small star on their name tag, and hovering the name tag shows their unique ability
-- Picture: assets/special_city_state_star.jpg | The star on Cambridge's name tag marks a City-State with a unique ability.
+- Picture: assets/special_city_state_star.jpg | Cambridge's name tag with the star of a City-State with a unique ability
 - Now: while one of them is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
 - Now: St. Petersburg, Shanghai, Sparta and Cambridge hold auctions (see their cards): during one turn every civilization may place one sealed Gold bid, the Gold is held right away, and the result comes at the start of the next turn; only the winner is announced. Computer players never bid
 - Now: while an auction runs that you have not bid on, a big notification (like Choose Production) shows it; it can't be dismissed and goes away once you bid or the turn ends
@@ -434,15 +434,12 @@ Tags: promotions, naval, air
 - Added: for naval melee units, Armor Plating unlocks the same later promotions as Coastal Raider and Boarding Party (Sentry and Mobility at I, Supply at II, Logistics at III)
 - Added: for helicopters, Armor Plating II unlocks Repair and Air Logistics
 
-DISCIPLINE (NEW) (PROMOTION_DISCIPLINE / PROMOTION_DISCIPLINE_AIR)
-------------------------------------------------------------------
+DISCIPLINE (NEW) (PROMOTION_DISCIPLINE)
+---------------------------------------
 Tags: promotions, policies
 - New: PROMOTION_DISCIPLINE
   | +50% Experience gained (non-air units).
   - granted by policies, never offered as a pick
-- New: PROMOTION_DISCIPLINE_AIR
-  | +25% Experience gained (air units).
-- Note: the policy grants (Honor finisher, Iron Fist) are not wired yet
 - Dev: two promotions with the same icon; text keys TXT_KEY_PROMOTION_LEKMOD_DISCIPLINE(_HELP), because the old keys belong to another promotion
 
 SWIFT TRANSPORT (NEW) (PROMOTION_SWIFT_TRANSPORT)
@@ -834,7 +831,7 @@ Tags: ui
 - Note: standard UI only
 - Added: a Lek Options switch "Only important notifications": the other notifications are dismissed right away (they stay in the notification log)
 - Changed: City-State alliance changes stand out among the notifications (yellow glow, gold icon)
-- Fixed: City-State alliance notifications can be dismissed again (right click, Dismiss all)
+- Dev: City-State alliance notifications could not be dismissed for a while (never released); fixed
 - Dev: 2026-10-28 (user): the alliance notification pulses 30% slower (yellow glow Speed 1.5 -> 1.05, red corner glow 1 -> 0.7)
 - Dev: buckets in NotificationPanel.lua (g_LekmodImportant, standard UI) and on the Notion page "Notification buckets"; option LEK_ImportantNotificationsOnly (unset = off); alliance changes are NOTIFICATION_MINOR with "Ally of" in the summary
 
@@ -1154,7 +1151,7 @@ BUNKER BUSTING (NEW) (PROMOTION_BUNKER_BUSTING)
 Tags: promotions, combat, air
 - New: PROMOTION_BUNKER_BUSTING
   | +33% [ICON_STRENGTH] Combat Strength when attacking cities.[NEWLINE]Each attack also deals 10 damage to all non-air units and civilians in the city.
-  - for siege units after Volley, and for bombers after Air Siege I
+  - for siege units after Volley, and for bombers after Siege I (Air)
 - Dev: new column CitySplashDamage (ResolveRangedUnitVsCombat, ResolveAirUnitVsCombat)
 
 MARAUDER (NEW) (PROMOTION_MARAUDER)
@@ -1200,7 +1197,7 @@ CARPET BOMBING (NEW) (PROMOTION_CARPET_BOMBING)
 Tags: promotions, air, combat
 - New: PROMOTION_CARPET_BOMBING
   | Each bombing run also hits every land and sea unit on the 6 tiles around the target with 20% of the damage it dealt (at least 1).[NEWLINE]This includes civilians and embarked units, but not air units.[NEWLINE][NEWLINE]Bombing a unit: the target takes the full damage, units next to it take 20%.[NEWLINE]Bombing a city: the city takes the full damage, units inside it take none.[NEWLINE]Units on the tiles around the city take 20%, also when they stand in a neighbouring city.[NEWLINE]An intercepted bomber deals less damage, so its splash is smaller too.[NEWLINE][NEWLINE]Units of your own team are never hit.[NEWLINE]Hitting units of a City-State you are not at war with declares war on it.[NEWLINE]Units of other civilizations are hit even when you are at peace with them, without a declaration of war.
-  - for bombers after Bombardment II
+  - for bombers after Bombardment II (Air)
   - hitting a City-State's unit declares war on it; hitting a major civilization you are not at war with does not
 - Dev: new column CarpetBombing; splash in ResolveAirUnitVsCombat uses the interception-reduced damage. Air units' MISSION_RANGE_ATTACK now goes through CvUnitCombat::AttackAir (the "declare war?" popup skipped all air logic before).
 - Note: the spec includes friendly units; no friendly fire is kept for now (user, 2026-10-07)
@@ -1265,7 +1262,7 @@ Tags: tiles and resources
 EMBARKATION WITH DEFENSE (PROMOTION_DEFENSIVE_EMBARKATION)
 ----------------------------------------------------------
 Tags: promotions, units
-- Removed: no unit starts with it (Conquistadors) and it can no longer be picked
+- Removed: no unit starts with it and it can no longer be picked
 
 ANCIENT RUINS OVERHAUL (GOODY_*)
 --------------------------------
@@ -1331,10 +1328,17 @@ Tags: promotions
 - Note: not granted to any unit yet (planned: Expansionism opener, Chile)
 - Dev: VisibilityChange=1
 
-AIR SIEGE LINE (PROMOTION_AIR_SIEGE_1/2/3)
-------------------------------------------
+AIR PROMOTION NAMES
+-------------------
 Tags: promotions, air
-- Changed: the bombers' Siege I-III are now called Air Siege I-III, so they are not confused with the land units' Siege
+- Changed: promotions that have a land or sea version with a similar name now end in "(Air)", so they are not confused:
+  - Siege I-III (Air), for bombers (was Siege I-III)
+  - Bombardment I-III (Air), for bombers (was Bombardment I-III)
+  - Ambush I-II (Air), for fighters, bombers and helicopters (was Air Ambush I-II)
+  - Targeting I-III (Air), for fighters and bombers (was Air Targeting I-III)
+  - Repair (Air), for fighters, bombers and helicopters (was Air Repair; helicopters: Repair)
+  - Range (Air), for fighters and bombers (was Range)
+  - Logistics (Air), for bombers and helicopters (was Logistics)
 
 FEARED ELEPHANT (PROMOTION_FEARED_ELEPHANT)
 -------------------------------------------
@@ -1458,18 +1462,17 @@ Tags: units, combat
 - DLL: LEKMOD_FAST_HAND_NUKE_REBASE (CvUnit::canRebase)
 - Changed: Infantry, Vietnam's Dong Khoi Soldier and New Zealand's Maori Battalion: 72 Strength (was 70)
 - Changed: Paratrooper: 70 Strength (was 65)
-- Changed: XCOM Squad: 120 Strength (was 110)
 - Changed: Rocket Artillery: 3 movement (was 2)
 - Changed: Submarine and Nuclear Submarine can no longer move after attacking
 
 LATE-GAME UNIT COSTS
 --------------------
 Tags: units
-- Changed: Modern-era units cost 3% more, Atomic- and Information-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts); the Information-era ones:
-  - Heavy Cruiser 326 (was 311)
-  - Jet Fighter 379 (was 361); the UAE's Desert Falcon costs the same
-  - Mechanized Infantry 316 (was 301)
-  - Nuclear Submarine and XCOM Squad 359 (was 341)
+- Changed: Modern-era units cost 3% more, Atomic- and Information-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts):
+  - Modern: Foreign Legion 186 (was 180); Anti-Tank Rifle 207 (was 201); Great War Bomber, Great War Infantry and Triplane 227 (was 221); Submarine 248 (was 241); Landship and Machine Gun 269 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 290 (was 281)
+  - Atomic: Anti-Tank Gun 253 (was 241); Bomber and Fighter 295 (was 281); Bazooka, Marine, Paratrooper and Tank 316 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 359 (was 341)
+  - Information: Mechanized Infantry 316 (was 301); Heavy Cruiser 326 (was 311); Nuclear Submarine and XCOM Squad 359 (was 341); Jet Fighter 379 (was 361)
+  - the UAE's Desert Falcon costs the same as the Jet Fighter
 - Dev: Information-era standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
@@ -1856,14 +1859,14 @@ DIVINE JUDGEMENT (BELIEF_DIVINE_JUDGEMENT)
 Tags: religion
 Subsection: Pantheons
 +2 Faith from Barracks. +3 Happiness from the Palace.
-- Changed: +2 Faith from Barracks only (no longer from Courthouses)
+- Removed: no more Faith from Courthouses
 
 EARTH MOTHER (BELIEF_EARTH_MOTHER)
 ----------------------------------
 Tags: religion
 Subsection: Pantheons
 +2 Faith from Iron. +1 Faith from Mines on a resource.
-- Changed: +2 Faith from Iron (was +1), and Mines give +1 Faith only on a resource (Iron or any other mined resource; was every Mine)
+- Changed: was +1 Faith from Iron and +1 Faith from every Mine
 
 GODDESS OF THE FIELDS (BELIEF_WIND)
 -----------------------------------
@@ -1908,7 +1911,7 @@ OCEAN'S BOUNTY (BELIEF_OCEANS_BOUNTY)
 Tags: religion
 Subsection: Pantheons
 +2 Production from Atolls. +1 Production from Fishing Boats in cities with a Lighthouse.
-- Changed: +2 Production from Atolls (was +1), Fishing Boats give +1 Production only in cities with a Lighthouse
+- Changed: was +1 Production from Atolls and from every Fishing Boat
 
 OFFERING OF PLENTY (NEW) (BELIEF_LEKMOD_OFFERING_PLENTY)
 --------------------------------------------------------
@@ -1927,7 +1930,7 @@ RELIGIOUS IDOLS (BELIEF_FORMAL_LITURGY)
 Tags: religion
 Subsection: Pantheons
 +2 Culture from Copper, Silver and Gold.
-- Changed: +2 Culture from Gold, Silver and Copper (was +1 Faith +1 Culture)
+- Changed: was +1 Faith and +1 Culture
 
 RITE OF THE FIRST-BORN (NEW) (BELIEF_LEKMOD_FIRST_BORN)
 -------------------------------------------------------
@@ -1940,7 +1943,7 @@ RITUAL SACRIFICE (BELIEF_RITUAL_SACRIFICE)
 Tags: religion
 Subsection: Pantheons
 +1 Gold, +1 Faith and +1 Culture from Ivory, Furs and Truffles.
-- Changed: +1 Gold, +1 Faith and +1 Culture from Ivory, Furs and Truffles (was +2 Culture +1 Gold)
+- Changed: was +2 Culture and +1 Gold
 
 SACRED CRAFTWORK (NEW) (BELIEF_LEKMOD_SACRED_CRAFTWORK)
 -------------------------------------------------------
@@ -1952,14 +1955,14 @@ SALT AND STARS (NEW) (BELIEF_LEKMOD_SALT_STARS)
 -----------------------------------------------
 Tags: religion
 Subsection: Pantheons
-+2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital (units keep it afterwards).
++2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital.
 
 SEAFOOD RITUALS (BELIEF_SEAFOOD)
 --------------------------------
 Tags: religion
 Subsection: Pantheons
 +2 Culture from Fish.
-- Changed: +2 Culture from Fish (was +1 Food +1 Culture +1 Faith)
+- Changed: was +1 Food, +1 Culture and +1 Faith
 
 SONGS OF THE LEVIATHAN (NEW) (BELIEF_LEKMOD_SONGS_LEVIATHAN)
 ------------------------------------------------------------
@@ -1997,7 +2000,7 @@ SALAT (BELIEF_SALATT)
 Tags: religion
 Subsection: Founder beliefs
 +4 Production in the Holy City.
-- Changed: +4 Production in the Holy City (was in the Palace city)
+- Changed: was in the Palace city
 
 CHORAL MUSIC (BELIEF_CHORAL_MUSIQ)
 ----------------------------------
@@ -2011,7 +2014,7 @@ PEACE GARDENS (BELIEF_PEACE_GARDENZ)
 Tags: religion
 Subsection: Follower beliefs
 +2 Food and +2 Culture from Gardens.
-- Changed: +2 Food and +2 Culture from Gardens (was +1 Happiness from Gardens, +2 Gold +1 Production from Water Mills)
+- Changed: was +1 Happiness from Gardens, +2 Gold and +1 Production from Water Mills
 
 RELIGIOUS CENTER (BELIEF_RELIGIOUS_CENTER)
 ------------------------------------------
@@ -2025,7 +2028,7 @@ SACRED WATERS (BELIEF_SACRED_WATERS)
 Tags: religion
 Subsection: Follower beliefs
 +2 Faith and +2 Gold from Water Mills and Gardens.
-- Changed: +2 Faith and +2 Gold from Water Mills and Gardens (was +1 Happiness in river cities, +2 Faith +1 Food from Gardens)
+- Changed: was +1 Happiness in river cities, +2 Faith and +1 Food from Gardens
 
 SANCTUARIES (NEW) (BELIEF_LEKMOD_SANCTUARY)
 -------------------------------------------
@@ -2050,8 +2053,8 @@ JUST WAR (BELIEF_JUST_WAR)
 Tags: religion
 Subsection: Enhancer beliefs
 +15% Combat Strength near enemy cities that follow this religion. Missionaries spread it as strongly as Great Prophets, from up to 2 tiles away, and have +1 Movement.
-- Changed: +15% Combat Strength near enemy cities of this religion (was +20%)
-- Added: Missionaries spread the religion as strongly as Great Prophets, from up to 2 tiles away, and have +1 Movement
+- Changed: Combat Strength bonus was +20%
+- Added: everything about Missionaries
 - DLL: CvUnit::LekmodGetJustWarSpreadCity (CanSpreadReligion / GetSpreadReligionTargetCity; the first city 2 tiles away in a fixed order)
 
 MANDATE OF GOD (NEW) (BELIEF_LEKMOD_MANDATE_OF_GOD)
@@ -2065,14 +2068,14 @@ PILGRIMAGE (BELIEF_PILGRIMAGE)
 Tags: religion
 Subsection: Enhancer beliefs
 +3 Faith and +3 Culture from every foreign city following your religion.
-- Changed: +3 Faith (was +4) and +3 Culture from every foreign city following your religion
+- Changed: Faith was +4
 
 UNITY OF THE PROPHETS (BELIEF_UNITY_OF_PROPHETS)
 ------------------------------------------------
 Tags: religion
 Subsection: Enhancer beliefs
 +4 Faith and +2 Production from Holy Sites.
-- Removed: Inquisitors and Prophets remove this religion fully again (no more "half")
+- Changed: Inquisitors and Great Prophets remove this religion fully again (was only half)
 
 XIAN (NEW) (BELIEF_LEKMOD_XIAN)
 -------------------------------
@@ -3827,8 +3830,9 @@ One in five City-States builds a special improvement of its type inside its bord
 - Added: each City-State has a 20% chance to get one improvement type of its kind, picked at random; from the listed era (the City-State's own era) it then has a 5% chance each turn to build one on a fitting tile, up to the maximum
 - Added: Maritime (up to 2): Terrace Farm (needs 2+ mountains within 2 tiles), Tipi or Pa from the Classical Era; Polder from the Medieval Era
 - Added: Militaristic (up to 2): Caer or Motte and Bailey from the Medieval Era
-- Added: Mercantile (up to 2): Chateau, Kasbah or Brazilwood Camp from the Medieval Era
-- Added: Religious (1, Medieval): Holy Site next to the city
+- Added: Cultured (up to 2): Monastery from the Classical Era (needs Hills next to a Mountain); Chateau from the Medieval Era
+- Added: Mercantile (up to 2): Kasbah or Brazilwood Camp from the Medieval Era
+- Added: Religious: up to 2 Monasteries from the Classical Era (needs Hills next to a Mountain), or 1 Holy Site next to the city from the Medieval Era
 - DLL: CvMinorCivAI::LekmodDoBuildImprovements (LEKMOD_POST_CHANGES; defines LEKMOD_CS_IMPROVEMENT_CHANCE 20, LEKMOD_CS_IMPROVEMENT_TURN_CHANCE 5); saved fields m_iLekmodImprovementRow / m_iLekmodImprovementNextTurn (appended to the City-State save data; the second is unused since 2026-10-16); the improvement is placed directly, not by a Worker; the usual placement rules of the improvement apply
 
 RANGED DEFENSE OF SHIPS
