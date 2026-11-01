@@ -2590,6 +2590,18 @@ const std::vector<LekmodCSImprovementRow>& LekmodCSImprovementRows()
 	}
 	return s_aRows;
 }
+int LekmodCSMountainsWithin2(const CvPlot* pPlot)
+{
+	int iMountains = 0;
+	for (int iDX = -2; iDX <= 2; iDX++)
+		for (int iDY = -2; iDY <= 2; iDY++)
+		{
+			CvPlot* pNear = plotXYWithRangeCheck(pPlot->getX(), pPlot->getY(), iDX, iDY, 2);
+			if (pNear != NULL && pNear != pPlot && pNear->isMountain())
+				iMountains++;
+		}
+	return iMountains;
+}
 }
 
 /// Cultured City-State great work for sale (POST 2026-10-11): 200 Gold per era of the buyer (Ancient = 1, so Medieval = 600)
@@ -2706,12 +2718,17 @@ void CvMinorCivAI::LekmodDoQuestsOverTime()
 void CvMinorCivAI::LekmodDoBuildImprovements()
 {
 	const std::vector<LekmodCSImprovementRow>& aRows = LekmodCSImprovementRows();
+	CvCity* pCapital = GetPlayer()->getCapitalCity();
+	if (pCapital == NULL)
+		return;
 	if (m_iLekmodImprovementRow == -2)
 	{
 		m_iLekmodImprovementRow = -1;
 		std::vector<int> aiCandidates;
+		// a type that needs mountains is only assigned with a mountain within 2 tiles of the city
+		const int iCityMountains = LekmodCSMountainsWithin2(pCapital->plot());
 		for (uint i = 0; i < aRows.size(); i++)
-			if (aRows[i].iTrait == (int)GetTrait())
+			if (aRows[i].iTrait == (int)GetTrait() && (aRows[i].iMinMountains <= 0 || iCityMountains > 0))
 				aiCandidates.push_back((int)i);
 		if (!aiCandidates.empty() && GC.getGame().getJonRandNum(100, "Lekmod: City-State improvement chance") < LEKMOD_CS_IMPROVEMENT_CHANCE)
 			m_iLekmodImprovementRow = aiCandidates[GC.getGame().getJonRandNum((int)aiCandidates.size(), "Lekmod: City-State improvement pick")];
@@ -2720,9 +2737,6 @@ void CvMinorCivAI::LekmodDoBuildImprovements()
 		return;
 	const LekmodCSImprovementRow& kRow = aRows[m_iLekmodImprovementRow];
 	if (kRow.iEra != -1 && GetPlayer()->GetCurrentEra() < kRow.iEra)
-		return;
-	CvCity* pCapital = GetPlayer()->getCapitalCity();
-	if (pCapital == NULL)
 		return;
 	const ImprovementTypes eImprovement = (ImprovementTypes)kRow.iImprovement;
 
@@ -2746,19 +2760,8 @@ void CvMinorCivAI::LekmodDoBuildImprovements()
 			continue;
 		if (!pPlot->canHaveImprovement(eImprovement, GetPlayer()->getTeam()))
 			continue;
-		if (kRow.iMinMountains > 0)
-		{
-			int iMountains = 0;
-			for (int iDX = -2; iDX <= 2; iDX++)
-				for (int iDY = -2; iDY <= 2; iDY++)
-				{
-					CvPlot* pNear = plotXYWithRangeCheck(pPlot->getX(), pPlot->getY(), iDX, iDY, 2);
-					if (pNear != NULL && pNear != pPlot && pNear->isMountain())
-						iMountains++;
-				}
-			if (iMountains < kRow.iMinMountains)
-				continue;
-		}
+		if (kRow.iMinMountains > 0 && LekmodCSMountainsWithin2(pPlot) < kRow.iMinMountains)
+			continue;
 		// prefer tiles without a resource, close to the city
 		const int iScore = (pPlot->getResourceType() == NO_RESOURCE ? 100 : 0) - iDistance * 10;
 		if (iScore > iBestScore)

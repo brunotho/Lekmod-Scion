@@ -291169,12 +291169,14 @@
 			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
 			<EraType>ERA_CLASSICAL</EraType>
 			<MaxCount>2</MaxCount>
+			<MinMountainsWithin2>1</MinMountainsWithin2>
 		</Row>
 		<Row>
 			<MinorCivTrait>MINOR_CIV_TRAIT_RELIGIOUS</MinorCivTrait>
 			<ImprovementType>IMPROVEMENT_TIBET</ImprovementType>
 			<EraType>ERA_CLASSICAL</EraType>
 			<MaxCount>2</MaxCount>
+			<MinMountainsWithin2>1</MinMountainsWithin2>
 		</Row>
 	</Lekmod_MinorCivImprovements>
 	<!-- POST (2026-10-16): Merchant of Venice buy-City-State button uses the user's heart icon -->
