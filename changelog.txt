@@ -3916,7 +3916,7 @@ Tags: ui
 - Added: promotions can also be picked with the number keys 1-9
 - Added: when two things a unit can do right now share a hotkey (e.g. two builds on "D"), their buttons show a number 1-9 instead, which picks them
 - Changed: promotions are sorted by when they become available
-- Added: a keyboard setting in Lek Options (US, German QWERTZ, French AZERTY): the game's own hotkeys work by the key's place on a US keyboard, so with a German or French keyboard the hotkey labels now show the letter printed on the key that works (German: Y and Z swap)
+- Added: a keyboard setting in Lek Options (English, German QWERTZ, French AZERTY): the game's own hotkeys work by the key's place on a US keyboard, so with a German or French keyboard the hotkey labels now show the letter printed on the key that works (German: Y and Z swap)
 - Added: an option to mute the chat message sound
 - Changed: Route To sits with the other unit actions on the left instead of among the worker builds
 - Removed: the "Recommended" build suggestion in the worker panel

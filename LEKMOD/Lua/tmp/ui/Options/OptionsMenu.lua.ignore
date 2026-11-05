@@ -103,6 +103,7 @@ g_LekmodKeyboardLayout = 0
 function LekmodShowKeyboardLayout()
     if Controls.LekmodKeyboardPullDown ~= nil then
         Controls.LekmodKeyboardPullDown:GetButton():LocalizeAndSetText( g_LekmodKeyboardNames[g_LekmodKeyboardLayout] or g_LekmodKeyboardNames[0] )
+        pcall( function() Controls.LekmodKeyboardPullDown:GetButton():GetTextControl():SetFontByName( "TwCenMT16" ) end )
     end
 end
 if Controls.LekmodKeyboardPullDown ~= nil then
@@ -113,6 +114,7 @@ if Controls.LekmodKeyboardPullDown ~= nil then
         pd:BuildEntry( "InstanceOne", inst )
         inst.Button:SetVoids( i, 0 )
         inst.Button:LocalizeAndSetText( g_LekmodKeyboardNames[i] )
+        pcall( function() inst.Button:GetTextControl():SetFontByName( "TwCenMT16" ) end )   -- the style's font is too large here
     end
     pd:CalculateInternals()
     pd:RegisterSelectionCallback( function( v1, v2 )

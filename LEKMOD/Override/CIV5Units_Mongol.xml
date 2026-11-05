@@ -148961,7 +148961,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The game's own hotkeys (promotions, builds, map options) go by the key's place on a US keyboard, not by the letter printed on it.[NEWLINE]Pick your keyboard so the hotkey labels show the letter on the key that works.[NEWLINE][NEWLINE]German: Y and Z swap.[NEWLINE]French: A and Q, Z and W swap, and M is the comma key.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_US">
-			<Text>US / English (QWERTY)</Text>
+			<Text>English (QWERTY)</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_DE">
 			<Text>German (QWERTZ)</Text>
