@@ -1803,7 +1803,7 @@ Subsection: Buildings
 
 HOTEL (BUILDING_HOTEL)
 ----------------------
-Tags: tourism, buildings
+Tags: buildings, tourism
 - Added: Hotel and its unique replacements: natural wonders worked by the city give +10 Culture
 - Removed: +1 Culture from Lakes and Oases
 
@@ -2201,15 +2201,10 @@ GREAT WORKS (GREAT_WORK_SLOT_ART_ARTIFACT)
 Tags: tourism, game mechanics
 - Now: every great work slot accepts any Great Work: Writing, Art, Music and Artifacts alike
 - Now: a great work gives 2 Culture and no Tourism by itself; Tourism comes from buildings and policies
+- Now: many World Wonders have Great Work slots with effects of their own, e.g. the Hagia Sophia gives +10 Faith once all 3 of its slots are filled (all of them under Tourism Wonders below)
 - Removed: theming bonuses, and the 2 Tourism each great work gave
 - Note: when a captured city's great work building is destroyed, its great works already moved to free slots of the new owner (base game); with one slot type they find any free slot
 - DLL: LEKMOD_GENERIC_GREAT_WORKS (AI no longer rearranges great works; the Royal Library's free work uses its own slot type)
-- Added: locked slots: a Great Work placed in Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again; it can't be offered for a swap either
-- Added: the Great Works screen marks locked slots with a padlock
-- Added: a new Great Work goes into a locked slot only when no other slot of its kind is free in any of your cities
-- Dev: 2026-10-28 (user): the padlock also shows on empty locked slots, which say so in their tooltip
-- Note: when a captured duplicate wonder is destroyed (same-turn rule "Both"), its great works still move to free slots of the new owner
-- DLL: Buildings.LekmodLockedGreatWorkSlots (CvGameCulture::MoveGreatWorks, ResponseSetSwappableGreatWork); LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST: two passes in CvCityBuildings::GetNextAvailableGreatWorkSlot and CvPlayerCulture::GetClosestAvailableGreatWorkSlot
 
 TOURISM AND INFLUENCE (LEKMOD_NO_PUBLIC_OPINION)
 ------------------------------------------------
@@ -2242,7 +2237,7 @@ TOURISM WONDERS (COLLECTION_TOURISM_WONDERS)
 Tags: tourism, wonders
 Collects: world wonders
 - Changed: {Great Library} each Great Work in it gives +3 Science and +3 Tourism (2 slots)
-- Now: {Statue of Zeus} 1 Great Work slot that comes filled
+- Added: {Statue of Zeus} 1 Great Work slot that comes filled
 - Changed: {Hanging Gardens} 2 slots, both filled: +2 Food
 - Changed: {Colossus} 1 slot, filled: +4 Gold
 - Changed: {Great Mosque of Djenne} 3 slots, 1 comes filled; all filled: +10 Tourism
@@ -2253,16 +2248,27 @@ Collects: world wonders
 - Changed: {Sistine Chapel} Great Works in it yield double
 - Removed: {Red Fort} its Tourism from Flight
 - Changed: {Red Fort} 3 slots, each Great Work in it gives +6 Tourism
-- Now: {Broadway} 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
+- Changed: {Broadway} 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
 - Changed: {Eiffel Tower} +15 Tourism and +3 Happiness in the Modern Era, +30 and +6 in the Atomic Era, +60 and +12 in the Information Era (was 12 Tourism and 5 Happiness)
 - Changed: {Cristo Redentor} 3 slots; all filled: +40 Faith
 - Changed: {CN Tower} 3 slots; all filled: +50% Tourism toward civs with territory within 10 tiles of the city
-- Now: {Angkor Wat} 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
+- Added: {Angkor Wat} 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
 - Dev: the combat preview calls every enemy aura "Fear Aura" with its source in brackets, e.g. "Fear Aura (Zeus)" (was "Nearby Reverse Great General"); auras don't stack, only the strongest counts
 - Dev: in the Great Works screen, hovering a building or wonder icon shows what Great Works inside it do
 - Note: Petra had no Tourism to remove. Colossus trade texts were already right (+2 Gold to you, +1 to the route owner)
 - Dev: the GDR's Fear Aura never applied (the promotion had no domain); fixed
 - DLL: Building_GreatWorkFilledYields, Building_EraHappiness, Buildings.GreatWorkFilledNearbyTourismMod/Range, NearbyMinorRestingInfluence/Range, NearbyEnemyCombatMod/Range, ClosestCoastalMinorInfluence (LEKMOD_GREAT_WORK_WONDER_EFFECTS); "comes filled" = FreeGreatWorkCount (random Great Works of Art)
+
+LOCKED GREAT WORK SLOTS (NEW) (LEKMOD_LOCKED_GREAT_WORK_SLOTS)
+-------------------------------------------------------------
+Tags: tourism, wonders
+- Added: a Great Work placed in Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again
+- Added: the Great Works screen marks these slots with a padlock
+- Added: a new Great Work goes into one of them only when no other slot is free in any of your cities
+- Dev: 2026-10-28 (user): the padlock also shows on empty locked slots, which say so in their tooltip
+- Dev: (user, 2026-11-05) moved out of the Great Works card, which now introduces the rules; "it can't be offered for a swap either" dropped from the player line (still true in game)
+- Note: when a captured duplicate wonder is destroyed (same-turn rule "Both"), its great works still move to free slots of the new owner
+- DLL: Buildings.LekmodLockedGreatWorkSlots (CvGameCulture::MoveGreatWorks, ResponseSetSwappableGreatWork); LEKMOD_LOCKED_GREAT_WORK_SLOTS_LAST: two passes in CvCityBuildings::GetNextAvailableGreatWorkSlot and CvPlayerCulture::GetClosestAvailableGreatWorkSlot
 
 NATIONAL EPIC (BUILDING_NATIONAL_EPIC)
 --------------------------------------
@@ -2281,10 +2287,10 @@ Tags: world wonders, tourism, wonders
 STATUE OF ZEUS (BUILDING_STATUE_ZEUS)
 -------------------------------------
 Tags: world wonders, tourism, wonders
-- Now: 1 Great Work slot that comes filled
-- Now: +10 resting Influence with city-states within 8 tiles
-- Now: enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
-- Now: doesn't need Honor
+- Added: 1 Great Work slot that comes filled
+- Added: +10 resting Influence with city-states within 8 tiles
+- Added: enemy units within 5 tiles of the city have -10% Combat Strength (Fear Aura)
+- Changed: no longer needs Honor
 - Removed: its yields, Engineer points, +10% military production and the +15% against cities for all units
 
 HANGING GARDENS (BUILDING_HANGING_GARDEN)
@@ -2347,8 +2353,7 @@ Tags: world wonders, tourism, wonders
 BROADWAY (BUILDING_BROADWAY)
 ----------------------------
 Tags: world wonders, tourism, wonders
-- Now: a free Great Musician
-- Now: 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
+- Changed: 3 Great Work slots, 1 comes filled; each Great Work in it gives +3 Tourism per era (Modern Era 18)
 - Removed: its Culture
 
 EIFFEL TOWER (BUILDING_EIFFEL_TOWER)
@@ -2392,11 +2397,10 @@ Tags: world wonders, wonders
 ANGKOR WAT (BUILDING_ANGKOR_WAT)
 --------------------------------
 Tags: world wonders, tourism, wonders
-- Now: available with Education and costs 268, like Notre Dame
-- Now: 1 Engineer point
-- Now: a free Baray (the Khmer Garden: +25% Great People instead of +20%, +2 Food, +2 Faith, no maintenance); it replaces the city's Garden, and the city can't build a Garden next to it
-- Now: 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
-- Removed: the free University, 5 Culture and 5 Science, the Scientist point
+- Changed: 1 Engineer point (was 1 Scientist point)
+- Added: a free Baray (the Khmer Garden: +25% Great People instead of +20%, +2 Food, +2 Faith, no maintenance); it replaces the city's Garden, and the city can't build a Garden next to it
+- Added: 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
+- Removed: the free University, 5 Culture and 5 Science
 - DLL: Buildings.LekmodFreeBuildingThisCityType (this exact building, not the civ's version of the class; CvCity::canConstruct rules out a second building of the same class); Building_GreatWorkFilledYields.Global
 
 HUBBLE SPACE TELESCOPE (BUILDING_HUBBLE)
@@ -2458,7 +2462,7 @@ Tags: diplomacy and trade, ui
 CULTURAL CITY-STATES: ONE GREAT WORK (MINOR_CIV_TRAIT_CULTURED)
 ---------------------------------------------------------------
 Tags: tourism, city-states
-- Added: each Cultured City-State owns 1 Great Work; from the Medieval Era you can buy it in the City-State screen for 200 Gold per era of yours (Medieval: 600) or get it by capturing the City-State (with a free Great Work slot); once it is taken either way it is gone
+- Added: each Cultured City-State owns 1 Great Work; from the Medieval Era you can buy it in the City-State screen for 200 Gold per era of yours (Medieval: 600) or get it by capturing the City-State; once it is taken either way it is gone
 - Dev: the City-State tooltip, the City-State screen (a Great Work symbol next to its type, shown while it still has the work) and its Civilopedia page explain it
 - DLL: LEKMOD_CULTURED_CS_CAPTURE_GREAT_WORK (reuses DoGreatWorkFromCityConquer); CvMinorCivAI::LekmodGetGreatWorkBuyState / LekmodDoBuyGreatWork / LekmodSetGreatWorkSold (saved m_iLekmodGreatWorkSold, appended to the City-State save data), network code -25, Lua Player:LekmodGetGreatWorkBuyState(iMajor) (4 = gone) / LekmodGetGreatWorkPrice(iMajor); define LEKMOD_CS_GREAT_WORK_GOLD_PER_ERA 200
 

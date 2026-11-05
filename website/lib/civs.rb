@@ -144,11 +144,17 @@ module Civs
     s.gsub(/<!--.*?-->/m, "")
   end
 
+  # XML character entities in game texts (e.g. "Apedemak&apos;s Bow"); &amp; last so "&amp;lt;" stays "&lt;"
+  XML_ENTITIES = { "&lt;" => "<", "&gt;" => ">", "&quot;" => '"', "&apos;" => "'" }.freeze
+  def xml_unescape(s)
+    s.gsub(/&(?:lt|gt|quot|apos);/, XML_ENTITIES).gsub("&amp;", "&")
+  end
+
   def load_texts(path)
     s = strip_comments(File.read(path, encoding: "UTF-8"))
     out = {}
     s.scan(%r{<(?:Row|Replace)\s+Tag\s*=\s*"([^"]+)"[^>]*>\s*<Text>(.*?)</Text>}m) do |tag, text|
-      out[tag] = text.gsub(/\s+/, " ").strip
+      out[tag] = xml_unescape(text.gsub(/\s+/, " ").strip)
     end
     out
   end

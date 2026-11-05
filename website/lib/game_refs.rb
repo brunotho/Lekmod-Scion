@@ -40,7 +40,7 @@ module GameRefs
     texts = {}
     Civs.strip_comments(texts_xml).scan(%r{<(?:Row|Replace)\s+Tag\s*=\s*"([^"]+)"[^>]*>\s*<Text>(.*?)</Text>}m) do |tag, text|
       # "[NEWLINE]" + spaces is the policy tooltip wrap marker (tools/wrap_branch_texts.py), not a real line break
-      texts[tag] = text.gsub(/\[NEWLINE\] {2,}/, " ").gsub(/\s+/, " ").strip
+      texts[tag] = Civs.xml_unescape(text.gsub(/\[NEWLINE\] {2,}/, " ").gsub(/\s+/, " ").strip)
     end
     needs = Civs.rows(data, "Unit_ResourceQuantityRequirements").group_by { |r| r["UnitType"] }
     refs = {}

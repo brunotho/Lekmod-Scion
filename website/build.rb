@@ -158,8 +158,8 @@ SECTION_LAYOUT = {
   "tourism" => [
     ["The rules", ["GREAT WORKS", "TOURISM AND INFLUENCE", "VICTORY: CAPITALS AND INFLUENCE"]],
     ["Where Great Works and Tourism come from", ["GREAT WRITER, ARTIST AND MUSICIAN", "GREAT WORK BUILDINGS",
-                                                "NATIONAL EPIC", "HOTEL", "CULTURAL CITY-STATES: ONE GREAT WORK",
-                                                "TOURISM WONDERS"]],
+                                                "NATIONAL EPIC", "CULTURAL CITY-STATES: ONE GREAT WORK",
+                                                "TOURISM WONDERS", "LOCKED GREAT WORK SLOTS"]],
     ["Policies and ideologies", ["TOURISM IN POLICIES AND IDEOLOGIES"]],
   ],
   # Split by the game data (2026-10-18): pickable = CannotBeChosen 0 and some unit combat may take it.
