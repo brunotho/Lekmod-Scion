@@ -280,6 +280,30 @@ Controls.TypePullDown:RegisterSelectionCallback( function( v1, v2 )
 end );
 
 ----------------------------------------------------------------
+-- per-frame work: place the panel again one frame after a refresh, and after a template was applied wait until the
+-- unit has its promotions (they come with the network message) to refresh. One handler: a second SetUpdate replaces the first.
+----------------------------------------------------------------
+g_RepositionPending = false;
+g_PollUnit = nil;
+g_PollStart = 0;
+function LekmodPTOnUpdate()
+	if g_RepositionPending then
+		g_RepositionPending = false;
+		LekmodPTPosition();
+	end
+	if g_PollUnit ~= nil then
+		local u = Players[Game.GetActivePlayer()]:GetUnitByID( g_PollUnit );
+		if u == nil or not u:IsPromotionReady() or os.clock() - g_PollStart > 3 then
+			g_PollUnit = nil;
+			LekmodPTRefresh();   -- sets g_RepositionPending again: handled next frame
+		end
+	end
+	if not g_RepositionPending and g_PollUnit == nil then
+		ContextPtr:ClearUpdate();
+	end
+end
+
+----------------------------------------------------------------
 -- the panel
 ----------------------------------------------------------------
 -- right above the unit panel's action box (promotions, builds) when it shows, else above the unit info frame; as far
@@ -380,10 +404,8 @@ function LekmodPTRefresh()
 	Controls.PanelStack:ReprocessAnchoring();
 	LekmodPTPosition();
 	-- the unit panel resizes its action box on the same events: place the panel again on the next frame
-	ContextPtr:SetUpdate( function()
-		ContextPtr:ClearUpdate();
-		LekmodPTPosition();
-	end );
+	g_RepositionPending = true;
+	ContextPtr:SetUpdate( LekmodPTOnUpdate );
 end
 
 -- Shift+1 / Shift+2: the selected unit's own type, also while the panel is closed or shows another type
@@ -398,6 +420,11 @@ local function ApplyTemplate( slot )
 	end
 	LekmodPTSync();   -- the game must have this PC's version of the template first (sends nothing when it already has)
 	Network.SendGiftUnit( unit:GetID(), (slot == 1) and -31 or -32 );
+	-- the promotions arrive with the network message, and no screen event tells this panel when they did: check every
+	-- frame for up to 3 seconds and refresh (the panel closes once the unit has no promotion left to pick)
+	g_PollUnit = unit:GetID();
+	g_PollStart = os.clock();
+	ContextPtr:SetUpdate( LekmodPTOnUpdate );
 	return true;
 end
 

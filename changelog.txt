@@ -786,6 +786,7 @@ Tags: ui, promotions
 - Added: the panel opens by itself when the selected unit can pick a promotion and its type has no Auto template; Alt+T or Map Options > Promotion templates keep it open (every game starts with it closed)
 - Added: templates are kept on your computer and carry over to every game; which template is Auto belongs to the game (saved with it) and every new game starts with Auto off
 - DLL: LEKMOD_PROMOTION_TEMPLATES: CvPlayer m_aiLekmodPromoTemplates (saved; per combat type 2 slots x 4 promotions + Auto flag), Lekmod*PromotionTemplate*; Auto applied in CvCity::CreateUnit (trained and bought, after the policy promotions) and CvMinorCivAI::DoSpawnUnit (after the gift's experience); network -30 sets one entry, -31/-32 apply slot 1/2 to a unit; Lua Player:LekmodGetPromotionTemplate(combat, slot)
+- Dev: after Shift+1/2 or a click the panel checks every frame (up to 3 s) until the promotions arrived with the network message, then closes like after picking by hand (user, 2026-11-05)
 - Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua; Alt+T and Shift+1/2 in its own input handler; option LEK_PromoTemplatesShown with a MiniMapPanel checkbox); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
 
 TOP-LEFT PANEL HOTKEYS
