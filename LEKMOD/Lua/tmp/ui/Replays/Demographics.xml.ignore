@@ -6,6 +6,11 @@
   <Grid Size="990,592" Anchor="C,C" Offset="0,20" Style="Grid9DetailFive140" ConsumeMouse="1" ID="InGameSet">
     <!-- LEKMOD: Blackout (World Congress): the table is hidden and this word shows instead -->
     <Label Anchor="C,C" Offset="0,-10" Font="TwCenMT24" FontStyle="Shadow" Color0="255.255.255.255" Color1="0.0.0.255" String="TXT_KEY_LEKMOD_DEMOGRAPHICS_BLACKOUT" Hidden="1" ID="LekmodBlackoutLabel" />
+    <!-- LEKMOD: a rival's Ministry of Truth (only when the Blackout proposal is not active) -->
+    <Stack Anchor="C,C" Offset="0,-10" StackGrowth="Bottom" Padding="14" Hidden="1" ID="LekmodTruthStack" >
+      <Label Anchor="C,T" Font="TwCenMT24" FontStyle="Shadow" Color0="255.255.255.255" Color1="0.0.0.255" String="TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH" />
+      <Label Anchor="C,T" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodTruthLabel" />
+    </Stack>
     <Box Anchor="C,B" AnchorSide="I.I" Offset="0,50"   Size="960,56" Color="255,255,255,0" >
       <!-- Close Button  -->
       <GridButton Anchor="L,B"  Style="SmallButton" Size="150,32"  Offset="14,0" StateOffsetIncrement="0,0" ID="BackButton"  >

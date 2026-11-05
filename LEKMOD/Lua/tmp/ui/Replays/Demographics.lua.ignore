@@ -497,13 +497,42 @@ end
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 -- LEKMOD: Blackout (World Congress): the screen opens with its usual background, but without the table
+-- A rival's Ministry of Truth has its own screen; when the Blackout proposal is active too, Blackout shows.
 function LekmodApplyBlackout()
-	local bBlackout = (not m_bIsEndGame) and (Game.LekmodIsBlackout ~= nil) and Game.LekmodIsBlackout(Game.GetActivePlayer());
+	local iActive = Game.GetActivePlayer();
+	local bAvailable = (not m_bIsEndGame) and (Game.LekmodIsBlackout ~= nil);
+	local bProposal = bAvailable and Game.LekmodIsBlackout();
+	local bAny = bAvailable and Game.LekmodIsBlackout( iActive );
+	local bTruth = bAny and not bProposal;
 	if( Controls.BigStack ~= nil ) then
-		Controls.BigStack:SetHide( bBlackout );
+		Controls.BigStack:SetHide( bAny );
 	end
 	if( Controls.LekmodBlackoutLabel ~= nil ) then
-		Controls.LekmodBlackoutLabel:SetHide( not bBlackout );
+		Controls.LekmodBlackoutLabel:SetHide( not bProposal );
+	end
+	if( Controls.LekmodTruthStack ~= nil ) then
+		Controls.LekmodTruthStack:SetHide( not bTruth );
+		if( bTruth ) then
+			-- name the owners the player has met
+			local names = {};
+			local eBuilding = GameInfoTypes["BUILDING_LEKMOD_MINISTRY_OF_TRUTH"];
+			local pActiveTeam = Teams[ Players[iActive]:GetTeam() ];
+			for iPlayer = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
+				local pPlayer = Players[iPlayer];
+				if( iPlayer ~= iActive and pPlayer ~= nil and pPlayer:IsAlive() and eBuilding ~= nil and pPlayer:CountNumBuildings( eBuilding ) > 0 ) then
+					if( pActiveTeam:IsHasMet( pPlayer:GetTeam() ) ) then
+						table.insert( names, Locale.ConvertTextKey( pPlayer:GetCivilizationShortDescriptionKey() ) );
+					end
+				end
+			end
+			if( #names > 0 ) then
+				Controls.LekmodTruthLabel:LocalizeAndSetText( "TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH_KNOWN", table.concat( names, ", " ) );
+			else
+				Controls.LekmodTruthLabel:LocalizeAndSetText( "TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH_UNKNOWN" );
+			end
+			Controls.LekmodTruthStack:CalculateSize();
+			Controls.LekmodTruthStack:ReprocessAnchoring();
+		end
 	end
 end
 

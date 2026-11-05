@@ -2921,7 +2921,7 @@ Tags: world wonders, espionage, wonders
 - Added: World Wonder at Telecommunications, 1100 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
-- Added: other players' Demographics screens are blacked out
+- Added: other players' Demographics screens show only the word CENSORED and the Ministry's owner (if they have met it) instead of their table; while the Blackout proposal is active they show BLACKOUT
 - DLL: Buildings.FastSpyEstablish, DemographicsBlackout (LEKMOD_SPY_WONDERS); Lua Game.LekmodIsBlackout(iObserver)
 - Dev: building 276, class 183; icon from the user's art (white background replaced, art_sources/tools/round_building_icon.py)
 

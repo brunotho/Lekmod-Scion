@@ -120794,7 +120794,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Ministry of Truth</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_MINISTRY_OF_TRUTH_HELP">
-			<Text>Gives 3 [ICON_SPY] Spies.[NEWLINE]Your [ICON_SPY] Spies and Diplomats are set up in their city as soon as they arrive.[NEWLINE][NEWLINE]All other players see only BLACKOUT on their Demographics screen.</Text>
+			<Text>Gives 3 [ICON_SPY] Spies.[NEWLINE]Your [ICON_SPY] Spies and Diplomats are set up in their city as soon as they arrive.[NEWLINE][NEWLINE]Other players see only CENSORED on their Demographics screen, which names your civilization if they have met you.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LEKMOD_EXTRAORDINARY_SESSION">
 			<Text>Extraordinary Session</Text>
@@ -120999,6 +120999,15 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_BLACKOUT">
 			<Text>B  L  A  C  K  O  U  T</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH">
+			<Text>C  E  N  S  O  R  E  D</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH_KNOWN">
+			<Text>The Ministry of Truth of {1_Civs} keeps the world's statistics from you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_TRUTH_UNKNOWN">
+			<Text>A civilization you haven't met keeps the world's statistics from you with its Ministry of Truth.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_RESOLUTION_TURNS_LEFT">
 			<Text>({1_Num} {1_Num: plural 1?turn; other?turns;} left)</Text>
