@@ -282,24 +282,31 @@ end );
 ----------------------------------------------------------------
 -- the panel
 ----------------------------------------------------------------
--- right above the unit panel's action box (promotions, builds), as far from it as that box is from the action buttons
--- on its left; the box changes its height with its content, so this reads its real place every time.
--- Both frames (Grid9DetailFive140 / Six140) draw their visible border about 35 px inside the control's top and bottom.
+-- right above the unit panel's action box (promotions, builds) when it shows, else above the unit info frame; as far
+-- from it as that box is from the action buttons on its left. Both change, so this reads their real place every time.
+-- Measured on screenshots (2026-11-05): the unit panel's frames (Grid9DetailFive140) show their border at the control's
+-- top edge, while our panel's frame (Grid9DetailSix140) draws its border about 35 px inside the control's top and bottom.
 local PANEL_GAP = 14;
-local FRAME_INSET = 35;
+local PANEL_INSET = 35;
+local function LookUp( path )
+	local control = nil;
+	pcall( function() control = ContextPtr:LookUpControl( path ); end );
+	return control;
+end
 function LekmodPTPosition()
-	local box = nil;
-	pcall( function() box = ContextPtr:LookUpControl( "/InGame/WorldView/UnitPanel/WorkerActionPanel" ); end );
-	local x, y = 72, 123;
+	local box = LookUp( "/InGame/WorldView/UnitPanel/WorkerActionPanel" );
+	local info = LookUp( "/InGame/WorldView/UnitPanel/LekmodUnitInfoFrame" );
+	local x, top = 72, 169;   -- small UI values, if the unit panel can't be read (EUI keeps its own layout)
 	if box ~= nil then
 		x = box:GetOffsetX();
-		y = box:GetOffsetY();
-		if not box:IsHidden() then
-			-- the box's visible top + the gap = the panel's visible bottom
-			y = y + box:GetSizeY() - FRAME_INSET + PANEL_GAP;
-		end
 	end
-	Controls.Panel:SetOffsetVal( x, y - FRAME_INSET );
+	if box ~= nil and not box:IsHidden() then
+		top = box:GetOffsetY() + box:GetSizeY();
+	elseif info ~= nil then
+		top = info:GetOffsetY() + info:GetSizeY();
+	end
+	-- our visible bottom = the visible top below it + the gap
+	Controls.Panel:SetOffsetVal( x, top + PANEL_GAP - PANEL_INSET );
 end
 
 function LekmodPTRefresh()

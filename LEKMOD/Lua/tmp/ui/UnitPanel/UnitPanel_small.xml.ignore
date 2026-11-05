@@ -70,7 +70,7 @@
 
   <!-- Background -->
 
-  <Grid Anchor="L,B" Offset="-37,-39" Size="400,208" Padding="0,0" Style="Grid9DetailFive140" Hidden="0"  ConsumeMouse="1">
+  <Grid Anchor="L,B" Offset="-37,-39" Size="400,208" Padding="0,0" Style="Grid9DetailFive140" Hidden="0"  ConsumeMouse="1" ID="LekmodUnitInfoFrame">
 
     <Box Anchor="R,T" Size="400,128" Offset="17,45" Color="White,0" HideBox="0" >
 
