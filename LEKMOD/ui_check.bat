@@ -18,6 +18,7 @@ IF EXIST "%patchfolder%\Lua\UI\LegalScreen.xml" (
 DEL /q "%patchfolder%\Lua\UI\"
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\AncientRuins\GoodyHutPopup.lua.ignore" "%patchfolder%\Lua\UI\GoodyHutPopup.lua" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\AncientRuins\GoodyHutPopup.xml.ignore" "%patchfolder%\Lua\UI\GoodyHutPopup.xml" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\AncientRuins\ChooseGoodyHutReward.lua.ignore" "%patchfolder%\Lua\UI\ChooseGoodyHutReward.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\AncientRuins\ChooseGoodyHutReward.xml.ignore" "%patchfolder%\Lua\UI\ChooseGoodyHutReward.xml" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\Religion\ChooseReligionPopup.lua.ignore" "%patchfolder%\Lua\UI\ChooseReligionPopup.lua" > nul

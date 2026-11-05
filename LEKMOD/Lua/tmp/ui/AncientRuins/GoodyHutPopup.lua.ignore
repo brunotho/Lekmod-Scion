@@ -48,7 +48,15 @@ function OnPopup( popupInfo )
 	else
 		Controls.DescriptionLabel:SetText(Locale.ConvertTextKey(pGoodyInfo.Description));
 	end
-		
+
+	-- LEKMOD: grow the frame to fit the text (the label starts 100 px below the top; the frame's
+	-- visible border sits about 35 px inside its bottom edge)
+	if (Controls.MainGrid ~= nil and Controls.DescriptionBox ~= nil) then
+		local iTextHeight = Controls.DescriptionLabel:GetSizeY();
+		Controls.DescriptionBox:SetSizeY(math.max(190, iTextHeight + 20));
+		Controls.MainGrid:SetSizeY(math.max(270, 100 + iTextHeight + 55));
+	end
+
 	UIManager:QueuePopup( ContextPtr, PopupPriority.GoodyHut );
 end
 Events.SerialEventGameMessagePopup.Add( OnPopup );
