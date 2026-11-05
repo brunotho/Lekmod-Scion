@@ -94,6 +94,8 @@
 			</Box>
 			<!-- List of Icons -->
 			<Stack ID="IconsStack" Anchor="C,C" Offset="0,30" StackGrowth="Right" Padding="3">
+				<!-- LEKMOD: the luxury your city demands for We Love the King Day -->
+				<Label ID="LekmodWLTKDIcon" Anchor="C,C" Offset="0,3" String="" Font="TwCenMT18" FontStyle="Shadow" Hidden="1"/>
 				<Label ID="RazingIcon" Anchor="C,C" Offset="0,0" String="[ICON_RAZING]" Hidden="1"/>
 				<Label ID="ResistanceIcon" Anchor="C,C" Offset="0,0" String="[ICON_RESISTANCE]" Hidden="1"/>
 				<Label ID="ConnectedIcon" Anchor="C,C" Offset="0,0" String="[ICON_CONNECTED]" Hidden="1"/>

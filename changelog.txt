@@ -488,6 +488,7 @@ WE LOVE THE KING DAY (CITY_RESOURCE_WLTKD_TURNS)
 ------------------------------------------------
 Tags: game mechanics
 - Changed: We Love the King Day lasts 10 turns (was 13)
+- Added: the luxury a city demands shows as an icon below its name on the map (standard UI)
 - Changed: an unfilled luxury request switches to a new luxury after 10 turns (was 26)
 - Dev: CITY_RESOURCE_WLTKD_TURNS 20 -> 15 (x67% quick speed = 10); LEKMOD_WLTKD_DEMAND_EXPIRES_AFTER_ONE_LENGTH drops the x2 on the demand expiry. Civilopedia concept text updated.
 

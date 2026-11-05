@@ -577,9 +577,28 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 		controls.NameStack:CalculateSize();
 		controls.NameStack:ReprocessAnchoring();
 	end
-	
+
+	LekmodUpdateDemandIcon(controls, city, isActivePlayerCity);
+
 	controls.IconsStack:CalculateSize();
 	controls.IconsStack:ReprocessAnchoring();
+end
+
+-- LEKMOD: the luxury your own city demands (We Love the King Day) as an icon below its name, like City-State quests;
+-- hidden while the city celebrates
+function LekmodUpdateDemandIcon( controls, city, isActivePlayerCity )
+	if (controls.LekmodWLTKDIcon == nil) then
+		return;
+	end
+	local pResourceInfo = nil;
+	if (isActivePlayerCity and city ~= nil and city:GetWeLoveTheKingDayCounter() == 0 and city:GetResourceDemanded(true) ~= -1) then
+		pResourceInfo = GameInfo.Resources[city:GetResourceDemanded()];
+	end
+	controls.LekmodWLTKDIcon:SetHide(pResourceInfo == nil);
+	if (pResourceInfo ~= nil) then
+		controls.LekmodWLTKDIcon:SetText(pResourceInfo.IconString);
+		controls.LekmodWLTKDIcon:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_DEMANDED_LUXURY", city:GetName(), pResourceInfo.IconString, Locale.ConvertTextKey(pResourceInfo.Description)));
+	end
 end
 
 
