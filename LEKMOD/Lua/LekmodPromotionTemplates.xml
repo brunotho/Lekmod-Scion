@@ -12,12 +12,12 @@
 		</Button>
 	</Instance>
 
-	<!-- the panel: built like the Map Options panel. A Stack lays out the rows top to bottom with one gap size (Padding),
-	     and the frame sizes itself around the Stack (Grid Padding + DoAutoSize in the Lua), so gaps and margins stay even
-	     whatever is inside. Anchored bottom left above the unit panel's action box; the Lua moves it right for the large UI.
+	<!-- the panel: a Stack lays out the rows top to bottom with one gap size (Padding 10). The frame has a fixed size:
+	     content 316 x 163, plus 24 px left/right and 28 px top/bottom (DoAutoSize shrank the frame below its content).
+	     The Lua places it right above the unit panel's action box (LekmodPTPosition).
 	     Opens by itself when the selected unit can pick a promotion and its type has no Auto template; Alt+T or
 	     Map Options keep it open. -->
-	<Grid Anchor="L,B" Offset="72,345" Size="380,260" Style="Grid9DetailSix140" Padding="28,38" ConsumeMouse="1" Hidden="1" ID="Panel">
+	<Grid Anchor="L,B" Offset="72,345" Size="364,219" Style="Grid9DetailSix140" ConsumeMouse="1" Hidden="1" ID="Panel">
 		<Stack Anchor="C,C" StackGrowth="Bottom" Padding="10" ID="PanelStack">
 			<Container Anchor="L,T" Size="316,32">
 				<Label Anchor="L,C" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_TITLE"/>

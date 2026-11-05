@@ -34,7 +34,8 @@ local g_DismissUnit = nil;     -- the X closed the automatic panel for this unit
 local g_DismissReady = nil;    -- ... while its "can pick a promotion" state stays the same
 
 ----------------------------------------------------------------
--- local storage: "<UNITCOMBAT>_<slot>" = "PROMOTION_A,PROMOTION_B", "<UNITCOMBAT>_AUTO" = slot (0 = none)
+-- local storage: "<UNITCOMBAT>_<slot>" = "PROMOTION_A,PROMOTION_B". Auto is not stored on the PC: it belongs to the
+-- game (the DLL saves it), so every new game starts with Auto off (user, 2026-11-05)
 ----------------------------------------------------------------
 local function GetValue( key )
 	if g_UserData == nil then return nil; end
@@ -61,8 +62,9 @@ function LekmodPTLoad( combatType, slot )
 	end
 	return list;
 end
+local g_AutoSlot = {};   -- combat type -> slot marked Auto in this game (read from the game at load, then kept here)
 function LekmodPTAutoSlot( combatType )
-	local v = tonumber( GetValue( combatType .. "_AUTO" ) ) or 0;
+	local v = g_AutoSlot[combatType] or 0;
 	if v >= 1 and v <= NUM_SLOTS and #LekmodPTLoad( combatType, v ) > 0 then
 		return v;
 	end
@@ -75,7 +77,7 @@ local function SaveTemplate( combatType, slot, list )
 	end
 	SetValue( combatType .. "_" .. slot, table.concat( types, "," ) );
 	if #list == 0 and LekmodPTAutoSlot( combatType ) == slot then
-		SetValue( combatType .. "_AUTO", 0 );
+		g_AutoSlot[combatType] = 0;
 	end
 end
 
@@ -280,6 +282,23 @@ end );
 ----------------------------------------------------------------
 -- the panel
 ----------------------------------------------------------------
+-- right above the unit panel's action box (promotions, builds), as far from it as that box is from the action buttons
+-- on its left; the box changes its height with its content, so this reads its real place every time
+local PANEL_GAP = 14;
+function LekmodPTPosition()
+	local box = nil;
+	pcall( function() box = ContextPtr:LookUpControl( "/InGame/WorldView/UnitPanel/WorkerActionPanel" ); end );
+	local x, y = 72, 123;
+	if box ~= nil then
+		x = box:GetOffsetX();
+		y = box:GetOffsetY();
+		if not box:IsHidden() then
+			y = y + box:GetSizeY() + PANEL_GAP;
+		end
+	end
+	Controls.Panel:SetOffsetVal( x, y );
+end
+
 function LekmodPTRefresh()
 	if not Controls.Builder:IsHidden() then
 		return;   -- the builder keeps its unit type until it closes
@@ -347,10 +366,14 @@ function LekmodPTRefresh()
 			Controls["AutoClick" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
 		end
 	end
-	-- the frame wraps the rows with its Padding (like the Map Options panel)
 	Controls.PanelStack:CalculateSize();
 	Controls.PanelStack:ReprocessAnchoring();
-	Controls.Panel:DoAutoSize();
+	LekmodPTPosition();
+	-- the unit panel resizes its action box on the same events: place the panel again on the next frame
+	ContextPtr:SetUpdate( function()
+		ContextPtr:ClearUpdate();
+		LekmodPTPosition();
+	end );
 end
 
 -- Shift+1 / Shift+2: the selected unit's own type, also while the panel is closed or shows another type
@@ -379,7 +402,7 @@ end
 local function OnAuto( slot )
 	if g_ViewCombat == nil then return; end
 	local cur = LekmodPTAutoSlot( g_ViewCombat.Type );
-	SetValue( g_ViewCombat.Type .. "_AUTO", (cur == slot) and 0 or slot );
+	g_AutoSlot[g_ViewCombat.Type] = (cur == slot) and 0 or slot;
 	LekmodPTSync();
 	LekmodPTRefresh();
 end
@@ -528,12 +551,8 @@ end );
 -- events
 ----------------------------------------------------------------
 BuildTypePullDown();
--- the large UI's action box sits 18 px further right than the small UI's (UnitPanel.xml 90,123 / UnitPanel_small.xml 72,123)
-pcall( function()
-	if not OptionsManager.GetSmallUIAssets() then
-		Controls.Panel:SetOffsetVal( 90, 345 );
-	end
-end );
+-- "Always show" never carries over: every game starts with the panel closed (user, 2026-11-05)
+SetAlwaysShown( false );
 Events.SerialEventUnitInfoDirty.Add( LekmodPTRefresh );
 Events.UnitSelectionChanged.Add( function() LekmodPTRefresh(); end );
 Events.SerialEventEnterCityScreen.Add( LekmodPTRefresh );
@@ -547,6 +566,18 @@ Events.GameplaySetActivePlayer.Add( function()
 	LekmodPTSync();
 end );
 Events.LoadScreenClose.Add( function()
+	local pPlayer = Players[Game.GetActivePlayer()];
+	if pPlayer ~= nil and pPlayer.LekmodGetPromotionTemplate ~= nil then
+		for combat in GameInfo.UnitCombatInfos() do
+			for slot = 1, NUM_SLOTS do
+				local values = { pPlayer:LekmodGetPromotionTemplate( combat.ID, slot - 1 ) };
+				if values[MAX_PROMOS + 1] == 1 then
+					g_AutoSlot[combat.Type] = slot;
+				end
+			end
+		end
+	end
+	SetAlwaysShown( false );
 	LekmodPTSync();
 	LekmodPTRefresh();
 end );
