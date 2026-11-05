@@ -39,8 +39,8 @@
 				</GridButton>
 				<!-- hotkey like on the promotion buttons: modifier above, key below -->
 				<Container Anchor="L,C" Offset="160,0" Size="40,36" ID="Key1">
-					<Label Anchor="C,T" Offset="0,0" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
-					<Label Anchor="C,B" Offset="0,1" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="1"/>
+					<Label Anchor="C,T" Offset="0,3" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
+					<Label Anchor="C,B" Offset="0,4" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="1"/>
 				</Container>
 				<!-- Auto: the circle only shows the state; the invisible button on top takes the clicks (a radio button can't be clicked off) -->
 				<Container Anchor="L,C" Offset="214,0" Size="40,36" ID="AutoBox1">
@@ -57,8 +57,8 @@
 				</GridButton>
 				<!-- hotkey like on the promotion buttons: modifier above, key below -->
 				<Container Anchor="L,C" Offset="160,0" Size="40,36" ID="Key2">
-					<Label Anchor="C,T" Offset="0,0" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
-					<Label Anchor="C,B" Offset="0,1" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="2"/>
+					<Label Anchor="C,T" Offset="0,3" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
+					<Label Anchor="C,B" Offset="0,4" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="2"/>
 				</Container>
 				<!-- Auto: the circle only shows the state; the invisible button on top takes the clicks (a radio button can't be clicked off) -->
 				<Container Anchor="L,C" Offset="214,0" Size="40,36" ID="AutoBox2">
