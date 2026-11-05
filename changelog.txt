@@ -789,6 +789,12 @@ Tags: ui, promotions
 - Dev: after Shift+1/2 or a click the panel checks every frame (up to 3 s) until the promotions arrived with the network message, then closes like after picking by hand (user, 2026-11-05)
 - Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua; Alt+T and Shift+1/2 in its own input handler; option LEK_PromoTemplatesShown with a MiniMapPanel checkbox); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
 
+GREAT SCIENTIST DECAY (NEW) (GAMEOPTION_NO_SCIENTIST_SAVING)
+-------------------------------------------------------------
+Tags: ui
+- Added: a Great Scientist you keep shows a red "-N Science" over its tile at the start of your turn when its Science bonus drops
+- Dev: Lua/LekmodScientistDecay.lua (loaded by InGame) compares each Great Scientist's GetDiscoverAmount with the last turn; local only, nothing sent over the network
+
 TOP-LEFT PANEL HOTKEYS
 ----------------------
 Tags: ui

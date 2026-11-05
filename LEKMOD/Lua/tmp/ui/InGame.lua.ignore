@@ -1538,6 +1538,7 @@ ContextPtr:LoadNewContext("LekmodWorldLeaderVote") -- LEKMOD: World Leader vote 
 ContextPtr:LoadNewContext("LekmodAuction") -- LEKMOD: special City-State auctions (Lua/LekmodAuction.lua)
 ContextPtr:LoadNewContext("LekmodAnnouncementBanner") -- LEKMOD: announcement banner at the top of the screen (Lua/LekmodAnnouncementBanner.lua)
 ContextPtr:LoadNewContext("LekmodPromotionTemplates") -- LEKMOD: promotion templates above the unit panel (Lua/LekmodPromotionTemplates.lua)
+ContextPtr:LoadNewContext("LekmodScientistDecay") -- LEKMOD: red floating Science when a held Great Scientist loses bulb value (Lua/LekmodScientistDecay.lua)
 
 -- Lekmod Civilization
 ContextPtr:LoadNewContext("Lekmod_tonga")
