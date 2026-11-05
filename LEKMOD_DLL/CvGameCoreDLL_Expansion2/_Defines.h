@@ -1862,8 +1862,6 @@ Diversify Spain and Australia's NW Discovery bonus
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
 #define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242
-// Science City-States: Science per turn = this x era number (Ancient = 1) for friends, doubled for allies
-#define LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA 3
 // Special City-State auctions (St. Petersburg, Shanghai, Sparta): % chance per turn inside the era window, once per game
 #define LEKMOD_AUCTION_CHANCE_PERCENT 3
 // Shanghai's exhibition: +% Culture in every city of the winner for this many turns

@@ -44354,7 +44354,7 @@
 			<Civilopedia>TXT_KEY_CIV5_BUILDINGS_STAVE_TEXT</Civilopedia> 
 			<Strategy>TXT_KEY_BUILDING_TEMPLE_STRATEGY</Strategy>
             <Help>TXT_KEY_BUILDING_STAVE_HELP</Help> 			
-			<Cost>55</Cost> 
+			<Cost>75</Cost> 
 			<HurryCostModifier>25</HurryCostModifier>
 			<ConquestProb>66</ConquestProb> 
 			<MaxStartEra>ERA_RENAISSANCE</MaxStartEra> 
@@ -49527,15 +49527,15 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_MUSEUM"/>
-			<Set GreatWorkCount="1" GoldMaintenance="4"/>
+			<Set GreatWorkCount="1"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_BASIL"/>
-			<Set GreatWorkCount="1" GoldMaintenance="4"/>
+			<Set GreatWorkCount="1"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_YUGO_SPOMENIK"/>
-			<Set GreatWorkCount="1" GoldMaintenance="4"/>
+			<Set GreatWorkCount="1"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_AMPHITHEATER"/>
@@ -281526,7 +281526,7 @@
 		<Row>
 			<PolicyType>POLICY_MILITARY_CASTE</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_COURTHOUSE</BuildingClassType>
-			<Happiness>2</Happiness>
+			<Happiness>1</Happiness>
 		</Row>
 		<Row>
 			<PolicyType>POLICY_MERCHANT_NAVY</PolicyType>
@@ -285142,7 +285142,7 @@
 	<Units>
 		<Update>
 			<Where Type="UNIT_MC_OMANI_BAGHLAH"/>
-			<Set Combat="7" RangedCombat="9"/>
+			<Set Combat="7" RangedCombat="9" Cost="48"/>
 		</Update>
 	</Units>
 	<Unit_FreePromotions>
@@ -293071,4 +293071,20 @@
 			<IconFontTexture>ICON_FONT_TEXTURE_LEKMOD_BUILDINGS</IconFontTexture>
 		</Row>
 	</IconFontMapping>
+	<!-- LEKMOD (2026-11-05, New Specs 11): Aesthetics: Artistic Genius without its Great Artist, Fine Arts needs Artistic Genius and Flourishing of the Arts, Literary Tradition also gives 1 free Great Work -->
+	<Policy_FreeUnitClasses>
+		<Delete PolicyType="POLICY_ARTISTIC_GENIUS" UnitClassType="UNITCLASS_ARTIST"/>
+	</Policy_FreeUnitClasses>
+	<Policy_PrereqPolicies>
+		<Row>
+			<PolicyType>POLICY_FINE_ARTS</PolicyType>
+			<PrereqPolicy>POLICY_FLOURISHING_OF_ARTS</PrereqPolicy>
+		</Row>
+	</Policy_PrereqPolicies>
+	<Policies>
+		<Update>
+			<Where Type="POLICY_ETHICS"/>
+			<Set LekmodFreeGreatWorks="1"/>
+		</Update>
+	</Policies>
 </GameData>

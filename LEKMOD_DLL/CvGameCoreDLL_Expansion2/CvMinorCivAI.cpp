@@ -8422,14 +8422,17 @@ int CvMinorCivAI::GetScienceFriendshipBonusTimes100(PlayerTypes eMajor, EraTypes
 	else if (IsFriends(eMajor))
 		iResult += pPolicies->GetMinorFriendYieldBonus(eCurrentEra, YIELD_SCIENCE);
 #ifdef LEKMOD_SPECIAL_CITY_STATES
-	// Science City-States: 3 x era number (Ancient = 1) for friends, doubled for allies
+	// Science City-States: the same amounts as Cultured/Religious City-States give (Eras.CityStateFriendCulture / CityStateAllyCulture)
 	if (GetTrait() == MINOR_CIV_TRAIT_SCIENTIFIC && eCurrentEra != NO_ERA)
 	{
-		const int iTrait = /*3*/ LEKMOD_SCIENCE_CS_SCIENCE_PER_ERA * ((int)eCurrentEra + 1) * 100;
-		if (IsAllies(eMajor))
-			iResult += 2 * iTrait;
-		else if (IsFriends(eMajor))
-			iResult += iTrait;
+		const CvEraInfo* pkLekmodEra = GC.getEraInfo(eCurrentEra);
+		if (pkLekmodEra != NULL)
+		{
+			if (IsAllies(eMajor))
+				iResult += pkLekmodEra->getCityStateAllyCulture() * 100;
+			else if (IsFriends(eMajor))
+				iResult += pkLekmodEra->getCityStateFriendCulture() * 100;
+		}
 	}
 #endif
 

@@ -116025,7 +116025,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_ARTISTIC_GENIUS_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Artistic Genius[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_ARTIST] Great Artist appears[NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture from Great Works and culture buildings[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Festivals[ENDCOLOR] provide +1 [ICON_RESEARCH] Science per era
+				[COLOR_POSITIVE_TEXT]Artistic Genius[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture from Great Works and culture buildings[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Festivals[ENDCOLOR] provide +1 [ICON_RESEARCH] Science per era
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_ARTISTIC_GENIUS_TEXT"> 
@@ -116708,7 +116708,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_ETHICS_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Literary Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_WRITER] Great Writer appears[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture from every [COLOR_POSITIVE_TEXT]Trading Post[ENDCOLOR]
+				[COLOR_POSITIVE_TEXT]Literary Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]A [ICON_GREAT_WRITER] Great Writer appears[NEWLINE][ICON_BULLET]A [ICON_GREAT_WORK] Great Work appears in an empty slot[NEWLINE][ICON_BULLET]+1 [ICON_CULTURE] Culture from every [COLOR_POSITIVE_TEXT]Trading Post[ENDCOLOR]
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_ETHICS_TEXT"> 
@@ -117178,7 +117178,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_CASTE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +2 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
+				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +1 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_TRADITION"> 
@@ -121037,10 +121037,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_POSITIVE_TEXT]Cultural Dominion[ENDCOLOR][NEWLINE]Earn [ICON_GREAT_WRITER] Great Writers, [ICON_GREAT_ARTIST] Artists and [ICON_GREAT_MUSICIAN] Musicians 25% faster.[NEWLINE]World Wonders in cities you captured provide +10 [ICON_TOURISM] Tourism.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_DOCTRINE_OF_SUBJUGATION">
-			<Text>Doctrine of Subjugation</Text>
+			<Text>Imperialism</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_DOCTRINE_OF_SUBJUGATION_HELP">
-			<Text>[COLOR_POSITIVE_TEXT]Doctrine of Subjugation[ENDCOLOR][NEWLINE]Each Courthouse you build creates 2 Great Works.[NEWLINE]+100% [ICON_GOLD] Gold from capturing cities.[NEWLINE]Resistance in cities you capture lasts half as long.</Text>
+			<Text>[COLOR_POSITIVE_TEXT]Imperialism[ENDCOLOR][NEWLINE]Each Courthouse you build creates 2 Great Works.[NEWLINE]+100% [ICON_GOLD] Gold from capturing cities.[NEWLINE]Resistance in cities you capture lasts half as long.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_ADVANCED_INTERROGATION">
 			<Text>Advanced Interrogation Techniques</Text>
