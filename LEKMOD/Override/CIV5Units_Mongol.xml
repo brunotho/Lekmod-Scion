@@ -148498,7 +148498,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Map and unit display options</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS">
-			<Text>Promotions under unit flags</Text>
+			<Text>Promotions on flags</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS">
 			<Text>Alt+P</Text>

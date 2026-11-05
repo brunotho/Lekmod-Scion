@@ -283,8 +283,10 @@ end );
 -- the panel
 ----------------------------------------------------------------
 -- right above the unit panel's action box (promotions, builds), as far from it as that box is from the action buttons
--- on its left; the box changes its height with its content, so this reads its real place every time
+-- on its left; the box changes its height with its content, so this reads its real place every time.
+-- Both frames (Grid9DetailFive140 / Six140) draw their visible border about 35 px inside the control's top and bottom.
 local PANEL_GAP = 14;
+local FRAME_INSET = 35;
 function LekmodPTPosition()
 	local box = nil;
 	pcall( function() box = ContextPtr:LookUpControl( "/InGame/WorldView/UnitPanel/WorkerActionPanel" ); end );
@@ -293,10 +295,11 @@ function LekmodPTPosition()
 		x = box:GetOffsetX();
 		y = box:GetOffsetY();
 		if not box:IsHidden() then
-			y = y + box:GetSizeY() + PANEL_GAP;
+			-- the box's visible top + the gap = the panel's visible bottom
+			y = y + box:GetSizeY() - FRAME_INSET + PANEL_GAP;
 		end
 	end
-	Controls.Panel:SetOffsetVal( x, y );
+	Controls.Panel:SetOffsetVal( x, y - FRAME_INSET );
 end
 
 function LekmodPTRefresh()
