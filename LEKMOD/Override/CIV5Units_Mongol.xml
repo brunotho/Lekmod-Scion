@@ -148897,9 +148897,6 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Cooldown: ready again in {1_Num} turns.</Text>
 		</Row>
 		<!-- LEKMOD: promotion templates (2026-11-05, Lua/LekmodPromotionTemplates.lua) -->
-		<Row Tag="TXT_KEY_LEKMOD_PT_HEADER">
-			<Text>Promotion templates: {1_Combat}</Text>
-		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_NEW">
 			<Text>+ New template</Text>
 		</Row>
@@ -148909,17 +148906,14 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO">
 			<Text>Auto</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO_ON">
-			<Text>[COLOR_POSITIVE_TEXT]Auto: on[ENDCOLOR]</Text>
-		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO_TT">
-			<Text>Auto: new {1_Combat} units you train, buy or receive from City-States get this template's promotions right away, as many as their experience allows.[NEWLINE][NEWLINE]Only one template per unit type can be Auto.[NEWLINE]Promotions earned later are always picked by hand.</Text>
+			<Text>Auto: new {1_Combat} units you train, buy or receive from City-States get this template's promotions right away, as many as their experience allows.[NEWLINE][NEWLINE]Click again to switch Auto off.[NEWLINE]Only one template per unit type can be Auto.[NEWLINE]Promotions earned later are always picked by hand.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_APPLY_TT">
 			<Text>Template {1_Num} (Shift+{1_Num}):[NEWLINE]{2_List}[NEWLINE][NEWLINE]Click to give the unit these promotions, as many as its experience allows.[NEWLINE]Promotions it already has or can't take are skipped.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_NOT_READY">
-			<Text>This unit can't pick a promotion right now.</Text>
+			<Text>Select a unit of this type ({1_Combat}) that can pick a promotion to use the template.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_DELETE_TT">
 			<Text>Delete this template.</Text>
@@ -148930,11 +148924,35 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_PT_BUILDER_HELP">
 			<Text>Click up to 4 promotions in the order they should be taken.[NEWLINE]Greyed-out promotions need an earlier one first.</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_PT_TOGGLE_SHOW">
+		<Row Tag="TXT_KEY_LEKMOD_PT_TITLE">
+			<Text>Templates:</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_COL_PROMOTIONS">
+			<Text>Promotions</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_COL_KEY">
+			<Text>Key</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO_COL_TT">
+			<Text>The marked template is given to every new unit of this type right away.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_TYPE_TT">
+			<Text>The unit type whose templates are shown.[NEWLINE]Selecting a unit switches to its type.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_CLOSE_TT">
+			<Text>Close the templates.[NEWLINE]They open by themselves when a unit can pick a promotion and its type has no Auto template.[NEWLINE]Alt+T or Map Options > Promotion templates keep them open.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_KEY_MOD">
+			<Text>Shift</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_MAP_OPTIONS_PROMO_TEMPLATES">
 			<Text>Promotion templates</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_PT_TOGGLE_HIDE">
-			<Text>Hide templates</Text>
+		<Row Tag="TXT_KEY_LEKMOD_HOTKEY_PROMO_TEMPLATES">
+			<Text>Alt+T</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_TEMPLATES_TT">
+			<Text>Keep the promotion templates open, also without a selected unit.[NEWLINE]When off, they open by themselves when a unit can pick a promotion and its type has no Auto template.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_UNDO">
 			<Text>Undo</Text>

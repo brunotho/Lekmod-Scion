@@ -4,6 +4,10 @@
 -- (Network -30, only entries that differ from what the game already has); the DLL keeps them in the save and applies
 -- the Auto one itself when a unit is trained, bought or gifted by a City-State. A click (or Shift+1 / Shift+2) on a
 -- template sends one message (-31 / -32) and the DLL gives the unit as many of its promotions as it can pick.
+--
+-- Visibility: the panel opens by itself when the selected unit can pick a promotion and its type has no Auto
+-- template (the X closes it for that unit until its state changes). "Always show" (Alt+T, or Map Options >
+-- Promotion templates; option LEK_PromoTemplatesShown) keeps it open, also without a selected unit.
 include( "IconSupport" );
 include( "InstanceManager" );
 
@@ -14,18 +18,20 @@ local PICK_SIZE = 48;
 
 local g_UserData = nil;
 pcall( function() g_UserData = Modding.OpenUserData( "LekmodPromotionTemplates", 1 ); end );
+local g_Options = nil;
+pcall( function() g_Options = Modding.OpenUserData( "Enhanced User Interface Options", 1 ); end );
 
 local g_IconIM = { InstanceManager:new( "TemplateIconInstance", "Icon", Controls.Icons1 ),
                    InstanceManager:new( "TemplateIconInstance", "Icon", Controls.Icons2 ) };
 local g_PickIM = InstanceManager:new( "PickInstance", "Button", Controls.PickArea );
 
 local g_PendingSync = false;
-local g_CurrentCombat = nil;   -- UnitCombatInfos row of the panel
+local g_ViewCombat = nil;      -- UnitCombatInfos row the panel shows (follows the selected unit, or the dropdown)
+local g_LastUnit = nil;        -- ID of the unit the view last followed
 local g_BuilderSlot = nil;
 local g_BuilderSeq = {};
-local g_ToggleUnit = nil;      -- the panel's show/hide toggle applies to this unit ...
-local g_ToggleReady = nil;     -- ... while its "can pick a promotion" state stays the same
-local g_ToggleFlipped = false;
+local g_DismissUnit = nil;     -- the X closed the automatic panel for this unit ...
+local g_DismissReady = nil;    -- ... while its "can pick a promotion" state stays the same
 
 ----------------------------------------------------------------
 -- local storage: "<UNITCOMBAT>_<slot>" = "PROMOTION_A,PROMOTION_B", "<UNITCOMBAT>_AUTO" = slot (0 = none)
@@ -71,6 +77,17 @@ local function SaveTemplate( combatType, slot, list )
 	if #list == 0 and LekmodPTAutoSlot( combatType ) == slot then
 		SetValue( combatType .. "_AUTO", 0 );
 	end
+end
+
+-- "Always show" option
+function LekmodPTAlwaysShown()
+	return g_Options ~= nil and g_Options.GetValue( "LEK_PromoTemplatesShown" ) == 1;
+end
+local function SetAlwaysShown( bOn )
+	if g_Options ~= nil then
+		g_Options.SetValue( "LEK_PromoTemplatesShown", bOn and 1 or 0 );
+	end
+	LuaEvents.LekmodPromoTemplatesShownChanged();
 end
 
 ----------------------------------------------------------------
@@ -170,29 +187,38 @@ function LekmodPTPrereqsMet( promo, have )
 	return false;
 end
 
--- every promotion the unit has (also free ones that can't be picked, e.g. Prussia's Gehorsam)
-local function UnitHave( unit )
+local function SelectedUnit()
+	local unit = UI.GetHeadSelectedUnit();
+	if unit == nil or unit:GetOwner() ~= Game.GetActivePlayer() then
+		return nil;
+	end
+	return unit;
+end
+-- what a fresh unit of this type starts with: only promotions that can't be picked (e.g. Prussia's Gehorsam) and only
+-- when the selected unit is of the viewed type; chosen and free pickable ones (Alhambra's Drill I) don't count
+local function NaiveHave( combat )
 	local have = {};
-	if unit ~= nil then
+	local unit = SelectedUnit();
+	if unit ~= nil and combat ~= nil and unit:GetUnitCombatType() == combat.ID then
 		for promo in GameInfo.UnitPromotions() do
-			if unit:IsHasPromotion( promo.ID ) then
+			if promo.CannotBeChosen and unit:IsHasPromotion( promo.ID ) then
 				have[promo.Type] = true;
 			end
 		end
 	end
 	return have;
 end
--- the combat type's promotions this unit can ever reach: no prerequisites, or prerequisites it has or can reach
--- (civ-only lines such as Prussia's need a free promotion other units never have)
-function LekmodPTReachable( combatType, unit )
-	local all = CombatPromotions( combatType );
-	local have = UnitHave( unit );
+-- the combat type's promotions a fresh unit can ever reach (civ-only lines such as Prussia's need a free promotion
+-- other units never have)
+function LekmodPTReachable( combat, have )
+	local all = CombatPromotions( combat.Type );
 	local reach = {};
+	local lookup = setmetatable( {}, { __index = function( t, k ) return have[k] or reach[k]; end } );
 	local bChanged = true;
 	while bChanged do
 		bChanged = false;
 		for _, promo in ipairs( all ) do
-			if not reach[promo.Type] and LekmodPTPrereqsMet( promo, setmetatable( {}, { __index = function( t, k ) return have[k] or reach[k]; end } ) ) then
+			if not reach[promo.Type] and LekmodPTPrereqsMet( promo, lookup ) then
 				reach[promo.Type] = true;
 				bChanged = true;
 			end
@@ -205,17 +231,6 @@ function LekmodPTReachable( combatType, unit )
 		end
 	end
 	return list;
-end
-
-----------------------------------------------------------------
--- the panel
-----------------------------------------------------------------
-local function SelectedUnit()
-	local unit = UI.GetHeadSelectedUnit();
-	if unit == nil or unit:GetOwner() ~= Game.GetActivePlayer() then
-		return nil;
-	end
-	return unit;
 end
 local function UnitCombat( unit )
 	if unit == nil then return nil; end
@@ -233,81 +248,108 @@ local function PromoNames( list )
 	return table.concat( names, "[NEWLINE]" );
 end
 
+----------------------------------------------------------------
+-- unit type dropdown
+----------------------------------------------------------------
+local function BuildTypePullDown()
+	local pd = Controls.TypePullDown;
+	pd:ClearEntries();
+	local entries = {};
+	for combat in GameInfo.UnitCombatInfos() do
+		if #LekmodPTReachable( combat, {} ) > 0 then
+			table.insert( entries, { ID = combat.ID, Name = Locale.ConvertTextKey( combat.Description ) } );
+		end
+	end
+	table.sort( entries, function( a, b ) return Locale.Compare( a.Name, b.Name ) == -1; end );
+	for _, e in ipairs( entries ) do
+		local inst = {};
+		pd:BuildEntry( "InstanceOne", inst );
+		inst.Button:SetVoids( e.ID, 0 );
+		inst.Button:SetText( e.Name );
+	end
+	pd:CalculateInternals();
+end
+Controls.TypePullDown:RegisterSelectionCallback( function( v1, v2 )
+	local combat = GameInfo.UnitCombatInfos[v1];
+	if combat ~= nil then
+		g_ViewCombat = combat;
+		LekmodPTRefresh();
+	end
+end );
+
+----------------------------------------------------------------
+-- the panel
+----------------------------------------------------------------
 function LekmodPTRefresh()
 	if not Controls.Builder:IsHidden() then
-		return;   -- the builder keeps its combat type until it closes
+		return;   -- the builder keeps its unit type until it closes
 	end
 	local unit = SelectedUnit();
-	local combat = UnitCombat( unit );
-	g_CurrentCombat = combat;
-	if combat == nil or UI.IsCityScreenUp() then
-		Controls.Panel:SetHide( true );
-		Controls.ToggleButton:SetHide( true );
-		return;
+	local unitCombat = UnitCombat( unit );
+	-- a newly selected unit sets the view to its type; the dropdown can change it afterwards
+	local unitID = (unit ~= nil) and unit:GetID() or nil;
+	if unitID ~= g_LastUnit then
+		g_LastUnit = unitID;
+		if unitCombat ~= nil then
+			g_ViewCombat = unitCombat;
+		end
 	end
-	-- shown by default while the unit can pick a promotion; the toggle flips that until the unit or its state changes
-	local bReady = unit:IsPromotionReady();
-	if g_ToggleUnit ~= unit:GetID() or g_ToggleReady ~= bReady then
-		g_ToggleUnit = unit:GetID();
-		g_ToggleReady = bReady;
-		g_ToggleFlipped = false;
+	if g_ViewCombat == nil then
+		g_ViewCombat = unitCombat or GameInfo.UnitCombatInfos["UNITCOMBAT_MELEE"];
 	end
-	local bShown = (bReady ~= g_ToggleFlipped);
-	Controls.ToggleButton:SetHide( false );
-	Controls.ToggleLabel:LocalizeAndSetText( bShown and "TXT_KEY_LEKMOD_PT_TOGGLE_HIDE" or "TXT_KEY_LEKMOD_PT_TOGGLE_SHOW" );
+
+	local bReady = (unitCombat ~= nil) and unit:IsPromotionReady();
+	if g_DismissUnit ~= unitID or g_DismissReady ~= bReady then
+		g_DismissUnit = nil;
+	end
+	local bAutoOpen = bReady and LekmodPTAutoSlot( unitCombat.Type ) == 0 and g_DismissUnit == nil;
+	local bShown = (LekmodPTAlwaysShown() or bAutoOpen) and not UI.IsCityScreenUp() and g_ViewCombat ~= nil;
 	Controls.Panel:SetHide( not bShown );
 	if not bShown then
 		return;
 	end
+
+	local combat = g_ViewCombat;
 	local combatName = Locale.ConvertTextKey( combat.Description );
-	Controls.Header:LocalizeAndSetText( "TXT_KEY_LEKMOD_PT_HEADER", combatName );
+	Controls.TypePullDown:GetButton():SetText( combatName );
+	-- the template buttons work on the selected unit when it is of the shown type and can pick a promotion
+	local bCanApply = bReady and unitCombat.ID == combat.ID;
 	local autoSlot = LekmodPTAutoSlot( combat.Type );
 	for slot = 1, NUM_SLOTS do
+		Controls["Auto" .. slot]:SetCheck( autoSlot == slot );
 		local list = LekmodPTLoad( combat.Type, slot );
 		local im = g_IconIM[slot];
 		im:ResetInstances();
 		local apply = Controls["Apply" .. slot];
-		if #list == 0 then
-			Controls["New" .. slot]:SetHide( false );
-			Controls["Auto" .. slot]:SetHide( true );
-			Controls["Delete" .. slot]:SetHide( true );
+		local bEmpty = (#list == 0);
+		Controls["New" .. slot]:SetHide( not bEmpty );
+		Controls["Key" .. slot]:SetHide( bEmpty );
+		Controls["Auto" .. slot]:SetHide( bEmpty );
+		Controls["Delete" .. slot]:SetHide( bEmpty );
+		if bEmpty then
 			apply:SetDisabled( false );
 			apply:SetAlpha( 1 );
 			apply:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_NEW_TT", combatName ) );
 		else
-			Controls["New" .. slot]:SetHide( true );
-			Controls["Auto" .. slot]:SetHide( false );
-			Controls["Delete" .. slot]:SetHide( false );
 			for _, promo in ipairs( list ) do
 				local inst = im:GetInstance();
 				IconHookup( promo.PortraitIndex, 32, promo.IconAtlas, inst.Icon );
-				-- promotions the unit already has are skipped: show them dimmed
-				inst.Icon:SetAlpha( unit:IsHasPromotion( promo.ID ) and 0.35 or 1 );
 			end
 			Controls["Icons" .. slot]:CalculateSize();
+			Controls["Icons" .. slot]:ReprocessAnchoring();
 			local tt = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_APPLY_TT", slot, PromoNames( list ) );
-			if not bReady then
-				tt = tt .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_NOT_READY" );
+			if not bCanApply then
+				tt = tt .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_NOT_READY", combatName );
 			end
 			apply:SetToolTipString( tt );
-			apply:SetDisabled( not bReady );
-			apply:SetAlpha( bReady and 1 or 0.6 );
-			local bAuto = (autoSlot == slot);
-			Controls["AutoLabel" .. slot]:SetText( Locale.ConvertTextKey( bAuto and "TXT_KEY_LEKMOD_PT_AUTO_ON" or "TXT_KEY_LEKMOD_PT_AUTO" ) );
+			apply:SetDisabled( not bCanApply );
+			apply:SetAlpha( bCanApply and 1 or 0.55 );
 			Controls["Auto" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
 		end
 	end
-	-- the frame encloses its content (20 px left/right, 18 px top/bottom inside the frame)
-	Controls.PanelStack:CalculateSize();
-	Controls.PanelStack:ReprocessAnchoring();
-	Controls.Panel:SetSizeVal( Controls.PanelStack:GetSizeX() + 40, Controls.PanelStack:GetSizeY() + 36 );
 end
 
-Controls.ToggleButton:RegisterCallback( Mouse.eLClick, function()
-	g_ToggleFlipped = not g_ToggleFlipped;
-	LekmodPTRefresh();
-end );
-
+-- Shift+1 / Shift+2: the selected unit's own type, also while the panel is closed or shows another type
 local function ApplyTemplate( slot )
 	local unit = SelectedUnit();
 	local combat = UnitCombat( unit );
@@ -323,23 +365,23 @@ local function ApplyTemplate( slot )
 end
 
 local function OnApply( slot )
-	if g_CurrentCombat == nil then return; end
-	if #LekmodPTLoad( g_CurrentCombat.Type, slot ) == 0 then
+	if g_ViewCombat == nil then return; end
+	if #LekmodPTLoad( g_ViewCombat.Type, slot ) == 0 then
 		LekmodPTOpenBuilder( slot );
 	else
 		ApplyTemplate( slot );
 	end
 end
 local function OnAuto( slot )
-	if g_CurrentCombat == nil then return; end
-	local cur = LekmodPTAutoSlot( g_CurrentCombat.Type );
-	SetValue( g_CurrentCombat.Type .. "_AUTO", (cur == slot) and 0 or slot );
+	if g_ViewCombat == nil then return; end
+	local cur = LekmodPTAutoSlot( g_ViewCombat.Type );
+	SetValue( g_ViewCombat.Type .. "_AUTO", (cur == slot) and 0 or slot );
 	LekmodPTSync();
 	LekmodPTRefresh();
 end
 local function OnDelete( slot )
-	if g_CurrentCombat == nil then return; end
-	SaveTemplate( g_CurrentCombat.Type, slot, {} );
+	if g_ViewCombat == nil then return; end
+	SaveTemplate( g_ViewCombat.Type, slot, {} );
 	LekmodPTSync();
 	LekmodPTRefresh();
 end
@@ -350,17 +392,34 @@ for slot = 1, NUM_SLOTS do
 	Controls["Delete" .. s]:RegisterCallback( Mouse.eLClick, function() OnDelete( s ); end );
 end
 
-----------------------------------------------------------------
--- the builder
-----------------------------------------------------------------
-local function BuilderHave()
-	local have = UnitHave( SelectedUnit() );
-	for _, promo in ipairs( g_BuilderSeq ) do
-		have[promo.Type] = true;
+-- the X: switches "Always show" off and closes the automatic panel for this unit
+local function ClosePanel()
+	if LekmodPTAlwaysShown() then
+		SetAlwaysShown( false );
 	end
-	return have;
+	local unit = SelectedUnit();
+	g_DismissUnit = (unit ~= nil) and unit:GetID() or nil;
+	g_DismissReady = (unit ~= nil) and UnitCombat( unit ) ~= nil and unit:IsPromotionReady();
+	LekmodPTRefresh();
 end
+Controls.CloseButton:RegisterCallback( Mouse.eLClick, ClosePanel );
 
+-- Alt+T and Map Options: "Always show" on/off
+local function ToggleAlwaysShown()
+	local bOn = not LekmodPTAlwaysShown();
+	SetAlwaysShown( bOn );
+	if not bOn then
+		local unit = SelectedUnit();
+		g_DismissUnit = (unit ~= nil) and unit:GetID() or nil;
+		g_DismissReady = (unit ~= nil) and UnitCombat( unit ) ~= nil and unit:IsPromotionReady();
+	end
+	LekmodPTRefresh();
+end
+LuaEvents.LekmodPromoTemplatesShownChanged.Add( function() LekmodPTRefresh(); end );
+
+----------------------------------------------------------------
+-- the builder (always from a fresh unit's point of view)
+----------------------------------------------------------------
 function LekmodPTBuilderRefresh()
 	for i = 1, MAX_PROMOS do
 		local img = Controls["Seq" .. i];
@@ -373,13 +432,18 @@ function LekmodPTBuilderRefresh()
 			img:SetHide( true );
 		end
 	end
-	local have = BuilderHave();
+	local base = NaiveHave( g_ViewCombat );
+	local have = {};
+	for k, v in pairs( base ) do have[k] = v; end
 	local inSeq = {};
-	for _, promo in ipairs( g_BuilderSeq ) do inSeq[promo.ID] = true; end
+	for _, promo in ipairs( g_BuilderSeq ) do
+		have[promo.Type] = true;
+		inSeq[promo.ID] = true;
+	end
 	local bFull = (#g_BuilderSeq >= MAX_PROMOS);
 
 	g_PickIM:ResetInstances();
-	local list = LekmodPTReachable( g_CurrentCombat.Type, SelectedUnit() );
+	local list = LekmodPTReachable( g_ViewCombat, base );
 	for i, promo in ipairs( list ) do
 		local inst = g_PickIM:GetInstance();
 		local col = (i - 1) % PICK_COLUMNS;
@@ -410,10 +474,10 @@ function LekmodPTBuilderRefresh()
 end
 
 function LekmodPTOpenBuilder( slot )
-	if g_CurrentCombat == nil then return; end
+	if g_ViewCombat == nil then return; end
 	g_BuilderSlot = slot;
 	g_BuilderSeq = {};
-	Controls.BuilderTitle:LocalizeAndSetText( "TXT_KEY_LEKMOD_PT_BUILDER_TITLE", Locale.ConvertTextKey( g_CurrentCombat.Description ) );
+	Controls.BuilderTitle:LocalizeAndSetText( "TXT_KEY_LEKMOD_PT_BUILDER_TITLE", Locale.ConvertTextKey( g_ViewCombat.Description ) );
 	Controls.Builder:SetHide( false );
 	LekmodPTBuilderRefresh();
 end
@@ -428,8 +492,8 @@ Controls.UndoButton:RegisterCallback( Mouse.eLClick, function()
 	LekmodPTBuilderRefresh();
 end );
 Controls.SaveButton:RegisterCallback( Mouse.eLClick, function()
-	if g_CurrentCombat ~= nil and g_BuilderSlot ~= nil and #g_BuilderSeq > 0 then
-		SaveTemplate( g_CurrentCombat.Type, g_BuilderSlot, g_BuilderSeq );
+	if g_ViewCombat ~= nil and g_BuilderSlot ~= nil and #g_BuilderSeq > 0 then
+		SaveTemplate( g_ViewCombat.Type, g_BuilderSlot, g_BuilderSeq );
 		LekmodPTSync();
 	end
 	CloseBuilder();
@@ -437,7 +501,7 @@ end );
 Controls.CancelButton:RegisterCallback( Mouse.eLClick, CloseBuilder );
 
 ----------------------------------------------------------------
--- input: Shift+1 / Shift+2 apply a template; Esc closes the builder
+-- input: Shift+1 / Shift+2 apply a template, Alt+T shows or hides the panel; Esc closes the builder
 ----------------------------------------------------------------
 ContextPtr:SetInputHandler( function( uiMsg, wParam, lParam )
 	if uiMsg ~= KeyEvents.KeyDown then
@@ -452,12 +516,17 @@ ContextPtr:SetInputHandler( function( uiMsg, wParam, lParam )
 	if UI.ShiftKeyDown() and not UI.CtrlKeyDown() and not UI.AltKeyDown() and (wParam == 49 or wParam == 50) then
 		return ApplyTemplate( wParam - 48 );
 	end
+	if UI.AltKeyDown() and not UI.CtrlKeyDown() and not UI.ShiftKeyDown() and wParam == Keys.T then
+		ToggleAlwaysShown();
+		return true;
+	end
 	return false;
 end );
 
 ----------------------------------------------------------------
 -- events
 ----------------------------------------------------------------
+BuildTypePullDown();
 Events.SerialEventUnitInfoDirty.Add( LekmodPTRefresh );
 Events.UnitSelectionChanged.Add( function() LekmodPTRefresh(); end );
 Events.SerialEventEnterCityScreen.Add( LekmodPTRefresh );
@@ -470,4 +539,7 @@ Events.GameplaySetActivePlayer.Add( function()
 	CloseBuilder();
 	LekmodPTSync();
 end );
-Events.LoadScreenClose.Add( LekmodPTSync );
+Events.LoadScreenClose.Add( function()
+	LekmodPTSync();
+	LekmodPTRefresh();
+end );

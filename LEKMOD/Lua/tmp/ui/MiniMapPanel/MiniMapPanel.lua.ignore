@@ -567,11 +567,29 @@ function LekmodUpdateOptionLabels()
 	LekmodSetCheckLabel( Controls.ShowYield, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_YIELD_ICONS" ) .. LekmodControlKey( "CONTROL_YIELDS" ) );
 	LekmodSetCheckLabel( Controls.ShowResources, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_RESOURCE_ICONS" ) .. LekmodControlKey( "CONTROL_RESOURCE_ALL" ) );
 	LekmodSetCheckLabel( Controls.ShowGrid, Locale.ConvertTextKey( "TXT_KEY_MAP_OPTIONS_HEX_GRID" ) .. LekmodControlKey( "CONTROL_TOGGLE_HEX_GRID" ) );
+	if LekmodUpdatePromoTemplatesCheck ~= nil then LekmodUpdatePromoTemplatesCheck(); end
 	if Controls.LekmodFlagPromotions ~= nil then
 		LekmodSetCheckLabel( Controls.LekmodFlagPromotions, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS" ) .. " (" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_HOTKEY_FLAG_PROMOTIONS" ) .. ")" );
 		Controls.LekmodFlagPromotions:SetCheck( g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_FlagPromotions" ) ~= 0 );
 	end
 end
+
+-- LEKMOD (2026-11-05): promotion templates kept open (option LEK_PromoTemplatesShown; Alt+T in LekmodPromotionTemplates.lua)
+function LekmodUpdatePromoTemplatesCheck()
+	if Controls.LekmodPromoTemplates ~= nil then
+		LekmodSetCheckLabel( Controls.LekmodPromoTemplates, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAP_OPTIONS_PROMO_TEMPLATES" ) .. " (" .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_HOTKEY_PROMO_TEMPLATES" ) .. ")" );
+		Controls.LekmodPromoTemplates:SetCheck( g_LekmodOptions ~= nil and g_LekmodOptions.GetValue( "LEK_PromoTemplatesShown" ) == 1 );
+	end
+end
+if Controls.LekmodPromoTemplates ~= nil then
+	Controls.LekmodPromoTemplates:RegisterCheckHandler( function( bIsChecked )
+		if g_LekmodOptions ~= nil then
+			g_LekmodOptions.SetValue( "LEK_PromoTemplatesShown", bIsChecked and 1 or 0 );
+		end
+		LuaEvents.LekmodPromoTemplatesShownChanged();
+	end );
+end
+LuaEvents.LekmodPromoTemplatesShownChanged.Add( LekmodUpdatePromoTemplatesCheck );
 if Controls.LekmodFlagPromotions ~= nil then
 	Controls.LekmodFlagPromotions:RegisterCheckHandler( function( bIsChecked )
 		if g_LekmodOptions ~= nil then

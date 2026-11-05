@@ -778,13 +778,14 @@ Tags: bugfix, ui
 PROMOTION TEMPLATES (NEW) (UNIT_PANEL)
 --------------------------------------
 Tags: ui, promotions
-- Added: promotion templates: a small panel above the unit panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); "+ New template" picks the promotions in order (only those the unit's type can reach, so civ-only lines such as Prussia's appear only for that civ's units)
-- Added: the panel opens by itself while the selected unit can pick a promotion; a button below it shows or hides it at any time
-- Added: one click on a template (or Shift+1 / Shift+2) gives the selected unit its promotions, as many as its experience allows; promotions it already has (e.g. Drill I from the Alhambra) or can't take are skipped
-- Added: a template marked Auto is given to every new unit of that type you train, buy or receive from a City-State, as many promotions as its experience allows; promotions earned later are always picked by hand
+- Added: promotion templates: a small panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); it shows the selected unit's type, and a dropdown switches to any other type, also without a selected unit
+- Added: "+ New template" picks the promotions in order, as for a fresh unit (only those the type can reach, so civ-only lines such as Prussia's appear only for that civ's units)
+- Added: one click on a template (or Shift+1 / Shift+2, shown next to it) gives the selected unit its promotions, as many as its experience allows; promotions it already has (e.g. Drill I from the Alhambra) or can't take are skipped
+- Added: the Auto column marks the template every new unit of that type you train, buy or receive from a City-State gets right away, as many promotions as its experience allows; promotions earned later are always picked by hand
+- Added: the panel opens by itself when the selected unit can pick a promotion and its type has no Auto template; Alt+T or Map Options > Promotion templates keep it open
 - Added: templates are kept on your computer and carry over to every game
 - DLL: LEKMOD_PROMOTION_TEMPLATES: CvPlayer m_aiLekmodPromoTemplates (saved; per combat type 2 slots x 4 promotions + Auto flag), Lekmod*PromotionTemplate*; Auto applied in CvCity::CreateUnit (trained and bought, after the policy promotions) and CvMinorCivAI::DoSpawnUnit (after the gift's experience); network -30 sets one entry, -31/-32 apply slot 1/2 to a unit; Lua Player:LekmodGetPromotionTemplate(combat, slot)
-- Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
+- Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua; Alt+T and Shift+1/2 in its own input handler; option LEK_PromoTemplatesShown with a MiniMapPanel checkbox); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
 
 TOP-LEFT PANEL HOTKEYS
 ----------------------

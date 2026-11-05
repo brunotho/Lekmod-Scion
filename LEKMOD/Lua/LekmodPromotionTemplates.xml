@@ -12,39 +12,55 @@
 		</Button>
 	</Instance>
 
-	<!-- the panel: shown by default while the unit can pick a promotion; the toggle button below it shows or hides it at any time.
-	     The Lua sizes the frame around PanelStack. -->
-	<GridButton Anchor="L,B" Offset="72,345" Size="150,26" Style="SmallButton" Hidden="1" ID="ToggleButton">
-		<Label Anchor="C,C" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black" ID="ToggleLabel"/>
-	</GridButton>
-	<Grid Anchor="L,B" Offset="72,373" Size="276,140" Style="Grid9DetailFive140" ConsumeMouse="1" Hidden="1" ID="Panel">
-		<Stack Anchor="L,T" Offset="20,18" StackGrowth="Bottom" Padding="6" ID="PanelStack">
-			<Label Anchor="L,T" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Header"/>
-			<Container Anchor="L,T" Size="236,34" ID="Row1">
-				<GridButton Anchor="L,C" Size="146,34" Style="SmallButton" ID="Apply1">
-					<Stack Anchor="L,C" Offset="4,0" StackGrowth="Right" Padding="2" ID="Icons1"/>
-					<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New1"/>
-				</GridButton>
-				<GridButton Anchor="L,C" Offset="150,0" Size="58,28" Style="SmallButton" ID="Auto1">
-					<Label Anchor="C,C" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_AUTO" ID="AutoLabel1"/>
-				</GridButton>
-				<GridButton Anchor="L,C" Offset="212,0" Size="24,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete1">
-					<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
-				</GridButton>
+	<!-- the panel, a small table: header (title, unit type, close), column titles, one row per template.
+	     Fixed layout: 22 px inside the frame on the left and right, room for the frame's top and bottom trim.
+	     Opens by itself when the selected unit can pick a promotion and its type has no Auto template; Alt+T or
+	     Map Options keep it open. -->
+	<Grid Anchor="L,B" Offset="72,345" Size="320,178" Style="Grid9DetailFive140" ConsumeMouse="1" Hidden="1" ID="Panel">
+		<Label Anchor="L,T" Offset="22,22" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_TITLE"/>
+		<PullDown Anchor="L,T" Offset="104,16" Size="160,27" Style="GenericPullDown" ScrollThreshold="300" AutoSizePopUp="1" SpaceForScroll="1" ToolTip="TXT_KEY_LEKMOD_PT_TYPE_TT" ID="TypePullDown"/>
+		<GridButton Anchor="L,T" Offset="270,16" Size="28,27" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_CLOSE_TT" ID="CloseButton">
+			<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
+		</GridButton>
+		<!-- column titles -->
+		<Label Anchor="L,T" Offset="28,54" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_COL_PROMOTIONS"/>
+		<Label Anchor="L,T" Offset="185,54" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_COL_KEY" ID="ColKey"/>
+		<Label Anchor="L,T" Offset="229,54" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_AUTO" ToolTip="TXT_KEY_LEKMOD_PT_AUTO_COL_TT" ID="ColAuto"/>
+		<Box Anchor="L,T" Offset="22,72" Size="276,1" Color="255,255,200,70"/>
+		<Container Anchor="L,T" Offset="22,78" Size="276,36" ID="Row1">
+			<GridButton Anchor="L,C" Size="148,36" Style="SmallButton" ID="Apply1">
+				<Stack Anchor="L,C" Offset="6,0" StackGrowth="Right" Padding="2" ID="Icons1"/>
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New1"/>
+			</GridButton>
+			<!-- hotkey like on the promotion buttons: modifier above, key below -->
+			<Container Anchor="L,C" Offset="156,0" Size="36,36" ID="Key1">
+				<Label Anchor="C,T" Offset="0,1" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
+				<Label Anchor="C,B" Offset="0,2" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="1"/>
 			</Container>
-			<Container Anchor="L,T" Size="236,34" ID="Row2">
-				<GridButton Anchor="L,C" Size="146,34" Style="SmallButton" ID="Apply2">
-					<Stack Anchor="L,C" Offset="4,0" StackGrowth="Right" Padding="2" ID="Icons2"/>
-					<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New2"/>
-				</GridButton>
-				<GridButton Anchor="L,C" Offset="150,0" Size="58,28" Style="SmallButton" ID="Auto2">
-					<Label Anchor="C,C" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_AUTO" ID="AutoLabel2"/>
-				</GridButton>
-				<GridButton Anchor="L,C" Offset="212,0" Size="24,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete2">
-					<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
-				</GridButton>
+			<Container Anchor="L,C" Offset="200,0" Size="40,36">
+				<RadioButton Anchor="C,C" ButtonTexture="Assets/UI/Art/Controls/CheckBox.dds" IsChecked="0" String="" ID="Auto1"/>
 			</Container>
-		</Stack>
+			<GridButton Anchor="L,C" Offset="248,0" Size="28,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete1">
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
+			</GridButton>
+		</Container>
+		<Container Anchor="L,T" Offset="22,120" Size="276,36" ID="Row2">
+			<GridButton Anchor="L,C" Size="148,36" Style="SmallButton" ID="Apply2">
+				<Stack Anchor="L,C" Offset="6,0" StackGrowth="Right" Padding="2" ID="Icons2"/>
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New2"/>
+			</GridButton>
+			<!-- hotkey like on the promotion buttons: modifier above, key below -->
+			<Container Anchor="L,C" Offset="156,0" Size="36,36" ID="Key2">
+				<Label Anchor="C,T" Offset="0,1" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_KEY_MOD"/>
+				<Label Anchor="C,B" Offset="0,2" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="2"/>
+			</Container>
+			<Container Anchor="L,C" Offset="200,0" Size="40,36">
+				<RadioButton Anchor="C,C" ButtonTexture="Assets/UI/Art/Controls/CheckBox.dds" IsChecked="0" String="" ID="Auto2"/>
+			</Container>
+			<GridButton Anchor="L,C" Offset="248,0" Size="28,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete2">
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
+			</GridButton>
+		</Container>
 	</Grid>
 
 	<!-- the template builder -->
