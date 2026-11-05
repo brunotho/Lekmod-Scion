@@ -23,6 +23,9 @@ local g_PendingSync = false;
 local g_CurrentCombat = nil;   -- UnitCombatInfos row of the panel
 local g_BuilderSlot = nil;
 local g_BuilderSeq = {};
+local g_ToggleUnit = nil;      -- the panel's show/hide toggle applies to this unit ...
+local g_ToggleReady = nil;     -- ... while its "can pick a promotion" state stays the same
+local g_ToggleFlipped = false;
 
 ----------------------------------------------------------------
 -- local storage: "<UNITCOMBAT>_<slot>" = "PROMOTION_A,PROMOTION_B", "<UNITCOMBAT>_AUTO" = slot (0 = none)
@@ -167,6 +170,43 @@ function LekmodPTPrereqsMet( promo, have )
 	return false;
 end
 
+-- every promotion the unit has (also free ones that can't be picked, e.g. Prussia's Gehorsam)
+local function UnitHave( unit )
+	local have = {};
+	if unit ~= nil then
+		for promo in GameInfo.UnitPromotions() do
+			if unit:IsHasPromotion( promo.ID ) then
+				have[promo.Type] = true;
+			end
+		end
+	end
+	return have;
+end
+-- the combat type's promotions this unit can ever reach: no prerequisites, or prerequisites it has or can reach
+-- (civ-only lines such as Prussia's need a free promotion other units never have)
+function LekmodPTReachable( combatType, unit )
+	local all = CombatPromotions( combatType );
+	local have = UnitHave( unit );
+	local reach = {};
+	local bChanged = true;
+	while bChanged do
+		bChanged = false;
+		for _, promo in ipairs( all ) do
+			if not reach[promo.Type] and LekmodPTPrereqsMet( promo, setmetatable( {}, { __index = function( t, k ) return have[k] or reach[k]; end } ) ) then
+				reach[promo.Type] = true;
+				bChanged = true;
+			end
+		end
+	end
+	local list = {};
+	for _, promo in ipairs( all ) do
+		if reach[promo.Type] then
+			table.insert( list, promo );
+		end
+	end
+	return list;
+end
+
 ----------------------------------------------------------------
 -- the panel
 ----------------------------------------------------------------
@@ -202,12 +242,25 @@ function LekmodPTRefresh()
 	g_CurrentCombat = combat;
 	if combat == nil or UI.IsCityScreenUp() then
 		Controls.Panel:SetHide( true );
+		Controls.ToggleButton:SetHide( true );
 		return;
 	end
-	Controls.Panel:SetHide( false );
+	-- shown by default while the unit can pick a promotion; the toggle flips that until the unit or its state changes
+	local bReady = unit:IsPromotionReady();
+	if g_ToggleUnit ~= unit:GetID() or g_ToggleReady ~= bReady then
+		g_ToggleUnit = unit:GetID();
+		g_ToggleReady = bReady;
+		g_ToggleFlipped = false;
+	end
+	local bShown = (bReady ~= g_ToggleFlipped);
+	Controls.ToggleButton:SetHide( false );
+	Controls.ToggleLabel:LocalizeAndSetText( bShown and "TXT_KEY_LEKMOD_PT_TOGGLE_HIDE" or "TXT_KEY_LEKMOD_PT_TOGGLE_SHOW" );
+	Controls.Panel:SetHide( not bShown );
+	if not bShown then
+		return;
+	end
 	local combatName = Locale.ConvertTextKey( combat.Description );
 	Controls.Header:LocalizeAndSetText( "TXT_KEY_LEKMOD_PT_HEADER", combatName );
-	local bReady = unit:IsPromotionReady();
 	local autoSlot = LekmodPTAutoSlot( combat.Type );
 	for slot = 1, NUM_SLOTS do
 		local list = LekmodPTLoad( combat.Type, slot );
@@ -244,7 +297,16 @@ function LekmodPTRefresh()
 			Controls["Auto" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
 		end
 	end
+	-- the frame encloses its content (20 px left/right, 18 px top/bottom inside the frame)
+	Controls.PanelStack:CalculateSize();
+	Controls.PanelStack:ReprocessAnchoring();
+	Controls.Panel:SetSizeVal( Controls.PanelStack:GetSizeX() + 40, Controls.PanelStack:GetSizeY() + 36 );
 end
+
+Controls.ToggleButton:RegisterCallback( Mouse.eLClick, function()
+	g_ToggleFlipped = not g_ToggleFlipped;
+	LekmodPTRefresh();
+end );
 
 local function ApplyTemplate( slot )
 	local unit = SelectedUnit();
@@ -292,13 +354,7 @@ end
 -- the builder
 ----------------------------------------------------------------
 local function BuilderHave()
-	local have = {};
-	local unit = SelectedUnit();
-	for _, promo in ipairs( CombatPromotions( g_CurrentCombat.Type ) ) do
-		if unit ~= nil and unit:IsHasPromotion( promo.ID ) then
-			have[promo.Type] = true;
-		end
-	end
+	local have = UnitHave( SelectedUnit() );
 	for _, promo in ipairs( g_BuilderSeq ) do
 		have[promo.Type] = true;
 	end
@@ -323,7 +379,7 @@ function LekmodPTBuilderRefresh()
 	local bFull = (#g_BuilderSeq >= MAX_PROMOS);
 
 	g_PickIM:ResetInstances();
-	local list = CombatPromotions( g_CurrentCombat.Type );
+	local list = LekmodPTReachable( g_CurrentCombat.Type, SelectedUnit() );
 	for i, promo in ipairs( list ) do
 		local inst = g_PickIM:GetInstance();
 		local col = (i - 1) % PICK_COLUMNS;

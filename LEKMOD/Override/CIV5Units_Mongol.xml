@@ -148930,6 +148930,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_PT_BUILDER_HELP">
 			<Text>Click up to 4 promotions in the order they should be taken.[NEWLINE]Greyed-out promotions need an earlier one first.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_TOGGLE_SHOW">
+			<Text>Promotion templates</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_TOGGLE_HIDE">
+			<Text>Hide templates</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_UNDO">
 			<Text>Undo</Text>
 		</Row>

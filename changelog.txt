@@ -778,7 +778,8 @@ Tags: bugfix, ui
 PROMOTION TEMPLATES (NEW) (UNIT_PANEL)
 --------------------------------------
 Tags: ui, promotions
-- Added: promotion templates: a small panel above the unit panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); "+ New template" picks the promotions in order
+- Added: promotion templates: a small panel above the unit panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); "+ New template" picks the promotions in order (only those the unit's type can reach, so civ-only lines such as Prussia's appear only for that civ's units)
+- Added: the panel opens by itself while the selected unit can pick a promotion; a button below it shows or hides it at any time
 - Added: one click on a template (or Shift+1 / Shift+2) gives the selected unit its promotions, as many as its experience allows; promotions it already has (e.g. Drill I from the Alhambra) or can't take are skipped
 - Added: a template marked Auto is given to every new unit of that type you train, buy or receive from a City-State, as many promotions as its experience allows; promotions earned later are always picked by hand
 - Added: templates are kept on your computer and carry over to every game
