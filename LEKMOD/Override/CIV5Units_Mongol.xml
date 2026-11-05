@@ -117133,7 +117133,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERCHANT_NAVY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office, a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
+				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office, a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERITOCRACY"> 
@@ -120999,6 +120999,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_BLACKOUT">
 			<Text>B  L  A  C  K  O  U  T</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_WLTKD">
+			<Text>{1_City} celebrates We Love the King Day: {2_Num} turns left.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_DEMANDED_LUXURY">
 			<Text>{1_City} wants {2_Icon} {3_Resource}.[NEWLINE]Getting it starts We Love the King Day.</Text>

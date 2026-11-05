@@ -13821,17 +13821,19 @@ int CvCity::GetLekmodPolicyBuildingCityYield(YieldTypes eYield) const
 	}
 	return iBest;
 }
-/// Policy_CityHappinessIfBuildingClass: the largest value among the rows whose building the city has
+/// Policy_CityHappinessIfBuildingClass: per policy the largest value among its rows whose building the city has
+/// (a Courthouse and a Crown Office don't add up); different policies add up (Military Caste + Colonial Infrastructure, user 2026-11-05)
 int CvCity::GetLekmodPolicyBuildingCityHappiness() const
 {
 	const CvPlayer& kPlayer = GET_PLAYER(getOwner());
-	int iBest = 0;
+	int iTotal = 0;
 	for (int iPolicy = 0; iPolicy < GC.getNumPolicyInfos(); iPolicy++)
 	{
 		CvPolicyEntry* pkPolicy = GC.getPolicyInfo((PolicyTypes)iPolicy);
 		if (pkPolicy == NULL || !kPlayer.GetPlayerPolicies()->HasPolicy((PolicyTypes)iPolicy) || kPlayer.GetPlayerPolicies()->IsPolicyBlocked((PolicyTypes)iPolicy))
 			continue;
 		const std::vector<int>& aiRows = pkPolicy->GetCityHappinessIfBuildingClass();
+		int iBest = 0;
 		for (uint i = 0; i + 1 < aiRows.size(); i += 2)
 		{
 			if (aiRows[i + 1] <= iBest)
@@ -13839,8 +13841,9 @@ int CvCity::GetLekmodPolicyBuildingCityHappiness() const
 			if (aiRows[i] != NO_BUILDINGCLASS && LekmodHasBuildingClass((BuildingClassTypes)aiRows[i]))
 				iBest = aiRows[i + 1];
 		}
+		iTotal += iBest;
 	}
-	return iBest;
+	return iTotal;
 }
 /// Policy_BuildingTerrainYieldChanges: tile yield from adopted policies when this city has the building (Treasure Fleets)
 int CvCity::GetLekmodPolicyBuildingTerrainYield(const CvPlot* pPlot, YieldTypes eYield) const

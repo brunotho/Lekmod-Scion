@@ -585,13 +585,24 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 end
 
 -- LEKMOD: the luxury your own city demands (We Love the King Day) as an icon below its name, like City-State quests;
--- hidden while the city celebrates
+-- while the city celebrates, a Happiness smiley with the turns left takes its place
 function LekmodUpdateDemandIcon( controls, city, isActivePlayerCity )
 	if (controls.LekmodWLTKDIcon == nil) then
 		return;
 	end
+	if (not isActivePlayerCity or city == nil) then
+		controls.LekmodWLTKDIcon:SetHide(true);
+		return;
+	end
+	local iTurns = city:GetWeLoveTheKingDayCounter();
+	if (iTurns > 0) then
+		controls.LekmodWLTKDIcon:SetText("[ICON_HAPPINESS_1]");
+		controls.LekmodWLTKDIcon:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_WLTKD", city:GetName(), iTurns));
+		controls.LekmodWLTKDIcon:SetHide(false);
+		return;
+	end
 	local pResourceInfo = nil;
-	if (isActivePlayerCity and city ~= nil and city:GetWeLoveTheKingDayCounter() == 0 and city:GetResourceDemanded(true) ~= -1) then
+	if (city:GetResourceDemanded(true) ~= -1) then
 		pResourceInfo = GameInfo.Resources[city:GetResourceDemanded()];
 	end
 	controls.LekmodWLTKDIcon:SetHide(pResourceInfo == nil);

@@ -487,7 +487,7 @@ WE LOVE THE KING DAY (CITY_RESOURCE_WLTKD_TURNS)
 ------------------------------------------------
 Tags: game mechanics
 - Changed: We Love the King Day lasts 10 turns (was 13)
-- Added: the luxury a city demands shows as an icon below its name on the map (standard UI)
+- Added: the luxury a city demands shows as an icon below its name on the map, and a Happiness smiley while it celebrates (standard UI)
 - Changed: an unfilled luxury request switches to a new luxury after 10 turns (was 26)
 - Dev: CITY_RESOURCE_WLTKD_TURNS 20 -> 15 (x67% quick speed = 10); LEKMOD_WLTKD_DEMAND_EXPIRES_AFTER_ONE_LENGTH drops the x2 on the demand expiry. Civilopedia concept text updated.
 
@@ -2744,7 +2744,7 @@ Tags: policies, naval, units, buildings
 - Dev: the No Quitters script that granted it was still loaded by InGame.lua; no longer loaded
 - DLL: Policy_LekmodFreeBuildings (a specific building in captured or newly founded cities, replacing the city's building of its class; water buildings only in coastal cities), Policies.LekmodExplorationReveal (CvPlayer::LekmodDoPolicyExplorationReveal), LEKMOD_SPECS_2026_10_29
 - Dev: 2026-10-29: the opener's free Conquistador and Galleass became a free Settler and the star-shaped reveal (first five then six wobbly frayed arms, then a clean filled five-pointed star, then a compass rose, then the lines to every other capital plus the home continent's shoreline, then with noise: walked routes with side glimpses, a coast with gaps, deeper spots and landfalls, and the core around each other capital (2 tiles, most of 3, some of 4), user; the shapes before it were also skewed because plotXY takes hex-space X offsets); Colonial Administration's Courthouse yields 3 -> 2 and the Slave Market; Colonial Infrastructure's Feitoria (user)
-- DLL: Policies.ResistanceTimeModifier, ConquestFreeUnitClass, NewCityFreeBuildingClass, NewCityFreeUnitClass, FreeTilesNewCities, EarlyBuildingProductionModifier/EarlyBuildingEraType, FreeUnitClassNearWater/FreeUnitClassOnWater; tables Policy_CityYieldIfBuildingClass, Policy_CityHappinessIfBuildingClass (largest value counts; Military Tradition and Military Caste moved there), Policy_BuildingTerrainYieldChanges (LEKMOD_POLICY_REWORK)
+- DLL: Policies.ResistanceTimeModifier, ConquestFreeUnitClass, NewCityFreeBuildingClass, NewCityFreeUnitClass, FreeTilesNewCities, EarlyBuildingProductionModifier/EarlyBuildingEraType, FreeUnitClassNearWater/FreeUnitClassOnWater; tables Policy_CityYieldIfBuildingClass, Policy_CityHappinessIfBuildingClass (largest value counts for yields; Happiness: largest per policy, policies add up since 2026-11-05; Military Tradition and Military Caste moved there), Policy_BuildingTerrainYieldChanges (LEKMOD_POLICY_REWORK)
 
 WORLD CONGRESS SESSIONS (LEAGUE_SESSIONS)
 -----------------------------------------
