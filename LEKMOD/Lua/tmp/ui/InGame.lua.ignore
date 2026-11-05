@@ -484,7 +484,12 @@ function InputHandler( uiMsg, wParam, lParam )
 		return true;
 	end
 	-- LEKMOD (2026-10-23): Alt+P shows or hides the promotion icons under unit flags; Shift+D dismisses all notifications
-	if uiMsg == KeyEvents.KeyDown and wParam == Keys.P and UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
+	-- Alt+key: Windows reports a key pressed with Alt as WM_SYSKEYDOWN (260), not KeyEvents.KeyDown (256)
+	local bLekmodKeyDown = (uiMsg == KeyEvents.KeyDown or uiMsg == 260);
+	if UIManager:GetAlt() and (uiMsg == KeyEvents.KeyDown or uiMsg == 260 or uiMsg == 261) then
+		print( "LEKPT_KEY", uiMsg, wParam );   -- TEMP diagnostic (2026-11-05): which message an Alt+key arrives as
+	end
+	if bLekmodKeyDown and wParam == Keys.P and UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
 		if g_LekmodRecommendationOptions ~= nil then
 			local bOn = g_LekmodRecommendationOptions.GetValue( "LEK_FlagPromotions" ) ~= 0;
 			g_LekmodRecommendationOptions.SetValue( "LEK_FlagPromotions", bOn and 0 or 1 );
@@ -493,7 +498,7 @@ function InputHandler( uiMsg, wParam, lParam )
 		return true;
 	end
 	-- LEKMOD (2026-11-05): Alt+T keeps the promotion templates open or closes them (Lua/LekmodPromotionTemplates.lua)
-	if uiMsg == KeyEvents.KeyDown and wParam == Keys.T and UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
+	if bLekmodKeyDown and wParam == Keys.T and UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
 		LuaEvents.LekmodPromoTemplatesToggle();
 		return true;
 	end

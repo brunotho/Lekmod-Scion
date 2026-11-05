@@ -347,6 +347,10 @@ function LekmodPTRefresh()
 			Controls["AutoClick" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
 		end
 	end
+	-- the frame wraps the rows with its Padding (like the Map Options panel)
+	Controls.PanelStack:CalculateSize();
+	Controls.PanelStack:ReprocessAnchoring();
+	Controls.Panel:DoAutoSize();
 end
 
 -- Shift+1 / Shift+2: the selected unit's own type, also while the panel is closed or shows another type
@@ -524,6 +528,12 @@ end );
 -- events
 ----------------------------------------------------------------
 BuildTypePullDown();
+-- the large UI's action box sits 18 px further right than the small UI's (UnitPanel.xml 90,123 / UnitPanel_small.xml 72,123)
+pcall( function()
+	if not OptionsManager.GetSmallUIAssets() then
+		Controls.Panel:SetOffsetVal( 90, 345 );
+	end
+end );
 Events.SerialEventUnitInfoDirty.Add( LekmodPTRefresh );
 Events.UnitSelectionChanged.Add( function() LekmodPTRefresh(); end );
 Events.SerialEventEnterCityScreen.Add( LekmodPTRefresh );
