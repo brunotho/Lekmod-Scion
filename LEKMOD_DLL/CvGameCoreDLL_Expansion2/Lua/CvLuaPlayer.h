@@ -999,6 +999,9 @@ protected:
 	static int lIsAllowPuppetPurchasing(lua_State* L);
 #endif
 
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	static int lLekmodGetPromotionTemplate(lua_State* L);
+#endif
 	//Espionage Methods
 	static int lGetEspionageCityStatus(lua_State* L);
 	static int lGetNumSpies(lua_State* L);

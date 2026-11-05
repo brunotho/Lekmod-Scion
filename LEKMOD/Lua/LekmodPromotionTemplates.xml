@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LEKMOD (2026-11-05, New Specs 10): promotion templates. A small panel above the unit panel for the selected military unit:
+     two templates per unit combat type (click = apply, Shift+1 / Shift+2), Auto toggle, delete, "+ New template" opens the builder.
+     Lua/LekmodPromotionTemplates.lua; loaded by InGame.lua. Templates live on the player's PC (Modding.OpenUserData). -->
+<Context ColorSet="Beige_Black_Alpha" Font="TwCenMT16" FontStyle="Shadow">
+	<Instance Name="TemplateIconInstance">
+		<Image Anchor="L,C" Size="32,32" ID="Icon"/>
+	</Instance>
+	<Instance Name="PickInstance">
+		<Button Anchor="L,T" Size="45,45" ID="Button">
+			<Image Anchor="C,C" Size="45,45" ID="Icon"/>
+		</Button>
+	</Instance>
+
+	<!-- the panel -->
+	<Grid Anchor="L,B" Offset="72,345" Size="252,104" Style="Grid9DetailFive140" ConsumeMouse="1" Hidden="1" ID="Panel">
+		<Label Anchor="L,T" Offset="12,9" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="Header"/>
+		<Container Anchor="L,T" Offset="8,30" Size="236,34" ID="Row1">
+			<GridButton Anchor="L,C" Size="146,34" Style="SmallButton" ID="Apply1">
+				<Stack Anchor="L,C" Offset="4,0" StackGrowth="Right" Padding="2" ID="Icons1"/>
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New1"/>
+			</GridButton>
+			<GridButton Anchor="L,C" Offset="150,0" Size="58,28" Style="SmallButton" ID="Auto1">
+				<Label Anchor="C,C" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_AUTO" ID="AutoLabel1"/>
+			</GridButton>
+			<GridButton Anchor="L,C" Offset="212,0" Size="24,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete1">
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
+			</GridButton>
+		</Container>
+		<Container Anchor="L,T" Offset="8,66" Size="236,34" ID="Row2">
+			<GridButton Anchor="L,C" Size="146,34" Style="SmallButton" ID="Apply2">
+				<Stack Anchor="L,C" Offset="4,0" StackGrowth="Right" Padding="2" ID="Icons2"/>
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_NEW" ID="New2"/>
+			</GridButton>
+			<GridButton Anchor="L,C" Offset="150,0" Size="58,28" Style="SmallButton" ID="Auto2">
+				<Label Anchor="C,C" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black" String="TXT_KEY_LEKMOD_PT_AUTO" ID="AutoLabel2"/>
+			</GridButton>
+			<GridButton Anchor="L,C" Offset="212,0" Size="24,28" Style="SmallButton" ToolTip="TXT_KEY_LEKMOD_PT_DELETE_TT" ID="Delete2">
+				<Label Anchor="C,C" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black" String="X"/>
+			</GridButton>
+		</Container>
+	</Grid>
+
+	<!-- the template builder -->
+	<Box Color="Black.150" Size="Full.Full" ConsumeMouse="1" Hidden="1" ID="Builder">
+		<Grid Size="440,420" Anchor="C,C" Padding="0,20" Style="Grid9DetailFive140" ID="BuilderFrame">
+			<Box Style="MenuLeftSideTreatment"/>
+			<Box Style="MenuRightSideTreatment"/>
+			<Label Anchor="C,T" Offset="0,18" Font="TwCenMT22" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="BuilderTitle"/>
+			<Label Anchor="C,T" Offset="0,48" WrapWidth="400" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_PT_BUILDER_HELP" ID="BuilderHelp"/>
+			<!-- the chosen sequence: 4 places -->
+			<Stack Anchor="C,T" Offset="0,96" StackGrowth="Right" Padding="8" ID="SeqStack">
+				<Box Size="49,49" Color="255,255,200,80"><Box Anchor="C,C" Size="47,47" Color="0,0,0,200"><Image Anchor="C,C" Size="45,45" ID="Seq1"/></Box></Box>
+				<Box Size="49,49" Color="255,255,200,80"><Box Anchor="C,C" Size="47,47" Color="0,0,0,200"><Image Anchor="C,C" Size="45,45" ID="Seq2"/></Box></Box>
+				<Box Size="49,49" Color="255,255,200,80"><Box Anchor="C,C" Size="47,47" Color="0,0,0,200"><Image Anchor="C,C" Size="45,45" ID="Seq3"/></Box></Box>
+				<Box Size="49,49" Color="255,255,200,80"><Box Anchor="C,C" Size="47,47" Color="0,0,0,200"><Image Anchor="C,C" Size="45,45" ID="Seq4"/></Box></Box>
+			</Stack>
+			<!-- the combat type's promotions (placed by the Lua in rows of 8) -->
+			<ScrollPanel Anchor="C,T" Offset="0,160" Size="400,190" Vertical="1" ID="PickScroll">
+				<Container Anchor="L,T" Size="400,190" ID="PickArea"/>
+				<ScrollBar Offset="0,18" Style="VertSlider" Anchor="R,T" AnchorSide="I,I" Length="154" ID="PickScrollBar"/>
+				<UpButton Offset="0,0" Style="ScrollBarUp" Anchor="R,T" AnchorSide="I,I" ID="PickScrollUp"/>
+				<DownButton Offset="0,0" Style="ScrollBarDown" Anchor="R,B" AnchorSide="I,I" ID="PickScrollDown"/>
+			</ScrollPanel>
+			<Stack Anchor="C,B" Offset="0,22" StackGrowth="Right" Padding="12">
+				<GridButton Style="BaseButton" Size="110,34" ID="UndoButton">
+					<Label Anchor="C,C" String="TXT_KEY_LEKMOD_PT_UNDO" ColorSet="Beige_Black" Font="TwCenMT20" FontStyle="Shadow"/>
+				</GridButton>
+				<GridButton Style="BaseButton" Size="110,34" ID="SaveButton">
+					<Label Anchor="C,C" String="TXT_KEY_LEKMOD_PT_SAVE" ColorSet="Beige_Black" Font="TwCenMT20" FontStyle="Shadow"/>
+				</GridButton>
+				<GridButton Style="BaseButton" Size="110,34" ID="CancelButton">
+					<Label Anchor="C,C" String="TXT_KEY_LEKMOD_PT_CANCEL" ColorSet="Beige_Black" Font="TwCenMT20" FontStyle="Shadow"/>
+				</GridButton>
+			</Stack>
+		</Grid>
+	</Box>
+</Context>

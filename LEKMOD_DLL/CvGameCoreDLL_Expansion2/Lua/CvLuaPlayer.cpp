@@ -999,6 +999,9 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 	Method(IsAllowPuppetPurchasing);
 #endif
 
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	Method(LekmodGetPromotionTemplate);
+#endif
 	Method(GetEspionageCityStatus);
 	Method(GetNumSpies);
 	Method(GetNumUnassignedSpies);
@@ -11933,6 +11936,18 @@ int CvLuaPlayer::lLekmodGetDiplomatBanTurns(lua_State* L)
 	const int iHost = lua_tointeger(L, 2);
 	lua_pushinteger(L, pkThisPlayer->GetEspionage()->LekmodGetExpelBanTurns((PlayerTypes)iHost));
 	return 1;
+}
+#endif
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+// int, int, int, int, int LekmodGetPromotionTemplate(int iCombat, int iSlot): the template's 4 promotion IDs (-1 = empty) and its Auto flag (0/1)
+int CvLuaPlayer::lLekmodGetPromotionTemplate(lua_State* L)
+{
+	CvPlayerAI* pkThisPlayer = GetInstance(L);
+	const int iCombat = lua_tointeger(L, 2);
+	const int iSlot = lua_tointeger(L, 3);
+	for (int iField = 0; iField < LEKMOD_PROMOTION_TEMPLATE_FIELDS; iField++)
+		lua_pushinteger(L, pkThisPlayer->LekmodGetPromotionTemplateEntry(iCombat, iSlot, iField));
+	return LEKMOD_PROMOTION_TEMPLATE_FIELDS;
 }
 #endif
 // table LekmodGetCaughtSpies(): enemy spies this player caught and has to judge {Entry, OwnerID, Name, CityName}

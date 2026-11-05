@@ -1933,6 +1933,12 @@ Diversify Spain and Australia's NW Discovery bonus
 // IMPORTANT
 // Must be defined only ONCE and account for all ReplayMessageTypes additions
 // #define NUM_REPLAY_MESSAGE_TYPES 8
+// LEKMOD (user, 2026-11-05, New Specs 10): promotion templates. Per unit combat type 2 slots of up to 4 promotions plus an Auto flag.
+// The UI keeps them on the player's PC and sends them once (network -30); the DLL saves them and applies the Auto slot when a unit is
+// trained, bought or gifted by a City-State (no network traffic per unit). A click on a template = one message (-31 slot 1, -32 slot 2).
+#define LEKMOD_PROMOTION_TEMPLATES
+#define LEKMOD_PROMOTION_TEMPLATE_SLOTS 2
+#define LEKMOD_PROMOTION_TEMPLATE_FIELDS 5
 // Game.GetTurnTimeElapsed() returns elapsed time in milliseconds
 #define LUAAPI_GET_TURN_TIME_ELAPSED
 /*REPLAY EVENTS CHANGES END*/

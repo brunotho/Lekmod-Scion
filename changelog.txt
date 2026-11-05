@@ -775,6 +775,16 @@ Tags: bugfix, ui
 - Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 
+PROMOTION TEMPLATES (NEW) (UNIT_PANEL)
+--------------------------------------
+Tags: ui, promotions
+- Added: promotion templates: a small panel above the unit panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); "+ New template" picks the promotions in order
+- Added: one click on a template (or Shift+1 / Shift+2) gives the selected unit its promotions, as many as its experience allows; promotions it already has (e.g. Drill I from the Alhambra) or can't take are skipped
+- Added: a template marked Auto is given to every new unit of that type you train, buy or receive from a City-State, as many promotions as its experience allows; promotions earned later are always picked by hand
+- Added: templates are kept on your computer and carry over to every game
+- DLL: LEKMOD_PROMOTION_TEMPLATES: CvPlayer m_aiLekmodPromoTemplates (saved; per combat type 2 slots x 4 promotions + Auto flag), Lekmod*PromotionTemplate*; Auto applied in CvCity::CreateUnit (trained and bought, after the policy promotions) and CvMinorCivAI::DoSpawnUnit (after the gift's experience); network -30 sets one entry, -31/-32 apply slot 1/2 to a unit; Lua Player:LekmodGetPromotionTemplate(combat, slot)
+- Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
+
 TOP-LEFT PANEL HOTKEYS
 ----------------------
 Tags: ui

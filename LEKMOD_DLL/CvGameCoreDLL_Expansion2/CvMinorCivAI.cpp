@@ -9387,6 +9387,9 @@ void CvMinorCivAI::DoSpawnUnit(PlayerTypes eMajor)
 						GetPlayer()->getCapitalCity()->addProductionExperience(pNewUnit);
 #endif
 
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+					GET_PLAYER(eMajor).LekmodApplyAutoPromotionTemplate(pNewUnit);
+#endif
 					Localization::String strMessage = Localization::Lookup("TXT_KEY_NOTIFICATION_CITY_STATE_UNIT_SPAWN");
 					strMessage << GetPlayer()->getNameKey();
 					Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_SUMMARY_CITY_STATE_UNIT_SPAWN");

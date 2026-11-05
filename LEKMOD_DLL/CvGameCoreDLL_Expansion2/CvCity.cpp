@@ -19193,6 +19193,9 @@ int CvCity::CreateUnit(UnitTypes eUnitType, UnitAITypes eAIType, bool bUseToSati
 		}
 	}
 #endif
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	thisPlayer.LekmodApplyAutoPromotionTemplate(pUnit);
+#endif
 
 	CvPlot* pRallyPlot = getRallyPlot();
 	if(pRallyPlot != NULL)

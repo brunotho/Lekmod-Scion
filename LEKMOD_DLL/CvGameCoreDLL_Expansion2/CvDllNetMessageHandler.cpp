@@ -945,6 +945,29 @@ void CvDllNetMessageHandler::ResponseGiftUnit(PlayerTypes ePlayer, PlayerTypes e
 			GC.GetEngineUserInterface()->setDirty(CityInfo_DIRTY_BIT, true);
 		return;
 #endif
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	case -30: // promotion template entry: eMinor = ((combat * SLOTS + slot) * FIELDS + field) * 1024 + value + 1
+		{
+			const int iData = (int)eMinor;
+			if (iData < 0)
+				return;
+			const int iValue = (iData % 1024) - 1;
+			const int iKey = iData / 1024;
+			const int iField = iKey % LEKMOD_PROMOTION_TEMPLATE_FIELDS;
+			const int iSlot = (iKey / LEKMOD_PROMOTION_TEMPLATE_FIELDS) % LEKMOD_PROMOTION_TEMPLATE_SLOTS;
+			const int iCombat = iKey / (LEKMOD_PROMOTION_TEMPLATE_FIELDS * LEKMOD_PROMOTION_TEMPLATE_SLOTS);
+			GET_PLAYER(ePlayer).LekmodSetPromotionTemplateEntry(iCombat, iSlot, iField, iValue);
+		}
+		return;
+	case -31: // apply promotion template slot 1 to a unit (eMinor = unit ID)
+	case -32: // slot 2
+		{
+			CvUnit* pUnit = GET_PLAYER(ePlayer).getUnit((int)eMinor);
+			if (pUnit != NULL)
+				GET_PLAYER(ePlayer).LekmodApplyPromotionTemplate(pUnit, (iUnitID == -31) ? 0 : 1);
+		}
+		return;
+#endif
 	default:
 		break;
 	}

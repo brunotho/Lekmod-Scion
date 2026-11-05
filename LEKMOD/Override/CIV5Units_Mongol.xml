@@ -148896,6 +148896,49 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_BERLIN_BUTTON_WAIT">
 			<Text>Cooldown: ready again in {1_Num} turns.</Text>
 		</Row>
+		<!-- LEKMOD: promotion templates (2026-11-05, Lua/LekmodPromotionTemplates.lua) -->
+		<Row Tag="TXT_KEY_LEKMOD_PT_HEADER">
+			<Text>Promotion templates: {1_Combat}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_NEW">
+			<Text>+ New template</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_NEW_TT">
+			<Text>Create a template for {1_Combat} units.[NEWLINE]Pick up to 4 promotions in the order they should be taken.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO">
+			<Text>Auto</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO_ON">
+			<Text>[COLOR_POSITIVE_TEXT]Auto: on[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_AUTO_TT">
+			<Text>Auto: new {1_Combat} units you train, buy or receive from City-States get this template's promotions right away, as many as their experience allows.[NEWLINE][NEWLINE]Only one template per unit type can be Auto.[NEWLINE]Promotions earned later are always picked by hand.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_APPLY_TT">
+			<Text>Template {1_Num} (Shift+{1_Num}):[NEWLINE]{2_List}[NEWLINE][NEWLINE]Click to give the unit these promotions, as many as its experience allows.[NEWLINE]Promotions it already has or can't take are skipped.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_NOT_READY">
+			<Text>This unit can't pick a promotion right now.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_DELETE_TT">
+			<Text>Delete this template.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_BUILDER_TITLE">
+			<Text>New template: {1_Combat}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_BUILDER_HELP">
+			<Text>Click up to 4 promotions in the order they should be taken.[NEWLINE]Greyed-out promotions need an earlier one first.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_UNDO">
+			<Text>Undo</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_SAVE">
+			<Text>Save</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PT_CANCEL">
+			<Text>Cancel</Text>
+		</Row>
 	</Language_en_US>
 	<!-- LEKMOD: Special City-States step 5 (2026-10-28): Cambridge -->
 	<Language_en_US>

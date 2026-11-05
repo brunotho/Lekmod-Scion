@@ -1429,6 +1429,9 @@ void CvPlayer::reset(PlayerTypes eID, bool bConstructorCall)
 	m_iLekmodGoldGreatPeoplePurchased = 0;
 	m_iLekmodCivFlags = 0;
 	m_iLekmodFirstPledgeMinor = -1;
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	m_aiLekmodPromoTemplates.clear();
+#endif
 	m_iLekmodCoupGoldUsed0 = 0;
 	m_iLekmodCoupGoldUsed1 = 0;
 	m_iLekmodDoFBetrayers = 0;
@@ -32500,6 +32503,9 @@ void CvPlayer::Read(FDataStream& kStream)
 	kStream >> m_iLekmodCoupGoldUsed0;
 	kStream >> m_iLekmodCoupGoldUsed1;
 	kStream >> m_iLekmodDoFBetrayers;
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	kStream >> m_aiLekmodPromoTemplates;
+#endif
 #ifdef LEKMOD_PORTUGAL
 	kStream >> m_iLekmodTradePartnerUsed0;
 	kStream >> m_iLekmodTradePartnerUsed1;
@@ -33093,6 +33099,9 @@ void CvPlayer::Write(FDataStream& kStream) const
 	kStream << m_iLekmodCoupGoldUsed0;
 	kStream << m_iLekmodCoupGoldUsed1;
 	kStream << m_iLekmodDoFBetrayers;
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	kStream << m_aiLekmodPromoTemplates;
+#endif
 #ifdef LEKMOD_PORTUGAL
 	kStream << m_iLekmodTradePartnerUsed0;
 	kStream << m_iLekmodTradePartnerUsed1;
@@ -33101,6 +33110,97 @@ void CvPlayer::Write(FDataStream& kStream) const
 #endif
 }
 
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+//	--------------------------------------------------------------------------------
+// promotion templates: per unit combat type LEKMOD_PROMOTION_TEMPLATE_SLOTS slots of (4 promotions, Auto flag)
+int CvPlayer::LekmodGetPromotionTemplateEntry(int iCombat, int iSlot, int iField) const
+{
+	const int iEmpty = (iField == LEKMOD_PROMOTION_TEMPLATE_FIELDS - 1) ? 0 : -1;
+	if (iCombat < 0 || iSlot < 0 || iSlot >= LEKMOD_PROMOTION_TEMPLATE_SLOTS || iField < 0 || iField >= LEKMOD_PROMOTION_TEMPLATE_FIELDS)
+		return iEmpty;
+	const int iIndex = (iCombat * LEKMOD_PROMOTION_TEMPLATE_SLOTS + iSlot) * LEKMOD_PROMOTION_TEMPLATE_FIELDS + iField;
+	if (iIndex >= (int)m_aiLekmodPromoTemplates.size())
+		return iEmpty;
+	return m_aiLekmodPromoTemplates[iIndex];
+}
+
+//	--------------------------------------------------------------------------------
+void CvPlayer::LekmodSetPromotionTemplateEntry(int iCombat, int iSlot, int iField, int iValue)
+{
+	if (iCombat < 0 || iCombat >= GC.getNumUnitCombatClassInfos() || iSlot < 0 || iSlot >= LEKMOD_PROMOTION_TEMPLATE_SLOTS || iField < 0 || iField >= LEKMOD_PROMOTION_TEMPLATE_FIELDS)
+		return;
+	const bool bAutoField = (iField == LEKMOD_PROMOTION_TEMPLATE_FIELDS - 1);
+	if (bAutoField)
+		iValue = (iValue != 0) ? 1 : 0;
+	else if (iValue < -1 || iValue >= GC.getNumPromotionInfos())
+		return;
+
+	const int iNeeded = GC.getNumUnitCombatClassInfos() * LEKMOD_PROMOTION_TEMPLATE_SLOTS * LEKMOD_PROMOTION_TEMPLATE_FIELDS;
+	const int iOldSize = (int)m_aiLekmodPromoTemplates.size();
+	if (iOldSize < iNeeded)
+	{
+		m_aiLekmodPromoTemplates.resize(iNeeded);
+		for (int i = iOldSize; i < iNeeded; i++)
+			m_aiLekmodPromoTemplates[i] = ((i % LEKMOD_PROMOTION_TEMPLATE_FIELDS) == LEKMOD_PROMOTION_TEMPLATE_FIELDS - 1) ? 0 : -1;
+	}
+	m_aiLekmodPromoTemplates[(iCombat * LEKMOD_PROMOTION_TEMPLATE_SLOTS + iSlot) * LEKMOD_PROMOTION_TEMPLATE_FIELDS + iField] = iValue;
+
+	// only one Auto slot per unit combat type
+	if (bAutoField && iValue == 1)
+	{
+		for (int iOther = 0; iOther < LEKMOD_PROMOTION_TEMPLATE_SLOTS; iOther++)
+			if (iOther != iSlot)
+				m_aiLekmodPromoTemplates[(iCombat * LEKMOD_PROMOTION_TEMPLATE_SLOTS + iOther) * LEKMOD_PROMOTION_TEMPLATE_FIELDS + iField] = 0;
+	}
+}
+
+//	--------------------------------------------------------------------------------
+// gives the unit the template's promotions in order while it can pick one; promotions it has or can't take are skipped
+bool CvPlayer::LekmodApplyPromotionTemplate(CvUnit* pUnit, int iSlot)
+{
+	if (pUnit == NULL || pUnit->getOwner() != GetID())
+		return false;
+	const int iCombat = (int)pUnit->getUnitCombatType();
+	if (iCombat < 0)
+		return false;
+
+	bool bAny = false;
+	for (int iField = 0; iField < LEKMOD_PROMOTION_TEMPLATE_FIELDS - 1; iField++)
+	{
+		if (!pUnit->isPromotionReady())
+			break;
+		const PromotionTypes ePromotion = (PromotionTypes)LekmodGetPromotionTemplateEntry(iCombat, iSlot, iField);
+		if (ePromotion == NO_PROMOTION || pUnit->isHasPromotion(ePromotion))
+			continue;
+		if (pUnit->canPromote(ePromotion, -1))
+		{
+			pUnit->promote(ePromotion, -1);
+			bAny = true;
+		}
+	}
+	return bAny;
+}
+
+//	--------------------------------------------------------------------------------
+// a unit was trained, bought or gifted by a City-State: apply the slot marked Auto for its combat type, if any
+void CvPlayer::LekmodApplyAutoPromotionTemplate(CvUnit* pUnit)
+{
+	if (pUnit == NULL || !isHuman())
+		return;
+	const int iCombat = (int)pUnit->getUnitCombatType();
+	if (iCombat < 0)
+		return;
+	for (int iSlot = 0; iSlot < LEKMOD_PROMOTION_TEMPLATE_SLOTS; iSlot++)
+	{
+		if (LekmodGetPromotionTemplateEntry(iCombat, iSlot, LEKMOD_PROMOTION_TEMPLATE_FIELDS - 1) == 1)
+		{
+			LekmodApplyPromotionTemplate(pUnit, iSlot);
+			return;
+		}
+	}
+}
+
+#endif
 //	--------------------------------------------------------------------------------
 void CvPlayer::createGreatGeneral(UnitTypes eGreatPersonUnit, int iX, int iY)
 {

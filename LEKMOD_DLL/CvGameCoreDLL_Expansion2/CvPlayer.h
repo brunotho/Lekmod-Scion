@@ -307,6 +307,12 @@ public:
 	bool IsLekmodCoupGoldUsed(PlayerTypes eMinor) const { const int i = (int)eMinor - MAX_MAJOR_CIVS; if (i < 0 || i >= 64) return true; return ((i < 32 ? m_iLekmodCoupGoldUsed0 : m_iLekmodCoupGoldUsed1) & (1 << (i % 32))) != 0; }
 	bool IsLekmodDoFBetrayer(PlayerTypes ePlayer) const { return ePlayer >= 0 && ePlayer < MAX_MAJOR_CIVS && (m_iLekmodDoFBetrayers & (1 << (int)ePlayer)) != 0; }
 	void SetLekmodDoFBetrayer(PlayerTypes ePlayer) { if (ePlayer >= 0 && ePlayer < MAX_MAJOR_CIVS) m_iLekmodDoFBetrayers |= (1 << (int)ePlayer); }
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	int LekmodGetPromotionTemplateEntry(int iCombat, int iSlot, int iField) const;
+	void LekmodSetPromotionTemplateEntry(int iCombat, int iSlot, int iField, int iValue);
+	bool LekmodApplyPromotionTemplate(CvUnit* pUnit, int iSlot);
+	void LekmodApplyAutoPromotionTemplate(CvUnit* pUnit);
+#endif
 #ifdef LEKMOD_PORTUGAL
 	bool IsLekmodTradePartnerUsed(PlayerTypes ePlayer) const { const int i = (int)ePlayer; if (i < 0 || i >= 64) return true; return ((i < 32 ? m_iLekmodTradePartnerUsed0 : m_iLekmodTradePartnerUsed1) & (1 << (i % 32))) != 0; }
 	void SetLekmodTradePartnerUsed(PlayerTypes ePlayer) { const int i = (int)ePlayer; if (i < 0 || i >= 64) return; if (i < 32) m_iLekmodTradePartnerUsed0 |= (1 << i); else m_iLekmodTradePartnerUsed1 |= (1 << (i - 32)); }
@@ -2500,6 +2506,9 @@ protected:
 	int m_iLekmodFirstPledgeMinor; // first City-State pledged to (Tonga): -1 none yet, -2 lost (that pledge ended)
 	int m_iLekmodCoupGoldUsed0; // MI6 coup Gold already paid: bit per City-State (minor index 0-31)
 	int m_iLekmodCoupGoldUsed1; // minor index 32-63
+#ifdef LEKMOD_PROMOTION_TEMPLATES
+	std::vector<int> m_aiLekmodPromoTemplates; // (combat * SLOTS + slot) * FIELDS + field: 4 promotions (-1 = empty), then Auto 0/1
+#endif
 	int m_iLekmodDoFBetrayers; // New Zealand: bit per major player who declared war on us during a Declaration of Friendship
 #ifdef LEKMOD_PORTUGAL
 	int m_iLekmodTradePartnerUsed0; // Portugal: bit per player (0-31) that already got our first trade route (bonus used)
