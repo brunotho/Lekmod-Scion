@@ -164,7 +164,7 @@ SECTION_LAYOUT = {
   ],
   # Split by the game data (2026-10-18): pickable = CannotBeChosen 0 and some unit combat may take it.
   "promotions" => [
-    ["Promotions you can pick", ["AMPHIBIOUS LINE", "ENVELOPMENT", "EXPANDED ZOC", "MOUNTAINEERING", "WOODSMAN",
+    ["Promotions you can pick", ["AMPHIBIOUS LINE", "ENVELOPMENT", "EXPANDED ZOC", "MOUNTAINEERING", "WOODSMAN", "MEDIC",
                                  "AMBUSH FORMATION", "MOBILITY", "HEAL INSTANTLY", "COASTAL RAIDER LINE",
                                  "BOARDING PARTY LINE", "ARMOR PLATING LINE", "SAMBUCA", "SUPPLY SHIP", "REPAIR CREW",
                                  "BUNKER BUSTING", "CARPET BOMBING", "BOMBARDMENT (LAND) LINE", "AIR AND NAVAL PROMOTION NAMES", "SORTIE"]],

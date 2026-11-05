@@ -256659,14 +256659,6 @@
 			<PrerequisitePromotion>PROMOTION_DRILL_1</PrerequisitePromotion>
 		</Row>
 		<Row>
-			<PromotionType>PROMOTION_MEDIC</PromotionType>
-			<PrerequisitePromotion>PROMOTION_SCOUTING_2</PrerequisitePromotion>
-		</Row>
-		<Row>
-			<PromotionType>PROMOTION_MEDIC</PromotionType>
-			<PrerequisitePromotion>PROMOTION_SURVIVALISM_2</PrerequisitePromotion>
-		</Row>
-		<Row>
 			<PromotionType>PROMOTION_MEDIC_II</PromotionType>
 			<PrerequisitePromotion>PROMOTION_MEDIC</PrerequisitePromotion>
 		</Row>
@@ -258680,10 +258672,6 @@
 		</Row>
 		<Row> 
 			<PromotionType>PROMOTION_MEDIC</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_RECON</UnitCombatType> 
-		</Row>
-		<Row> 
-			<PromotionType>PROMOTION_MEDIC</PromotionType> 
 			<UnitCombatType>UNITCOMBAT_MOUNTED</UnitCombatType> 
 		</Row>
 		<Row> 
@@ -258693,10 +258681,6 @@
 		<Row> 
 			<PromotionType>PROMOTION_MEDIC</PromotionType> 
 			<UnitCombatType>UNITCOMBAT_GUN</UnitCombatType> 
-		</Row>
-		<Row> 
-			<PromotionType>PROMOTION_MEDIC_II</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_RECON</UnitCombatType> 
 		</Row>
 		<Row> 
 			<PromotionType>PROMOTION_MEDIC_II</PromotionType> 

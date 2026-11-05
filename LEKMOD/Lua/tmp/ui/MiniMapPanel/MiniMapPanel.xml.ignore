@@ -47,7 +47,8 @@
 				<CheckBox Anchor="L,T"  TextAnchorSide="Right" Offset="0,0" TextOffset="40,0" IsChecked="1" ID="LekmodFlagPromotions" String="TXT_KEY_LEKMOD_MAP_OPTIONS_FLAG_PROMOTIONS" ToolTip="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT" />
 				<!-- LEKMOD (2026-11-05): keep the promotion templates open (Lua/LekmodPromotionTemplates.lua, Alt+T) -->
 				<CheckBox Anchor="L,T"  TextAnchorSide="Right" Offset="0,0" TextOffset="40,0" IsChecked="0" ID="LekmodPromoTemplates" String="TXT_KEY_LEKMOD_MAP_OPTIONS_PROMO_TEMPLATES" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_TEMPLATES_TT" />
-				<Box Anchor="C,T" Size="210,1" Color="0,0,0,0" />
+				<!-- LEKMOD (2026-11-05): 16 px wider so the option labels with their hotkeys fit (DoAutoSize sizes the frame from this) -->
+				<Box Anchor="C,T" Size="226,1" Color="0,0,0,0" />
 			</Stack>
 		</Grid>
 	</Stack>

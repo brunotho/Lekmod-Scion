@@ -35,6 +35,7 @@ MAP OPTIONS (MINIMAP_PANEL)
 Tags: ui
 - Dev: (development step, covered by the line or tooltip above) the map options next to the minimap work again: they showed the strategic view's options, and the trade route and promotion options were missing
 - Dev: CheckBox has no SetText; labels go through GetTextButton() (the error stopped MiniMapPanel.lua at load)
+- Dev: the map options panel is 16 px wider so the labels with their hotkeys fit (user, 2026-11-05)
 
 PANTHEON TEXTS (BELIEF_LEKMOD_*)
 --------------------------------
@@ -1220,6 +1221,12 @@ Tags: promotions, naval
   | Adjacent naval units may heal outside friendly territory.[NEWLINE]Adjacent non-air units heal +10 HP per turn outside friendly territory.
   - for naval melee and naval ranged units after Coastal Raider II, Boarding Party II or Armor Plating II
 - Dev: new column AdjacentTileHealOutsideFriendly; bypasses the DOMAIN_SEA gates in healRate() and canHeal()
+
+MEDIC (PROMOTION_MEDIC)
+-----------------------
+Tags: promotions
+- Removed: Recon units (Scouts and their upgrades) can no longer pick Medic I and II
+- Dev: removed the UnitPromotions_UnitCombats rows MEDIC/MEDIC_II + RECON and the dead PrereqOrs rows MEDIC <- SCOUTING_2 / SURVIVALISM_2 (user, 2026-11-05)
 
 WOODSMAN (PROMOTION_WOODSMAN)
 -----------------------------

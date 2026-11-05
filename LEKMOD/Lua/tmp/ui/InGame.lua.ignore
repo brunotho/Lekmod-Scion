@@ -492,6 +492,11 @@ function InputHandler( uiMsg, wParam, lParam )
 		end
 		return true;
 	end
+	-- LEKMOD (2026-11-05): Alt+T keeps the promotion templates open or closes them (Lua/LekmodPromotionTemplates.lua)
+	if uiMsg == KeyEvents.KeyDown and wParam == Keys.T and UIManager:GetAlt() and not UIManager:GetControl() and not UIManager:GetShift() then
+		LuaEvents.LekmodPromoTemplatesToggle();
+		return true;
+	end
 	if uiMsg == KeyEvents.KeyDown and wParam == Keys.D and UIManager:GetShift() and not UIManager:GetControl() and not UIManager:GetAlt() then
 		LuaEvents.LekmodDismissAllNotifications();
 		return true;

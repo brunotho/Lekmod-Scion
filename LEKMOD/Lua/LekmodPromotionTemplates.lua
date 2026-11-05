@@ -324,7 +324,7 @@ function LekmodPTRefresh()
 		local bEmpty = (#list == 0);
 		Controls["New" .. slot]:SetHide( not bEmpty );
 		Controls["Key" .. slot]:SetHide( bEmpty );
-		Controls["Auto" .. slot]:SetHide( bEmpty );
+		Controls["AutoBox" .. slot]:SetHide( bEmpty );
 		Controls["Delete" .. slot]:SetHide( bEmpty );
 		if bEmpty then
 			apply:SetDisabled( false );
@@ -344,7 +344,7 @@ function LekmodPTRefresh()
 			apply:SetToolTipString( tt );
 			apply:SetDisabled( not bCanApply );
 			apply:SetAlpha( bCanApply and 1 or 0.55 );
-			Controls["Auto" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
+			Controls["AutoClick" .. slot]:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_LEKMOD_PT_AUTO_TT", combatName ) );
 		end
 	end
 end
@@ -388,7 +388,7 @@ end
 for slot = 1, NUM_SLOTS do
 	local s = slot;
 	Controls["Apply" .. s]:RegisterCallback( Mouse.eLClick, function() OnApply( s ); end );
-	Controls["Auto" .. s]:RegisterCallback( Mouse.eLClick, function() OnAuto( s ); end );
+	Controls["AutoClick" .. s]:RegisterCallback( Mouse.eLClick, function() OnAuto( s ); end );
 	Controls["Delete" .. s]:RegisterCallback( Mouse.eLClick, function() OnDelete( s ); end );
 end
 
@@ -416,6 +416,7 @@ local function ToggleAlwaysShown()
 	LekmodPTRefresh();
 end
 LuaEvents.LekmodPromoTemplatesShownChanged.Add( function() LekmodPTRefresh(); end );
+LuaEvents.LekmodPromoTemplatesToggle.Add( ToggleAlwaysShown );   -- Alt+T (InGame.lua InputHandler)
 
 ----------------------------------------------------------------
 -- the builder (always from a fresh unit's point of view)
@@ -501,7 +502,7 @@ end );
 Controls.CancelButton:RegisterCallback( Mouse.eLClick, CloseBuilder );
 
 ----------------------------------------------------------------
--- input: Shift+1 / Shift+2 apply a template, Alt+T shows or hides the panel; Esc closes the builder
+-- input: Shift+1 / Shift+2 apply a template; Esc closes the builder (Alt+T is in InGame.lua)
 ----------------------------------------------------------------
 ContextPtr:SetInputHandler( function( uiMsg, wParam, lParam )
 	if uiMsg ~= KeyEvents.KeyDown then
@@ -515,10 +516,6 @@ ContextPtr:SetInputHandler( function( uiMsg, wParam, lParam )
 	end
 	if UI.ShiftKeyDown() and not UI.CtrlKeyDown() and not UI.AltKeyDown() and (wParam == 49 or wParam == 50) then
 		return ApplyTemplate( wParam - 48 );
-	end
-	if UI.AltKeyDown() and not UI.CtrlKeyDown() and not UI.ShiftKeyDown() and wParam == Keys.T then
-		ToggleAlwaysShown();
-		return true;
 	end
 	return false;
 end );
