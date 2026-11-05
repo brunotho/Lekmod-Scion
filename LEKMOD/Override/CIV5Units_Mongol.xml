@@ -117063,7 +117063,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MARITIME_INFRASTRUCTURE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities you capture get a free [ICON_BUILDING_LEKMOD_SLAVE_MARKET] Slave Market[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_FOOD] Food and +2 [ICON_PRODUCTION] Production (doesn't stack with Military Tradition)
+				[COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office, a free [ICON_BUILDING_LEKMOD_SLAVE_MARKET] Slave Market and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_FOOD] Food and +2 [ICON_PRODUCTION] Production (doesn't stack with Military Tradition)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MARITIME_INFRASTRUCTURE_TEXT"> 
@@ -117133,7 +117133,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERCHANT_NAVY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office and a free Rowboat[NEWLINE][ICON_BULLET]Newly founded cities get a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
+				[COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office, a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness (doesn't stack with Military Caste)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MERITOCRACY"> 

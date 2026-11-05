@@ -209,7 +209,6 @@ Tags: city-states
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: they have a small star on their name tag, and hovering the name tag shows their unique ability
-- Picture: assets/special_city_state_star.jpg | Cambridge's name tag with the star of a City-State with a unique ability
 - Now: while one of them is in the game, no civilization names a city after it (Germany's capital is not called Berlin then)
 - Now: St. Petersburg, Shanghai, Sparta and Cambridge hold auctions (see their cards): during one turn every civilization may place one sealed Gold bid, the Gold is held right away, and the result comes at the start of the next turn; only the winner is announced. Computer players never bid
 - Now: while an auction runs that you have not bid on, a big notification (like Choose Production) shows it; it can't be dismissed and goes away once you bid or the turn ends
@@ -254,7 +253,7 @@ BERLIN (NEW) (MINOR_CIV_LEKMOD_BERLIN)
 Tags: city-states, combat
 - Now: from the Industrial to the Information Era, each turn has a 3% chance that Clausewitz's unfinished work is announced: whoever holds Berlin 7 turns later becomes his heir for the rest of the game
 - Now: if no civilization holds Berlin by then, the announcement can come again (3% per turn, at least 3 turns after the deadline)
-- Now: the heir, while holding Berlin, can use Clausewitz's Legacy in Berlin's city screen: +25% Combat Strength for melee attacks for 3 turns, with a 20-turn cooldown (the cooldown belongs to the city and keeps running while someone else holds it); the button shows Clausewitz's portrait and the turns left
+- Now: the heir, while holding Berlin, can use Clausewitz's Legacy with a button in Berlin's city screen: +25% Combat Strength for melee attacks for 3 turns, with a 20-turn cooldown (the cooldown belongs to the city and keeps running while someone else holds it)
 - Now: it is the same bonus as the Clausewitz's Legacy policy, so they don't add up in strength, only in turns; with the Clausewitz Doctrine the higher bonus counts
 - DLL: CvGame::LekmodDoBerlin / LekmodUseBerlinLegacy (saved in CvGame, m_aiLekmodBerlin), network code -27; the ability adds CvPlayer::ChangeAttackBonusTurns(3)
 - Dev: city screen button LekmodBerlinButton (standard UI only) with the round portrait LekmodClausewitz45.dds (art_sources/tools/build_clausewitz_icon.py, gold rim) and the cooldown in its label
@@ -851,7 +850,7 @@ Tags: ui
 - Added: a "Dismiss all" button for the notifications (Shift+D)
 - Note: standard UI only
 - Added: a Lek Options switch "Only important notifications": the other notifications are dismissed right away (they stay in the notification log)
-- Changed: City-State alliance changes stand out among the notifications (yellow glow, gold icon)
+- Changed: City-State alliance changes stand out among the notifications
 - Dev: City-State alliance notifications could not be dismissed for a while (never released); fixed
 - Dev: 2026-10-28 (user): the alliance notification pulses 30% slower (yellow glow Speed 1.5 -> 1.05, red corner glow 1 -> 0.7)
 - Dev: buckets in NotificationPanel.lua (g_LekmodImportant, standard UI) and on the Notion page "Notification buckets"; option LEK_ImportantNotificationsOnly (unset = off); alliance changes are NOTIFICATION_MINOR with "Ally of" in the summary
@@ -956,7 +955,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 - Changed: {Strategic Resource Requirements} Giant Death Robot: 3 Uranium and 6 Aluminum (was 1 Uranium)
 - Changed: {Strategic Resource Requirements} Nuclear Missile: 7 Uranium (was 2)
 - Changed: {Strategic Resource Requirements} unique units follow their base unit, except those that needed nothing while their base unit did (e.g. Mohawk Warrior, Maccabee, War Chariot, Japanese Zero): they still need nothing
-- Changed: {Building Costs and Maintenance} Factory: cost 241 -> 260 (Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
+- Changed: {Building Costs and Maintenance} Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
 - Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
 - Changed: {Industrial Buildings} Nuclear Plant: needs 2 Uranium (was 1)
 - Changed: {Industrial Buildings} Hydro Plant:
@@ -1133,7 +1132,7 @@ Tags: ui
 - Added: a No Quitters Rules tab with the community's full multiplayer rule set
 - Dev: NQ tab = category 17 in the second place of the tab bar; texts from the No Quitters Google Doc by tools/sync_pedia_nq.py (rerun when the doc changes); the layout is overridden too (CivilopediaScreen.xml.ignore: the extra button and a 48 px narrower search box, since 16 tabs already filled the bar); tab art from art_sources/civilopedia/ by build_pedia_tab.py; the NQ page hides the article list and its text boxes use the full width
 - Changed: the Canal Project's page links to the Canal improvement it unlocks
-- Changed: the home page has no picture any more; its boxes use the full width from the top
+- Dev: the home page has no picture any more; its boxes use the full width from the top
 - Dev: SelectBuildingOrWonderArticle shows the Improvements frame for Builds.PrereqBuildingClass of the building's class
 
 EMBARKED UNIT DEFENSE
@@ -1732,15 +1731,22 @@ DEFENSE BUILDINGS (BUILDING_WALLS, BUILDING_CASTLE, BUILDING_ARSENAL, BUILDING_M
 ---------------------------------------------------------------------------------------------
 Tags: buildings, combat
 Subsection: Buildings
-- Changed: Walls (and unique replacements): Defense +1 lower (Walls 5 -> 4; Walls of Babylon and Murus Gallicus 6 -> 5)
-- Added: Walls (and unique replacements): +1 Defense if the city is on a Hill, +1 Defense if the city is next to a Mountain
-- Added: Walls (and unique replacements): enemy units next to the city take 10 damage at the start of their turn, like next to a Citadel (the two do not stack)
-- Added: Walls (and unique replacements): the city heals 15 HP per turn
+- Changed: Walls (and unique replacements):
+  - 1 less Defense: Walls 4 (was 5), Walls of Babylon and Murus Gallicus 5 (was 6)
+  - +1 Defense if the city is on a Hill, +1 Defense if the city is next to a Mountain
+  - enemy units next to the city take 10 damage at the start of their turn, like next to a Citadel (the two do not stack)
+  - the city heals 15 HP per turn
 - Added: Castle (and unique replacements): provides 3 Horses, +3 Defense if the city is next to a Mountain, the city heals 20 HP per turn
-- Changed: Arsenal: needs Chemistry (was Metallurgy)
-- Added: Arsenal: +15% Production towards gunpowder and siege units, the city heals 30 HP per turn
-- Changed: Military Base renamed to Command Bunker; needs Radar (was Replaceable Parts); cost 335 -> 385; +75 Hit Points (was +25)
-- Added: Command Bunker: city attack range 3 (was 2), the city heals 50 HP per turn
+- Changed: Arsenal:
+  - needs Chemistry (was Metallurgy)
+  - +15% Production towards gunpowder and siege units
+  - the city heals 30 HP per turn
+- Changed: Military Base is now called Command Bunker:
+  - needs Radar (was Replaceable Parts)
+  - costs 385 (was 335)
+  - +75 Hit Points (was +25)
+  - city attack range 3 (was 2)
+  - the city heals 50 HP per turn
 - Dev: building tooltips show the city's total Hit Points with the building (e.g. Walls 250, Command Bunker 375) and the healing rate
 - Note: Walls already cost 50; Walls of Babylon, Murus Gallicus and Lion's Gate keep their costs (spec)
 - Note: the HP total in the tooltip adds the defense buildings that the building requires, in the player's own unique versions; India's Mughal Fort and Tunisia's castle do not require Walls, so they count without them
@@ -1761,12 +1767,13 @@ BUILDING COSTS AND MAINTENANCE (BUILDING_COURTHOUSE, BUILDING_BOMB_SHELTER, BUIL
 Tags: buildings
 Subsection: Buildings
 - Changed: Courthouse (and unique replacements): 2 Gold maintenance (was 4)
-- Changed: Bomb Shelter: 5 Gold maintenance (was 1)
-- Added: Bomb Shelter: military units (planes too) in the city take only 50 damage from a nuclear attack
-- Changed: Stadium: cost 335 -> 284, 5 Gold maintenance (was 2)
-- Changed: Factory: cost 241 -> 260 (Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
-- Changed: Prussian Factory: cost 180 -> 195 (Faith 144 -> 156); unlike the Factory it needs no Coal or Iron
-- Changed: Chilean Cooperative: cost 241 -> 260 (Faith too), needs 2 Coal (was 1) and 1 Iron
+- Changed: Bomb Shelter:
+  - 5 Gold maintenance (was 1)
+  - military units (planes too) in the city take only 50 damage from a nuclear attack
+- Changed: Stadium: costs 284 (was 335), 5 Gold maintenance (was 2)
+- Changed: Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
+- Changed: Prussian Factory: costs 195 (was 180; Faith 156, was 144); unlike the Factory it needs no Coal or Iron
+- Changed: Chilean Cooperative: costs 260 (was 241; Faith too), needs 2 Coal (was 1) and 1 Iron
 - Note: the Swiss Ski Resort (Stadium replacement) keeps its cost
 - DLL: Buildings.NukeUnitDamageFixed (LEKMOD_DEFENSE_BUILDINGS); a GDR's Nuke Resistance (20) still wins when lower
 
@@ -1780,13 +1787,15 @@ Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains work
   - no Gold maintenance (was 1)
   - Salt gives +1 Food
 - Removed: Brewery: no longer improves Salt (and Salt no longer unlocks it)
-- Changed: Gem Cutter: needs Guilds (was Machinery)
-- Added: Gem Cutter: Mountains +1 Culture
+- Changed: Gem Cutter:
+  - needs Guilds (was Machinery)
+  - costs 67 (was 50), like the other luxury buildings
+  - Mountains +1 Culture
 - Changed: Textile Mill: its resources give +1 Production (was 2) and +1 Gold
 - Added: Mint (and unique replacements): Mountains +2 Gold
 - Added: Forge (and Nubia's Blast Furnace): Mountains +1 Production
 - Note: the Mountain bonuses never apply to natural wonders
-- Changed: Censer Maker and Gem Cutter: cost 50 -> 67, like the other luxury buildings (Brewery, Grocer, Textile Mill, Mint)
+- Changed: Censer Maker: costs 67 (was 50), like the other luxury buildings (Brewery, Grocer, Textile Mill, Mint, Gem Cutter)
 - Note: unique replacements keep their costs (Silversmith, Czech Mint: 50)
 
 RESEARCH LAB (BUILDING_LABORATORY)
@@ -2786,8 +2795,10 @@ WORLD CONGRESS PROPOSALS (RESOLUTIONS_CHANGED)
 ----------------------------------------------
 Tags: world congress
 - Changed: Embargo City-States: available once the Congress reaches the Industrial Era
-- Changed: Nuclear Non-Proliferation: nuclear weapons cost twice as much Production instead of being banned; available once any civilization discovers Nuclear Fission (was Advanced Ballistics)
-- Added: Nuclear Non-Proliferation: launching a nuclear weapon declares war on every civilization and City-State you have met, except your City-State allies
+- Changed: Nuclear Non-Proliferation:
+  - nuclear weapons cost twice as much Production instead of being banned
+  - launching a nuclear weapon declares war on every civilization and City-State you have met, except your City-State allies
+  - available once any civilization discovers Nuclear Fission (was Advanced Ballistics)
 - Changed: World Religion:
   - 3 Delegates (was 2), none once the Congress reaches the Atomic Era; Holy City +50% Tourism stays
   - no longer: faster religion spread
@@ -2815,7 +2826,7 @@ Tags: world congress
 - DLL: Resolutions.LekmodNukeCostModifier (cost of nuclear weapons, like LekmodSpaceshipCostModifier); the old LekmodNukeProductionModifier is unused
 - Added: Clausewitz Doctrine (Modern Era): +25% attack strength (melee) for everyone for 8 turns; doesn't stack with Clausewitz's Legacy
 - Added: International Development Fund (Modern Era): a free Social Policy for everyone except the civilization(s) with the most policies; everyone not in the most advanced era gets one of the cheapest technologies they can research that another civilization knows
-- Added: Breakdown of International Relations (every human player in the Information Era, Nuclear Fusion known): everyone at war, no peace, all other resolutions end (also Diplomatic Transparency), all diplomats in other civilizations' capitals go home for good, no further sessions, -33% Tourism, next World Leader vote 3 turns later
+- Added: Breakdown of International Relations (every human player in the Information Era, Nuclear Fusion known): everyone at war, no peace, all other resolutions end, all diplomats in other civilizations' capitals go home for good, no further sessions, -33% Tourism, next World Leader vote 3 turns later
 - Added: Right of Conquest (Atomic Era): +1 Delegate per other civilization's original capital you hold
 - Added: Import Tariffs (Modern Era): luxuries give half the Happiness for 3 turns
 - Added: Diplomatic Transparency (Modern Era): every civilization has live vision of the other civilizations' cities and the tiles within 2 of them; spies take 50% longer per steal
