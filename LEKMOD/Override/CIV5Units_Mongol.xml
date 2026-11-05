@@ -148954,6 +148954,21 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPT_PROMO_TEMPLATES_TT">
 			<Text>Keep the promotion templates open, also without a selected unit.[NEWLINE]When off, they open by themselves when a unit can pick a promotion and its type has no Auto template.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD">
+			<Text>Keyboard:</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_TT">
+			<Text>The game's own hotkeys (promotions, builds, map options) go by the key's place on a US keyboard, not by the letter printed on it.[NEWLINE]Pick your keyboard so the hotkey labels show the letter on the key that works.[NEWLINE][NEWLINE]German: Y and Z swap.[NEWLINE]French: A and Q, Z and W swap, and M is the comma key.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_US">
+			<Text>US / English (QWERTY)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_DE">
+			<Text>German (QWERTZ)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_KEYBOARD_FR">
+			<Text>French (AZERTY)</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PT_UNDO">
 			<Text>Undo</Text>
 		</Row>

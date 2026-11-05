@@ -298,9 +298,27 @@ function LekmodNumberedKey( iAction, strMods, strKey, conflicts, bAllowMissing )
 	return strMods, strKey;
 end
 
+-- LEKMOD (2026-11-05): the game's own hotkeys go by the key's place on a US keyboard, not by the letter printed on it.
+-- With a German (QWERTZ) or French (AZERTY) keyboard (Options > Lek Options > Keyboard) the labels show the letter
+-- printed on the key that works.
+local g_LekmodLayoutKeys = {
+	[1] = { Y = "Z", Z = "Y" },                                -- QWERTZ
+	[2] = { A = "Q", Q = "A", W = "Z", Z = "W", M = "," },     -- AZERTY
+};
+function LekmodLayoutKey( key )
+	if key == nil or g_LekmodOptions == nil then
+		return key;
+	end
+	local map = g_LekmodLayoutKeys[tonumber( g_LekmodOptions.GetValue( "LEK_KeyboardLayout" ) ) or 0];
+	if map == nil then
+		return key;
+	end
+	return map[string.upper( tostring( key ) )] or key;
+end
+
 function LekmodSetHotKeyLabel( instance, strMods, strKey )
 	if instance.LekmodHotKeyLabel ~= nil then
-		instance.LekmodHotKeyLabel:SetText( strKey );
+		instance.LekmodHotKeyLabel:SetText( LekmodLayoutKey( strKey ) );
 	end
 	if instance.LekmodHotKeyModLabel ~= nil then
 		instance.LekmodHotKeyModLabel:SetText( strMods );
@@ -2160,7 +2178,13 @@ function TipHandler( control )
     --if action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION then
     --    tipControlTable.UnitActionHotKey:SetText( "" );
     if action.HotKey and action.HotKey ~= "" then
-        tipControlTable.UnitActionHotKey:SetText( "("..tostring(action.HotKey)..")" );
+        -- LEKMOD: the letter printed on the key that works (keyboard layout option)
+        local strMods, strKey = LekmodShortHotKey( action.HotKey );
+        if strKey ~= "" then
+            tipControlTable.UnitActionHotKey:SetText( "(" .. (strMods ~= "" and (strMods .. "+") or "") .. LekmodLayoutKey( strKey ) .. ")" );
+        else
+            tipControlTable.UnitActionHotKey:SetText( "("..tostring(action.HotKey)..")" );
+        end
     else
         tipControlTable.UnitActionHotKey:SetText( "" );
     end

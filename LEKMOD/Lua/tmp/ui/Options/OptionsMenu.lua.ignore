@@ -96,6 +96,32 @@ function SetDefaultAudioVolumes()
 end
 
 -------------------------------------------------
+-- LEKMOD (2026-11-05): keyboard layout for hotkey labels (0 US / QWERTY, 1 German / QWERTZ, 2 French / AZERTY)
+-------------------------------------------------
+local g_LekmodKeyboardNames = { [0] = "TXT_KEY_LEKMOD_OPT_KEYBOARD_US", [1] = "TXT_KEY_LEKMOD_OPT_KEYBOARD_DE", [2] = "TXT_KEY_LEKMOD_OPT_KEYBOARD_FR" }
+g_LekmodKeyboardLayout = 0
+function LekmodShowKeyboardLayout()
+    if Controls.LekmodKeyboardPullDown ~= nil then
+        Controls.LekmodKeyboardPullDown:GetButton():LocalizeAndSetText( g_LekmodKeyboardNames[g_LekmodKeyboardLayout] or g_LekmodKeyboardNames[0] )
+    end
+end
+if Controls.LekmodKeyboardPullDown ~= nil then
+    local pd = Controls.LekmodKeyboardPullDown
+    pd:ClearEntries()
+    for i = 0, 2 do
+        local inst = {}
+        pd:BuildEntry( "InstanceOne", inst )
+        inst.Button:SetVoids( i, 0 )
+        inst.Button:LocalizeAndSetText( g_LekmodKeyboardNames[i] )
+    end
+    pd:CalculateInternals()
+    pd:RegisterSelectionCallback( function( v1, v2 )
+        g_LekmodKeyboardLayout = v1
+        LekmodShowKeyboardLayout()
+    end )
+end
+
+-------------------------------------------------
 -------------------------------------------------
 function OnOK()
     EUI_options.SetValue( "DB_bRightButtonRebase", Controls.RightButtonRebaseCheckbox:IsChecked() )
@@ -106,6 +132,7 @@ function OnOK()
     EUI_options.SetValue( "LEK_ImportantNotificationsOnly", Controls.LekmodImportantNotifsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_FlagPromotions", Controls.LekmodFlagPromotionsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_ShowTileRecommendations", Controls.LekmodTileRecsCheckbox:IsChecked() and 1 or 0 )
+    EUI_options.SetValue( "LEK_KeyboardLayout", g_LekmodKeyboardLayout or 0 )
     LuaEvents.LekmodFlagPromotionsChanged()
     LuaEvents.OnRecommendationCheckChanged( not Controls.LekmodTileRecsCheckbox:IsChecked() )
 
@@ -684,6 +711,8 @@ function UpdateGameOptionsDisplay()
     Controls.LekmodImportantNotifsCheckbox:SetCheck( EUI_options.GetValue( "LEK_ImportantNotificationsOnly" ) == 1 )
     Controls.LekmodFlagPromotionsCheckbox:SetCheck( EUI_options.GetValue( "LEK_FlagPromotions" ) ~= 0 )
     Controls.LekmodTileRecsCheckbox:SetCheck( EUI_options.GetValue( "LEK_ShowTileRecommendations" ) == 1 )
+    g_LekmodKeyboardLayout = tonumber( EUI_options.GetValue( "LEK_KeyboardLayout" ) ) or 0
+    LekmodShowKeyboardLayout()
     --Controls.NoCitizenWarningCheckbox:SetCheck( OptionsManager.IsNoCitizenWarning() );
     Controls.AutoWorkersDontReplaceCB:SetCheck( OptionsManager.IsAutoWorkersDontReplace_Cached() );
     Controls.AutoWorkersDontRemoveFeaturesCB:SetCheck( OptionsManager.IsAutoWorkersDontRemoveFeatures_Cached() );

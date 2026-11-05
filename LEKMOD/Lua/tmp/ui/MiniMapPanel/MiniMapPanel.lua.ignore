@@ -546,6 +546,24 @@ function LekmodShowTileRecommendations()
 	return g_LekmodOptions ~= nil and g_LekmodOptions.GetValue( "LEK_ShowTileRecommendations" ) == 1;
 end
 -- " (Key)" for a Controls row, as the strategic view button's tooltip writes it
+-- LEKMOD (2026-11-05): the game's own hotkeys go by the key's place on a US keyboard, not by the letter printed on it.
+-- With a German (QWERTZ) or French (AZERTY) keyboard (Options > Lek Options > Keyboard) the labels show the letter
+-- printed on the key that works.
+local g_LekmodLayoutKeys = {
+	[1] = { Y = "Z", Z = "Y" },                                -- QWERTZ
+	[2] = { A = "Q", Q = "A", W = "Z", Z = "W", M = "," },     -- AZERTY
+};
+function LekmodLayoutKey( key )
+	if key == nil or g_LekmodOptions == nil then
+		return key;
+	end
+	local map = g_LekmodLayoutKeys[tonumber( g_LekmodOptions.GetValue( "LEK_KeyboardLayout" ) ) or 0];
+	if map == nil then
+		return key;
+	end
+	return map[string.upper( tostring( key ) )] or key;
+end
+
 local function LekmodControlKey( controlType )
 	local row = GameInfo.Controls[controlType];
 	if row == nil or type(row.HotKey) ~= "string" or row.HotKey == "" then
@@ -555,6 +573,7 @@ local function LekmodControlKey( controlType )
 	if desc == nil or type(desc) ~= "string" or desc == "" then
 		return "";
 	end
+	desc = string.gsub( desc, "([^%+%s]+)$", function( key ) return LekmodLayoutKey( key ); end );
 	return " (" .. desc .. ")";
 end
 -- check boxes have no SetText: the label is their text button
