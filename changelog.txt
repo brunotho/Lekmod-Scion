@@ -2742,8 +2742,7 @@ Tags: policies, naval, units, buildings
   | [COLOR_POSITIVE_TEXT]Navigation Schools[ENDCOLOR][NEWLINE][ICON_BULLET]+10% [ICON_STRENGTH] Combat Strength and +1 [ICON_MOVES] Movement for naval units[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
 - Reworked: POLICY_TREASURE_FLEETS
   | [COLOR_POSITIVE_TEXT]Treasure Fleets[ENDCOLOR][NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_LIGHTHOUSE] Lighthouse: +1 [ICON_PRODUCTION] Production on Coast tiles without a resource[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_HARBOR] Harbor: +1 [ICON_GOLD] Gold on Coast tiles next to the city[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_SEAPORT] Seaport: +3 [ICON_PRODUCTION] Production on Coast tiles next to the city and to a Mountain[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
-- New: BUILDING_LEKMOD_CROWN_OFFICE
-  | Given for free by the Expansionism policies Colonial Administration (captured cities) and Colonial Infrastructure (newly founded cities).[NEWLINE]Counts like a [ICON_BUILDING_COURTHOUSE] Courthouse for those two policies.[NEWLINE][NEWLINE]Cannot be built. Destroyed when the city is captured.
+- Dev: the Crown Office (a Courthouse stand-in that both Colonial policies gave) is gone again: nothing grants it since the policies were rebuilt from scratch (user, 2026-11-18); its building row stays unreachable
 - Dev: the Colonialism Governor's Mansion in newly founded cities is gone (not a player line: the tree is new, user 2026-10-29)
 - Dev: tree layout: Naval Tradition, Colonial Infrastructure, Colonial Administration on top; Navigation School bottom left, Treasure Fleets in the middle (the website shows the tree)
 - Note: the branch uses the Commerce branch picture until new Commerce art arrives
