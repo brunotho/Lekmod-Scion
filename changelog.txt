@@ -51,6 +51,7 @@ Tags: game mechanics, movement
 UNIT HOTKEYS (CONTROL_NEXTUNIT)
 -------------------------------
 Tags: ui
+Weight: minor
 - Removed: the keys that switch between the units on one tile (Ctrl + period / Ctrl + comma, numpad * and numpad /); period and comma still jump to the next unit that needs orders and the last unit
 - Dev: Controls rows CONTROL_NEXTUNIT / CONTROL_PREVUNIT have no HotKey/HotKeyAlt any more (user, 2026-10-27)
 
@@ -71,6 +72,7 @@ Tags: game mechanics, combat
 CITY-STATE FIRST MEETING GOLD (MINOR_CIV_CONTACT_GOLD)
 ------------------------------------------------------
 Tags: ui, city-states
+Weight: minor
 - Added: the Gold for meeting a City-State floats over the City-State
 - DLL: CvMinorCivAI::DoFirstContactWithMajor, AddPopupText for the active player
 
@@ -83,6 +85,7 @@ Tags: diplomacy and trade
 FLOATING NUMBERS AFTER A KILL
 -----------------------------
 Tags: ui, combat
+Weight: minor
 - Changed: Experience, Great General points and kill yields (Zealot Faith, Honor Culture and the others) float up sooner after a fight, in the same order
 - DLL: LEKMOD_KILL_YIELD_TEXT_DELAY_PCT 50 (CvPlayer kill yields, CvUnit XP and Great General points); City-State meeting Gold delay 2 -> 0.5 s (same percentage)
 
@@ -92,11 +95,6 @@ Tags: buildings, naval
 Subsection: Buildings
 - Changed: no longer needs a Harbor in the city
 - Dev: Oman's ability text no longer says its Seaports don't need a Harbor (now true for everyone)
-
-NAVAL MELEE CITY ATTACKS (PROMOTION_CITY_MOVEMENT_PENALTY)
-----------------------------------------------------------
-Tags: units, naval, combat, movement
-- Changed: a naval melee unit attacking a city spends 1 extra Movement (was 2)
 
 GEM CUTTER (BUILDING_GEMCUTTER)
 -------------------------------
@@ -178,7 +176,7 @@ HAND-AXE (NEW) (UNIT_LEKMOD_HANDAXE)
 Tags: units, ruins
 - New: UNIT_LEKMOD_HANDAXE
   | 9 Strength · 9 Ranged Strength · 2 Movement · costs 37[NEWLINE]Ranged unit with a range of 1. Can't be trained: an ancient ruin sometimes turns a Warrior into one (instead of a Spearman).
-  - one time in five, the upgrade ruin offers it instead of the Spearman; it can't be trained
+  - the upgrade ruin offers it one time in five
 - DLL: CvPlayer::LekmodGetRuinUpgradeUnit (the offer's roll 0-199 of 0-999, so the offer text and the result match); unit 278, class 122, the barbarian Hand-Axe's art and stats
 
 WAR ALTAR (NEW) (PROMOTION_LEKMOD_WAR_ALTAR)
@@ -663,6 +661,7 @@ Food from Maritime city-states is added to the city itself instead of the city t
 CITY-STATE BORDER COLORS (PLAYERCOLOR_CS_*)
 -------------------------------------------
 Tags: ui, city-states
+Weight: minor
 City-state borders show their type at a glance: one color per type, matching the yield it gives, striped with black.
 - Changed: the colors match what the city-state gives: Maritime food green, Cultured culture magenta, Mercantile gold yellow, Religious faith white, Militaristic salmon
 - Dev: new Colors COLOR_CS_TRAIT_* (IDs 377-381) and PlayerColors PLAYERCOLOR_CS_* (184-188; primary COLOR_PLAYER_MINOR_ICON, secondary the type color); every MinorCivilizations row's DefaultPlayerColor set from its MinorCivTrait
@@ -799,12 +798,14 @@ Tags: ui, promotions
 GREAT SCIENTIST DECAY (NEW) (GAMEOPTION_NO_SCIENTIST_SAVING)
 -------------------------------------------------------------
 Tags: ui
+Weight: minor
 - Added: a Great Scientist you keep shows a red "-N Science" over its tile at the start of your turn when its Science bonus drops
 - Dev: Lua/LekmodScientistDecay.lua (loaded by InGame) compares each Great Scientist's GetDiscoverAmount with the last turn; local only, nothing sent over the network
 
 BUILDING LIMITS PER EMPIRE (NEW) (MaxPlayerInstances)
 -----------------------------------------------------
 Tags: ui, buildings
+Weight: minor
 - Added: the tooltip of a building you can only have a few of (Oil Refinery, Recycling Center, Ziggurat, ...) shows how many you have or are building out of the limit, and in which cities
 - Dev: LekmodEmpireLimitLine in InfoTooltipInclude (standard UI) and EUI_tooltip_library (EUI); classes with MaxPlayerInstances above 1; a city counts when it has the building or has it anywhere in its production queue
 
@@ -834,6 +835,7 @@ Tags: ui, promotions
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------
 Tags: ui, combat
+Weight: minor
 - Added: your units that attacked this turn and can still move show crossed swords on their flag
 - Dev: LEKMOD_UNIT_ATTACKED_FLAG_ICON: Lua Unit:GetNumAttacksMadeThisTurn; UnitFlagManager (ui and eui) uses the existing IsOutOfAttacks label, refreshed on SerialEventUnitInfoDirty and ActivePlayerTurnStart
 
@@ -1058,6 +1060,7 @@ Tags: game mechanics
 CITY-STATE BANNER ICONS
 -----------------------
 Tags: ui, city-states
+Weight: minor
 - Added: City-State banners show who has pledged to protect them
 - Added: City-State banners show the icons of their quests for you, with the quest list as a tooltip
 - Note: standard UI only for now (EUI has its own city banners)
@@ -1070,12 +1073,14 @@ Tags: bugfix, ui
 GREAT WORKS SCREEN SELECTION
 ----------------------------
 Tags: ui, tourism
+Weight: minor
 - Fixed: a great work selected for moving stayed selected only until any player changed a great work; the screen then refreshed and dropped the selection. It now stays selected (unless that great work itself is gone)
 - Added: Shift + left click picks several Great Works; a left click on a building then moves them into its empty slots, as many as fit
 
 CHAT EMOJI PICKER
 -----------------
 Tags: ui
+Weight: minor
 - Changed: the chat emoji picker shows a short list of favourites and every chat emote (Kappa, Pog, KEKW and the others) instead of every icon
 - Note: any other icon still works when typed into the chat (e.g. [ICON_POG])
 
@@ -1088,17 +1093,20 @@ Tags: ui, air
 CITY SCREEN: GREAT PEOPLE POINTS
 --------------------------------
 Tags: ui
+Weight: minor
 - Changed: Great People points in the city screen show decimals
 
 START BIAS SHOWN
 ----------------
 Tags: ui, civs
+Weight: minor
 - Added: each civilization's start bias is shown with its ability (Civilopedia, civilization selection, lobby)
 - Dev: the list stopped building (no scrolling) at England, which has only one unique item since the naval rework; the base game's UniqueBonuses.lua assumed two. Lekmod now overrides it with a guard
 
 MID-TURN POLICY AND PANTHEON NOTIFICATIONS
 ------------------------------------------
 Tags: ui, policies, religion
+Weight: minor
 - Added: the "choose a policy" and "choose a pantheon" notifications appear as soon as you can afford one during the turn, not only at the start of the next turn
 - Dev: LEKMOD_MIDTURN_PICK_NOTIFICATIONS: hooks in CvPlayer::setJONSCultureTimes100 (upstream's TestMidTurnPolicyNotification) and CvPlayer::SetFaith (same rules as CvGameReligions::DoPlayerTurn). Both notification types are de-duplicated by CvNotifications
 
@@ -1115,6 +1123,7 @@ Tags: civs, ui
 PROMOTION TOOLTIPS (UPGRADES)
 -----------------------------
 Tags: ui, promotions
+Weight: minor
 - Added: promotion tooltips say whether the promotion is kept when the unit is upgraded
 
 DEMOGRAPHICS SCREEN (TURN END)
@@ -1126,12 +1135,14 @@ Tags: bugfix, ui
 LOBBY: DEFAULT DIFFICULTY
 -------------------------
 Tags: ui
+Weight: minor
 - Changed: human players start at Immortal difficulty in the lobby (was Prince)
 - Note: city-state yields scale with difficulty, so Immortal is the Lekmod standard
 
 CITY BANNER TOOLTIP (WARMONGER PREVIEW)
 ---------------------------------------
 Tags: ui
+Weight: minor
 - Removed: the warmonger penalty warning in the tooltip of enemy cities
 
 CIVILOPEDIA
@@ -1259,6 +1270,7 @@ Tags: promotions, movement
 ALWAYS-VISIBLE BUILD BUTTONS (Builds.LekmodAlwaysVisible)
 ---------------------------------------------------------
 Tags: ui
+Weight: minor
 - Added: build buttons of unique and Great Person improvements show everywhere for units that can build them, greyed out with the reason where they can't be built
 - DLL: LEKMOD_BUILD_ALWAYS_VISIBLE (CvPlayer::canBuild skips the tile conditions for the visible test)
 
@@ -1401,6 +1413,7 @@ Tags: promotions
 DEMOGRAPHICS SCREEN
 -------------------
 Tags: ui
+Weight: minor
 - Changed: the Demographics screen shows plain, comparable numbers (citizens, Gold per turn, owned tiles, excess Happiness, researched techs) with yield icons
 - Dev: Lua/tmp/ui/Replays/Demographics.lua.ignore
 
@@ -1525,7 +1538,6 @@ Tags: units
   - Modern: Foreign Legion 186 (was 180); Anti-Tank Rifle 207 (was 201); Great War Bomber, Great War Infantry and Triplane 227 (was 221); Submarine 248 (was 241); Landship and Machine Gun 269 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 290 (was 281)
   - Atomic: Anti-Tank Gun 253 (was 241); Bomber and Fighter 295 (was 281); Bazooka, Marine, Paratrooper and Tank 316 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 359 (was 341)
   - Information: Mechanized Infantry 316 (was 301); Heavy Cruiser 326 (was 311); Nuclear Submarine and XCOM Squad 359 (was 341); Jet Fighter 379 (was 361)
-  - the UAE's Desert Falcon costs the same as the Jet Fighter
 - Dev: Information-era standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
@@ -1630,7 +1642,6 @@ Tags: units, naval
 NELAYAN (UNIT_NELAYAN)
 ----------------------
 Tags: units, naval, civs
-The Nelayan returns as a shared unique Rowboat for seafaring civilizations.
 - Added: Nelayan replaces the Rowboat for Brunei, Polynesia, the Maori, Tonga, Indonesia and the Philippines
 - Added: unlike the Rowboat it builds Fishing Boats over several turns like a Worker and is not used up; a Pontoon Bridge still uses it up at once
 - Note: art as Lekmod's original Nelayan (Polynesian war canoe model, removed in v31); the user checks the look in game
@@ -1716,8 +1727,9 @@ Tags: units
 NAVAL REWORK
 ------------
 Tags: units, naval
-New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, the new Dreadnought and penalties for early warships.
+New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, the new Dreadnought and attack limits for warships of every era (Blind Spot, Minimum Range, Docked).
 - Changed: Triremes (and unique replacements) upgrade to the Quinquereme
+- Changed: a naval melee unit attacking a city spends 1 extra Movement (was 2)
 - Changed: Quinquereme:
   - buildable by all civs at Compass (cost 53, was only from the Great Lighthouse), 13 Strength, 5 movement, cannot enter Ocean, can pillage and plunder trade routes, starts with Boarding Party I
   - upgrades to Privateer
@@ -2234,7 +2246,8 @@ Tags: tourism, game mechanics
 - Now: every great work slot accepts any Great Work: Writing, Art, Music and Artifacts alike
 - Now: a great work gives 2 Culture and no Tourism by itself; Tourism comes from buildings and policies
 - Now: many World Wonders have Great Work slots with effects of their own, e.g. the Hagia Sophia gives +10 Faith once all 3 of its slots are filled (all of them under Tourism Wonders below)
-- Removed: theming bonuses, and the 2 Tourism each great work gave
+- Now: every great work is labelled with an era: a Writer's, Artist's or Musician's work the era its owner was in when it was made, an Artifact the era of the event its dig site remembers (a battle, a razed or captured city, a cleared barbarian camp); the label has no effect on yields or Tourism
+- Removed: theming bonuses (the only thing a great work's era mattered for), and the 2 Tourism each great work gave
 - Note: when a captured city's great work building is destroyed, its great works already moved to free slots of the new owner (base game); with one slot type they find any free slot
 - DLL: LEKMOD_GENERIC_GREAT_WORKS (AI no longer rearranges great works; the Royal Library's free work uses its own slot type)
 
@@ -2892,6 +2905,7 @@ Tags: world congress
 ADDITIONAL INFORMATION MENU (ui)
 --------------------------------
 Tags: ui
+Weight: minor
 - Changed: the Additional Information menu shows each screen's hotkey
 
 WORLD CONGRESS SCREEN (ui)
@@ -2978,7 +2992,7 @@ Tags: world wonders, espionage, wonders
 - Added: World Wonder at Telecommunications, 1100 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
-- Added: other players' Demographics screens show only the word CENSORED and the Ministry's owner (if they have met it) instead of their table; while the Blackout proposal is active they show BLACKOUT
+- Added: other players' Demographics screens show only the word CENSORED and the Ministry's owner instead of their table
 - DLL: Buildings.FastSpyEstablish, DemographicsBlackout (LEKMOD_SPY_WONDERS); Lua Game.LekmodIsBlackout(iObserver)
 - Dev: building 276, class 183; icon from the user's art (white background replaced, art_sources/tools/round_building_icon.py)
 
@@ -3918,12 +3932,14 @@ Tags: bugfix, tourism, buildings, ui
 PRODUCTION OVERFLOW TO GOLD (FLOATING TEXT)
 -------------------------------------------
 Tags: ui
+Weight: minor
 - Added: when a city's extra Production is turned into Gold, the Gold gained and the Production spent float over the city
 - DLL: CvCity::LekmodShowOverflowGold, called from popOrder for units, buildings and projects
 
 QUICK SPEED CALENDAR (GAMESPEED_QUICK)
 --------------------------------------
 Tags: ui
+Weight: minor
 The year shown on quick speed now follows the usual pace of the tech tree: about 500 AD at turn 55, 1750 AD at turn 90, 1900 AD at turn 105, 1945 AD at turn 135 and 2025 AD at turn 160.
 - Changed: only the displayed year; turns, costs and the turn limit are unchanged
 - Dev: GameSpeed_Turns quick rows (months per turn x turns): 900x40, 1200x15, 400x15, 480x15, 360x5, 120x15, 15x20, 24x10, 30x10, 48x10, 36x10, 12x165 (330 turns as before)
@@ -3963,24 +3979,28 @@ Tags: civs, ui
 CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 --------------------------------------------
 Tags: ui, civs
+Weight: minor
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
 COMBAT SOUNDS (NEW) (LEKMOD_COMBAT_SOUNDS)
 ------------------------------------------
 Tags: ui, combat
+Weight: minor
 - Added: when one of your units dies attacking in melee, you hear the sound of a wonder finished by another civilization
 - DLL: GameEvents.LekmodMeleeAttackerDied(owner, unit type) from ResolveMeleeCombat and ResolveCityMeleeCombat; Lua/LekmodCombatSounds.lua (loaded by InGame.lua) plays AS2D_INTERFACE_OTHER_CIV_WONDER for the active player only
 
 FORTIFY BUTTON (MISSION_FORTIFY)
 --------------------------------
 Tags: ui
+Weight: minor
 - Changed: Fortify is on the main unit action panel instead of the extra actions list
 - Dev: Missions.OrderPriority 99 -> 160 (the unit panel puts missions over 100 on the main panel)
 
 CIVILIZATION SELECTION LIST (SINGLE PLAYER)
 -------------------------------------------
 Tags: ui
+Weight: minor
 - Changed: the single-player civilization list is compact: leader, civilization and all unique item icons (up to 5, was 2); hovering shows the ability and start bias
 - Dev: replaces the 2026-10-10 row growth and the shortened "..." text of 2026-10-16
 - Dev: Lekmod's own SelectCivilization.xml (5 slots, name centered in the row, standard UI); UniqueBonuses lists Buildings.RequiredCivilization too
