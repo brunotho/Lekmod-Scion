@@ -6757,7 +6757,19 @@ void CvLeague::LekmodDoWorldLeaderVote()
 	{
 		PlayerTypes ePlayer = m_vMembers[i].ePlayer;
 		if (CanEverVote(ePlayer) && GET_PLAYER(ePlayer).isAlive() && !GET_PLAYER(ePlayer).isMinorCiv())
-			vVotes.push_back(std::make_pair(CalculateStartingVotesForMember(ePlayer, /*bForceUpdateSources*/ true), ePlayer));
+		{
+			int iLekmodVotes = CalculateStartingVotesForMember(ePlayer, /*bForceUpdateSources*/ true);
+#if defined(LEKMOD_SPECS_2026_11_18) && defined(LEKMOD_DIPLOMAT_RULES)
+			// Delegates from other civs' diplomats in our capital don't count here
+			for (int iMajor = 0; iMajor < MAX_MAJOR_CIVS; iMajor++)
+			{
+				if ((PlayerTypes)iMajor != ePlayer && GET_PLAYER((PlayerTypes)iMajor).isAlive() && GET_PLAYER((PlayerTypes)iMajor).GetEspionage()->LekmodHasDiplomatWith(ePlayer))
+					iLekmodVotes--;
+			}
+			iLekmodVotes = std::max(0, iLekmodVotes);
+#endif
+			vVotes.push_back(std::make_pair(iLekmodVotes, ePlayer));
+		}
 	}
 	if (vVotes.empty())
 		return;
@@ -6804,7 +6816,11 @@ void CvLeague::LekmodResolveWorldLeaderVote()
 	}
 
 	PlayerTypes eWinner = NO_PLAYER;
-	if (iNumFirst == 1 && iFirst >= iNeeded && GET_PLAYER(vVotes[0].second).isAlive())
+	if (iNumFirst == 1 && iFirst >= iNeeded && GET_PLAYER(vVotes[0].second).isAlive()
+#ifdef LEKMOD_SPECS_2026_11_18
+		&& !GC.getGame().LekmodIsVictoryBlocked(GET_PLAYER(vVotes[0].second).getTeam())
+#endif
+		)
 	{
 		eWinner = vVotes[0].second;
 	}

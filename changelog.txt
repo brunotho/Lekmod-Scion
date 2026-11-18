@@ -205,7 +205,7 @@ Tags: ui
 CITY-STATES WITH UNIQUE ABILITIES (NEW) (LEKMOD_SPECIAL_CITY_STATES)
 --------------------------------------------------------------------
 Tags: city-states
-- Now: each game has 0, 1 or 2 City-States with a unique ability (25% / 50% / 25% chance), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck
+- Now: each game has 1, 2 or 3 City-States with a unique ability (25% / 50% / 25% chance), drawn from St. Petersburg, Shanghai, Florence, Sparta, Berlin, Cambridge, Baikonur and Lübeck
 - Now: each one takes the place of a regular City-State, so the number of City-States stays as set
 - Now: they are placed between two neighbouring players or in the middle, never outside the circle the players' starting locations form
 - Now: they have a small star on their name tag, and hovering the name tag shows their unique ability
@@ -218,6 +218,7 @@ Tags: city-states
 - Dev: the map (Lekmap Scion, AssignStartingPlots:LekPlaceSpecialCityStates) places them first: centre = the land plot whose farthest start is nearest, sites within 80% of that radius, at least 5 tiles from every start, most equally far from the two nearest starts; Lua.log line "### LekSpecialCS"
 - Dev: star and ability tooltip on the city banner: standard UI only (CityBannerManager, LekmodSpecialCityStateKey; texts TXT_KEY_LEKMOD_SPECIAL_CS_BANNER_*, headed by the star as font icon [ICON_LEKMOD_SPECIAL_CS] (IconFontTextures/IconFontMapping rows at the end of CIV5Units.xml, glyph file LekmodSpecialCityStateStarFontIcon_22.ggxml); star art art_sources/tools/build_cs_special_star.py)
 - Dev: MINOR_CIV_FLORENCE was Ljubljana in game, so Florence is a new City-State (MINOR_CIV_LEKMOD_FLORENCE)
+- Dev: 0, 1 or 2 until 2026-11-18 (user: 1-3)
 
 ST. PETERSBURG (NEW) (MINOR_CIV_LEKMOD_STPETERSBURG)
 ----------------------------------------------------
@@ -567,6 +568,8 @@ OPEN BORDERS (OPEN_BORDERS_DURATION)
 Tags: diplomacy and trade, ui
 - Changed: open borders last 10 turns (was 25)
 - Added: a second trade item, "Open Borders (until war)", next to "Open Borders (10 turns)". It ends only when the two players go to war. Only one of the two can be in a deal
+- Changed: open borders (both items) can be traded without an embassy
+- DLL: LEKMOD_SPECS_2026_11_18: CvDeal::IsPossibleToTradeItem skips the embassy check for TRADE_ITEM_OPEN_BORDERS
 - Dev: new define OPEN_BORDERS_DURATION (10, not speed-scaled), LEKMOD_OPEN_BORDERS_FIXED_DURATION in CvDeal::AddOpenBorders (same approach as the defensive pact's fixed 10 turns). TradeLogic templates (ui and eui) read GameDefines.OPEN_BORDERS_DURATION.
 - Dev: LEKMOD_OPEN_BORDERS_INDEFINITE: define OPEN_BORDERS_INDEFINITE_DURATION (1000 turns); CvDeal::AddOpenBorders keeps that duration when requested, everything else stays 10. New buttons *OpenBordersIndef in SimpleDiploTrade.xml (human trades, used by both UIs); TradeLogic (ui and eui) mirrors the 10-turn button's state onto them (LekmodSyncOpenBordersIndef). The AI trade screen (base DiploTrade.xml) has no such buttons and keeps only the 10-turn item
 
@@ -583,10 +586,13 @@ Tags: tiles and resources, combat
   - Motte and Bailey (was +25%)
   - Caer (was +25%)
   - Pa (was +40%)
+- Changed: Forts cost 1 Gold maintenance per turn, 2 from the Modern Era (were free); the defensive unique improvements stay free
+- Added: a worker's build button names the Gold maintenance of what it builds (roads, railroads, Forts) as its last line
 - Changed: none of the Kasbah, Chateau, Motte and Bailey, Caer and Pa can be built next to another one of them (or next to one under construction); Forts can still be built anywhere, also next to them; before, the Kasbah and Caer had no such rule, and the others only kept away from their own kind
 - DLL: Improvements.LekmodCountsAsFort (LEKMOD_IMPROVEMENT_FORT_GROUP, CvPlot::canBuild next to NoTwoAdjacent); all six get DefenseModifier 50, NoTwoAdjacent 1
 - Dev: improvement and build texts and the Fort's Civilopedia page updated; the Kasbah was at +25% for a while during development
 - Dev: during development Forts were part of the no-neighbour group too
+- DLL: Improvements.LekmodGoldMaintenanceEra / LekmodGoldMaintenanceEraChange (CvTreasury::GetImprovementGoldMaintenance; LEKMOD_SPECS_2026_11_18); Lua LekmodBuildMaintenance in both UnitPanel templates
 
 PUPPET CITIES (CITY FOCUS)
 --------------------------
@@ -1955,6 +1961,14 @@ Tags: religion
 Subsection: Pantheons
 +1 Food and +1 Gold from Wine, Sugar, Spices and Cocoa.
 
+MESSENGER OF THE GODS (BELIEF_MESSENGER_GODS)
+---------------------------------------------
+Tags: religion
+Subsection: Pantheons
++3 Faith in your Capital. +2 Science in Cities with a City Connection.
+- Changed: was +2 Science and +1 Gold in Cities with a City Connection
+- DLL: Belief_CityConditionYieldChanges condition CAPITAL (LEKMOD_SPECS_2026_11_18)
+
 OCEAN'S BOUNTY (BELIEF_OCEANS_BOUNTY)
 -------------------------------------
 Tags: religion
@@ -2440,6 +2454,12 @@ Tags: world wonders, naval, wonders
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
 - Removed: its Culture, Golden Age points and the yields for cities on the same or other landmasses
 
+VICTORY: NO AI WINNERS (NEW) (VICTORY_TIME)
+-------------------------------------------
+Tags: game mechanics
+- Added: in multiplayer games AI players can't win: no victory of any type goes to them, a World Leader vote they would win counts as undecided, and their score doesn't count for the Time Victory
+- DLL: CvGame::LekmodIsVictoryBlocked (isGameMultiPlayer and not a human team): testVictory, the score and Victory Point tallies, the conquest check and LekmodResolveWorldLeaderVote (LEKMOD_SPECS_2026_11_18)
+
 VICTORY: CAPITALS AND INFLUENCE (VICTORY_DOMINATION, VICTORY_CULTURAL)
 ----------------------------------------------------------------------
 Tags: tourism, game mechanics
@@ -2790,11 +2810,12 @@ Delegates now depend on the Congress era and on what you hold.
   - Big Ben and Oxford University: +1 Delegate each
   - Patronage finisher: +1 Delegate, +1 more per era from the Industrial Era (5 in the Information Era)
   - Globalization: +1 Delegate
-- Now: +1 Delegate for each other civilization's diplomat in your capital
+- Now: +1 Delegate for each other civilization's diplomat in your capital (not counted in World Leader votes)
 - Removed: Delegates from your own Diplomats after Globalization
 - Note: World Leader placements (first and second place +1 permanent Delegate) are part of World Congress Sessions; World Religion, World Ideology, Embargo and Right of Conquest come with the proposal changes
 - DLL: LEKMOD_DIPLOMAT_RULES: hosted diplomats' Delegates (LekmodHasDiplomatWith), vote source TXT_KEY_LEKMOD_LEAGUE_VOTES_HOSTED_DIPLOMATS
 - DLL: LEKMOD_CONGRESS_CYCLE vote tables in CvLeague::CalculateStartingVotesForMember; Member::iLekmodPassedProposals (league save version 16); Buildings.ExtraLeagueVotesAtomic, Policies.LeagueVotesPerEraFromIndustrial
+- DLL: CvLeague::LekmodDoWorldLeaderVote subtracts the hosted diplomats' Delegates before freezing the counts (LEKMOD_SPECS_2026_11_18)
 
 WORLD CONGRESS PROPOSALS (RESOLUTIONS_CHANGED)
 ----------------------------------------------
@@ -3423,6 +3444,12 @@ Tags: civs, units
   | 70 Strength · 5 Movement · costs 269 · needs 3 Oil[NEWLINE]Unique Unit for Yugoslavia. Replaces the Tank and is cheaper (costs as much as a Landship).[NEWLINE][NEWLINE]When trained, it gets a promotion from your Ideology: Freedom: Foreign Lands. Autocracy: Mobility. Order: Drill I.
 - DLL: Unit_LekmodIdeologyPromotions
 
+NABATAEA (CIVILIZATION_NABATEA)
+-------------------------------
+Tags: civs, units
+- Changed: the Nabataeans can train the regular Scout as well as their Zabonah; both go obsolete and upgrade as usual
+- DLL: Units.LekmodAlsoBaseUnit (CvPlayer::LekmodCanTrainReplacedUnit, checked in CvPlayer::canTrain and CvCity::canTrain)
+
 NETHERLANDS (CIVILIZATION_NETHERLANDS)
 --------------------------------------
 Tags: civs
@@ -3924,6 +3951,12 @@ CIVILIZATION ABILITY TEXTS (TXT_KEY_TRAIT_*)
 Tags: ui, civs
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
+
+COMBAT SOUNDS (NEW) (LEKMOD_COMBAT_SOUNDS)
+------------------------------------------
+Tags: ui, combat
+- Added: when one of your units dies attacking in melee, you hear the sound of a wonder finished by another civilization
+- DLL: GameEvents.LekmodMeleeAttackerDied(owner, unit type) from ResolveMeleeCombat and ResolveCityMeleeCombat; Lua/LekmodCombatSounds.lua (loaded by InGame.lua) plays AS2D_INTERFACE_OTHER_CIV_WONDER for the active player only
 
 FORTIFY BUTTON (MISSION_FORTIFY)
 --------------------------------

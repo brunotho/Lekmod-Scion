@@ -67,6 +67,30 @@ local GameDefines = GameDefines
 local GameInfoTypes = GameInfoTypes
 local GameInfo_Automates = GameInfo.Automates
 local GameInfo_Builds = GameInfo.Builds
+
+-- LEKMOD (New Specs 12, 2026-11-18): Gold maintenance of a build's improvement and route (Forts: +1 from the Modern Era)
+function LekmodBuildMaintenance(pBuild)
+	if pBuild == nil then
+		return 0
+	end
+	local iGold = 0
+	local pImprovement = pBuild.ImprovementType and GameInfo.Improvements[pBuild.ImprovementType]
+	if pImprovement then
+		iGold = iGold + (pImprovement.GoldMaintenance or 0)
+		local iEraChange = pImprovement.LekmodGoldMaintenanceEraChange or 0
+		local pEra = pImprovement.LekmodGoldMaintenanceEra and GameInfo.Eras[pImprovement.LekmodGoldMaintenanceEra]
+		local pPlayer = Players[Game.GetActivePlayer()]
+		if iEraChange ~= 0 and pEra and pPlayer and pPlayer:GetCurrentEra() >= pEra.ID then
+			iGold = iGold + iEraChange
+		end
+	end
+	local pRoute = pBuild.RouteType and GameInfo.Routes[pBuild.RouteType]
+	if pRoute then
+		iGold = iGold + (pRoute.GoldMaintenance or 0)
+	end
+	return iGold
+end
+
 local GameInfo_Missions = GameInfo.Missions
 local GameInfo_Units = GameInfo.Units
 local L = Locale.ConvertTextKey
@@ -1969,6 +1993,15 @@ function ActionToolTipHandler( control )
 					toolTip:append( " (".. city:GetName()..")" )
 				end
 			end
+		end
+	end
+
+	-- LEKMOD: the build's Gold maintenance, as the last line
+	if isBuild then
+		local iLekmodMaintenance = LekmodBuildMaintenance(build)
+		if iLekmodMaintenance > 0 then
+			toolTip:insert( "" )
+			toolTip:insert( L("TXT_KEY_LEKMOD_BUILD_MAINTENANCE", iLekmodMaintenance) )
 		end
 	end
 

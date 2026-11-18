@@ -19,7 +19,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.5 
 - Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.
 - A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.
 - Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.
-- A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate, and you can expel it. A Non-Aggression Pact needs a diplomat between the two.
+- A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate (not counted in World Leader votes), and you can expel it. A Non-Aggression Pact needs a diplomat between the two.
 - The Espionage screen explains every number on its Rules tab.
 
 ## Policies
@@ -36,7 +36,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.5 
 - Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.
 - City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.
 - Trade route and resource quests pay part of their Influence over time.
-- Each game has 0, 1 or 2 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).
+- Each game has 1, 2 or 3 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).
 - A sixth City-State type, Scientific, gives Science to its friends and allies.
 
 ## Combat rules
@@ -51,10 +51,11 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.5 
 - Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.
 - In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
 - Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.
-- Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.
+- Open borders last 10 turns, or until war with the new "until war" option, and need no embassy. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.
 - Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
 - Ancient ruins let you choose between 2 rewards, with the amounts shown.
 - A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.
+- In multiplayer games AI players can't win: no victory of any type goes to them.
 
 ## Powercreep compensation
 - Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.

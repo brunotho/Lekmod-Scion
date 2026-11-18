@@ -3413,7 +3413,11 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 	}
 #ifdef LEKMOD_POST_CHANGES
 	// a captured Militaristic City-State's unique unit: only the captured city trains it
-	if ((UnitTypes)getCivilizationInfo().getCivilizationUnits(pkUnitEntry->GetUnitClassType()) != eUnit && !GET_PLAYER(getOwner()).LekmodHasCapturedMilitaristicUU(eUnit, this))
+	if ((UnitTypes)getCivilizationInfo().getCivilizationUnits(pkUnitEntry->GetUnitClassType()) != eUnit && !GET_PLAYER(getOwner()).LekmodHasCapturedMilitaristicUU(eUnit, this)
+#ifdef LEKMOD_SPECS_2026_11_18
+		&& !GET_PLAYER(getOwner()).LekmodCanTrainReplacedUnit(eUnit)
+#endif
+		)
 	{
 		return false;
 	}
@@ -15962,10 +15966,11 @@ int CvCity::GetLekmodBeliefCityConditionYield(const CvReligion* pReligion, Belie
 {
 	if (pReligion == NULL)
 		return 0;
-	bool abCondition[3];
+	bool abCondition[4];
 	abCondition[0] = !plot()->isFreshWater();
 	abCondition[1] = false;
 	abCondition[2] = !isCapital();
+	abCondition[3] = isCapital();
 	for (int iDir = 0; iDir < NUM_DIRECTION_TYPES; iDir++)
 	{
 		CvPlot* pAdjacent = plotDirection(getX(), getY(), (DirectionTypes)iDir);
@@ -15987,7 +15992,7 @@ int CvCity::GetLekmodBeliefCityConditionYield(const CvReligion* pReligion, Belie
 			continue;
 		const std::vector<CvBeliefEntry::LekmodRow>& aRows = pkBelief->GetLekmodCityConditionYields();
 		for (uint j = 0; j < aRows.size(); j++)
-			if (aRows[j].a >= 0 && aRows[j].a < 3 && abCondition[aRows[j].a] && aRows[j].b == eYield)
+			if (aRows[j].a >= 0 && aRows[j].a < 4 && abCondition[aRows[j].a] && aRows[j].b == eYield)
 				iYield += aRows[j].d;
 	}
 	return iYield;

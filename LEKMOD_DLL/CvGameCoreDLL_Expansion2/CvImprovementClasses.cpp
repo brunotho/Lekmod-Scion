@@ -65,6 +65,10 @@ int CvImprovementResourceInfo::getYieldChange(int i) const
 //======================================================================================================
 CvImprovementEntry::CvImprovementEntry(void):
 	m_iGoldMaintenance(0),
+#ifdef LEKMOD_SPECS_2026_11_18
+	m_iLekmodGoldMaintenanceEra(-1),
+	m_iLekmodGoldMaintenanceEraChange(0),
+#endif
 	m_iCultureBombRadius(0),
 	m_iCultureBombRadiusNeutral(0),
 	m_iRequiresXAdjacentLand(-1),
@@ -281,6 +285,13 @@ bool CvImprovementEntry::CacheResults(Database::Results& kResults, CvDatabaseUti
 	SetArtDefineTag(szArtDefineTag);
 
 	m_iGoldMaintenance = kResults.GetInt("GoldMaintenance");
+#ifdef LEKMOD_SPECS_2026_11_18
+	{
+		const char* szEra = kResults.GetText("LekmodGoldMaintenanceEra");
+		m_iLekmodGoldMaintenanceEra = (szEra != NULL && szEra[0] != '\0') ? GC.getInfoTypeForString(szEra, true) : -1;
+		m_iLekmodGoldMaintenanceEraChange = kResults.GetInt("LekmodGoldMaintenanceEraChange");
+	}
+#endif
 	m_iCultureBombRadius = kResults.GetInt("CultureBombRadius");
 	m_iCultureBombRadiusNeutral = kResults.GetInt("CultureBombRadiusNeutral");
 	m_iRequiresXAdjacentLand = kResults.GetInt("RequiresXAdjacentLand");
@@ -796,6 +807,17 @@ int CvImprovementEntry::GetGoldMaintenance() const
 {
 	return m_iGoldMaintenance;
 }
+#ifdef LEKMOD_SPECS_2026_11_18
+/// Extra Gold maintenance once the paying player is in this era or later (Forts: +1 from the Modern Era)
+int CvImprovementEntry::GetLekmodGoldMaintenanceEra() const
+{
+	return m_iLekmodGoldMaintenanceEra;
+}
+int CvImprovementEntry::GetLekmodGoldMaintenanceEraChange() const
+{
+	return m_iLekmodGoldMaintenanceEraChange;
+}
+#endif
 
 /// Convert nearby tiles?
 int CvImprovementEntry::GetCultureBombRadius() const

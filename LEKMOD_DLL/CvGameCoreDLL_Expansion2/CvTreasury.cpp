@@ -880,6 +880,40 @@ int CvTreasury::GetImprovementGoldMaintenance() const
 		iMaintenance = std::max(0, iMaintenance);
 	}
 #endif
+#ifdef LEKMOD_SPECS_2026_11_18
+	// Improvements that cost more from an era on (Forts): the plot owner pays, or the responsible player on unowned plots
+	{
+		static std::vector<int> s_aiLekmodEraMaintenance;
+		static bool s_bLekmodEraMaintenanceInit = false;
+		if (!s_bLekmodEraMaintenanceInit)
+		{
+			s_bLekmodEraMaintenanceInit = true;
+			for (int iImprovement = 0; iImprovement < GC.getNumImprovementInfos(); iImprovement++)
+			{
+				CvImprovementEntry* pkImprovement = GC.getImprovementInfo((ImprovementTypes)iImprovement);
+				if (pkImprovement != NULL && pkImprovement->GetLekmodGoldMaintenanceEraChange() != 0 && pkImprovement->GetLekmodGoldMaintenanceEra() >= 0)
+					s_aiLekmodEraMaintenance.push_back(iImprovement);
+			}
+		}
+		const int iEra = (int)GET_TEAM(m_pPlayer->getTeam()).GetCurrentEra();
+		for (uint i = 0; i < s_aiLekmodEraMaintenance.size(); i++)
+		{
+			CvImprovementEntry* pkImprovement = GC.getImprovementInfo((ImprovementTypes)s_aiLekmodEraMaintenance[i]);
+			if (iEra < pkImprovement->GetLekmodGoldMaintenanceEra())
+				continue;
+			const int iNumPlots = GC.getMap().numPlots();
+			for (int iPlot = 0; iPlot < iNumPlots; iPlot++)
+			{
+				CvPlot* pPlot = GC.getMap().plotByIndexUnchecked(iPlot);
+				if (pPlot->getImprovementType() != (ImprovementTypes)s_aiLekmodEraMaintenance[i])
+					continue;
+				const PlayerTypes ePayer = (pPlot->getOwner() != NO_PLAYER) ? pPlot->getOwner() : pPlot->GetPlayerResponsibleForImprovement();
+				if (ePayer == m_pPlayer->GetID() && pPlot->MustPayMaintenanceHere(ePayer))
+					iMaintenance += pkImprovement->GetLekmodGoldMaintenanceEraChange();
+			}
+		}
+	}
+#endif
 	// Player modifier
 	iMaintenance *= (100 + m_pPlayer->GetRouteGoldMaintenanceMod());
 	iMaintenance /= 100;

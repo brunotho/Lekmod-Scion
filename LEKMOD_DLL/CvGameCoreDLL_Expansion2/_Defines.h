@@ -1859,6 +1859,12 @@ Diversify Spain and Australia's NW Discovery bonus
 // cities, replacing the city's building of its class; water buildings only in coastal cities: Colonial Administration's Slave Market,
 // Colonial Infrastructure's Feitoria), Policies.LekmodExplorationReveal (Expansionism: reveals the lines to every other capital and the home landmass's shoreline)
 #define LEKMOD_SPECS_2026_10_29
+// LEKMOD (user, 2026-11-18, New Specs 12): Units.LekmodAlsoBaseUnit (the civ also trains the unit its UU replaces: Nabataea's
+// Scout), Improvements.LekmodGoldMaintenanceEra/EraChange (Forts 2 Gold from the Modern Era), open borders without an embassy,
+// hosted-diplomat Delegates don't count in World Leader votes, AI players can't win multiplayer games, GameEvents.LekmodMeleeAttackerDied
+// (Lua plays a sound for the owner), Belief_CityConditionYieldChanges condition CAPITAL, Trait_LekmodPlotYields.River,
+// 1-3 special City-States
+#define LEKMOD_SPECS_2026_11_18
 #define LEKMOD_SPECIAL_CITY_STATES
 // iExtraGameData of the special City-State notifications: Lua/LekmodAnnouncementBanner.lua also shows them as a banner
 #define LEKMOD_ANNOUNCEMENT_BANNER_MARKER 4242

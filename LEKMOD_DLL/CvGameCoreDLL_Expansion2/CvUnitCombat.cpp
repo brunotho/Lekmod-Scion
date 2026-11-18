@@ -146,6 +146,24 @@ void CvUnitCombat::GenerateMeleeCombatInfo(CvCombatInfo* pkCombatInfo)
 }
 
 //	---------------------------------------------------------------------------
+#ifdef LEKMOD_SPECS_2026_11_18
+/// GameEvents.LekmodMeleeAttackerDied(owner, unit type): a unit died attacking in melee (Lua/LekmodCombatSounds.lua plays a sound)
+static void LekmodMeleeAttackerDiedHook(const CvUnit* pkAttacker)
+{
+	if (pkAttacker == NULL)
+		return;
+	ICvEngineScriptSystem1* pkScriptSystem = gDLL->GetScriptSystem();
+	if (pkScriptSystem)
+	{
+		CvLuaArgsHandle args;
+		args->Push((int)pkAttacker->getOwner());
+		args->Push((int)pkAttacker->getUnitType());
+		bool bResult = false;
+		LuaSupport::CallHook(pkScriptSystem, "LekmodMeleeAttackerDied", args.get(), bResult);
+	}
+}
+
+#endif
 void CvUnitCombat::ResolveMeleeCombat(const CvCombatInfo& kCombatInfo, uint uiParentEventID)
 {
 	// After combat stuff
@@ -217,6 +235,9 @@ void CvUnitCombat::ResolveMeleeCombat(const CvCombatInfo& kCombatInfo, uint uiPa
 			CvPlayerAI& kDefenderOwner = GET_PLAYER(pkDefender->getOwner());
 			kDefenderOwner.GetPlayerAchievements().KilledUnitWithUnit(pkDefender, pkAttacker);
 
+#ifdef LEKMOD_SPECS_2026_11_18
+			LekmodMeleeAttackerDiedHook(pkAttacker);
+#endif
 			auto_ptr<ICvUnit1> pAttacker = GC.WrapUnitPointer(pkAttacker);
 			gDLL->GameplayUnitDestroyedInCombat(pAttacker.get());
 
@@ -918,6 +939,9 @@ void CvUnitCombat::ResolveCityMeleeCombat(const CvCombatInfo& kCombatInfo, uint 
 		// Attacker died
 		else if(pkAttacker->IsDead())
 		{
+#ifdef LEKMOD_SPECS_2026_11_18
+			LekmodMeleeAttackerDiedHook(pkAttacker);
+#endif
 			auto_ptr<ICvUnit1> pAttacker = GC.WrapUnitPointer(pkAttacker);
 			gDLL->GameplayUnitDestroyedInCombat(pAttacker.get());
 			if(pkAttacker->getOwner() == iActivePlayerID)

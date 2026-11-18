@@ -58,6 +58,10 @@ public:
 #endif
 
 	int GetGoldMaintenance() const;
+#ifdef LEKMOD_SPECS_2026_11_18
+	int GetLekmodGoldMaintenanceEra() const;
+	int GetLekmodGoldMaintenanceEraChange() const;
+#endif
 	int GetCultureBombRadius() const;
 	int GetCultureBombRadiusNeutral() const;
 	int GetCultureAdjacentSameType() const;
@@ -221,6 +225,10 @@ protected:
 #endif
 
 	int m_iGoldMaintenance;
+#ifdef LEKMOD_SPECS_2026_11_18
+	int m_iLekmodGoldMaintenanceEra;
+	int m_iLekmodGoldMaintenanceEraChange;
+#endif
 	int m_iCultureBombRadius;
 	int m_iCultureBombRadiusNeutral;
 	int m_iCultureAdjacentSameType;

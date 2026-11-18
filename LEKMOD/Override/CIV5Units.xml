@@ -109689,6 +109689,7 @@
 		<Column name="RequiresReligion" type="boolean" default="false"/>
 		<Column name="RequiresBuildingClass" type="text" reference="BuildingClasses(Type)" default="NULL"/>
 		<Column name="NaturalWonder" type="boolean" default="false"/>
+		<Column name="River" type="boolean" default="false"/>
 	</Table>
 	<Table name="Building_LekmodPlotYields">
 		<Column name="BuildingType" type="text" reference="Buildings(Type)"/>
@@ -141810,6 +141811,8 @@
 		<Column name="RequiresAdjacentMountain" type="boolean" default="false"/>
 		<Column name="LekmodNoFeature" type="boolean" default="false"/>
 		<Column name="LekmodCountsAsFort" type="boolean" default="false"/> <!-- LEKMOD: Fort group for NoTwoAdjacent -->
+		<Column name="LekmodGoldMaintenanceEra" type="text" default="NULL"/> <!-- LEKMOD: from this era on ... -->
+		<Column name="LekmodGoldMaintenanceEraChange" type="integer" default="0"/> <!-- ... the improvement costs this much more Gold -->
 		<Column name="LekmodReplacesImprovement" type="text"/> <!-- LEKMOD: its civ can no longer build this improvement (Aksum: Quarry) --> <!-- LEKMOD: not on a feature unless Improvement_ValidFeatures lists it (Kasbah) -->
 		<Column name="LuxuryCopiesSiphonedFromMinor" type="integer" default="0" />
 		<Column name="GoldMaintenance" type="integer" default="0" />
@@ -272290,6 +272293,7 @@
 		<Column name="FoundCityExtraPlots" type="integer" default="0"/>
 		<Column name="PolicyAlternateTech" type="text" reference="Technologies(Type)" default="NULL"/>
 		<Column name="UpgradeOnly" type="boolean" default="false"/>
+		<Column name="LekmodAlsoBaseUnit" type="boolean" default="false"/> <!-- LEKMOD: its civ can also train the unit it replaces -->
 		<Column name="FreeExperience" type="integer" default="0"/>
 		<Column name="LekmodMinorConvertInfluence" type="integer" default="0"/>
 		<Column name="LekmodBlessPromotion" type="text" default="NULL"/>
@@ -283912,12 +283916,6 @@
 	</Improvement_RiverSideYields>
 	<Improvement_TechYieldChanges>
 		<Delete ImprovementType="IMPROVEMENT_TEPE" TechType="TECH_THEOLOGY"/>
-		<Row>
-			<ImprovementType>IMPROVEMENT_TEPE</ImprovementType>
-			<TechType>TECH_ECONOMICS</TechType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>1</Yield>
-		</Row>
 	</Improvement_TechYieldChanges>
 	<!-- Greece: Odeon without Gold (Shrine/mountain Faith needs C++, open) -->
 	<Building_YieldChanges>
@@ -293210,4 +293208,40 @@
 			<Set Cost="178"/>
 		</Update>
 	</Units>
+	<!-- LEKMOD (2026-11-18, New Specs 12, DLL switch LEKMOD_SPECS_2026_11_18): Nabataea also trains the Scout; Forts cost 1 Gold,
+	     2 from the Modern Era; the Tipi's Economics Gold needs a river; Messenger of the Gods: +3 Faith in the capital, +2 Science in
+	     connected cities (no Gold) -->
+	<Units>
+		<Update>
+			<Where Type="UNIT_MC_ZABONAH"/>
+			<Set LekmodAlsoBaseUnit="true"/>
+		</Update>
+	</Units>
+	<Improvements>
+		<Update>
+			<Where Type="IMPROVEMENT_FORT"/>
+			<Set GoldMaintenance="1" LekmodGoldMaintenanceEra="ERA_MODERN" LekmodGoldMaintenanceEraChange="1"/>
+		</Update>
+	</Improvements>
+	<Trait_LekmodPlotYields>
+		<Row>
+			<TraitType>TRAIT_PRAIRIE</TraitType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>1</Yield>
+			<ImprovementType>IMPROVEMENT_TEPE</ImprovementType>
+			<TechType>TECH_ECONOMICS</TechType>
+			<River>true</River>
+		</Row>
+	</Trait_LekmodPlotYields>
+	<Belief_YieldChangeTradeRoute>
+		<Delete BeliefType="BELIEF_MESSENGER_GODS" YieldType="YIELD_GOLD"/>
+	</Belief_YieldChangeTradeRoute>
+	<Belief_CityConditionYieldChanges>
+		<Row>
+			<BeliefType>BELIEF_MESSENGER_GODS</BeliefType>
+			<Condition>CAPITAL</Condition>
+			<YieldType>YIELD_FAITH</YieldType>
+			<Yield>3</Yield>
+		</Row>
+	</Belief_CityConditionYieldChanges>
 </GameData>

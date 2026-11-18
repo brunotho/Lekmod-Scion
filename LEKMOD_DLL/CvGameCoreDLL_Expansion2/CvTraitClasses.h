@@ -340,7 +340,7 @@ public:
 	struct LekmodPlotYield
 	{
 		int m_eYield, m_iYield, m_eTerrain, m_eFeature, m_eResourceClass, m_eImprovement, m_eTech, m_eBuildingClass;
-		bool m_bNoImprovement, m_bAdjacentNaturalWonder, m_bAdjacentOwnCity, m_bPantheon, m_bReligion, m_bNaturalWonder;
+		bool m_bNoImprovement, m_bAdjacentNaturalWonder, m_bAdjacentOwnCity, m_bPantheon, m_bReligion, m_bNaturalWonder, m_bRiver;
 	};
 	const std::vector<LekmodPlotYield>& GetLekmodPlotYields() const;
 #endif

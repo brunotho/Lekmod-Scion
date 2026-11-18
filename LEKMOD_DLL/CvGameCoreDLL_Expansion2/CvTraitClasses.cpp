@@ -3117,7 +3117,8 @@ inner join BuildingClasses on BuildingClasses.Type = BuildingClassType inner joi
 			pResults = kUtility.PrepareResults(strKey,
 				"SELECT Yields.ID, Yield, coalesce(Terrains.ID, -1), coalesce(Features.ID, -1), coalesce(ResourceClasses.ID, -1), coalesce(Improvements.ID, -1), "
 				"coalesce(Technologies.ID, -1), coalesce(BuildingClasses.ID, -1), Trait_LekmodPlotYields.NoImprovement, Trait_LekmodPlotYields.AdjacentNaturalWonder, "
-				"Trait_LekmodPlotYields.AdjacentOwnCity, Trait_LekmodPlotYields.RequiresPantheon, Trait_LekmodPlotYields.RequiresReligion, Trait_LekmodPlotYields.NaturalWonder "
+				"Trait_LekmodPlotYields.AdjacentOwnCity, Trait_LekmodPlotYields.RequiresPantheon, Trait_LekmodPlotYields.RequiresReligion, Trait_LekmodPlotYields.NaturalWonder, "
+				"Trait_LekmodPlotYields.River "
 				"FROM Trait_LekmodPlotYields "
 				"INNER JOIN Yields ON Yields.Type = YieldType "
 				"LEFT JOIN Terrains ON Terrains.Type = TerrainType "
@@ -3146,6 +3147,7 @@ inner join BuildingClasses on BuildingClasses.Type = BuildingClassType inner joi
 			kRow.m_bPantheon = pResults->GetInt(11) != 0;
 			kRow.m_bReligion = pResults->GetInt(12) != 0;
 			kRow.m_bNaturalWonder = pResults->GetInt(13) != 0;
+			kRow.m_bRiver = pResults->GetInt(14) != 0;
 			m_aLekmodPlotYields.push_back(kRow);
 		}
 		pResults->Reset();
@@ -5860,6 +5862,8 @@ int CvPlayerTraits::GetLekmodTraitPlotYield(const CvPlot* pPlot, YieldTypes eYie
 			if(kRow.m_bNoImprovement && eImprovement != NO_IMPROVEMENT)
 				continue;
 			if(kRow.m_bNaturalWonder && !pPlot->IsNaturalWonder())
+				continue;
+			if(kRow.m_bRiver && !pPlot->isRiver())
 				continue;
 			if(kRow.m_eResourceClass != -1)
 			{

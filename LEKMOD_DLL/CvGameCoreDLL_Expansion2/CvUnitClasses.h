@@ -128,6 +128,9 @@ public:
 #ifdef LEKMOD_UPGRADE_ONLY_UNITS
 	bool IsLekmodUpgradeOnly() const;
 #endif
+#ifdef LEKMOD_SPECS_2026_11_18
+	bool IsLekmodAlsoBaseUnit() const;
+#endif
 #ifdef LEKMOD_UNIT_FREE_EXPERIENCE
 	int GetLekmodFreeExperience() const;
 #endif
@@ -315,6 +318,9 @@ private:
 #endif
 #ifdef LEKMOD_UPGRADE_ONLY_UNITS
 	bool m_bLekmodUpgradeOnly;
+#endif
+#ifdef LEKMOD_SPECS_2026_11_18
+	bool m_bLekmodAlsoBaseUnit;
 #endif
 #ifdef LEKMOD_UNIT_FREE_EXPERIENCE
 	int m_iLekmodFreeExperience;

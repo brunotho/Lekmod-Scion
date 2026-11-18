@@ -10789,7 +10789,11 @@ bool CvPlayer::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool
 		// If the player isn't allowed to train this Unit (via XML) then return false
 #ifdef LEKMOD_POST_CHANGES
 		// ... unless it is the unique unit of a Militaristic City-State whose city we hold
-		if(eThisPlayersUnitType != eUnit && !LekmodHasCapturedMilitaristicUU(eUnit))
+		if(eThisPlayersUnitType != eUnit && !LekmodHasCapturedMilitaristicUU(eUnit)
+#ifdef LEKMOD_SPECS_2026_11_18
+			&& !LekmodCanTrainReplacedUnit(eUnit)
+#endif
+			)
 #else
 		if(eThisPlayersUnitType != eUnit)
 #endif
@@ -30223,6 +30227,22 @@ bool CvPlayer::LekmodKeepsFeatureOnBuild(FeatureTypes eFeature) const
 }
 /// Do we hold a city founded by a Militaristic City-State whose unique unit this is? Then that city may train it (POST list).
 /// With pOnlyCity: is it this city?
+#ifdef LEKMOD_SPECS_2026_11_18
+/// eUnit is the default unit of its class, and this civ's unique unit of that class has Units.LekmodAlsoBaseUnit
+bool CvPlayer::LekmodCanTrainReplacedUnit(UnitTypes eUnit) const
+{
+	CvUnitEntry* pkUnit = GC.getUnitInfo(eUnit);
+	if (pkUnit == NULL)
+		return false;
+	const UnitClassTypes eClass = (UnitClassTypes)pkUnit->GetUnitClassType();
+	CvUnitClassInfo* pkClass = GC.getUnitClassInfo(eClass);
+	if (pkClass == NULL || pkClass->getDefaultUnitIndex() != eUnit)
+		return false;
+	const UnitTypes eCivUnit = (UnitTypes)getCivilizationInfo().getCivilizationUnits(eClass);
+	CvUnitEntry* pkCivUnit = (eCivUnit != NO_UNIT && eCivUnit != eUnit) ? GC.getUnitInfo(eCivUnit) : NULL;
+	return pkCivUnit != NULL && pkCivUnit->IsLekmodAlsoBaseUnit();
+}
+#endif
 bool CvPlayer::LekmodHasCapturedMilitaristicUU(UnitTypes eUnit, const CvCity* pOnlyCity) const
 {
 	if (eUnit == NO_UNIT || isMinorCiv() || isBarbarian())

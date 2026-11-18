@@ -657,9 +657,11 @@ bool CvDeal::IsPossibleToTradeItem(PlayerTypes ePlayer, PlayerTypes eToPlayer, T
 		// Neither of us yet has the Tech for OP
 		if(!pFromTeam->isOpenBordersTradingAllowed() && !pToTeam->isOpenBordersTradingAllowed())
 			return false;
+#ifndef LEKMOD_SPECS_2026_11_18
 		// Embassy has not been established
 		if(!pFromTeam->HasEmbassyAtTeam(eToTeam))
 			return false;
+#endif
 		
 		bool bIgnoreExistingOP = true;
 #ifdef AUI_YIELDS_APPLIED_AFTER_TURN_NOT_BEFORE

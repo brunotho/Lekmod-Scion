@@ -797,7 +797,11 @@ void CvGame::InitPlayers()
 			abUsed[iNew] = true;
 		}
 		const int iRoll = kRand.get(100, "Lekmod number of special City-States");
+#ifdef LEKMOD_SPECS_2026_11_18
+		int iCount = (iRoll < 25) ? 1 : ((iRoll < 75) ? 2 : 3);
+#else
 		int iCount = (iRoll < 25) ? 0 : ((iRoll < 75) ? 1 : 2);
+#endif
 		iCount = std::min(iCount, (int)aiSpecial.size());
 		iCount = std::min(iCount, iEndSlot - iFirstSlot);
 		std::vector<int> aiSlots;
@@ -10489,6 +10493,16 @@ void CvGame::testAlive()
 	}
 }
 
+#ifdef LEKMOD_SPECS_2026_11_18
+/// In multiplayer games AI teams never win (any victory type)
+bool CvGame::LekmodIsVictoryBlocked(TeamTypes eTeam) const
+{
+	if (eTeam == NO_TEAM || !isGameMultiPlayer())
+		return false;
+	return !GET_TEAM(eTeam).isHuman();
+}
+
+#endif
 bool CvGame::testVictory(VictoryTypes eVictory, TeamTypes eTeam, bool* pbEndScore) const
 {
 	CvAssert(eVictory >= 0 && eVictory < GC.getNumVictoryInfos());
@@ -10501,6 +10515,12 @@ bool CvGame::testVictory(VictoryTypes eVictory, TeamTypes eTeam, bool* pbEndScor
 		return false;
 	}
 
+#ifdef LEKMOD_SPECS_2026_11_18
+	if(LekmodIsVictoryBlocked(eTeam))
+	{
+		return false;
+	}
+#endif
 	// Has the player already achieved this victory?
 	if(GET_TEAM(eTeam).isVictoryAchieved(eVictory))
 	{
@@ -10543,7 +10563,11 @@ bool CvGame::testVictory(VictoryTypes eVictory, TeamTypes eTeam, bool* pbEndScor
 
 				for(int iK = 0; iK < MAX_CIV_TEAMS; iK++)
 				{
-					if(GET_TEAM((TeamTypes)iK).isAlive())
+					if(GET_TEAM((TeamTypes)iK).isAlive()
+#ifdef LEKMOD_SPECS_2026_11_18
+						&& !LekmodIsVictoryBlocked((TeamTypes)iK)
+#endif
+						)
 					{
 						if(iK != eTeam)
 						{
@@ -10583,7 +10607,11 @@ bool CvGame::testVictory(VictoryTypes eVictory, TeamTypes eTeam, bool* pbEndScor
 
 				for(int iK = 0; iK < MAX_CIV_TEAMS; iK++)
 				{
-					if(GET_TEAM((TeamTypes)iK).isAlive())
+					if(GET_TEAM((TeamTypes)iK).isAlive()
+#ifdef LEKMOD_SPECS_2026_11_18
+						&& !LekmodIsVictoryBlocked((TeamTypes)iK)
+#endif
+						)
 					{
 						if(iK != eTeam)
 						{
@@ -10966,6 +10994,10 @@ void CvGame::testVictory()
 			int iVPs;
 			for(iTeamLoop = 0; iTeamLoop < MAX_CIV_TEAMS; iTeamLoop++)
 			{
+#ifdef LEKMOD_SPECS_2026_11_18
+				if(LekmodIsVictoryBlocked((TeamTypes)iTeamLoop))
+					continue;
+#endif
 				iVPs = GET_TEAM((TeamTypes) iTeamLoop).getVictoryPoints();
 
 				if(iVPs > iBestVPNum)
@@ -10977,6 +11009,10 @@ void CvGame::testVictory()
 			// Now that we know what the highest is, see if any players are tied
 			for(iTeamLoop = 0; iTeamLoop < MAX_CIV_TEAMS; iTeamLoop++)
 			{
+#ifdef LEKMOD_SPECS_2026_11_18
+				if(LekmodIsVictoryBlocked((TeamTypes)iTeamLoop))
+					continue;
+#endif
 				iVPs = GET_TEAM((TeamTypes) iTeamLoop).getVictoryPoints();
 
 				if(iVPs == iBestVPNum)
@@ -11018,6 +11054,10 @@ void CvGame::testVictory()
 			int iVPs;
 			for(iTeamLoop = 0; iTeamLoop < MAX_CIV_TEAMS; iTeamLoop++)
 			{
+#ifdef LEKMOD_SPECS_2026_11_18
+				if(LekmodIsVictoryBlocked((TeamTypes)iTeamLoop))
+					continue;
+#endif
 				iVPs = GET_TEAM((TeamTypes) iTeamLoop).GetScore();
 
 				if(iVPs > iBestVPNum)
@@ -11029,6 +11069,10 @@ void CvGame::testVictory()
 			// Now that we know what the highest is, see if any players are tied
 			for(iTeamLoop = 0; iTeamLoop < MAX_CIV_TEAMS; iTeamLoop++)
 			{
+#ifdef LEKMOD_SPECS_2026_11_18
+				if(LekmodIsVictoryBlocked((TeamTypes)iTeamLoop))
+					continue;
+#endif
 				iVPs = GET_TEAM((TeamTypes) iTeamLoop).GetScore();
 
 				if(iVPs == iBestVPNum)
@@ -12920,6 +12964,10 @@ void CvGame::DoTestConquestVictory()
 	}
 #endif
 
+#ifdef LEKMOD_SPECS_2026_11_18
+	if (LekmodIsVictoryBlocked(eTeamWhoWon))
+		eTeamWhoWon = NO_TEAM;
+#endif
 	// If we got here then only one player remains alive!
 	if (eTeamWhoWon != NO_TEAM)
 	{

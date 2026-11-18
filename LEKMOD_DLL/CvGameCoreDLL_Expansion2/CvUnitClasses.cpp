@@ -125,6 +125,9 @@ CvUnitEntry::CvUnitEntry(void) :
 #ifdef LEKMOD_UPGRADE_ONLY_UNITS
 	m_bLekmodUpgradeOnly(false),
 #endif
+#ifdef LEKMOD_SPECS_2026_11_18
+	m_bLekmodAlsoBaseUnit(false),
+#endif
 #ifdef LEKMOD_UNIT_FREE_EXPERIENCE
 	m_iLekmodFreeExperience(0),
 #endif
@@ -350,6 +353,9 @@ bool CvUnitEntry::CacheResults(Database::Results& kResults, CvDatabaseUtility& k
 #endif
 #ifdef LEKMOD_UPGRADE_ONLY_UNITS
 	m_bLekmodUpgradeOnly = kResults.GetBool("UpgradeOnly");
+#endif
+#ifdef LEKMOD_SPECS_2026_11_18
+	m_bLekmodAlsoBaseUnit = kResults.GetBool("LekmodAlsoBaseUnit");
 #endif
 #ifdef LEKMOD_UNIT_FREE_EXPERIENCE
 	m_iLekmodFreeExperience = kResults.GetInt("FreeExperience");
@@ -1145,6 +1151,13 @@ bool CvUnitEntry::IsFoundCityUnitClass(int i) const
 bool CvUnitEntry::IsLekmodUpgradeOnly() const
 {
 	return m_bLekmodUpgradeOnly;
+}
+#endif
+#ifdef LEKMOD_SPECS_2026_11_18
+/// Its civ can also train the unit this unique unit replaces (Nabataea: Zabonah and Scout)
+bool CvUnitEntry::IsLekmodAlsoBaseUnit() const
+{
+	return m_bLekmodAlsoBaseUnit;
 }
 #endif
 #ifdef LEKMOD_UNIT_IDEOLOGY_PROMOTIONS

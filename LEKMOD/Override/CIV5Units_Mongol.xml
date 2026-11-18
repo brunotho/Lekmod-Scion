@@ -4817,7 +4817,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>The Zabonah is the Nabataean Scout replacement. While unable to fight and defend itself, the Zabonah discovers Cities faster, earning Gold and experience When this City is a [ICON_CAPITAL] Capital.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_ZABONAH_HELP">
-			<Text>Unique Unit for the Nabataeans. Unlike the Scout that is replaces, this unit may not attack. However, it sees Cities much further away and earns 10 [ICON_GOLD] Gold whenever it discovers a [ICON_CAPITAL] Capital or [ICON_CITY_STATE] City State.</Text>
+			<Text>Unique Unit for the Nabataeans. Unlike the Scout that it replaces, this unit may not attack, and the Nabataeans can still train the Scout as well. However, it sees Cities much further away and earns 10 [ICON_GOLD] Gold whenever it discovers a [ICON_CAPITAL] Capital or [ICON_CITY_STATE] City State.</Text>
 		</Row>
 	
 	<!-- v28 Moors -->
@@ -17340,9 +17340,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_MESSENGER_GODS"> 
-			<Text>
-				+2 [ICON_RESEARCH] Science and +1 [ICON_GOLD] Gold in Cities with a [ICON_CONNECTED] City Connection
-			</Text>
+			<Text>+3 [ICON_PEACE] Faith in your [ICON_CAPITAL] Capital[NEWLINE]+2 [ICON_RESEARCH] Science in Cities with a [ICON_CONNECTED] City Connection</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BELIEF_MESSENGER_GODS_SHORT"> 
 			<Text>
@@ -120737,7 +120735,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>You expelled the {@2_CivAdjective} diplomat {1_SpyName}.[NEWLINE]They can't send a diplomat to you for {3_Num} turns.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_LEAGUE_VOTES_HOSTED_DIPLOMATS">
-			<Text>[NEWLINE][ICON_BULLET]{1_NumVotes} from other civilizations' diplomats in your capital</Text>
+			<Text>[NEWLINE][ICON_BULLET]{1_NumVotes} from other civilizations' diplomats in your capital (not counted in World Leader votes)</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_EO_HOSTED_DIPLOMATS">
 			<Text>Diplomats in your capital</Text>
@@ -147424,7 +147422,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Knight. A [COLOR_POSITIVE_TEXT]Mounted Ranged[ENDCOLOR] unit with a strong [ICON_RANGE_STRENGTH] Ranged attack, but much lower [ICON_STRENGTH] Melee Strength.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_TEPE_HELP">
-			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service, +1 [ICON_GOLD] Gold with Economics.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.</Text>
+			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service.[NEWLINE]+1 [ICON_GOLD] Gold with Economics when next to a river.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ODEON_HELP">
 			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
@@ -148423,7 +148421,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Spies and diplomats</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_3_TEXT">
-			<Text>[ICON_BULLET]Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.[NEWLINE][ICON_BULLET]A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.[NEWLINE][ICON_BULLET]Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.[NEWLINE][ICON_BULLET]A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate, and you can expel it. A Non-Aggression Pact needs a diplomat between the two.[NEWLINE][ICON_BULLET]The Espionage screen explains every number on its Rules tab.</Text>
+			<Text>[ICON_BULLET]Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.[NEWLINE][ICON_BULLET]A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.[NEWLINE][ICON_BULLET]Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.[NEWLINE][ICON_BULLET]A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate (not counted in World Leader votes), and you can expel it. A Non-Aggression Pact needs a diplomat between the two.[NEWLINE][ICON_BULLET]The Espionage screen explains every number on its Rules tab.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_4_HEADER">
 			<Text>Policies</Text>
@@ -148441,7 +148439,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>City-States</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_6_TEXT">
-			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.[NEWLINE][ICON_BULLET]Each game has 0, 1 or 2 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).[NEWLINE][ICON_BULLET]A sixth City-State type, Scientific, gives Science to its friends and allies.</Text>
+			<Text>[ICON_BULLET]Declaring war on City-States escalates through four standings with lasting Influence penalties, shown on the City-State screen.[NEWLINE][ICON_BULLET]City-State bonuses grow with every era; Pledge to Protect is stronger and breaks if you demand tribute.[NEWLINE][ICON_BULLET]Trade route and resource quests pay part of their Influence over time.[NEWLINE][ICON_BULLET]Each game has 1, 2 or 3 City-States with a unique ability, marked with a star on their name tag and placed among the players. St. Petersburg, Shanghai, Sparta and Cambridge hold Gold auctions for Great Works, an art exhibition, a veteran general or a research endowment; Berlin gives Clausewitz's Legacy to whoever holds it; Baikonur, Florence and Lübeck come with a unique building that helps whoever holds them (Baikonur's also its ally).[NEWLINE][ICON_BULLET]A sixth City-State type, Scientific, gives Science to its friends and allies.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_7_HEADER">
 			<Text>Combat rules</Text>
@@ -148453,7 +148451,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Miscellaneous game mechanics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_TEXT">
-			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.</Text>
+			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option, and need no embassy. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.[NEWLINE][ICON_BULLET]In multiplayer games AI players can't win: no victory of any type goes to them.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_HEADER">
 			<Text>Powercreep compensation</Text>
@@ -149011,6 +149009,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CAMBRIDGE_LOST">
 			<Text>{1_CityState} was captured before your endowment paid off: the Science is lost.</Text>
+		</Row>
+	</Language_en_US>
+	<!-- LEKMOD: New Specs 12 (2026-11-18) -->
+	<Language_en_US>
+		<Row Tag="TXT_KEY_LEKMOD_BUILD_MAINTENANCE">
+			<Text>Costs {1_Num} [ICON_GOLD] Gold maintenance per turn.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>
