@@ -353,7 +353,7 @@ Tags: units, policies
 - Changed: Landsknecht (bought with Commerce's Mercenary Army):
   - available with Economics (was Civil Service)
   - 22 Strength (was 16)
-  - costs 100 (was 30), so its Gold price rises too
+  - costs 105 (was 30), so its Gold price rises too
 - Dev: hidden in the tech tree again (TechButtonInclude, both UIs: all units with Units.PolicyType, also the Foreign Legion); it showed there once it got a tech
 
 GUIDED MISSILE (UNIT_GUIDED_MISSILE)
@@ -442,8 +442,8 @@ Tags: promotions, policies
   - granted by policies, never offered as a pick
 - Dev: two promotions with the same icon; text keys TXT_KEY_PROMOTION_LEKMOD_DISCIPLINE(_HELP), because the old keys belong to another promotion
 
-SWIFT TRANSPORT (NEW) (PROMOTION_SWIFT_TRANSPORT)
--------------------------------------------------
+TROOPSHIP (NEW) (PROMOTION_SWIFT_TRANSPORT)
+-------------------------------------------
 Tags: promotions, naval, movement
 - New: PROMOTION_SWIFT_TRANSPORT
   | Your embarked units on this ship's tile move with it (onto water tiles they can enter, not into cities) and spend the same movement as the ship; a unit without movement left stays behind.[NEWLINE]Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.
@@ -451,6 +451,7 @@ Tags: promotions, naval, movement
 - DLL: LEKMOD_SWIFT_TRANSPORT_CARRY (end of CvUnit::move): own embarked land units on the ship's tile follow it
 - Dev: (development step, covered by the line or tooltip above) units the ship carries along spend the same Movement as the ship; a unit without Movement left stays behind (they rode along for free)
 - DLL: LEKMOD_SPECS_2026_10_27 in CvUnit::move (LEKMOD_SWIFT_TRANSPORT_CARRY)
+- Dev: renamed from Swift Transport (user, 2026-11-18)
 
 MOBILITY (PROMOTION_MOBILITY)
 -----------------------------
@@ -1721,7 +1722,7 @@ New upgrade paths, a buildable Quinquereme, the Ship of the Line for everyone, t
 - Added: Blind Spot (-20% when attacking an adjacent target): Galley, Galleass, Frigate, Ship of the Line, Dreadnought
 - Added: Minimum Range (cannot attack adjacent targets): Battleship, Missile Cruiser
 - Added: Docked (cannot attack from inside a city): Galley, Galleass, Frigate, Ship of the Line, Dreadnought, Battleship, Missile Cruiser
-- Added: Swift Transport for Quinquereme, Caravel, Privateer, Frigate, Ship of the Line, Ironclad, Dreadnought, Destroyer, Battleship, Heavy Cruiser, Missile Cruiser
+- Added: Troopship for Quinquereme, Caravel, Privateer, Frigate, Ship of the Line, Ironclad, Dreadnought, Destroyer, Battleship, Heavy Cruiser, Missile Cruiser
 - Removed: England no longer has the Ship of the Line as a unique unit
 - Note: unique replacements of the named classes get the same promotions; the Quinquereme's and Dreadnought's obsolete techs (Navigation, Electronics) were not in the spec
 - DLL: UnitPromotions.AdjacentRangedAttackMod / NoAdjacentRangedAttack / NoAttackFromCity (LEKMOD_NAVAL_PENALTY_PROMOTIONS); promotion IDs 368-371
@@ -1952,7 +1953,7 @@ NECTAR OF THE GODS (NEW) (BELIEF_LEKMOD_NECTAR_GODS)
 ----------------------------------------------------
 Tags: religion
 Subsection: Pantheons
-+1 Food and +1 Gold from Wine, Sugar and Spices.
++1 Food and +1 Gold from Wine, Sugar, Spices and Cocoa.
 
 OCEAN'S BOUNTY (BELIEF_OCEANS_BOUNTY)
 -------------------------------------
@@ -2984,7 +2985,7 @@ Tags: civs, units
 QING (CIVILIZATION_MANCHURIA)
 -----------------------------
 Tags: civs, units
-- Changed: Manchuria is now called Qing
+- Changed: Manchuria is now called Qing Dynasty
 - Changed: Banner Cavalry needs 2 Horses and 1 Iron, like the Cavalry
 
 HITTITES (CIVILIZATION_HITTITE)
@@ -3291,7 +3292,7 @@ Tags: civs, units, buildings, naval
   | costs 32 · 1 Gold maintenance[NEWLINE]Replaces the Shrine. Costs more.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith (instead of +1).[NEWLINE]Units trained in this city start with +5 XP.
 - Reworked: UNIT_DANISH_BERSERKER
   | 17 Strength · 3 Movement · costs 80 · needs 3 Iron[NEWLINE]Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.
-- Changed: Longship starts with Swift Transport and Coastal Raider I instead of giving its movement to embarked units
+- Changed: Longship starts with Troopship and Coastal Raider I instead of giving its movement to embarked units
 - DLL: Traits.LekmodOceanWithoutAstronomy, LekmodFoundClaimResource/Range
 - DLL: UnitPromotions.NoFortify (promotion 382)
 - Dev: building ID 279 BUILDING_LEKMOD_RUNESTONE, icon art_sources/buildings/runestone
@@ -3300,7 +3301,9 @@ POLYNESIA (CIVILIZATION_POLYNESIA)
 ----------------------------------
 Tags: civs, units
 - Removed: UA: double defense for embarked units
-- Removed: Moai: +10% combat strength for units next to it
+- Changed: Moai:
+  - no longer: +10% combat strength for units next to it
+  - no longer: +1 Gold with Flight
 - Reworked: UNIT_MC_HAWAIIAN_KOA
   | 18 Strength · 2 Movement · costs 70[NEWLINE]Replaces the Longswordsman. Available at Guilds, cheaper and needs no [ICON_RES_IRON] Iron, but weaker.[NEWLINE]Starts with Amphibious I and Amphibious II.
 
@@ -3475,6 +3478,11 @@ Tags: civs, units, game mechanics
 - DLL: Traits.LekmodDesertFound*, LekmodFoundOnImprovement*, LekmodFastRouteImprovement; Improvements.LekmodNoFeature; dummy building 300 (class 201)
 - Dev: the desert city Food shows as the civilization ability line of the Food tooltip instead of "from buildings" (user, 2026-10-14)
 
+PHOENICIA (CIVILIZATION_PHOENICIAN)
+-----------------------------------
+Tags: civs, buildings, naval
+- Changed: Trade Harbor no longer gives +15% Production when building naval units
+
 PHILIPPINES (CIVILIZATION_PHILIPPINES)
 --------------------------------------
 Tags: civs, units
@@ -3491,6 +3499,7 @@ Tags: civs
 - Reworked: UA
   | +10% [ICON_STRENGTH] [COLOR_GREEN]Combat Strength[ENDCOLOR] while fighting outside of friendly territory.[NEWLINE][NEWLINE]+25% [ICON_PRODUCTION] Production towards Walls, Castles, Arsenals and Military Bases.[NEWLINE]They also give the city +2 [ICON_STRENGTH] Defense each.
 - DLL: Trait_LekmodBuildingClassDefense
+- Dev: the Pedite's tooltip states its Strength (20, Longswordsman 21) and Shock I plainly (user, 2026-11-18)
 
 GERMANY (CIVILIZATION_GERMANY)
 ------------------------------
@@ -3690,6 +3699,7 @@ Tags: civs, promotions
 - Reworked: PROMOTION_ZUVER
   | Heals every turn, even after acting.[NEWLINE]Fights at full strength even when damaged.
 - DLL: UnitPromotions.FightWellDamaged
+- Changed: Landwehr no longer starts with Quick Study (+50% experience from combat)
 
 CARTHAGE (CIVILIZATION_CARTHAGE)
 --------------------------------
@@ -3716,6 +3726,7 @@ Tags: civs, units, buildings, promotions
 TURKEY (CIVILIZATION_TURKEY)
 ----------------------------
 Tags: civs, buildings
+- Changed: UA: Amphitheaters, Opera Houses, Museums, Broadcast Towers and Great Works no longer give +1 Gold (still +1 Science and +1 Production)
 - Reworked: BUILDING_UC_HALKEVLERI
   | costs 261 · 3 Gold maintenance[NEWLINE]Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and gives no [ICON_RESEARCH] Science of its own.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.
 - DLL: Building_LekmodConditionalYields (RequiresBuildingClass, PerPopulation)
@@ -3819,6 +3830,7 @@ Tags: civs, buildings, religion
 - Reworked: BUILDING_STPETERS
   | costs 83[NEWLINE]Replaces the Grand Temple. Needs no Temples.[NEWLINE][NEWLINE]Like the Grand Temple:[NEWLINE]+8 [ICON_PEACE] Faith.[NEWLINE]Doubles religious pressure from this city.[NEWLINE]Must be built in a Holy City.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Comes with a free [ICON_BUILDING_CATHEDRAL] Cathedral.[NEWLINE]+2 [ICON_GREAT_ARTIST] Great Artist points.[NEWLINE]+2 Delegates in the [COLOR_POSITIVE_TEXT]World Congress[ENDCOLOR].
 - Dev: Trait_GreatWorkYieldChanges, Trait_FreePromotionUnitCombats (all military unit combats)
+- Changed: Swiss Guard costs 119 (was 43), the Lancer's cost for its Strength
 
 CITY-STATE QUEST TYPES (MINOR_CIV_QUEST_*)
 ------------------------------------------

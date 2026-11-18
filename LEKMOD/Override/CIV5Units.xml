@@ -293083,4 +293083,163 @@
 			<Set LekmodFreeGreatWorks="1"/>
 		</Update>
 	</Policies>
+	<!-- LEKMOD (2026-11-18, New Specs 12): Nectar of the Gods also on Cocoa; Trade Harbour without its naval Production; Moai without
+	     its Flight Gold; Nau aura without the adjacent healing; Landwehr without Quick Study; Turkey without the Gold; Burj gets the Hotel's
+	     natural wonder Culture back; Serai at Horseback Riding like the Caravansary; Landsknecht and the Swiss Guard at the Lancer's cost
+	     per Strength (185 / 26) -->
+	<Belief_ResourceYieldChanges>
+		<Row>
+			<BeliefType>BELIEF_LEKMOD_NECTAR_GODS</BeliefType>
+			<ResourceType>RESOURCE_COCOA</ResourceType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+		<Row>
+			<BeliefType>BELIEF_LEKMOD_NECTAR_GODS</BeliefType>
+			<ResourceType>RESOURCE_COCOA</ResourceType>
+			<YieldType>YIELD_GOLD</YieldType>
+			<Yield>1</Yield>
+		</Row>
+	</Belief_ResourceYieldChanges>
+	<Building_DomainProductionModifiers>
+		<Delete BuildingType="BUILDING_TRADE_HARBOUR"/>
+	</Building_DomainProductionModifiers>
+	<Improvement_TechYieldChanges>
+		<Delete ImprovementType="IMPROVEMENT_MOAI" TechType="TECH_FLIGHT" YieldType="YIELD_GOLD"/>
+	</Improvement_TechYieldChanges>
+	<UnitPromotions>
+		<Update>
+			<Where Type="PROMOTION_LEKMOD_NAU_AURA"/>
+			<Set LekmodAdjacentAlwaysHeal="false"/>
+		</Update>
+	</UnitPromotions>
+	<Unit_FreePromotions>
+		<Delete UnitType="UNIT_LANDWHER" PromotionType="PROMOTION_GAIN_EXPERIENCE"/>
+	</Unit_FreePromotions>
+	<Trait_BuildingClassYieldChanges>
+		<Delete TraitType="TRAIT_WESTERNIZATION" YieldType="YIELD_GOLD"/>
+	</Trait_BuildingClassYieldChanges>
+	<Trait_GreatWorkYieldChanges>
+		<Delete TraitType="TRAIT_WESTERNIZATION" YieldType="YIELD_GOLD"/>
+	</Trait_GreatWorkYieldChanges>
+	<Building_FeatureYieldChanges>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_CRATER</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_EL_DORADO</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_FOUNTAIN_YOUTH</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_FUJI</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_GEYSER</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_GIBRALTAR</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_KILIMANJARO</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_LAKE_VICTORIA</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_MESA</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_MT_KAILASH</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_MT_SINAI</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_POTOSI</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_REEF</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_SOLOMONS_MINES</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_SRI_PADA</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_ULURU</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_BURJ</BuildingType>
+			<FeatureType>FEATURE_VOLCANO</FeatureType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<Yield>10</Yield>
+		</Row>
+	</Building_FeatureYieldChanges>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_SERAI"/>
+			<Set Cost="90" PrereqTech="TECH_HORSEBACK_RIDING"/>
+		</Update>
+	</Buildings>
+	<Units>
+		<Update>
+			<Where Type="UNIT_GERMAN_LANDSKNECHT"/>
+			<Set Cost="157"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SWITZ"/>
+			<Set Cost="178"/>
+		</Update>
+	</Units>
 </GameData>

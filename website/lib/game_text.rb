@@ -13,6 +13,7 @@ module GameText
     s = s.gsub(/\[COLOR_[A-Z_]+\]/, "").gsub("[ENDCOLOR]", "")
     s = s.gsub(/\[[A-Z_0-9]+\]/, "")
     s = s.gsub(/[ \t]+/, " ").gsub(/ *\n */, "\n").strip
+    s = s.gsub(/\( /, "(") # "([ICON_PEACE] Faith from kills)" -> "(Faith from kills)"
     s.gsub("\n", "<br>")
   end
 

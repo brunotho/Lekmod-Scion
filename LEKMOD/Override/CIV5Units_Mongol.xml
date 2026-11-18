@@ -1344,7 +1344,7 @@
 			<Text>Can cross mountain tiles.[NEWLINE]Units ending their turn on a mountain take 50 damage.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_SWIFT_TRANSPORT">
-			<Text>Swift Transport</Text>
+			<Text>Troopship</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_SWIFT_TRANSPORT_HELP">
 			<Text>Your embarked units on this ship's tile move with it (onto water tiles they can enter, not into cities) and spend the same movement as the ship; a unit without movement left stays behind.[NEWLINE]Embarked units sharing this ship's tile at the start of a turn gain this ship's movement for that turn.</Text>
@@ -1740,7 +1740,7 @@
 			<Text>The Zafarbaksh, meaning "victory bestower" in Persian, was an advanced artillery piece developed during the Mughal Empire's military prime. Mughal artillery benefited from a combination of Ottoman, Persian, and indigenous Indian engineering traditions, creating weapons that were both mobile and powerful. While European cannons of the period were often unwieldy in the varied terrain of the subcontinent, Mughal engineers modified their designs with lighter materials and improved carriage systems. Under Emperor Akbar's military reforms, these cannons became a cornerstone of Mughal battlefield supremacy, with specialized crews trained to rapidly deploy and reposition them during battles. The Zafarbaksh cannons were particularly feared for their effective range and mobility, allowing Mughal forces to outmaneuver opponents while maintaining superior firepower. The Mughal's mastery of metallurgy also enabled them to cast more uniform and reliable cannon barrels that could withstand repeated firing.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_HELP">			
-			<Text>Mughal replacement for the [ICON_UNIT_CANNON] Cannon. Has a higher [ICON_STRENGTH] Combat Strength (18 vs 14), higher [ICON_RANGE_STRENGTH] Ranged Strength (23 vs 21), improved [ICON_MOVES] Movement (3 vs 2), and has no sight penalty, but is more costly to build.</Text>
+			<Text>Mughal replacement for the [ICON_UNIT_CANNON] Cannon. Has a higher [ICON_STRENGTH] Combat Strength (18 vs 14), higher [ICON_RANGE_STRENGTH] Ranged Strength (23 vs 21), improved [ICON_MOVES] Movement (3 vs 2), and has no sight penalty.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_STRATEGY">			
 			<Text>The Zafarbaksh is a powerful and mobile siege weapon that excels at taking cities. With higher combat and ranged strength than the standard Cannon, plus an extra movement point and no sight penalties, it can position effectively for attacks. While more expensive to produce, its superior mobility and firepower make it a worthy investment for expanding your empire through conquest. Unlike other unique units however, the Zafarbaksh's special abilities do not carry over when it upgrades to Artillery.</Text>
@@ -5027,7 +5027,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Burj</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_BURJ_HELP">
-			<Text>Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture (but not the Hotel's extra [ICON_CULTURE] Culture from Natural Wonders, Lakes and Oases).</Text>
+			<Text>Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE]Natural Wonders worked by this city yield +10 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_BURJ_PEDIA">
 			<Text>The glimmering towers of the Abu Dhabi and Dubai skylines have come to define the nation and its otherwordly extravegance. Starting in the late 20th century, as wealth flooded into the UAE from the increasing value of oil, businesses flocked to the fledgling nation. Nonexistent tax rates, a cooperative government and a fantastic climate turned the barren desert into a haven for the rich and famous and within mere decades some of the most incredible feats of modern engineering began to spring up across the nation. [NEWLINE] [NEWLINE] Some of the most famous towers are the mega-skyscrapers of Dubai, the nations most populous and important city. The Burj Al-Arab, an enormous mega-hotel in the cities prestigious coastal Jumeirah district, boasts an alleged 7 star rating, invidiual rooms spanning nearly 800 square metres, an underwater restaurant and prices of up to 24,000 USD per night! The Burj-Khalifa, constructed in 2010 after six years of construction and costing over 1.5 billion USD (Which is roughly the entire annual GDP of Belize) is the worlds tallest building at over 800m (nearly 3000ft) tall. That's taller than 18 Statue of Liberties! Besides its size, the tower also boasts a 200 million dollar fountain which hosts shows every 30 minutes, in which water is projected 150m into the air (Roughly the height of the Great Pyramid of Giza.) The megacities boast dozens of these megaskyscrapers, from a replica giant big ben to a rotating hotel, each more opulent than the last. All this in one of the the driest most inhospitable places in the world.</Text>
@@ -8740,7 +8740,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Westernization</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_WESTERNIZATION">
-			<Text>[ICON_BUILDING_AMPHITHEATER] Amphitheaters, [ICON_BUILDING_OPERA_HOUSE] Opera Houses, [ICON_BUILDING_MUSEUM] Museums and [ICON_BUILDING_BROADCAST_TOWER] Broadcast Towers are built 50% faster.[NEWLINE]These [COLOR_GREEN]buildings[ENDCOLOR] and [ICON_GREAT_WORK] Great works each provide +1 [ICON_RESEARCH] Science, +1 [ICON_PRODUCTION] Production, and +1 [ICON_GOLD] Gold.</Text>
+			<Text>[ICON_BUILDING_AMPHITHEATER] Amphitheaters, [ICON_BUILDING_OPERA_HOUSE] Opera Houses, [ICON_BUILDING_MUSEUM] Museums and [ICON_BUILDING_BROADCAST_TOWER] Broadcast Towers are built 50% faster.[NEWLINE]These [COLOR_GREEN]buildings[ENDCOLOR] and [ICON_GREAT_WORK] Great works each provide +1 [ICON_RESEARCH] Science and +1 [ICON_PRODUCTION] Production.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEADER_UC_ATATURK_DESC">
 			<Text>Ataturk</Text>
@@ -9369,7 +9369,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Caer</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IMPROVEMENT_MC_SCOTTISH_CLAN_CASTLE_HELP">
-			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production.[NEWLINE]+1 [ICON_CULTURE] Culture with Acoustics.[NEWLINE]+1 [ICON_PRODUCTION] Production with Chemistry.[NEWLINE]Receives additional yields from certain Policies.</Text>
+			<Text>+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE]Cannot be built next to another Caer.[NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PRODUCTION] Production.[NEWLINE]+1 [ICON_CULTURE] Culture with Acoustics.[NEWLINE]+1 [ICON_PRODUCTION] Production with Chemistry.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIVILOPEDIA_MC_SCOTTISH_CLAN_CASTLE_PEDIA">
 			<Text>Caer</Text>
@@ -10841,7 +10841,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Trade Harbour</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_TRADE_HARBOUR_HELP">
-			<Text>Replaces the Harbor.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]Forms a [ICON_CONNECTED] City Connection with the [ICON_CAPITAL] Capital over water.[NEWLINE]Sea trade routes from this city reach 50% farther and give +1 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE]City must be on the coast.[NEWLINE][NEWLINE]In addition:[NEWLINE]+15% [ICON_PRODUCTION] Production when building naval units.[NEWLINE]Sea resources worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
+			<Text>Replaces the Harbor.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]Forms a [ICON_CONNECTED] City Connection with the [ICON_CAPITAL] Capital over water.[NEWLINE]Sea trade routes from this city reach 50% farther and give +1 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE]City must be on the coast.[NEWLINE][NEWLINE]In addition:[NEWLINE]Sea resources worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_TRADE_HARBOUR_STRATEGY">
 			<Text>The Trade Harbour increases the [ICON_PRODUCTION] Production yield of sea resources and allows "water city connections" between cities. It also increases the city's production of naval units.</Text>
@@ -11160,7 +11160,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Nihil Sine Deo</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_MC_NIHIL_SINE_DEO">
-			<Text>All units have a +10% [ICON_STRENGTH] [COLOR_GREEN]Combat bonus[ENDCOLOR] against [COLOR_GREEN]wounded[ENDCOLOR] units.[NEWLINE][NEWLINE]Cities generate 25% [ICON_CULTURE] more Culture during [ICON_GOLDEN_AGE] Golden Ages.[NEWLINE]Gain a burst of [ICON_GOLDEN_AGE] Golden Age Points when capturing or liberating cities.</Text>
+			<Text>All units have a +10% [ICON_STRENGTH] [COLOR_GREEN]Combat bonus[ENDCOLOR] against [COLOR_GREEN]wounded[ENDCOLOR] units.[NEWLINE][NEWLINE]Cities generate 25% [ICON_CULTURE] more Culture during [ICON_GOLDEN_AGE] Golden Ages.[NEWLINE]+100 [ICON_GOLDEN_AGE] Golden Age points for every city you capture.</Text>
 		</Replace>
 		<!--City State Changes-->
 		<Replace Tag="TXT_KEY_CITYSTATE_MC_SUCEAVA">
@@ -20814,7 +20814,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SERAI_HELP"> 
-			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
+			<Text>Replaces the Caravansary.[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SHRINE"> 
 			<Text>
@@ -45029,7 +45029,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_MOAI_HELP"> 
 			<Text>
-				Moai can only be built on the coast.  If built next to another Moai, it provides additional [ICON_CULTURE] Culture. After the Flight technology is researched it also provides extra [ICON_GOLD] Gold.
+				Moai can only be built on the coast.  If built next to another Moai, it provides additional [ICON_CULTURE] Culture.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_MOAI_TEXT"> 
@@ -58192,9 +58192,7 @@ The second sack of Ulundi is considered by historians to be the definitive end o
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV_JURCHEN_SHORT_DESC"> 
-			<Text>
-				Manchuria
-			</Text>
+			<Text>Qing Dynasty</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV_KHMER_ADJECTIVE"> 
 			<Text>
@@ -120263,7 +120261,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Midas Touch</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_NECTAR_GODS">
-			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_RES_WINE] Wine, [ICON_RES_SUGAR] Sugar and [ICON_RES_SPICES] Spices</Text>
+			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_RES_WINE] Wine, [ICON_RES_SUGAR] Sugar, [ICON_RES_SPICES] Spices and [ICON_RES_COCOA] Cocoa</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_NECTAR_GODS_SHORT">
 			<Text>Nectar of the Gods</Text>
@@ -140856,7 +140854,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_CARTHAGINIAN_QUINQUEREME_STRATEGY"> 
 			<Text>
-				The Quinquereme is the upgrade of the Trireme.[NEWLINE]It is fast, starts with Boarding Party I and is built to ferry an army along the coast: land units embarked on its tile at the start of a turn travel with it at its speed (Swift Transport).[NEWLINE]It cannot enter Ocean and is weak against cities.
+				The Quinquereme is the upgrade of the Trireme.[NEWLINE]It is fast, starts with Boarding Party I and is built to ferry an army along the coast: land units embarked on its tile at the start of a turn travel with it at its speed (Troopship).[NEWLINE]It cannot enter Ocean and is weak against cities.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_CATAPULT"> 
@@ -141733,7 +141731,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANDWHER"> 
 			<Text>
-				Unique Unit for Prussia Replacing the Riflemen. Available at Military Science. Receives a second attack, 1 additional [ICON_MOVES] Movement and earns 50% more experience during combat. 
+				Unique Unit for Prussia Replacing the Riflemen. Available at Military Science. Receives a second attack, 1 additional [ICON_MOVES] Movement. 
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGBOWMAN"> 
@@ -142728,9 +142726,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PEDITE"> 
-			<Text>
-				Replaces the Longswordsman. Cheaper to produce and available at Metal Casting. However, this unit is much weaker, but less weak on flat lands. May construct Motte and Baileys if you also play as Normandy.
-			</Text>
+			<Text>Replaces the Longswordsman. Available with Metal Casting (instead of Steel) and cheaper.[NEWLINE]20 [ICON_STRENGTH] Combat Strength (Longswordsman: 21).[NEWLINE]Starts with Shock I (+15% [ICON_STRENGTH] Combat Strength on open terrain).[NEWLINE]Can build Motte and Baileys.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PERSIAN_IMMORTAL"> 
 			<Text>
@@ -147272,7 +147268,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Qing Empire</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV_JURCHEN_SHORT_DESC">
-			<Text>Qing</Text>
+			<Text>Qing Dynasty</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV_JURCHEN_ADJECTIVE">
 			<Text>Qing</Text>
@@ -147326,7 +147322,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Longswordsman. Higher [ICON_STRENGTH] Combat Strength.[NEWLINE]Starts with Amphibious I and Cover I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_STRATEGIC_RICHES">
-			<Text>[ICON_RES_IRON] Iron, [ICON_RES_COAL] Coal, [ICON_RES_ALUMINUM] Aluminum and [ICON_RES_URANIUM] Uranium yield +1 [ICON_PRODUCTION] Production.[NEWLINE]These resources and [ICON_RES_HORSE] Horses give double quantity, and Strategic resources are improved instantly.[NEWLINE][NEWLINE]Snow tiles yield +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold and +1 [ICON_PEACE] Faith.</Text>
+			<Text>[ICON_RES_IRON] Iron, [ICON_RES_COAL] Coal, [ICON_RES_ALUMINUM] Aluminum and [ICON_RES_URANIUM] Uranium yield +1 [ICON_PRODUCTION] Production.[NEWLINE]These resources and [ICON_RES_HORSE] Horses give double quantity.[NEWLINE]Workers improve Strategic resources in 1 turn.[NEWLINE][NEWLINE]Snow tiles yield +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold and +1 [ICON_PEACE] Faith.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_KREPOST_HELP">
 			<Text>Replaces the Barracks. Costs more, 2 [ICON_GOLD] Gold maintenance (instead of 1); available with Mining (instead of Bronze Working).[NEWLINE][NEWLINE]Like the Barracks:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_CULTURE] Culture and +1 [ICON_FOOD] Food.[NEWLINE]New tiles cost 25% less [ICON_CULTURE] Culture and [ICON_GOLD] Gold in this city.</Text>
@@ -147441,7 +147437,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Musketman. Higher [ICON_STRENGTH] Combat Strength and the Bonus vs Mounted (50) promotion.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JANISSARY">
-			<Text>Replaces the Musketman. Cheaper to train.[NEWLINE]Starts with Charge and Zealot.[NEWLINE]Can always be bought with [ICON_PEACE] Faith.</Text>
+			<Text>Replaces the Musketman. Cheaper to train.[NEWLINE]Starts with Charge and Zealot.[NEWLINE]Can be bought with [ICON_PEACE] Faith.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_OTTOMAN_JANISSARY_STRATEGY">
 			<Text>The Janissary is an Ottoman unique unit, replacing the Musketman. It is cheaper than a Musketman, strong against wounded units, and its kills yield [ICON_PEACE] Faith. It can be bought with Faith even without a religion.</Text>
@@ -147493,7 +147489,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DANISH_LONGSHIP">
-			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Swift Transport and Coastal Raider I.</Text>
+			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Troopship and Coastal Raider I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_WAYFINDING">
 			<Text>Can embark and move over Oceans immediately.[NEWLINE]Embarked units have +2 [ICON_PROMOTION_SCOUTING_1] Sight and +1 [ICON_MOVES] Movement.</Text>
@@ -147596,7 +147592,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Knight. Stronger, but costs more.[NEWLINE]Starts with Blitz (attacks more than once per turn).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_HELP">
-			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.</Text>
+			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Troopship and Coastal Raider I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP">
 			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
@@ -147617,7 +147613,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Kampong Ayer: +1 [ICON_FOOD] Food and +1 [ICON_CULTURE] Culture.[NEWLINE]+1 [ICON_CULTURE] Culture and +2 [ICON_GOLD] Gold with Flight.[NEWLINE][NEWLINE]Connects a luxury resource or Oil on its tile. Built only by Brunei's growing cities, never by units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BURJ_HELP">
-			<Text>Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture (but not the Hotel's extra [ICON_CULTURE] Culture from Natural Wonders, Lakes and Oases).</Text>
+			<Text>Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE]Natural Wonders worked by this city yield +10 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
 			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
@@ -147772,7 +147768,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Colosseum. Costs less.[NEWLINE][NEWLINE]Like the Colosseum:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness (no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith if another of your cities is within 4 tiles.[NEWLINE]+2 [ICON_PRODUCTION] Production if two or more of your other cities are within 4 tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SERAI_HELP">
-			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
+			<Text>Replaces the Caravansary.[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MC_OMANI_MINAA_HELP">
 			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_FOOD] Food if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]+4 [ICON_CULTURE] Culture while a Caravan's route ends here.[NEWLINE]+4 [ICON_GOLD] Gold while a Cargo Ship's route ends here.</Text>
@@ -148029,7 +148025,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>In the [ICON_CAPITAL] Capital: Great Works and Writer, Artist and Musician specialists yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold; +10% [ICON_PRODUCTION] Production towards buildings.[NEWLINE][NEWLINE]In your second city: Great Works and Writer, Artist and Musician specialists yield +1 [ICON_RESEARCH] Science; Great Person improvements and World Wonders +2 [ICON_RESEARCH] Science.[NEWLINE][NEWLINE]Both courts stay with their cities, also when they are captured.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SERAI_HELP">
-			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
+			<Text>Replaces the Caravansary.[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_VIKING_FURY">
 			<Text>Land units start with Amphibious I and pillage without spending movement.[NEWLINE]Naval and embarked units may enter Ocean tiles before Astronomy.[NEWLINE][NEWLINE]New cities claim the Fish tiles within 2 tiles.</Text>
@@ -148122,7 +148118,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Desert Falcon</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_HELP">
-			<Text>Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
+			<Text>Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2 range), Charge (+33% [ICON_STRENGTH] Combat Strength against wounded units) and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_PEDIA">
 			<Text>The U.A.E.'s unique Jet Fighter: longer range, stronger against wounded units and harder to intercept.</Text>
@@ -148161,7 +148157,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>?</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_UNIT_DALAILAMA_HELP">
-			<Text>The Tibetan replacement for the [ICON_PROPHET] Great Prophet. It can found a city, or found or enhance a [ICON_RELIGION] Religion, and arrives with 5 [ICON_MISSION_SPREAD_RELIGION] Religion Spreads.[NEWLINE][NEWLINE]Instead of spreading the Religion, it can spend its spreads on:[NEWLINE][ICON_BULLET]Monastery, built at once: 1 spread[NEWLINE][ICON_BULLET]Bless a unit on its tile (double healing): 2 spreads[NEWLINE][ICON_BULLET]Holy Site, built at once, claims the tiles around it: 3 spreads[NEWLINE][ICON_BULLET]Start a [ICON_GOLDEN_AGE] Golden Age: 4 spreads[NEWLINE]It is used up with its last spread.[NEWLINE][NEWLINE]Converting a City-State with it gives +10 [ICON_INFLUENCE] Influence there.</Text>
+			<Text>The Tibetan replacement for the [ICON_PROPHET] Great Prophet. It can found a city, or found or enhance a [ICON_RELIGION] Religion, and arrives with 5 [ICON_MISSION_SPREAD_RELIGION] Religion Spreads.[NEWLINE][NEWLINE]Instead of spreading the Religion, it can spend its spreads on:[NEWLINE][ICON_BULLET]Monastery, built at once: 1 spread[NEWLINE][ICON_BULLET]Bless a unit on its tile (double healing): 2 spreads[NEWLINE][ICON_BULLET]Holy Site, claims the tiles around it, also from other civilizations and City-States (not city tiles): 3 spreads[NEWLINE][ICON_BULLET]Start a [ICON_GOLDEN_AGE] Golden Age: 4 spreads[NEWLINE]It is used up with its last spread.[NEWLINE][NEWLINE]Converting a City-State with it gives +10 [ICON_INFLUENCE] Influence there.</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_MISSION_LEKMOD_BLESS">
 			<Text>Bless</Text>
@@ -148207,7 +148203,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Nau Escort</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_NAU_AURA_HELP">
-			<Text>Friendly non-air units on this tile or next to it heal every turn, even after acting.[NEWLINE]Embarked units on this tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on this tile disembark like with Amphibious I: it costs 1 [ICON_MOVES] Movement and leaves at most 1.</Text>
+			<Text>Embarked units on this tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on this tile disembark like with Amphibious I: it costs 1 [ICON_MOVES] Movement and leaves at most 1.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_FIRST_TRADE_ROUTE_BONUS">
 			<Text>Descobrimentos: your first trade route to {1_Civ} brought {2_Yields}.</Text>
@@ -148237,7 +148233,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Harbor. Costs less, needs no coast and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a Courthouse or Crown Office in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PORTUGUESE_NAU">
-			<Text>Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Friendly non-air units on its tile or next to it heal every turn, even after acting.[NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
+			<Text>Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
 		</Replace>
 		<!-- POST: simpler ruin choice texts, Gain/Lose marks (2026-10-15) -->
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_TRADE">
@@ -148321,7 +148317,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: Sumeria Ziggurat (2026-10-15) -->
 		<Replace Tag="TXT_KEY_BUILDING_ZIGGURAT_HELP">
-			<Text>Unique to Sumeria. You can have at most 3.[NEWLINE][NEWLINE]+2% [ICON_PRODUCTION] Production towards buildings in this city for each city you own.[NEWLINE][NEWLINE]When completed: [ICON_RESEARCH] Science equal to 5 times the city's [ICON_CITIZEN] Citizens.</Text>
+			<Text>Unique to Sumeria. Available with Mathematics. You can have at most 3.[NEWLINE][NEWLINE]+2% [ICON_PRODUCTION] Production towards buildings in this city for each city you own.[NEWLINE][NEWLINE]When completed: [ICON_RESEARCH] Science equal to 5 times the city's [ICON_CITIZEN] Citizens.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ZIGGURAT_STRATEGY">
 			<Text>The Ziggurat is the Sumerian unique building. It does not replace another building, and you can build at most 3. It speeds up building construction in its city the more cities you own, and gives a one-time burst of Science based on the city's size when it is completed.</Text>

@@ -181,10 +181,16 @@ module Civs
   def apply_updates(data, table, by_type)
     data.scan(%r{<#{table}>(.*?)</#{table}>}m) do |(block)|
       block.scan(%r{<Update>(.*?)</Update>}m) do |(upd)|
-        type = upd[/<Where\s+Type="([^"]+)"/, 1] or next
+        where = upd[%r{<Where\s+([^>]*?)/?>}, 1] or next
         set = upd[%r{<Set\s+([^>]*?)/?>}, 1] or next
-        row = by_type[type] or next
-        set.scan(/(\w+)="([^"]*)"/) { |k, v| row[k] = v }
+        conds = where.scan(/(\w+)="([^"]*)"/)
+        # <Where Type="X"/> or any other columns (<Where Class="UNITCLASS_CANNON"/>): every row that matches all of them
+        targets = if conds == [["Type", conds.dig(0, 1)]]
+                    [by_type[conds[0][1]]].compact
+                  else
+                    by_type.values.select { |r| conds.all? { |k, v| r[k] == v } }
+                  end
+        targets.each { |row| set.scan(/(\w+)="([^"]*)"/) { |k, v| row[k] = v } }
       end
     end
     by_type
