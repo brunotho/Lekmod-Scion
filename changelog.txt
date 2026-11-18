@@ -2462,6 +2462,12 @@ Tags: world wonders, naval, wonders
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
 - Removed: its Culture, Golden Age points and the yields for cities on the same or other landmasses
 
+CITADELS AT THE END OF A TURN (NEW) (BUILD_CITADEL)
+---------------------------------------------------
+Tags: game mechanics, combat
+- Added: with a multiplayer turn timer, a Great General can't build a Citadel in the last 30 seconds of a turn outside your own territory, or in the last 15 seconds inside it; the button is greyed out then and its tooltip says so
+- Dev: Lua only (standard UI UnitPanel: button, click and hotkey; EUI not yet): LekmodCitadelLockedFor reads Events.EndTurnTimerUpdate and getEndTurnTimerLength like MPTurnPanel; no timer = no lock
+
 VICTORY: NO AI WINNERS (NEW) (VICTORY_TIME)
 -------------------------------------------
 Tags: game mechanics

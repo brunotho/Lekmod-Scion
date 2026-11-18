@@ -325,6 +325,79 @@ function LekmodSetHotKeyLabel( instance, strMods, strKey )
 	end
 end
 
+-- LEKMOD (New Specs 12, 2026-11-18): a Great General's Citadel can't be built in the last 30 seconds of a multiplayer turn
+-- outside your own territory, nor in the last 15 seconds inside it. The turn timer comes from the MP turn panel's event;
+-- without a running timer (single player, no turn timer) nothing is locked. Local check only: nothing is sent over the network.
+local LEKMOD_CITADEL_LOCK_FOREIGN = 30;
+local LEKMOD_CITADEL_LOCK_OWN = 15;
+local g_LekmodTurnPercent = nil;
+local g_LekmodCitadelLocked = nil;
+local g_LekmodCitadelBuild = GameInfoTypes.BUILD_CITADEL;
+
+function LekmodIsCitadelAction( iAction )
+	local action = iAction and GameInfoActions[iAction];
+	return action ~= nil and action.SubType == ActionSubTypes.ACTIONSUBTYPE_BUILD and action.MissionData == g_LekmodCitadelBuild;
+end
+
+function LekmodTurnSecondsLeft()
+	if g_LekmodTurnPercent == nil or getEndTurnTimerLength == nil then
+		return nil;
+	end
+	local bOk, fLength = pcall( getEndTurnTimerLength );
+	if not bOk or fLength == nil or fLength <= 0 then
+		return nil;
+	end
+	return fLength * (1 - g_LekmodTurnPercent);
+end
+
+-- is the Citadel locked for this unit right now?
+function LekmodCitadelLockedFor( unit )
+	local fLeft = LekmodTurnSecondsLeft();
+	if fLeft == nil or unit == nil then
+		return false;
+	end
+	local plot = unit:GetPlot();
+	local bOwn = plot ~= nil and plot:GetOwner() == unit:GetOwner();
+	return fLeft <= (bOwn and LEKMOD_CITADEL_LOCK_OWN or LEKMOD_CITADEL_LOCK_FOREIGN);
+end
+
+function LekmodCitadelLocked( iAction, unit )
+	return LekmodIsCitadelAction( iAction ) and LekmodCitadelLockedFor( unit );
+end
+
+-- the hotkey of the Citadel build, as the virtual key code the input handler sees (layout setting applied)
+function LekmodCitadelHotkeyBlocked( uiMsg, wParam )
+	if (uiMsg ~= KeyEvents.KeyDown and uiMsg ~= 260) or UI.CtrlKeyDown() then
+		return false;
+	end
+	local unit = UI.GetHeadSelectedUnit();
+	if unit == nil or not LekmodCitadelLockedFor( unit ) then
+		return false;
+	end
+	for iAction, action in pairs( GameInfoActions ) do
+		if LekmodIsCitadelAction( iAction ) and Game.CanHandleAction( iAction ) then
+			local strMods, strKey = LekmodShortHotKey( action.HotKey );
+			strKey = LekmodLayoutKey( strKey );
+			if strKey ~= nil and string.len( strKey ) == 1 and wParam == string.byte( string.upper( strKey ) ) then
+				return true;
+			end
+		end
+	end
+	return false;
+end
+
+Events.EndTurnTimerUpdate.Add( function( fPercentComplete )
+	g_LekmodTurnPercent = fPercentComplete;
+	local unit = UI.GetHeadSelectedUnit();
+	local bLocked = unit ~= nil and LekmodCitadelLockedFor( unit );
+	if bLocked ~= g_LekmodCitadelLocked then
+		g_LekmodCitadelLocked = bLocked;
+		if unit ~= nil then
+			UpdateUnitActions( unit );
+		end
+	end
+end );
+
 -- LEKMOD: worker builds and promotions sit in fixed columns (icons line up); a button whose hotkey label needs more
 -- room than its column takes two or more columns, and a button that doesn't fit starts a new row (the panel grows)
 local g_LekmodFlow = { col = 0, row = 0, cols = 4, colW = 60 };
@@ -539,7 +612,7 @@ function UpdateUnitActions( unit )
 			end
             
 			-- test w/o visible flag (ie can train right now)
-			if not Game.CanHandleAction( iAction ) then
+			if not Game.CanHandleAction( iAction ) or LekmodCitadelLocked( iAction, unit ) then
 				bDisabled = true;
 				instance.UnitActionButton:SetAlpha( 0.4 );                
 				instance.UnitActionButton:SetDisabled( true );                
@@ -1144,7 +1217,7 @@ local bOkayToProcess = true;
 -- UnitAction<idx> was clicked.
 --------------------------------------------------------------------------------
 function OnUnitActionClicked( action )
-	if bOkayToProcess then
+	if bOkayToProcess and not LekmodCitadelLocked( action, UI.GetHeadSelectedUnit() ) then
 		if (GameInfoActions[action].SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION) then
 			Events.AudioPlay2DSound("AS2D_INTERFACE_UNIT_PROMOTION");	
 		end
@@ -1160,6 +1233,9 @@ end
 -- builds/promotions whose key another action shares, in the order the panel numbers them
 g_LekmodPromoNumberActions = {};
 function LekmodPromoNumberInput( uiMsg, wParam, lParam )
+	if LekmodCitadelHotkeyBlocked( uiMsg, wParam ) then
+		return true;
+	end
 	if uiMsg ~= KeyEvents.KeyDown or #g_LekmodPromoNumberActions == 0 or Controls.WorkerActionPanel:IsHidden() then
 		return false;
 	end
@@ -2186,6 +2262,11 @@ function TipHandler( control )
 		end
 	end
     
+	-- LEKMOD: the Citadel's lock at the end of a turn (red line)
+	if (LekmodIsCitadelAction( iAction )) then
+		strToolTip = strToolTip .. "[NEWLINE][NEWLINE][COLOR_NEGATIVE_TEXT]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_CITADEL_TURN_END_LOCK", LEKMOD_CITADEL_LOCK_FOREIGN, LEKMOD_CITADEL_LOCK_OWN) .. "[ENDCOLOR]";
+	end
+
 	-- LEKMOD: the build's Gold maintenance, as the last line
 	if (bBuild) then
 		local iLekmodMaintenance = LekmodBuildMaintenance(GameInfo.Builds[iBuildID]);

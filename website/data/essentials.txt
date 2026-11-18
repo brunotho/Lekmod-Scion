@@ -56,6 +56,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.5 
 - Ancient ruins let you choose between 2 rewards, with the amounts shown.
 - A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.
 - In multiplayer games AI players can't win: no victory of any type goes to them.
+- With a turn timer, Great Generals can't build Citadels in the last 30 seconds of a turn outside your territory (15 seconds inside it).
 
 ## Powercreep compensation
 - Technologies cost more from the Classical Era on, a little at first and up to +11% in the Information Era.

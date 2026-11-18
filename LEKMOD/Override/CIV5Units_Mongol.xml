@@ -148451,7 +148451,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Miscellaneous game mechanics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_8_TEXT">
-			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option, and need no embassy. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.[NEWLINE][ICON_BULLET]In multiplayer games AI players can't win: no victory of any type goes to them.</Text>
+			<Text>[ICON_BULLET]Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.[NEWLINE][ICON_BULLET]In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.[NEWLINE][ICON_BULLET]Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.[NEWLINE][ICON_BULLET]Open borders last 10 turns, or until war with the new "until war" option, and need no embassy. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.[NEWLINE][ICON_BULLET]Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.[NEWLINE][ICON_BULLET]Ancient ruins let you choose between 2 rewards, with the amounts shown.[NEWLINE][ICON_BULLET]A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.[NEWLINE][ICON_BULLET]In multiplayer games AI players can't win: no victory of any type goes to them.[NEWLINE][ICON_BULLET]With a turn timer, Great Generals can't build Citadels in the last 30 seconds of a turn outside your territory (15 seconds inside it).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_9_HEADER">
 			<Text>Powercreep compensation</Text>
@@ -149021,6 +149021,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_EMPIRE_LIMIT_MAKING">
 			<Text>{1_City} being built</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_CITADEL_TURN_END_LOCK">
+			<Text>Can't be used in the last {1_Num} seconds of a turn outside your territory, or in the last {2_Num} seconds inside it.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>
