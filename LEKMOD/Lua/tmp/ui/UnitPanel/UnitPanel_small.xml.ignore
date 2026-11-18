@@ -143,9 +143,6 @@
       <!-- LEKMOD: the action's hotkey right of the button, a modifier (Alt/Shift/Ctrl) above it (options for promotions and for worker builds, default on) -->
       <Label Anchor="R,B" AnchorSide="O.I" Offset="2,2" Font="TwCenMT16" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyLabel" String="" />
       <Label Anchor="R,T" AnchorSide="O.I" Offset="2,1" Font="TwCenMT14" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" ID="LekmodHotKeyModLabel" String="" />
-      <!-- LEKMOD (New Specs 12): the hotkey of an action in the left stacks, on the button itself (no room next to it) -->
-      <Label Anchor="R,B" Offset="2,0" Font="TwCenMT16" FontStyle="Stroke" ColorSet="Beige_Black_Alpha" ID="LekmodStackKeyLabel" String="" />
-      <Label Anchor="L,T" Offset="2,0" Font="TwCenMT14" FontStyle="Stroke" ColorSet="Beige_Black_Alpha" ID="LekmodStackModLabel" String="" />
     </GridButton>
   </Instance>
 

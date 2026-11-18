@@ -572,20 +572,17 @@ function UpdateUnitActions( unit )
             end
 
 			-- LEKMOD: the hotkey next to worker builds (promotions set theirs above); the action stacks on the left
-			-- show theirs on the button (option, default on), modifiers shortened when there are two
+			-- show theirs right of the button like promotions (option, default on; LekmodActionKeyRoom widens the
+			-- column), two modifiers shortened ("S+A")
 			if not bPromotion and not bBuild then
-				LekmodSetHotKeyLabel( instance, "", "" );
-				if instance.LekmodStackKeyLabel ~= nil then
-					local strMods, strKey = "", "";
-					if bShowActionKeys then
-						strMods, strKey = LekmodActionKey( action );
-						if string.find( strMods, "+", 1, true ) then
-							strMods = string.gsub( strMods, "(%a)%a*", "%1" );
-						end
+				local strMods, strKey = "", "";
+				if bShowActionKeys then
+					strMods, strKey = LekmodActionKey( action );
+					if string.find( strMods, "+", 1, true ) then
+						strMods = string.gsub( strMods, "(%a)%a*", "%1" );
 					end
-					instance.LekmodStackKeyLabel:SetText( LekmodLayoutKey( strKey ) );
-					instance.LekmodStackModLabel:SetText( strMods );
 				end
+				LekmodSetHotKeyLabel( instance, strMods, strKey );
 			end
             
 			-- test w/o visible flag (ie can train right now)
@@ -621,6 +618,7 @@ function UpdateUnitActions( unit )
     Controls.PrimaryStack:CalculateSize();
     Controls.PrimaryStack:ReprocessAnchoring();
     
+    LekmodActionKeyRoom( bShowActionKeys );
     local stackSize = Controls.PrimaryStack:GetSize();
     local stretchySize = Controls.PrimaryStretchy:GetSize();
     local buildCityButtonSize = 0;
@@ -1201,6 +1199,27 @@ function OnUnitActionClicked( action )
 		end
 		Game.HandleAction( action );
     end
+end
+
+-- LEKMOD (New Specs 12, 2026-11-19): room for the hotkeys right of the left action buttons, as promotions have:
+-- the primary frame gets wider and the secondary column moves right by the same amount (setting off = base layout)
+local g_LekmodActionBase = nil;
+function LekmodActionKeyRoom( bOn )
+	if g_LekmodActionBase == nil then
+		g_LekmodActionBase = {
+			primaryW = Controls.PrimaryStretchy:GetSizeX(),
+			secStretchyX = Controls.SecondaryStretchy:GetOffsetX(), secStretchyY = Controls.SecondaryStretchy:GetOffsetY(),
+			secStackX = Controls.SecondaryStack:GetOffsetX(), secStackY = Controls.SecondaryStack:GetOffsetY(),
+		};
+	end
+	local b = g_LekmodActionBase;
+	local w = 0;
+	if bOn then
+		w = (OptionsManager.GetSmallUIAssets() and not UI.IsTouchScreenEnabled()) and 30 or 36;
+	end
+	Controls.PrimaryStretchy:SetSizeVal( b.primaryW + w, Controls.PrimaryStretchy:GetSizeY() );
+	Controls.SecondaryStretchy:SetOffsetVal( b.secStretchyX + w, b.secStretchyY );
+	Controls.SecondaryStack:SetOffsetVal( b.secStackX + w, b.secStackY );
 end
 
 -- LEKMOD (New Specs 12, 2026-11-18): Alt + right click opens this action's hotkey in the hotkey manager (OptionsMenu)
