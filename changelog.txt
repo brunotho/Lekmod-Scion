@@ -2224,13 +2224,18 @@ Tags: tourism, game mechanics, combat
 - Removed: dissidents (public opinion unhappiness from ideologies), other civs' influence pushing you to switch ideology, and the +25% Tourism each from open borders, trade routes and diplomats
 - DLL: LEKMOD_NO_PUBLIC_OPINION, LEKMOD_INFLUENCE_COMBAT_BONUS, LEKMOD_TOURISM_DECIMALS
 
+EAST INDIA COMPANY (BUILDING_NATIONAL_TREASURY)
+-----------------------------------------------
+Tags: buildings, wonders
+- Changed: East India Company (also Mali's replacement): +5 Gold in its city (was +4)
+
 GREAT WORK BUILDINGS (BUILDING_AMPHITHEATER, BUILDING_OPERA_HOUSE, BUILDING_MUSEUM, BUILDING_BROADCAST_TOWER)
 -------------------------------------------------------------------------------------------------------------
 Tags: tourism, buildings
-The culture buildings no longer need each other, and two of them are the source of great work Tourism.
 - Added: Amphitheater and Opera House (and their unique replacements): Great Works in their city yield +1 Tourism each
 - Changed: Museum (and its unique replacements): 1 Great Work slot (was 2)
-- Removed: building requirements of the Amphitheater (Monument), Opera House (Amphitheater), Museum (Amphitheater) and Broadcast Tower (Opera House), including their unique replacements
+- Removed: building requirements of the Museum (Amphitheater) and the Broadcast Tower (Opera House), including their unique replacements; the Amphitheater still needs a Monument and the Opera House an Amphitheater
+- Dev: the Amphitheater and Opera House requirements were removed too and came back (user, 2026-11-18); their tooltips name them
 - Dev: Cuba's Dance Hall now really gives +4 Culture when its Great Work slot is filled (the bonus was described but never applied)
 - Changed: great work yields keep fractions until they are added up for the city
 - DLL: Buildings.GreatWorkYieldModifier, great work yields in hundredths, Building_GreatWorkYieldChanges rows without a GreatWorkClassType load now (LEKMOD_GREAT_WORK_YIELD_MODIFIER)

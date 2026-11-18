@@ -41668,12 +41668,12 @@
 		<Row> 
 			<BuildingType>BUILDING_NATIONAL_TREASURY</BuildingType> 
 			<YieldType>YIELD_GOLD</YieldType> 
-			<Yield>4</Yield> 
+			<Yield>5</Yield> 
 		</Row>
 		<Row> 
 			<BuildingType>BUILDING_MALI_NATIONAL_TREASURY</BuildingType> 
 			<YieldType>YIELD_GOLD</YieldType> 
-			<Yield>4</Yield> 
+			<Yield>5</Yield> 
 		</Row>
 		<Row> 
 			<BuildingType>BUILDING_MALI_NATIONAL_TREASURY</BuildingType> 
@@ -49551,14 +49551,6 @@
 		</Update>
 	</Buildings>
 	<Building_ClassesNeededInCity>
-		<Delete BuildingType="BUILDING_AMPHITHEATER"/>
-		<Delete BuildingType="BUILDING_HIPPODROME"/>
-		<Delete BuildingType="BUILDING_ODEON"/>
-		<Delete BuildingType="BUILDING_PALMYRA_FORUM"/>
-		<Delete BuildingType="BUILDING_OPERA_HOUSE"/>
-		<Delete BuildingType="BUILDING_CEILIDH_HALL"/>
-		<Delete BuildingType="BUILDING_BOERS_OPERA_HOUSE"/>
-		<Delete BuildingType="BUILDING_DANCE_HALL"/>
 		<Delete BuildingType="BUILDING_MUSEUM"/>
 		<Delete BuildingType="BUILDING_BASIL"/>
 		<Delete BuildingType="BUILDING_YUGO_SPOMENIK"/>
@@ -281426,6 +281418,14 @@
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_ONE_GOOD_EYE</PromotionType>
+			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_ONE_GOOD_EYE</PromotionType>
+			<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType>
+		</Row>
+		<Row>
+			<PromotionType>PROMOTION_ONE_GOOD_EYE</PromotionType>
 			<UnitCombatType>UNITCOMBAT_MELEE</UnitCombatType>
 		</Row>
 		<Row>
@@ -283695,7 +283695,7 @@
 		</Row>
 	</Unit_ResourceQuantityRequirements>
 	<Building_YieldModifiers>
-		<Delete BuildingType="BUILDING_ALCAZABA" YieldType="YIELD_FOOD"/>
+		<Update><Where BuildingType="BUILDING_ALCAZABA" YieldType="YIELD_FOOD"/><Set Yield="8"/></Update>
 	</Building_YieldModifiers>
 	<Building_YieldChanges>
 		<Delete BuildingType="BUILDING_ALCAZABA" YieldType="YIELD_SCIENCE"/>
@@ -284718,10 +284718,6 @@
 		<Row>
 			<UnitType>UNIT_BERBER_CAVALRY</UnitType>
 			<PromotionType>PROMOTION_DRILL_1</PromotionType>
-		</Row>
-		<Row>
-			<UnitType>UNIT_BERBER_CAVALRY</UnitType>
-			<PromotionType>PROMOTION_MOBILITY</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
 	<!-- Philippines: civilians +1 move (was +2), land units start with Amphibious I (first expansion rule, Simbahan need C++, open); Philippine Scout 46 strength, no Volley, can move after attacking, Woodsman -->

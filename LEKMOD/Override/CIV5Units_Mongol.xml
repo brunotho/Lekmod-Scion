@@ -811,7 +811,7 @@
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MALI_NATIONAL_TREASURY_HELP">
-			<Text>Replaces the East India Company. Needs a Market only in this city (not in all cities).[NEWLINE][NEWLINE]Like the East India Company:[NEWLINE]+4 [ICON_GOLD] Gold and +10% [ICON_GOLD] Gold.[NEWLINE]1 more trade route.[NEWLINE]Trade routes other players make to this city give you +4 [ICON_GOLD] Gold and the route's owner +2 [ICON_GOLD] Gold.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5 [ICON_PEACE] Faith.[NEWLINE]The first unit or building bought in this city each turn with [ICON_GOLD] Gold or [ICON_PEACE] Faith costs 25% less.</Text>
+			<Text>Replaces the East India Company. Needs a Market only in this city (not in all cities).[NEWLINE][NEWLINE]Like the East India Company:[NEWLINE]+5 [ICON_GOLD] Gold and +10% [ICON_GOLD] Gold.[NEWLINE]1 more trade route.[NEWLINE]Trade routes other players make to this city give you +4 [ICON_GOLD] Gold and the route's owner +2 [ICON_GOLD] Gold.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5 [ICON_PEACE] Faith.[NEWLINE]The first unit or building bought in this city each turn with [ICON_GOLD] Gold or [ICON_PEACE] Faith costs 25% less.</Text>
 		</Row>
 		<!-- Mali Composite Bowman -->
 		<Row Tag="TXT_KEY_UNIT_MALI_COMPOSITE_BOWMAN">
@@ -1740,7 +1740,7 @@
 			<Text>The Zafarbaksh, meaning "victory bestower" in Persian, was an advanced artillery piece developed during the Mughal Empire's military prime. Mughal artillery benefited from a combination of Ottoman, Persian, and indigenous Indian engineering traditions, creating weapons that were both mobile and powerful. While European cannons of the period were often unwieldy in the varied terrain of the subcontinent, Mughal engineers modified their designs with lighter materials and improved carriage systems. Under Emperor Akbar's military reforms, these cannons became a cornerstone of Mughal battlefield supremacy, with specialized crews trained to rapidly deploy and reposition them during battles. The Zafarbaksh cannons were particularly feared for their effective range and mobility, allowing Mughal forces to outmaneuver opponents while maintaining superior firepower. The Mughal's mastery of metallurgy also enabled them to cast more uniform and reliable cannon barrels that could withstand repeated firing.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_HELP">			
-			<Text>Mughal replacement for the [ICON_UNIT_CANNON] Cannon. Has a higher [ICON_STRENGTH] Combat Strength (18 vs 14), higher [ICON_RANGE_STRENGTH] Ranged Strength (23 vs 20), improved [ICON_MOVES] Movement (3 vs 2), and has no sight penalty, but is more costly to build.</Text>
+			<Text>Mughal replacement for the [ICON_UNIT_CANNON] Cannon. Has a higher [ICON_STRENGTH] Combat Strength (18 vs 14), higher [ICON_RANGE_STRENGTH] Ranged Strength (23 vs 21), improved [ICON_MOVES] Movement (3 vs 2), and has no sight penalty, but is more costly to build.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_STRATEGY">			
 			<Text>The Zafarbaksh is a powerful and mobile siege weapon that excels at taking cities. With higher combat and ranged strength than the standard Cannon, plus an extra movement point and no sight penalties, it can position effectively for attacks. While more expensive to produce, its superior mobility and firepower make it a worthy investment for expanding your empire through conquest. Unlike other unique units however, the Zafarbaksh's special abilities do not carry over when it upgrades to Artillery.</Text>
@@ -1885,7 +1885,7 @@
 			<Text>Ribats were fortified Islamic military outposts located along coastal areas to defend against naval attacks. They also served as religious centers and places for spiritual retreat. In Tunisia, ribats played a crucial role in coastal defense against Byzantine naval incursions and later European pirates. The Ribat of Monastir, built in 796 AD, is one of the oldest and most well-preserved examples, combining military defensive structures with religious functions.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TUNISIA_CASTLE_HELP">			
-			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 2 tiles farther, and terrain does not block its view.</Text>
+			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 2 tiles farther, and terrain does not block its view.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TUNISIA_CASTLE_STRATEGY">			
 			<Text>The Ribat is significantly more accessible than regular Castles since it doesn't require Walls as a prerequisite and costs 50% less [ICON_PRODUCTION] Production. Beyond its defensive capabilities, it generates valuable [ICON_GOLD] Gold and [ICON_PEACE] Faith, while the +4 [ICON_GOLDEN_AGE] Golden Age points per turn help Tunisia trigger Golden Ages more frequently.</Text>
@@ -3384,7 +3384,7 @@
 		In the 1950s the theatre was cleared from the sand and subsequently underwent restoration works.[8] The theatre hosted folk music performances for the annual Palmyra festival.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_PALMYRA_FORUM_HELP">			
-		<Text>Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Oasis tiles worked by this city yield +1 [ICON_PRODUCTION] Production, +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]Lake tiles worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
+		<Text>Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]+2 [ICON_CULTURE] Culture.[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Oasis tiles worked by this city yield +1 [ICON_PRODUCTION] Production, +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold.[NEWLINE]Lake tiles worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_PALMYRA_FORUM_STRATEGY">			
 		<Text>Build this in cities with lakes and oases to get extra yields.</Text>
@@ -5010,7 +5010,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Unique Building for the Moors. In the addition of the usual effects of the Castle that it replaces, it provides +3 [ICON_RESEARCH] Science and +10% [ICON_FOOD] Food.[NEWLINE][NEWLINE]City must have Walls.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ALCAZABA_HELP">
-			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
+			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]+8% [ICON_FOOD] Food.[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_LITE_GRANADINE_CAVALRY">
 			<Text>Granadine Cavalry</Text>
@@ -5884,7 +5884,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Unique building for Cuba. Replaces the Opera House. It is Cheaper. When a Great Work of Music slot is filled, this building yields an additional +1 [ICON_HAPPINESS_1] Happiness, +4 [ICON_CULTURE] Culture and +15% [ICON_PRODUCTION] Military Production.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
-			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
+			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DAWN_OF_MAN_CL_UC_CUBA">
 			<Text>
@@ -18738,7 +18738,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CEILIDH_HALL_HELP"> 
-			<Text>Replaces the Opera House.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_HAPPINESS_1] Happiness.</Text>
+			<Text>Replaces the Opera House.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_HAPPINESS_1] Happiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CEILIDH_HALL_STRATEGY"> 
 			<Text>
@@ -20196,7 +20196,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MUGHAL_FORT_HELP"> 
-			<Text>Replaces the Castle. Costs less and needs no Walls.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture and +2 [ICON_HAPPINESS_1] Happiness.</Text>
+			<Text>Replaces the Castle. Costs less and needs no Walls.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture and +2 [ICON_HAPPINESS_1] Happiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MUGHAL_FORT_PEDIA"> 
 			<Text>
@@ -20286,7 +20286,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_NATIONAL_TREASURY_HELP"> 
 			<Text>
-				[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Must have built a Market in all Cities. The cost goes up the more cities there are in the empire. Gain an additional trade route slot and +10% [ICON_GOLD] Gold in the city in which it is built. Trade routes other players make to a city with an East India Company will generate an extra 4 [ICON_GOLD] Gold for the city owner and the trade route owner gains an additional 2 [ICON_GOLD] Gold.
+				[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Must have built a Market in all Cities. The cost goes up the more cities there are in the empire. Gain an additional trade route slot, and +5 [ICON_GOLD] Gold and +10% [ICON_GOLD] Gold in the city in which it is built. Trade routes other players make to a city with an East India Company will generate an extra 4 [ICON_GOLD] Gold for the city owner and the trade route owner gains an additional 2 [ICON_GOLD] Gold.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_NATIONAL_TREASURY_PEDIA"> 
@@ -20374,7 +20374,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ODEON_HELP"> 
-			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
+			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OPERA_HOUSE"> 
 			<Text>
@@ -20888,7 +20888,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STAATSMUSEUM_HELP"> 
-			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Artist specialist slot.</Text>
+			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Artist specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STAATSMUSEUM_STRATEGY"> 
 			<Text>
@@ -101287,7 +101287,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Pledging to protect a City-State tells everyone that you will defend it from attacks and tribute demands.[NEWLINE][NEWLINE]While you protect it:[NEWLINE]Your resting [ICON_INFLUENCE] Influence with it is 10 higher.[NEWLINE]Your [ICON_INFLUENCE] Influence recovers 50% faster while below the resting point.[NEWLINE][NEWLINE]Your obligations:[NEWLINE]For 10 turns after another player demands tribute from it, you lose 3 [ICON_INFLUENCE] Influence per turn with it.[NEWLINE]The same happens every turn another player is at war with it.[NEWLINE]If you are at war with that player yourself, you gain 1 [ICON_INFLUENCE] Influence per turn instead.[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]Demanding tribute from a City-State you protect breaks your pledge.[ENDCOLOR][NEWLINE]You cannot pledge to it again for 20 turns.[NEWLINE][NEWLINE]Every tribute demand is announced to all players who know the City-State.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_HIPPODROME_HELP">
-			<Text>Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.</Text>
+			<Text>Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_CANTON_HELP">
 			<Text>Replaces the Bank. Costs half as much.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]+35% [ICON_GOLD] Gold (instead of +25%).[NEWLINE]2 Merchant specialist slots (instead of 1).</Text>
@@ -120407,10 +120407,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Search:</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_AMPHITHEATER_HELP">
-			<Text>Great Works in this city yield +1 [ICON_TOURISM] Tourism.</Text>
+			<Text>Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_OPERA_HOUSE_HELP">
-			<Text>Great Works in this city yield +1 [ICON_TOURISM] Tourism.</Text>
+			<Text>Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_WONDER_NOTRE_DAME_HELP">
 			<Text>+10 [ICON_HAPPINESS_1] Happiness.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 1 Great Work.[NEWLINE]Both Great Work slots filled: +4 [ICON_PEACE] Faith.</Text>
@@ -147390,7 +147390,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Caravansary. Costs more; available with Currency (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]With a garrison: +3 [ICON_CULTURE] Culture, and the garrison costs no [ICON_GOLD] Gold maintenance.[NEWLINE]From the Renaissance Era the Culture needs no garrison.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ALCAZABA_HELP">
-			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
+			<Text>Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]+8% [ICON_FOOD] Food.[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_BAJORAS">
 			<Text>Bajoras</Text>
@@ -147435,7 +147435,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service, +1 [ICON_GOLD] Gold with Economics.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ODEON_HELP">
-			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
+			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_TERCIO_HELP">
 			<Text>Replaces the Musketman. Higher [ICON_STRENGTH] Combat Strength and the Bonus vs Mounted (50) promotion.</Text>
@@ -147517,7 +147517,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+20% [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence from Trade Missions.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MUGHAL_FORT_HELP">
-			<Text>Replaces the Castle. Costs less and needs no Walls.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture and +2 [ICON_HAPPINESS_1] Happiness.</Text>
+			<Text>Replaces the Castle. Costs less and needs no Walls.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture and +2 [ICON_HAPPINESS_1] Happiness.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_BY_REASON">
 			<Text>[ICON_BUILD_FISHING_BOATS] Fishing Boats instantly claim all surrounding Neutral Tiles.[NEWLINE][NEWLINE]Receive a free [ICON_GREAT_ADMIRAL] Great Admiral at the [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR] technology.[NEWLINE][NEWLINE]Cities next to the coast and a mountain yield +1 [ICON_CULTURE] Culture.[NEWLINE]Units trained in a city next to a mountain start with Stargazing (+1 Sight).</Text>
@@ -147562,7 +147562,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Heals 25 HP upon killing an enemy unit.[NEWLINE]Starts with Cover I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BERBER_CAVALRY">
-			<Text>Replaces the Cavalry.[NEWLINE]Starts with Shock I, Drill I and Mobility.</Text>
+			<Text>Replaces the Cavalry.[NEWLINE]Starts with Shock I and Drill I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GOOD_FIGHT">
 			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE]Your first 2 Expands Receive +1 [ICON_CITIZEN] Population.[NEWLINE]Land units start with Amphibious I.</Text>
@@ -147587,7 +147587,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Start the game with nearby Coastal tiles and Islands already explored.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_TUNISIA_CASTLE_HELP">
-			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 4 tiles far, and terrain does not block its view.</Text>
+			<Text>Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 4 tiles far, and terrain does not block its view.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_BARLAS_CAVALRY">
 			<Text>Barlas Cavalry</Text>
@@ -147620,7 +147620,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture (but not the Hotel's extra [ICON_CULTURE] Culture from Natural Wonders, Lakes and Oases).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
-			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
+			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ASKUM_NATIONAL_EPIC_HELP">
 			<Text>Replaces the National Epic.[NEWLINE][NEWLINE]Like the National Epic:[NEWLINE][ICON_GREAT_WORK] 3 Great Work slots, 2 of them come filled.[NEWLINE]All 3 slots filled: +25% [ICON_GREAT_PEOPLE] Great People generation in this city.[NEWLINE]Must have built a Monument in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_PEACE] Faith.[NEWLINE]Every Monument in the empire yields +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_PEACE] Faith and +1 [ICON_GOLD] Gold.</Text>
@@ -147853,7 +147853,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_PRODUCTION] Production from [ICON_PLANTATION] Plantations.[NEWLINE][NEWLINE]Once you have built the East India Company, [COLOR_POSITIVE_TEXT]Strategic[ENDCOLOR] Resources produce +1 [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
-			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
+			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_YUGO_M84_HELP">
 			<Text>Unique Unit for Yugoslavia. Replaces the Tank and is cheaper (costs as much as a Landship).[NEWLINE][NEWLINE]When trained, it gets a promotion from your Ideology: Freedom: Foreign Lands. Autocracy: Mobility. Order: Drill I.</Text>
@@ -147875,7 +147875,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Composite Bowman.[NEWLINE]+30% [ICON_RANGE_STRENGTH] Ranged Combat Strength when attacking an adjacent target (Point Blank, lost on upgrade).[NEWLINE]Starts with Woodsman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CL_UC_DANCE_HALL_HELP">
-			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
+			<Text>Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.</Text>
 		</Replace>
 		<!-- Phase 6 C++ batch F -->
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_GADRAUHT_AURA">
