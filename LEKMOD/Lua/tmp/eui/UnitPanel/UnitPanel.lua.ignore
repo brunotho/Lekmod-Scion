@@ -1996,6 +1996,12 @@ function ActionToolTipHandler( control )
 		end
 	end
 
+	-- LEKMOD: the Citadel's lock at the end of a turn (red line; the DLL enforces it)
+	if isBuild and build and build.Type == "BUILD_CITADEL" then
+		toolTip:insert( "" )
+		toolTip:insert( "[COLOR_NEGATIVE_TEXT]" .. L("TXT_KEY_LEKMOD_CITADEL_TURN_END_LOCK", 30, 15) .. "[ENDCOLOR]" )
+	end
+
 	-- LEKMOD: the build's Gold maintenance, as the last line
 	if isBuild then
 		local iLekmodMaintenance = LekmodBuildMaintenance(build)
@@ -2526,3 +2532,25 @@ ContextPtr:SetHide( false )
 
 print("Finished loading EUI unit panel",os.clock())
 end)
+
+-- LEKMOD (New Specs 12, 2026-11-18): refresh the action buttons when the Citadel's end-of-turn lock (enforced in the DLL) starts
+do
+	local citadelAction, citadelCanDo
+	for iAction, action in pairs( GameInfoActions ) do
+		if action.SubType == ActionSubTypes.ACTIONSUBTYPE_BUILD and action.MissionData == GameInfoTypes.BUILD_CITADEL then
+			citadelAction = iAction
+		end
+	end
+	Events.EndTurnTimerUpdate.Add( function()
+		local unit = UI.GetHeadSelectedUnit()
+		if not unit or not citadelAction or not Game.CanHandleAction( citadelAction, 0, 1 ) then
+			citadelCanDo = nil
+			return
+		end
+		local canDo = Game.CanHandleAction( citadelAction )
+		if canDo ~= citadelCanDo then
+			citadelCanDo = canDo
+			UpdateUnitActions( unit )
+		end
+	end )
+end

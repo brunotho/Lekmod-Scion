@@ -3461,6 +3461,14 @@ bool CvGame::canHandleAction(int iAction, CvPlot* pPlot, bool bTestVisible)
 			if(GET_PLAYER(pkHeadSelectedUnit->getOwner()).isSimultaneousTurns() || GET_PLAYER(pkHeadSelectedUnit->getOwner()).isTurnActive())
 #endif
 			{
+#ifdef LEKMOD_SPECS_2026_11_18
+				if (!bTestVisible && pActionInfo->getMissionType() == CvTypes::getMISSION_BUILD())
+				{
+					static const int s_iCitadelBuild = GC.getInfoTypeForString("BUILD_CITADEL", true);
+					if (s_iCitadelBuild != -1 && pActionInfo->getMissionData() == s_iCitadelBuild && LekmodIsCitadelTurnEndLocked(pkHeadSelectedUnit))
+						return false;
+				}
+#endif
 				if(GC.getActionInfo(iAction)->getMissionType() != NO_MISSION)
 				{
 					if(pPlot != NULL)
@@ -10500,6 +10508,33 @@ bool CvGame::LekmodIsVictoryBlocked(TeamTypes eTeam) const
 	if (eTeam == NO_TEAM || !isGameMultiPlayer())
 		return false;
 	return !GET_TEAM(eTeam).isHuman();
+}
+
+/// The Great General's Citadel can't be started in the last 30 seconds of a timed turn (15 inside own borders).
+/// Checked only in canHandleAction, i.e. on the issuing player's machine before the order is sent, so the different
+/// wall clocks of the players can't desync the game. Same timer values as the Fast Hand intercept rule (CvUnit::canAirPatrol).
+bool CvGame::LekmodIsCitadelTurnEndLocked(const CvUnit* pUnit)
+{
+	if (pUnit == NULL || !isOption(GAMEOPTION_END_TURN_TIMER_ENABLED) || getElapsedGameTurns() <= 0)
+		return false;
+#ifdef AUI_GAME_RELATIVE_TURN_TIMERS
+	if (getPitbossTurnTime() != 0 && !isOption("GAMEOPTION_RELATIVE_TURN_TIMER"))
+		return false;
+#else
+	if (getPitbossTurnTime() != 0)
+		return false;
+#endif
+#ifdef GAME_UPDATE_TURN_TIMER_ONCE_PER_TURN
+	float fTurnLength = getPreviousTurnLen();
+#else
+	float fTurnLength = static_cast<float>(getMaxTurnLen());
+#endif
+	if (fTurnLength <= 0.0f)
+		return false;
+	float fLeft = fTurnLength - getTimeElapsed();
+	const CvPlot* pPlot = pUnit->plot();
+	bool bOwn = pPlot != NULL && pPlot->getOwner() == pUnit->getOwner();
+	return fLeft <= (bOwn ? 15.0f : 30.0f);
 }
 
 #endif

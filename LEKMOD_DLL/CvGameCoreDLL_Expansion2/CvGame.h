@@ -142,6 +142,7 @@ public:
 	bool isNetworkMultiPlayer() const;
 #ifdef LEKMOD_SPECS_2026_11_18
 	bool LekmodIsVictoryBlocked(TeamTypes eTeam) const;
+	bool LekmodIsCitadelTurnEndLocked(const CvUnit* pUnit);
 #endif
 	bool isGameMultiPlayer() const;
 	bool isTeamGame() const;
