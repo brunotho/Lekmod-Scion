@@ -541,6 +541,51 @@ local function GetSpecialistYields( city, specialist )
 	return tip
 end
 
+-- LEKMOD (New Specs 12, 2026-11-18): buildings with a limit per empire above 1 (Oil Refinery, Recycling Center, Ziggurat, ...):
+-- "Per empire: 2/5 (Rome, Antium being built)"; cities count that have it or have it in their production queue, like the game does
+function LekmodEmpireLimitLine(pPlayer, iBuildingClassID)
+	if pPlayer == nil or iBuildingClassID == nil then
+		return nil
+	end
+	local pClass = GameInfo.BuildingClasses[iBuildingClassID]
+	if pClass == nil or (pClass.MaxPlayerInstances or -1) <= 1 then
+		return nil
+	end
+	local iMax = pClass.MaxPlayerInstances + (pClass.ExtraPlayerInstances or 0)
+	local aIDs = {}
+	for row in GameInfo.Buildings{ BuildingClass = pClass.Type } do
+		aIDs[row.ID] = true
+	end
+	local aNames = {}
+	for pCity in pPlayer:Cities() do
+		local bHas = false
+		for iID in pairs(aIDs) do
+			if pCity:IsHasBuilding(iID) then
+				bHas = true
+			end
+		end
+		local bMaking = false
+		if not bHas then
+			for i = 0, pCity:GetOrderQueueLength() - 1 do
+				local eOrder, iData = pCity:GetOrderFromQueue(i)
+				if eOrder == OrderTypes.ORDER_CONSTRUCT and aIDs[iData] then
+					bMaking = true
+				end
+			end
+		end
+		if bHas then
+			table.insert(aNames, pCity:GetName())
+		elseif bMaking then
+			table.insert(aNames, Locale.ConvertTextKey("TXT_KEY_LEKMOD_EMPIRE_LIMIT_MAKING", pCity:GetName()))
+		end
+	end
+	local s = Locale.ConvertTextKey("TXT_KEY_LEKMOD_EMPIRE_LIMIT", #aNames, iMax)
+	if #aNames > 0 then
+		s = s .. " (" .. table.concat(aNames, ", ") .. ")"
+	end
+	return s
+end
+
 local function GetHelpTextForBuilding( buildingID, bExcludeName, bExcludeHeader, bNoMaintenance, city )
 	local building = GameInfo.Buildings[ buildingID ]
 	if not building then
@@ -647,6 +692,11 @@ end
 	local tip, tipKey, items, item
 	-- Name
 	local tips = table( BuildingColor( Locale_ToUpper( building.Description ) ) )
+	-- LEKMOD: limit per empire, with the cities that have it or are building it
+	local sLekmodLimit = LekmodEmpireLimitLine( activePlayer, buildingClassID )
+	if sLekmodLimit then
+		tips:insert( sLekmodLimit )
+	end
 
 	-- Other tags
 	for k,v in pairs(building) do

@@ -802,6 +802,12 @@ Tags: ui
 - Added: a Great Scientist you keep shows a red "-N Science" over its tile at the start of your turn when its Science bonus drops
 - Dev: Lua/LekmodScientistDecay.lua (loaded by InGame) compares each Great Scientist's GetDiscoverAmount with the last turn; local only, nothing sent over the network
 
+BUILDING LIMITS PER EMPIRE (NEW) (MaxPlayerInstances)
+-----------------------------------------------------
+Tags: ui, buildings
+- Added: the tooltip of a building you can only have a few of (Oil Refinery, Recycling Center, Ziggurat, ...) shows how many you have or are building out of the limit, and in which cities
+- Dev: LekmodEmpireLimitLine in InfoTooltipInclude (standard UI) and EUI_tooltip_library (EUI); classes with MaxPlayerInstances above 1; a city counts when it has the building or has it anywhere in its production queue
+
 TOP-LEFT PANEL HOTKEYS
 ----------------------
 Tags: ui

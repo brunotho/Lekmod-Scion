@@ -149016,6 +149016,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_BUILD_MAINTENANCE">
 			<Text>Costs {1_Num} [ICON_GOLD] Gold maintenance per turn.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EMPIRE_LIMIT">
+			<Text>Per empire: {1_Num}/{2_Num}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EMPIRE_LIMIT_MAKING">
+			<Text>{1_City} being built</Text>
+		</Row>
 	</Language_en_US>
 	<Language_de_DE>
 	</Language_de_DE>
