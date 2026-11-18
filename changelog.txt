@@ -4022,7 +4022,8 @@ Tags: civs, units, buildings
 GAME OPTIONS: UNIT BUTTON HOTKEYS AND CHAT SOUND
 ------------------------------------------------
 Tags: ui
-- Added: options to show the hotkey on each promotion and worker build button (both on by default)
+- Added: options to show the hotkey on each promotion, worker build and unit action button (all on by default)
+- Added: Alt + right click on a unit's action, build or promotion button opens the hotkey settings with that key ready to change
 - Added: promotions can also be picked with the number keys 1-9
 - Added: when two things a unit can do right now share a hotkey (e.g. two builds on "D"), their buttons show a number 1-9 instead, which picks them
 - Changed: promotions are sorted by when they become available
@@ -4031,7 +4032,8 @@ Tags: ui
 - Changed: Route To sits with the other unit actions on the left instead of among the worker builds
 - Removed: the "Recommended" build suggestion in the worker panel
 - Dev: long hotkeys (Shift+Ctrl+R) first ran into the next button; worker builds and promotions now sit in fixed columns (LekmodFlowPlace: button + room for a one-letter key, a wider label takes more columns, new row when full); the panel moved left (small UI x 106 -> 72, normal 200 -> 90); hotkeys written as "Ctrl-F" are parsed too; IsActionRecommended is ignored in both UIs
-- Dev: the unit action stacks on the left had the labels for one build (e36c6c38); removed again, since keys like "Shift+E" don't fit there
+- Dev: the unit action stacks on the left had the labels for one build (e36c6c38); removed again, since keys like "Shift+E" don't fit there; since New Specs 12 (2026-11-18) they show the key on the button itself (LekmodStackKeyLabel bottom right, LekmodStackModLabel top left, two modifiers shortened to "S+A"; option LEK_ActionHotkeys); modifiers now also come from the action's CtrlDown/AltDown/ShiftDown (the hotkey manager sets them there)
+- Dev: Alt + right click: LuaEvents.LekmodOpenHotkeyFor(SubType, Type) from UnitPanel; the in-game OptionsMenu opens the hotkey panel, expands the category, scrolls to the row and starts its edit mode (interface modes such as Ranged Attack have no row there: it only opens the panel)
 - Dev: the label sits in UnitPanel.xml and UnitPanel_small.xml; with the small UI the game loads the _small layout, which first had no label (Lua.log: label missing, keys present)
 - Dev: standard UI only; settings in the "Enhanced User Interface Options" user data (LEK_PromotionHotkeys, LEK_MuteChatSound); Lekmod's own UnitPanel.xml (a hotkey label on the action buttons)
 - Dev: keyboard layout option LEK_KeyboardLayout (0/1/2), LekmodLayoutKey in UnitPanel (button labels and the action tooltip) and MiniMapPanel (option labels); Lua key handlers get layout-aware key codes and need no mapping; the Options hotkey manager is not mapped (user, 2026-11-05)

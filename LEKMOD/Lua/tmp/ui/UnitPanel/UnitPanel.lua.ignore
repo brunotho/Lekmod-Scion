@@ -254,6 +254,13 @@ end
 -- LEKMOD: the key an action is shown with: its own hotkey, for promotions the promotion's key as a fallback
 function LekmodActionKey( action )
 	local strMods, strKey = LekmodShortHotKey( action.HotKey );
+	if strKey ~= "" and strMods == "" then
+		local mods = {};
+		if action.CtrlDown then table.insert( mods, "Ctrl" ); end
+		if action.AltDown then table.insert( mods, "Alt" ); end
+		if action.ShiftDown then table.insert( mods, "Shift" ); end
+		strMods = table.concat( mods, "+" );
+	end
 	if strKey == "" and action.SubType == ActionSubTypes.ACTIONSUBTYPE_PROMOTION then
 		-- the action's Type is the promotion's type; CommandData only as a fallback
 		local promotion = GameInfo.UnitPromotions[action.Type] or GameInfo.UnitPromotions[action.CommandData];
@@ -444,6 +451,7 @@ function UpdateUnitActions( unit )
 	-- worker builds too while their hotkeys are shown (two options, both default on)
 	local bShowKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_PromotionHotkeys" ) ~= 0;
 	local bShowBuildKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_BuildHotkeys" ) ~= 0;
+	local bShowActionKeys = g_LekmodOptions == nil or g_LekmodOptions.GetValue( "LEK_ActionHotkeys" ) ~= 0;
 	local promoStep = buttonSize + ((numberOfButtonsPerRow == 6) and 14 or 16);
 	local promosPerRow = math.max( 1, math.floor( numberOfButtonsPerRow * buttonSize / promoStep ) );
 	local buildStep = bShowBuildKeys and promoStep or buttonSize;
@@ -564,9 +572,20 @@ function UpdateUnitActions( unit )
             end
 
 			-- LEKMOD: the hotkey next to worker builds (promotions set theirs above); the action stacks on the left
-			-- stay without (keys like "Shift+E" don't fit there)
+			-- show theirs on the button (option, default on), modifiers shortened when there are two
 			if not bPromotion and not bBuild then
 				LekmodSetHotKeyLabel( instance, "", "" );
+				if instance.LekmodStackKeyLabel ~= nil then
+					local strMods, strKey = "", "";
+					if bShowActionKeys then
+						strMods, strKey = LekmodActionKey( action );
+						if string.find( strMods, "+", 1, true ) then
+							strMods = string.gsub( strMods, "(%a)%a*", "%1" );
+						end
+					end
+					instance.LekmodStackKeyLabel:SetText( LekmodLayoutKey( strKey ) );
+					instance.LekmodStackModLabel:SetText( strMods );
+				end
 			end
             
 			-- test w/o visible flag (ie can train right now)
@@ -583,6 +602,7 @@ function UpdateUnitActions( unit )
 				HookupActionIcon(action, actionIconSize, instance.UnitActionIcon);	
             end
             instance.UnitActionButton:RegisterCallback( Mouse.eLClick, OnUnitActionClicked );
+            instance.UnitActionButton:RegisterCallback( Mouse.eRClick, LekmodOnUnitActionRClicked );
             instance.UnitActionButton:SetVoid1( iAction );
 			instance.UnitActionButton:SetToolTipCallback( TipHandler )
            
@@ -1181,6 +1201,14 @@ function OnUnitActionClicked( action )
 		end
 		Game.HandleAction( action );
     end
+end
+
+-- LEKMOD (New Specs 12, 2026-11-18): Alt + right click opens this action's hotkey in the hotkey manager (OptionsMenu)
+function LekmodOnUnitActionRClicked( iAction )
+	local action = GameInfoActions[iAction];
+	if action ~= nil and UI.AltKeyDown() then
+		LuaEvents.LekmodOpenHotkeyFor( action.SubType, action.Type );
+	end
 end
 
 function OnActivePlayerTurnEnd()

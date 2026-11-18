@@ -147942,6 +147942,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT">
 			<Text>Each worker build button shows the key that starts it (the key you set in the hotkey settings).[NEWLINE]The buttons get more space between them, so fewer fit in a row.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS">
+			<Text>Show hotkeys on the unit action buttons</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS_TT">
+			<Text>The action buttons on the left of the unit panel (Fortify, Sleep, Pillage, ...) show their key on the button.[NEWLINE][NEWLINE]Alt + right click on any action, build or promotion button opens the hotkey settings with that key ready to change.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_MUTE_CHAT">
 			<Text>Mute the chat message sound</Text>
 		</Row>

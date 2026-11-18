@@ -305,6 +305,7 @@
       <Stack Anchor="C,T" Offset="0,90" Padding="15" >
         <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodBuildHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT"  />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodActionHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodImportantNotifsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodFlagPromotionsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT" />
