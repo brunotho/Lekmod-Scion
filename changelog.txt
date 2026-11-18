@@ -805,7 +805,8 @@ Tags: ui
 TOP-LEFT PANEL HOTKEYS
 ----------------------
 Tags: ui
-- Added: hotkeys for the panels of the top-left corner: Shift+F2 City List, Shift+F3 Unit List, Shift+F4 Resource List, Shift+F6 Research Info, Shift+F9 Great Person List (press again to close)
+- Added: hotkeys for the panels of the top-left corner: Shift+F1 City List, Shift+F2 Unit List, Shift+F3 Resource List, Shift+F4 Research Info, Shift+F5 Great Person List (press again to close)
+- Dev: first Shift+F2/F3/F4/F6/F9 (after the screens on the same F-keys); moved to Shift+F1-F5 so one hand reaches them (user, 2026-11-18; no Shift+F-key is used by the game)
 - Dev: LekmodInfoCornerHotkey in InGame.lua (InputHandler, Shift without Ctrl/Alt; toggles via Events.OpenInfoCorner); the button tooltips (TXT_KEY_IC_*) name the keys
 
 UNIT LIST AND MILITARY OVERVIEW
@@ -822,6 +823,7 @@ Tags: ui, promotions
 - Dev: strike range on selection: LekmodShowSelectedAirRange in InGame.lua, own SplineBorder style LekmodAirRangeOutline (Highlights.xml, like FireRangeBorder) on every tile in range; selection mode only, nukes excluded
 - Dev: target tile in InGame.lua (ClickSelect, highlight style LekmodTargetTile in Highlights.xml), passed to both screens with LuaEvents.LekmodTargetTileChanged; screen-local, nothing sent over the network. The distance column (air units only) appears while a tile is tagged and takes its room from the promotions column; Military Overview has a "Clear tagged tile" button. Tab (InGame InputHandler, before the interface mode handlers): nukes excluded, wraps to the top, restarts on a new tag and every turn, selects without moving the camera; Tab waits 0.45 s after the last Tab and 0.5 s after the last strike; strikes 0.5 s apart (trial values). The strike time is noted at the click only: combat animation events don't fire with Quick Combat, and a detector watching planes run out of attacks restarted the delay late, by the network lag. The strike click itself is gated in InGame InputHandler (LekmodAirStrikeClick: right button in selection mode, left button in strike mode, decided on button down, the button up follows; only when the selected air unit CanRangeStrikeAt the tile), because after a strike the game auto-selects the next unit and the click goes straight to the engine.
 - Dev: UnitList.lua (both UIs) and MilitaryOverview.lua (new override, standard UI only): pickable promotions the unit type does not start with, as 32 px icons in the old Status column (up to 10, closer together when they do not fit; rows with icons are 32 px tall), names in the row tooltip, sorted by count; HP column colored like the unit list's
+- Dev: health colours: 70-100 white, 40-69 yellow, below 40 red (was green from 66, yellow from 33; user, 2026-11-18)
 
 UNIT FLAGS: ATTACKED THIS TURN
 ------------------------------

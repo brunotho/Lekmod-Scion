@@ -141,7 +141,7 @@ function ClickSelect( wParam, lParam )
 end
 
 ----------------------------------------------------------
--- LEKMOD: target tile. The unit list (Shift+F3) and the Military Overview (F3) sort air units by their distance to it.
+-- LEKMOD: target tile. The unit list (Shift+F2) and the Military Overview (F3) sort air units by their distance to it.
 -- Local to this player's screen: nothing is sent over the network.
 ----------------------------------------------------------
 local LEKMOD_TARGET_STYLE = "LekmodTargetTile";
@@ -260,8 +260,7 @@ end
 
 ----------------------------------------------------------
 -- LEKMOD: hotkeys for the top-left panels (InfoCorner.lua has none). Shift + the F-key of the related screen:
--- City List = Shift+F2 (Economic Overview F2), Unit List = Shift+F3 (Military Overview F3), Resource List = Shift+F4
--- (Diplomacy F4, where resources are traded), Research Info = Shift+F6 (Tech Tree F6), Great Person List = Shift+F9.
+-- City List = Shift+F1, Unit List = Shift+F2, Resource List = Shift+F3, Research Info = Shift+F4, Great Person List = Shift+F5.
 -- The button tooltips name the keys (TXT_KEY_IC_*). A key closes its panel when that panel is open.
 ----------------------------------------------------------
 local g_LekmodInfoCorner = nil;
@@ -278,11 +277,12 @@ function LekmodInfoCornerHotkey( wParam )
 		InfoCornerID.GP = n + 1;
 	end
 	local keys = {
-		[Keys.VK_F2] = InfoCornerID.Cities,
-		[Keys.VK_F3] = InfoCornerID.Units,
-		[Keys.VK_F4] = InfoCornerID.Resources,
-		[Keys.VK_F6] = InfoCornerID.Tech,
-		[Keys.VK_F9] = InfoCornerID.GP,
+		-- Shift+F1 to F5 (user, 2026-11-18: one hand; was Shift+F2/F3/F4/F6/F9 after the screens of the same F-keys)
+		[Keys.VK_F1] = InfoCornerID.Cities,
+		[Keys.VK_F2] = InfoCornerID.Units,
+		[Keys.VK_F3] = InfoCornerID.Resources,
+		[Keys.VK_F4] = InfoCornerID.Tech,
+		[Keys.VK_F5] = InfoCornerID.GP,
 	};
 	local iInfoType = keys[wParam];
 	if iInfoType == nil then

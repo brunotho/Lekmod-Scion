@@ -456,11 +456,10 @@ function BuildUnitList()
         local iHealth = unit:GetMaxHitPoints() - unit:GetDamage();
         sortEntry.health = iHealth;
         local sHealth = tostring( iHealth );
-        if unit:GetDamage() > 0 then
-            local fRatio = iHealth / unit:GetMaxHitPoints();
-            if fRatio >= 0.66 then
-                sHealth = "[COLOR_GREEN]" .. sHealth .. "[ENDCOLOR]";
-            elseif fRatio >= 0.33 then
+        -- LEKMOD (2026-11-18): 70-100% white, 40-69% yellow, below 40% red
+        local fRatio = iHealth / unit:GetMaxHitPoints();
+        if fRatio < 0.70 then
+            if fRatio >= 0.40 then
                 sHealth = "[COLOR_YELLOW]" .. sHealth .. "[ENDCOLOR]";
             else
                 sHealth = "[COLOR_RED]" .. sHealth .. "[ENDCOLOR]";

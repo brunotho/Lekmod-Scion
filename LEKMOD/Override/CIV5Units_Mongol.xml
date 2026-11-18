@@ -77021,7 +77021,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_CITY"> 
 			<Text>
-				City List (Shift+F2)
+				City List (Shift+F1)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_DIPLO"> 
@@ -77031,7 +77031,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_GP"> 
 			<Text>
-				Great Person List (Shift+F9)
+				Great Person List (Shift+F5)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_NONE"> 
@@ -77041,17 +77041,17 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_RESEARCH"> 
 			<Text>
-				Research Info (Shift+F6)
+				Research Info (Shift+F4)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_RESOURCE"> 
 			<Text>
-				Resource List (Shift+F4)
+				Resource List (Shift+F3)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_IC_UNIT"> 
 			<Text>
-				Unit List (Shift+F3)
+				Unit List (Shift+F2)
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_IMPROVEMENT"> 

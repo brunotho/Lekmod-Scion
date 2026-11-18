@@ -447,14 +447,11 @@ function UpdateDisplay()
 	    instance.SelectAnim:SetSizeY(rowY);
 
         local iHealth = 100 - unit:GetDamage()
-        if iHealth == 100 then
+        -- LEKMOD (2026-11-18): 70-100 white, 40-69 yellow, below 40 red
+        if iHealth >= 70 then
             sortEntry.health = tostring(iHealth);
         else
-            if iHealth >= 66 then
-                sortEntry.health = "[COLOR_GREEN]" .. tostring(iHealth) .. "[ENDCOLOR]";
-                --green
-    
-            elseif iHealth >= 33 then
+            if iHealth >= 40 then
                 sortEntry.health = "[COLOR_YELLOW]" .. tostring(iHealth) .. "[ENDCOLOR]";
                 --yellow
 
