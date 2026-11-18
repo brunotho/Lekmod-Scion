@@ -4042,6 +4042,35 @@ Tags: ui
 - Changed: the draft settings now start at 1 coastal and 2 inland civilizations per pool (the host can change them)
 - Dev: Lekmod_staging_draft.lua Draft_SetCivHoverHelp / Draft_ShowCivInfoPanel (width and position from the space left of MainGrid, 260-420 px); StagingRoom.xml LekmodCivInfoPanel (standard UI)
 
+UNIQUE BUILDING MAINTENANCE (NEW) (GoldMaintenance)
+---------------------------------------------------
+Tags: civs, buildings
+Unique buildings cost the same Gold maintenance as the building they replace, so a unique building's advantage is in its effects.
+- Changed: these unique buildings now cost the maintenance of the building they replace:
+  - Akkadian Library (Library): 1 Gold
+  - Baray (Garden): 1 Gold
+  - Blast Furnace (Forge): 1 Gold
+  - Cacicazgo (Granary): 1 Gold
+  - Candi (Water Mill): 2 Gold
+  - Cooperative (Factory): 3 Gold
+  - Ducal Stable (Stable): 1 Gold
+  - Feitoria (Harbor): 2 Gold
+  - Floating Gardens (Water Mill): 2 Gold
+  - Fulling Mill (Water Mill): 2 Gold
+  - Hacienda (Windmill): 2 Gold
+  - Hippodrome (Amphitheater): 1 Gold
+  - Irish Pub (Zoo): 2 Gold
+  - Mead Hall (Colosseum): 1 Gold
+  - Ocupada estable (Argentina) (Stable): 1 Gold
+  - Odeon (Amphitheater): 1 Gold
+  - Pillar of Ashoka (Monument): 1 Gold
+  - Reisläufer Post (Armory): 1 Gold
+  - Sauna (Shrine): 1 Gold
+  - Simbahan (Colosseum): 2 Gold
+  - Wat (University): 2 Gold
+- Note: kept on purpose (user, 2026-11-18): Kongo's Slave Market, the free temples (Burial Tomb, Jongmyo Shrine, Stave Church, Mud Pyramid Mosque), buildings with Gold of their own (Paper Maker, Minaa', Palmyrene Theater, Stade), and the stated trade-offs Ribat, Krepost, Orszaggyules and Ski Resort
+- Dev: a building given for free (policies, wonders) still costs no maintenance (base game)
+
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 --------------------------------------------------------------
 Tags: ui, buildings, civs

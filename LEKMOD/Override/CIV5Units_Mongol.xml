@@ -3155,7 +3155,7 @@
 		<Text>Swiss mercenaries (Reisläufer) were notable for their service in foreign armies, especially the armies of the Kings of France, throughout the Early Modern period of European history, from the Later Middle Ages into the Age of Enlightenment. Their service as mercenaries was at its peak during the Renaissance, when their proven battlefield capabilities made them sought-after mercenary troops. There followed a period of decline, as technological and organizational advances counteracted the Swiss' advantages. Switzerland's military isolationism largely put an end to organized mercenary activity; the principal remnant of the practice is the Pontifical Swiss Guard at the Vatican. (Wikipedia)</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_HELP">			
-		<Text>Replaces the Armory. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
+		<Text>Replaces the Armory.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_STRATEGY">			
 		<Text>The Reisläufer Post's granted combat bonuses vary in usefulness depending on available terrain but will aid on both offense and defense, weakening your opponents' attempts at using Mountains as choke points and enabling you to do the same with greater ease. The Reisläufer recruited upon completion can help round out your forces no matter the circumstance, comparable to a Longswordsman.</Text>
@@ -3789,7 +3789,7 @@
 Many individual cacicazgos have been studied in colonial Mexico, showing that entailment was a successful means to preserve noble indigenous resources as the situation for commoners declined. There are cases where Spaniards married into cacique families, thereby giving them access to indigenous resources. In the Archivo General de la Nación, Mexico, a whole section of records, called Vínculos, is devoted to individual noble entailments. A collection of them was published in 1961. Cacicazgos survived into the nineteenth century. Conflicts over inheritance were common, and the litigants' arguments found in these cases form the basis for understanding some of the dynamics of the institution. Over time, the concept of cacique shifted, with some women attaining the title of cacica. Cacicazgo likewise underwent some transformation during the colonial era in Mexico. "By law, a cacique was a single heir and possessor of a cacicazgo estate, which always included land and often a subject labor force to work it. The Indians themselves, however, saw things differently, and by late colonial times it was not unusual for all the sons and daughters of a cacique (or cacica) to adopt the title. How and why this change took place, its chronology, and what it meant for local community organization remain imperfectly understood...The late colonial setting was vastly different, and indigenous noble claims of the period must be understood in the context in which they arose."[9] </Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_CACICAZGO_HELP">
-			<Text>Replaces the Granary. Costs a bit more and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_PRODUCTION] Production.[NEWLINE]Allows [ICON_PRODUCTION] Production trade routes from this city to your other cities.</Text>
+			<Text>Replaces the Granary. Costs a bit more.[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_PRODUCTION] Production.[NEWLINE]Allows [ICON_PRODUCTION] Production trade routes from this city to your other cities.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_HELP_COLOMBIAN_CAVALRY">
 			<Text>Unique Unit for Colombia. Receives Defensive Terrain combat bonuses and may fortify.</Text>
@@ -3965,7 +3965,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Pillar of Ashoka</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_ASHOKA_HELP">
-			<Text>Replaces the Monument. Costs half as much and needs no [ICON_GOLD] Gold maintenance, but needs Pottery.[NEWLINE][NEWLINE]Like the Monument:[NEWLINE]+2 [ICON_CULTURE] Culture.</Text>
+			<Text>Replaces the Monument. Costs half as much, but needs Pottery.[NEWLINE][NEWLINE]Like the Monument:[NEWLINE]+2 [ICON_CULTURE] Culture.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_ASHOKA_PEDIA">
 			<Text>During and after his many conquests, the Mauryan king Ashoka ordered the construction of numerous stone pillars across India. Those columns were between 12 to 15 metres high (40 to 50 feet) and were adorned with animal capitals, mostly with images of stylised lions. Also, the pillars were carved with inscriptions bearing the Edicts of Ashoka. The Edicts were the king's view of Dhamma, a set of social and religious rules, guidelines and policies. 3rd century BC brought the emergence of Buddhism, common use of iron and migration of rural populace into cities – those and more events thoroughly transformed Indian society. Ashoka's edicts, based on Buddhist thought, were aimed at providing solutions to growing internal problems, as well as at documenting the spread of Buddhism – both in India and beyond. </Text>
@@ -6325,7 +6325,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_COOPERATIVE_HELP">
-		<Text>Replaces the Factory. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Factory:[NEWLINE]+4 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production.[NEWLINE][ICON_RES_RUBBER] Rubber worked by this city yields +2 [ICON_GOLD] Gold.[NEWLINE]Needs 2 [ICON_RES_COAL] Coal and 1 [ICON_RES_IRON] Iron.[NEWLINE]City must have a Workshop.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness.[NEWLINE]3 Engineer specialist slots (instead of 2).[NEWLINE]1 Cooperative is enough to choose an Ideology (instead of 3 Factories).</Text>
+		<Text>Replaces the Factory.[NEWLINE][NEWLINE]Like the Factory:[NEWLINE]+4 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production.[NEWLINE][ICON_RES_RUBBER] Rubber worked by this city yields +2 [ICON_GOLD] Gold.[NEWLINE]Needs 2 [ICON_RES_COAL] Coal and 1 [ICON_RES_IRON] Iron.[NEWLINE]City must have a Workshop.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness.[NEWLINE]3 Engineer specialist slots (instead of 2).[NEWLINE]1 Cooperative is enough to choose an Ideology (instead of 3 Factories).</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_COOPERATIVE_STRATEGY">
 		<Text>Unique Chilean Replacement for the Factory. As a normal Factory, it provides +4 Production, +10% Production and 2 Engineer Specialists. Unlike a normal Factory however, only 1 is needed to choose an Ideology. Requires 2 Coal and 1 Iron.</Text>
@@ -8794,7 +8794,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Irish Pub</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_IRISH_PUB_HELP">
-			<Text>Replaces the Zoo. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Zoo:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness (no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE]City must have a Colosseum.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_FOOD] Food.[NEWLINE][ICON_RES_TEA] Tea, [ICON_RES_WINE] Wine, [ICON_RES_COFFEE] Coffee and [ICON_RES_TOBACCO] Tobacco worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
+			<Text>Replaces the Zoo.[NEWLINE][NEWLINE]Like the Zoo:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness (no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE]City must have a Colosseum.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_FOOD] Food.[NEWLINE][ICON_RES_TEA] Tea, [ICON_RES_WINE] Wine, [ICON_RES_COFFEE] Coffee and [ICON_RES_TOBACCO] Tobacco worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_IRISH_RIFLEMAN">
 			<Text>Fenian</Text>
@@ -12481,7 +12481,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Sauna produces 2 [ICON_CULTURE] Culture for every Lake tile around the city, speeding the civilization's acquisition of a [ICON_RELIGION_PANTHEON] Pantheon, and it has a slot for a Great Work of Writing. When worked, the [ICON_PEACE] Faith from Lakes and Marshes counts for spawning a Rune Singer. Melee, gun, mounted and archer units built in a city with Sauna gain a small healing bonus.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FINNISH_SAUNA_HELP">
-			<Text>Replaces the Shrine. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
+			<Text>Replaces the Shrine. Costs less.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_FINNISH_FOREST_PATROL">
 			<Text>Sissi</Text>
@@ -18455,7 +18455,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BARAY_HELP">
-			<Text>Replaces the Garden. Needs no [ICON_GOLD] Gold maintenance and no river or lake.[NEWLINE][NEWLINE]In addition:[NEWLINE]+25% [ICON_GREAT_PEOPLE] Great People generation in this city (instead of +20%).[NEWLINE]+2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith.[NEWLINE]10% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.</Text>
+			<Text>Replaces the Garden. Needs no river or lake.[NEWLINE][NEWLINE]In addition:[NEWLINE]+25% [ICON_GREAT_PEOPLE] Great People generation in this city (instead of +20%).[NEWLINE]+2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith.[NEWLINE]10% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BARRACKS"> 
 			<Text>
@@ -18530,7 +18530,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BLAST_FURNACE_HELP"> 
-			<Text>Replaces the Forge. Costs less, needs no [ICON_GOLD] Gold maintenance and no mined Iron near the city.[NEWLINE][NEWLINE]Like the Forge:[NEWLINE]+15% [ICON_PRODUCTION] Production when building land units.[NEWLINE][ICON_RES_IRON] Iron worked by this city yields +1 [ICON_PRODUCTION] Production.[NEWLINE]Mountains worked by this city yield +1 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture, and [ICON_RES_IRON] Iron also yields +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city start with Accuracy I.</Text>
+			<Text>Replaces the Forge. Costs less and needs no mined Iron near the city.[NEWLINE][NEWLINE]Like the Forge:[NEWLINE]+15% [ICON_PRODUCTION] Production when building land units.[NEWLINE][ICON_RES_IRON] Iron worked by this city yields +1 [ICON_PRODUCTION] Production.[NEWLINE]Mountains worked by this city yield +1 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture, and [ICON_RES_IRON] Iron also yields +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city start with Accuracy I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BLAST_FURNACE_STRATEGY"> 
 			<Text>
@@ -18653,7 +18653,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CANDI_HELP"> 
-			<Text>Replaces the Water Mill. Costs more, is available with Masonry (instead of the Wheel) and needs no [ICON_GOLD] Gold maintenance. City must be next to fresh water (river, lake or oasis) instead of a river.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture and +2 [ICON_PEACE] Faith (but not the Water Mill's +1 [ICON_PRODUCTION] Production).</Text>
+			<Text>Replaces the Water Mill. Costs more and is available with Masonry (instead of the Wheel). City must be next to fresh water (river, lake or oasis) instead of a river.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture and +2 [ICON_PEACE] Faith (but not the Water Mill's +1 [ICON_PRODUCTION] Production).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_CANDI_STRATEGY"> 
 			<Text>
@@ -19018,7 +19018,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_DUCAL_STABLE_HELP"> 
-			<Text>Replaces the Stable. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep, [ICON_RES_COW] Cattle and [ICON_RES_MAIZE] Maize also yield +1 [ICON_GOLD] Gold.[NEWLINE]Mounted units trained in this city start with +15 XP.</Text>
+			<Text>Replaces the Stable. Costs less.[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep, [ICON_RES_COW] Cattle and [ICON_RES_MAIZE] Maize also yield +1 [ICON_GOLD] Gold.[NEWLINE]Mounted units trained in this city start with +15 XP.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_DUCAL_STABLE_STRATEGY"> 
 			<Text>
@@ -19103,7 +19103,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FEITORIA_HELP">
-			<Text>Replaces the Harbor. Costs less, needs no coast and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Harbor. Costs less and needs no coast.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FLOATING_GARDENS_DESC"> 
 			<Text>
@@ -19111,7 +19111,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FLOATING_GARDENS_HELP"> 
-			<Text>Replaces the Water Mill. Costs 1 [ICON_GOLD] Gold maintenance (instead of 2). City must be next to a river or a lake (instead of a river).[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]In addition:[NEWLINE]+10% [ICON_FOOD] Food.[NEWLINE]Lake tiles worked by this city yield +1 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Water Mill. City must be next to a river or a lake (instead of a river).[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]In addition:[NEWLINE]+10% [ICON_FOOD] Food.[NEWLINE]Lake tiles worked by this city yield +1 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FLOATING_GARDENS_PEDIA"> 
 			<Text>
@@ -19427,7 +19427,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HACIENDA_STRATEGY"> 
-			<Text>Replaces the Windmill. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Windmill:[NEWLINE]+2 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production towards buildings.[NEWLINE]1 Engineer specialist slot.[NEWLINE]Lake and Oasis tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]In addition:[NEWLINE]Bonus resources worked by this city yield +1 [ICON_GOLD] Gold, Luxury resources +1 [ICON_PRODUCTION] Production, Strategic resources +1 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Windmill.[NEWLINE][NEWLINE]Like the Windmill:[NEWLINE]+2 [ICON_PRODUCTION] Production and +10% [ICON_PRODUCTION] Production towards buildings.[NEWLINE]1 Engineer specialist slot.[NEWLINE]Lake and Oasis tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]In addition:[NEWLINE]Bonus resources worked by this city yield +1 [ICON_GOLD] Gold, Luxury resources +1 [ICON_PRODUCTION] Production, Strategic resources +1 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_HAGIA_SOPHIA"> 
 			<Text>
@@ -19860,7 +19860,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_AKKAD_LIBRARY_HELP"> 
-			<Text>Replaces the Library. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science.</Text>
+			<Text>Replaces the Library. Costs less.[NEWLINE][NEWLINE]Like the Library:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this city.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_LIBRARY_STRATEGY"> 
 			<Text>
@@ -20030,7 +20030,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MEAD_HALL_HELP"> 
-			<Text>Replaces the Colosseum. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_HAPPINESS_1] Happiness (instead of +2; no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE]+1 [ICON_CULTURE] Culture.</Text>
+			<Text>Replaces the Colosseum. Costs less.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_HAPPINESS_1] Happiness (instead of +2; no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE]+1 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MEAD_HALL_STRATEGY"> 
 			<Text>
@@ -20372,7 +20372,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ODEON_HELP"> 
-			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
+			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama).[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OPERA_HOUSE"> 
 			<Text>
@@ -20909,7 +20909,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ARGENTINA_STABLE_HELP"> 
-			<Text>Replaces the Stable. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle also yield +1 [ICON_FOOD] Food; [ICON_RES_MAIZE] Maize +1 [ICON_PRODUCTION] Production.</Text>
+			<Text>Replaces the Stable.[NEWLINE][NEWLINE]Like the Stable:[NEWLINE]+15% [ICON_PRODUCTION] Production when building Mounted units.[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle worked by this city yield +1 [ICON_PRODUCTION] Production; [ICON_RES_MAIZE] Maize +1 [ICON_FOOD] Food.[NEWLINE]City must have one of these resources improved.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_HORSE] Horses, [ICON_RES_SHEEP] Sheep and [ICON_RES_COW] Cattle also yield +1 [ICON_FOOD] Food; [ICON_RES_MAIZE] Maize +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_STABLE_STRATEGY"> 
 			<Text>
@@ -21468,7 +21468,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_WAT_HELP"> 
-			<Text>Replaces the University. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the University:[NEWLINE]+33% [ICON_RESEARCH] Science.[NEWLINE]2 Scientist specialist slots.[NEWLINE]Jungle tiles worked by this city yield +2 [ICON_RESEARCH] Science.[NEWLINE]Allows Archaeologists to be built in this city.[NEWLINE]City must have a Library.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture.</Text>
+			<Text>Replaces the University. Costs less.[NEWLINE][NEWLINE]Like the University:[NEWLINE]+33% [ICON_RESEARCH] Science.[NEWLINE]2 Scientist specialist slots.[NEWLINE]Jungle tiles worked by this city yield +2 [ICON_RESEARCH] Science.[NEWLINE]Allows Archaeologists to be built in this city.[NEWLINE]City must have a Library.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_WAT_PEDIA"> 
 			<Text>
@@ -101283,7 +101283,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Pledging to protect a City-State tells everyone that you will defend it from attacks and tribute demands.[NEWLINE][NEWLINE]While you protect it:[NEWLINE]Your resting [ICON_INFLUENCE] Influence with it is 10 higher.[NEWLINE]Your [ICON_INFLUENCE] Influence recovers 50% faster while below the resting point.[NEWLINE][NEWLINE]Your obligations:[NEWLINE]For 10 turns after another player demands tribute from it, you lose 3 [ICON_INFLUENCE] Influence per turn with it.[NEWLINE]The same happens every turn another player is at war with it.[NEWLINE]If you are at war with that player yourself, you gain 1 [ICON_INFLUENCE] Influence per turn instead.[NEWLINE][NEWLINE][COLOR_WARNING_TEXT]Demanding tribute from a City-State you protect breaks your pledge.[ENDCOLOR][NEWLINE]You cannot pledge to it again for 20 turns.[NEWLINE][NEWLINE]Every tribute demand is announced to all players who know the City-State.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_HIPPODROME_HELP">
-			<Text>Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.</Text>
+			<Text>Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BUILDING_CANTON_HELP">
 			<Text>Replaces the Bank. Costs half as much.[NEWLINE][NEWLINE]Like the Bank:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Trade routes other players make to this city give you +1 [ICON_GOLD] Gold and the route's owner +1 [ICON_GOLD] Gold.[NEWLINE]City must have a Market.[NEWLINE][NEWLINE]In addition:[NEWLINE]+35% [ICON_GOLD] Gold (instead of +25%).[NEWLINE]2 Merchant specialist slots (instead of 1).</Text>
@@ -147365,7 +147365,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Trebuchet. Available at Machinery.[NEWLINE]Higher [ICON_STRENGTH] Combat Strength and [ICON_RANGE_STRENGTH] Ranged Strength, no vision penalty, and the Feared Elephant promotion.[NEWLINE]Weaker bonus against Cities, and more expensive.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BARAY_HELP">
-			<Text>Replaces the Garden. Needs no [ICON_GOLD] Gold maintenance and no river or lake.[NEWLINE][NEWLINE]In addition:[NEWLINE]+25% [ICON_GREAT_PEOPLE] Great People generation in this city (instead of +20%).[NEWLINE]+2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith.[NEWLINE]10% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.</Text>
+			<Text>Replaces the Garden. Needs no river or lake.[NEWLINE][NEWLINE]In addition:[NEWLINE]+25% [ICON_GREAT_PEOPLE] Great People generation in this city (instead of +20%).[NEWLINE]+2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith.[NEWLINE]10% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_MAYA_PYRAMID_HELP">
 			<Text>Replaces the Shrine.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith (instead of +1) and +1 [ICON_RESEARCH] Science.</Text>
@@ -147425,7 +147425,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service.[NEWLINE]+1 [ICON_GOLD] Gold with Economics when next to a river.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ODEON_HELP">
-			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama) and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
+			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama).[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_TERCIO_HELP">
 			<Text>Replaces the Musketman. Higher [ICON_STRENGTH] Combat Strength and the Bonus vs Mounted (50) promotion.</Text>
@@ -147622,7 +147622,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Great Works yield +2 [ICON_PEACE] Faith.[NEWLINE][NEWLINE][ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] required for National Wonders increased by 15%.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_HELP">
-			<Text>Replaces the Armory. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
+			<Text>Replaces the Armory.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_GREAT_EXPANSE">
 			<Text>Founded cities start with 4 additional tiles.</Text>
@@ -147893,7 +147893,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the [ICON_UNIT_SWORDSMAN] Swordsman. Stronger.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]Shield Wall: adjacent friendly Melee and Gunpowder units get +25% [ICON_STRENGTH] Combat Strength when attacking a wounded unit that is also next to this unit (lost on upgrade).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FINNISH_SAUNA_HELP">
-			<Text>Replaces the Shrine. Costs less and needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
+			<Text>Replaces the Shrine. Costs less.[NEWLINE][NEWLINE]Like the Shrine:[NEWLINE]+1 [ICON_PEACE] Faith.[NEWLINE][NEWLINE]In addition:[NEWLINE]Lake tiles worked by this city yield +2 [ICON_CULTURE] Culture.[NEWLINE]Snow tiles of the city next to a lake yield +2 [ICON_FOOD] Food and +2 [ICON_CULTURE] Culture.[NEWLINE]Units trained in this city heal +10 HP per turn in your territory.</Text>
 		</Replace>
 		<!-- Tonga Fale Koloa -->
 		<Replace Tag="TXT_KEY_BUILDING_MC_TONGAN_MALAE">
@@ -148224,7 +148224,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The first [ICON_INTERNATIONAL_TRADE] trade route to each civilization and [ICON_CITY_STATE] City-State gives a one-time bonus that depends on your era:[NEWLINE]Ancient: +10 [ICON_PEACE] Faith, +20 [ICON_CULTURE] Culture, +30 [ICON_RESEARCH] Science.[NEWLINE]Classical: +20 [ICON_PEACE] Faith, +40 [ICON_CULTURE] Culture, +60 [ICON_RESEARCH] Science.[NEWLINE]Medieval: +40 [ICON_PEACE] Faith, +80 [ICON_CULTURE] Culture, +120 [ICON_RESEARCH] Science.[NEWLINE]Renaissance and Industrial: a [ICON_GREAT_WORK] Great Work in a free slot.[NEWLINE]Modern: +700 [ICON_GOLD] Gold.[NEWLINE]Atomic: +700 [ICON_CULTURE] Culture.[NEWLINE]Information: +700 [ICON_RESEARCH] Science.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FEITORIA_HELP">
-			<Text>Replaces the Harbor. Costs less, needs no coast and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
+			<Text>Replaces the Harbor. Costs less and needs no coast.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PORTUGUESE_NAU">
 			<Text>Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
@@ -148291,7 +148291,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>10% movement discount in Hills.[NEWLINE]Civilian units can have it too.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SWISS_REISLAUFER_HELP">
-			<Text>Replaces the Armory. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
+			<Text>Replaces the Armory.[NEWLINE][NEWLINE]Like the Armory:[NEWLINE]Units trained in this city start with +15 XP.[NEWLINE]City must have a Barracks.[NEWLINE][NEWLINE]In addition:[NEWLINE]Units trained in this city, civilians included, start with Altitude Training (Hills cost less movement).[NEWLINE]When built, a Reisläufer appears in the city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_TIBET">
 			<Text>The [ICON_CAPITAL] Capital receives +2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_GOLD] Gold, +2 [ICON_RESEARCH] Science, +2 [ICON_CULTURE] Culture, and +2 [ICON_PEACE] Faith upon the discovery of [ICON_TECH_DRAMA] [COLOR_CYAN]Drama and Poetry[ENDCOLOR], and +1 of those yields for every Era you advance to after the Classical Era.[NEWLINE][NEWLINE]Units trained in a city next to a mountain, civilians included, start with Altitude Training.</Text>

@@ -293244,4 +293244,93 @@
 			<Yield>3</Yield>
 		</Row>
 	</Belief_CityConditionYieldChanges>
+	<!-- LEKMOD (2026-11-18, New Specs 12): unique buildings cost the Gold maintenance of the building they replace (user). Kept on purpose:
+	     Kongo's Slave Market, the free temples (Burial Tomb, Jongmyo, Stave Church, Mud Pyramid Mosque), buildings with Gold of their own
+	     (Paper Maker, Minaa', Palmyrene Theater, Stade), Ribat, Krepost, Orszaggyules, Ski Resort -->
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_WAT"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_FLOATING_GARDENS"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_DUCAL_STABLE"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_ARGENTINA_STABLE"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_BARAY"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_MEADHALLL"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_HACIENDA"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_HIPPODROME"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_ODEON"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_FEITORIA"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_BLAST_FURNACE"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_FINNISH_SAUNA"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_AKKAD_LIBRARY"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_IRISH_PUB"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_COOPERATIVE"/>
+			<Set GoldMaintenance="3"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_NATIONALCHURCH"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_ASHOKA"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_COLOMBIAN_GRANARY"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_FULLING_MILL"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_CANDI"/>
+			<Set GoldMaintenance="2"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_SWISS_REISLAUFER"/>
+			<Set GoldMaintenance="1"/>
+		</Update>
+	</Buildings>
 </GameData>
