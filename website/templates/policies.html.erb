@@ -1,0 +1,43 @@
+<button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Policies</button>
+<aside class="sidebar" id="sidebar">
+  <ul>
+<% trees.each do |tree| -%>
+    <li><a href="#<%= slug(tree.name) %>" data-section-link="<%= slug(tree.name) %>"><%= h tree.name %></a></li>
+<% end -%>
+  </ul>
+</aside>
+<main class="content" id="policylist">
+  <h1>Policies and ideologies</h1>
+  <p class="lead"><%= trees.count { |t| !t.ideology } %> policy branches and <%= trees.count(&:ideology) %> ideologies, as they are in the current version of the mod. Hover a policy in a tree to read it there.</p>
+  <input type="search" id="civ-search" placeholder="Search policies and tenets" aria-label="Search policies">
+<% trees.each do |tree| -%>
+<% members = tree.ideology ? tree.nodes.sort_by { |n| [n.level, n.name] } : tree.nodes.sort_by { |n| [n.y, n.x] } -%>
+  <section class="civ card has-tree" id="<%= slug(tree.name) %>" data-section="<%= slug(tree.name) %>"
+           data-search="<%= h([tree.name, tree.opener&.help, tree.finisher&.help, *members.flat_map { |n| [n.name, n.help] }].compact.join(' ').downcase) %>">
+    <div class="card-main">
+      <h2><%= h tree.name %><% if tree.ideology %> <span class="leader">Ideology</span><% end %></h2>
+<% if tree.opener && tree.opener.help -%>
+      <div class="unique ability">
+        <h3><span class="kind">Opener</span> <%= h tree.opener.name %></h3>
+        <p><%= GameText.to_html(policy_body(tree.opener.help)) %></p>
+      </div>
+<% end -%>
+<% members.each do |n| -%>
+      <div class="unique">
+        <h3><span class="kind"><%= tree.ideology ? "Tier #{n.level}" : "Policy" %></span> <%= h n.name %></h3>
+<% if n.help -%>
+        <p><%= GameText.to_html(policy_body(n.help)) %></p>
+<% end -%>
+      </div>
+<% end -%>
+<% if tree.finisher && tree.finisher.help -%>
+      <div class="unique">
+        <h3><span class="kind">Finisher</span> Completing <%= h tree.name %></h3>
+        <p><%= GameText.to_html(policy_body(tree.finisher.help)) %></p>
+      </div>
+<% end -%>
+    </div>
+    <%= policy_tree_html(tree) %>
+  </section>
+<% end -%>
+</main>

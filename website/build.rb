@@ -37,6 +37,7 @@ module Helpers
     ["map.html", "Map changelog"],
     ["install.html", "Installation"],
     ["civs.html", "Civ list"],
+    ["policies.html", "Policies"],
     ["credits.html", "Credits"],
   ].freeze
 
@@ -94,6 +95,11 @@ module Helpers
     # Long words get a soft hyphen at a syllable, so they break cleanly in the small boxes.
     text = (label || node.name).split(" ").map { |w| PT_BREAKS.fetch(w, w) }.join(" ")
     %(<button type="button" class="#{cls}"#{style} data-help="#{h tip}" title="#{h plain}">#{h text}</button>)
+  end
+
+  # A policy's text without its own name on the first line (the page shows the name as the heading)
+  def policy_body(text)
+    text.to_s.sub(/\A\[COLOR_POSITIVE_TEXT\][^\[]*\[ENDCOLOR\](\[NEWLINE\])+/, "").sub(/\A(Adopting|Completing)[^\[]*:(\[NEWLINE\])+/, "")
   end
 
   def ptree_panel
@@ -169,7 +175,7 @@ SECTION_LAYOUT = {
                                  "BOARDING PARTY LINE", "ARMOR PLATING LINE", "SAMBUCA", "SUPPLY SHIP", "REPAIR CREW",
                                  "BUNKER BUSTING", "CARPET BOMBING", "BOMBARDMENT (LAND) LINE", "AIR AND NAVAL PROMOTION NAMES", "SORTIE"]],
     ["Promotions that come with units, policies or abilities (never offered as a pick)",
-     ["DISCIPLINE", "FEAR AURA", "ZEALOT", "ALTITUDE TRAINING", "SITTING DUCKS", "SWIFT TRANSPORT", "MARAUDER",
+     ["DISCIPLINE", "FEAR AURA", "ZEALOT", "ALTITUDE TRAINING", "SITTING DUCKS", "TROOPSHIP", "MARAUDER",
       "IAIJUTSU", "HATAMOTO", "ONE GOOD EYE / STARGAZING", "FAST SWIMMER", "SKYRANGER / EXTENDED PARADROP",
       "GLUTTON", "EMBARKATION WITH DEFENSE", "SPEAR THROW", "LONG RANGE", "WAR ALTAR"]],
   ],
@@ -248,6 +254,9 @@ write_page(out, "install.html", "Installation", render("install"))
 write_page(out, "credits.html", "Credits", render("credits"))
 civs = Civs.load(File.join(ROOT, "LEKMOD", "Override"))
 write_page(out, "civs.html", "Civ list", render("civs", civs: civs), page_class: "with-sidebar")
+# Policies and ideologies: every branch with its tree and full texts, in game order (user, 2026-11-18)
+policy_trees = PolicyTrees.load(File.join(ROOT, "LEKMOD", "Override")).values.reject { |t| t.nodes.empty? }
+write_page(out, "policies.html", "Policies", render("policies", trees: policy_trees), page_class: "with-sidebar")
 # Known issues page: switched off for now (user, 2026-10-18). To bring it back, re-add it to PAGES and:
 # write_page(out, "bugs.html", "Known issues",
 #            render("bugs", bugs_html: LooseList.to_html(File.read(File.join(SITE, "data", "known_issues.txt"), encoding: "UTF-8"))))
