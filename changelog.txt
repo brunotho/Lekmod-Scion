@@ -2779,13 +2779,13 @@ EXPANSIONISM (POLICY_BRANCH_EXPLORATION)
 ----------------------------------------
 Tags: policies, naval, units, buildings
 - Reworked: POLICY_BRANCH_EXPLORATION
-  | Adopting Expansionism:[NEWLINE][ICON_BULLET]+1 Sight for land units and for naval melee and ranged units[NEWLINE][ICON_BULLET]Allows training [ICON_UNIT_SPANISH_CONQUISTADOR] Conquistadors[NEWLINE][ICON_BULLET]A free [ICON_UNIT_SETTLER] Settler appears in your capital[NEWLINE][ICON_BULLET]Reveals the routes explorers would walk from your capital to every other civilization's capital, and most of the shoreline of your home continent[NEWLINE][ICON_BULLET]Every city claims 1 extra tile, including cities you found later[NEWLINE][ICON_BULLET]Unlocks building the Tower of Belem[NEWLINE][NEWLINE]Completing the Expansionism tree:[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each Luxury resource[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_ADMIRAL] Great Admirals with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
+  | Adopting Expansionism:[NEWLINE][ICON_BULLET]+1 Sight for land and naval units[NEWLINE][ICON_BULLET]Allows training [ICON_UNIT_SPANISH_CONQUISTADOR] Conquistadors[NEWLINE][ICON_BULLET]A free [ICON_UNIT_SETTLER] Settler appears in your capital[NEWLINE][ICON_BULLET]Reveals the routes explorers would walk from your capital to every other civilization's capital, and most of the shoreline of your home continent[NEWLINE][ICON_BULLET]Unlocks building the Tower of Belem[NEWLINE][NEWLINE]Completing the Expansionism tree:[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each Luxury resource[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_ADMIRAL] Great Admirals with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
 - Reworked: POLICY_NAVAL_TRADITION
   | [COLOR_POSITIVE_TEXT]Naval Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each [ICON_BUILDING_LIGHTHOUSE] Lighthouse and [ICON_BUILDING_HARBOR] Harbor[NEWLINE][ICON_BULLET]Drydocks provide +5 [ICON_CULTURE] Culture
 - Reworked: POLICY_MERCHANT_NAVY
-  | [COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Newly founded cities get a free Crown Office, a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria and a free Rowboat[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_HAPPINESS_1] Happiness
+  | [COLOR_POSITIVE_TEXT]Colonial Infrastructure[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward buildings from before the Renaissance[NEWLINE][ICON_BULLET]Cities you capture or found get a free [ICON_BUILDING_LEKMOD_FEITORIA] Feitoria and a free Rowboat
 - Reworked: POLICY_MARITIME_INFRASTRUCTURE
-  | [COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture get a free Crown Office, a free [ICON_BUILDING_LEKMOD_SLAVE_MARKET] Slave Market and a free [ICON_WORKER] Worker[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse or a Crown Office get +2 [ICON_FOOD] Food and +2 [ICON_PRODUCTION] Production (doesn't stack with Military Tradition)
+  | [COLOR_POSITIVE_TEXT]Colonial Administration[ENDCOLOR][NEWLINE][ICON_BULLET]Resistance in cities you capture lasts half as long[NEWLINE][ICON_BULLET]Cities you capture or found get a free [ICON_BUILDING_LEKMOD_SLAVE_MARKET] Slave Market and a free [ICON_WORKER] Worker
 - Reworked: POLICY_NAVIGATION_SCHOOL
   | [COLOR_POSITIVE_TEXT]Navigation Schools[ENDCOLOR][NEWLINE][ICON_BULLET]+10% [ICON_STRENGTH] Combat Strength and +1 [ICON_MOVES] Movement for naval units[NEWLINE][ICON_BULLET]A free [ICON_GREAT_ADMIRAL] Great Admiral
 - Reworked: POLICY_TREASURE_FLEETS
@@ -3047,7 +3047,7 @@ SUMERIA (CIVILIZATION_SUMERIA)
 ------------------------------
 Tags: civs, units, buildings
 - Reworked: BUILDING_ZIGGURAT
-  | costs 67[NEWLINE]Unique to Sumeria. You can have at most 3.[NEWLINE][NEWLINE]+2% [ICON_PRODUCTION] Production towards buildings in this city for each city you own.[NEWLINE][NEWLINE]When completed: [ICON_RESEARCH] Science equal to 5 times the city's [ICON_CITIZEN] Citizens.
+  | costs 67[NEWLINE]Unique to Sumeria. Available with Mathematics. You can have at most 3.[NEWLINE][NEWLINE]+2% [ICON_PRODUCTION] Production towards buildings in this city for each city you own.[NEWLINE][NEWLINE]When completed: [ICON_RESEARCH] Science equal to 5 times the city's [ICON_CITIZEN] Citizens.
 - Changed: Phalanx starts with Envelopment instead of its +50% flanking bonus
 - DLL: Buildings.LekmodBuildingProductionPerCity, LekmodInstantSciencePerPop; new building class 205
 
@@ -3096,7 +3096,7 @@ BYZANTIUM (CIVILIZATION_BYZANTIUM)
 ----------------------------------
 Tags: civs, units, buildings
 - Reworked: BUILDING_HIPPODROME
-  | costs 67[NEWLINE]Replaces the Amphitheater. Needs no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.
+  | costs 67 · 1 Gold maintenance[NEWLINE]Replaces the Amphitheater.[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2) and +3 [ICON_PEACE] Faith.
 - Reworked: UNIT_BYZANTINE_CATAPHRACT
   | 15 Strength · 3 Movement · costs 50 · needs 2 Horses and 1 Iron[NEWLINE]Replaces the Horseman. Slower, but has a higher [ICON_STRENGTH] Combat Strength and keeps its defensive terrain bonuses.
 
@@ -3194,7 +3194,7 @@ MOORS (CIVILIZATION_MOORS)
 --------------------------
 Tags: civs, units, buildings
 - Reworked: BUILDING_ALCAZABA
-  | costs 107[NEWLINE]Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).
+  | costs 107[NEWLINE]Replaces the Castle.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE]City must have Walls.[NEWLINE][NEWLINE]In addition:[NEWLINE]+8% [ICON_FOOD] Food.[NEWLINE]Forts worked by this city yield +1 [ICON_RESEARCH] Science, Citadels +5 [ICON_RESEARCH] Science.[NEWLINE]+5 [ICON_RESEARCH] Science for every city of another civilization within 4 tiles (not City-States).
 - Changed: Granadine Cavalry needs 2 Horses and 1 Iron (was 1 Horse)
 - DLL: Building_LekmodConditionalYields (PerForeignMajorCityRange)
 
@@ -3251,7 +3251,7 @@ Tags: civs, units
 - Reworked: UA
   | Your starting Settler has +1 [ICON_MOVES] Movement on the first turn.[NEWLINE]Your starting Warrior and all Recon and Archer units start with Scouting I (+1 Sight).
 - Reworked: IMPROVEMENT_TEPE
-  | +1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service, +1 [ICON_GOLD] Gold with Economics.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.
+  | +1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service.[NEWLINE]+1 [ICON_GOLD] Gold with Economics when next to a river.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.
 - Changed: Buffalo Hunter: 7 Strength (was 8)
 - DLL: Traits.LekmodStartTurnFounderMoves, LekmodStartMeleePromotion
 - Dev: the starting Settler's extra move is applied when the unit is created (the first turn's unit reset didn't reach it; user, 2026-10-14)
@@ -3280,7 +3280,7 @@ Tags: civs, units
   | costs 67 · 1 Gold maintenance[NEWLINE]Replaces the Aqueduct.[NEWLINE][NEWLINE]Like the Aqueduct:[NEWLINE]40% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_PEACE] Faith and +1 [ICON_RESEARCH] Science if the city is next to fresh water or a mountain.[NEWLINE]+3 [ICON_PEACE] Faith and +3 [ICON_RESEARCH] Science if it is next to both.
 - Removed: Sipahi (unique Lancer)
 - Reworked: UNIT_OTTOMAN_JANISSARY
-  | 24 Strength · 2 Movement · costs 80[NEWLINE]Replaces the Musketman. Cheaper to train.[NEWLINE]Starts with Charge and Zealot.[NEWLINE]Can always be bought with [ICON_PEACE] Faith.
+  | 24 Strength · 2 Movement · costs 80[NEWLINE]Replaces the Musketman. Cheaper to train.[NEWLINE]Starts with Charge and Zealot.[NEWLINE]Can be bought with [ICON_PEACE] Faith.
 - DLL: Traits.LekmodAllPantheons; LEKMOD_EXTRA_PANTHEONS: every use of the single secondary pantheon (Religious Tolerance) now loops over CvCityReligions::LekmodGetExtraPantheons; a city's religion yields also refresh when that list changes without a new majority
 - DLL: Traits.LekmodForeignFaithConquestHalf; Traits.TradeReligionModifier now also counts for incoming routes
 - Dev: building 283, icon art_sources/buildings/su_kemeri
@@ -3422,7 +3422,7 @@ Tags: civs, units
   | +2 [ICON_MOVES] Movement for all naval units.[NEWLINE][NEWLINE]Your first [ICON_GREAT_WRITER] Great Writer to Write a Political Treatise gives double [ICON_CULTURE] Culture.
 - Added: start bias towards rivers, used when England doesn't get a coastal start
 - New: BUILDING_LEKMOD_FULLING_MILL
-  | costs 50 · 1 Gold maintenance[NEWLINE]Replaces the Water Mill.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production.[NEWLINE]City must be next to a river.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_SHEEP] Sheep, [ICON_RES_COTTON] Cotton, [ICON_RES_DYE] Dyes and [ICON_RES_SILK] Silk next to the city yield +1 [ICON_PRODUCTION] Production.
+  | costs 50 · 2 Gold maintenance[NEWLINE]Replaces the Water Mill.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_PRODUCTION] Production.[NEWLINE]City must be next to a river.[NEWLINE][NEWLINE]In addition:[NEWLINE][ICON_RES_SHEEP] Sheep, [ICON_RES_COTTON] Cotton, [ICON_RES_DYE] Dyes and [ICON_RES_SILK] Silk next to the city yield +1 [ICON_PRODUCTION] Production.
 - New: BUILDING_LEKMOD_MI6
   | costs 83[NEWLINE]Replaces the National Intelligence Agency.[NEWLINE][NEWLINE]Like the National Intelligence Agency:[NEWLINE]Provides 1 more spy and levels up all your existing spies.[NEWLINE]Enemy spies are 15% less effective.[NEWLINE]Must have a Constabulary in all cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]A dead [ICON_SPY] Spy is replaced 1 turn sooner.[NEWLINE][ICON_RESEARCH] Science stolen by your spies also gives the same amount of [ICON_GOLD] Gold.[NEWLINE]The first successful coup in each [ICON_CITY_STATE] City-State gives 150 [ICON_GOLD] Gold per era (600 in the Renaissance Era, 750 in the Industrial Era, ...).
 - Reworked: UNIT_ENGLISH_LONGBOWMAN
@@ -3453,7 +3453,7 @@ Tags: civs
 - Reworked: IMPROVEMENT_TIBET
   | Unique to Tibet. Available at [COLOR_CYAN]Calendar[ENDCOLOR]. Must be built on [COLOR_POSITIVE_TEXT]Hills[ENDCOLOR] next to a Mountain.[NEWLINE]+2 [ICON_PEACE] Faith; +1 [ICON_CULTURE] Culture for each adjacent Mountain.[NEWLINE]+1 [ICON_RESEARCH] Science with [COLOR_CYAN]Astronomy[ENDCOLOR]; +1 [ICON_CULTURE] Culture with [COLOR_CYAN]Archaeology[ENDCOLOR].[NEWLINE]May be built on [COLOR_GREEN]Forest[ENDCOLOR] and [COLOR_GREEN]Jungle[ENDCOLOR] without removing the feature.
 - Reworked: UNIT_DALAILAMA
-  | 4 Movement[NEWLINE]The Tibetan replacement for the [ICON_PROPHET] Great Prophet. It can found a city, or found or enhance a [ICON_RELIGION] Religion, and arrives with 5 [ICON_MISSION_SPREAD_RELIGION] Religion Spreads.[NEWLINE][NEWLINE]Instead of spreading the Religion, it can spend its spreads on:[NEWLINE][ICON_BULLET]Monastery, built at once: 1 spread[NEWLINE][ICON_BULLET]Bless a unit on its tile (double healing): 2 spreads[NEWLINE][ICON_BULLET]Holy Site, built at once, claims the tiles around it: 3 spreads[NEWLINE][ICON_BULLET]Start a [ICON_GOLDEN_AGE] Golden Age: 4 spreads[NEWLINE]It is used up with its last spread.[NEWLINE][NEWLINE]Converting a City-State with it gives +10 [ICON_INFLUENCE] Influence there.
+  | 4 Movement[NEWLINE]The Tibetan replacement for the [ICON_PROPHET] Great Prophet. It can found a city, or found or enhance a [ICON_RELIGION] Religion, and arrives with 5 [ICON_MISSION_SPREAD_RELIGION] Religion Spreads.[NEWLINE][NEWLINE]Instead of spreading the Religion, it can spend its spreads on:[NEWLINE][ICON_BULLET]Monastery, built at once: 1 spread[NEWLINE][ICON_BULLET]Bless a unit on its tile (double healing): 2 spreads[NEWLINE][ICON_BULLET]Holy Site, claims the tiles around it, also from other civilizations and City-States (not city tiles): 3 spreads[NEWLINE][ICON_BULLET]Start a [ICON_GOLDEN_AGE] Golden Age: 4 spreads[NEWLINE]It is used up with its last spread.[NEWLINE][NEWLINE]Converting a City-State with it gives +10 [ICON_INFLUENCE] Influence there.
 - DLL: LEKMOD_SPREAD_ABILITIES: Builds.LekmodSpreadCost/LekmodClaimAdjacent, Units.LekmodMinorConvertInfluence/LekmodBlessPromotion/LekmodBlessSpreadCost/LekmodGoldenAgeSpreadCost, UnitPromotions.LekmodHealRateMod; MISSION_LEKMOD_BLESS (mission 59), PROMOTION_LEKMOD_BLESSED (391), builds 73/74
 - Dev: MISSION_RETRAIN now also counts as a one-step mission (it was only listed in a compiled-out branch)
 
@@ -3529,7 +3529,7 @@ Tags: civs, units, game mechanics
 - Reworked: IMPROVEMENT_KASBAH
   | +1 [ICON_FOOD] Food, +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold; +1 more [ICON_FOOD] Food on Desert.[NEWLINE]+50% [ICON_STRENGTH] Defensive Strength for units on this tile.[NEWLINE][NEWLINE]Must be next to a luxury resource.[NEWLINE]Cannot be built next to a Kasbah, Chateau, Motte and Bailey, Caer or Pa.[NEWLINE] Not on resources or features (Flood Plains are fine).
 - Reworked: UNIT_BERBER_CAVALRY
-  | 34 Strength · 4 Movement · costs 160 · needs 3 Horses[NEWLINE]Replaces the Cavalry.[NEWLINE]Starts with Shock I, Drill I and Mobility.
+  | 34 Strength · 4 Movement · costs 160 · needs 3 Horses[NEWLINE]Replaces the Cavalry.[NEWLINE]Starts with Shock I and Drill I.
 - DLL: Traits.LekmodDesertFound*, LekmodFoundOnImprovement*, LekmodFastRouteImprovement; Improvements.LekmodNoFeature; dummy building 300 (class 201)
 - Dev: the desert city Food shows as the civilization ability line of the Food tooltip instead of "from buildings" (user, 2026-10-14)
 
@@ -3544,7 +3544,7 @@ Tags: civs, units
 - Reworked: UA
   | All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE][NEWLINE]Your first Expand receives +1 [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Land units start with Amphibious I.
 - Reworked: BUILDING_NATIONALCHURCH
-  | costs 60 · 1 Gold maintenance[NEWLINE]Replaces the Colosseum. Costs less.[NEWLINE][NEWLINE]Like the Colosseum:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness (no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith if another of your cities is within 4 tiles.[NEWLINE]+2 [ICON_PRODUCTION] Production if two or more of your other cities are within 4 tiles.
+  | costs 60 · 2 Gold maintenance[NEWLINE]Replaces the Colosseum. Costs less.[NEWLINE][NEWLINE]Like the Colosseum:[NEWLINE]+2 [ICON_HAPPINESS_1] Happiness (no more than the city has [ICON_CITIZEN] Citizens).[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith if another of your cities is within 4 tiles.[NEWLINE]+2 [ICON_PRODUCTION] Production if two or more of your other cities are within 4 tiles.
 - Reworked: UNIT_PHILIPINO_MARINE
   | 46 Strength · 3 Movement · costs 180[NEWLINE]Unique Unit for the Philippines. Replaces the Expeditionary Force. Stronger and +2 [ICON_MOVES] Movement when Embarked.[NEWLINE]Can move after attacking and starts with Woodsman.
 
@@ -3591,7 +3591,7 @@ Tags: civs, buildings, units, naval
 - Reworked: UA
   | Buying military units from the Ancient, Classical and Medieval Eras costs 30% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]May buy the unique units of [COLOR_POSITIVE_TEXT]Militaristic[ENDCOLOR] [ICON_CITY_STATE] City-States you are Friends or Allies with, in any of your cities.[NEWLINE][NEWLINE]All units start with Marauder (+50% [ICON_GOLD] Gold from pillaging).
 - Reworked: BUILDING_TUNISIA_CASTLE
-  | costs 85 · 4 Gold maintenance[NEWLINE]Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]More Defense and Hit Points, faster healing, +3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 4 tiles far, and terrain does not block its view.
+  | costs 85 · 4 Gold maintenance[NEWLINE]Replaces the Castle. Costs 20% less and needs no Walls, but costs 4 [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Castle:[NEWLINE]+7 [ICON_STRENGTH] City Strength and +25 City Hit Points.[NEWLINE]The city heals 20 HP per turn.[NEWLINE]+3 [ICON_STRENGTH] City Strength next to a Mountain.[NEWLINE]Provides 3 [ICON_RES_HORSE] Horses.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a garrison: +4 [ICON_PEACE] Faith and +4 [ICON_CULTURE] Culture.[NEWLINE]The city sees 4 tiles far, and terrain does not block its view.
 - Reworked: UNIT_TUNISIA_PRIVATEER
   | 24 Strength · 6 Movement · costs 85[NEWLINE]Replaces the Privateer.[NEWLINE][NEWLINE]Coast tiles cost 33% less movement.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when attacking a target on a Coast tile.[NEWLINE]Both are lost on upgrade.
 - DLL: Buildings.CityVisionChange; UnitPromotions.CoastMoveCostMod, CoastAttackMod (promotion 390)
@@ -3603,7 +3603,7 @@ Tags: civs, units
 - Reworked: UA
   | In the [ICON_CAPITAL] Capital: Great Works and Writer, Artist and Musician specialists yield +1 [ICON_CULTURE] Culture and +1 [ICON_GOLD] Gold; +10% [ICON_PRODUCTION] Production towards buildings.[NEWLINE][NEWLINE]In your second city: Great Works and Writer, Artist and Musician specialists yield +1 [ICON_RESEARCH] Science; Great Person improvements and World Wonders +2 [ICON_RESEARCH] Science.[NEWLINE][NEWLINE]Both courts stay with their cities, also when they are captured.
 - Reworked: BUILDING_SERAI
-  | costs 60[NEWLINE]Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.
+  | costs 60[NEWLINE]Replaces the Caravansary.[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_FOOD] Food for every other Serai of yours within 4 tiles.[NEWLINE]If no other Serai of yours is within 5 tiles: +3 [ICON_CULTURE] Culture and borders grow 15% faster.
 - Removed: Marathi (unique Horseman)
 - New: UNIT_BARLAS_CAVALRY
   | 22 Strength · 4 Movement · costs 90 · needs 3 Horses and 3 Iron[NEWLINE]Replaces the Knight. Stronger, but costs more.[NEWLINE]Starts with Blitz (attacks more than once per turn).
@@ -3621,7 +3621,7 @@ Tags: civs, units, naval
 - Reworked: BUILDING_MC_OMANI_MINAA
   | costs 60[NEWLINE]Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]+2 [ICON_GOLD] Gold.[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_FOOD] Food if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]+4 [ICON_CULTURE] Culture while a Caravan's route ends here.[NEWLINE]+4 [ICON_GOLD] Gold while a Cargo Ship's route ends here.
 - Reworked: UNIT_MC_OMANI_BAGHLAH
-  | 7 Strength · 9 Ranged Strength (range 2) · 4 Movement · costs 32[NEWLINE]Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Swift Transport and Coastal Raider I.
+  | 7 Strength · 9 Ranged Strength (range 2) · 4 Movement · costs 32[NEWLINE]Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Troopship and Coastal Raider I.
 - DLL: Trait_LekmodBuildingClassOverrides, Trait_LekmodFreeUnits; the old UB Lua (Lekmod_oman.lua) is switched off
 
 SWEDEN (CIVILIZATION_SWEDEN)
@@ -3680,10 +3680,10 @@ Tags: civs, units, buildings, air
 - Reworked: UA
   | Founding the [ICON_CAPITAL] Capital and the second city places [ICON_RES_PEARLS] Pearls on the closest free Coast tile.[NEWLINE][NEWLINE]May trade strategic resources.[NEWLINE][NEWLINE][ICON_RES_OIL] Oil is revealed with Archaeology, which also places an [ICON_RES_OIL] Oil node in the [ICON_CAPITAL] Capital.[NEWLINE]From then on you can build Oil Wells and Offshore Platforms, and your [ICON_RES_OIL] Oil counts, without Biology.[NEWLINE][NEWLINE]From the Industrial Era: luxury resource tiles yield -1 [ICON_GOLD] Gold (not below 0), and cities yield +10% [ICON_GOLD] Gold.[NEWLINE]Both grow with every later era, up to -4 [ICON_GOLD] Gold and +40% [ICON_GOLD] Gold in the Information Era.
 - Reworked: BUILDING_BURJ
-  | costs 201[NEWLINE]Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture (but not the Hotel's extra [ICON_CULTURE] Culture from Natural Wonders, Lakes and Oases).
+  | costs 201[NEWLINE]Replaces the Hotel. Available with Radio (instead of Refrigeration).[NEWLINE][NEWLINE]Like the Hotel:[NEWLINE]50% of the [ICON_CULTURE] Culture from World Wonders, Natural Wonders and worked tiles with any improvement in this city is added to its [ICON_TOURISM] Tourism.[NEWLINE][ICON_TOURISM] Tourism from Great Works +50%.[NEWLINE]Natural Wonders worked by this city yield +10 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]In addition:[NEWLINE]+7 [ICON_GOLD] Gold and +7 [ICON_CULTURE] Culture.
 - Removed: Qasimi Raider (unique unit)
 - New: UNIT_LEKMOD_DESERT_FALCON
-  | 75 Ranged Strength (range 12) · costs 379 · needs 1 Aluminum[NEWLINE]Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2), Charge and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.
+  | 75 Ranged Strength (range 12) · costs 379 · needs 1 Aluminum[NEWLINE]Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2 range), Charge (+33% [ICON_STRENGTH] Combat Strength against wounded units) and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.
 - DLL: Traits.LekmodFoundWaterResource*, LekmodStrategicTrade, LekmodTechReveal*, LekmodEra*; unit 275
 - DLL: CvTeam::LekmodHasResourceTradeTech (replaces the TechCityTrade checks of resource connection), CvPlayer::LekmodHasEarlyBuildTech
 
@@ -3693,7 +3693,7 @@ Tags: civs, buildings
 - Reworked: UA
   | Unaffected by [ICON_HAPPINESS_4] Unhappiness from Ideology pressure.[NEWLINE]Unhappiness never acts worse than 9 (the penalties stop growing there; the shown number is real).[NEWLINE][NEWLINE]One [ICON_RES_TOBACCO] Tobacco appears near the [ICON_CAPITAL] Capital when it is founded.
 - Reworked: BUILDING_DANCE_HALL
-  | costs 100 · 1 Gold maintenance[NEWLINE]Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.
+  | costs 100 · 1 Gold maintenance[NEWLINE]Replaces the Opera House. Costs less.[NEWLINE][NEWLINE]Like the Opera House:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have an [ICON_BUILDING_AMPHITHEATER] Amphitheater.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]Its Great Work slot filled: +20% [ICON_TOURISM] Tourism in this city.[NEWLINE]Units trained in this city start with +15 XP.
 - DLL: Buildings.GreatWorkFilledTourismModifier
 - DLL: Traits.LekmodUnhappinessCap; old UA Lua (Lekmod_cuba.lua) no longer registered
 - DLL: CvCity::addResourceLocally never places a resource on a city tile, stays within 3 tiles and prefers a fitting tile next to the city (LEKMOD_POST_CHANGES); also used for relocated hidden resources
@@ -3809,7 +3809,7 @@ Tags: civs, units, buildings, promotions
 - Reworked: UA
   | Your next 2 cities after the [ICON_CAPITAL] Capital that are coastal or on a different landmass each get a unique Luxury Resource on their city tile, replacing the resource there.[NEWLINE]1 copy on the Capital's landmass, 2 copies on a new landmass.[NEWLINE]Which 2 of Cloves, Nutmeg and Pepper you get changes from game to game.[NEWLINE][NEWLINE]These cities yield +1 [ICON_GOLD] Gold and can never be razed.
 - Reworked: BUILDING_CANDI
-  | costs 55[NEWLINE]Replaces the Water Mill. Costs more, is available with Masonry (instead of the Wheel) and needs no [ICON_GOLD] Gold maintenance. City must be next to fresh water (river, lake or oasis) instead of a river.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture and +2 [ICON_PEACE] Faith (but not the Water Mill's +1 [ICON_PRODUCTION] Production).
+  | costs 55 · 2 Gold maintenance[NEWLINE]Replaces the Water Mill. Costs more and is available with Masonry (instead of the Wheel). City must be next to fresh water (river, lake or oasis) instead of a river.[NEWLINE][NEWLINE]Like the Water Mill:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_CULTURE] Culture and +2 [ICON_PEACE] Faith (but not the Water Mill's +1 [ICON_PRODUCTION] Production).
 - Reworked: UNIT_KRIS_SWORDSMAN
   | 14 Strength · 2 Movement · costs 50 · needs 2 Iron[NEWLINE]Replaces the Swordsman. Obsolete with Gunpowder.[NEWLINE][NEWLINE]Starts with one random blade promotion: Restlessness, Sneak Attack, Ambition, Invulnerability or Cursed Blade.
 - DLL: Trait_FreeResourceCities.LekmodCoastalQuantity; UnitPromotions.AttackFullHPMod, PostCombatPromotionOnSpawn
@@ -3821,9 +3821,9 @@ Tags: civs, buildings, units, naval
 - Reworked: UA
   | The first [ICON_INTERNATIONAL_TRADE] trade route to each civilization and [ICON_CITY_STATE] City-State gives a one-time bonus that depends on your era:[NEWLINE]Ancient: +10 [ICON_PEACE] Faith, +20 [ICON_CULTURE] Culture, +30 [ICON_RESEARCH] Science.[NEWLINE]Classical: +20 [ICON_PEACE] Faith, +40 [ICON_CULTURE] Culture, +60 [ICON_RESEARCH] Science.[NEWLINE]Medieval: +40 [ICON_PEACE] Faith, +80 [ICON_CULTURE] Culture, +120 [ICON_RESEARCH] Science.[NEWLINE]Renaissance and Industrial: a [ICON_GREAT_WORK] Great Work in a free slot.[NEWLINE]Modern: +700 [ICON_GOLD] Gold.[NEWLINE]Atomic: +700 [ICON_CULTURE] Culture.[NEWLINE]Information: +700 [ICON_RESEARCH] Science.
 - Reworked: BUILDING_FEITORIA
-  | costs 67[NEWLINE]Replaces the Harbor. Costs less, needs no coast and no [ICON_GOLD] Gold maintenance.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a Courthouse or Crown Office in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.
+  | costs 67 · 2 Gold maintenance[NEWLINE]Replaces the Harbor. Costs less and needs no coast.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.
 - Reworked: UNIT_PORTUGUESE_NAU
-  | 19 Strength · 6 Movement · costs 85[NEWLINE]Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Friendly non-air units on its tile or next to it heal every turn, even after acting.[NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.
+  | 19 Strength · 6 Movement · costs 85[NEWLINE]Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.
 - Dev: the trade route screen marks civilizations and City-States whose first-route bonus you already received, and shows the bonus for the others
 - Note: Feitoria keeps the Harbor's water connection and +50% sea trade range (default, on Specs to refine)
 - Dev: the capital Gold was first a city yield "from buildings", now a tile yield (CvPlot::calculateYield); the trade route bonuses moved into the route's "your buildings" part, so the route tooltip lists them; capital tile and route values refresh when a Feitoria, Courthouse/Crown Office or Palace changes (CvCity::LekmodRefreshFeitoriaEffects); the first-route bonus shows one bonus per line in the route list (user playtest 2026-10-16)
