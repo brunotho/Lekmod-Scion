@@ -227,22 +227,24 @@ function LekmodGetActionOrder()
 end
 
 -- LEKMOD: an action's hotkey as shown next to its button: modifiers ("Alt", "Shift+Alt") and the key, long key names shortened
-local g_LekmodShortKeyNames = { SPACE = "Spc", BACKSPACE = "Bksp", DELETE = "Del", INSERT = "Ins", RETURN = "Ent", ENTER = "Ent", ESCAPE = "Esc", TAB = "Tab", HOME = "Home", END = "End" };
+local g_LekmodShortKeyNames = { SPACE = "Space", SPACEBAR = "Space", ["SPACE BAR"] = "Space", BACKSPACE = "Bksp", DELETE = "Del", INSERT = "Ins", RETURN = "Ent", ENTER = "Ent", ESCAPE = "Esc", TAB = "Tab", HOME = "Home", END = "End" };
 local g_LekmodModifierNames = { alt = "Alt", shift = "Shift", ctrl = "Ctrl", control = "Ctrl" };
 function LekmodShortHotKey( strHotKey )
 	if strHotKey == nil or strHotKey == "" then
 		return "", "";
 	end
 	local mods = {};
-	local key = "";
+	local words = {};
 	for token in string.gmatch( tostring( strHotKey ), "[^%+%s%-]+" ) do
 		local mod = g_LekmodModifierNames[string.lower( token )];
 		if mod ~= nil then
 			table.insert( mods, mod );
-		else
-			key = token;
+		elseif string.lower( token ) ~= "key" then
+			-- key names can have several words ("Space Key"); the word "Key" itself is dropped
+			table.insert( words, token );
 		end
 	end
+	local key = table.concat( words, " " );
 	if key == "" and string.find( tostring( strHotKey ), "%-$" ) then
 		key = "-";
 	end
@@ -583,8 +585,14 @@ function UpdateUnitActions( unit )
 					end
 				end
 				LekmodSetHotKeyLabel( instance, strMods, strKey );
+				-- 4 px further towards the button's middle than on promotions (these instances are only used here)
+				if instance.LekmodHotKeyLabel ~= nil and not instance.LekmodStackOffsetsSet then
+					instance.LekmodStackOffsetsSet = true;
+					instance.LekmodHotKeyLabel:SetOffsetVal( instance.LekmodHotKeyLabel:GetOffsetX(), instance.LekmodHotKeyLabel:GetOffsetY() + 4 );
+					instance.LekmodHotKeyModLabel:SetOffsetVal( instance.LekmodHotKeyModLabel:GetOffsetX(), instance.LekmodHotKeyModLabel:GetOffsetY() + 4 );
+				end
 			end
-            
+
 			-- test w/o visible flag (ie can train right now)
 			if not Game.CanHandleAction( iAction ) then
 				bDisabled = true;
@@ -1207,7 +1215,7 @@ local g_LekmodActionBase = nil;
 function LekmodActionKeyRoom( bOn )
 	if g_LekmodActionBase == nil then
 		g_LekmodActionBase = {
-			primaryW = Controls.PrimaryStretchy:GetSizeX(),
+			primaryW = Controls.PrimaryStretchy:GetSizeX(), secondaryW = Controls.SecondaryStretchy:GetSizeX(),
 			secStretchyX = Controls.SecondaryStretchy:GetOffsetX(), secStretchyY = Controls.SecondaryStretchy:GetOffsetY(),
 			secStackX = Controls.SecondaryStack:GetOffsetX(), secStackY = Controls.SecondaryStack:GetOffsetY(),
 		};
@@ -1215,10 +1223,12 @@ function LekmodActionKeyRoom( bOn )
 	local b = g_LekmodActionBase;
 	local w = 0;
 	if bOn then
-		w = (OptionsManager.GetSmallUIAssets() and not UI.IsTouchScreenEnabled()) and 30 or 36;
+		w = (OptionsManager.GetSmallUIAssets() and not UI.IsTouchScreenEnabled()) and 34 or 40;
 	end
 	Controls.PrimaryStretchy:SetSizeVal( b.primaryW + w, Controls.PrimaryStretchy:GetSizeY() );
 	Controls.SecondaryStretchy:SetOffsetVal( b.secStretchyX + w, b.secStretchyY );
+	-- the extra-actions frame gets the same room for its labels
+	Controls.SecondaryStretchy:SetSizeVal( b.secondaryW + w, Controls.SecondaryStretchy:GetSizeY() );
 	Controls.SecondaryStack:SetOffsetVal( b.secStackX + w, b.secStackY );
 end
 
