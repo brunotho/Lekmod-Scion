@@ -663,9 +663,8 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 
 		addSmallGenericButtonIf( tech.TradeAgreementTradingAllowed and "TXT_KEY_ALLOWS_TRADE_AGREEMENTS" )
 
-		if tech.BridgeBuilding then
-			addSmallActionButton( GameInfo.Missions.MISSION_ROUTE_TO, "", "TXT_KEY_ALLOWS_BRIDGES" )
-		end
+		-- LEKMOD (user, 2026-11-26): the usual star like the other abilities (EUI used the Route To order's icon)
+		addSmallGenericButtonIf( tech.BridgeBuilding and "TXT_KEY_ALLOWS_BRIDGES" )
 	elseif civBE_mode then
 		addSmallGenericButtonIf( tech.AllianceTradingAllowed and "TXT_KEY_ALLOWS_ALLIANCES" )
 		addSmallGenericButtonIf( (tonumber(tech.UnitBaseMiasmaHeal) or 0) > 0 and "TXT_KEY_BASE_MIASMA_HEAL", tech.UnitBaseMiasmaHeal )

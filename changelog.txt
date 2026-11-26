@@ -1021,6 +1021,7 @@ TECH TREE ICONS
 ---------------
 Tags: ui
 - Dev: art, not in the player notes (user, 2026-10-19): clearer icons for embarking and trade route effects in the tech tree
+- Dev: EUI tech tree: "Allows bridges over rivers" uses the usual star like the other abilities (EUI showed the Route To order icon; user, 2026-11-26)
 
 MAIN MENU BACKGROUND
 --------------------
