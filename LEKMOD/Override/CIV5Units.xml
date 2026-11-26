@@ -293345,4 +293345,66 @@
 			<Set GoldMaintenance="1"/>
 		</Update>
 	</Buildings>
+	<!-- LEKMOD: New Specs 15 (2026-11-26) -->
+	<!-- Tonga: Matatoa like the Archer (cost, 2 Movement, 2 Sight) plus Fast Swimmer and Woodsman -->
+	<Units>
+		<Update>
+			<Where Type="UNIT_MC_RAPA_NUI_MATATOA"/>
+			<Set Cost="40" Moves="2" BaseSightRange="2"/>
+		</Update>
+		<!-- Unique units whose map flag was a fixed-colour civ emblem: the flag of the unit they replace (tinted in the owner's colours) -->
+		<Update>
+			<Where Type="UNIT_NELAYAN"/>
+			<Set UnitFlagAtlas="UNIT_FLAG_ATLAS" UnitFlagIconOffset="2"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BUFFALO_HUNTER"/>
+			<Set UnitFlagAtlas="EXPANSION_UNIT_FLAG_ATLAS" UnitFlagIconOffset="13"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_AUSTRALIA_WORKER"/>
+			<Set UnitFlagAtlas="UNIT_FLAG_ATLAS" UnitFlagIconOffset="1"/>
+		</Update>
+	</Units>
+	<Unit_FreePromotions>
+		<Row>
+			<UnitType>UNIT_MC_RAPA_NUI_MATATOA</UnitType>
+			<PromotionType>PROMOTION_PHIL_MARINE</PromotionType>
+		</Row>
+		<Row>
+			<UnitType>UNIT_MC_RAPA_NUI_MATATOA</UnitType>
+			<PromotionType>PROMOTION_WOODSMAN</PromotionType>
+		</Row>
+	</Unit_FreePromotions>
+	<!-- Honor: the Armory bonus moves from Professional Army to Military Tradition -->
+	<Policy_BuildingClassProductionModifiers>
+		<Delete PolicyType="POLICY_PROFESSIONAL_ARMY" BuildingClassType="BUILDINGCLASS_ARMORY"/>
+		<Row>
+			<PolicyType>POLICY_MILITARY_TRADITION</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<ProductionModifier>100</ProductionModifier>
+		</Row>
+	</Policy_BuildingClassProductionModifiers>
+	<Policy_BuildingClassYieldChanges>
+		<Delete PolicyType="POLICY_PROFESSIONAL_ARMY" BuildingClassType="BUILDINGCLASS_ARMORY"/>
+		<Row>
+			<PolicyType>POLICY_MILITARY_TRADITION</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<YieldType>YIELD_PRODUCTION</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+		<Row>
+			<PolicyType>POLICY_MILITARY_TRADITION</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_ARMORY</BuildingClassType>
+			<YieldType>YIELD_CULTURE</YieldType>
+			<YieldChange>1</YieldChange>
+		</Row>
+	</Policy_BuildingClassYieldChanges>
+	<!-- Trading Post with Guilds (was Trapping) -->
+	<Builds>
+		<Update>
+			<Where Type="BUILD_TRADING_POST"/>
+			<Set PrereqTech="TECH_GUILDS"/>
+		</Update>
+	</Builds>
 </GameData>

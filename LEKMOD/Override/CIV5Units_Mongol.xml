@@ -2065,7 +2065,7 @@
 			<Text>Tower of Belém</Text>
 		</Row>
 		<Row Tag="TXT_KEY_WONDER_TOWER_OF_BELEM_HELP">
-			<Text>Requires Exploration.[NEWLINE]+5 [ICON_STRENGTH] City Strength.[NEWLINE]A Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear in the city.[NEWLINE][NEWLINE]City must be built on the coast.</Text>
+			<Text>Requires Expansionism.[NEWLINE]+5 [ICON_STRENGTH] City Strength.[NEWLINE]A Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear in the city.[NEWLINE][NEWLINE]City must be built on the coast.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_WONDER_TOWER_OF_BELEM_DESC">
 			<Text>The Tower of Belém (Portuguese: Torre de Belém) stands as one of Portugal's most iconic monuments, situated at the mouth of the Tagus River in Lisbon. Built between 1514 and 1520 during the reign of Manuel I, the tower was commissioned both as a fortress to guard the city's harbor and as a ceremonial gateway to Lisbon.[NEWLINE][NEWLINE]The tower exemplifies Manueline architecture, a distinctly Portuguese late Gothic style that incorporates maritime elements and discoveries from the Age of Discovery. Its intricate stonework features nautical themes, including twisted rope, armillary spheres, and exotic plants. The structure combines military practicality with artistic beauty, featuring both defensive battlements and ornate decorative elements.[NEWLINE][NEWLINE]Originally built on a small island near the Tagus River's bank, the tower now sits close to the shore due to changes in the river's flow over centuries. Its strategic position allowed it to work in tandem with other fortifications to defend Lisbon's maritime entrance.[NEWLINE][NEWLINE]The Tower of Belém has served various purposes throughout its history - from a fortress and customs house to a lighthouse and political prison. Today, it stands as a UNESCO World Heritage site, symbolizing Portugal's maritime power during the Age of Discovery and the architectural splendor of the Manueline style.</Text>
@@ -6540,7 +6540,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Matato'a</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_RAPA_NUI_MATATOA_HELP">
-			<Text>Unique Archer. Available immediately. Has 1 additional [ICON_MOVES] Movement and Sight.</Text>
+			<Text>Unique Archer. Available immediately.[NEWLINE][NEWLINE]Starts with Fast Swimmer (+2 [ICON_MOVES] Movement while embarked) and Woodsman (double movement and +15% [ICON_STRENGTH] Combat Strength in Forest and Jungle).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_RAPA_NUI_MATATOA_STRATEGY">
 			<Text>The Matato'a is a Unique Unit of Tonga. It is faster and can see further than the Archer, which it replaces.</Text>
@@ -50614,10 +50614,10 @@ Nebuchadnezzar II died in Babylon in 562 BC. He is remembered as a successful mi
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_CONQUISTADOR_HELP">
-			<Text>Available with the Exploration opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE]Needs 2 Horses and 1 Iron.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
+			<Text>Available with the Expansionism opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE]Needs 2 Horses and 1 Iron.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_CONQUISTADOR_STRATEGY">
-			<Text>Available to everyone with the Exploration opener; Spain, Portugal, the Netherlands, France and Belgium get it already with Civil Service.[NEWLINE]17 [ICON_STRENGTH] Combat Strength, 4 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE]Needs 2 Horses and 1 Iron.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
+			<Text>Available to everyone with the Expansionism opener; Spain, Portugal, the Netherlands, France and Belgium get it already with Civil Service.[NEWLINE]17 [ICON_STRENGTH] Combat Strength, 4 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE]Needs 2 Horses and 1 Iron.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_CONQUISTADOR_TEXT"> 
 			<Text>
@@ -101580,7 +101580,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Given to cities founded by a Vanguard Corps.[NEWLINE][NEWLINE]+4 [ICON_HAPPINESS_1] Happiness.[NEWLINE]Your non-air units on this city's tiles heal 5 more HP per turn.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_CONQUISTADOR_SHARED">
-			<Text>Unique Conquistador of Spain, Portugal, the Netherlands, France and Belgium: available with Civil Service or the Exploration opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
+			<Text>Unique Conquistador of Spain, Portugal, the Netherlands, France and Belgium: available with Civil Service or the Expansionism opener.[NEWLINE][NEWLINE]Founds cities, also on other continents; the new city starts with 2 more [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Can move after attacking, gets no defensive terrain bonuses and is weaker when attacking cities.[NEWLINE]Disembarking costs only 1 [ICON_MOVES] Movement (Amphibious II).[NEWLINE][NEWLINE]Becomes obsolete with Railroad and upgrades to the Vanguard Corps.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNITCOMBAT_LEKMOD_SPACESHIP">
 			<Text>Spaceship Parts</Text>
@@ -112963,7 +112963,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_NO_ADMIRAL_FROM_FAITH"> 
 			<Text>
-				A Great Admiral may only be selected if you have started the Exploration policy tree.
+				A Great Admiral may only be selected if you have started the Expansionism policy tree.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_NO_ARTIST_FROM_FAITH"> 
@@ -117180,7 +117180,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_TRADITION_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +2 [ICON_PRODUCTION] Production and +2 [ICON_FOOD] Food[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
+				[COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +2 [ICON_PRODUCTION] Production and +2 [ICON_FOOD] Food[NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_ARMORY] Armories[NEWLINE][ICON_BULLET]Armories provide +1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MOBILIZATION"> 
@@ -117521,7 +117521,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_PROFESSIONAL_ARMY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Professional Army[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_BARRACKS] Barracks and [ICON_BUILDING_ARMORY] Armories[NEWLINE][ICON_BULLET]Barracks and Armories provide +1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]Colosseums provide +1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold
+				[COLOR_POSITIVE_TEXT]Professional Army[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward [ICON_BUILDING_BARRACKS] Barracks[NEWLINE][ICON_BULLET]Barracks provide +1 [ICON_PRODUCTION] Production and +1 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]Colosseums provide +1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_PROTECTIONISM"> 
@@ -128245,12 +128245,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_SOCIALPOLICY_EXPLORATION_HEADING3_BODY"> 
 			<Text>
-				Exploration becomes available in the Medieval era, and it enhances your ability to spread your empire over the seas. Exploration also unlocks the ability to purchase Great Admirals with Faith, and reveals Hidden Antiquity Sites. These special Antiquity sites not only yield up Artifacts like regular Antiquity Sites, but there is also a chance you will find special Great Works of Writing, like the Rosetta Stone.
+				Expansionism becomes available in the Medieval Era and helps you settle and reach the rest of the world.[NEWLINE][NEWLINE]Adopting Expansionism:[NEWLINE][ICON_BULLET]+1 Sight for land and naval units[NEWLINE][ICON_BULLET]Allows training Conquistadors[NEWLINE][ICON_BULLET]A free Settler appears in your capital[NEWLINE][ICON_BULLET]Reveals the routes explorers would walk from your capital to every other civilization's capital, and most of the shoreline of your home continent[NEWLINE][ICON_BULLET]Unlocks building the Tower of Belem[NEWLINE][NEWLINE]Completing the Expansionism tree:[NEWLINE][ICON_BULLET]+1 [ICON_HAPPINESS_1] Happiness from each Luxury resource[NEWLINE][ICON_BULLET]Buy Great Admirals with [ICON_PEACE] Faith from the Industrial Era on
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_SOCIALPOLICY_EXPLORATION_HEADING3_TITLE"> 
 			<Text>
-				Exploration
+				Expansionism
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_SOCIALPOLICY_FREEDOM_ADV_QUEST"> 
@@ -144640,7 +144640,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_ANGKOR_WAT_HELP"> 
-			<Text>A free Baray in the city: a Garden with +25% [ICON_GREAT_PEOPLE] Great People generation (instead of +20%), +2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith, without [ICON_GOLD] Gold maintenance. It replaces the city's Garden, and the city can't build a Garden next to it.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 2 Great Works.[NEWLINE]All 4 Great Work slots filled: +1 [ICON_FOOD] Food in every city.</Text>
+			<Text>A free Baray in the city: a Garden with +25% [ICON_GREAT_PEOPLE] Great People generation (instead of +20%), +2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith. It replaces the city's Garden, and the city can't build a Garden next to it.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Comes with 2 Great Works.[NEWLINE]All 4 Great Work slots filled: +1 [ICON_FOOD] Food in every city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_BIGBEN_DESC"> 
 			<Text>
@@ -146391,7 +146391,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_WORKERS_TRADINGPOST_HEADING3_BODY"> 
 			<Text>
-				The trading post increases output of a tile by 1 gold. It doesn't access a resource.[NEWLINE]Technology Required: Trapping[NEWLINE]Construction Time: 5 Turns[NEWLINE]May Be Constructed On: Any land tile but ice
+				The trading post increases output of a tile by 1 gold. It doesn't access a resource.[NEWLINE]Technology Required: Guilds[NEWLINE]Construction Time: 5 Turns[NEWLINE]May Be Constructed On: Any land tile but ice
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WORKERS_TRADINGPOST_HEADING3_TITLE"> 

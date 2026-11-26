@@ -105,7 +105,7 @@ Subsection: Buildings
 TRADING POST (BUILD_TRADING_POST)
 ---------------------------------
 Tags: tiles and resources
-- Changed: Workers can build it from Trapping (was Guilds)
+- Dev: Workers could build it from Trapping during development; back to Guilds (as in v35.4) on 2026-11-26 (user)
 
 CANNON (UNIT_CANNON)
 --------------------
@@ -1659,6 +1659,7 @@ Tags: units, naval, civs
 - Added: Nelayan replaces the Rowboat for Brunei, Polynesia, the Maori, Tonga, Indonesia and the Philippines
 - Added: unlike the Rowboat it builds Fishing Boats over several turns like a Worker and is not used up; a Pontoon Bridge still uses it up at once
 - Note: art as Lekmod's original Nelayan (Polynesian war canoe model, removed in v31); the user checks the look in game
+- Dev: 2026-11-26: its map flag was Polynesia's civ emblem in fixed colours; it now uses the Skiff's flag, tinted in the owner's colours. Same fix for the Sioux Buffalo Hunter (Composite Bowman flag) and Australia's Worker (Worker flag)
 
 SELF-PROPELLED ARTILLERY (NEW) (UNIT_SELF_PROPELLED_ARTILLERY)
 --------------------------------------------------------------
@@ -1702,6 +1703,7 @@ Tags: units, civs, policies
 - Added: Spain, Portugal, the Netherlands, France and Belgium can build it already with Civil Service (everyone else still needs the Expansionism opener)
 - Note: like every city-founding unit it costs its own value plus a fixed amount (about 71 on quick); the user chose shown costs: the Conquistador shows about 71 (spec 70), the Vanguard Corps 290 (= Infantry)
 - DLL: Units.PolicyAlternateTech (LEKMOD_POLICY_ALTERNATE_TECH, CvPlayer::canTrain); shared copy is unit ID 272
+- Dev: 2026-11-26: its tooltips (and the Tower of Belem's, the Great Admiral Faith notice and the Civilopedia policy page) still named the branch "Exploration"; they say Expansionism now
 
 SPACESHIP PARTS (UNITCOMBAT_SPACESHIP)
 --------------------------------------
@@ -2464,6 +2466,7 @@ ANGKOR WAT (BUILDING_ANGKOR_WAT)
 --------------------------------
 Tags: world wonders, tourism, wonders
 - Changed: 1 Engineer point (was 1 Scientist point)
+- Dev: 2026-11-26: the tooltip no longer says the free Baray has no Gold maintenance ("free" says it)
 - Added: a free Baray (the Khmer Garden: +25% Great People instead of +20%, +2 Food, +2 Faith, no maintenance); it replaces the city's Garden, and the city can't build a Garden next to it
 - Added: 4 Great Work slots, 2 come filled; all 4 filled: +1 Food in every city
 - Removed: the free University, 5 Culture and 5 Science
@@ -2593,6 +2596,7 @@ Tags: policies, combat
 - Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
 - Dev: 2026-10-29 (user): Military Tradition lost +100% Armories; Professional Army: +100% Armories, Armories +1 Production +1 Culture, Colosseums +1 Gold; Hero Cult: Heroic Epic +5 Production +5 Culture (no Happiness), Circus Maximus +5 Happiness +5 Gold (no Production)
+- Dev: 2026-11-26 (user): the Armory part moved back from Professional Army to Military Tradition, now +100% Production toward Armories and Armories +1 Production +1 Culture there
 - Dev: Military Tradition Courthouse yields 3 -> 2 each on 2026-10-21 (Colonial Administration's +3 replaces them, Policy_CityYieldIfBuildingClass takes the larger value); the Honor tooltips no longer mention the non-stacking, the Expansionism ones do
 
 PIETY (POLICY_BRANCH_PIETY)
@@ -3610,6 +3614,11 @@ TONGA (CIVILIZATION_TONGA)
 Tags: civs
 - Reworked: UA
   | Start the game with most Coast tiles and Islands within 6 tiles already explored.[NEWLINE][NEWLINE]+20 resting [ICON_INFLUENCE] Influence with the first [ICON_CITY_STATE] City-State you pledge to protect.[NEWLINE]Lost for good once that pledge ends: you revoke it, demand tribute from that City-State, or one of you declares war.
+- Changed: Matatoa (unique Archer):
+  - costs 26 Production like the Archer (was 20)
+  - 2 Movement (was 3)
+  - 2 Sight (was 3)
+  - starts with Fast Swimmer (+2 Movement while embarked) and Woodsman
 - Reworked: BUILDING_MC_TONGAN_MALAE
   | costs 40 · 1 Gold maintenance[NEWLINE]Replaces the Granary. Available with Sailing or Bronze Working (instead of Pottery).[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_CULTURE] Culture.[NEWLINE]If 3 or more Coast tiles are next to the city: [ICON_RES_FISH] Fish yield +1 [ICON_GOLD] Gold, +1 [ICON_CULTURE] Culture and +1 [ICON_PEACE] Faith.[NEWLINE]If 3 or more Jungle tiles are next to the city: Jungle yields +1 [ICON_PRODUCTION] Production.
 - DLL: Traits.LekmodFirstPledgeAnchor; saved player field m_iLekmodFirstPledgeMinor
