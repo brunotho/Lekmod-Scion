@@ -794,17 +794,24 @@ Tags: ui, air
 - Added: selecting an aircraft shows every aircraft based with it (same city, airbase tile or carrier) as its own flag in an arc above, with its health; click one to select it
 - Dev: LekmodBuildAirFan / LekmodClearAirFan in UnitFlagManager.lua (standard UI), after EUI's airbase fan; the count and pull-down list above the banner stay
 
+EUI SUPPORT REMOVED
+-------------------
+Tags: ui
+- Removed: support for the interface mod EUI (Enhanced User Interface). With EUI installed, the game now always uses Lekmod Scion's own screens; the EUI folder can stay where it is for other mods
+- Added: the EUI features players missed most, in our own screens: growth and production numbers on city banners, turns on the Great People meters, aircraft shown around their city or carrier
+- Dev: ui_check.bat no longer looks for EUI and always installs the standard screens (Lua/tmp/eui removed). Lekmod Scion's package loads with priority 300, EUI's BNW package with 250, so a file of the same name is ours; 14 base-game screens that EUI replaces and we didn't override are shipped as plain copies (Lua/tmp/ui/BaseGame: TopPanel.xml, WorldView.xml, DiploTrade.lua, PlotHelpManager, LeaderHeadRoot, ...). EUI's own files (EUI_context, EUI_utilities, ...) are only loaded by EUI screens that are now ours, so none of them runs. Only 3 EUI images share a name with base images (Blank.dds, MarcPips)
+- Note: LekmodInstaller (upstream's installer program, not used by our install page) still has its EUI option; it is not maintained
+
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air
 An attempted fix, not yet confirmed in multiplayer games.
 - Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war could be missing from its banner count (or an old count stayed); the count should now be rebuilt when the city comes into view and at the start of every turn
-- Note: standard UI only; EUI draws aircraft differently and is unchanged
 
 EUI BUILDING TOOLTIPS
 ---------------------
 Tags: bugfix, ui
-- Fixed: with EUI, building tooltips (also in the tech tree) showed a raw "TXT_KEY_EUI_..." line; ordinary buildings no longer get that line, and built wonders should now say who built them and where
+- Dev: with EUI, building tooltips (also in the tech tree) showed a raw "TXT_KEY_EUI_..." line; fixed on 2026-11-26, then EUI support was dropped the same day (the texts stay in CIV5Units_Mongol.xml, unused)
 - Dev: EUI 1.28 uses TXT_KEY_EUI_BUILT_IN_X_CITIES, TXT_KEY_EUI_WONDER_BUILT_BY and TXT_KEY_EUI_UNKNOWN_CITY but ships no texts for them; added to CIV5Units_Mongol.xml; the BUILT_IN_X_CITIES line (on every building) is removed from our EUI_tooltip_library copy (user, 2026-11-26: limited buildings have LekmodEmpireLimitLine). The other undefined keys in EUI_tooltip_library are Beyond Earth paths
 
 TECH TREE: BUILDINGS WITH TWO TECHS
@@ -890,7 +897,6 @@ ANNOUNCEMENT BANNER (LEKMOD_ANNOUNCEMENT_BANNER)
 ------------------------------------------------
 Tags: ui
 - Added: big announcements also appear for a few seconds as a banner at the top of the screen: events of City-States with unique abilities, world wonders other civilizations complete, and declarations of war (click it to close it; the notification stays)
-- Note: standard UI and EUI
 - Dev: Lua/LekmodAnnouncementBanner.lua/.xml (own context, loaded by InGame.lua); special City-State notifications carry iExtraGameData LEKMOD_ANNOUNCEMENT_BANNER_MARKER (4242, CvGame::LekmodAuctionNotify); 5 seconds each with a 0.6 s fade, queued; notifications rebroadcast while loading are skipped (ready after LoadScreenClose); text only with a dark outline, no frame (user, 2026-10-28)
 
 DISMISS ALL NOTIFICATIONS
@@ -912,7 +918,6 @@ Tags: ui
 - Dev: the lines first only reached the detailed tooltip (GetResourceString long form); the bottom-right box (PlotHelpText.lua) asks for the short form. Lekmod now overrides PlotHelpText.lua and appends LekmodResourceDetailsString
 - Dev: on tiles outside anyone's borders, the improved yields left out the resource's own yields (e.g. Lapis showed no Gold), because the game's yield preview counted the resource only for the tile owner's team; fixed in the DLL (LEKMOD_YIELD_WITH_BUILD_VIEWER_TEAM)
 - Dev: the build turns were one too high (the first turn's work counts right away, as on the build button); fixed
-- Note: standard UI only (EUI uses its own tile tooltip)
 
 TOURISM IN POLICIES AND IDEOLOGIES (COLLECTION_TOURISM_POLICIES)
 ----------------------------------------------------------------
@@ -1096,7 +1101,6 @@ Tags: ui, city-states
 Weight: minor
 - Added: City-State banners show who has pledged to protect them
 - Added: City-State banners show the icons of their quests for you, with the quest list as a tooltip
-- Note: standard UI only for now (EUI has its own city banners)
 
 WORKER TURNS REMAINING
 ----------------------
@@ -3853,7 +3857,6 @@ MEXICO (CIVILIZATION_MEXICO)
 Tags: civs, ui
 - Reworked: UA
   | Receive a free [ICON_WORKER] Worker upon researching [ICON_TECH_POTTERY] Pottery.[NEWLINE][NEWLINE]+10 [ICON_GOLD] Gold when meeting a [ICON_CITY_STATE] City-State.[NEWLINE][NEWLINE]Demanding tribute does not break your own pledge of protection.[NEWLINE]When demanding tribute you may take +30 [ICON_INFLUENCE] Influence instead of [ICON_GOLD] Gold (counts as a tribute).
-- Note: the Influence option is in the standard UI only (EUI keeps its own City-State screen)
 - DLL: Traits.LekmodMeetMinorGold, LekmodTributeInfluence; network command -24; Lua Player:LekmodGetTributeInfluence()
 
 MALAGASY (CIVILIZATION_MADAGASCAR)
