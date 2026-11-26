@@ -142,7 +142,7 @@ Tags: units, combat
   | 14 Strength · 2 Movement · costs 80[NEWLINE]Can only be trained in your [ICON_CAPITAL] Capital.[NEWLINE]Cannot attack and never gains experience.[NEWLINE][NEWLINE]Your units next to it get +10% [ICON_STRENGTH] Combat Strength.[NEWLINE]When one of your units within 2 tiles is killed by an enemy, your units on its tile and next to it heal 5 HP.[NEWLINE][NEWLINE]If it is lost (killed, deleted or gifted), you lose 2 [ICON_HAPPINESS_1] Happiness for the rest of the game.[NEWLINE]Retire it in your [ICON_CAPITAL] Capital to remove it without that penalty.
   - every civilization can train it from Civil Service, only in the capital; obsolete with Chivalry; no upgrades
   - starts with Cover I, Medic I and War Altar
-- Changed: the Happiness tooltip's "from units" line now counts the Happiness lost with Carroccios
+- Dev: the Happiness tooltip's "from units" line now counts the Happiness lost with Carroccios
 - DLL: Units.LekmodNoExperience, LekmodDeathUnhappiness (added to the player's units unhappiness in CvUnit::kill, taken back by Retire), LekmodRetireInCapital (MISSION_LEKMOD_RETIRE, ID 60), LekmodCapitalOnly (CvCity::canTrain)
 - Dev: unit 277, class 121; art from JFD's Papal States (ART_DEF_UNIT_JFD_CARROCCIO, JFD_PAPAL_STATES_INNOCENT_ATLAS 2, JFD_UNIT_FLAG_CARROCCIO_ATLAS)
 
@@ -574,7 +574,7 @@ Tags: diplomacy and trade, ui
 TRADE ROUTE DURATION (TRADE_ROUTE_DURATION)
 -------------------------------------------
 Tags: diplomacy and trade
-- Changed: trade routes last 15 turns (was up to about 20 turns, more on very long routes)
+- Changed: trade routes last 15 turns (was as many full round trips as fit into 20 turns, at least 2)
 - Dev: new define TRADE_ROUTE_DURATION (15, not speed-scaled); LEKMOD_TRADE_ROUTE_FIXED_DURATION sets m_iTurnRouteComplete = start + 15 and expires by turn in CvPlayerTrade::MoveUnits (circuits unlimited)
 
 FORTS AND DEFENSIVE UNIQUE IMPROVEMENTS (IMPROVEMENT_FORT)
@@ -636,7 +636,7 @@ PONTOON BRIDGES (IMPROVEMENT_PONTOON_BRIDGE)
 --------------------------------------------
 Tags: game mechanics, movement, naval
 - Changed: available at Construction (was Engineering), and count as a road from the start
-- Changed: build time 3 turns, 2 turns after Railroad (was about 5)
+- Changed: build time 3 turns, 2 turns after Railroad (was 5)
 - Changed: units on a pontoon bridge have -20% defense (was -15%); with land and naval units on the same tile, -100% (was -50%)
 - Dev: the improvement and build texts describe all pontoon bridge rules
 - Dev: Builds Time 700 -> 400 and PrereqTech CONSTRUCTION (also the Brunei build), Build_TechTimeChanges RAILROAD -200, ActsAsRouteTech CONSTRUCTION, DefenseModifierGlobal -20, StackedDomainDefensePenalty 80
@@ -722,7 +722,7 @@ Tags: bugfix, civs, ui
 BASILICA (BUILDING_BASIL)
 -------------------------
 Tags: bugfix, civs, ui
-- Fixed: the tooltip now names everything that differs from the Museum: +15% Culture (instead of +10%), cheaper, available with Industrialization
+- Dev: the tooltip now names everything that differs from the Museum: +15% Culture (instead of +10%), cheaper, available with Industrialization
 - Dev: the Museum's Civilopedia strategy text no longer claims an Opera House is required (it needs an Amphitheater); the Basilica has its own strategy text
 
 SEVERAL TRADE OFFERS AT ONCE
@@ -789,8 +789,8 @@ Tags: bugfix, ui
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
 - Dev: EUI tech tree fixed (2026-11-26): since 2026-10-14 the EUI copy of TechButtonInclude asked EUI's GameInfoCache for GameInfo.Units("UpgradeOnly = 1"), a SQL string it can't take (Lua.log: EUI_core_library.lua:396 "bad argument #1 to 'pairs'"). The error stopped the tech tree setup, so EUI players saw no buildings, wonders or improvement builds, and policy and other civs' upgrade-only units showed for everyone. It now loops all units and checks the column by hand
 
-PROMOTION TEMPLATES (NEW) (UNIT_PANEL)
---------------------------------------
+PROMOTION TEMPLATES (UNIT_PANEL)
+--------------------------------
 Tags: ui, promotions
 - Added: promotion templates: a small panel holds two templates of up to 4 promotions per unit type (Armor, Gun, Melee, ...); it shows the selected unit's type, and a dropdown switches to any other type, also without a selected unit
 - Added: "+ New template" picks the promotions in order, as for a fresh unit (only those the type can reach, so civ-only lines such as Prussia's appear only for that civ's units)
@@ -802,15 +802,15 @@ Tags: ui, promotions
 - Dev: after Shift+1/2 or a click the panel checks every frame (up to 3 s) until the promotions arrived with the network message, then closes like after picking by hand (user, 2026-11-05)
 - Dev: Lua/LekmodPromotionTemplates.lua/.xml (own context, both UIs, loaded by InGame.lua; Alt+T and Shift+1/2 in its own input handler; option LEK_PromoTemplatesShown with a MiniMapPanel checkbox); storage Modding.OpenUserData("LekmodPromotionTemplates"); the UI sends only entries that differ from the game's copy (at load, on change, before a click; never after the turn was ended), so Auto costs no network traffic per unit
 
-GREAT SCIENTIST DECAY (NEW) (GAMEOPTION_NO_SCIENTIST_SAVING)
--------------------------------------------------------------
+GREAT SCIENTIST DECAY (GAMEOPTION_NO_SCIENTIST_SAVING)
+------------------------------------------------------
 Tags: ui
 Weight: minor
 - Added: a Great Scientist you keep shows a red "-N Science" over its tile at the start of your turn when its Science bonus drops
 - Dev: Lua/LekmodScientistDecay.lua (loaded by InGame) compares each Great Scientist's GetDiscoverAmount with the last turn; local only, nothing sent over the network
 
-BUILDING LIMITS PER EMPIRE (NEW) (MaxPlayerInstances)
------------------------------------------------------
+BUILDING LIMITS PER EMPIRE (MaxPlayerInstances)
+-----------------------------------------------
 Tags: ui, buildings
 Weight: minor
 - Added: the tooltip of a building you can only have a few of (Oil Refinery, Recycling Center, Ziggurat, ...) shows how many you have or are building out of the limit, and in which cities
@@ -861,8 +861,8 @@ Cities claim plain water tiles as readily as plain flat land when their borders 
 - Changed: buying a water tile with gold costs the same as buying flat land at the same distance (it was more expensive)
 - Dev: Terrains.InfluenceCost Coast 2 -> 1, Ocean 3 -> 1 (influence pathfinder, used by CvCity::GetBuyablePlotList and CvCity::GetBuyPlotCost)
 
-ANNOUNCEMENT BANNER (NEW) (LEKMOD_ANNOUNCEMENT_BANNER)
------------------------------------------------------
+ANNOUNCEMENT BANNER (LEKMOD_ANNOUNCEMENT_BANNER)
+------------------------------------------------
 Tags: ui
 - Added: big announcements also appear for a few seconds as a banner at the top of the screen: events of City-States with unique abilities, world wonders other civilizations complete, and declarations of war (click it to close it; the notification stays)
 - Note: standard UI and EUI
@@ -1061,7 +1061,7 @@ TECHNOLOGY COSTS
 ----------------
 Tags: game mechanics
 - Changed: technology cost +1% Classical, +1.5% Medieval, +2% Renaissance, +3.5% Industrial, +5% Modern, +8% Atomic, +11% Information era (Ancient unchanged)
-- Changed: Astronomy and Navigation cost 10% less (after the era increase): Astronomy about 535 -> 480, Navigation about 785 -> 705
+- Changed: Astronomy and Navigation cost less despite the era increase: Astronomy 479 (was 522), Navigation 707 (was 770), before the cost per city
 - Dev: per-tech Cost updates after the Technologies table in CIV5Units.xml; later per-tech changes (e.g. Astronomy/Navigation) must edit those values
 
 CITY-STATE BANNER ICONS
@@ -2664,8 +2664,8 @@ Tags: ui
 TOURISM ON TILES (ui)
 ---------------------
 Tags: bugfix, ui
-- Fixed: the improvement build tooltip showed a lone "+" for Tourism; it now shows the Tourism change
-- Changed: tiles with 5 or more Tourism show a large suitcase instead of a camera
+- Dev: the improvement build tooltip showed a lone "+" for Tourism; it now shows the Tourism change
+- Dev: tiles with 5 or more Tourism show a large suitcase instead of a camera
 
 AUTOCRACY (POLICY_BRANCH_AUTOCRACY)
 -----------------------------------
@@ -3948,7 +3948,7 @@ Tags: promotions, movement, combat
 TOURISM BUILDING TOOLTIPS (BUILDING_HOTEL, BUILDING_AIRPORT, BUILDING_TOURIST_CENTER)
 -------------------------------------------------------------------------------------
 Tags: bugfix, tourism, buildings, ui
-- Fixed: the Hotel, Airport and National Visitor Center tooltips now say what their Tourism bonus counts: the Culture from World Wonders, Natural Wonders and all worked tiles with an improvement in the city
+- Dev: the Hotel, Airport and National Visitor Center tooltips now say what their Tourism bonus counts: the Culture from World Wonders, Natural Wonders and all worked tiles with an improvement in the city
 
 PRODUCTION OVERFLOW TO GOLD (FLOATING TEXT)
 -------------------------------------------
@@ -4004,8 +4004,8 @@ Weight: minor
 - Changed: all civilization ability texts use the same layout: one sentence per line, an empty line between unrelated effects
 - Dev: 54 texts changed (2026-10-16 POST list); wording unchanged except small fixes (missing final periods, "newly founded cities")
 
-COMBAT SOUNDS (NEW) (LEKMOD_COMBAT_SOUNDS)
-------------------------------------------
+COMBAT SOUNDS (LEKMOD_COMBAT_SOUNDS)
+------------------------------------
 Tags: ui, combat
 Weight: minor
 - Added: when one of your units dies attacking in melee, you hear the sound of a wonder finished by another civilization
@@ -4098,9 +4098,9 @@ UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 --------------------------------------------------------------
 Tags: ui, buildings, civs
 - Changed: all unique building tooltips say what the building replaces, what it shares with it and what it adds
-- Fixed: several unique building tooltips missed or misstated effects
+- Dev: several unique building tooltips missed or misstated effects
 - Dev: tools/dev/ubdiff.py (unique vs. base building from the loaded DB) and tools/dev/ub_texts_2026_10_17.py (the texts; rerunnable); Hippodrome and Canton Factory get their own Help tags (they used the Amphitheater's and the Bank's)
-- Changed: unique national wonders no longer start with "* Unique National Wonder (only a specific civ may build one)"; the colored * in the name marks them
+- Dev: unique national wonders no longer start with "* Unique National Wonder (only a specific civ may build one)"; the colored * in the name marks them
 
 MULTIPLAYER MENU (MAIN MENU)
 ----------------------------
