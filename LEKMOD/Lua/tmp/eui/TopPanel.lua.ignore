@@ -1175,6 +1175,7 @@ local function UpdateTopPanelNow()
 			end
 
 			local turnsRemaining = ""
+			local faithString
 			if faithNeeded and faithNeeded > 0 then
 				Controls.FaithBar:SetPercent( faithProgress / faithNeeded )
 				Controls.FaithBarShadow:SetPercent( faithProgressNext / faithNeeded )
@@ -1182,17 +1183,19 @@ local function UpdateTopPanelNow()
 					turnsRemaining = math_ceil((faithNeeded - faithProgress) / faithPerTurn )
 				end
 				Controls.FaithBox:SetHide(false)
-				Controls.FaithString:SetText( S("+%i[ICON_PEACE]", faithPerTurn ) )
+				faithString = S("+%i[ICON_PEACE]", faithPerTurn )
 			else
 				Controls.FaithBox:SetHide(true)
-				Controls.FaithString:SetText( S("[ICON_PEACE]%i(+%i)", faithProgress, faithPerTurn ) )
+				faithString = S("[ICON_PEACE]%i(+%i)", faithProgress, faithPerTurn )
 			end
+			-- LEKMOD: a pending belief pick freezes the empire's yields at turn end
+			-- (build the text first: this label has no GetText in EUI)
+			if g_activePlayer.LekmodIsBeliefPickPending and g_activePlayer:LekmodIsBeliefPickPending() then
+				faithString = faithString .. " " .. L"TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING"
+			end
+			Controls.FaithString:SetText( faithString )
 
 			Controls.FaithTurns:SetText( turnsRemaining )
-			-- LEKMOD: a pending belief pick freezes the empire's yields at turn end
-			if g_activePlayer.LekmodIsBeliefPickPending and g_activePlayer:LekmodIsBeliefPickPending() then
-				Controls.FaithString:SetText( Controls.FaithString:GetText() .. " " .. L"TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING" )
-			end
 
 			Controls.FaithIcon:SetHide( not (faithTarget and IconHookup(faithTarget.PortraitIndex, iconSize, faithTarget.IconAtlas, Controls.FaithIcon) ) )
 		end
