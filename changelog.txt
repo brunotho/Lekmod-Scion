@@ -775,6 +775,12 @@ Tags: bugfix, buildings
 - Dev: 2026-10-29: the free Feitoria from Colonial Infrastructure didn't get Treasure Fleets' Harbor Gold on Coast tiles (the policy effects of the rework looked up the civ's own building of the class); every building-class check of our own code now counts any building of the class (CvCity::LekmodHasBuildingClass): canConstruct/IsCanPurchase needed classes, canTrain building requirements, policy city yields/happiness/terrain yields/ideology Gold, policy promotions on training, belief improvement yields with a building, spy defense buildings
 - Dev: checked without change: Naval Tradition Harbor Happiness, Professional Army/Honor Colosseum yields, Garden beliefs (Baray) already count by class (upstream LEKMOD_NONCIV_BUILDINGCLASS_YIELD_CHANGE)
 
+CITY BANNER: GROWTH AND PRODUCTION NUMBERS
+------------------------------------------
+Tags: ui
+- Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, and how much more per turn would finish it a turn sooner and how much less would make it a turn later
+- Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _GROW_* / _BUILD_*
+
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air

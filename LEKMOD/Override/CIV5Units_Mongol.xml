@@ -121008,6 +121008,21 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_BLACKOUT">
 			<Text>B  L  A  C  K  O  U  T</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_STOCK">
+			<Text>{1_Have} / {2_Need} {3_Icon}, +{4_Rate} {3_Icon} per turn.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_GROW_FASTER">
+			<Text>{1_Num} more {2_Icon} per turn: grows in {3_Num} {3_Num: plural 1?turn; other?turns;}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_GROW_SLOWER">
+			<Text>{1_Num} less {2_Icon} per turn: grows in {3_Num} {3_Num: plural 1?turn; other?turns;}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_BUILD_FASTER">
+			<Text>{1_Num} more {2_Icon} per turn: done in {3_Num} {3_Num: plural 1?turn; other?turns;}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_BUILD_SLOWER">
+			<Text>{1_Num} less {2_Icon} per turn: done in {3_Num} {3_Num: plural 1?turn; other?turns;}.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_WLTKD">
 			<Text>{1_City} celebrates We Love the King Day: {2_Num} turns left.</Text>
 		</Row>

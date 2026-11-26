@@ -369,7 +369,8 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 				cityGrowth = "[COLOR_WARNING_TEXT]-[ENDCOLOR]";
 				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_STARVING_TT",localizedCityName ));
 			else
-				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_WILL_GROW_TT", localizedCityName, cityPopulation, cityPopulation+1, cityGrowth));
+				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_WILL_GROW_TT", localizedCityName, cityPopulation, cityPopulation+1, cityGrowth)
+					.. LekmodTurnStepText(city:GetFoodTimes100(), city:FoodDifferenceTimes100(), city:GrowthThreshold() * 100, cityGrowth, "[ICON_FOOD]", "GROW"));
 			end
 			
 			controls.CityGrowth:SetText(cityGrowth);
@@ -453,6 +454,11 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 						else
 							tooltipString = Locale.ConvertTextKey("TXT_KEY_CITY_CURRENTLY_PRODUCING_TT", localizedCityName, cityProductionName, productionTurnsLeft);
 						end
+						-- LEKMOD: what is stored, and how much more or less Production per turn changes the turn count
+						-- (stored as in EUI's banner: the overflow part counts as stored)
+						local iProdRate100 = city:GetCurrentProductionDifferenceTimes100(false, false);
+						local iProdStored100 = city:GetProductionTimes100() + city:GetCurrentProductionDifferenceTimes100(false, true) - iProdRate100;
+						tooltipString = tooltipString .. LekmodTurnStepText(iProdStored100, iProdRate100, city:GetProductionNeeded() * 100, productionTurnsLeft, "[ICON_PRODUCTION]", "BUILD");
 						controls.CityBannerLeftBackground:SetToolTipString(tooltipString);
 					end
 				end	
@@ -582,6 +588,36 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 
 	controls.IconsStack:CalculateSize();
 	controls.IconsStack:ReprocessAnchoring();
+end
+
+-- LEKMOD: tooltip lines for growth and production: what is stored, and how much more (or less) per turn
+-- makes it one turn faster (or slower). All values in hundredths, as the game keeps them.
+--   stored100, rate100: current stock and gain per turn; need100: the total needed; turns: the game's turn count
+local function LekmodFmt(i100)
+	return string.format("%g", math.floor(i100 + 0.5) / 100);
+end
+function LekmodTurnStepText(stored100, rate100, need100, turns, icon, kind)
+	if rate100 == nil or rate100 <= 0 or need100 == nil or need100 <= 0 or turns == nil or type(turns) ~= "number" or turns < 1 then
+		return "";
+	end
+	local remaining100 = math.max(0, need100 - stored100);
+	local s = "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK", LekmodFmt(stored100), LekmodFmt(need100), icon, LekmodFmt(rate100));
+	-- one turn faster: finish in turns-1, so the rate must reach remaining / (turns-1)
+	if turns > 1 then
+		local faster100 = math.ceil(remaining100 / (turns - 1)) - rate100;
+		local fasterWhole = math.ceil(faster100 / 100);
+		if fasterWhole > 0 then
+			s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_" .. kind .. "_FASTER", fasterWhole, icon, turns - 1);
+		end
+	end
+	-- one turn slower: below remaining / turns per turn it takes turns+1
+	local min100 = math.ceil(remaining100 / turns);
+	local slack100 = rate100 - min100;
+	local slowerWhole = math.floor(slack100 / 100) + 1;
+	if slowerWhole > 0 then
+		s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_" .. kind .. "_SLOWER", slowerWhole, icon, turns + 1);
+	end
+	return s;
 end
 
 -- LEKMOD: the luxury your own city demands (We Love the King Day) as an icon below its name, like City-State quests;
