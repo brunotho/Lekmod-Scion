@@ -2483,15 +2483,15 @@ Tags: world wonders, naval, wonders
 - Added: a Great Admiral, 2 Conquistadors, 2 Galleasses and 4 Rowboats appear when it is built
 - Removed: its Culture, Golden Age points and the yields for cities on the same or other landmasses
 
-CITADELS AT THE END OF A TURN (NEW) (BUILD_CITADEL)
----------------------------------------------------
+CITADELS AT THE END OF A TURN (BUILD_CITADEL)
+---------------------------------------------
 Tags: game mechanics, combat
 - Added: with a multiplayer turn timer, a Great General can't build a Citadel in the last 30 seconds of a turn outside your own territory, or in the last 15 seconds inside it; the button is greyed out then and its tooltip says so
 - DLL: CvGame::LekmodIsCitadelTurnEndLocked, checked in CvGame::canHandleAction (local: buttons, clicks and hotkeys of every UI, before the order is sent, so the players' different clocks can't desync); timer values as the Fast Hand intercept rule (getPreviousTurnLen - getTimeElapsed); no timer = no lock (LEKMOD_SPECS_2026_11_18)
 - Dev: both UnitPanels refresh the button on Events.EndTurnTimerUpdate when the lock starts and show the red tooltip line; a first Lua-only version (standard UI only) was replaced
 
-VICTORY: NO AI WINNERS (NEW) (VICTORY_TIME)
--------------------------------------------
+VICTORY: NO AI WINNERS (VICTORY_TIME)
+-------------------------------------
 Tags: game mechanics
 - Added: in multiplayer games AI players can't win: no victory of any type goes to them, a World Leader vote they would win counts as undecided, and their score doesn't count for the Time Victory
 - DLL: CvGame::LekmodIsVictoryBlocked (isGameMultiPlayer and not a human team): testVictory, the score and Victory Point tallies, the conquest check and LekmodResolveWorldLeaderVote (LEKMOD_SPECS_2026_11_18)
