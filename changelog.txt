@@ -749,6 +749,12 @@ Tags: game mechanics, diplomacy and trade
 - Added: in Tournament mode, major civilizations are at war as soon as they meet and cannot make peace before turn 20 (City-States are not affected)
 - Dev: LEKMOD_WAR_START (CvTeam::makeHasMet, CvDeal::IsPossibleToTradeItem peace treaty); LEKMOD_WAR_START_PEACE_TURN 20; GameOptions ID 71
 
+TRADING AT WAR
+--------------
+Tags: diplomacy and trade
+- Changed: two civilizations at war can only make a deal that includes peace: anything else can only be traded together with a peace treaty (so in Tournament mode nothing can be traded with a civilization you are at war with before turn 20)
+- DLL: LEKMOD_WAR_DEALS_NEED_PEACE in CvDeal::IsPossibleToTradeItem (the peace treaty item itself is exempt; AI peace deals already add the treaty first)
+
 SAME-TURN WONDERS
 -----------------
 Tags: world wonders, game mechanics, wonders
@@ -951,7 +957,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
 - Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
-- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map; mining it still needs Atomic Theory
 - Reworked: {Rationalism} POLICY_BRANCH_RATIONALISM
   | Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER] Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]+10% [ICON_RESEARCH] Science in all cities[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources provide double the resource
 - Reworked: {Autocracy} POLICY_THIRD_ALTERNATIVE
@@ -1910,7 +1916,7 @@ URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
 ----------------------------------------------------------------
 Tags: buildings, wonders
 Subsection: Wonders and projects
-- Added: Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map for your team, as Atomic Theory does; mining it still needs Atomic Theory
+- Added: Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
 - DLL: LEKMOD_BUILDING_OBSOLETE_NO_CONSTRUCT (Buildings.ObsoleteTech blocks construction)
@@ -2755,8 +2761,10 @@ Tags: religion, game mechanics
 - Added: the top panel warns while a belief pick is waiting
 - DLL: LEKMOD_SAME_TURN_BELIEFS: CvGameReligions::LekmodIsBeliefTaken / m_aiLekmodBeliefFirstTurn (saved, game religions version 5); the GetAvailable*Beliefs functions take the asking player (Lua: the active player); CvPlayer::IsLekmodBeliefPickPending joins the policy pick freeze; the four belief notifications no longer block the end of the turn; Lua Player:LekmodIsBeliefPickPending()
 - Note: AI players still use the old rule (a belief anyone took is gone)
+- Added: while you can found a pantheon, clicking the Faith number in the top panel opens the pantheon choice, and the pantheon notification is sent again every turn
 - Dev: the Lua Game.GetAvailable*Beliefs read their optional player after creating the result table, so every call without an argument errored (Lua.log: "number expected, got table", seen in EUI's tile hover, 2026-11-26); the pick screens would have failed too. The player is now read first
 - Dev: EUI top panel: the pending text was appended with FaithString:GetText(), which that label lacks in EUI; the error stopped every top panel refresh while a pick was waiting (no warning, Faith icon and Great People not updated). The text is now built before SetText
+- Dev: 2026-11-26 (0.1.8 test game): an EUI player closed the pantheon screen and the prompt never came back, not even the next turn (cause not found in the code: the notification can't be dismissed by players and is re-added each turn unless one is still active). Now the old notification is replaced by a fresh one every turn (LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN, CvNotifications::LekmodDismissType) and the Faith text opens the choice (both UIs)
 
 PENDING POLICY PICK (game mechanics)
 ------------------------------------
@@ -3653,6 +3661,7 @@ Tags: civs, buildings
 - Reworked: UA
   | +20% [ICON_GREAT_PEOPLE] Great Person points in all Cities.[NEWLINE][NEWLINE]Strategic resources on Snow yield +3 [ICON_PRODUCTION] Production.
 - Added: start bias also avoids jungle (desert avoidance and tundra bias kept)
+- Note: Falu Gruva keeps its +1 Production on worked Hills (it was removed by mistake during development and restored on 2026-11-26)
 - Reworked: BUILDING_FALU_GRUVA
   | costs 83[NEWLINE]Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.
 - New: UNIT_SWEDISH_HAKKAPELIITTA
@@ -3808,6 +3817,7 @@ Tags: civs, buildings
 - Reworked: BUILDING_UC_HALKEVLERI
   | costs 261 · 3 Gold maintenance[NEWLINE]Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and gives no [ICON_RESEARCH] Science of its own.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.
 - DLL: Building_LekmodConditionalYields (RequiresBuildingClass, PerPopulation)
+- Dev: 2026-11-26 (user): the Halkevleri keeps the Public School's +1 Science per 2 Citizens and +1 Science on Forest tiles; only the flat +3 Science is gone (it had lost all its Science)
 
 MEXICO (CIVILIZATION_MEXICO)
 ----------------------------

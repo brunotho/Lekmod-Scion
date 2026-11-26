@@ -927,6 +927,12 @@
 // Lobby option GAMEOPTION_LEKMOD_WAR_START: major civs are at war when they meet; no peace before turn LEKMOD_WAR_START_PEACE_TURN
 #define LEKMOD_WAR_START
 #define LEKMOD_WAR_START_PEACE_TURN 20
+// At war, a deal between two major civs must make peace: every item other than the peace treaty needs a peace treaty in the
+// same deal (the base game builds war-time AI deals this way; human deals could trade anything). Before
+// LEKMOD_WAR_START_PEACE_TURN in a start-at-war game nothing can be traded. (user, 2026-11-26)
+#define LEKMOD_WAR_DEALS_NEED_PEACE
+// The pantheon notification is sent again every turn while a pantheon can be founded, so a lost prompt comes back (user, 2026-11-26)
+#define LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN
 // Resource columns: ImprovementBuildTimeChange (extra build time for the improvement that connects the resource),
 // FoundCity* (one-time effects for a city founded on the resource, with FoundCityTech known) and
 // CityCenter* (production bonuses while a city stands on the resource)

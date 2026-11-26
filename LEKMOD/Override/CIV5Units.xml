@@ -285117,7 +285117,7 @@
 			<PromotionType>PROMOTION_SWIFT_TRANSPORT</PromotionType>
 		</Row>
 	</Unit_FreePromotions>
-	<!-- Sweden: Falu Gruva like a regular Ironworks (8 Iron, +8 Production, +2 Production on mountains; hills production and Flight Tourism removed); start bias tundra, avoid jungle and desert -->
+	<!-- Sweden: Falu Gruva like a regular Ironworks (8 Iron, +8 Production, +2 Production on mountains) plus its +1 Production on hills (kept); Flight Tourism removed; start bias tundra, avoid jungle and desert -->
 	<Building_TechEnhancedYieldChanges>
 		<Delete BuildingType="BUILDING_FALU_GRUVA"/>
 	</Building_TechEnhancedYieldChanges>
@@ -285128,6 +285128,12 @@
 			<TerrainType>TERRAIN_MOUNTAIN</TerrainType>
 			<YieldType>YIELD_PRODUCTION</YieldType>
 			<Yield>2</Yield>
+		</Row>
+		<Row>
+			<BuildingType>BUILDING_FALU_GRUVA</BuildingType>
+			<TerrainType>TERRAIN_HILL</TerrainType>
+			<YieldType>YIELD_PRODUCTION</YieldType>
+			<Yield>1</Yield>
 		</Row>
 	</Building_TerrainYieldChanges>
 	<Civilization_Start_Region_Priority>
@@ -286518,7 +286524,7 @@
 			<Yield>3</Yield>
 		</Row>
 	</Building_YieldChanges>
-	<!-- Turkey: Halkevleri (from scratch): Industrialization, Public School cost +30%, no Science of its own; +1 Science +1 Culture per 5 Population with a Broadcast Tower (scientist slot and University requirement kept) -->
+	<!-- Turkey: Halkevleri (from scratch): Industrialization, Public School cost +30%, no flat +3 Science (its per-citizen and Forest Science stay, user 2026-11-26); +1 Science +1 Culture per 5 Population with a Broadcast Tower (scientist slot and University requirement kept) -->
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_UC_HALKEVLERI"/>
@@ -286528,12 +286534,6 @@
 	<Building_YieldChanges>
 		<Delete BuildingType="BUILDING_UC_HALKEVLERI"/>
 	</Building_YieldChanges>
-	<Building_YieldChangesPerPop>
-		<Delete BuildingType="BUILDING_UC_HALKEVLERI"/>
-	</Building_YieldChangesPerPop>
-	<Building_FeatureYieldChanges>
-		<Delete BuildingType="BUILDING_UC_HALKEVLERI"/>
-	</Building_FeatureYieldChanges>
 	<IconTextureAtlases>
 		<Row>
 			<Atlas>LEKMOD_SU_KEMERI_ATLAS</Atlas>

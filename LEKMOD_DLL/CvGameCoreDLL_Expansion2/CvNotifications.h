@@ -47,6 +47,9 @@ public:
 	void Dismiss(int iLookupIndex, bool bUserInvoked);
 	bool MayUserDismiss(int iLookupIndex);  // may the user dismiss this notification using the user interface without completing its action
 	void Rebroadcast(void);  // rebroadcast active notification
+#ifdef LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN
+	void LekmodDismissType(NotificationTypes eType);  // dismiss every active notification of this type
+#endif
 
 	bool GetEndTurnBlockedType(EndTurnBlockingTypes& eBlockingType, int& iNotificationIndex);  // gets the type of blocking and the lookup index
 

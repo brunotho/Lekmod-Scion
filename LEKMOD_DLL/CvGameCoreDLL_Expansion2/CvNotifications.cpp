@@ -535,6 +535,21 @@ void CvNotifications::Dismiss(int iLookupIndex, bool bUserInvoked)
 	}
 }
 
+#ifdef LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN
+void CvNotifications::LekmodDismissType(NotificationTypes eType)
+{
+	int iIndex = m_iNotificationsBeginIndex;
+	while(iIndex != m_iNotificationsEndIndex)
+	{
+		if(m_aNotifications[iIndex].m_eNotificationType == eType && !m_aNotifications[iIndex].m_bDismissed)
+			Dismiss(m_aNotifications[iIndex].m_iLookupIndex, /*bUserInvoked*/ false);
+		iIndex++;
+		if(iIndex >= (int)m_aNotifications.size())
+			iIndex = 0;
+	}
+}
+
+#endif
 //	---------------------------------------------------------------------------
 bool CvNotifications::MayUserDismiss(int iLookupIndex)
 {

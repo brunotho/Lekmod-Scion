@@ -8777,10 +8777,10 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Halkevleri</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_UC_HALKEVLERI_STRATEGY">
-			<Text>Replaces the Public School. Besides the regular yields of a Public School, the Halkevleri provides additional [ICON_CULTURE] Culture and costs less.</Text>
+			<Text>Replaces the Public School. It has no flat [ICON_RESEARCH] Science, but with a Broadcast Tower it gives +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens on top of the Public School's per-citizen and Forest Science.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_UC_HALKEVLERI_HELP">
-			<Text>Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and gives no [ICON_RESEARCH] Science of its own.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.</Text>
+			<Text>Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and has no flat +3 [ICON_RESEARCH] Science.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this City.[NEWLINE]+1 [ICON_RESEARCH] Science from Forest tiles worked by this City.[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.</Text>
 		</Row>
 	<!-- Ireland CIV -->
 		
@@ -19085,7 +19085,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP"> 
-			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
+			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Hills worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_PEDIA"> 
 			<Text>
@@ -19094,7 +19094,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_STRATEGY"> 
 			<Text>
-				In addition to the normal +8 [ICON_PRODUCTION] Production of the Ironworks it replaces, Falu Gruva also provides +1 [ICON_PRODUCTION] Production for all hill tiles worked by the city.[NEWLINE]Like the Ironworks, it provides 8 [ICON_RES_IRON] Iron and +2 [ICON_PRODUCTION] Production on worked Mountains (not Natural Wonders).[NEWLINE] +6 [ICON_TOURISM] Tourism once Flight is discovered. Only Sweden may build it.
+				In addition to the normal +8 [ICON_PRODUCTION] Production of the Ironworks it replaces, Falu Gruva also provides +1 [ICON_PRODUCTION] Production for all hill tiles worked by the city.[NEWLINE]Like the Ironworks, it provides 8 [ICON_RES_IRON] Iron and +2 [ICON_PRODUCTION] Production on worked Mountains (not Natural Wonders).[NEWLINE]Only Sweden may build it.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FEITORIA"> 
@@ -120240,7 +120240,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Uranium Mapping Project</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_URANIUM_MAPPING_PROJECT_HELP">
-			<Text>[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Reveals all [ICON_RES_URANIUM] Uranium on the map for your team, as Atomic Theory does.[NEWLINE]Can no longer be built once you know Atomic Theory.</Text>
+			<Text>[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]Reveals all [ICON_RES_URANIUM] Uranium on the map.[NEWLINE]Can no longer be built once you know Atomic Theory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_URANIUM_MAPPING_PROJECT_STRATEGY">
 			<Text>Build the Uranium Mapping Project to find [ICON_RES_URANIUM] Uranium before researching Atomic Theory. Mining it still needs Atomic Theory.</Text>
@@ -120483,7 +120483,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[COLOR_NEGATIVE_TEXT]Pick a belief![ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING_TT">
-			<Text>[COLOR_NEGATIVE_TEXT]A belief pick is waiting.[ENDCOLOR][NEWLINE]Until you pick, your empire gets no [ICON_FOOD] growth, [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_GOLD] Gold income, [ICON_CULTURE] Culture or [ICON_PEACE] Faith at the end of each turn.[NEWLINE]Upkeep is still paid, and cities working too little Food still starve.[NEWLINE][NEWLINE]Beliefs another player picked this turn are still open to you until the turn ends.</Text>
+			<Text>[COLOR_NEGATIVE_TEXT]A belief pick is waiting.[ENDCOLOR][NEWLINE]Until you pick, your empire gets no [ICON_FOOD] growth, [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_GOLD] Gold income, [ICON_CULTURE] Culture or [ICON_PEACE] Faith at the end of each turn.[NEWLINE]Upkeep is still paid, and cities working too little Food still starve.[NEWLINE][NEWLINE]Beliefs another player picked this turn are still open to you until the turn ends.[NEWLINE][NEWLINE]A pantheon: click here to choose it.</Text>
 		</Row>
 		<!-- LEKMOD: texts EUI's tooltip library uses but EUI 1.28 doesn't ship (shown as raw keys in building tooltips) -->
 		<Row Tag="TXT_KEY_EUI_BUILT_IN_X_CITIES">
@@ -147605,7 +147605,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Troopship and Coastal Raider I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP">
-			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.</Text>
+			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Hills worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
 			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].</Text>
@@ -147787,7 +147787,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Caravansary. Available with the Wheel (instead of Horseback Riding).[NEWLINE][NEWLINE]Like the Caravansary:[NEWLINE]Land trade routes from this city reach 50% farther and give +2 [ICON_GOLD] Gold when they go to another civilization.[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_GOLD] Gold (instead of +2).[NEWLINE]+3 [ICON_RESEARCH] Science if the city is connected to the [ICON_CAPITAL] Capital.[NEWLINE]Mounted units and civilians that start their turn in the city get +2 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_UC_HALKEVLERI_HELP">
-			<Text>Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and gives no [ICON_RESEARCH] Science of its own.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.</Text>
+			<Text>Replaces the Public School. Costs 30% more, available with Industrialization (instead of Scientific Theory), and has no flat +3 [ICON_RESEARCH] Science.[NEWLINE][NEWLINE]Like the Public School:[NEWLINE]+1 [ICON_RESEARCH] Science for every 2 [ICON_CITIZEN] Citizens in this City.[NEWLINE]+1 [ICON_RESEARCH] Science from Forest tiles worked by this City.[NEWLINE]1 Scientist specialist slot.[NEWLINE]City must have a University.[NEWLINE][NEWLINE]In addition:[NEWLINE]With a Broadcast Tower in the city: +1 [ICON_RESEARCH] Science and +1 [ICON_CULTURE] Culture for every 5 [ICON_CITIZEN] Citizens.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_CITY_STATE_FRIENDSHIP">
 			<Text>City-State [ICON_INFLUENCE] Influence degrades at half and recovers at twice the normal rate.[NEWLINE][NEWLINE]City-State territory always counts as friendly territory for your units (healing and combat bonuses), and your units never trespass in it.[NEWLINE][NEWLINE]Cities with a Shrine next to a mountain yield +2 [ICON_PEACE] Faith.</Text>

@@ -2919,6 +2919,10 @@ if civ5_mode and gk_mode then
 	g_toolTipHandler.FaithIcon = g_toolTipHandler.FaithString
 
 	local function OnFaithLClick()
+		-- LEKMOD: while a pantheon can be founded, the Faith text opens the pantheon choice (always reachable, even if its notification is lost)
+		if g_activePlayer and g_activePlayer:CanCreatePantheon(true) then
+			return Events.SerialEventGameMessagePopup{ Type = ButtonPopupTypes.BUTTONPOPUP_FOUND_PANTHEON, Data1 = g_activePlayerID, Data2 = 1 }
+		end
 		return GamePopup( ButtonPopupTypes.BUTTONPOPUP_RELIGION_OVERVIEW )
 	end
 	local function OnFaithRClick()

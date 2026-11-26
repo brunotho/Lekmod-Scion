@@ -346,6 +346,12 @@ bool CvDeal::IsPossibleToTradeItem(PlayerTypes ePlayer, PlayerTypes eToPlayer, T
 	if (eItem != TRADE_ITEM_PEACE_TREATY && (GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_TARGET_NO_TRADE, ePlayer) != 0 || GC.getGame().GetGameLeagues()->LekmodSumActive(LRC_TARGET_NO_TRADE, eToPlayer) != 0))
 		return false;
 #endif
+#ifdef LEKMOD_WAR_DEALS_NEED_PEACE
+	// At war between major civs, only a deal that makes peace is possible
+	if (eItem != TRADE_ITEM_PEACE_TREATY && !pFromTeam->isMinorCiv() && !pToTeam->isMinorCiv() && !pFromPlayer->isBarbarian() && !pToPlayer->isBarbarian()
+		&& pFromTeam->isAtWar(eToTeam) && !IsPeaceTreatyTrade(ePlayer) && !IsPeaceTreatyTrade(eToPlayer))
+		return false;
+#endif
 	CvDeal* pRenewDeal = pFromPlayer->GetDiplomacyAI()->GetDealToRenew();
 	if (!pRenewDeal)
 	{

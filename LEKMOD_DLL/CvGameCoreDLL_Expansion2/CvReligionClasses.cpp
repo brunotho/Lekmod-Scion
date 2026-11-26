@@ -440,6 +440,10 @@ void CvGameReligions::DoPlayerTurn(CvPlayer& kPlayer)
 				CvNotifications* pNotifications = kPlayer.GetNotifications();
 				if(pNotifications)
 				{
+#ifdef LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN
+					// Replace last turn's prompt with a fresh one, so the UI shows it again even if it lost it
+					pNotifications->LekmodDismissType(NOTIFICATION_FOUND_PANTHEON);
+#endif
 					CvString strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_ENOUGH_FAITH_FOR_PANTHEON");
 
 					CvString strSummary = GetLocalizedText("TXT_KEY_NOTIFICATION_SUMMARY_ENOUGH_FAITH_FOR_PANTHEON");

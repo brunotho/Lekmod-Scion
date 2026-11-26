@@ -343,7 +343,13 @@ Controls.TourismString:RegisterCallback( Mouse.eLClick, OnTourismClicked );
 -------------------------------------------------
 -------------------------------------------------
 function OnFaithClicked()
-	
+
+	-- LEKMOD: while a pantheon can be founded, the Faith text opens the pantheon choice (always reachable, even if its notification is lost)
+	local pPlayer = Players[Game.GetActivePlayer()];
+	if pPlayer ~= nil and pPlayer:CanCreatePantheon(true) then
+		Events.SerialEventGameMessagePopup( { Type = ButtonPopupTypes.BUTTONPOPUP_FOUND_PANTHEON, Data1 = pPlayer:GetID(), Data2 = 1 } );
+		return;
+	end
 	Events.SerialEventGameMessagePopup( { Type = ButtonPopupTypes.BUTTONPOPUP_RELIGION_OVERVIEW } );
 
 end
