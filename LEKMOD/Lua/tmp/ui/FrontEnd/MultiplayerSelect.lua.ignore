@@ -261,7 +261,10 @@ function ShowHideHandler( bIsHide )
 			
 			-- To prevent settings getting carried over from scenarios and what not
 			-- reset pregame here.
-			if (not ContextPtr:IsHotLoad()) then
+			-- LEKMOD: not while a save is being hosted. Our Load Game screen is a child of this menu, so it
+			-- shows this menu again when it closes after starting the host; the reset (and DLC activation)
+			-- then wiped the load and dropped the player back here (2026-11-26, LEKLOAD diagnostic).
+			if (not ContextPtr:IsHotLoad()) and PreGame.GetLoadFileName() == "" then
 				UIManager:SetUICursor( 1 );
 				Modding.ActivateDLC();
 				PreGame.Reset();
