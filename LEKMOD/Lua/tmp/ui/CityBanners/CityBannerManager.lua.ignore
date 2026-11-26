@@ -366,10 +366,20 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 				cityGrowth = "-";
 				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_STOPPED_GROWING_TT", localizedCityName, cityPopulation));
 			elseif city:FoodDifferenceTimes100() < 0 then
-				cityGrowth = "[COLOR_WARNING_TEXT]-[ENDCOLOR]";
-				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_STARVING_TT",localizedCityName ));
+				-- LEKMOD: turns until the city loses a citizen. The game takes one once the stored Food, counted in whole
+				-- Food cut towards zero, is below 0 (so at -1.00 or less); a size 1 city never starves.
+				local iStarveTurns = LekmodStarveTurns(city:GetFoodTimes100(), city:FoodDifferenceTimes100());
+				if cityPopulation <= 1 then
+					cityGrowth = "[COLOR_WARNING_TEXT]-[ENDCOLOR]";
+					controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STARVING_SIZE1", localizedCityName)
+						.. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK_ONLY", LekmodFmt(city:GetFoodTimes100()), "[ICON_FOOD]", LekmodFmt(city:FoodDifferenceTimes100())));
+				else
+					cityGrowth = "[COLOR_WARNING_TEXT]" .. iStarveTurns .. "[ENDCOLOR]";
+					controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STARVING", localizedCityName, iStarveTurns)
+						.. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK_ONLY", LekmodFmt(city:GetFoodTimes100()), "[ICON_FOOD]", LekmodFmt(city:FoodDifferenceTimes100())));
+				end
 			else
-				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_WILL_GROW_TT", localizedCityName, cityPopulation, cityPopulation+1, cityGrowth)
+				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_WILL_GROW", localizedCityName, cityPopulation+1, cityGrowth)
 					.. LekmodTurnStepText(city:GetFoodTimes100(), city:FoodDifferenceTimes100(), city:GrowthThreshold() * 100, cityGrowth, "[ICON_FOOD]", "GROW"));
 			end
 			
@@ -593,15 +603,22 @@ end
 -- LEKMOD: tooltip lines for growth and production: what is stored, and how much more (or less) per turn
 -- makes it one turn faster (or slower). All values in hundredths, as the game keeps them.
 --   stored100, rate100: current stock and gain per turn; need100: the total needed; turns: the game's turn count
-local function LekmodFmt(i100)
+function LekmodFmt(i100)
 	return string.format("%g", math.floor(i100 + 0.5) / 100);
+end
+-- turns until a starving city loses a citizen: the first turn the stock is at -1.00 or less
+function LekmodStarveTurns(stored100, rate100)
+	if rate100 >= 0 then
+		return 0;
+	end
+	return math.max(1, math.ceil((stored100 + 100) / -rate100));
 end
 function LekmodTurnStepText(stored100, rate100, need100, turns, icon, kind)
 	if rate100 == nil or rate100 <= 0 or need100 == nil or need100 <= 0 or turns == nil or type(turns) ~= "number" or turns < 1 then
 		return "";
 	end
 	local remaining100 = math.max(0, need100 - stored100);
-	local s = "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK", LekmodFmt(stored100), LekmodFmt(need100), icon, LekmodFmt(rate100));
+	local s = "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK", LekmodFmt(stored100), LekmodFmt(need100), icon, LekmodFmt(rate100));
 	-- one turn faster: finish in turns-1, so the rate must reach remaining / (turns-1)
 	if turns > 1 then
 		local faster100 = math.ceil(remaining100 / (turns - 1)) - rate100;

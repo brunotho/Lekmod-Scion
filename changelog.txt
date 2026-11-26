@@ -779,6 +779,7 @@ CITY BANNER: GROWTH AND PRODUCTION NUMBERS
 ------------------------------------------
 Tags: ui
 - Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, and how much more per turn would finish it a turn sooner and how much less would make it a turn later
+- Added: a starving city's banner shows the turns until it loses a citizen (it happens once the stored Food is at -1 or less, so a deficit below 1 Food takes a few turns; a size 1 city never starves)
 - Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _GROW_* / _BUILD_*
 
 CITY SCREEN: GREAT PEOPLE TURNS
