@@ -1968,7 +1968,8 @@ KIN FORGED IN BLOOD (NEW) (BELIEF_LEKMOD_KIN_BLOOD)
 ---------------------------------------------------
 Tags: religion
 Subsection: Pantheons
-Clearing a barbarian encampment gives +1 Population in the capital and 30 Faith; new military units get Zealot while the pantheon is in your capital.
+Clearing a barbarian encampment gives +1 Population in the capital and 30 Faith; your military units get Zealot when you found it, new ones while the pantheon is in your capital.
+- Dev: 2026-11-26: units you already had (the starting Scout) didn't get Zealot; LEKMOD_PANTHEON_PROMOTION_EXISTING_UNITS grants it in CvGameReligions::FoundPantheon
 
 MANGROVE MYSTERIES (NEW) (BELIEF_LEKMOD_MANGROVE)
 -------------------------------------------------
@@ -2052,7 +2053,7 @@ SALT AND STARS (NEW) (BELIEF_LEKMOD_SALT_STARS)
 -----------------------------------------------
 Tags: religion
 Subsection: Pantheons
-+2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; new land units get +1 sight while embarked while the pantheon is in your capital.
++2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; your land units get +1 sight while embarked when you found it, new ones while the pantheon is in your capital.
 
 SEAFOOD RITUALS (BELIEF_SEAFOOD)
 --------------------------------

@@ -867,6 +867,23 @@ void CvGameReligions::FoundPantheon(PlayerTypes ePlayer, BeliefTypes eBelief)
 		// Add enough pressure to make this the likely majority religion
 		pLoopCity->GetCityReligions()->AddReligiousPressure(FOLLOWER_CHANGE_PANTHEON_FOUNDED, newReligion.m_eReligion, GC.getRELIGION_ATHEISM_PRESSURE_PER_POP() * pLoopCity->getPopulation() * 2);
 	}
+#ifdef LEKMOD_PANTHEON_PROMOTION_EXISTING_UNITS
+	// The pantheon's new-unit promotion also goes to the units the player already has (same units as for new ones)
+	{
+		CvBeliefEntry* pkPromoBelief = GC.GetGameBeliefs()->GetEntry(eBelief);
+		if (pkPromoBelief && pkPromoBelief->GetNewUnitPromotion() != -1)
+		{
+			const PromotionTypes ePromo = (PromotionTypes)pkPromoBelief->GetNewUnitPromotion();
+			int iUnitLoop;
+			for (CvUnit* pLoopUnit = kPlayer.firstUnit(&iUnitLoop); pLoopUnit != NULL; pLoopUnit = kPlayer.nextUnit(&iUnitLoop))
+			{
+				const bool bEligible = pkPromoBelief->IsNewUnitPromotionAllLand() ? (pLoopUnit->getDomainType() == DOMAIN_LAND) : pLoopUnit->IsCombatUnit();
+				if (bEligible && !pLoopUnit->isHasPromotion(ePromo))
+					pLoopUnit->setHasPromotion(ePromo, true);
+			}
+		}
+	}
+#endif
 
 	// Send out messaging
 	CvReligionEntry* pEntry = GC.getReligionInfo(newReligion.m_eReligion);

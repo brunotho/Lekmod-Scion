@@ -933,6 +933,9 @@
 #define LEKMOD_WAR_DEALS_NEED_PEACE
 // The pantheon notification is sent again every turn while a pantheon can be founded, so a lost prompt comes back (user, 2026-11-26)
 #define LEKMOD_PANTHEON_NOTIFICATION_EACH_TURN
+// Beliefs.NewUnitPromotion also goes to the units the player already has when the pantheon is founded (user, 2026-11-26:
+// the starting Scout never got Kin Forged in Blood's Zealot)
+#define LEKMOD_PANTHEON_PROMOTION_EXISTING_UNITS
 // Resource columns: ImprovementBuildTimeChange (extra build time for the improvement that connects the resource),
 // FoundCity* (one-time effects for a city founded on the resource, with FoundCityTech known) and
 // CityCenter* (production bonuses while a city stands on the resource)

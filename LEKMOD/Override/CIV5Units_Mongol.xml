@@ -120297,13 +120297,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Pillars of Heaven</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_KIN_BLOOD">
-			<Text>Clearing a barbarian encampment: +1 [ICON_CITIZEN] Population in the capital and 30 [ICON_PEACE] Faith[NEWLINE]New military units get [COLOR_POSITIVE_TEXT]Zealot[ENDCOLOR] while this pantheon is in your capital</Text>
+			<Text>Clearing a barbarian encampment: +1 [ICON_CITIZEN] Population in the capital and 30 [ICON_PEACE] Faith[NEWLINE]Your military units get [COLOR_POSITIVE_TEXT]Zealot[ENDCOLOR] when you found it, new ones while this pantheon is in your capital</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_KIN_BLOOD_SHORT">
 			<Text>Kin Forged in Blood</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_SALT_STARS">
-			<Text>+2 [ICON_PRODUCTION] Production from [ICON_RES_SALT] Salt[NEWLINE]+1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHALE] Whales, [ICON_RES_CORAL] Coral, [ICON_RES_PEARLS] Pearls and [ICON_RES_CRAB] Crabs[NEWLINE]New land units get +1 sight while embarked while this pantheon is in your capital</Text>
+			<Text>+2 [ICON_PRODUCTION] Production from [ICON_RES_SALT] Salt[NEWLINE]+1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHALE] Whales, [ICON_RES_CORAL] Coral, [ICON_RES_PEARLS] Pearls and [ICON_RES_CRAB] Crabs[NEWLINE]Your land units get +1 sight while embarked when you found it, new ones while this pantheon is in your capital</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_SALT_STARS_SHORT">
 			<Text>Salt and Stars</Text>
