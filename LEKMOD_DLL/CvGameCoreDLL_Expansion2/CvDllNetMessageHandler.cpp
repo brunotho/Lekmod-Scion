@@ -352,7 +352,7 @@ void CvDllNetMessageHandler::ResponseFoundPantheon(PlayerTypes ePlayer, BeliefTy
 			CvGameReligions::FOUNDING_RESULT eResult = pkGameReligions->CanCreatePantheon(ePlayer, true);
 			if(eResult == CvGameReligions::FOUNDING_OK)
 			{
-				if(pkGameReligions->IsPantheonBeliefAvailable(eBelief))
+				if(pkGameReligions->IsPantheonBeliefAvailable(eBelief, ePlayer))
 				{
 					pkGameReligions->FoundPantheon(ePlayer, eBelief);
 				}
@@ -375,7 +375,11 @@ void CvDllNetMessageHandler::ResponseFoundPantheon(PlayerTypes ePlayer, BeliefTy
 				ReligionTypes eReligion = GET_PLAYER(ePlayer).GetReligions()->GetReligionCreatedByPlayer();
 #else
 			CvPlayerAI& kPlayer = GET_PLAYER(ePlayer);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+			if (!pkGameReligions->HasAddedReformationBelief(ePlayer) && kPlayer.GetReligions()->HasCreatedReligion() && !pkGameReligions->LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 			if (!pkGameReligions->HasAddedReformationBelief(ePlayer) && kPlayer.GetReligions()->HasCreatedReligion())
+#endif
 			{
 				ReligionTypes eReligion = kPlayer.GetReligions()->GetReligionCreatedByPlayer();
 #endif

@@ -2387,7 +2387,12 @@ int CvLuaGame::lGetAvailablePantheonBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2410,7 +2415,12 @@ int CvLuaGame::lGetAvailableFounderBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2433,7 +2443,12 @@ int CvLuaGame::lGetAvailableFollowerBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2456,7 +2471,12 @@ int CvLuaGame::lGetAvailableEnhancerBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2479,7 +2499,12 @@ int CvLuaGame::lGetAvailableBonusBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2502,7 +2527,12 @@ int CvLuaGame::lGetAvailableReformationBeliefs(lua_State* L)
 	const std::vector<BeliefTypes>& availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs();
 	for (std::vector<BeliefTypes>::const_iterator it = availableBeliefs.begin(); it != availableBeliefs.end(); ++it)
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+#else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs();
+#endif
 	for(std::vector<BeliefTypes>::iterator it = availableBeliefs.begin();
 	        it!= availableBeliefs.end(); ++it)
 #endif
@@ -2645,7 +2675,7 @@ int CvLuaGame::lFoundPantheon(lua_State* L)
 	CvGameReligions::FOUNDING_RESULT eResult = pkGameReligions->CanCreatePantheon(ePlayer, true);
 	if (eResult == CvGameReligions::FOUNDING_OK)
 	{
-		if (pkGameReligions->IsPantheonBeliefAvailable(eBelief))
+		if (pkGameReligions->IsPantheonBeliefAvailable(eBelief, ePlayer))
 		{
 			pkGameReligions->FoundPantheon(ePlayer, eBelief);
 		}

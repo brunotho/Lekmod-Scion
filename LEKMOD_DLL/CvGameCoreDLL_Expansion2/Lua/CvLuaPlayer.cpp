@@ -1051,6 +1051,7 @@ void CvLuaPlayer::PushMethods(lua_State* L, int t)
 #ifdef LEKMOD_CANAL_RULES
 	Method(LekmodGetTradeRangePreview);
 	Method(LekmodIsPolicyPickPending);
+	Method(LekmodIsBeliefPickPending);
 #endif
 	Method(LekmodGetTributeInfluence);
 #ifdef LEKMOD_PORTUGAL
@@ -3582,6 +3583,17 @@ int CvLuaPlayer::lLekmodIsPolicyPickPending(lua_State* L)
 	CvPlayerAI* pkPlayer = GetInstance(L);
 #ifdef LEKMOD_POLICY_PICK_FREEZE
 	lua_pushboolean(L, pkPlayer->IsLekmodPolicyPickPending());
+#else
+	lua_pushboolean(L, false);
+#endif
+	return 1;
+}
+/// LEKMOD: is a belief pick pending (pantheon, religion, enhancement, Reformation; yields freeze at turn end until it is made)?
+int CvLuaPlayer::lLekmodIsBeliefPickPending(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	lua_pushboolean(L, pkPlayer->IsLekmodBeliefPickPending());
 #else
 	lua_pushboolean(L, false);
 #endif

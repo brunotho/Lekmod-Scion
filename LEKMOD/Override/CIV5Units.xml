@@ -257173,7 +257173,7 @@
 			<PromotionType>PROMOTION_HELI_SENTRY</PromotionType>
 			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
 		</Row>
-		<!-- Spaceship parts (2026-10-10): Mobility I is a starting promotion for them (marker promotion), Mobility II/III continue the line -->
+		<!-- Spaceship parts (2026-10-10): Mobility I is a starting promotion for them (marker promotion), Mobility II/III continue the line; Repair and Nuke Resistance after Mobility II or Armor Plating II (2026-11-26) -->
 		<Row>
 			<PromotionType>PROMOTION_MOBILITY</PromotionType>
 			<PrerequisitePromotion>PROMOTION_SPACESHIP_PART</PrerequisitePromotion>
@@ -257188,19 +257188,19 @@
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_REPAIR</PromotionType>
-			<PrerequisitePromotion>PROMOTION_MOBILITY_3</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_MOBILITY_2</PrerequisitePromotion>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_REPAIR</PromotionType>
-			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_3</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_NUKE_RESISTANCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_MOBILITY_3</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_MOBILITY_2</PrerequisitePromotion>
 		</Row>
 		<Row>
 			<PromotionType>PROMOTION_NUKE_RESISTANCE</PromotionType>
-			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_3</PrerequisitePromotion>
+			<PrerequisitePromotion>PROMOTION_ARMOR_PLATING_2</PrerequisitePromotion>
 		</Row>
 		<!-- Coastal Raider -->
 		<Row>
@@ -281837,7 +281837,7 @@
 		</Row>
 		<Row>
 			<PolicyType>POLICY_PARTY_LEADERSHIP</PolicyType>
-			<YieldType>YIELD_PRODUCTION</YieldType>
+			<YieldType>YIELD_CULTURE</YieldType>
 			<Yield>2</Yield>
 		</Row>
 		<Row>
@@ -292352,6 +292352,18 @@
 	<Buildings>
 		<Update>
 			<Where Type="BUILDING_SISTINE_CHAPEL"/>
+			<Set LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_HANGING_GARDEN"/>
+			<Set LekmodLockedGreatWorkSlots="true"/>
+		</Update>
+	</Buildings>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_COLOSSUS"/>
 			<Set LekmodLockedGreatWorkSlots="true"/>
 		</Update>
 	</Buildings>

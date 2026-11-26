@@ -8,7 +8,6 @@
 </aside>
 <main class="content" id="policylist">
   <h1>Policies and ideologies</h1>
-  <p class="lead"><%= trees.count { |t| !t.ideology } %> policy branches and <%= trees.count(&:ideology) %> ideologies, as they are in the current version of the mod. Hover a policy in a tree to read it there.</p>
   <input type="search" id="civ-search" placeholder="Search policies and tenets" aria-label="Search policies">
 <% trees.each do |tree| -%>
 <% members = tree.ideology ? tree.nodes.sort_by { |n| [n.level, n.name] } : tree.nodes.sort_by { |n| [n.y, n.x] } -%>
@@ -22,9 +21,12 @@
         <p><%= GameText.to_html(policy_body(tree.opener.help)) %></p>
       </div>
 <% end -%>
-<% members.each do |n| -%>
+<% members.each_with_index do |n, i| -%>
+<% if tree.ideology && (i == 0 || members[i - 1].level != n.level) -%>
+      <h3 class="tier-heading">Tier <%= n.level %></h3>
+<% end -%>
       <div class="unique">
-        <h3><span class="kind"><%= tree.ideology ? "Tier #{n.level}" : "Policy" %></span> <%= h n.name %></h3>
+        <h3><% unless tree.ideology %><span class="kind">Policy</span> <% end %><%= h n.name %></h3>
 <% if n.help -%>
         <p><%= GameText.to_html(policy_body(n.help)) %></p>
 <% end -%>

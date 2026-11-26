@@ -179,6 +179,10 @@ function UpdateData()
 			else
 				strFaithStr = string.format("%i (+%i)", pPlayer:GetFaith(), pPlayer:GetYield(YieldTypes.YIELD_FAITH));
 				strFaithStr = "[ICON_PEACE]" .. strFaithStr;
+				-- LEKMOD: a pending belief pick (pantheon, religion, enhancement, Reformation) freezes the empire's yields at turn end
+				if pPlayer.LekmodIsBeliefPickPending and pPlayer:LekmodIsBeliefPickPending() then
+					strFaithStr = strFaithStr .. " " .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING");
+				end
 			end
 			Controls.FaithString:SetText(strFaithStr);
 	
@@ -987,6 +991,9 @@ function FaithTipHandler( control )
 			strText = strText .. Locale.ConvertTextKey("TXT_KEY_TP_ANARCHY", pPlayer:GetAnarchyNumTurns());
 			strText = strText .. "[NEWLINE]";
 			strText = strText .. "[NEWLINE]";
+		end
+		if pPlayer.LekmodIsBeliefPickPending and pPlayer:LekmodIsBeliefPickPending() then
+			strText = strText .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING_TT") .. "[NEWLINE][NEWLINE]";
 		end
 	    
 		strText = strText .. Locale.ConvertTextKey("TXT_KEY_TP_FAITH_ACCUMULATED", pPlayer:GetFaith());

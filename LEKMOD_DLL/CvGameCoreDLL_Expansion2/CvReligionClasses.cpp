@@ -300,6 +300,9 @@ void CvGameReligions::Init()
 	m_iMinimumFaithForNextPantheon = GC.getRELIGION_MIN_FAITH_FIRST_PANTHEON();
 	m_iMinimumFaithForNextPantheon *= GC.getGame().getGameSpeedInfo().getTrainPercent();
 	m_iMinimumFaithForNextPantheon /= 100;
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	m_aiLekmodBeliefFirstTurn.clear();
+#endif
 }
 
 /// Handle turn-by-turn religious updates
@@ -676,7 +679,7 @@ CvGameReligions::FOUNDING_RESULT CvGameReligions::CanCreatePantheon(PlayerTypes 
 #ifdef AUI_RELIGION_FIX_NO_BELIEFS_AVAILABLE_CHECK_FOR_NON_PANTHEON_MOVED
 	if (!IsAnyAvailablePantheonBeliefs())
 #else
-	if (GetAvailablePantheonBeliefs().size() == 0)
+	if (GetAvailablePantheonBeliefs(ePlayer).size() == 0)
 #endif
 		return FOUNDING_NO_BELIEFS_AVAILABLE;
 
@@ -793,6 +796,9 @@ void CvGameReligions::FoundPantheon(PlayerTypes ePlayer, BeliefTypes eBelief)
 
 	// Found it
 	m_CurrentReligions.push_back(newReligion);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	LekmodRecordBeliefTaken(eBelief);
+#endif
 
 #ifdef LEKMOD_CAPITAL_PANTHEON_EFFECTS
 	// Beliefs.FoundFreeUnitClass: a free unit in the capital when the pantheon is founded (The Tide's Calling: Skiff, Nelayan for Brunei)
@@ -967,6 +973,12 @@ void CvGameReligions::FoundReligion(PlayerTypes ePlayer, ReligionTypes eReligion
 	LekmodOnBeliefAdopted(ePlayer, eBelief2);
 	LekmodOnBeliefAdopted(ePlayer, eBelief3);
 	LekmodOnBeliefAdopted(ePlayer, eBelief4);
+#endif
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	LekmodRecordBeliefTaken(eBelief1);
+	LekmodRecordBeliefTaken(eBelief2);
+	LekmodRecordBeliefTaken(eBelief3);
+	LekmodRecordBeliefTaken(eBelief4);
 #endif
 
 	// Update game systems
@@ -1187,7 +1199,12 @@ CvGameReligions::FOUNDING_RESULT CvGameReligions::CanFoundReligion(PlayerTypes e
 					for(int iDestBelief = kReligion.m_Beliefs.GetNumBeliefs(); iDestBelief--;)
 					{
 						BeliefTypes eDestBelief = kReligion.m_Beliefs.GetBelief(iDestBelief);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+						// the founder's own pantheon belief may be shared with other pantheons; others count only once the turn is over
+						if(eDestBelief != NO_BELIEF && eDestBelief == eSrcBelief && eDestBelief != eBelief && LekmodIsBeliefTaken(eDestBelief, ePlayer))
+#else
 						if(eDestBelief != NO_BELIEF && eDestBelief == eSrcBelief)
+#endif
 							return FOUNDING_BELIEF_IN_USE;
 					}
 				}
@@ -1227,6 +1244,10 @@ void CvGameReligions::EnhanceReligion(PlayerTypes ePlayer, ReligionTypes eReligi
 #endif
 	it->m_Beliefs.AddBelief(eBelief1);
 	it->m_Beliefs.AddBelief(eBelief2);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	LekmodRecordBeliefTaken(eBelief1);
+	LekmodRecordBeliefTaken(eBelief2);
+#endif
 #ifndef AUI_WARNING_FIXES
 	it->m_bEnhanced = true;
 #endif
@@ -1359,10 +1380,17 @@ CvGameReligions::FOUNDING_RESULT CvGameReligions::CanEnhanceReligion(PlayerTypes
 #ifndef AUI_WARNING_FIXES
 	if(bFoundIt)
 	{
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(eBelief1 != NO_BELIEF && LekmodIsBeliefTaken(eBelief1, ePlayer))
+			return FOUNDING_BELIEF_IN_USE;
+		if(eBelief2 != NO_BELIEF && LekmodIsBeliefTaken(eBelief2, ePlayer))
+			return FOUNDING_BELIEF_IN_USE;
+#else
 		if(eBelief1 != NO_BELIEF && IsInSomeReligion(eBelief1))
 			return FOUNDING_BELIEF_IN_USE;
 		if(eBelief2 != NO_BELIEF && IsInSomeReligion(eBelief2))
 			return FOUNDING_BELIEF_IN_USE;
+#endif
 
 		return FOUNDING_OK;
 	}
@@ -1456,6 +1484,9 @@ void CvGameReligions::AddReformationBelief(PlayerTypes ePlayer, ReligionTypes eR
 	}
 
 	it->m_Beliefs.AddBelief(eBelief1);
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	LekmodRecordBeliefTaken(eBelief1);
+#endif
 #ifdef LEKMOD_CAPITAL_PANTHEON_EFFECTS
 	LekmodOnBeliefAdopted(ePlayer, eBelief1);
 #endif
@@ -1682,6 +1713,39 @@ bool CvGameReligions::IsInSomeReligion(BeliefTypes eBelief) const
 	return false;
 }
 
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+/// May ePlayer no longer pick this belief? Beliefs of the player's own pantheon or religion: always taken. Beliefs of other
+/// players: only once the game turn in which the first player took them is over. NO_PLAYER = the base rule (taken by anyone).
+bool CvGameReligions::LekmodIsBeliefTaken(BeliefTypes eBelief, PlayerTypes ePlayer) const
+{
+	if (ePlayer == NO_PLAYER)
+		return IsInSomeReligion(eBelief);
+	bool bTakenByOthers = false;
+	for (ReligionList::const_iterator it = m_CurrentReligions.begin(); it != m_CurrentReligions.end(); it++)
+	{
+		if (!it->m_Beliefs.HasBelief(eBelief))
+			continue;
+		if (it->m_eFounder == ePlayer)
+			return true;
+		bTakenByOthers = true;
+	}
+	if (!bTakenByOthers)
+		return false;
+	const int iFirstTurn = ((int)eBelief >= 0 && (int)eBelief < (int)m_aiLekmodBeliefFirstTurn.size()) ? m_aiLekmodBeliefFirstTurn[eBelief] : -1;
+	return iFirstTurn < 0 || iFirstTurn < GC.getGame().getGameTurn();
+}
+/// Note the game turn in which a belief was first taken
+void CvGameReligions::LekmodRecordBeliefTaken(BeliefTypes eBelief)
+{
+	if ((int)eBelief < 0 || (int)eBelief >= GC.GetGameBeliefs()->GetNumBeliefs())
+		return;
+	if ((int)m_aiLekmodBeliefFirstTurn.size() < GC.GetGameBeliefs()->GetNumBeliefs())
+		m_aiLekmodBeliefFirstTurn.resize(GC.GetGameBeliefs()->GetNumBeliefs(), -1);
+	if (m_aiLekmodBeliefFirstTurn[eBelief] < 0)
+		m_aiLekmodBeliefFirstTurn[eBelief] = GC.getGame().getGameTurn();
+}
+#endif
+
 /// Get the belief in this player's pantheon
 BeliefTypes CvGameReligions::GetBeliefInPantheon(PlayerTypes ePlayer) const
 {
@@ -1746,7 +1810,7 @@ int CvGameReligions::GetNumPantheonsCreated() const
 }
 
 /// List of beliefs that can be adopted by pantheons
-std::vector<BeliefTypes> CvGameReligions::GetAvailablePantheonBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailablePantheonBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -1763,7 +1827,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailablePantheonBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && pEntry->IsPantheonBelief())
@@ -1781,7 +1849,7 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailablePantheonBeliefs()
 #ifdef AUI_CONSTIFY
 bool CvGameReligions::IsPantheonBeliefAvailable(BeliefTypes eBelief) const
 #else
-bool CvGameReligions::IsPantheonBeliefAvailable(BeliefTypes eBelief)
+bool CvGameReligions::IsPantheonBeliefAvailable(BeliefTypes eBelief, PlayerTypes ePlayer)
 #endif
 {
 	CvBeliefXMLEntries* pkBeliefs = GC.GetGameBeliefs();
@@ -1791,7 +1859,11 @@ bool CvGameReligions::IsPantheonBeliefAvailable(BeliefTypes eBelief)
 	{
 		if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 	if(!IsInSomeReligion(eBelief))
+#endif
 	{
 		CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 		if(pEntry && pEntry->IsPantheonBelief())
@@ -2044,7 +2116,7 @@ int CvGameReligions::GetNumReligionsStillToFound() const
 }
 
 /// List of beliefs that can be adopted by religion founders
-std::vector<BeliefTypes> CvGameReligions::GetAvailableFounderBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailableFounderBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -2061,7 +2133,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableFounderBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && pEntry->IsFounderBelief())
@@ -2076,7 +2152,7 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableFounderBeliefs()
 }
 
 /// List of beliefs that can be adopted by religion followers
-std::vector<BeliefTypes> CvGameReligions::GetAvailableFollowerBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailableFollowerBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -2093,7 +2169,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableFollowerBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && pEntry->IsFollowerBelief())
@@ -2108,7 +2188,7 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableFollowerBeliefs()
 }
 
 /// List of beliefs that enhance religions
-std::vector<BeliefTypes> CvGameReligions::GetAvailableEnhancerBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailableEnhancerBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -2125,7 +2205,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableEnhancerBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && pEntry->IsEnhancerBelief())
@@ -2140,7 +2224,7 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableEnhancerBeliefs()
 }
 
 /// List of all beliefs still available
-std::vector<BeliefTypes> CvGameReligions::GetAvailableBonusBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailableBonusBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -2157,7 +2241,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableBonusBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && (pEntry->IsEnhancerBelief() || pEntry->IsFollowerBelief() || pEntry->IsFounderBelief() || pEntry->IsPantheonBelief()))
@@ -2172,7 +2260,7 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableBonusBeliefs()
 }
 
 /// List of beliefs that are added with Reformation social policy
-std::vector<BeliefTypes> CvGameReligions::GetAvailableReformationBeliefs()
+std::vector<BeliefTypes> CvGameReligions::GetAvailableReformationBeliefs(PlayerTypes ePlayer)
 {
 	std::vector<BeliefTypes> availableBeliefs;
 
@@ -2189,7 +2277,11 @@ std::vector<BeliefTypes> CvGameReligions::GetAvailableReformationBeliefs()
 		{
 			if (!IsInSomeReligion(eBelief))
 #else
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+		if(!LekmodIsBeliefTaken(eBelief, ePlayer))
+#else
 		if(!IsInSomeReligion(eBelief))
+#endif
 		{
 			CvBeliefEntry* pEntry = pkBeliefs->GetEntry(eBelief);
 			if(pEntry && pEntry->IsReformationBelief())
@@ -2858,6 +2950,20 @@ FDataStream& operator>>(FDataStream& loadFrom, CvGameReligions& writeTo)
 			writeTo.m_CurrentReligions.push_back(tempItem);
 		}
 	}
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	writeTo.m_aiLekmodBeliefFirstTurn.clear();
+	if(uiVersion >= 5)
+	{
+		int iNum;
+		loadFrom >> iNum;
+		for(int iI = 0; iI < iNum; iI++)
+		{
+			int iTurn;
+			loadFrom >> iTurn;
+			writeTo.m_aiLekmodBeliefFirstTurn.push_back(iTurn);
+		}
+	}
+#endif
 
 	return loadFrom;
 }
@@ -2865,7 +2971,11 @@ FDataStream& operator>>(FDataStream& loadFrom, CvGameReligions& writeTo)
 /// Serialization write
 FDataStream& operator<<(FDataStream& saveTo, const CvGameReligions& readFrom)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	uint uiVersion = 5;
+#else
 	uint uiVersion = 4;
+#endif
 	saveTo << uiVersion;
 
 	saveTo << readFrom.GetMinimumFaithNextPantheon();
@@ -2880,6 +2990,11 @@ FDataStream& operator<<(FDataStream& saveTo, const CvGameReligions& readFrom)
 	{
 		saveTo << *it;
 	}
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	saveTo << (int)readFrom.m_aiLekmodBeliefFirstTurn.size();
+	for (std::vector<int>::const_iterator itTurn = readFrom.m_aiLekmodBeliefFirstTurn.begin(); itTurn != readFrom.m_aiLekmodBeliefFirstTurn.end(); ++itTurn)
+		saveTo << *itTurn;
+#endif
 
 	return saveTo;
 }

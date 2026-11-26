@@ -116581,7 +116581,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_DICTATORSHIP_PROLETARIAT_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Command Economy[ENDCOLOR][NEWLINE]+30% [ICON_PRODUCTION] Production toward military units in every city.[NEWLINE]-10% [ICON_RESEARCH] Science in every city.[NEWLINE][ICON_GREAT_SCIENTIST] Great Scientists you keep lose their [ICON_RESEARCH] Science bonus three times slower.
+				[COLOR_POSITIVE_TEXT]Command Economy[ENDCOLOR][NEWLINE]+30% [ICON_PRODUCTION] Production toward military units in every city.[NEWLINE]-10% [ICON_RESEARCH] Science in every city.[NEWLINE][ICON_GREAT_SCIENTIST] The [ICON_RESEARCH] bulb value of Great Scientists you keep decays at a third of the usual rate.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_DICTATORSHIP_PROLETARIAT_TEXT"> 
@@ -117170,7 +117170,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_CASTE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +1 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
+				[COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET][ICON_BUILDING_COURTHOUSE] Courthouses provide +1 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_MILITARY_TRADITION"> 
@@ -117381,7 +117381,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_PARTY_LEADERSHIP_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Party Leadership[ENDCOLOR][NEWLINE]+2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_RESEARCH] Science and +2 [ICON_GOLD] Gold in every city.
+				[COLOR_POSITIVE_TEXT]Party Leadership[ENDCOLOR][NEWLINE]+2 [ICON_FOOD] Food, +2 [ICON_CULTURE] Culture, +2 [ICON_RESEARCH] Science and +2 [ICON_GOLD] Gold in every city.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_PARTY_LEADERSHIP_TEXT"> 
@@ -120478,6 +120478,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_TOPPANEL_POLICY_PENDING_TT">
 			<Text>[COLOR_NEGATIVE_TEXT]A policy pick is waiting.[ENDCOLOR][NEWLINE]Until you pick, your empire gets no [ICON_FOOD] growth, [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_GOLD] Gold income, [ICON_CULTURE] Culture or [ICON_PEACE] Faith at the end of each turn.[NEWLINE]Upkeep is still paid, and cities working too little Food still starve.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING">
+			<Text>[COLOR_NEGATIVE_TEXT]Pick a belief![ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING_TT">
+			<Text>[COLOR_NEGATIVE_TEXT]A belief pick is waiting.[ENDCOLOR][NEWLINE]Until you pick, your empire gets no [ICON_FOOD] growth, [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_GOLD] Gold income, [ICON_CULTURE] Culture or [ICON_PEACE] Faith at the end of each turn.[NEWLINE]Upkeep is still paid, and cities working too little Food still starve.[NEWLINE][NEWLINE]Beliefs another player picked this turn are still open to you until the turn ends.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_MONUMENTS_OF_THE_PEOPLE">
 			<Text>Monuments of the People</Text>
@@ -144723,7 +144729,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_COLOSSUS_HELP"> 
 			<Text>
-				Must be built on the coast.[NEWLINE]+1 trade route slot, and a Cargo Ship appears.[NEWLINE]Trade routes other civs send to this city give you +2 [ICON_GOLD] Gold and their owner +1 [ICON_GOLD] Gold.[NEWLINE]When built: +30 [ICON_INFLUENCE] Influence with the closest coastal city-state you are at peace with.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Great Work slot filled: +4 [ICON_GOLD] Gold.
+				Must be built on the coast.[NEWLINE]+1 trade route slot, and a Cargo Ship appears.[NEWLINE]Trade routes other civs send to this city give you +2 [ICON_GOLD] Gold and their owner +1 [ICON_GOLD] Gold.[NEWLINE]When built: +30 [ICON_INFLUENCE] Influence with the closest coastal city-state you are at peace with.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Great Work slot filled: +4 [ICON_GOLD] Gold.[NEWLINE]Great Works placed here can't be moved out again.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_COLOSSUS_QUOTE"> 
@@ -144899,7 +144905,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HANGING_GARDEN_HELP"> 
 			<Text>
-				Requires Tradition.[NEWLINE]Provides a free Garden in the city.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Both Great Work slots filled: +2 [ICON_FOOD] Food.
+				Requires Tradition.[NEWLINE]Provides a free Garden in the city.[NEWLINE][NEWLINE][ICON_GREAT_WORK] Both Great Work slots filled: +2 [ICON_FOOD] Food.[NEWLINE]Great Works placed here can't be moved out again.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_WONDER_HIMEJICASTLE_DESC"> 
@@ -148409,13 +148415,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Changelog Essentials 0.1.6</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_INTRO">
-			<Text>The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.</Text>
+			<Text>The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_1_HEADER">
 			<Text>Great Works and Tourism</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_1_TEXT">
-			<Text>[ICON_BULLET]Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.[NEWLINE][ICON_BULLET]A Great Work gives 2 Culture and no Tourism by itself. Tourism comes from where it sits: the Amphitheater and the Opera House add Tourism to the Great Works in their city, and many wonders have their own slots with their own bonus when filled (some come with a Great Work already in them).[NEWLINE][ICON_BULLET]New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.[NEWLINE][ICON_BULLET]Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.[NEWLINE][ICON_BULLET]No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.[NEWLINE][ICON_BULLET]Great Works placed in the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.[NEWLINE][ICON_BULLET]Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.</Text>
+			<Text>[ICON_BULLET]Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.[NEWLINE][ICON_BULLET]A Great Work gives 2 Culture and no Tourism by itself. Tourism comes from where it sits: the Amphitheater and the Opera House add Tourism to the Great Works in their city, and many wonders have their own slots with their own bonus when filled (some come with a Great Work already in them).[NEWLINE][ICON_BULLET]New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.[NEWLINE][ICON_BULLET]Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.[NEWLINE][ICON_BULLET]No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.[NEWLINE][ICON_BULLET]Great Works placed in the Hanging Gardens, the Colossus, the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.[NEWLINE][ICON_BULLET]Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_2_HEADER">
 			<Text>World Congress</Text>
@@ -148430,10 +148436,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_BULLET]Spies no longer roll for success by default: a spy steals on a timer (faster the more its level beats the city's visible defense), and every steal can get it caught by hidden guarding spies and security buildings.[NEWLINE][ICON_BULLET]A steal gives 8 turns of the city's Science toward a technology you pick. Spies placed in cities cost Gold upkeep from the Renaissance.[NEWLINE][ICON_BULLET]Diplomats give steady bonuses instead: a share of the capital's Science, more Gold on trade routes to it, Influence with City-States.[NEWLINE][ICON_BULLET]A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate (not counted in World Leader votes), and you can expel it. A Non-Aggression Pact needs a diplomat between the two.[NEWLINE][ICON_BULLET]The Espionage screen explains every number on its Rules tab.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_4_HEADER">
-			<Text>Policies</Text>
+			<Text>Policies and beliefs</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_4_TEXT">
-			<Text>[ICON_BULLET]You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).[NEWLINE][ICON_BULLET]Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.[NEWLINE][ICON_BULLET]The first tenet you pay for (beyond the free ones) makes every later policy cost 10% more.</Text>
+			<Text>[ICON_BULLET]You are never forced to pick a policy, tenet or belief before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).[NEWLINE][ICON_BULLET]A belief another player picks stays open to everyone else until the end of that turn: several players can take the same pantheon or religious beliefs on the same turn.[NEWLINE][ICON_BULLET]Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.[NEWLINE][ICON_BULLET]The first tenet you pay for (beyond the free ones) makes every later policy cost 10% more.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_ESSENTIALS_5_HEADER">
 			<Text>Strategic resources</Text>

@@ -182,6 +182,10 @@ SECTION_LAYOUT = {
   "tiles and resources" => [
     [nil, ["STRATEGIC RESOURCES: OVERVIEW"]],
   ],
+  # Game mechanics (user, 2026-11-26): puppets and the city count are read together, first in the section.
+  "game mechanics" => [
+    [nil, ["PUPPET CITIES (CITY FOCUS)", "CITY COUNT AND RESEARCH COSTS"]],
+  ],
   # Espionage: the rules first (its wonders are in "world wonders", user 2026-10-24).
   "espionage" => [
     [nil, ["SPIES AND DIPLOMATS"]],

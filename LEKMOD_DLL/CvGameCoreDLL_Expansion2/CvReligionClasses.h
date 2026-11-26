@@ -185,6 +185,12 @@ public:
 	// General religion information functions
 	const CvReligion* GetReligion(ReligionTypes eReligion, PlayerTypes ePlayer) const;
 	bool IsInSomeReligion(BeliefTypes eBelief) const;
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// may ePlayer no longer pick this belief? (in the player's own pantheon/religion, or first taken before this turn)
+	bool LekmodIsBeliefTaken(BeliefTypes eBelief, PlayerTypes ePlayer) const;
+	void LekmodRecordBeliefTaken(BeliefTypes eBelief);
+	std::vector<int> m_aiLekmodBeliefFirstTurn;
+#endif
 
 	// Pantheon information functions
 	void SetMinimumFaithNextPantheon(int iMinFaith)
@@ -198,11 +204,11 @@ public:
 	BeliefTypes GetBeliefInPantheon(PlayerTypes ePlayer) const;
 	bool HasCreatedPantheon(PlayerTypes ePlayer) const;
 	int GetNumPantheonsCreated() const;
-	std::vector<BeliefTypes> GetAvailablePantheonBeliefs();
+	std::vector<BeliefTypes> GetAvailablePantheonBeliefs(PlayerTypes ePlayer = NO_PLAYER);
 #ifdef AUI_CONSTIFY
 	bool IsPantheonBeliefAvailable(BeliefTypes eBelief) const;
 #else
-	bool IsPantheonBeliefAvailable(BeliefTypes eBelief);
+	bool IsPantheonBeliefAvailable(BeliefTypes eBelief, PlayerTypes ePlayer = NO_PLAYER);
 #endif
 
 	// Main religion information functions
@@ -221,11 +227,11 @@ public:
 	int GetNumReligionsFounded() const;
 	int GetNumReligionsEnhanced() const;
 	int GetNumReligionsStillToFound() const;
-	std::vector<BeliefTypes> GetAvailableFounderBeliefs();
-	std::vector<BeliefTypes> GetAvailableFollowerBeliefs();
-	std::vector<BeliefTypes> GetAvailableEnhancerBeliefs();
-	std::vector<BeliefTypes> GetAvailableBonusBeliefs();
-	std::vector<BeliefTypes> GetAvailableReformationBeliefs();
+	std::vector<BeliefTypes> GetAvailableFounderBeliefs(PlayerTypes ePlayer = NO_PLAYER);
+	std::vector<BeliefTypes> GetAvailableFollowerBeliefs(PlayerTypes ePlayer = NO_PLAYER);
+	std::vector<BeliefTypes> GetAvailableEnhancerBeliefs(PlayerTypes ePlayer = NO_PLAYER);
+	std::vector<BeliefTypes> GetAvailableBonusBeliefs(PlayerTypes ePlayer = NO_PLAYER);
+	std::vector<BeliefTypes> GetAvailableReformationBeliefs(PlayerTypes ePlayer = NO_PLAYER);
 #ifdef AUI_RELIGION_FIX_NO_BELIEFS_AVAILABLE_CHECK_FOR_NON_PANTHEON_MOVED
 	bool IsAnyAvailablePantheonBeliefs() const;
 	bool IsAnyAvailableFounderBeliefs() const;

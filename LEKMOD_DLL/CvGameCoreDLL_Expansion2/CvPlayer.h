@@ -1959,6 +1959,9 @@ public:
 #ifdef LEKMOD_POLICY_PICK_FREEZE
 	bool IsLekmodPolicyPickPending();
 	bool IsLekmodYieldsFrozen() const;
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	bool IsLekmodBeliefPickPending();
+#endif
 #endif
 	void setIsDelayedPolicy(bool bValue);
 #endif

@@ -1,4 +1,4 @@
-The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog; you will meet them while playing anyway.
+The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 compared with LEKMOD v35.4. Civilizations, beliefs, units and buildings are in the full changelog.
 
 ## Great Works and Tourism
 - Every Great Work fits in every Great Work slot (Writing, Art, Music and Artifacts alike). Theming bonuses are gone.
@@ -6,7 +6,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 
 - New ways to get Great Works: Cultured City-States sell theirs from the Medieval Era (or give it when captured), some ideology tenets create them, and several wonders come with them.
 - Tourism influence matters in war: each level of cultural influence over a civilization gives +5% combat strength against it (Exotic 5% up to Dominant 25%), and it works both ways.
 - No more dissidents or forced ideology switches from other civilizations' influence. Open borders, trade routes and diplomats no longer raise Tourism.
-- Great Works placed in the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.
+- Great Works placed in the Hanging Gardens, the Colossus, the Hagia Sophia, the Alhambra, the Sistine Chapel or the Forbidden Palace can't be moved out again.
 - Holding a civilization's original capital counts as being Influential over it for a Cultural Victory, and the other way round for a Domination Victory.
 
 ## World Congress
@@ -22,8 +22,9 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.6 
 - A diplomat can only go to a civilization that gives you open borders. Each foreign diplomat in your capital gives you a Delegate (not counted in World Leader votes), and you can expel it. A Non-Aggression Pact needs a diplomat between the two.
 - The Espionage screen explains every number on its Rules tab.
 
-## Policies
-- You are never forced to pick a policy or tenet before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).
+## Policies and beliefs
+- You are never forced to pick a policy, tenet or belief before ending the turn, but while a pick is waiting your empire's yields stop (no Food, Production, Science, Gold, Culture or Faith).
+- A belief another player picks stays open to everyone else until the end of that turn: several players can take the same pantheon or religious beliefs on the same turn.
 - Honor, Piety, Patronage, Commerce, Rationalism, Aesthetics and Expansionism are partly reworked; the three ideologies have many new tenets.
 - The first tenet you pay for (beyond the free ones) makes every later policy cost 10% more.
 

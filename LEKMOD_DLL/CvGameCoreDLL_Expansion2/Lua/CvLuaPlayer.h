@@ -1054,6 +1054,7 @@ protected:
 #ifdef LEKMOD_CANAL_RULES
 	static int lLekmodGetTradeRangePreview(lua_State* L);
 	static int lLekmodIsPolicyPickPending(lua_State* L);
+	static int lLekmodIsBeliefPickPending(lua_State* L);
 	static int lLekmodGetTributeInfluence(lua_State* L);
 #ifdef LEKMOD_PORTUGAL
 	static int lLekmodIsTradePartnerUsed(lua_State* L);

@@ -8939,7 +8939,7 @@ bool CvUnit::CanFoundReligion(const CvPlot* pPlot) const
 	}
 
 #ifndef AUI_RELIGION_FIX_NO_BELIEFS_AVAILABLE_CHECK_FOR_NON_PANTHEON_MOVED
-	if (pReligions->GetAvailableFounderBeliefs().size() < 1 || pReligions->GetAvailableFollowerBeliefs().size() < 1)
+	if (pReligions->GetAvailableFounderBeliefs(getOwner()).size() < 1 || pReligions->GetAvailableFollowerBeliefs(getOwner()).size() < 1)
 	{
 		return false;
 	}
@@ -9100,7 +9100,7 @@ bool CvUnit::CanEnhanceReligion(const CvPlot* pPlot) const
 #ifdef AUI_RELIGION_FIX_NO_BELIEFS_AVAILABLE_CHECK_FOR_NON_PANTHEON_MOVED
 	if (pReligions->CanEnhanceReligion(getOwner(), eReligion, NO_BELIEF, NO_BELIEF) != CvGameReligions::FOUNDING_OK)
 #else
-	if (pReligions->GetAvailableEnhancerBeliefs().size() < 1 || pReligions->GetAvailableFollowerBeliefs().size() < 1)
+	if (pReligions->GetAvailableEnhancerBeliefs(getOwner()).size() < 1 || pReligions->GetAvailableFollowerBeliefs(getOwner()).size() < 1)
 #endif
 	{
 		return false;

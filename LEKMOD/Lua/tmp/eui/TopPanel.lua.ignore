@@ -1189,6 +1189,10 @@ local function UpdateTopPanelNow()
 			end
 
 			Controls.FaithTurns:SetText( turnsRemaining )
+			-- LEKMOD: a pending belief pick freezes the empire's yields at turn end
+			if g_activePlayer.LekmodIsBeliefPickPending and g_activePlayer:LekmodIsBeliefPickPending() then
+				Controls.FaithString:SetText( Controls.FaithString:GetText() .. " " .. L"TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING" )
+			end
 
 			Controls.FaithIcon:SetHide( not (faithTarget and IconHookup(faithTarget.PortraitIndex, iconSize, faithTarget.IconAtlas, Controls.FaithIcon) ) )
 		end
@@ -2827,6 +2831,10 @@ if civ5_mode and gk_mode then
 				tips:insert( "" )
 			end
 
+			if g_activePlayer.LekmodIsBeliefPickPending and g_activePlayer:LekmodIsBeliefPickPending() then
+				tips:insert( L"TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING_TT" )
+				tips:insert( "" )
+			end
 			tips:insert( L("TXT_KEY_TP_FAITH_ACCUMULATED", g_activePlayer:GetFaith()) )
 			tips:insert( "" )
 			tips:insert( "[COLOR_WHITE]" .. S("%+g", faithPerTurn ) .. "[ENDCOLOR] "

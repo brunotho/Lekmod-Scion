@@ -1652,6 +1652,11 @@ Diversify Spain and Australia's NW Discovery bonus
 // happens), no Production, no Science, no Culture, no Faith, no Gold income (upkeep is still paid). Replaces the forced pick
 // and the random pick of PENALTY_FOR_DELAYING_POLICIES. CvPlayer::m_bLekmodYieldsFrozen is set only during doTurnPostDiplomacy.
 #define LEKMOD_POLICY_PICK_FREEZE
+// Beliefs (New Specs 13): a belief another player first took this game turn is still open to everyone else until the turn
+// ends (CvGameReligions::m_aiLekmodBeliefFirstTurn, saved, game religions version 5); beliefs of the player's own pantheon or
+// religion are never offered again. Pending pantheon, founding, enhancing and reformation picks no longer block the end of the
+// turn; like a pending policy pick, they freeze the empire's yields at turn processing (CvPlayer::IsLekmodBeliefPickPending).
+#define LEKMOD_SAME_TURN_BELIEFS
 #define LEKMOD_GOLD_GREAT_PERSON_COST_STEP 500
 #define LEKMOD_POLICY_REWORK
 // World Congress cycle (spec "Diplo Wincon and Congress"). Congress era = era of the most advanced player (GetGameEraForTrigger).

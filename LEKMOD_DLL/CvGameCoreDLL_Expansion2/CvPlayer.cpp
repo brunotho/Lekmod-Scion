@@ -5701,7 +5701,11 @@ void CvPlayer::doTurnPostDiplomacy()
 #endif
 
 #ifdef LEKMOD_POLICY_PICK_FREEZE
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	m_bLekmodYieldsFrozen = IsLekmodPolicyPickPending() || IsLekmodBeliefPickPending();
+#else
 	m_bLekmodYieldsFrozen = IsLekmodPolicyPickPending();
+#endif
 #endif
 	// Do turn for all Cities
 	{
@@ -29869,6 +29873,35 @@ bool CvPlayer::IsLekmodPolicyPickPending()
 		return GetPlayerPolicies()->GetNumPoliciesCanBeAdopted() > 0;
 	return false;
 }
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+/// Could this human player pick a pantheon, found or enhance a religion (Great Prophet used), or add a Reformation belief now?
+bool CvPlayer::IsLekmodBeliefPickPending()
+{
+	if (!isAlive() || !isHuman() || isMinorCiv() || isBarbarian() || getNumCities() == 0)
+		return false;
+	CvGameReligions* pkReligions = GC.getGame().GetGameReligions();
+	if (pkReligions->CanCreatePantheon(GetID(), true) == CvGameReligions::FOUNDING_OK)
+		return true;
+	if (GetReligions()->IsFoundingReligion())
+	{
+		if (!GetReligions()->HasCreatedReligion())
+		{
+			if (pkReligions->GetNumReligionsStillToFound() > 0 && pkReligions->GetAvailableFounderBeliefs(GetID()).size() > 0 && pkReligions->GetAvailableFollowerBeliefs(GetID()).size() > 0)
+				return true;
+		}
+		else
+		{
+			const CvReligion* pReligion = pkReligions->GetReligion(GetReligions()->GetReligionCreatedByPlayer(), GetID());
+			if (pReligion != NULL && !pReligion->m_bEnhanced && pkReligions->GetAvailableEnhancerBeliefs(GetID()).size() > 0 && pkReligions->GetAvailableFollowerBeliefs(GetID()).size() > 0)
+				return true;
+		}
+	}
+	if (GetPlayerPolicies()->HasPolicyGrantingReformationBelief() && GetReligions()->HasCreatedReligion() && !pkReligions->HasAddedReformationBelief(GetID())
+		&& pkReligions->GetAvailableReformationBeliefs(GetID()).size() > 0)
+		return true;
+	return false;
+}
+#endif
 bool CvPlayer::IsLekmodYieldsFrozen() const
 {
 	return m_bLekmodYieldsFrozen;
