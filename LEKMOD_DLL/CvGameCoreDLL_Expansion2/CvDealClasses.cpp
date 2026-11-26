@@ -406,6 +406,11 @@ bool CvDeal::IsPossibleToTradeItem(PlayerTypes ePlayer, PlayerTypes eToPlayer, T
 
 		// Can't trade more Gold than you have
 		int iGold = iData1;
+#ifdef LEKMOD_HIDDEN_GOLD_ASK_ANY
+		// a hidden treasury (Switzerland): any amount may be asked for; checked only when the deal is completed
+		if (!bFinalizing && pFromPlayer->GetPlayerTraits()->GetLekmodTraitInt(LTI_HIDDEN_GOLD) > 0)
+			iGold = -1;
+#endif
 		if(iGold != -1 && iGoldAvailable < iGold)
 			return false;
 	}

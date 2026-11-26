@@ -158,6 +158,7 @@ enum LekmodTraitInt
 	LTI_NO_UNIT_COST_AT_PEACE,			// no unit maintenance while not at war with any civilization or City-State (Switzerland)
 	LTI_ALL_PANTHEONS,					// cities use the pantheon beliefs of every religion with followers in them (Ottomans)
 	LTI_KEEP_FEATURE_ON_BUILD,			// type: improvements are built on this feature without removing it, no clearing time or tech (Vietnam: Marsh)
+	LTI_HIDDEN_GOLD,					// others don't see this player's Gold total; offers may ask for any amount (Switzerland)
 	NUM_LEKMOD_TRAIT_INTS
 };
 #endif

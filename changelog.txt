@@ -3799,7 +3799,8 @@ Tags: civs, buildings
 - Changed: Reislaeufer Post: trained units start with Altitude Training instead of the mountain combat promotion
 - Reworked: BUILDING_SWISS_SKI_RESORT
   | costs 165[NEWLINE]Replaces the Stadium. Costs less, needs no [ICON_GOLD] Gold maintenance and no Zoo; available with Electricity (instead of Refrigeration).[NEWLINE][NEWLINE]In addition:[NEWLINE]+3 [ICON_HAPPINESS_1] Happiness (instead of +2).[NEWLINE]Mountain tiles worked by the city yield +5 [ICON_CULTURE] Culture, +5 [ICON_GOLD] Gold and +5 [ICON_TOURISM] Tourism.
-- DLL: Traits.LekmodPassedProposalExtraVotes, LekmodNoUnitCostAtPeace; LekmodHiddenGold (read by Lua: Demographics.lua, TradeLogic.lua)
+- DLL: Traits.LekmodPassedProposalExtraVotes, LekmodNoUnitCostAtPeace; LekmodHiddenGold (read by Lua: Demographics.lua, TradeLogic.lua; and LTI_HIDDEN_GOLD / LEKMOD_HIDDEN_GOLD_ASK_ANY in CvDeal::IsPossibleToTradeItem)
+- Dev: 2026-11-26: asking Switzerland for Gold cut the amount down to its treasury, which showed it; now any amount can be asked for, and the treasury is only checked when the deal is accepted (a deal it can't pay fails for both, with a notification)
 - Dev: (development step, covered by the line or tooltip above) UA: only your stored Gold stays hidden ("?" in the trade screen); your Gold per turn shows in the trade screen again, and other players' Demographics include your Gold again
 
 SHOSHONE (CIVILIZATION_SHOSHONE)

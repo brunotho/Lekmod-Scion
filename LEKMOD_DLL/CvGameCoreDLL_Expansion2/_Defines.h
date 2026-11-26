@@ -936,6 +936,10 @@
 // Beliefs.NewUnitPromotion also goes to the units the player already has when the pantheon is founded (user, 2026-11-26:
 // the starting Scout never got Kin Forged in Blood's Zealot)
 #define LEKMOD_PANTHEON_PROMOTION_EXISTING_UNITS
+// Traits.LekmodHiddenGold (Switzerland): others may ask for any Gold amount, the treasury is only checked when the
+// deal is completed (a deal it can't pay fails for both, LEKMOD_MULTIPLE_DEAL_PROPOSALS notification). Before, the
+// amount check while building the offer showed the hidden treasury. (user, 2026-11-26)
+#define LEKMOD_HIDDEN_GOLD_ASK_ANY
 // Resource columns: ImprovementBuildTimeChange (extra build time for the improvement that connects the resource),
 // FoundCity* (one-time effects for a city founded on the resource, with FoundCityTech known) and
 // CityCenter* (production bonuses while a city stands on the resource)

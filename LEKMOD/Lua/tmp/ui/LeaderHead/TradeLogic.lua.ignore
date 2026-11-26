@@ -2385,7 +2385,8 @@ function PocketGoldHandler( isUs )
         
     else
 		iAmountAvailable = g_Deal:GetGoldAvailable(g_iThem, iItemToBeChanged);
-		if (iAmount > iAmountAvailable) then
+		-- LEKMOD: a hidden treasury (Switzerland) is never cut down to what they have (that showed it); the game checks it when the deal is completed
+		if (iAmount > iAmountAvailable and not LekmodHidesGold(g_iThem)) then
 			iAmount = iAmountAvailable;
 		end
         g_Deal:AddGoldTrade( g_iThem, iAmount );
@@ -2443,7 +2444,7 @@ function ChangeGoldAmount( string, control )
     else
 		
 		iAmountAvailable = g_Deal:GetGoldAvailable(g_iThem, TradeableItems.TRADE_ITEM_GOLD);
-		if (iGold > iAmountAvailable) then
+		if (iGold > iAmountAvailable and not LekmodHidesGold(g_iThem)) then
 			iGold = iAmountAvailable;
 			Controls.ThemGoldAmount:SetText(iGold);
 		end
