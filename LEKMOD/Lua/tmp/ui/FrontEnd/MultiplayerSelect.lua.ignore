@@ -56,10 +56,6 @@ local function LekmodPrepareInternetGame()
 	PreGame.SetGameType(GameTypes.GAME_NETWORK_MULTIPLAYER);
 	PreGame.ResetSlots();
 	ResetMultiplayerOptions();
-	-- Like the base Internet lobby screen does before anyone hosts: without it, hosting a loaded save
-	-- (which first switches the active DLC to the save's) fell back to the menu (2026-11-26)
-	Matchmaking.InitInternetLobby();
-	Matchmaking.SetMultiplayerGameListType( 0, 0 ); -- LIST_LOBBIES, SEARCH_INTERNET (as in Lobby.lua)
 end
 
 function LekmodNewGameClick()
