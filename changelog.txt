@@ -779,8 +779,8 @@ An attempted fix, not yet confirmed in multiplayer games.
 EUI BUILDING TOOLTIPS
 ---------------------
 Tags: bugfix, ui
-- Fixed: with EUI, building and wonder tooltips (also in the tech tree) showed raw "TXT_KEY_EUI_..." lines instead of "Built in N of your cities" and "Built by ... in ..."; they should now read normally
-- Dev: EUI 1.28 uses TXT_KEY_EUI_BUILT_IN_X_CITIES, TXT_KEY_EUI_WONDER_BUILT_BY and TXT_KEY_EUI_UNKNOWN_CITY but ships no texts for them; added to CIV5Units_Mongol.xml. The other undefined keys in EUI_tooltip_library are Beyond Earth paths
+- Fixed: with EUI, building tooltips (also in the tech tree) showed a raw "TXT_KEY_EUI_..." line; ordinary buildings no longer get that line, and built wonders should now say who built them and where
+- Dev: EUI 1.28 uses TXT_KEY_EUI_BUILT_IN_X_CITIES, TXT_KEY_EUI_WONDER_BUILT_BY and TXT_KEY_EUI_UNKNOWN_CITY but ships no texts for them; added to CIV5Units_Mongol.xml; the BUILT_IN_X_CITIES line (on every building) is removed from our EUI_tooltip_library copy (user, 2026-11-26: limited buildings have LekmodEmpireLimitLine). The other undefined keys in EUI_tooltip_library are Beyond Earth paths
 
 TECH TREE: BUILDINGS WITH TWO TECHS
 -----------------------------------
@@ -2469,6 +2469,7 @@ It keeps +100% Production toward Spaceship Parts.
 - Changed: 5 Scientist points (was 3)
 - Removed: its Science and the free Recycling Center
 - Added: Spaceship Parts built in any of your cities start with 15 XP
+- Dev: tooltip line in the Barracks style, "+15 XP for Spaceship Parts." (user, 2026-11-26)
 - DLL: Building_LekmodGlobalUnitCombatFreeExperiences (LEKMOD_GLOBAL_UNITCOMBAT_XP_BUILDINGS; adds to the player-wide per-unit-type XP that policies use)
 
 ARSENAL OF VENICE (BUILDING_ARSENAL_OF_VENICE)
@@ -3013,7 +3014,8 @@ Tags: world wonders, espionage, wonders
 - Added: World Wonder at Telecommunications, 1100 Production
 - Added: 3 free spies
 - Added: your spies and diplomats are set up in their city as soon as they arrive
-- Added: other players' Demographics screens show only the word CENSORED and the Ministry's owner instead of their table
+- Added: other players can't see their Demographics screen
+- Dev: (2026-11-26, user) the tooltip no longer explains what other players see instead (the word CENSORED and the owner's name)
 - DLL: Buildings.FastSpyEstablish, DemographicsBlackout (LEKMOD_SPY_WONDERS); Lua Game.LekmodIsBlackout(iObserver)
 - Dev: building 276, class 183; icon from the user's art (white background replaced, art_sources/tools/round_building_icon.py)
 

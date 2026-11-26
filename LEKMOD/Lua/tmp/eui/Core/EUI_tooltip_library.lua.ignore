@@ -1486,13 +1486,11 @@ end
 			return true
 		end
 	end
-	if not ( InsertBuiltLimit( maxGlobalInstances, "TXT_KEY_NO_ACTION_GAME_COUNT_MAX", false )
+	-- LEKMOD (user, 2026-11-26): no "Built in N of your cities" line on every ordinary building;
+	-- buildings with a per-empire limit get LekmodEmpireLimitLine instead (standard UI alike)
+	local _ = InsertBuiltLimit( maxGlobalInstances, "TXT_KEY_NO_ACTION_GAME_COUNT_MAX", false )
 		or InsertBuiltLimit( buildingClass.MaxTeamInstances, "TXT_KEY_NO_ACTION_TEAM_COUNT_MAX", nil, activeTeamID )
-		or InsertBuiltLimit( buildingClass.MaxPlayerInstances, "TXT_KEY_NO_ACTION_PLAYER_COUNT_MAX", activePlayerID ) )
-		and activePlayer
-	then
-		tips:insertLocalized( "TXT_KEY_EUI_BUILT_IN_X_CITIES", activePlayer:GetBuildingClassCount( buildingClassID ), activePlayer:GetBuildingClassMaking( buildingClassID ) )    --CountNumBuildings( buildingID ) )
-	end
+		or InsertBuiltLimit( buildingClass.MaxPlayerInstances, "TXT_KEY_NO_ACTION_PLAYER_COUNT_MAX", activePlayerID )
 	-- Pre-written Help text
 	return AddPreWrittenHelpTextAndConcat( tips, building )
 end

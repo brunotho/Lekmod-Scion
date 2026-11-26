@@ -52,11 +52,16 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.7 
 - Technology and policy costs rise with the cities you have now (+5% and +10% per city): losing a city makes them cheaper again, and puppets never count. Puppets give your empire no Science or Culture.
 - In Tournament mode, civilizations are at war as soon as they meet and can't make peace before turn 20; World Wonders finished by several players on the same turn go to nobody.
 - Trade routes last 15 turns; every route from a coastal city yields 50% more (Caravans and Cargo Ships are equal now); coastal cities don't get the river bonus.
+- We Love the King Day lasts 10 turns, and a city's luxury request changes after 10 turns if it isn't met.
 - Open borders last 10 turns, or until war with the new "until war" option, and need no embassy. Lump sums of Gold can be traded once either side knows Banking (no Declaration of Friendship needed); Gold per turn deals last 10 or 20 turns.
+- You can have trade offers open to several players at once; an accepted deal that can no longer be completed fails, and both sides get a notification.
 - Coast tiles yield 2 Food, and cities claim water tiles as readily as flat land.
+- A city founded on Salt, Stone, Cattle, Rubber or Marble gets a bonus, e.g. +1 Population on Salt, free Walls on Stone.
 - Ancient ruins let you choose between 2 rewards, with the amounts shown.
+- Forts cost 1 Gold upkeep per turn (2 from the Modern Era).
 - A conquered city that can't be given back to an earlier owner becomes a puppet right away; clicking it offers Annex or Raze.
 - In multiplayer games AI players can't win: no victory of any type goes to them.
+- Shift + click no longer queues orders: a new order replaces the current one.
 - With a turn timer, Great Generals can't build Citadels in the last 30 seconds of a turn outside your territory (15 seconds inside it).
 
 ## Powercreep compensation
@@ -66,6 +71,7 @@ The changes that alter how the game is played, in short, for Lekmod Scion 0.1.7 
 ## Interface
 - Lobby: a Mode choice (Tournament / Casual) sets all game options; hover a civilization to see its ability and uniques.
 - The unit list and the Military Overview also show each unit's picked promotions and health.
+- Promotion templates: save up to two promotion picks per unit type and give them to a unit with one click, or automatically to every new unit of that type.
 - Air strike targeting: Alt + click a tile to mark it. The unit lists then show each plane's distance to it and put the planes that can reach it first, and Tab selects the next plane that can strike it.
 - Hotkey letters on promotion and worker build buttons, Shift + F-keys for the top-left panels, a Lek Options tab in the Options with all Lekmod settings, including muting the chat sound.
 - Policy and belief texts list one effect per line; the religion screens have a search box.

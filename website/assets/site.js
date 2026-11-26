@@ -78,8 +78,6 @@
       $("#no-results").hidden = anyVisible;
       clear.hidden = !(tags.length || words.length);
       // say which versions are compared (user, 2026-10-29)
-      var note = $("#version-note");
-      if (note) note.textContent = "Lekmod Scion " + toSel.options[toSel.selectedIndex].text + " compared with " + fromSel.options[fromSel.selectedIndex].text + ".";
       writeUrl();
       updateActive();
     };
