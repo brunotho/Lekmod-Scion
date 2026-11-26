@@ -121008,6 +121008,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_DEMOGRAPHICS_BLACKOUT">
 			<Text>B  L  A  C  K  O  U  T</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_GP_APPEARS_IN">
+			<Text>Appears in {1_Num} {1_Num: plural 1?turn; other?turns;}.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_STOCK">
 			<Text>{1_Have} / {2_Need} {3_Icon}, +{4_Rate} {3_Icon} per turn.</Text>
 		</Row>

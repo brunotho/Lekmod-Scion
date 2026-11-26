@@ -781,6 +781,13 @@ Tags: ui
 - Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, and how much more per turn would finish it a turn sooner and how much less would make it a turn later
 - Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _GROW_* / _BUILD_*
 
+CITY SCREEN: GREAT PEOPLE TURNS
+-------------------------------
+Tags: ui
+Weight: minor
+- Added: the city screen's Great People meters show how many turns until each great person appears, and a meter appears as soon as the city earns points for that type
+- Dev: CityView.lua (standard UI), like EUI's meters; text TXT_KEY_LEKMOD_GP_APPEARS_IN
+
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air

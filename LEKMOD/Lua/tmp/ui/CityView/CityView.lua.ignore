@@ -1122,7 +1122,14 @@ function OnCityViewUpdate()
 		for pSpecialistInfo in GameInfo.Specialists() do
 			local iSpecialistIndex = pSpecialistInfo.ID;			
 			local iProgress = pCity:GetSpecialistGreatPersonProgressTimes100(iSpecialistIndex) / 100;
-			if (iProgress > 0) then		
+			-- LEKMOD: also show a meter when points come in but none are stored yet (like EUI)
+			local iLekmodBaseRate = pSpecialistInfo.GreatPeopleRateChange * pCity:GetSpecialistCount( pSpecialistInfo.ID );
+			for building in GameInfo.Buildings{SpecialistType = pSpecialistInfo.Type} do
+				if (pCity:IsHasBuilding(building.ID)) then
+					iLekmodBaseRate = iLekmodBaseRate + building.GreatPeopleRateChange;
+				end
+			end
+			if (iProgress > 0 or iLekmodBaseRate > 0) then
 				numGPs = numGPs + 1;		
 			
 				local unitClass = GameInfo.UnitClasses[pSpecialistInfo.GreatPeopleUnitClass];
@@ -1216,7 +1223,11 @@ function OnCityViewUpdate()
 						
 						local iMod = iPlayerMod + iPolicyMod + iWorldCongressMod + iCityMod + iGoldenAgeMod;
 						iGPPChange = (iGPPChange * (100 + iMod)) / 100;
-						strToolTipText = strToolTipText .. " (+" .. LekmodFormatGPPoints(iGPPChange/100) .. "[ICON_GREAT_PEOPLE])";	
+						strToolTipText = strToolTipText .. " (+" .. LekmodFormatGPPoints(iGPPChange/100) .. "[ICON_GREAT_PEOPLE])";
+						-- LEKMOD: turns until the great person appears, on the meter (like EUI)
+						local iLekmodTurns = math.ceil( math.max(0, threshold - iProgress) / (iGPPChange / 100) );
+						controlTable.GreatPersonLabel:SetText( labelText .. ": " .. Locale.ToLower( Locale.ConvertTextKey("TXT_KEY_STR_TURNS", iLekmodTurns) ) );
+						strToolTipText = strToolTipText .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_GP_APPEARS_IN", iLekmodTurns);
 						if (iPlayerMod > 0) then
 							strToolTipText = strToolTipText .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_PLAYER_GP_MOD", iPlayerMod);
 						end
