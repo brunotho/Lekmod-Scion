@@ -2577,7 +2577,7 @@ Tags: policies, combat
 - Reworked: POLICY_MILITARY_TRADITION
   | [COLOR_POSITIVE_TEXT]Military Tradition[ENDCOLOR][NEWLINE][ICON_BULLET]+30% [ICON_PRODUCTION] Production toward [ICON_BUILDING_COURTHOUSE] Courthouses[NEWLINE][ICON_BULLET]Cities with a Courthouse get +2 [ICON_PRODUCTION] Production and +2 [ICON_FOOD] Food[NEWLINE][ICON_BULLET]Upgrading units costs 10% less [ICON_GOLD] Gold
 - Reworked: POLICY_MILITARY_CASTE
-  | [COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET]Cities with a [ICON_BUILDING_COURTHOUSE] Courthouse get +1 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
+  | [COLOR_POSITIVE_TEXT]Military Caste[ENDCOLOR][NEWLINE][ICON_BULLET]Garrisoned units cost no maintenance[NEWLINE][ICON_BULLET][ICON_BUILDING_COURTHOUSE] Courthouses provide +1 [ICON_HAPPINESS_1] Happiness[NEWLINE][ICON_BULLET]Garrisoned cities get +2 [ICON_CULTURE] Culture and +1 [ICON_HAPPINESS_1] Happiness; from the Renaissance Era on, every city gets this
 - Reworked: POLICY_BRANCH_HONOR
   | Adopting Honor:[NEWLINE][ICON_BULLET]+33% [ICON_STRENGTH] Combat Strength against [COLOR_POSITIVE_TEXT]Barbarians[ENDCOLOR][NEWLINE][ICON_BULLET][ICON_CULTURE] Culture for each enemy unit killed (max. 40; barbarian kills stop counting from the Renaissance Era)[NEWLINE][ICON_BULLET]Unlocks building the Temple of Artemis[NEWLINE][NEWLINE]Completing the Honor tree:[NEWLINE][ICON_BULLET]+1 [ICON_FOOD] Food from [ICON_BUILDING_BARRACKS] Barracks and [ICON_BUILDING_COLOSSEUM] Colosseums[NEWLINE][ICON_BULLET]All non-air military units get the Discipline promotion (+50% Experience)[NEWLINE][ICON_BULLET]Buy [ICON_GREAT_GENERAL] Great Generals with [ICON_PEACE] Faith from the [COLOR_CYAN]Industrial Era[ENDCOLOR] on
 - DLL: Policies.CampClearGold, Policies.FreeTilesExistingCities (LEKMOD_POLICY_REWORK); kill caps use Policy_YieldFromKills.Max; Policy_BuildingClassNoMaintenance (Sacred Duty, CvTreasury::GetBuildingGoldMaintenance)
@@ -2729,7 +2729,7 @@ Tags: policies
 - New: POLICY_LEKMOD_SOCIALIST_HERITAGE
   | [COLOR_POSITIVE_TEXT]Socialist Heritage[ENDCOLOR][NEWLINE]+10% [ICON_TOURISM] Tourism in every city for each allied City-State.[NEWLINE]Landmarks and Festivals provide double yields.
 - Reworked: POLICY_PARTY_LEADERSHIP
-  | [COLOR_POSITIVE_TEXT]Party Leadership[ENDCOLOR][NEWLINE]+2 [ICON_FOOD] Food, +2 [ICON_PRODUCTION] Production, +2 [ICON_RESEARCH] Science and +2 [ICON_GOLD] Gold in every city.
+  | [COLOR_POSITIVE_TEXT]Party Leadership[ENDCOLOR][NEWLINE]+2 [ICON_FOOD] Food, +2 [ICON_CULTURE] Culture, +2 [ICON_RESEARCH] Science and +2 [ICON_GOLD] Gold in every city.
   - now tier 2
 - New: POLICY_LEKMOD_RE_EDUCATION
   | [COLOR_POSITIVE_TEXT]Re-Education[ENDCOLOR][NEWLINE]+2 [ICON_HAPPINESS_1] Happiness from each Constabulary and Courthouse.[NEWLINE]Resistance in cities you capture lasts half as long.
@@ -2739,7 +2739,7 @@ Tags: policies
   | [COLOR_POSITIVE_TEXT]Five Year Offensive[ENDCOLOR][NEWLINE]Provides 15 [ICON_RES_OIL] Oil and 15 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]+100% [ICON_PRODUCTION] Production toward Refineries and Recycling Centers.[NEWLINE]Siege units trained in a city with a Refinery start with Bombardment I (Land) and Cover I.
 - Changed: shorter resistance from Colonial Administration, Re-Education and Imperialism adds up (two of them: no resistance beyond the minimum of 1 turn)
 - Reworked: POLICY_DICTATORSHIP_PROLETARIAT
-  | [COLOR_POSITIVE_TEXT]Command Economy[ENDCOLOR][NEWLINE]+30% [ICON_PRODUCTION] Production toward military units in every city.[NEWLINE]-10% [ICON_RESEARCH] Science in every city.[NEWLINE][ICON_GREAT_SCIENTIST] Great Scientists you keep lose their [ICON_RESEARCH] Science bonus three times slower.
+  | [COLOR_POSITIVE_TEXT]Command Economy[ENDCOLOR][NEWLINE]+30% [ICON_PRODUCTION] Production toward military units in every city.[NEWLINE]-10% [ICON_RESEARCH] Science in every city.[NEWLINE][ICON_GREAT_SCIENTIST] The [ICON_RESEARCH] bulb value of Great Scientists you keep decays at a third of the usual rate.
 - Reworked: POLICY_IRON_CURTAIN
   | [COLOR_POSITIVE_TEXT]Iron Curtain[ENDCOLOR][NEWLINE]Internal Trade Routes provide +10 [ICON_FOOD] Food or [ICON_PRODUCTION] Production, +1 more for each era after the Industrial Era.[NEWLINE]All your running [ICON_INTERNATIONAL_TRADE] Trade Routes end when you adopt it (the trade units return home).[NEWLINE]No more Trade Routes with other civilizations or City-States.[NEWLINE]Enemy [ICON_SPY] Spies steal technologies 50% slower in your cities.
 - DLL: Policies.TourismModPerAlliedCS, NoExternalTradeRoutes, GreatScientistDecayModifier, TradeYieldPerEraTimes100/TradeYieldEraType; Policy_UnitClassResourceRequirementChanges, Policy_BuildingClassResourceRequirementChanges, Policy_UnitCombatPromotionsIfBuilding, Policy_ImprovementYieldModifiers (LEKMOD_POLICY_REWORK)
