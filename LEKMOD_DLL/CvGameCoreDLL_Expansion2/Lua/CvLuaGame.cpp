@@ -2379,6 +2379,10 @@ int CvLuaGame::lSetMinimumFaithNextPantheon(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailablePantheonBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2389,7 +2393,7 @@ int CvLuaGame::lGetAvailablePantheonBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailablePantheonBeliefs();
 #endif
@@ -2407,6 +2411,10 @@ int CvLuaGame::lGetAvailablePantheonBeliefs(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailableFounderBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2417,7 +2425,7 @@ int CvLuaGame::lGetAvailableFounderBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFounderBeliefs();
 #endif
@@ -2435,6 +2443,10 @@ int CvLuaGame::lGetAvailableFounderBeliefs(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailableFollowerBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2445,7 +2457,7 @@ int CvLuaGame::lGetAvailableFollowerBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableFollowerBeliefs();
 #endif
@@ -2463,6 +2475,10 @@ int CvLuaGame::lGetAvailableFollowerBeliefs(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailableEnhancerBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2473,7 +2489,7 @@ int CvLuaGame::lGetAvailableEnhancerBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableEnhancerBeliefs();
 #endif
@@ -2491,6 +2507,10 @@ int CvLuaGame::lGetAvailableEnhancerBeliefs(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailableBonusBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2501,7 +2521,7 @@ int CvLuaGame::lGetAvailableBonusBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableBonusBeliefs();
 #endif
@@ -2519,6 +2539,10 @@ int CvLuaGame::lGetAvailableBonusBeliefs(lua_State* L)
 //------------------------------------------------------------------------------
 int CvLuaGame::lGetAvailableReformationBeliefs(lua_State* L)
 {
+#ifdef LEKMOD_SAME_TURN_BELIEFS
+	// read the optional player before lua_createtable: with no argument the new table would sit at index 1
+	const PlayerTypes eLekmodPlayer = (PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer());
+#endif
 	lua_createtable(L, 0, 0);
 	const int t = lua_gettop(L);
 	int idx = 1;
@@ -2529,7 +2553,7 @@ int CvLuaGame::lGetAvailableReformationBeliefs(lua_State* L)
 #else
 #ifdef LEKMOD_SAME_TURN_BELIEFS
 	// UI only: optional player (default: the active player), so beliefs taken this turn by others still show
-	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs((PlayerTypes)luaL_optint(L, 1, GC.getGame().getActivePlayer()));
+	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs(eLekmodPlayer);
 #else
 	std::vector<BeliefTypes> availableBeliefs = GC.getGame().GetGameReligions()->GetAvailableReformationBeliefs();
 #endif

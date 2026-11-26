@@ -2747,6 +2747,7 @@ Tags: religion, game mechanics
 - Added: the top panel warns while a belief pick is waiting
 - DLL: LEKMOD_SAME_TURN_BELIEFS: CvGameReligions::LekmodIsBeliefTaken / m_aiLekmodBeliefFirstTurn (saved, game religions version 5); the GetAvailable*Beliefs functions take the asking player (Lua: the active player); CvPlayer::IsLekmodBeliefPickPending joins the policy pick freeze; the four belief notifications no longer block the end of the turn; Lua Player:LekmodIsBeliefPickPending()
 - Note: AI players still use the old rule (a belief anyone took is gone)
+- Dev: the Lua Game.GetAvailable*Beliefs read their optional player after creating the result table, so every call without an argument errored (Lua.log: "number expected, got table", seen in EUI's tile hover, 2026-11-26); the pick screens would have failed too. The player is now read first
 
 PENDING POLICY PICK (game mechanics)
 ------------------------------------
