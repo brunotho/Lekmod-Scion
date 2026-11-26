@@ -776,6 +776,12 @@ An attempted fix, not yet confirmed in multiplayer games.
 - Fixed: aircraft that moved into or out of a city while it was hidden in the fog of war could be missing from its banner count (or an old count stayed); the count should now be rebuilt when the city comes into view and at the start of every turn
 - Note: standard UI only; EUI draws aircraft differently and is unchanged
 
+EUI BUILDING TOOLTIPS
+---------------------
+Tags: bugfix, ui
+- Fixed: with EUI, building and wonder tooltips (also in the tech tree) showed raw "TXT_KEY_EUI_..." lines instead of "Built in N of your cities" and "Built by ... in ..."; they should now read normally
+- Dev: EUI 1.28 uses TXT_KEY_EUI_BUILT_IN_X_CITIES, TXT_KEY_EUI_WONDER_BUILT_BY and TXT_KEY_EUI_UNKNOWN_CITY but ships no texts for them; added to CIV5Units_Mongol.xml. The other undefined keys in EUI_tooltip_library are Beyond Earth paths
+
 TECH TREE: BUILDINGS WITH TWO TECHS
 -----------------------------------
 Tags: bugfix, ui

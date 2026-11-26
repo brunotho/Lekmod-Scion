@@ -120485,6 +120485,16 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_TOPPANEL_BELIEF_PENDING_TT">
 			<Text>[COLOR_NEGATIVE_TEXT]A belief pick is waiting.[ENDCOLOR][NEWLINE]Until you pick, your empire gets no [ICON_FOOD] growth, [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_GOLD] Gold income, [ICON_CULTURE] Culture or [ICON_PEACE] Faith at the end of each turn.[NEWLINE]Upkeep is still paid, and cities working too little Food still starve.[NEWLINE][NEWLINE]Beliefs another player picked this turn are still open to you until the turn ends.</Text>
 		</Row>
+		<!-- LEKMOD: texts EUI's tooltip library uses but EUI 1.28 doesn't ship (shown as raw keys in building tooltips) -->
+		<Row Tag="TXT_KEY_EUI_BUILT_IN_X_CITIES">
+			<Text>Built in {1_Num} of your cities, {2_Num} in production.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EUI_WONDER_BUILT_BY">
+			<Text>Built by {1_Player} in {2_City}.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EUI_UNKNOWN_CITY">
+			<Text>an unknown city</Text>
+		</Row>
 		<Row Tag="TXT_KEY_POLICY_LEKMOD_MONUMENTS_OF_THE_PEOPLE">
 			<Text>Monuments of the People</Text>
 		</Row>
