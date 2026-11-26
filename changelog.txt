@@ -792,8 +792,8 @@ Weight: minor
 AIRCRAFT FLAGS AROUND CITIES AND CARRIERS
 -----------------------------------------
 Tags: ui, air
-- Added: selecting an aircraft shows every aircraft based with it (same city, airbase tile or carrier) as its own flag in an arc above, with its health; click one to select it
-- Dev: LekmodBuildAirFan / LekmodClearAirFan in UnitFlagManager.lua (standard UI), after EUI's airbase fan; the count and pull-down list above the banner stay
+- Added: aircraft are always shown as their own flags (with health, clickable) in an arc above the city or airbase tile they are based on, or above their carrier
+- Dev: LekmodLayoutAir in UnitFlagManager.lua (arc radius 80 around the tile, 45 around a carrier flag, after EUI's airbase fan; the AirCraftFlags container is no longer hidden); the count and pull-down list above the banner stay. A first version showed them only while one was selected (development step)
 
 EUI SUPPORT REMOVED
 -------------------
