@@ -2,10 +2,10 @@
 <Context ColorSet="Beige_Black_Alpha" >
 
     <!--AlphaAnim AlphaStart="1" AlphaEnd="0" Speed="2" Cycle="Once" ID="FlagFader" Stopped="1" -->
-        <Container ID="AirCraftFlags" /> <!-- LEKMOD: aircraft flags always shown (LekmodLayoutAir) -->
         <Container ID="CivilianFlags" />
         <Container ID="MilitaryFlags" />
         <Container ID="GarrisonFlags" />
+        <Container ID="AirCraftFlags" /> <!-- LEKMOD: aircraft flags always shown (LekmodLayoutAir), drawn above ground unit flags -->
         <Container ID="CityContainer" />
     <!--/AlphaAnim-->
 

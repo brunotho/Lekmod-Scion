@@ -1301,7 +1301,7 @@ end
 -- or above the carrier that holds them, each with its health and clickable. (Base game: hidden, only a count
 -- above the city banner / carrier flag with a pull-down list; the count and list stay.)
 --------------------------------------------------------------------------------
-local LEKMOD_AIR_ARC_RADIUS_BASE = 80;      -- around the tile centre (above the city banner and its unit flags)
+local LEKMOD_AIR_ARC_RADIUS_BASE = 100;     -- around the tile centre (above the city banner and its unit flags, which reach about 65 px up)
 local LEKMOD_AIR_ARC_RADIUS_CARRIER = 45;   -- around the carrier's flag
 
 local function LekmodArcPoint( i, n, radius, cx, cy )
