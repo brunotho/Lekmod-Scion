@@ -505,7 +505,15 @@ local g_UnitFlagClass =
         end
         
         self:OverrideDimmedFlag( self.m_IsSelected );
-        
+
+        -- LEKMOD: a selected aircraft shows all aircraft of its city / carrier as flags in an arc (like EUI)
+        if( self.m_IsAirCraft and self.m_IsSelected ) then
+            LekmodClearAirFan();
+            LekmodBuildAirFan( self );
+        elseif( not self.m_IsSelected and g_LekmodAirFanOwner == self ) then
+            LekmodClearAirFan();
+        end
+
     end,
     
     
@@ -1285,6 +1293,71 @@ end
 
 -------------------------------------------------
 -------------------------------------------------
+--------------------------------------------------------------------------------
+-- LEKMOD (2026-11-26, from EUI): while an aircraft is selected, the flags of every aircraft based with it
+-- (same city or airbase tile, or the same carrier) are shown in an arc above it, each clickable and with
+-- its health. Base game: only the count above the city banner / carrier flag with a pull-down list.
+--------------------------------------------------------------------------------
+g_LekmodAirFan = {};
+g_LekmodAirFanOwner = nil;
+local LEKMOD_AIR_FAN_RADIUS = 80;
+
+function LekmodClearAirFan()
+    for _, flag in ipairs( g_LekmodAirFan ) do
+        if( flag.m_Instance ~= nil ) then
+            if( flag.m_IsSelected ) then
+                flag.m_Instance.Anchor:ChangeParent( g_SelectedContainer );
+            else
+                flag.m_Instance.Anchor:ChangeParent( Controls.AirCraftFlags );
+            end
+            flag:UpdateFlagOffset();
+        end
+    end
+    g_LekmodAirFan = {};
+    g_LekmodAirFanOwner = nil;
+end
+
+function LekmodBuildAirFan( selectedFlag )
+    local pPlayer = Players[ selectedFlag.m_PlayerID ];
+    local pUnit = pPlayer and pPlayer:GetUnitByID( selectedFlag.m_UnitID );
+    local pPlot = pUnit and pUnit:GetPlot();
+    if( pPlot == nil ) then
+        return;
+    end
+    local pTransport = pUnit:GetTransportUnit();
+    local flags = {};
+    for i = 0, pPlot:GetNumUnits() - 1 do
+        local pOther = pPlot:GetUnit( i );
+        if( pOther ~= nil and pOther:GetDomainType() == DomainTypes.DOMAIN_AIR ) then
+            local pOtherTransport = pOther:GetTransportUnit();
+            local bSameBase;
+            if( pTransport ~= nil ) then
+                bSameBase = ( pOtherTransport ~= nil and pOtherTransport:GetID() == pTransport:GetID() and pOtherTransport:GetOwner() == pTransport:GetOwner() );
+            else
+                bSameBase = ( pOtherTransport == nil );
+            end
+            local list = g_MasterList[ pOther:GetOwner() ];
+            local flag = list and list[ pOther:GetID() ];
+            if( bSameBase and flag ~= nil and flag.m_Instance ~= nil ) then
+                table.insert( flags, flag );
+            end
+        end
+    end
+    local n = #flags;
+    if( n == 0 ) then
+        return;
+    end
+    -- an arc opening upwards, centred above the tile (screen y grows downwards)
+    local step = math.min( 0.5, 2.7 / n );
+    local start = -step * (n + 1) / 2 - math.pi / 2;
+    for i, flag in ipairs( flags ) do
+        flag.m_Instance.Anchor:ChangeParent( g_SelectedContainer );
+        flag.m_Instance.FlagShadow:SetOffsetVal( math.cos( step * i + start ) * LEKMOD_AIR_FAN_RADIUS, math.sin( step * i + start ) * LEKMOD_AIR_FAN_RADIUS );
+        table.insert( g_LekmodAirFan, flag );
+    end
+    g_LekmodAirFanOwner = selectedFlag;
+end
+
 function OnUnitSelect( playerID, unitID, i, j, k, isSelected )
 
     if( Players[ playerID ] == nil or

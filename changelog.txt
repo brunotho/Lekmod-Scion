@@ -788,6 +788,12 @@ Weight: minor
 - Added: the city screen's Great People meters show how many turns until each great person appears, and a meter appears as soon as the city earns points for that type
 - Dev: CityView.lua (standard UI), like EUI's meters; text TXT_KEY_LEKMOD_GP_APPEARS_IN
 
+AIRCRAFT FLAGS AROUND CITIES AND CARRIERS
+-----------------------------------------
+Tags: ui, air
+- Added: selecting an aircraft shows every aircraft based with it (same city, airbase tile or carrier) as its own flag in an arc above, with its health; click one to select it
+- Dev: LekmodBuildAirFan / LekmodClearAirFan in UnitFlagManager.lua (standard UI), after EUI's airbase fan; the count and pull-down list above the banner stay
+
 AIRCRAFT COUNT ON CITY BANNERS
 ------------------------------
 Tags: bugfix, ui, air
