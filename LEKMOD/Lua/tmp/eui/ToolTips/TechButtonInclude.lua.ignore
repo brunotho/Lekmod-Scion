@@ -204,7 +204,9 @@ function GatherInfoAboutUniqueStuff( civType )
 	end
 
 	-- LEKMOD: upgrade-only units (Units.UpgradeOnly) show only when one of this civ's own units upgrades into them
-	for thisUnit in GameInfo.Units("UpgradeOnly = 1") do
+	-- (EUI's GameInfoCache takes no SQL strings; filter by hand, the column may read as true or 1)
+	for thisUnit in GameInfo.Units() do
+	if thisUnit.UpgradeOnly == true or thisUnit.UpgradeOnly == 1 then
 		local bReachable = false;
 		for row in GameInfo.Unit_ClassUpgrades{ UnitClassType = thisUnit.Class } do
 			local fromUnit = GameInfo.Units[row.UnitType];
@@ -215,6 +217,7 @@ function GatherInfoAboutUniqueStuff( civType )
 		if not bReachable and validUnitBuilds[thisUnit.Class] == thisUnit.Type then
 			validUnitBuilds[thisUnit.Class] = nil;
 		end
+	end
 	end
 
 	-- LEKMOD: policy units (Units.PolicyType: Landsknecht, Foreign Legion) are not shown in the tech tree (user, 2026-10-22)

@@ -781,6 +781,7 @@ TECH TREE: BUILDINGS WITH TWO TECHS
 Tags: bugfix, ui
 - Dev: not on the website (user, 2026-10-18). A building that either of two techs unlocks is shown under both in the tech tree; Tonga's Fale Koloa (Sailing or Bronze Working) was shown only under Sailing
 - Dev: TechButtonInclude (both UIs) also lists Buildings.LekmodPrereqTechOr
+- Dev: EUI tech tree fixed (2026-11-26): since 2026-10-14 the EUI copy of TechButtonInclude asked EUI's GameInfoCache for GameInfo.Units("UpgradeOnly = 1"), a SQL string it can't take (Lua.log: EUI_core_library.lua:396 "bad argument #1 to 'pairs'"). The error stopped the tech tree setup, so EUI players saw no buildings, wonders or improvement builds, and policy and other civs' upgrade-only units showed for everyone. It now loops all units and checks the column by hand
 
 PROMOTION TEMPLATES (NEW) (UNIT_PANEL)
 --------------------------------------
