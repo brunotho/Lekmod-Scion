@@ -153,6 +153,45 @@ function LekmodGetTechBuildings( techType )
 	return list;
 end
 
+-- LEKMOD (2026-11-27): embarked movement once this tech is known: the base value plus the EmbarkedMoveChange of every
+-- tech that gives it up to this one's tree column. Techs among those this one doesn't need (Steam Power doesn't need
+-- Navigation) are named in the text. Policies and civ abilities can add more.
+local g_LekmodEmbarkCache = {};
+function LekmodEmbarkedMovesText( tech )
+	if g_LekmodEmbarkCache[tech.Type] ~= nil then
+		return g_LekmodEmbarkCache[tech.Type];
+	end
+	local needed = {};
+	local function walk( techType )
+		if needed[techType] then
+			return;
+		end
+		needed[techType] = true;
+		for row in GameInfo.Technology_PrereqTechs{ TechType = techType } do
+			walk( row.PrereqTech );
+		end
+	end
+	walk( tech.Type );
+	local total = (GameDefines ~= nil and GameDefines.EMBARKED_UNIT_MOVEMENT) or 1;
+	local others = {};
+	for t in GameInfo.Technologies() do
+		if (t.EmbarkedMoveChange or 0) > 0 and t.GridX <= tech.GridX then
+			total = total + t.EmbarkedMoveChange;
+			if not needed[t.Type] then
+				table.insert( others, Locale.ConvertTextKey( t.Description ) );
+			end
+		end
+	end
+	local text;
+	if #others == 0 then
+		text = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_EMBARKED_MOVES_TOTAL", total );
+	else
+		text = Locale.ConvertTextKey( "TXT_KEY_LEKMOD_EMBARKED_MOVES_TOTAL_WITH", total, table.concat( others, ", " ) );
+	end
+	g_LekmodEmbarkCache[tech.Type] = text;
+	return text;
+end
+
 function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButtons, textureSize )
 	-- This has a few assumptions, the main one being that the small buttons are named "B1", "B2", "B3"... and that GatherInfoAboutUniqueStuff() has been called before this
 
@@ -360,6 +399,7 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 	end	
 
 	-- LEKMOD: on the tech that allows embarking, the extra embarked movement is just the starting value (no own icon)
+	-- LEKMOD (2026-11-27): the icons name the total embarked movement with this tech (LekmodEmbarkedMovesText)
 	if tech.EmbarkedMoveChange > 0 and not tech.AllowsEmbarking then
 		local buttonName = "B"..tostring(buttonNum);
 		local thisButton = thisTechButtonInstance[buttonName];
@@ -367,7 +407,7 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 			IconHookup( 14, textureSize, "UNIT_ACTION_ATLAS", thisButton ); -- LEKMOD: the Embark action icon
 			thisButton:SetHide( false );
 			setCircularHover( buttonNum, true );
-			thisButton:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_FASTER_EMBARKED_MOVEMENT" ) );
+			thisButton:SetToolTipString( LekmodEmbarkedMovesText( tech ) );
 			buttonNum = buttonNum + 1;
 		end
 	end
@@ -379,7 +419,7 @@ function AddSmallButtonsToTechButton( thisTechButtonInstance, tech, maxSmallButt
 			IconHookup( 14, textureSize, "UNIT_ACTION_ATLAS", thisButton ); -- LEKMOD: the Embark action icon
 			thisButton:SetHide( false );
 			setCircularHover( buttonNum, true );
-			thisButton:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_ALLOWS_EMBARKING" ) );
+			thisButton:SetToolTipString( Locale.ConvertTextKey( "TXT_KEY_ALLOWS_EMBARKING" ) .. "[NEWLINE]" .. LekmodEmbarkedMovesText( tech ) );
 			buttonNum = buttonNum + 1;
 		end
 	end

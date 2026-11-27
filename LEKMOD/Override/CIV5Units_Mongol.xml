@@ -20416,7 +20416,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OXFORD_UNIVERSITY_HELP"> 
 			<Text>
-				[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]1 Free Technology.[NEWLINE]+1 Delegate in the World Congress. Contains 2 slots for Great Works of Writing.[NEWLINE][NEWLINE]Must have built a University in all Cities. The cost goes up the more cities there are in the empire.
+				[COLOR_CYAN]* National Wonder (each player may build one)[ENDCOLOR][NEWLINE][NEWLINE]1 Free Technology.[NEWLINE]+1 Delegate in the World Congress. [ICON_GREAT_WORK] 2 Great Work slots.[NEWLINE][NEWLINE]Must have built a University in all Cities. The cost goes up the more cities there are in the empire.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_OXFORD_UNIVERSITY_PEDIA"> 
@@ -20842,7 +20842,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SOLAR_PLANT_HELP"> 
 			<Text>
-				City must be built on or next to Desert and must not contain a Nuclear Plant.[NEWLINE][NEWLINE]City must have a Factory.
+				City must be built on or next to Desert and must not contain a Nuclear Plant.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_SOLAR_PLANT_STRATEGY"> 
@@ -21190,7 +21190,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_TEXTILE_HELP"> 
 			<Text>
-				Each source of [ICON_RES_DYE] Dyes, [ICON_RES_FUR] Furs, [ICON_RES_SILK] Silk and [ICON_RES_COTTON] Cotton worked by this City produces +1 [ICON_PRODUCTION] Production and +1 [ICON_GOLD] Gold.[NEWLINE][NEWLINE]City must have at least one of these resources improved.
+				Each source of [ICON_RES_DYE] Dyes, [ICON_RES_FUR] Furs, [ICON_RES_SILK] Silk and [ICON_RES_COTTON] Cotton worked by this City produces +2 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]City must have at least one of these resources improved.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_THEATRE"> 
@@ -135355,7 +135355,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_ECOLOGY_HELP"> 
 			<Text>
-				Allows you to build the [COLOR_POSITIVE_TEXT]Solar Plant[ENDCOLOR], a building which may only be built in Cities on or next to Desert, and increases [ICON_PRODUCTION] Production. Also allows you to build the [COLOR_POSITIVE_TEXT]Recycling Center[ENDCOLOR], which provides bonus [ICON_RES_ALUMINUM] Aluminum.
+				Allows you to build the [COLOR_POSITIVE_TEXT]Recycling Center[ENDCOLOR], which provides bonus [ICON_RES_ALUMINUM] Aluminum.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_ECOLOGY_QUOTE"> 
@@ -136270,7 +136270,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_PENICILIN_HELP"> 
 			<Text>
-				Allows you to build the [COLOR_POSITIVE_TEXT]Marine[ENDCOLOR], a Unit that specializes in amphibious assaults. Also allows you to build the [COLOR_POSITIVE_TEXT]Medical Lab[ENDCOLOR], a building which speeds the [ICON_FOOD] growth of your Cities.
+				Allows you to build the [COLOR_POSITIVE_TEXT]Marine[ENDCOLOR], a Unit that specializes in amphibious assaults. Also allows you to build the [COLOR_POSITIVE_TEXT]Medical Lab[ENDCOLOR], a building which speeds the [ICON_FOOD] growth of your Cities, and the [COLOR_POSITIVE_TEXT]Solar Plant[ENDCOLOR], which may only be built in Cities on or next to Desert and increases [ICON_PRODUCTION] Production.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_PENICILIN_QUOTE"> 
@@ -141651,9 +141651,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Rifleman. Available earlier (with Military Science).[NEWLINE]+1 [ICON_MOVES] Movement and 1 extra attack per turn (Blitz).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGBOWMAN"> 
-			<Text>
-				Medieval ranged infantry Unit. Only the English may build it. Slightly more expensive and has +1 [ICON_RANGE_STRENGTH] Range compared to the Crossbowman, which it replaces.
-			</Text>
+			<Text>Replaces the Crossbowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack and +1 Range, but weaker in melee and more expensive.[NEWLINE]-20% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGSWORDSMAN"> 
 			<Text>Melee unit.</Text>
@@ -147330,7 +147328,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+2 [ICON_MOVES] Movement for all naval units.[NEWLINE][NEWLINE]Your first [ICON_GREAT_WRITER] Great Writer to Write a Political Treatise gives double [ICON_CULTURE] Culture.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGBOWMAN">
-			<Text>Replaces the Crossbowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack and +1 Range, but weaker in melee and 10% more expensive.[NEWLINE]-20% when attacking Cities.</Text>
+			<Text>Replaces the Crossbowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack and +1 Range, but weaker in melee and more expensive.[NEWLINE]-20% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_INCA_SLINGER_HELP">
 			<Text>Replaces the Archer. Available at Agriculture and 15% cheaper.[NEWLINE]Range 1 and slightly weaker, but can move after attacking.</Text>
@@ -147779,6 +147777,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_GROUP_HOTKEYS">
 			<Text>Hotkeys</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EMBARKED_MOVES_TOTAL_WITH">
+			<Text>Embarked units have {1_Num} [ICON_MOVES] Movement (if you also know {2_Techs}).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_EMBARKED_MOVES_TOTAL">
+			<Text>Embarked units have {1_Num} [ICON_MOVES] Movement.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE">
 			<Text>EUI-style interface</Text>

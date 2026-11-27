@@ -289,6 +289,15 @@ The folder is a **DLC package** (`MPModsPack.Civ5Pkg`), not a ModBuddy mod:
   - **Beliefs (user, 2026-10-11):** one line per effect/sentence (`[NEWLINE]`), no bullets, no empty lines. Bullets with a hanging-indent pantheon popup were tried and dropped (rows overlapped).
   - **Exception:** list or menu rows with fixed height, like the Shoshone ruin choice (`ChooseDescription`), must be short, matter-of-fact one-liners.
   - No spec or implementation notes ("Eligible: naval melee", "Requires Bombardment II", "policy-granted"); the UI shows those itself.
+  - **Unit, building and improvement tooltips (user, 2026-11-27; all unit texts rewritten in this style, `ed84fd81`):**
+    - Pragmatic, no flavor: first line the role ("Naval melee unit.", "Siege unit that ...") or, for a unique, "Replaces the X." followed only by how it differs. No era words ("Medieval ..."), no "Unique Unit for X" / "Only the English may build it" openers, no history.
+    - Don't repeat what the tooltip already shows above the help text: cost, strength, ranged strength, range, movement, resources.
+    - No intensifiers: "stronger", "cheaper", "more expensive", never "slightly", "much", "a bit", "massively" (exact numbers like "15% cheaper" are fine).
+    - No asides mixed into the practical description ("founds cities, also on other continents" -> "founds cities").
+    - Starting promotions: name plus the effect in parentheses the first time ("Starts with Woodsman (double movement ... in Forest and Jungle)"). A blanket ability every later unit of a line has is named once, on the first unit with it ("First ship with Troopship ..."; Blind Spot/Docked on the Galley); limits such as "Cannot enter Ocean" go on every unit that has them.
+    - Penalties and bonuses in one form: "-25% [ICON_STRENGTH] Combat Strength when attacking cities." (sign, number, icon + "Combat Strength", condition).
+    - Lists of uses with costs as "effect: cost", every use in the same form (Dalai Lama: "Found a city: all its spreads").
+    - Check every claim against the loaded data (free promotions, the unique vs its base unit) before writing; old texts had wrong claims (Dhow "weaker", Carrier "2 aircraft").
   - **Explaining complex systems (user, 2026-10-13, espionage):** a tooltip shows the player's own case (the numbers and what makes them up: "Your stealing spy's level (with bonuses): 3", "Constabulary: 1"), and the full rules go on a separate Rules page/tab. Use plain words a new player knows ("stealing spy", "guarding spy", "level"), not internal terms ("strength"). Use color sparingly: cyan for headers only; colored formulas and multiple header colors were too much.
   - **Multiplayer only (user, 2026-10-13):** cull explanations of mechanics that are inactive or AI-only in all-human multiplayer (e.g. intrigue, elections, old base-game rules). The mechanics may stay in code; their texts must not distract.
   - Bullet lists in tooltips get the hanging indent (`LekmodHangingIndent`, copied into SocialPolicyPopup and EspionageOverview; takes an optional pixel width for wider labels).

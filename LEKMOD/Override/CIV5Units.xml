@@ -48860,34 +48860,11 @@
 			<YieldType>YIELD_FOOD</YieldType>
 			<Yield>1</Yield>
 		</Row>
+		<!-- Textile Mill (user, 2026-11-27): its resources +2 Production (as in v35.4), no Gold; no Production of its own, 3 Gold maintenance -->
 		<Update>
 			<Where BuildingType="BUILDING_TEXTILE" YieldType="YIELD_PRODUCTION"/>
-			<Set Yield="1"/>
+			<Set Yield="2"/>
 		</Update>
-		<Row>
-			<BuildingType>BUILDING_TEXTILE</BuildingType>
-			<ResourceType>RESOURCE_SILK</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>1</Yield>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_TEXTILE</BuildingType>
-			<ResourceType>RESOURCE_COTTON</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>1</Yield>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_TEXTILE</BuildingType>
-			<ResourceType>RESOURCE_DYE</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>1</Yield>
-		</Row>
-		<Row>
-			<BuildingType>BUILDING_TEXTILE</BuildingType>
-			<ResourceType>RESOURCE_FUR</ResourceType>
-			<YieldType>YIELD_GOLD</YieldType>
-			<Yield>1</Yield>
-		</Row>
 		<Delete BuildingType="BUILDING_LIGHTHOUSE"/>
 		<Row>
 			<BuildingType>BUILDING_LIGHTHOUSE</BuildingType>
@@ -293414,4 +293391,25 @@
 			<Set Help="TXT_KEY_UNIT_LEKMOD_QIANLONG_HELP"/>
 		</Update>
 	</Units>
+	<!-- LEKMOD: New Specs 18 (2026-11-27): Textile Mill without its own Production, 3 Gold maintenance -->
+	<Building_YieldChanges>
+		<Delete BuildingType="BUILDING_TEXTILE" YieldType="YIELD_PRODUCTION"/>
+	</Building_YieldChanges>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_TEXTILE"/>
+			<Set GoldMaintenance="3"/>
+		</Update>
+	</Buildings>
+	<!-- LEKMOD: New Specs 18 (2026-11-27): Solar and Nuclear Plant without a Factory; Solar Plant with Penicillin (was Ecology) -->
+	<Building_ClassesNeededInCity>
+		<Delete BuildingType="BUILDING_SOLAR_PLANT"/>
+		<Delete BuildingType="BUILDING_NUCLEAR_PLANT"/>
+	</Building_ClassesNeededInCity>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_SOLAR_PLANT"/>
+			<Set PrereqTech="TECH_PENICILIN"/>
+		</Update>
+	</Buildings>
 </GameData>

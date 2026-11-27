@@ -42,7 +42,7 @@ function GetMapScriptInfo()
 	LekPipelineFlow("GetMapScriptInfo_call");
 	local world_age, temperature, rainfall, sea_level, resources = GetCoreMapOptions()
 	return {
-		Name = "[COLOR_PLAYER_PURPLE_TEXT]Lekmap Scion 0.1.8[ENDCOLOR]",
+		Name = "[COLOR_HIGHLIGHT_TEXT]Lekmap Scion 0.1.8[ENDCOLOR]",
 		Description = "Lekmap pangaea — fractal supercontinent with tectonic islands.",
 		IsAdvancedMap = false,
 		IconIndex = 0,
@@ -50,12 +50,12 @@ function GetMapScriptInfo()
 		SupportsMultiplayer = true,
 		CustomOptions = {
 			{
-				Name = "[COLOR_PLAYER_PURPLE_TEXT]Coastal Spawns[ENDCOLOR]",
+				Name = "[COLOR_HIGHLIGHT_TEXT]Coastal Spawns[ENDCOLOR]",
 				Values = {
-					"[COLOR_PLAYER_PURPLE_TEXT]Coastal Civs Only[ENDCOLOR]",
-					"[COLOR_PLAYER_PURPLE_TEXT]Force 2 Coastals[ENDCOLOR]",
-					"[COLOR_PLAYER_PURPLE_TEXT]All Inland[ENDCOLOR]",
-					"[COLOR_PLAYER_PURPLE_TEXT]Pure Random[ENDCOLOR]",
+					"[COLOR_HIGHLIGHT_TEXT]Coastal Civs Only[ENDCOLOR]",
+					"[COLOR_HIGHLIGHT_TEXT]Force 2 Coastals[ENDCOLOR]",
+					"[COLOR_HIGHLIGHT_TEXT]All Inland[ENDCOLOR]",
+					"[COLOR_HIGHLIGHT_TEXT]Pure Random[ENDCOLOR]",
 				},
 				DefaultValue = 1,
 				SortPriority = -98,

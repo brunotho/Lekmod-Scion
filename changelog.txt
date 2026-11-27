@@ -810,6 +810,8 @@ Weight: minor
 - Dev: Buffalo Hunter and Banner Cavalry get their own tooltips (they showed the Composite Bowman's and the Cavalry's)
 - Dev: (user, 2026-11-27) Battering Ram tooltip no longer says Medieval (it comes with Engineering, Classical); Privateer tooltip no longer mentions carrying units (every ship of its era does); Manhattan Project and Nuclear Fission tooltips no longer mention Atomic Bombs (not in the mod); Radio/Refrigeration tech texts name the Stadium at Radio
 - Dev: (user, 2026-11-27, second round) no intensifiers in unique unit and building tooltips (slightly, much, a bit: just stronger, cheaper, ...); Conquistadors found cities without the "also on other continents" aside; Dalai Lama lists every use as "effect: cost" (city and religion: all its spreads); UAE drops "your Oil counts"; Brunei refinery and M-84 drop "Unique ... for X"
+- Changed: the tech tree's embarkation icons say how much Movement embarked units have with that tech
+- Dev: (user, 2026-11-27, third round) Longbowman penalty in the common form; Oxford University names generic Great Work slots; Solar and Nuclear Plant texts without the Factory; Solar Plant listed under Penicillin; embark totals computed from the tech data (LekmodEmbarkedMovesText: base EMBARKED_UNIT_MOVEMENT + every EmbarkedMoveChange up to the tech's column; Steam Power doesn't need Navigation, so its icon names the techs it assumes)
 
 MAP INCLUDED IN THE MOD
 -----------------------
@@ -818,6 +820,7 @@ Tags: ui
 - DLL: LEKMOD_BUNDLED_MAPS: DllMain copies LEKMOD/Maps/*.lua into Assets/Maps/Lekmap Scion (missing or changed files; removes files the mod no longer has); define LEKMOD_MAPS_CHANGED for the main menu notice; after snowve's SnowveSyncMapScripts (megawac)
 - Dev: (user, 2026-11-27) the map source moved from brunotho/lekmap-scion into this repo (scripts in LEKMOD/Maps, changelog and notes in map/); release.py packages one zip, the website reads map/CHANGELOG.txt and has no map download button
 - Dev: Multiplayer > New Game prefers the copy in Assets/Maps/Lekmap Scion when several Lekmap Scion folders are listed (before: the first one in the game's list, possibly an old download); without any, the lobby keeps its default map (Lua.log line)
+- Dev: the map's lobby name and options are light blue (COLOR_HIGHLIGHT_TEXT, like Weevee 11.1.0; was purple), user 2026-11-27
 
 EUI SUPPORT REMOVED
 -------------------
@@ -1036,7 +1039,12 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 - Changed: {Strategic Resource Requirements} unique units follow their base unit, except those that needed nothing while their base unit did (e.g. Mohawk Warrior, Maccabee, War Chariot, Japanese Zero): they still need nothing
 - Changed: {Building Costs and Maintenance} Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
 - Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
-- Changed: {Industrial Buildings} Nuclear Plant: needs 2 Uranium (was 1)
+- Changed: {Industrial Buildings} Nuclear Plant:
+  - needs 2 Uranium (was 1)
+  - no longer needs a Factory in the city
+- Changed: {Industrial Buildings} Solar Plant:
+  - needs Penicillin (was Ecology)
+  - no longer needs a Factory in the city
 - Changed: {Industrial Buildings} Hydro Plant:
   - needs 3 Aluminum (was 1), cost 241 -> 280
   - can be built on a river or one tile away from one
@@ -1885,7 +1893,9 @@ Salt moves to the Grocer, and the Mint, Gem Cutter and Forge make Mountains work
   - needs Guilds (was Machinery)
   - costs 67 (was 50), like the other luxury buildings
   - Mountains +1 Culture
-- Changed: Textile Mill: its resources give +1 Production (was 2) and +1 Gold
+- Changed: Textile Mill:
+  - no Production of its own (was +1)
+  - 3 Gold maintenance (was 2)
 - Added: Mint (and unique replacements): Mountains +2 Gold
 - Added: Forge (and Nubia's Blast Furnace): Mountains +1 Production
 - Note: the Mountain bonuses never apply to natural wonders
@@ -1944,7 +1954,12 @@ Subsection: Buildings
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
 - Changed: Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
-- Changed: Nuclear Plant: needs 2 Uranium (was 1)
+- Changed: Nuclear Plant:
+  - needs 2 Uranium (was 1)
+  - no longer needs a Factory in the city
+- Changed: Solar Plant:
+  - needs Penicillin (was Ecology)
+  - no longer needs a Factory in the city
 - Changed: Hydro Plant:
   - needs 3 Aluminum (was 1), cost 241 -> 280
   - can be built on a river or one tile away from one
