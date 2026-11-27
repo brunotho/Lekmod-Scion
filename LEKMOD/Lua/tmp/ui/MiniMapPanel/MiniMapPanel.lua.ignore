@@ -543,7 +543,7 @@ end
 ----------------------------------------------------------------
 local g_LekmodOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
 function LekmodShowTileRecommendations()
-	return g_LekmodOptions ~= nil and g_LekmodOptions.GetValue( "LEK_ShowTileRecommendations" ) == 1;
+	return not OptionsManager.IsNoTileRecommendations();	-- the base game's option (2026-11-27)
 end
 -- " (Key)" for a Controls row, as the strategic view button's tooltip writes it
 -- LEKMOD (2026-11-05): the game's own hotkeys go by the key's place on a US keyboard, not by the letter printed on it.

@@ -167,6 +167,22 @@ UpdateLekmodVersionLabel();
 -- when it loads (LEKMOD_BUNDLED_MAPS), after the game has already listed the map scripts, so a copy that changed
 -- files (first install, update) only shows in the lobby after a restart. Asked once per main menu load.
 local g_LekmodMapsNoticeShown = false;
+
+-- LEKMOD (2026-11-27): tile recommendations are off by default. They use the base game's option (Options > Game >
+-- "No tile recommendations"); this ticks it once per player. Who had them on in the old Lek Options switch keeps them on.
+function LekmodTileRecommendationsDefault()
+	local opts = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+	if opts == nil or opts.GetValue( "LEK_TileRecsDefaultDone" ) == 1 then
+		return;
+	end
+	opts.SetValue( "LEK_TileRecsDefaultDone", 1 );
+	local bShow = opts.GetValue( "LEK_ShowTileRecommendations" ) == 1;
+	if OptionsManager.IsNoTileRecommendations() == bShow then
+		OptionsManager.SetNoTileRecommendations_Cached( not bShow );
+		OptionsManager.CommitGameOptions();
+	end
+end
+LekmodTileRecommendationsDefault();
 function LekmodShowMapsNotice()
 	if g_LekmodMapsNoticeShown then
 		return;

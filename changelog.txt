@@ -335,7 +335,8 @@ Tags: ui
 - Added: your units show small icons of the promotions you picked under their flag on the map; other players' units show Expanded ZOC when they have it. Switch it with Alt+P, in Lek Options or in the map options next to the minimap
 - Dev: the City-State screen's unique unit and trait building icons were made larger during development
 - Changed: a greyed-out build button says when the improvement can only be built on Hills (Malagasy Holy Site)
-- Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default and switched in Lek Options instead
+- Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default (the game's own option, Options > Game)
+- Dev: 2026-11-27: the separate Lek Options switch (LEK_ShowTileRecommendations) was removed again (user: it duplicated the base option); the main menu ticks the base "No tile recommendations" once per player (LEK_TileRecsDefaultDone), keeping it off for who had switched them on; the tab is named LEK OPTIONS like the others
 - Added: an "EUI-style interface" setting in Lek Options (on by default): switched off, the city banners, the Great People meters and the aircraft flags look like the base game's
 - Changed: Lek Options shows its settings in two columns with headings (Interface, Chat, Hotkeys)
 - Dev: (user, 2026-11-27) LEK_EuiStyleUI in EUI's options store; CityBannerManager, CityView and UnitFlagManager read it (LekmodEuiStyle); LuaEvents.LekmodEuiStyleChanged hides AirCraftFlags and resets aircraft offsets at once

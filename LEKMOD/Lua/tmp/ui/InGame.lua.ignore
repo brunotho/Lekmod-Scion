@@ -21,10 +21,10 @@ local alertTable = {};
 local mustRefreshAlerts = false;
 
 local bHideDebug = true;
--- LEKMOD (2026-10-23): tile recommendations are off unless Options > Lek Options switches them on
-local g_LekmodRecommendationOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+-- LEKMOD (2026-10-23, 2026-11-27): tile recommendations follow the base game's Options > Game > "No tile
+-- recommendations" (set once to on by the main menu, LekmodTileRecommendationsDefault: off by default)
 local function LekmodShowTileRecommendations()
-	return g_LekmodRecommendationOptions ~= nil and g_LekmodRecommendationOptions.GetValue( "LEK_ShowTileRecommendations" ) == 1;
+	return not OptionsManager.IsNoTileRecommendations();
 end
 local g_ShowWorkerRecommendation = LekmodShowTileRecommendations();
 local lastCityEntered = nil;
