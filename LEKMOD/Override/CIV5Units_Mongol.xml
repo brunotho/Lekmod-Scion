@@ -147771,6 +147771,15 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPTIONS_TAB">
 			<Text>Lek Options</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_GROUP_INTERFACE">
+			<Text>Interface</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_GROUP_CHAT">
+			<Text>Chat</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_GROUP_HOTKEYS">
+			<Text>Hotkeys</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE">
 			<Text>EUI-style interface</Text>
 		</Row>

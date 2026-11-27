@@ -337,6 +337,7 @@ Tags: ui
 - Changed: a greyed-out build button says when the improvement can only be built on Hills (Malagasy Holy Site)
 - Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default and switched in Lek Options instead
 - Added: an "EUI-style interface" setting in Lek Options (on by default): switched off, the city banners, the Great People meters and the aircraft flags look like the base game's
+- Changed: Lek Options shows its settings in two columns with headings (Interface, Chat, Hotkeys)
 - Dev: (user, 2026-11-27) LEK_EuiStyleUI in EUI's options store; CityBannerManager, CityView and UnitFlagManager read it (LekmodEuiStyle); LuaEvents.LekmodEuiStyleChanged hides AirCraftFlags and resets aircraft offsets at once
 - Dev: UnitFlagManager (standard UI) LekmodPromoStack, 32 px icons; option LEK_FlagPromotions, unset = on; the row sits 6 px higher when the crossed swords (attacked this turn) aren't shown; LuaEvents.LekmodFlagPromotionsChanged; option LEK_ShowTileRecommendations (unset = hidden; InGame g_ShowWorkerRecommendation and the minimap defaults read it)
 - Dev: (development step, covered by the line or tooltip above) the Options screen loads fully again; its setup stopped at the tile recommendations switch, so that switch and the settings after it didn't work

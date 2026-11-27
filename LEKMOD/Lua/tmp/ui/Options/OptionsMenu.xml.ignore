@@ -300,22 +300,30 @@
 
     </Container>
 
-    <!-- LEKMOD: Lek Options (2026-10-21): every Lekmod setting in one tab -->
+    <!-- LEKMOD: Lek Options (2026-10-21): every Lekmod setting in one tab; 2026-11-27: two columns of headed groups -->
     <Container Size="971,500" Offset="0,44" ID="LekmodPanel" Hidden="1" >
-      <Stack Anchor="C,T" Offset="0,90" Padding="11" >
+      <Stack Anchor="C,T" Offset="-235,70" Padding="10" StackGrowth="Bottom" >
+        <Label Anchor="L,C" Font="TwCenMT22" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_OPT_GROUP_INTERFACE" />
+        <Image Anchor="L,C" Texture="HorizontalTrim.dds" Size="380.5" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_EUI_STYLE" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodEuiStyleCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_EUI_STYLE_TT" />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodFlagPromotionsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT" />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodTileRecsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS_TT" />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodImportantNotifsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS_TT" />
+        <Box Size="380,14" Color="0,0,0,0" />
+        <Label Anchor="L,C" Font="TwCenMT22" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_OPT_GROUP_CHAT" />
+        <Image Anchor="L,C" Texture="HorizontalTrim.dds" Size="380.5" />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
+      </Stack>
+      <Stack Anchor="C,T" Offset="235,70" Padding="10" StackGrowth="Bottom" >
+        <Label Anchor="L,C" Font="TwCenMT22" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_OPT_GROUP_HOTKEYS" />
+        <Image Anchor="L,C" Texture="HorizontalTrim.dds" Size="380.5" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodBuildHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodActionHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS_TT"  />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_MUTE_CHAT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodMuteChatCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_MUTE_CHAT_TT" />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodImportantNotifsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_IMPORTANT_NOTIFS_TT" />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodFlagPromotionsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT" />
-        <CheckBox String="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodTileRecsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_TILE_RECOMMENDATIONS_TT" />
-        <!-- LEKMOD (2026-11-05): keyboard layout for hotkey labels -->
         <Container Anchor="R,C" Size="350,30">
-          <Label Anchor="L,C" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_OPT_KEYBOARD" ToolTip="TXT_KEY_LEKMOD_OPT_KEYBOARD_TT"/>
-          <PullDown Anchor="R,C" Size="200,27" Style="GenericPullDown" ScrollThreshold="200" AutoSizePopUp="1" SpaceForScroll="0" ToolTip="TXT_KEY_LEKMOD_OPT_KEYBOARD_TT" ID="LekmodKeyboardPullDown"/>
-        </Container>
+            <Label Anchor="L,C" Font="TwCenMT18" FontStyle="Shadow" ColorSet="Beige_Black_Alpha" String="TXT_KEY_LEKMOD_OPT_KEYBOARD" ToolTip="TXT_KEY_LEKMOD_OPT_KEYBOARD_TT"/>
+            <PullDown Anchor="R,C" Size="200,27" Style="GenericPullDown" ScrollThreshold="200" AutoSizePopUp="1" SpaceForScroll="0" ToolTip="TXT_KEY_LEKMOD_OPT_KEYBOARD_TT" ID="LekmodKeyboardPullDown"/>
+          </Container>
       </Stack>
     </Container>
 
