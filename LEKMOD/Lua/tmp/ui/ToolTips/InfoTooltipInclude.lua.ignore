@@ -161,6 +161,7 @@ function GetHelpTextForBuilding(iBuildingID, bExcludeName, bExcludeHeader, bNoMa
 	local strHelpText = "";
 	
 	local lines = {};
+	local sLekmodLimit = nil;
 	if (not bExcludeHeader) then
 		
 		if (not bExcludeName) then
@@ -198,11 +199,9 @@ function GetHelpTextForBuilding(iBuildingID, bExcludeName, bExcludeHeader, bNoMa
 			end
 		end
 
-		-- LEKMOD: limit per empire, with the cities that have it or are building it
-		local sLekmodLimit = LekmodEmpireLimitLine(pActivePlayer, buildingClassID);
-		if (sLekmodLimit ~= nil) then
-			table.insert(lines, sLekmodLimit);
-		end
+		-- LEKMOD: limit per empire, with the cities that have it or are building it (added as the last line of the
+		-- upper part, below the yields; user 2026-11-27)
+		sLekmodLimit = LekmodEmpireLimitLine(pActivePlayer, buildingClassID);
 		
 	end
 	
@@ -405,6 +404,9 @@ function GetHelpTextForBuilding(iBuildingID, bExcludeName, bExcludeHeader, bNoMa
 		table.insert(lines, localizedText);
 	end	
 	
+	if (sLekmodLimit ~= nil) then
+		table.insert(lines, sLekmodLimit);
+	end
 	strHelpText = strHelpText .. table.concat(lines, "[NEWLINE]");
 	
 	-- Pre-written Help text

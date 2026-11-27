@@ -1242,6 +1242,38 @@ Events.SerialEventGameDataDirty.Add(OnTopPanelDirty);
 Events.SerialEventTurnTimerDirty.Add(OnTopPanelDirty);
 Events.SerialEventCityInfoDirty.Add(OnTopPanelDirty);
 
+-------------------------------------------------
+-- LEKMOD (2026-11-27): top bar buttons for Research Info, the Unit List and the Great Person List (the top-left
+-- panels, InfoCorner). A click opens the panel, a second click closes it, like Shift+F4/F2/F5 (InGame.lua).
+-------------------------------------------------
+local g_LekmodTopCorner = nil;
+Events.OpenInfoCorner.Add( function( iInfoType ) g_LekmodTopCorner = iInfoType; end );
+local function LekmodTopCornerToggle( which )
+	-- InfoCorner.lua adds Resources and GP to InfoCornerID; do the same if this context sees the table first
+	if InfoCornerID.Resources == nil then
+		local n = 0;
+		for _ in pairs( InfoCornerID ) do
+			n = n + 1;
+		end
+		InfoCornerID.Resources = n;
+		InfoCornerID.GP = n + 1;
+	end
+	local iInfoType = InfoCornerID[which];
+	if iInfoType == nil then
+		return;
+	end
+	if g_LekmodTopCorner == iInfoType then
+		Events.OpenInfoCorner( InfoCornerID.None );
+	else
+		Events.OpenInfoCorner( iInfoType );
+	end
+end
+for id, which in pairs( { LekmodTopTechButton = "Tech", LekmodTopUnitsButton = "Units", LekmodTopGPButton = "GP" } ) do
+	if Controls[id] ~= nil then
+		Controls[id]:RegisterCallback( Mouse.eLClick, function() LekmodTopCornerToggle( which ); end );
+	end
+end
+
 -- Update data at initialization
 UpdateData();
 DoInitTooltips();

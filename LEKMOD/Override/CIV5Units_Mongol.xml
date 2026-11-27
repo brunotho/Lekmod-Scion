@@ -116576,7 +116576,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_DISCIPLINE_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Hero Cult[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward the Heroic Epic and the Circus Maximus[NEWLINE][ICON_BULLET]The Heroic Epic provides +5 [ICON_PRODUCTION] Production and +5 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]The Circus Maximus provides +5 [ICON_HAPPINESS_1] Happiness and +5 [ICON_GOLD] Gold
+				[COLOR_POSITIVE_TEXT]Hero Cult[ENDCOLOR][NEWLINE][ICON_BULLET]+100% [ICON_PRODUCTION] Production toward the Heroic Epic and the Circus Maximus[NEWLINE][ICON_BULLET]The Heroic Epic provides +5 [ICON_PRODUCTION] Production and +5 [ICON_CULTURE] Culture[NEWLINE][ICON_BULLET]The Circus Maximus provides +5 [ICON_FOOD] Food and +5 [ICON_GOLD] Gold
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_DISCIPLINE_TEXT"> 
@@ -116729,7 +116729,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_FINE_ARTS_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]Writers' Guilds, Artists' Guilds and Musicians' Guilds have 1 more specialist slot[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
+				[COLOR_POSITIVE_TEXT]Fine Arts[ENDCOLOR][NEWLINE][ICON_BULLET]Guilds have 1 more specialist slot[NEWLINE][ICON_BULLET]+50% yields from [ICON_GREAT_WORK] Great Works
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_FINE_ARTS_TEXT"> 
@@ -120283,7 +120283,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Kin Forged in Blood</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_SALT_STARS">
-			<Text>+2 [ICON_PRODUCTION] Production from [ICON_RES_SALT] Salt[NEWLINE]+1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHALE] Whales, [ICON_RES_CORAL] Coral, [ICON_RES_PEARLS] Pearls and [ICON_RES_CRAB] Crabs[NEWLINE]Your land units get +1 sight while embarked when you found it, new ones while this pantheon is in your capital</Text>
+			<Text>+2 [ICON_PRODUCTION] Production from [ICON_RES_SALT] Salt[NEWLINE]+1 [ICON_PEACE] Faith from [ICON_RES_FISH] Fish, [ICON_RES_WHALE] Whales, [ICON_RES_CORAL] Coral, [ICON_RES_PEARLS] Pearls and [ICON_RES_CRAB] Crabs[NEWLINE]Embarked units have +1 sight</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BELIEF_LEKMOD_SALT_STARS_SHORT">
 			<Text>Salt and Stars</Text>
@@ -122798,9 +122798,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_HOVERING_UNIT_HELP"> 
-			<Text>
-				Unit may pass over Mountains, but takes damage if ending its turn on a Mountain.
-			</Text>
+			<Text>Can cross Mountains.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_IGNORE_TERRAIN_COST"> 
 			<Text>
@@ -141586,7 +141584,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HELICOPTER_GUNSHIP"> 
-			<Text>Flies over land and water: every tile costs 1 [ICON_MOVES] Movement.[NEWLINE]Can cross Mountains, but takes damage when ending its turn on one.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against armored units.[NEWLINE]Can move after attacking; cannot capture cities.</Text>
+			<Text>Flies over land and water: every tile costs 1 [ICON_MOVES] Movement.[NEWLINE]Can cross Mountains.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against armored units.[NEWLINE]Can move after attacking; cannot capture cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HOPLITE"> 
 			<Text>Replaces the Spearman. Stronger.</Text>

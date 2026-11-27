@@ -812,6 +812,13 @@ Weight: minor
 - Dev: (user, 2026-11-27, second round) no intensifiers in unique unit and building tooltips (slightly, much, a bit: just stronger, cheaper, ...); Conquistadors found cities without the "also on other continents" aside; Dalai Lama lists every use as "effect: cost" (city and religion: all its spreads); UAE drops "your Oil counts"; Brunei refinery and M-84 drop "Unique ... for X"
 - Changed: the tech tree's embarkation icons say how much Movement embarked units have with that tech
 - Dev: (user, 2026-11-27, third round) Longbowman penalty in the common form; Oxford University names generic Great Work slots; Solar and Nuclear Plant texts without the Factory; Solar Plant listed under Penicillin; embark totals computed from the tech data (LekmodEmbarkedMovesText: base EMBARKED_UNIT_MOVEMENT + every EmbarkedMoveChange up to the tech's column; Steam Power doesn't need Navigation, so its icon names the techs it assumes)
+- Dev: (2026-11-27, fourth round) building tooltips: the "Per empire" line is the last line of the upper part (below the yields); Helicopter Gunship and Hovering Unit no longer claim mountain damage (the game's mountain attrition only hits land-domain units; helicopters are hover units); Salt and Stars reads "Embarked units have +1 sight"
+
+TOP BAR PANEL BUTTONS
+---------------------
+Tags: ui
+- Added: three buttons in the top bar, next to Faith, open Research Info, the Unit List and the Great Person List with one click (a second click closes them)
+- Dev: (user, 2026-11-27) 24 px copies of the top-left panel icons, built by art_sources/tools/build_topbar_icons.py from the game's .fpk textures (Civ V can't scale textures down); TopPanel.xml/.lua (Events.OpenInfoCorner, like the Shift+F hotkeys)
 
 MAP INCLUDED IN THE MOD
 -----------------------
@@ -2121,7 +2128,7 @@ SALT AND STARS (NEW) (BELIEF_LEKMOD_SALT_STARS)
 -----------------------------------------------
 Tags: religion
 Subsection: Pantheons
-+2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; your land units get +1 sight while embarked when you found it, new ones while the pantheon is in your capital.
++2 Production from Salt; +1 Faith from Fish, Whales, Coral, Pearls and Crabs; embarked units have +1 sight.
 
 SEAFOOD RITUALS (BELIEF_SEAFOOD)
 --------------------------------
@@ -2662,6 +2669,7 @@ Tags: policies, combat
 - Note: garrison bonuses from buildings still need a garrisoned unit. Piety's and Tradition's garrison effects get the same rule with their policy reworks
 - DLL: LEKMOD_POLICY_GARRISON_ATTACH_TURN 80 (CvCity::GetBaseYieldRateFromGarrison: policy part only when ungarrisoned; local happiness)
 - Dev: 2026-10-29 (user): Military Tradition lost +100% Armories; Professional Army: +100% Armories, Armories +1 Production +1 Culture, Colosseums +1 Gold; Hero Cult: Heroic Epic +5 Production +5 Culture (no Happiness), Circus Maximus +5 Happiness +5 Gold (no Production)
+- Dev: 2026-11-27 (user): Hero Cult's Circus Maximus gives +5 Food instead of +5 Happiness (keeps +5 Gold); Fine Arts' tooltip says "Guilds"
 - Dev: 2026-11-26 (user): the Armory part moved back from Professional Army to Military Tradition, now +100% Production toward Armories and Armories +1 Production +1 Culture there
 - Dev: Military Tradition Courthouse yields 3 -> 2 each on 2026-10-21 (Colonial Administration's +3 replaces them, Policy_CityYieldIfBuildingClass takes the larger value); the Honor tooltips no longer mention the non-stacking, the Expansionism ones do
 

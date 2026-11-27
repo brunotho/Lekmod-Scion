@@ -280906,6 +280906,12 @@
 			<YieldChange>5</YieldChange>
 		</Row>
 		<Row>
+			<PolicyType>POLICY_DISCIPLINE</PolicyType>
+			<BuildingClassType>BUILDINGCLASS_CIRCUS_MAXIMUS</BuildingClassType>
+			<YieldType>YIELD_FOOD</YieldType>
+			<YieldChange>5</YieldChange>
+		</Row>
+		<Row>
 			<PolicyType>POLICY_THEOCRACY</PolicyType>
 			<BuildingClassType>BUILDINGCLASS_TEMPLE</BuildingClassType>
 			<YieldType>YIELD_GOLD</YieldType>
@@ -281016,11 +281022,7 @@
 	</Policy_BuildingClassYieldChanges>
 	<Policy_BuildingClassHappiness>
 		<Delete PolicyType="POLICY_DISCIPLINE"/>
-		<Row>
-			<PolicyType>POLICY_DISCIPLINE</PolicyType>
-			<BuildingClassType>BUILDINGCLASS_CIRCUS_MAXIMUS</BuildingClassType>
-			<Happiness>5</Happiness>
-		</Row>
+		<!-- Hero Cult: the Circus Maximus gets +5 Food instead of +5 Happiness (user, 2026-11-27) -->
 	</Policy_BuildingClassHappiness>
 	<Policy_ImprovementYieldChanges>
 		<Delete PolicyType="POLICY_MILITARY_TRADITION"/>
