@@ -293414,4 +293414,249 @@
 			<Set PrereqTech="TECH_PENICILIN"/>
 		</Update>
 	</Buildings>
+	<!-- LEKMOD: New Specs 19 (2026-11-27): Modern era and later units, buildings and wonders cost a round number on quick speed (nearest 5; nearest 10 from 1000). Quick cost = Cost x 67 / 100, rounded down. -->
+	<Units>
+		<Update>
+			<Where Type="UNIT_SS_STASIS_CHAMBER"/>
+			<Set Cost="1508"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SS_ENGINE"/>
+			<Set Cost="1508"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SS_COCKPIT"/>
+			<Set Cost="1508"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SS_BOOSTER"/>
+			<Set Cost="1508"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MISSILE_CRUISER"/>
+			<Set Cost="717"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_NUCLEAR_SUBMARINE"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BATTLESHIP"/>
+			<Set Cost="627"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SUBMARINE"/>
+			<Set Cost="374"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MECH"/>
+			<Set Cost="717"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_NUCLEAR_MISSILE"/>
+			<Set Cost="1657"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_STEALTH_BOMBER"/>
+			<Set Cost="672"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_JET_FIGHTER"/>
+			<Set Cost="568"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MODERN_ARMOR"/>
+			<Set Cost="590"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_HELICOPTER_GUNSHIP"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MOBILE_SAM"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_ROCKET_ARTILLERY"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MECHANIZED_INFANTRY"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_PARATROOPER"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_TANK"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_GERMAN_PANZER"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_ANTI_TANK_GUN"/>
+			<Set Cost="381"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_FRENCH_FOREIGNLEGION"/>
+			<Set Cost="277"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_GREAT_WAR_INFANTRY"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MARINE"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_TRIPLANE"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_WWI_BOMBER"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_WWI_TANK"/>
+			<Set Cost="403"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_MACHINE_GUN"/>
+			<Set Cost="403"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BAZOOKA"/>
+			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_XCOM_SQUAD"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BELGIUM_GREAT_WAR_INFANTRY"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BOERS_GREAT_WAR_INFANTRY"/>
+			<Set Cost="306"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_SKINFANTRY"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_ANTI_TANK_RIFLE"/>
+			<Set Cost="306"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_FINNISH_FOREST_PATROL"/>
+			<Set Cost="359"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_TURKISH_GWI"/>
+			<Set Cost="336"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_CARDOEN"/>
+			<Set Cost="538"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_GUERRILLERO"/>
+			<Set Cost="262"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_YUGO_M84"/>
+			<Set Cost="403"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_HEAVY_CRUISER"/>
+			<Set Cost="486"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_CZECHIA_FOREIGN_LEGION"/>
+			<Set Cost="187"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_VANGUARD_CORPS"/>
+			<Set Cost="329"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_LEKMOD_DESERT_FALCON"/>
+			<Set Cost="568"/>
+		</Update>
+	</Units>
+	<Buildings>
+		<Update>
+			<Where Type="BUILDING_STADIUM"/>
+			<Set Cost="426"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_HOTEL"/>
+			<Set Cost="299"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_BURJ"/>
+			<Set Cost="299"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_MEDICAL_LAB"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_AIRPORT"/>
+			<Set Cost="478"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_BOMB_SHELTER"/>
+			<Set Cost="299"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_SPACESHIP_FACTORY"/>
+			<Set Cost="433"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_INTELLIGENCE_AGENCY"/>
+			<Set Cost="127"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_TOURIST_CENTER"/>
+			<Set Cost="403"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_PANAMA"/>
+			<Set Cost="1202"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_CRISTO_REDENTOR"/>
+			<Set Cost="1202"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_CN_TOWER"/>
+			<Set Cost="1202"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_PENTAGON"/>
+			<Set Cost="1202"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_SYDNEY_OPERA_HOUSE"/>
+			<Set Cost="1247"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_GREAT_FIREWALL"/>
+			<Set Cost="1247"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_URANIUM_MAPPING_PROJECT"/>
+			<Set Cost="374"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_MI6"/>
+			<Set Cost="127"/>
+		</Update>
+	</Buildings>
 </GameData>

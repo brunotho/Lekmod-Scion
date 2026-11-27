@@ -1016,7 +1016,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
 - Added: {Great Merchant: Customs House} a Customs House built on a strategic resource gives 50% more of it (rounded down; e.g. 13 instead of 9 Iron)
-- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map; mining it still needs Atomic Theory
+- Added: {Uranium Mapping Project} Uranium Mapping Project (Plastics, cost 250): reveals all Uranium on the map; mining it still needs Atomic Theory
 - Reworked: {Rationalism} POLICY_BRANCH_RATIONALISM
   | Adopting Rationalism:[NEWLINE][ICON_BULLET]Earn [ICON_GREAT_SCIENTIST] Great Scientists 20% faster[NEWLINE][ICON_BULLET]Unlocks building the [ICON_WONDER_PORCELAIN_TOWER] Porcelain Tower[NEWLINE][NEWLINE]Completing the Rationalism tree:[NEWLINE][ICON_BULLET]+10% [ICON_RESEARCH] Science in all cities[NEWLINE][ICON_BULLET][COLOR_POSITIVE_TEXT]Academies[ENDCOLOR] on strategic resources provide double the resource
 - Reworked: {Autocracy} POLICY_THIRD_ALTERNATIVE
@@ -1045,7 +1045,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 - Changed: {Strategic Resource Requirements} Nuclear Missile: 7 Uranium (was 2)
 - Changed: {Strategic Resource Requirements} unique units follow their base unit, except those that needed nothing while their base unit did (e.g. Mohawk Warrior, Maccabee, War Chariot, Japanese Zero): they still need nothing
 - Changed: {Building Costs and Maintenance} Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
-- Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
+- Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 290, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
 - Changed: {Industrial Buildings} Nuclear Plant:
   - needs 2 Uranium (was 1)
   - no longer needs a Factory in the city
@@ -1591,15 +1591,15 @@ Tags: units, combat
   - 40 Strength (was 55)
   - 85 Ranged Strength (was 65)
   - 5 movement (was 6)
-  - cost 281 -> 422
-- Changed: Missile Cruiser: 115 Ranged Strength (was 100), cost 341 -> 478
-- Changed: Modern Armor: 110 Strength (was 100), cost 361 -> 397
+  - cost 281 -> 420
+- Changed: Missile Cruiser: 115 Ranged Strength (was 100), cost 341 -> 480
+- Changed: Modern Armor: 110 Strength (was 100), cost 361 -> 395
 - Changed: Stealth Bomber:
-  - 100 Ranged Strength (was 85), cost 361 -> 452
+  - 100 Ranged Strength (was 85), cost 361 -> 450
   - no longer reveals the area around its base (Air Recon)
   - always intercepted, but takes 80% less damage when intercepted (was never intercepted)
   - does not stack with Evasion
-- Changed: Nuclear Missile: cost 1005 -> 1105
+- Changed: Nuclear Missile: cost 1005 -> 1110
 - Changed: Nuclear Missiles and Atomic Bombs can no longer rebase in the second half of the turn timer (like paradrops and setting up interception)
 - Note: the spec names the Nuclear Missile only; the Atomic Bomb follows because it is the other nuclear unit
 - DLL: LEKMOD_FAST_HAND_NUKE_REBASE (CvUnit::canRebase)
@@ -1612,10 +1612,12 @@ LATE-GAME UNIT COSTS
 --------------------
 Tags: units
 - Changed: Modern-era units cost 3% more, Atomic- and Information-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts):
-  - Modern: Foreign Legion 186 (was 180); Anti-Tank Rifle 207 (was 201); Great War Bomber, Great War Infantry and Triplane 227 (was 221); Submarine 248 (was 241); Landship and Machine Gun 269 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 290 (was 281)
-  - Atomic: Anti-Tank Gun 253 (was 241); Bomber and Fighter 295 (was 281); Bazooka, Marine, Paratrooper and Tank 316 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 359 (was 341)
-  - Information: Mechanized Infantry 316 (was 301); Heavy Cruiser 326 (was 311); Nuclear Submarine and XCOM Squad 359 (was 341); Jet Fighter 379 (was 361)
+  - Modern: Foreign Legion 185 (was 180); Anti-Tank Rifle 205 (was 201); Great War Bomber, Great War Infantry and Triplane 225 (was 221); Submarine 250 (was 241); Landship and Machine Gun 270 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 290 (was 281)
+  - Atomic: Anti-Tank Gun 255 (was 241); Bomber and Fighter 295 (was 281); Bazooka, Marine, Paratrooper and Tank 315 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 360 (was 341)
+  - Information: Mechanized Infantry 315 (was 301); Heavy Cruiser 325 (was 311); Nuclear Submarine and XCOM Squad 360 (was 341); Jet Fighter 380 (was 361)
+- Changed: every unit, building and wonder from the Modern Era on costs a round number: the nearest 5, the nearest 10 from 1000 (the numbers here are already rounded)
 - Dev: Information-era standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged
+- Dev: (user, 2026-11-27) rounding: the shown quick cost (Cost x 67 / 100, cut) to the nearest 5 (10 from 1000), Cost set to the smallest value giving it; 60 units and buildings by their tech's era (units without a tech by their base unit's), block "New Specs 19" at the end of CIV5Units.xml, after every other cost change
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
 -----------------------------------------------------------------------
@@ -1679,7 +1681,7 @@ Caravans and Cargo Ships are now equal; only where they travel differs.
 GIANT DEATH ROBOT (UNIT_MECH, PROMOTION_NUKE_RESISTANCE)
 --------------------------------------------------------
 Tags: units, combat, promotions
-- Changed: 190 Strength (was 240), cost 482 (was 402)
+- Changed: 190 Strength (was 240), cost 480 (was 402)
 - Removed: it no longer intercepts aircraft
 - Changed: Nuke Resistance instead of nuke immunity: nuclear weapons deal it 20 damage, wherever it stands (also in the blast center and in cities)
 - Added: starts with Fear Aura, Charge, Armor Plating I and Repair
@@ -1877,7 +1879,7 @@ Subsection: Buildings
   - 5 Gold maintenance (was 1)
   - military units (planes too) in the city take only 50 damage from a nuclear attack
 - Changed: Stadium:
-  - costs 284 (was 335)
+  - costs 285 (was 335)
   - 5 Gold maintenance (was 2)
   - needs Radio (was Refrigeration)
 - Changed: Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
@@ -1943,7 +1945,7 @@ AIRPORT (BUILDING_AIRPORT)
 Tags: buildings, air
 Subsection: Buildings
 - Added: a plane that rebases from a city with an Airport to another city with an Airport can still attack or act that turn; it can rebase only once per turn
-- Changed: cost 268 -> 321, 15 Gold maintenance (was 5)
+- Changed: cost 268 -> 320, 15 Gold maintenance (was 5)
 - DLL: Buildings.AirportRebase (LEKMOD_AIRPORT_REBASE); new saved unit field, old saves are incompatible
 
 INDUSTRIAL BUILDINGS (BUILDING_REFINERY, BUILDING_RECYCLING_CENTER, BUILDING_SPACESHIP_FACTORY, BUILDING_NUCLEAR_PLANT, BUILDING_HYDRO_PLANT)
@@ -1960,7 +1962,7 @@ Subsection: Buildings
   - provides 10 Aluminum (was 2)
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
-- Changed: Spaceship Factory: cost 241 -> 289, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
+- Changed: Spaceship Factory: cost 241 -> 290, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
 - Changed: Nuclear Plant:
   - needs 2 Uranium (was 1)
   - no longer needs a Factory in the city
@@ -1991,7 +1993,7 @@ URANIUM MAPPING PROJECT (NEW) (BUILDING_URANIUM_MAPPING_PROJECT)
 ----------------------------------------------------------------
 Tags: buildings, wonders
 Subsection: Wonders and projects
-- Added: Uranium Mapping Project (Plastics, cost 251): reveals all Uranium on the map; mining it still needs Atomic Theory
+- Added: Uranium Mapping Project (Plastics, cost 250): reveals all Uranium on the map; mining it still needs Atomic Theory
 - Added: it can no longer be built once you know Atomic Theory
 - DLL: Buildings.RevealResource uses the team's saved force-revealed resource list (building ID 271, class 178)
 - DLL: LEKMOD_BUILDING_OBSOLETE_NO_CONSTRUCT (Buildings.ObsoleteTech blocks construction)

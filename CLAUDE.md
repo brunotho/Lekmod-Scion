@@ -276,6 +276,7 @@ The folder is a **DLC package** (`MPModsPack.Civ5Pkg`), not a ModBuddy mod:
   - Being in the table is not enough: `[ICON_WONDER_HEROIC_EPIC]` is listed but renders as a gap (user, 2026-10-11). Prefer icons already used in visible texts; wonder icons are unreliable.
 - Text keys must be unique. Check `CIV5Units_Mongol.xml` before adding a key; existing keys may already be used by other content (e.g. `TXT_KEY_PROMOTION_DISCIPLINE`).
 - Numeric text placeholders: `{1_Num}`. A text that expects a number but gets none renders **blank**.
+- **Round late-game costs (user, 2026-11-27):** every unit, building and wonder from the Modern Era on shows a round quick cost (nearest 5; nearest 10 from 1000). They are set in the "New Specs 19" block at the very end of `CIV5Units.xml`, which overrides every earlier cost; a new or changed Modern+ cost must keep this (Cost = smallest value with Cost x 67 / 100 = the round number) and go into or after that block.
 - **Game speed: always assume QUICK.** The user only plays quick speed, and their specs state quick-speed numbers.
   - When a formula involves game speed (culture, faith, production costs, turn counts…), check how speed scaling affects it, and make the result match the spec *at quick speed*.
   - Other speeds don't matter.
