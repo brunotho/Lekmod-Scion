@@ -458,6 +458,17 @@
 			</Grid>
 		</Grid>
 	</Instance>
+	<!-- LEKMOD (2026-11-27): one search result on the Religion tab's first page: the belief's name and effect -->
+	<Instance Name="LekmodBeliefResultInstance">
+		<Button Anchor="L,T" Size="640,60" ID="ResultButton">
+			<Grid Anchor="L,T" Size="640,60" Padding="0,0" Style="Grid9Frame" ID="ResultFrame"/>
+			<ShowOnMouseOver>
+				<Grid Anchor="L,T" Size="640,60" Padding="0,0" Style="Grid9FrameTurnsHL" ID="ResultHL"/>
+			</ShowOnMouseOver>
+			<Label Anchor="L,T" Offset="15,10" Font="TwCenMT20" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" ID="ResultName"/>
+			<Label Anchor="L,T" Offset="15,34" WrapWidth="610" LeadingOffset="-5" Font="TwCenMT16" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" ID="ResultText"/>
+		</Button>
+	</Instance>
 	<!-- LEKMOD: the big text block at full width, for pages without the article list (NQ tab) -->
 	<Instance Name="LekmodFullTextInstance">
 		<Grid Anchor="L,T" Offset="0,24" Size="936,200" Padding="0,0" Style="GridBlackIndent8" Hidden="0" ID="BBTextFrame">
@@ -679,6 +690,13 @@
 							</Stack>
 						</Grid>
 					</Grid>
+					<!-- LEKMOD (2026-11-27): belief search on the Religion tab's first page (name and effect text, while typing) -->
+					<Container Anchor="L,T" Size="640,36" Hidden="1" ID="LekmodBeliefSearchFrame">
+						<Label Anchor="L,C" Offset="4,0" Font="TwCenMT20" ColorSet="Beige_Black_Alpha" FontStyle="Shadow" String="TXT_KEY_LEKMOD_BELIEF_SEARCH"/>
+						<Grid Anchor="L,C" Offset="90,0" Size="420,30" Padding="0,0" Style="GridBlackIndent8">
+							<EditBox ID="LekmodPediaBeliefSearch" Anchor="L,C" Offset="8,0" Size="404,24" Font="TwCenMT18" FontStyle="Shadow" Color0="Beige" Color1="0.0.0.160" MaxLength="40" CallOnChar="1"/>
+						</Grid>
+					</Container>
 					<Stack Anchor="L,T" Offset="0,0" Size="64,64" StackGrowth="Bottom" Padding="12" ID="BBTextStack"/>
 				</Stack>
 				<!--small (narrow) content stack-->

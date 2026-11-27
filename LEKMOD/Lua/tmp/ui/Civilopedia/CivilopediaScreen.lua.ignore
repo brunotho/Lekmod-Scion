@@ -1950,8 +1950,75 @@ CivilopediaCategory[CategoryImprovements].DisplayHomePage = function()
 	ResizeEtc();
 end;
 
+-- LEKMOD (2026-11-27): the Religion tab's first page is a belief search: it lists the pantheons and beliefs whose
+-- name or effect text contains the search text (all of them while it is empty); a click opens the article.
+local g_LekmodBeliefResultManager = InstanceManager:new( "LekmodBeliefResultInstance", "ResultButton", Controls.BBTextStack );
+local g_LekmodBeliefIndex = nil;
+local function LekmodPlainText( s )
+	s = string.gsub( s or "", "%[NEWLINE%]", " " );
+	s = string.gsub( s, "%[[^%]]*%]", "" );
+	return s;
+end
+local function LekmodBeliefIndex()
+	if g_LekmodBeliefIndex == nil then
+		g_LekmodBeliefIndex = {};
+		local kinds = { { "Pantheon", "TXT_KEY_LEKMOD_PEDIA_BELIEF_PANTHEON" }, { "Founder", "TXT_KEY_LEKMOD_PEDIA_BELIEF_FOUNDER" },
+			{ "Follower", "TXT_KEY_LEKMOD_PEDIA_BELIEF_FOLLOWER" }, { "Enhancer", "TXT_KEY_LEKMOD_PEDIA_BELIEF_ENHANCER" },
+			{ "Reformation", "TXT_KEY_LEKMOD_PEDIA_BELIEF_REFORMATION" } };
+		for order, kind in ipairs( kinds ) do
+			local entries = {};
+			for belief in GameInfo.Beliefs{ [kind[1]] = 1 } do
+				local name = Locale.ConvertTextKey( belief.ShortDescription );
+				local text = Locale.ConvertTextKey( belief.Description );
+				table.insert( entries, { id = belief.ID, name = name, kind = Locale.ConvertTextKey( kind[2] ), text = text,
+					search = Locale.ToLower( name .. " " .. LekmodPlainText( text ) ) } );
+			end
+			table.sort( entries, function( a, b ) return Locale.Compare( a.name, b.name ) < 0; end );
+			for _, e in ipairs( entries ) do
+				table.insert( g_LekmodBeliefIndex, e );
+			end
+		end
+	end
+	return g_LekmodBeliefIndex;
+end
+function LekmodRefreshBeliefSearch()
+	g_LekmodBeliefResultManager:ResetInstances();
+	local query = Locale.ToLower( Controls.LekmodPediaBeliefSearch:GetText() or "" );
+	for _, e in ipairs( LekmodBeliefIndex() ) do
+		if query == "" or string.find( e.search, query, 1, true ) ~= nil then
+			local inst = g_LekmodBeliefResultManager:GetInstance();
+			inst.ResultName:SetText( e.name .. "  [COLOR_GREY](" .. e.kind .. ")[ENDCOLOR]" );
+			inst.ResultText:SetText( e.text );
+			local h = inst.ResultText:GetSizeY() + 46;
+			inst.ResultButton:SetSizeY( h );
+			inst.ResultFrame:SetSizeY( h );
+			inst.ResultHL:SetSizeY( h );
+			local id = e.id;
+			inst.ResultButton:RegisterCallback( Mouse.eLClick, function()
+				CivilopediaCategory[CategoryBeliefs].SelectArticle( { "Beliefs", id }, addToList );
+			end );
+		end
+	end
+	Controls.BBTextStack:SetHide( false );
+	Controls.BBTextStack:CalculateSize();
+	ResizeEtc();
+end
+Controls.LekmodPediaBeliefSearch:RegisterCallback( function()
+	if selectedCategory == CategoryBeliefs and not Controls.LekmodBeliefSearchFrame:IsHidden() then
+		LekmodRefreshBeliefSearch();
+	end
+end );
+
 CivilopediaCategory[CategoryBeliefs].DisplayHomePage = function()
 	ClearArticle();
+	Controls.ArticleID:SetText( Locale.ConvertTextKey( "TXT_KEY_PEDIA_BELIEFS_PAGE_LABEL" ));
+	-- LEKMOD: the search replaces the page's picture and introduction texts
+	Controls.LekmodBeliefSearchFrame:SetHide( false );
+	LekmodRefreshBeliefSearch();
+	Controls.LekmodPediaBeliefSearch:TakeFocus();
+	if true then
+		return;
+	end
 	Controls.ArticleID:SetText( Locale.ConvertTextKey( "TXT_KEY_PEDIA_BELIEFS_PAGE_LABEL" ));	
 	
 	Controls.Portrait:SetTexture("Religion256.dds");
@@ -7182,6 +7249,13 @@ end
 
 function ClearArticle()
 	Controls.ScrollPanel:SetScrollValue( 0 );
+	-- LEKMOD: the belief search of the Religion tab's first page
+	if Controls.LekmodBeliefSearchFrame ~= nil then
+		Controls.LekmodBeliefSearchFrame:SetHide( true );
+	end
+	if g_LekmodBeliefResultManager ~= nil then
+		g_LekmodBeliefResultManager:ResetInstances();
+	end
 	g_LekmodFullTextManager:ResetInstances();
 	g_LekmodEssentialsManager:ResetInstances();
 	Controls.PortraitFrame:SetHide( true );

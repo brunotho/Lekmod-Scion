@@ -147782,6 +147782,21 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_EMBARKED_MOVES_TOTAL">
 			<Text>Embarked units have {1_Num} [ICON_MOVES] Movement.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_PANTHEON">
+			<Text>Pantheon</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_FOUNDER">
+			<Text>Founder belief</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_FOLLOWER">
+			<Text>Follower belief</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_ENHANCER">
+			<Text>Enhancer belief</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_REFORMATION">
+			<Text>Reformation belief</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE">
 			<Text>EUI-style interface</Text>
 		</Row>

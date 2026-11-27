@@ -814,6 +814,12 @@ Weight: minor
 - Dev: (user, 2026-11-27, third round) Longbowman penalty in the common form; Oxford University names generic Great Work slots; Solar and Nuclear Plant texts without the Factory; Solar Plant listed under Penicillin; embark totals computed from the tech data (LekmodEmbarkedMovesText: base EMBARKED_UNIT_MOVEMENT + every EmbarkedMoveChange up to the tech's column; Steam Power doesn't need Navigation, so its icon names the techs it assumes)
 - Dev: (2026-11-27, fourth round) building tooltips: the "Per empire" line is the last line of the upper part (below the yields); Helicopter Gunship and Hovering Unit no longer claim mountain damage (the game's mountain attrition only hits land-domain units; helicopters are hover units); Salt and Stars reads "Embarked units have +1 sight"
 
+CIVILOPEDIA BELIEF SEARCH
+-------------------------
+Tags: ui, religion
+- Added: the Civilopedia's Religion tab opens with a search box that finds pantheons and beliefs by name or effect text while you type; a click opens the belief
+- Dev: (user, 2026-11-27) replaces the tab's picture and introduction texts (DisplayHomePage); LekmodBeliefResultInstance in BBTextStack; the general Civilopedia search at the top (titles only) is unchanged
+
 TOP BAR PANEL BUTTONS
 ---------------------
 Tags: ui
