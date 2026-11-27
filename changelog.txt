@@ -795,6 +795,12 @@ Tags: ui, air
 - Added: aircraft are always shown as their own flags (with health, clickable) in an arc above the city or airbase tile they are based on, or above their carrier
 - Dev: LekmodLayoutAir in UnitFlagManager.lua (arc radius 100 around the tile, above the ground unit flags, and 45 around a carrier flag; the aircraft layer is drawn above the ground unit layers, a selected unit still on top; after EUI's airbase fan; the AirCraftFlags container is no longer hidden); the count and pull-down list above the banner stay. A first version showed them only while one was selected (development step)
 
+UNIT AND PROJECT TOOLTIPS
+-------------------------
+Tags: ui
+Weight: minor
+- Dev: (user, 2026-11-27) Battering Ram tooltip no longer says Medieval (it comes with Engineering, Classical); Privateer tooltip no longer mentions carrying units (every ship of its era does); Manhattan Project and Nuclear Fission tooltips no longer mention Atomic Bombs (not in the mod); Radio/Refrigeration tech texts name the Stadium at Radio
+
 EUI SUPPORT REMOVED
 -------------------
 Tags: ui
@@ -1837,7 +1843,10 @@ Subsection: Buildings
 - Changed: Bomb Shelter:
   - 5 Gold maintenance (was 1)
   - military units (planes too) in the city take only 50 damage from a nuclear attack
-- Changed: Stadium: costs 284 (was 335), 5 Gold maintenance (was 2)
+- Changed: Stadium:
+  - costs 284 (was 335)
+  - 5 Gold maintenance (was 2)
+  - needs Radio (was Refrigeration)
 - Changed: Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
 - Changed: Prussian Factory: costs 195 (was 180; Faith 156, was 144); unlike the Factory it needs no Coal or Iron
 - Changed: Chilean Cooperative: costs 260 (was 241; Faith too), needs 2 Coal (was 1) and 1 Iron

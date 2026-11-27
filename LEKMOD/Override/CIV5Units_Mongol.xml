@@ -121407,7 +121407,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_PROJECT_MANHATTAN_PROJECT_HELP"> 
 			<Text>
-				Allows your Cities to build Atomic Bombs and Nuclear Missiles.
+				Allows your Cities to build Nuclear Missiles.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROJECT_MANHATTAN_PROJECT_PEDIA"> 
@@ -136185,7 +136185,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_NUCLEAR_FISSION_HELP"> 
 			<Text>
-				Allows you to build the [COLOR_POSITIVE_TEXT]Bazooka[ENDCOLOR], the most powerful ranged Unit and [COLOR_POSITIVE_TEXT]Atomic Bombs[ENDCOLOR], the first nuclear weapon in the game (note: you must first have completed the Manhattan Project and have [ICON_RES_URANIUM] Uranium available). Also allows you to build the [COLOR_POSITIVE_TEXT]Nuclear Plant[ENDCOLOR], a building which requires [ICON_RES_URANIUM] Uranium and increases the [ICON_PRODUCTION] Production of a City.
+				Allows you to build the [COLOR_POSITIVE_TEXT]Bazooka[ENDCOLOR], the most powerful ranged Unit. Also allows you to build the [COLOR_POSITIVE_TEXT]Nuclear Plant[ENDCOLOR], a building which requires [ICON_RES_URANIUM] Uranium and increases the [ICON_PRODUCTION] Production of a City.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_NUCLEAR_FISSION_QUOTE"> 
@@ -136480,7 +136480,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_RADIO_HELP"> 
 			<Text>
-				Allows you to build the [COLOR_POSITIVE_TEXT]Broadcast Tower[ENDCOLOR], a building which greatly increases the [ICON_CULTURE] Cultural output of a city.
+				Allows you to build the [COLOR_POSITIVE_TEXT]Broadcast Tower[ENDCOLOR], a building which greatly increases the [ICON_CULTURE] Cultural output of a city, and the [COLOR_POSITIVE_TEXT]Stadium[ENDCOLOR], which increases [ICON_HAPPINESS_1] Happiness within the City.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_RADIO_QUOTE"> 
@@ -136545,7 +136545,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_REFRIGERATION_HELP"> 
 			<Text>
-				Allows you to build the [COLOR_POSITIVE_TEXT]Submarine[ENDCOLOR], a ship invisible to all units except Destroyers and other Submarines, and [COLOR_POSITIVE_TEXT]Stadiums[ENDCOLOR], which increases [ICON_HAPPINESS_1] Happiness within the City. Also allows Work Boats to construct an Offshore Platform.
+				Allows you to build the [COLOR_POSITIVE_TEXT]Submarine[ENDCOLOR], a ship invisible to all units except Destroyers and other Submarines. Also allows Work Boats to construct an Offshore Platform.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TECH_REFRIGERATION_QUOTE"> 
@@ -141906,7 +141906,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PRIVATEER"> 
-			<Text>Renaissance naval melee unit for raiding: pillages for more [ICON_GOLD] Gold and carries embarked units with it.[NEWLINE]Weak against cities.</Text>
+			<Text>Renaissance naval melee unit for raiding: pillages for more [ICON_GOLD] Gold.[NEWLINE]Weak against cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_RIFLED_CANNON"> 
 			<Text>
@@ -148591,7 +148591,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Battering Ram</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_HELP">
-			<Text>Medieval siege unit that attacks cities in melee.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Needs 4 [ICON_RES_IRON] Iron.</Text>
+			<Text>Siege unit that attacks cities in melee.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Needs 4 [ICON_RES_IRON] Iron.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_STRATEGY">
 			<Text>The Battering Ram breaks city walls in melee. It is weak on defense and sees less far than other units, so keep it behind your front line until the city is in reach.</Text>

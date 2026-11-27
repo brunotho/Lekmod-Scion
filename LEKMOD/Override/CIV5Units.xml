@@ -45871,7 +45871,7 @@
 			<Cost>500</Cost>
 			<ConquestProb>66</ConquestProb> 
 			<Happiness>2</Happiness> 
-			<PrereqTech>TECH_REFRIGERATION</PrereqTech> 
+			<PrereqTech>TECH_RADIO</PrereqTech> 
 			<ArtDefineTag>STADIUM</ArtDefineTag> 
 			<DisplayPosition>2</DisplayPosition> 
 			<PortraitIndex>25</PortraitIndex> 
