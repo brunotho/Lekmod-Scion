@@ -813,6 +813,8 @@ Weight: minor
 - Changed: the tech tree's embarkation icons say how much Movement embarked units have with that tech
 - Dev: (user, 2026-11-27, third round) Longbowman penalty in the common form; Oxford University names generic Great Work slots; Solar and Nuclear Plant texts without the Factory; Solar Plant listed under Penicillin; embark totals computed from the tech data (LekmodEmbarkedMovesText: base EMBARKED_UNIT_MOVEMENT + every EmbarkedMoveChange up to the tech's column; Steam Power doesn't need Navigation, so its icon names the techs it assumes)
 - Dev: (2026-11-27, fourth round) building tooltips: the "Per empire" line is the last line of the upper part (below the yields); Helicopter Gunship and Hovering Unit no longer claim mountain damage (the game's mountain attrition only hits land-domain units; helicopters are hover units); Salt and Stars reads "Embarked units have +1 sight"
+- Changed: technology tooltips show only the name, the research cost and what the tech leads to; the old descriptions of what it unlocks are gone (the tech tree shows the unlocks as icons)
+- Dev: (user, 2026-11-27) Lekmod's own TechHelpInclude.lua (copy of Expansion2's without the Help text; ui_check copies it)
 
 CIVILOPEDIA BELIEF SEARCH
 -------------------------
@@ -1051,7 +1053,7 @@ Strategic resources come in bigger deposits and from new buildings and policies,
 - Changed: {Strategic Resource Requirements} Nuclear Missile: 7 Uranium (was 2)
 - Changed: {Strategic Resource Requirements} unique units follow their base unit, except those that needed nothing while their base unit did (e.g. Mohawk Warrior, Maccabee, War Chariot, Japanese Zero): they still need nothing
 - Changed: {Building Costs and Maintenance} Factory: costs 260 (was 241; the Faith cost with Work Ethic too), needs 2 Coal (was 1) and 1 Iron
-- Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 290, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
+- Changed: {Industrial Buildings} Spaceship Factory: cost 241 -> 300, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
 - Changed: {Industrial Buildings} Nuclear Plant:
   - needs 2 Uranium (was 1)
   - no longer needs a Factory in the city
@@ -1599,13 +1601,13 @@ Tags: units, combat
   - 5 movement (was 6)
   - cost 281 -> 420
 - Changed: Missile Cruiser: 115 Ranged Strength (was 100), cost 341 -> 480
-- Changed: Modern Armor: 110 Strength (was 100), cost 361 -> 395
+- Changed: Modern Armor: 110 Strength (was 100), cost 361 -> 400
 - Changed: Stealth Bomber:
   - 100 Ranged Strength (was 85), cost 361 -> 450
   - no longer reveals the area around its base (Air Recon)
   - always intercepted, but takes 80% less damage when intercepted (was never intercepted)
   - does not stack with Evasion
-- Changed: Nuclear Missile: cost 1005 -> 1110
+- Changed: Nuclear Missile: cost 1005 -> 1100
 - Changed: Nuclear Missiles and Atomic Bombs can no longer rebase in the second half of the turn timer (like paradrops and setting up interception)
 - Note: the spec names the Nuclear Missile only; the Atomic Bomb follows because it is the other nuclear unit
 - DLL: LEKMOD_FAST_HAND_NUKE_REBASE (CvUnit::canRebase)
@@ -1617,13 +1619,13 @@ Tags: units, combat
 LATE-GAME UNIT COSTS
 --------------------
 Tags: units
-- Changed: Modern-era units cost 3% more, Atomic- and Information-era units 5% more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts):
-  - Modern: Foreign Legion 185 (was 180); Anti-Tank Rifle 205 (was 201); Great War Bomber, Great War Infantry and Triplane 225 (was 221); Submarine 250 (was 241); Landship and Machine Gun 270 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 290 (was 281)
-  - Atomic: Anti-Tank Gun 255 (was 241); Bomber and Fighter 295 (was 281); Bazooka, Marine, Paratrooper and Tank 315 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 360 (was 341)
-  - Information: Mechanized Infantry 315 (was 301); Heavy Cruiser 325 (was 311); Nuclear Submarine and XCOM Squad 360 (was 341); Jet Fighter 380 (was 361)
-- Changed: every unit, building and wonder from the Modern Era on costs a round number: the nearest 5, the nearest 10 from 1000 (the numbers here are already rounded)
+- Changed: Modern-, Atomic- and Information-era units cost more (except the units with their own new cost under Unit Stat and Cost Changes, and the spaceship parts):
+  - Modern: Foreign Legion 185 (was 180); Anti-Tank Rifle 200 (was 201); Great War Bomber, Great War Infantry and Triplane 225 (was 221); Submarine 250 (was 241); Landship and Machine Gun 270 (was 261); Anti-Aircraft Gun, Carrier, Destroyer and Infantry 300 (was 281)
+  - Atomic: Anti-Tank Gun 250 (was 241); Bomber and Fighter 300 (was 281); Bazooka, Marine, Paratrooper and Tank 315 (was 301); Helicopter Gunship, Mobile SAM and Rocket Artillery 350 (was 341)
+  - Information: Mechanized Infantry 315 (was 301); Heavy Cruiser 325 (was 311); Nuclear Submarine and XCOM Squad 350 (was 341); Jet Fighter 380 (was 361)
+- Changed: every unit, building and wonder from the Modern Era on costs a round number: the nearest 5 (10 from 1000), or the nearest 50 (100 from 1000) when that is at most 10 away, e.g. spaceship parts 1000, Cristo Redentor 800 (the numbers here are already rounded)
 - Dev: Information-era standard costs 221 / 488 / 567 / 473 / 536 (Units Updates in the 2026-10-09 cost block; the Desert Falcon row itself); Faith costs unchanged
-- Dev: (user, 2026-11-27) rounding: the shown quick cost (Cost x 67 / 100, cut) to the nearest 5 (10 from 1000), Cost set to the smallest value giving it; 60 units and buildings by their tech's era (units without a tech by their base unit's), block "New Specs 19" at the end of CIV5Units.xml, after every other cost change
+- Dev: (user, 2026-11-27) rounding: the shown quick cost (Cost x 67 / 100, cut) to the nearest 5 (10 from 1000), then to the nearest 50 (100 from 1000) when at most 10 away (user: "clean where close"); Cost set to the smallest value giving it; 77 units and buildings by their tech's era (units without a tech by their base unit's), block "New Specs 19" at the end of CIV5Units.xml, after every other cost change
 
 MARINES AND EXPEDITIONARY FORCE (UNIT_MARINE, UNIT_EXPEDITIONARY_FORCE)
 -----------------------------------------------------------------------
@@ -1968,7 +1970,7 @@ Subsection: Buildings
   - provides 10 Aluminum (was 2)
   - +5 Production on the building and on Aluminum tiles
   - 20 Gold maintenance (was 3)
-- Changed: Spaceship Factory: cost 241 -> 290, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
+- Changed: Spaceship Factory: cost 241 -> 300, needs 10 Aluminum (was 1), 20 Gold maintenance (was 3), no longer +3 Production on the building, +90% Production towards spaceship parts (was +100%), +30% towards air units; at most 2 per player
 - Changed: Nuclear Plant:
   - needs 2 Uranium (was 1)
   - no longer needs a Factory in the city

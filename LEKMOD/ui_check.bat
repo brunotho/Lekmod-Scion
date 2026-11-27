@@ -120,6 +120,7 @@ REM ----------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\TechTree\TechPopup.lua.ignore" "%patchfolder%\Lua\UI\TechPopup.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\TechTree\TechTree.lua.ignore" "%patchfolder%\Lua\UI\TechTree.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\TechTree\TechTree.xml.ignore" "%patchfolder%\Lua\UI\TechTree.xml" > nul
+copy /y "%patchfolder%\Lua\tmp\ui\TechTree\TechHelpInclude.lua.ignore" "%patchfolder%\Lua\UI\TechHelpInclude.lua" > nul
 REM --------------------------------------------------------------------------------------------------
 copy /y "%patchfolder%\Lua\tmp\ui\ToolTips\TechButtonInclude.lua.ignore" "%patchfolder%\Lua\UI\TechButtonInclude.lua" > nul
 copy /y "%patchfolder%\Lua\tmp\ui\ToolTips\InfoTooltipInclude.lua.ignore" "%patchfolder%\Lua\UI\InfoTooltipInclude.lua" > nul

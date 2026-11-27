@@ -293414,23 +293414,23 @@
 			<Set PrereqTech="TECH_PENICILIN"/>
 		</Update>
 	</Buildings>
-	<!-- LEKMOD: New Specs 19 (2026-11-27): Modern era and later units, buildings and wonders cost a round number on quick speed (nearest 5; nearest 10 from 1000). Quick cost = Cost x 67 / 100, rounded down. -->
+	<!-- LEKMOD: New Specs 19 (2026-11-27): Modern era and later units, buildings and wonders cost a round number on quick speed: the nearest 5 (10 from 1000), and the nearest 50 (100 from 1000) when that is at most 10 away. Quick cost = Cost x 67 / 100, rounded down. -->
 	<Units>
 		<Update>
 			<Where Type="UNIT_SS_STASIS_CHAMBER"/>
-			<Set Cost="1508"/>
+			<Set Cost="1493"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_SS_ENGINE"/>
-			<Set Cost="1508"/>
+			<Set Cost="1493"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_SS_COCKPIT"/>
-			<Set Cost="1508"/>
+			<Set Cost="1493"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_SS_BOOSTER"/>
-			<Set Cost="1508"/>
+			<Set Cost="1493"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_MISSILE_CRUISER"/>
@@ -293438,7 +293438,11 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_NUCLEAR_SUBMARINE"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_CARRIER"/>
+			<Set Cost="448"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_BATTLESHIP"/>
@@ -293449,12 +293453,16 @@
 			<Set Cost="374"/>
 		</Update>
 		<Update>
+			<Where Type="UNIT_DESTROYER"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
 			<Where Type="UNIT_MECH"/>
 			<Set Cost="717"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_NUCLEAR_MISSILE"/>
-			<Set Cost="1657"/>
+			<Set Cost="1642"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_STEALTH_BOMBER"/>
@@ -293466,23 +293474,39 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_MODERN_ARMOR"/>
-			<Set Cost="590"/>
+			<Set Cost="598"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_HELICOPTER_GUNSHIP"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_MOBILE_SAM"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_ROCKET_ARTILLERY"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_MECHANIZED_INFANTRY"/>
 			<Set Cost="471"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_BOMBER"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_AMERICAN_B17"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_FIGHTER"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_JAPANESE_ZERO"/>
+			<Set Cost="448"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_PARATROOPER"/>
@@ -293497,8 +293521,16 @@
 			<Set Cost="471"/>
 		</Update>
 		<Update>
+			<Where Type="UNIT_ANTI_AIRCRAFT_GUN"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
 			<Where Type="UNIT_ANTI_TANK_GUN"/>
-			<Set Cost="381"/>
+			<Set Cost="374"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_INFANTRY"/>
+			<Set Cost="448"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_FRENCH_FOREIGNLEGION"/>
@@ -293529,12 +293561,16 @@
 			<Set Cost="403"/>
 		</Update>
 		<Update>
+			<Where Type="UNIT_BRAZILIAN_PRACINHA"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
 			<Where Type="UNIT_BAZOOKA"/>
 			<Set Cost="471"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_XCOM_SQUAD"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_BELGIUM_GREAT_WAR_INFANTRY"/>
@@ -293542,7 +293578,11 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_BOERS_GREAT_WAR_INFANTRY"/>
-			<Set Cost="306"/>
+			<Set Cost="299"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_VIETNAM_INFANTRY"/>
+			<Set Cost="448"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_SKINFANTRY"/>
@@ -293550,19 +293590,23 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_ANTI_TANK_RIFLE"/>
-			<Set Cost="306"/>
+			<Set Cost="299"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_FINNISH_FOREST_PATROL"/>
-			<Set Cost="359"/>
+			<Set Cost="374"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_TURKISH_GWI"/>
 			<Set Cost="336"/>
 		</Update>
 		<Update>
+			<Where Type="UNIT_MC_NEW_ZEALAND_MAORI_BATTALION"/>
+			<Set Cost="448"/>
+		</Update>
+		<Update>
 			<Where Type="UNIT_CARDOEN"/>
-			<Set Cost="538"/>
+			<Set Cost="523"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_GUERRILLERO"/>
@@ -293616,7 +293660,7 @@
 		</Update>
 		<Update>
 			<Where Type="BUILDING_SPACESHIP_FACTORY"/>
-			<Set Cost="433"/>
+			<Set Cost="448"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_INTELLIGENCE_AGENCY"/>
@@ -293627,20 +293671,40 @@
 			<Set Cost="403"/>
 		</Update>
 		<Update>
+			<Where Type="BUILDING_EIFFEL_TOWER"/>
+			<Set Cost="1045"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_BROADWAY"/>
+			<Set Cost="1045"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_STATUE_OF_LIBERTY"/>
+			<Set Cost="1045"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_PRORA_RESORT"/>
+			<Set Cost="1045"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_KREMLIN"/>
+			<Set Cost="1045"/>
+		</Update>
+		<Update>
 			<Where Type="BUILDING_PANAMA"/>
-			<Set Cost="1202"/>
+			<Set Cost="1195"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_CRISTO_REDENTOR"/>
-			<Set Cost="1202"/>
+			<Set Cost="1195"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_CN_TOWER"/>
-			<Set Cost="1202"/>
+			<Set Cost="1195"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_PENTAGON"/>
-			<Set Cost="1202"/>
+			<Set Cost="1195"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_SYDNEY_OPERA_HOUSE"/>
@@ -293653,6 +293717,10 @@
 		<Update>
 			<Where Type="BUILDING_URANIUM_MAPPING_PROJECT"/>
 			<Set Cost="374"/>
+		</Update>
+		<Update>
+			<Where Type="BUILDING_LEKMOD_EIFFEL_TOWER_FRANCE"/>
+			<Set Cost="1045"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_LEKMOD_MI6"/>
