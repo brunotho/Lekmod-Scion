@@ -1,0 +1,162 @@
+LEKmap — debug / log reference (Living notes)
+==============================================
+
+Purpose
+-------
+Quick lookup for where toggles live and what strings appear in logs when tuning mapgen or analyzing rolls (10-map batches, averages, etc.).
+
+
+Where logs land (Windows + macOS)
+---------------------------------
+All print() output goes to the stock Lua.log (needs LoggingEnabled = 1 in config.ini), prefixed "Map Script:".
+Lekmap's own files go to the same Logs folder (path helper: LekCiv5LogPath in Lekmap_PipelineFlowLog.lua):
+
+  Windows: %USERPROFILE%\Documents\My Games\Sid Meier's Civilization 5\Logs\
+  macOS:   ~/Library/Application Support/Sid Meier's Civilization 5/Logs/
+
+  LekmapStartSpacing6P.log   ### lines appended by LekMapgenDiagLogAppend
+  LekmapPipelineFlow.log     flow breadcrumbs, file only, reset each map load
+  LekmapLandStats.log        ### LekLandStats / LekInlandSea*, file only, appended across rolls
+                             (both maps; LekInlandSea* Fractal Pangaea only; channel landstats)
+
+ONE SWITCH: _lek_mapgen_logs at the top of each lobby leaf (LekmapScion_FractalPangaea.lua /
+LekmapScion_EquatorRing.lua). false = release, nothing written; true = testing. The flow log follows it.
+
+If the game's Lua has no io library, or Documents is redirected (e.g. OneDrive), the files stay empty.
+
+Not everything uses that append — anything that only calls print() may appear only in the stock Lua log. Lines routed through LekMapgenPrintAndDiagFile() or LekPlacementProbeAt() appear in LekmapStartSpacing6P.log when io append succeeds.
+
+Also see Pangaea appendLekLog() inside StartPlotSystem — tuple_benchmark_mode / small-world gates may skip some append paths.
+
+Pipeline crash/flow trace
+-------------------------
+File: .../Logs/LekmapPipelineFlow.log
+Helper: Lekmap_PipelineFlowLog.lua. _lek_pipeline_flow_log = _lek_mapgen_logs (leaf), file only.
+Leaves call LekPipelineFlowReset on load (truncates file), then ### FLOW #N stage=... through includes + GeneratePlotTypes/Terrain/Features/StartPlotSystem.
+Last stage before a hard close is where it died.
+
+
+Verbosity & log channels (source of truth)
+-----------------------------------------
+Edit log knobs on the lobby leaf (LekmapScion_FractalPangaea.lua / LekmapScion_EquatorRing.lua)
+or defaults in Lekmap_PangaeaPipeline.lua:
+
+  _lek_mapgen_logs = false/true     -- MASTER: false = soft deploy quiet
+  _lek_mapgen_log_verbosity = 1..3  -- detail within an enabled channel
+  _lek_mapgen_log_channels = {      -- only when master true; flip per topic
+    islands = true/false,           -- ### LekIslandPlaced / RollSummary / Probe
+    islands_tiles = true/false,     -- ### LekIslandTile (xy=…) + LekIslandFootprint per place
+    strategics = true/false,        -- ### LEK_STRAT* / LEK_RESOURCE_SETTING
+    starts = true/false,            -- ### LekGlobalSix* / ChooseLocations / StartSpacing
+    mapgen = true/false,            -- ### LekMapGen*
+    pangaea = true/false,           -- ### LekPangaea*
+    bench = true/false,             -- ### LekBench6
+    landstats = true/false,         -- ### LekLandStats (both) / LekInlandSea* (Fractal Pangaea), file only
+    other = true/false,             -- leftover Lek ### lines
+  }
+
+  Island tile lookup: grep LekIslandTile xy=3,19 (use final outerAttempt=… block).
+  nLand/bbox on ### LekIslandFootprint. overwrite= means a later island repainted a tile.
+
+Helpers in 4a_HBAssignStartingPlots.lua infer channel from the ### prefix
+(LekMapgenInferChannel / LekMapgenAllowMsg) and gate print + diag file.
+
+  _lek_strat_audit_log_each_hit     -- sub-toggle for ### LEK_STRAT_HIT (also needs strategics channel)
+  _lek_mapgen_tuple_benchmark_mode  -- set by Pangaea for Global Six; LekBench6 also needs bench=true
+
+
+Snow paint — region rectangles & centers (visual only)
+--------------------------------------------------------
+Goal: paint terrain so each region’s bounding rectangle and approximate center are visible on the finished map (snow markers).
+
+Location: Lekmap_PangaeaPipeline.lua StartPlotSystem
+
+  Function: DebugPaintRegionsTerrains(start_plot_database)
+  Toggle: `_lek_debug_paint_region_snow` in Lekmap_PangaeaPipeline.lua (default **false**).
+  When true: called at end of StartPlotSystem (after PlaceResources).
+  Inner AABB snow center + outline loop (outlinePaintCountMax = 2000).
+
+  LekPipelineFlow: region_snow_paint_begin / region_snow_paint_done / region_snow_paint_skipped
+
+  Note: outlines are axis-aligned rectangles from HB regionData. Fine on compact pangaea;
+  on equator_ring @ 6 civs, CustomOverride replaces chops with staggered 3×2 brick AABBs
+  (LekLandmass_EquatorRing_ApplyBrickRegions). Fertility is measured inside bricks only.
+  Flow: brick_regions_applied / brick_regions_skip / brick_regions_fail
+
+Warning: outline uses many SetTerrainType calls. Leave on only while diagnosing regions.
+
+
+Geometric Balance — LekPipelineFlow (same LekmapPipelineFlow.log)
+-----------------------------------------------------------------
+  geom_balance_ui                   — UI pace read (pace=1 Legacy / pace=2 GeometricBalance)
+  geom_balance_after_ChooseLocations — after ChooseLocations:
+      path=… ranGeom=0|1 forceGeom=0|1 tier=… civs=…
+      ranGeom=1 means Geometric Balance UI and not legacy_menu_skip_tuple.
+
+
+Greppable log prefixes (selection)
+----------------------------------
+### LekLandStats stage=plotTypes|final — mainland (biggest connected landmass) tile count, flat/hills/mtn,
+                             otherLand (islands), totalLand, waterPct, W/H. stage=final = map as played.
+                             Needs _lek_mapgen_logs = true and channel landstats = true.
+
+### LekInlandSeaCuration     — final inland-sea pass on plot types: seas, water, gapFilled (water too close to
+                             main ocean), spanFilled (trimmed to max span).
+
+### LekInlandSeaCapitalClear — after StartPlotSystem: inland seas filled because water sat within 3 of a capital.
+
+### LEK_RESOURCE_SETTING     — resolved resource_setting + args.resources (GenerateRegions).
+
+### LEK_STRAT_AUDIT strat_pass_begin — entering major strategic placement block (resource_setting == 5).
+
+### LEK_STRAT_HIT              — one audited placement (horse/iron/oil/uran/coal/alum) if _lek_strat_audit_log_each_hit.
+
+### LEK_STRAT_SUMMARY          — stage tag + raw entry count.
+
+### LEK_STRAT_TOTAL            — horse/iron node counts (major/small).
+
+### LEK_STRAT_OU_TOTAL         — oil (major/small/sea) + uranium node counts (+ units).
+
+### LEK_STRAT_CA_TOTAL         — coal + aluminum node counts (+ units).
+
+### LEK_STRAT_BUCKET / OU_BUCKET / CA_BUCKET — same counts by bucket=player|global|rescan|other.
+
+### LEK_STRAT_PHASE            — all six strategics broken down by placement pass label (pass=...).
+
+### LekIslandPlaced           — one successful island paint: type=… at=x,y [nearLand=x,y].
+### LekIslandTile              — one land tile painted by that place: type=… xy=x,y plot=land|hills|mtn.
+### LekIslandFootprint         — nLand + bbox after that place (use with Tile lines).
+### LekIslandRollSummary       — per budget-try: order=type1,type2… + countsByType (final accepted try is the map).
+
+Stages (resource_setting=5): after_strategics_pre_rs5_post (live pass labels, incl. cs_modern);
+after_rs5_rescan_pre_sea (map wipe → final_map_*); after_PlaceOilInTheSea; after_cs_center_strat.
+
+### LEK_CS_CENTER_STRAT        — begin|pick|hit|done for 3 CS nearest map center (20% oil/alum/uran each).
+
+### LekBench6                  — tuple / spacing / lux repair / hex_ok single-line rollup per layout.
+
+### LekMapGen ...              — plot types timing, GenerateMap_lua_entry/exit, LekHB_GenerateMap_Core_*.
+
+### LekGlobalSix ...           — force geometry, solver, bias audit, coastal tuple phases.
+
+### ChooseLocations begin      — marks global-six placement entry.
+
+### DebugPaintRegionsTerrains — snow / outline diagnostics when enabled.
+
+
+Strategic audit vocabulary
+--------------------------
+“Units”: Civ resource amount on a tile. Node counts are easier to scan across batches.
+
+Major vs small: horse qty>=4; iron/oil/coal/alum qty>=5; uranium mostly by pass label (_major/_small) because qty often ties.
+
+Pass labels of note:
+  cs_center:oil_major:cs=N   — center-CS optional strat (also alum_/uran_, _small)
+  cs_modern:coal_small:cs=N  — AddModernMinorStrategicsToCityStates (also oil_/alum_)
+  major:… / small_strat:… / guaranteed_band:… / strat_balance… / sea_oil:…
+
+
+Rolling N maps for statistics
+-----------------------------
+Collect LEK_STRAT_TOTAL, LEK_STRAT_OU_TOTAL, LEK_STRAT_CA_TOTAL, LEK_STRAT_PHASE (+ LEK_CS_CENTER_STRAT)
+and LekBench6 per layout; grep runId to group one map. Average *_majorN / *_smallN across runs.

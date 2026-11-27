@@ -1,30 +1,29 @@
-"""Prepare and package a Lekmod Scion release (mod and map).
+"""Prepare and package a Lekmod Scion release (the map ships inside the mod since 2026-11-27).
 
 usage:
-  python tools/release.py check   1.0.0    checks only: version numbers, changelog, map logs, clean trees
+  python tools/release.py check   1.0.0    checks only: version numbers, changelog, map logs, clean tree
   python tools/release.py prepare 1.0.0    renames "## UNRELEASED (...)" to "## 1.0.0 (<date>)" in changelog.txt,
                                            opens a new empty UNRELEASED block, sets the release date in
                                            scion_versions.json, freezes the in-game texts of New/Reworked lines
                                            (website/freeze_refs.rb). Review the diff and commit it yourself.
-  python tools/release.py package 1.0.0    writes dist/Lekmod Scion 1.0.0.zip and dist/Lekmap Scion 1.0.0.zip
-                                           from the committed state (git archive) and prints the gh commands
-                                           that publish both releases. Nothing is pushed or published here.
+  python tools/release.py package 1.0.0    writes dist/Lekmod Scion 1.0.0.zip from the committed state (git archive,
+                                           with Lekmap Scion in its Maps folder) and prints the gh command that
+                                           publishes it. Nothing is pushed or published here.
 
-Options: --map DIR (map repo, default: the game's Assets/Maps/lekmap-main), --date YYYY-MM-DD (default: today).
+Options: --date YYYY-MM-DD (default: today).
 """
 import argparse, datetime, json, os, re, subprocess, sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_MAP = r"C:\Program Files (x86)\Steam\steamapps\common\Sid Meier's Civilization V\Assets\Maps\lekmap-main"
 CHANGELOG = os.path.join(REPO, "changelog.txt")
 VERSIONS_JSON = os.path.join(REPO, "LekmodInstaller", "github_setup", "scion_versions.json")
 # Copies downloaded while the mod was called Rosebranch (2026-10-18) check this file; keep it equal to VERSIONS_JSON.
 LEGACY_VERSIONS_JSON = os.path.join(REPO, "LekmodInstaller", "github_setup", "rosebranch_versions.json")
 VERSION_LUA = os.path.join(REPO, "LEKMOD", "Lua", "Utilities", "Lekmod_version.lua")
 TEXTS = os.path.join(REPO, "LEKMOD", "Override", "CIV5Units_Mongol.xml")
-MAP_LEAF = "LekmapScion_FractalPangaea.lua"
-# Developer files in the map repo that players don't need.
-MAP_EXCLUDE = ["CLAUDE_HANDOFF.md", "Changelog_v*", "LEKMAP-*.txt", "SCRATCHPAD-*", "scripts", ".DS_Store"]
+# Lekmap Scion: the scripts players get (the DLL copies them into Assets/Maps/Lekmap Scion) and the map changelog.
+MAP_LEAF = os.path.join(REPO, "LEKMOD", "Maps", "LekmapScion_FractalPangaea.lua")
+MAP_CHANGELOG = os.path.join(REPO, "map", "CHANGELOG.txt")
 # Files that are always modified locally (ui_check.bat sets a flag in it, see CLAUDE.md).
 ALLOWED_DIRTY = {"LEKMOD/Lua/UI/FrontEnd.lua"}
 
@@ -48,7 +47,7 @@ def write_like(path, text):
         f.write(data.encode("utf-8"))
 
 
-def check(version, map_dir):
+def check(version):
     problems = []
     lua = read(VERSION_LUA)
     m = re.search(r'LOCAL_VERSION\s*=\s*"v?([0-9.]+)"', lua)
@@ -71,16 +70,13 @@ def check(version, map_dir):
     dirty = [l[3:] for l in git(["status", "--porcelain"]).splitlines() if l[3:] not in ALLOWED_DIRTY]
     if dirty:
         problems.append("mod repo has uncommitted changes: %s" % ", ".join(dirty[:8]))
-    if not os.path.isdir(map_dir):
-        problems.append("map repo not found: %s" % map_dir)
-    else:
-        leaf = read(os.path.join(map_dir, MAP_LEAF))
-        if re.search(r"^_lek_mapgen_logs\s*=\s*true", leaf, re.M):
-            problems.append("map: _lek_mapgen_logs = true in %s (switch logs off for a release)" % MAP_LEAF)
-        if version not in read(os.path.join(map_dir, "VERSION")):
-            problems.append("map VERSION is not %s" % version)
-        if git(["status", "--porcelain"], cwd=map_dir).strip():
-            problems.append("map repo has uncommitted changes")
+    leaf = read(MAP_LEAF)
+    if re.search(r"^_lek_mapgen_logs\s*=\s*true", leaf, re.M):
+        problems.append("map: _lek_mapgen_logs = true in %s (switch logs off for a release)" % os.path.basename(MAP_LEAF))
+    if ("Lekmap Scion %s[" % version) not in leaf:
+        problems.append("map lobby name in %s is not Lekmap Scion %s" % (os.path.basename(MAP_LEAF), version))
+    if not read(MAP_CHANGELOG).startswith("# Lekmap Scion %s " % version):
+        problems.append("map/CHANGELOG.txt heading is not Lekmap Scion %s" % version)
     return problems
 
 
@@ -103,27 +99,18 @@ def prepare(version, date):
     print("changelog.txt and scion_versions.json updated; review with git diff, then commit.")
 
 
-def package(version, map_dir):
+def package(version):
     dist = os.path.join(REPO, "dist")
     os.makedirs(dist, exist_ok=True)
     mod_name = "Lekmod Scion %s" % version
-    map_name = "Lekmap Scion %s" % version
     mod_zip = os.path.join(dist, mod_name + ".zip")
-    map_zip = os.path.join(dist, map_name + ".zip")
     subprocess.run(["git", "archive", "--format=zip", "--prefix=%s/" % mod_name, "-o", mod_zip, "HEAD:LEKMOD"],
                    cwd=REPO, check=True)
-    excludes = [":(exclude)%s" % p for p in MAP_EXCLUDE]
-    subprocess.run(["git", "archive", "--format=zip", "--prefix=%s/" % map_name, "-o", map_zip, "HEAD", "--", "."]
-                   + excludes, cwd=map_dir, check=True)
-    for z in (mod_zip, map_zip):
-        print("%s  %.1f MB" % (z, os.path.getsize(z) / 1e6))
+    print("%s  %.1f MB" % (mod_zip, os.path.getsize(mod_zip) / 1e6))
     mod_sha = git(["rev-parse", "HEAD"]).strip()
-    map_sha = git(["rev-parse", "HEAD"], cwd=map_dir).strip()
-    print("\nTo publish (check the zips first; both commits must be pushed; this makes them public):")
+    print("\nTo publish (check the zip first; the commit must be pushed; this makes it public):")
     print('  gh release create v%s "%s" -R brunotho/Lekmod-Scion --target %s --title "%s" --notes "See the website changelog."'
           % (version, mod_zip, mod_sha, mod_name))
-    print('  gh release create v%s "%s" -R brunotho/lekmap-scion --target %s --title "%s" --notes "See CHANGELOG.txt."'
-          % (version, map_zip, map_sha, map_name))
     print("The Website workflow then rebuilds the site with this release.")
 
 
@@ -131,7 +118,6 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("step", choices=["check", "prepare", "package"])
     ap.add_argument("version", help="e.g. 1.0.0")
-    ap.add_argument("--map", default=DEFAULT_MAP)
     ap.add_argument("--date", default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if not re.fullmatch(r"\d+\.\d+\.\d+", a.version):
@@ -139,7 +125,7 @@ def main():
     if a.step == "prepare":
         prepare(a.version, a.date)
         return
-    problems = check(a.version, a.map)
+    problems = check(a.version)
     for p in problems:
         print("- " + p)
     if a.step == "check":
@@ -147,7 +133,7 @@ def main():
         sys.exit(1 if problems else 0)
     if problems:
         sys.exit("fix the problems above before packaging")
-    package(a.version, a.map)
+    package(a.version)
 
 
 if __name__ == "__main__":

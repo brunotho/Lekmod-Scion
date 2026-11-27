@@ -1,0 +1,30 @@
+Lekmap v6.0.4 (since v6.0.3)
+============================
+
+Map generation speed / reliability
+----------------------------------
+- Fixed five island-placer crashes that silently failed most island passes and forced full landmass
+  redraws (often 20-50 per map, occasionally hitting the 50-redraw limit = dead-on-load game):
+  Strip (random sort comparator), Sinai (missing rotateHex60), PolarMerge (off-by-one row pick,
+  Map.Rand(0)), Barbell (nil lobe coordinate). Maps now usually pass on the first landmass attempt.
+- Fractal Pangaea islands: the island budget is the only island rule (the separate "at least 8 islands"
+  check is gone). Up to 5 tries at budget 8, then up to 5 at budget 7, before a landmass redraw.
+- Removed the landmass choke check (>=16 contiguous land per row/column). On the Small canvas it failed
+  ~97% of draws; it now only measures the landmass for centering.
+
+Fractal Pangaea
+---------------
+- Pangaea ~3.5% larger: sea level 56 (was 57) on Small; low/high 53/59. Equator Ring unchanged.
+- Inland seas: the "grow and round" pass is replaced by a 30% chance of one painted sea near the map
+  centre (radius 2-3, max 7 tiles across) with small islands inside. Incidental puddles stay as drawn.
+- Inland-sea rules: >=6 tiles from the main ocean, <=7 tiles across, and no inland-sea water within
+  3 tiles of a capital (such seas are filled after start placement). Coastal starts only count the
+  main ocean as coast.
+- Starting Locations menu removed: always Geometric Balance. (Equator Ring stays on Legacy.)
+
+Logging (testing only; off in release)
+--------------------------------------
+- One master switch per lobby leaf: _lek_mapgen_logs (false = nothing written).
+- Log files are written next to Lua.log on Windows and macOS: LekmapPipelineFlow.log,
+  LekmapLandStats.log (mainland tile counts per map), LekmapStartSpacing6P.log.
+- Removed a "Cannot find key - ResourceClass" warning that flooded Lua.log.

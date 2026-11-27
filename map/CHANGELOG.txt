@@ -1,0 +1,55 @@
+# Lekmap Scion 0.1.8 (compared with Lekmap 5.2)
+
+Test builds are numbered 0.1.x; this list always shows everything that differs from Lekmap 5.2.
+
+## Start placement
+- The distances between players are evened out: no extreme isolation, no extreme center spawns, and a nudge towards every player having two neighbours at a medium distance.
+- Every capital's second-closest neighbour is at most 15 tiles away, and at most 2 pairs of capitals sit at the minimum distance (no capital in both). If a map can't fit that, a new map is generated (up to 8 times).
+- Inland spawns have at most 4 salt-water tiles within 4 tiles.
+- Coastal spawns get a minimum amount of land close by (possibly as islands), and coastal players keep a larger minimum distance to each other than the default.
+- Coastal capitals have no water or mountains in the center-facing half of their first two rings.
+- Inland seas count for the start distance rules: capitals stay 4+ tiles from them, city-states 3+ tiles.
+- No mountain next to a capital touches salt water (such mountains become hills).
+- At least 1 city-state is close-ish to each player.
+- City-state spots are better: no tiny land protrusions when coastal, fresh water where possible, extra strategic resources for city-states in the center of the map.
+- Special City-States (Lekmod Scion) are placed first, among the players: inside the circle of the starting locations, at least 5 tiles from every capital, as equally far from their two nearest capitals as possible, and 4+ tiles from other City-States.
+
+## Map shape and islands
+- The map uses a taller aspect ratio, so the pangaea is less elongated.
+- Islands are reworked: a more balanced distribution, closer to the mainland.
+- The land bridge island type has no mountains, only flat land and hills.
+
+## Terrain
+- On about one map in five, the snow band on one side (north or south) reaches 2-5 rows further towards the middle; the other climate bands on that side get narrower in proportion. Snow can then show up on the mainland.
+- Lake Victoria always has land on all six sides.
+
+## Graphics
+- All land on a map uses the same continent art (textures); islands of 10 or more tiles no longer get a different random set than the mainland next to them.
+
+## Resources
+- Regional luxuries have a maximum distance to the capital; inland regionals try to avoid islands (not guaranteed); coastal spawns may get an inland regional.
+- Luxuries no longer spawn on flat desert. Flat desert also counts as junk for desert regions, so capitals have less extreme amounts of it.
+- Luxury variety: a city-state shares its luxury with at most 1 of its 5 nearest city-states, and random luxuries avoid spots where 2+ of the 6 nearest luxuries are the same type.
+- Salt mostly sits in small groups of 2-4, 4 to 6 tiles inland from the ocean (lakes and inland seas don't count), usually with 1-3 tiles between them. It can still appear alone as a City-State's luxury or near a capital; there are 4-6 Salt on a map.
+- Salt is never placed next to another luxury resource.
+- Now and then a Sugar sits on a marsh or Spices on a forested or jungle hill.
+- About a quarter of the Deer and Fur on tundra stand in the open, without forest (fewer on islands). Open Deer don't need a forest next to them, so wide open tundra with Deer can appear.
+- Amber under jungle always sits on plains.
+- Strategic resources are spread more evenly across the map; the guaranteed capital strategics are spread a bit more across the nearby land. Deposit sizes come from the mod.
+- Every capital gets these strategic resources around it (distance in tiles from the capital; when no fitting tile is free, a deposit may land one tile farther out):
+  - Iron: 9 within 2 tiles, plus a small deposit of 3 (on flat land) at 6-7 tiles
+  - Horses: 6 within 2 tiles, plus small deposits of 2 at 4-5 and at 6-7 tiles
+  - Coal: 18 within 3 tiles
+  - Aluminum: 24 within 3 tiles, plus one deposit at 5-7 tiles, 24 or 12 (even chance); the map's other Aluminum is reduced by the same amount
+  - Oil: 18 within 3 tiles, plus one deposit at 4-5 and one at 6-7 tiles, each 18 or 8 (even chance)
+  - Uranium: 6 or 2 (even chance) at 3-5 tiles, plus 1 at 6-8 tiles
+
+## Fixes
+- When a map had to be generated again during start placement (e.g. for the capital distance rules), the rivers and features of the discarded map stayed on the new one: rivers running along the coast with broken river graphics, Oases on hills or plains. Every new attempt now starts from a clean map.
+
+## Installation
+- Lekmap Scion comes with Lekmod Scion: there is no separate map download any more. The mod puts the map into Assets/Maps/Lekmap Scion itself; the first start after installing or updating asks for one restart so the game lists it.
+
+## Notes
+- The design and all testing were done on Small maps with 6 players; on other sizes odd things may happen.
+- Various other terrain and resource adjustments.

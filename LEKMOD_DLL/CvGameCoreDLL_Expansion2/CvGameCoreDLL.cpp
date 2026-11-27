@@ -14,6 +14,10 @@
 // must be included after all other headers
 #include "LintFree.h"
 
+#ifdef LEKMOD_BUNDLED_MAPS
+void LekmodSyncMapScripts(HMODULE hModule);	// CvDllDatabaseUtility.cpp: copies Maps\*.lua into Assets\Maps\Lekmap Scion
+#endif
+
 //------------------------------------------------------------------------------
 extern "C" ICvGameContext1* DllGetGameContext()
 {
@@ -31,6 +35,9 @@ BOOL APIENTRY DllMain(HANDLE hModule,
 		// The DLL is being loaded into the virtual address space of the current process as a result of the process starting up
 		OutputDebugString("DLL_PROCESS_ATTACH\n");
 		FDebugHelper::GetInstance().LoadSymbols((HMODULE)hModule);
+#ifdef LEKMOD_BUNDLED_MAPS
+		LekmodSyncMapScripts((HMODULE)hModule);	// CvDllDatabaseUtility.cpp
+#endif
 		// set timer precision
 #ifdef CVASSERT_ENABLE
 		MMRESULT iTimeSet = timeBeginPeriod(1);		// set timeGetTime and sleep resolution to 1 ms, otherwise it's 10-16ms

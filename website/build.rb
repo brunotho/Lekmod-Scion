@@ -3,7 +3,7 @@
 #
 #   ruby website/build.rb                       public build: released versions only
 #   ruby website/build.rb --preview             also shows the UNRELEASED block (local preview)
-#   ruby website/build.rb --map PATH/CHANGELOG.txt   map changelog file (default: ../lekmap/CHANGELOG.txt)
+#   ruby website/build.rb --map PATH/CHANGELOG.txt   map changelog file (default: map/CHANGELOG.txt)
 #   ruby website/build.rb --out DIR             output folder (default: website/_site)
 #
 # Preview locally: python -m http.server -d website/_site 8000, then open http://localhost:8000
@@ -22,7 +22,7 @@ require_relative "lib/game_refs"
 ROOT = File.expand_path("..", __dir__)
 SITE = File.expand_path(__dir__)
 
-options = { preview: false, out: File.join(SITE, "_site"), map: File.join(ROOT, "..", "lekmap", "CHANGELOG.txt") }
+options = { preview: false, out: File.join(SITE, "_site"), map: File.join(ROOT, "map", "CHANGELOG.txt") }
 OptionParser.new do |o|
   o.on("--preview") { options[:preview] = true }
   o.on("--out DIR") { |v| options[:out] = File.expand_path(v) }
@@ -31,7 +31,6 @@ end.parse!
 
 module Helpers
   MOD_RELEASES = "https://github.com/brunotho/Lekmod-Scion/releases/latest".freeze
-  MAP_RELEASES = "https://github.com/brunotho/lekmap-scion/releases/latest".freeze
   PAGES = [
     ["index.html", "Mod changelog"],
     ["map.html", "Map changelog"],

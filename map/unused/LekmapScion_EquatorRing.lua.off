@@ -1,0 +1,63 @@
+------------------------------------------------------------------------------
+-- Lekmap_EquatorRing.lua — lobby leaf: X-wrapping equatorial land ring
+------------------------------------------------------------------------------
+-- LOG MASTER SWITCH: false for release (nothing is written), true while testing.
+-- Flow log + all channels below follow it; channels only pick topics when it is true.
+_lek_mapgen_logs = false;
+_lek_pipeline_flow_log = _lek_mapgen_logs;
+-- Use 3 when testing islands on Small (LekIslandProbe budget lines need it).
+_lek_mapgen_log_verbosity = 1;
+_lek_mapgen_log_channels = {
+	islands = false,
+	islands_tiles = false,
+	-- ### LekIslandMap: island type per tile, per map -> Logs/LekmapIslandMap.log.
+	islandmap = true,
+	strategics = false,
+	starts = false,
+	mapgen = false,
+	pangaea = false,
+	bench = false,
+	-- ### LekLandStats (+ LekInlandSea* on Fractal Pangaea) -> Logs/LekmapLandStats.log (+ flow log).
+	landstats = true,
+	other = false,
+};
+
+include("Lekmap_PipelineFlowLog");
+_lek_pangaea_land_shape = "equator_ring";
+LekPipelineFlowReset("leaf_EquatorRing");
+LekPipelineFlow("leaf_after_shape_set");
+
+LekPipelineFlow("leaf_before_pipeline_include");
+include("Lekmap_PangaeaPipeline");
+LekPipelineFlow("leaf_after_pipeline_include");
+
+-- Ring forces Legacy starts until a ring-native placer exists — hide Starting Locations.
+-- UI slot 1 = Coastal Spawns only (legacy index 17).
+_lek_map_visible_ui_order = { 17 };
+_lek_map_visible_option_defaults = { [17] = 1 };
+
+function GetMapScriptInfo()
+	LekPipelineFlow("GetMapScriptInfo_call");
+	local world_age, temperature, rainfall, sea_level, resources = GetCoreMapOptions()
+	return {
+		Name = "[COLOR_PLAYER_PURPLE_TEXT]Lekmap Scion 1.0.0 -- Equator Ring[ENDCOLOR]",
+		Description = "Lekmap pangaea — land belt wrapping the equator with open polar oceans.",
+		IsAdvancedMap = false,
+		IconIndex = 0,
+		SortIndex = 3,
+		SupportsMultiplayer = true,
+		CustomOptions = {
+			{
+				Name = "[COLOR_PLAYER_PURPLE_TEXT]Coastal Spawns[ENDCOLOR]",
+				Values = {
+					"[COLOR_PLAYER_PURPLE_TEXT][ICON_CAPITAL]Coastal Civs Only[ENDCOLOR]",
+					"[COLOR_PLAYER_PURPLE_TEXT]Force 2 Coastals[ENDCOLOR]",
+					"[COLOR_PLAYER_PURPLE_TEXT]All Inland[ENDCOLOR]",
+					"[COLOR_PLAYER_PURPLE_TEXT]Pure Random[ENDCOLOR]",
+				},
+				DefaultValue = 1,
+				SortPriority = -98,
+			},
+		},
+	};
+end

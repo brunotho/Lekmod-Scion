@@ -1,0 +1,46 @@
+LEKmap — strategic horse/iron tuning spec (alignment doc)
+==========================================================
+Status: requirements capture only — no implementation commitment in this file.
+Scope: Pangaea / global-six play with resource_setting == 5 (current default path).
+
+
+1) Baseline we keep (unchanged intent)
+--------------------------------------
+- Per-player strategic balance ring stays as today: **six majors of horse** and **six majors of iron** from `AddStrategicBalanceResources` / `strat_balance_region=1..6` (your “6×2”: **6 horse + 6 iron** big nodes tied to starts).
+- This document calls that block the **balance majors** (12 major nodes total, 6+6).
+
+
+2) Additional major nodes (beyond balance)
+--------------------------------------------
+- **Goal:** beyond the 6+6 balance majors, **roughly 0–4 additional major horse nodes** and **roughly 0–4 additional major iron nodes** per map (separate caps per resource), understood as a **soft target** (~90% of maps in band).
+- **Explicit per-type caps:** **0–4 extra horse majors** and **0–4 extra iron majors** — two **independent** ceilings (not a combined 0–8 budget you may trade between types).
+- **Implementation:** **hard clamp is acceptable** and preferred if it is simpler or smoother than only tuning frequencies/weights.
+- “Additional” = everything counted as major in audit **except** passes labeled `strat_balance_region=*` (or equivalently: majors from `ProcessResourceList` / other passes, not the start-ring balance).
+
+
+3) Global density (horse + iron, all node sizes)
+------------------------------------------------
+- **Goal:** reduce **total** horse+iron **node count** (majors + small combined) by about **15%** vs current baseline (measured on the same map script / settings after any balance change).
+- After that global reduction, **small nodes should represent a slightly larger share** of remaining horse+iron than today — i.e. **cut majors more aggressively than small** so the mix shifts toward small, not toward “everything smaller.”
+
+
+4) Small iron and terrain (hard product rule)
+---------------------------------------------
+- **Final rule:** **no small iron on hills.** Small iron should remain **flat-only** (or more generally: only plot types / terrains you explicitly allow — default intent here is **no hills**).
+- Terrain forcing (e.g. flattening) is **not** a goal for its own sake; it was only floated as an **optional implementation lever** if it helped hit counts. **If** any forcing is used during search, the **deliverable map must still satisfy “no small iron on hills.”**
+- If the current pipeline already finds small iron only on flats, **keep that behavior**; do not add hill small iron to hit density targets.
+
+
+5) Legacy / logging (out of scope for tuning but noted)
+-------------------------------------------------------
+- Legacy start placement (`legacy_after_tuple_fail`, e.g. `force_geometry_no_pack`) does **not** imply a different strategic resource recipe — same `PlaceStrategicAndBonusResources` path. Tuning above applies regardless of tuple vs legacy starts.
+
+
+6) Success criteria (for a later implementation PR)
+----------------------------------------------------
+- [ ] Balance majors: still **6 horse majors + 6 iron majors** from the existing balance pass (same player/region logic).
+- [ ] Extra majors: **per-type** extra majors (non–`strat_balance_region`) within **0–4** for **~90%** of rolled maps; **hard clamp** per map acceptable.
+- [ ] Total horse+iron nodes: **~15%** lower than baseline aggregate from `LEK_STRAT_TOTAL` (or agreed benchmark batch).
+- [ ] Mix: small share of horse+iron **not lower** than baseline after that cut (target: **slightly higher** share for small).
+- [ ] **Zero** small iron on hills in final maps (audit or spot-check).
+- [ ] Logs: `LEK_STRAT_TOTAL` / `LEK_STRAT_PHASE` remain usable for regression batches.

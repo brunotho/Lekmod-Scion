@@ -1,6 +1,6 @@
 <main class="content narrow prose">
   <h1>Installation</h1>
-  <p class="lead">Lekmod Scion changes Civilization V. You install two things: the <strong>mod</strong> (the game changes) and the <strong>map</strong> (the map type the mod is made for). It takes about five minutes.</p>
+  <p class="lead">Lekmod Scion changes Civilization V. You install one folder: the <strong>mod</strong>. The map it is made for, <strong>Lekmap Scion</strong>, comes with it. It takes about five minutes.</p>
 
   <h2>What you need</h2>
   <ul>
@@ -26,21 +26,18 @@
   </ol>
   <p>If Windows warns that it "protected your PC" when you start <code>ui_check.bat</code>: click <strong>More info</strong>, then <strong>Run anyway</strong>. It only changes files inside the mod's own folder.</p>
 
-  <h2>Step 3: Install the map</h2>
-  <ol>
-    <li><a href="<%= MAP_RELEASES %>" data-latest-asset="brunotho/lekmap-scion">Click here to download the map</a> (again a <strong>.zip</strong> file).</li>
-    <li>In the game window from step 1, open <strong>Assets</strong>, then <strong>Maps</strong>. If there is an older folder named <strong>Lekmap Scion</strong>, delete it.</li>
-    <li>Right-click the downloaded map file, choose <strong>Extract All…</strong>, pick the <strong>Maps</strong> folder as the place to extract to, and click <strong>Extract</strong>.</li>
-  </ol>
+  <h2>Step 3: Remove an old map download</h2>
+  <p>Until version 0.1.8 the map was a separate download. If you installed it: in the game window from step 1, open <strong>Assets</strong>, then <strong>Maps</strong>, and delete every folder whose name starts with <strong>Lekmap Scion</strong> followed by a version number (for example <strong>Lekmap Scion 0.1.8</strong>). The mod puts its own copy of the map into a folder named just <strong>Lekmap Scion</strong>; leave that one.</p>
 
   <h2>Step 4: Play</h2>
   <ol>
     <li>Start Civilization V. The main menu shows <strong>LEKMOD SCION</strong> and the version. If it does, the mod works.</li>
+    <li>The first time, and after every update, a message asks you to <strong>restart the game once</strong>: the mod has just put its map in place, and the game only lists new maps when it starts. Close Civilization V and start it again.</li>
     <li>For a game with friends: <strong>Multiplayer</strong> &rarr; <strong>New Game</strong>. The map is picked for you.</li>
   </ol>
 
   <h2>Updating to a new version</h2>
-  <p>Everyone in a multiplayer game needs exactly the same version. To update, do steps 2 and 3 again: delete the old folders first, then extract the new files and double-click <code>ui_check.bat</code> again. Games saved with an older version usually can't be loaded in a newer one.</p>
+  <p>Everyone in a multiplayer game needs exactly the same version. To update, do step 2 again: delete the old mod folder first, then extract the new one and double-click <code>ui_check.bat</code> again. The map updates with the mod (restart the game once when it asks). Games saved with an older version usually can't be loaded in a newer one.</p>
 
   <h2>If something goes wrong</h2>
   <p><strong>The main menu doesn't say LEKMOD SCION.</strong> The mod folder is in the wrong place. It must be directly inside <strong>Assets &rarr; DLC</strong>, for example <code>Assets\DLC\Lekmod Scion 0.1.8</code>. If extracting created a folder inside a folder, move the inner one up.</p>

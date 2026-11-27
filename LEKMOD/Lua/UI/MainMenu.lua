@@ -163,11 +163,28 @@ end
 UpdateLekmodVersionLabel();
 
 
+-- LEKMOD (2026-11-27): Lekmap Scion ships in the mod's Maps folder. The DLL copies it into Assets\Maps\Lekmap Scion
+-- when it loads (LEKMOD_BUNDLED_MAPS), after the game has already listed the map scripts, so a copy that changed
+-- files (first install, update) only shows in the lobby after a restart. Asked once per main menu load.
+local g_LekmodMapsNoticeShown = false;
+function LekmodShowMapsNotice()
+	if g_LekmodMapsNoticeShown then
+		return;
+	end
+	g_LekmodMapsNoticeShown = true;
+	local row = GameInfo.Defines{ Name = "LEKMOD_MAPS_CHANGED" }();
+	if row ~= nil and tonumber(row.Value) ~= nil and tonumber(row.Value) > 0 then
+		print("Lekmap Scion: " .. row.Value .. " map files copied or removed; asking for a restart");
+		Events.FrontEndPopup.CallImmediate( "TXT_KEY_LEKMOD_MAPS_UPDATED" );
+	end
+end
+
 function ShowHideHandler( bIsHide, bIsInit )
     if( not bIsHide ) then
         Controls.Civ5Logo:SetTexture( "CivilzationV_Logo.dds" );
 
         UpdateLekmodVersionLabel();
+        LekmodShowMapsNotice();
 
         if (not ContextPtr:IsHotLoad()) then
 			-- This is a catch all to ensure that mods are not activated at this point in the UI.

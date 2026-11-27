@@ -148842,6 +148842,9 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Can't be used in the last {1_Num} seconds of a turn outside your territory, or in the last {2_Num} seconds inside it.</Text>
 		</Row>
 		<!-- LEKMOD: New Specs 16 (2026-11-27): unit tooltips -->
+		<Row Tag="TXT_KEY_LEKMOD_MAPS_UPDATED">
+			<Text>Lekmap Scion was installed or updated.[NEWLINE][NEWLINE]Restart Civilization V once so the game lists the current map.[NEWLINE][NEWLINE]If you still have an old Lekmap Scion folder in Assets\Maps (from a separate map download), delete it.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BUFFALO_HUNTER_HELP">
 			<Text>Replaces the Composite Bowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Can build the Tipi.</Text>
 		</Row>

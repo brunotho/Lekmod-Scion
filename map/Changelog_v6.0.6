@@ -1,0 +1,24 @@
+Lekmap v6.0.6 (since v6.0.5)
+============================
+
+Start placement (Fractal Pangaea)
+---------------------------------
+- Inland seas now count for the start distance rules: majors stay 4+ tiles from inland-sea water and
+  city states are never 1-2 tiles from it. Inland seas still do not make a start coastal.
+- Coastal capitals no longer have water or mountains in the center-facing half of their first two rings:
+  those tiles become flat land or hills matching the neighbours. Coastal start spots whose only ocean
+  contact faces the center are rejected.
+
+Islands
+-------
+- Sea stacks (splintered cliffs tiny) are less regular: most rows push 1-2 stacks one tile further out;
+  the first stack stays one water tile off the coast.
+
+Resources (both maps)
+---------------------
+- No resources on natural wonder tiles; wonders skip tiles that already hold a resource.
+- Luxury diversity: a city state shares its luxury type with at most 1 of its 5 nearest city states.
+  A random luxury is not placed where 2+ of the 6 nearest luxuries are the same type (another type is
+  swapped in, or the tile is skipped). Regional and start luxuries are unchanged.
+- Amber only comes in clusters: when amber is a random luxury, 1-3 locations near salt water get 1-3
+  ambers each, usually under forest or jungle. Amber is never a regional, city state or start luxury.

@@ -44,6 +44,186 @@
 size_t MinValue(size_t a, size_t b);
 #endif
 
+#ifdef LEKMOD_BUNDLED_MAPS
+//------------------------------------------------------------------------------
+// Lekmap Scion: copy this DLC folder's Maps\*.lua into Assets\Maps\Lekmap Scion\ (see LEKMOD_BUNDLED_MAPS).
+// Two folders up from the DLL (Assets\DLC\<package>); nothing happens if the DLL isn't in an Assets\DLC folder.
+//------------------------------------------------------------------------------
+namespace
+{
+std::string s_strLekmodMapSync;		// what LekmodSyncMapScripts did, for xml.log
+int s_iLekmodMapsChanged = 0;		// files copied or removed by the last sync
+
+std::wstring LekmodLower(const std::wstring& sz)
+{
+	std::wstring szOut(sz);
+	for(size_t i = 0; i < szOut.size(); ++i)
+		szOut[i] = (wchar_t)towlower(szOut[i]);
+	return szOut;
+}
+
+// Last path component of szPath, lowercased; szParent gets the rest.
+std::wstring LekmodSplitLast(const std::wstring& szPath, std::wstring& szParent)
+{
+	const size_t iSep = szPath.find_last_of(L"\\/");
+	if(iSep == std::wstring::npos)
+	{
+		szParent.clear();
+		return LekmodLower(szPath);
+	}
+	szParent = szPath.substr(0, iSep);
+	return LekmodLower(szPath.substr(iSep + 1));
+}
+
+std::string LekmodToUtf8(const std::wstring& sz)
+{
+	if(sz.empty())
+		return std::string();
+	const int iLen = WideCharToMultiByte(CP_UTF8, 0, sz.c_str(), (int)sz.size(), NULL, 0, NULL, NULL);
+	std::string strOut(iLen > 0 ? iLen : 0, '\0');
+	if(iLen > 0)
+		WideCharToMultiByte(CP_UTF8, 0, sz.c_str(), (int)sz.size(), &strOut[0], iLen, NULL, NULL);
+	return strOut;
+}
+
+// Names of the .lua files directly in szDir (which ends in a separator).
+void LekmodListLuaFiles(const std::wstring& szDir, std::vector<std::wstring>& aNames)
+{
+	WIN32_FIND_DATAW kFind;
+	HANDLE hFind = FindFirstFileW((szDir + L"*.lua").c_str(), &kFind);
+	if(hFind == INVALID_HANDLE_VALUE)
+		return;
+	do
+	{
+		if(kFind.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+			continue;
+		const std::wstring szName(kFind.cFileName);
+		// "*.lua" also matches longer extensions through 8.3 short names
+		if(szName.size() < 4 || LekmodLower(szName.substr(szName.size() - 4)) != L".lua")
+			continue;
+		aNames.push_back(szName);
+	}
+	while(FindNextFileW(hFind, &kFind));
+	FindClose(hFind);
+}
+
+bool LekmodReadFile(const std::wstring& szPath, std::vector<unsigned char>& aBytes)
+{
+	aBytes.clear();
+	HANDLE hFile = CreateFileW(szPath.c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+	                           NULL, OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+	if(hFile == INVALID_HANDLE_VALUE)
+		return false;
+	std::vector<unsigned char> aBuffer(1 << 16);
+	DWORD uiRead = 0;
+	bool bOk = true;
+	for(;;)
+	{
+		if(!ReadFile(hFile, &aBuffer[0], (DWORD)aBuffer.size(), &uiRead, NULL))
+		{
+			bOk = false;
+			break;
+		}
+		if(uiRead == 0)
+			break;
+		aBytes.insert(aBytes.end(), aBuffer.begin(), aBuffer.begin() + uiRead);
+	}
+	CloseHandle(hFile);
+	return bOk;
+}
+
+void LekmodNoteMapSyncError(std::string& strFirstError, const char* szWhat, const std::wstring& szName)
+{
+	if(!strFirstError.empty())
+		return;
+	char szCode[32];
+	sprintf_s(szCode, " (error %lu)", GetLastError());
+	strFirstError = std::string(szWhat) + " " + LekmodToUtf8(szName) + szCode;
+}
+}
+
+void LekmodSyncMapScripts(HMODULE hModule)
+{
+	s_strLekmodMapSync.clear();
+	s_iLekmodMapsChanged = 0;
+
+	wchar_t szModule[MAX_PATH * 4];
+	const DWORD uiLen = GetModuleFileNameW(hModule, szModule, sizeof(szModule) / sizeof(szModule[0]));
+	if(uiLen == 0 || uiLen >= sizeof(szModule) / sizeof(szModule[0]))
+	{
+		s_strLekmodMapSync = "skipped: the DLL's own path is unavailable";
+		return;
+	}
+	// ...\Assets\DLC\<package>\CvGameCore_Expansion2.dll
+	std::wstring szPackage, szDlc, szAssets, szAbove;
+	LekmodSplitLast(std::wstring(szModule, uiLen), szPackage);
+	LekmodSplitLast(szPackage, szDlc);
+	const std::wstring szDlcName = LekmodSplitLast(szDlc, szAssets);
+	const std::wstring szAssetsName = LekmodSplitLast(szAssets, szAbove);
+	if(szDlcName != L"dlc" || szAssetsName != L"assets")
+	{
+		s_strLekmodMapSync = "skipped: the DLL is not in an Assets\\DLC folder";
+		return;
+	}
+
+	const std::wstring szSource = szPackage + L"\\Maps\\";
+	const std::wstring szTarget = szAssets + L"\\Maps\\Lekmap Scion\\";
+	std::vector<std::wstring> aSource;
+	LekmodListLuaFiles(szSource, aSource);
+	if(aSource.empty())
+	{
+		s_strLekmodMapSync = "skipped: no map scripts in the mod's Maps folder";
+		return;
+	}
+
+	int iCopied = 0, iSame = 0, iRemoved = 0;
+	std::string strFirstError;
+	if(!CreateDirectoryW(szTarget.c_str(), NULL) && GetLastError() != ERROR_ALREADY_EXISTS)
+	{
+		LekmodNoteMapSyncError(strFirstError, "creating", szTarget);
+	}
+	else
+	{
+		std::vector<std::wstring> aSourceLower;
+		std::vector<unsigned char> aFrom, aTo;
+		for(size_t i = 0; i < aSource.size(); ++i)
+		{
+			aSourceLower.push_back(LekmodLower(aSource[i]));
+			const std::wstring szFrom = szSource + aSource[i];
+			const std::wstring szTo = szTarget + aSource[i];
+			if(LekmodReadFile(szFrom, aFrom) && LekmodReadFile(szTo, aTo) && aFrom == aTo)
+			{
+				++iSame;
+				continue;
+			}
+			if(CopyFileW(szFrom.c_str(), szTo.c_str(), FALSE))
+				++iCopied;
+			else
+				LekmodNoteMapSyncError(strFirstError, "copying", aSource[i]);
+		}
+
+		std::vector<std::wstring> aTarget;
+		LekmodListLuaFiles(szTarget, aTarget);
+		for(size_t i = 0; i < aTarget.size(); ++i)
+		{
+			if(std::find(aSourceLower.begin(), aSourceLower.end(), LekmodLower(aTarget[i])) != aSourceLower.end())
+				continue;
+			if(DeleteFileW((szTarget + aTarget[i]).c_str()))
+				++iRemoved;
+			else
+				LekmodNoteMapSyncError(strFirstError, "deleting", aTarget[i]);
+		}
+	}
+
+	s_iLekmodMapsChanged = iCopied + iRemoved;
+	char szSummary[256];
+	sprintf_s(szSummary, "%d copied, %d unchanged, %d removed", iCopied, iSame, iRemoved);
+	s_strLekmodMapSync = LekmodToUtf8(szTarget) + ": " + szSummary;
+	if(!strFirstError.empty())
+		s_strLekmodMapSync += "; FAILED " + strFirstError;
+}
+#endif
+
 //Just a quick utility function to save from writing lots of verbose code.
 void InsertGameDefine(Database::Results& kInsertDefine, const char* szValue, int iValue)
 {
@@ -278,7 +458,14 @@ bool CvDllDatabaseUtility::PerformDatabasePostProcessing()
 		InsertGameDefine(kInsertDefine, "CITY_HOME_PLOT", CITY_HOME_PLOT);
 		InsertGameDefine(kInsertDefine, "CITY_PLOTS_RADIUS", CITY_PLOTS_RADIUS);
 		InsertGameDefine(kInsertDefine, "CITY_PLOTS_DIAMETER", CITY_PLOTS_DIAMETER);
+#ifdef LEKMOD_BUNDLED_MAPS
+		InsertGameDefine(kInsertDefine, "LEKMOD_MAPS_CHANGED", s_iLekmodMapsChanged);
+#endif
 	}
+#ifdef LEKMOD_BUNDLED_MAPS
+	if(!s_strLekmodMapSync.empty())
+		LogMsg("Lekmap Scion maps: %s", s_strLekmodMapSync.c_str());
+#endif
 
 	db->EndTransaction();
 

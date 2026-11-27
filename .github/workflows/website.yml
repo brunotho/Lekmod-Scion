@@ -30,15 +30,7 @@ jobs:
             changelog.txt
             LEKMOD/Override/CIV5Units.xml
             LEKMOD/Override/CIV5Units_Mongol.xml
-          sparse-checkout-cone-mode: false
-
-      - name: Checkout map (for its changelog)
-        uses: actions/checkout@v4
-        with:
-          repository: brunotho/lekmap-scion
-          ref: main
-          path: lekmap
-          sparse-checkout: CHANGELOG.txt
+            map/CHANGELOG.txt
           sparse-checkout-cone-mode: false
 
       - name: Set up Ruby
@@ -50,7 +42,7 @@ jobs:
         run: ruby website/test/changelog_test.rb
 
       - name: Build
-        run: ruby website/build.rb --map lekmap/CHANGELOG.txt
+        run: ruby website/build.rb --map map/CHANGELOG.txt
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3

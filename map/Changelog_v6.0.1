@@ -1,0 +1,39 @@
+Lekmap v6.0.1 (since v6.0)
+==========================
+
+Version bump from v6.0. Player-facing map name is v6.0.1; script file is stable LekmapPangaeaFractal.lua.
+
+Notable in v6.0.1
+-----------------
+- Mountain post-process: break connected clumps >4 to hills; demote mountains that form hard barriers with inland water/lakes (keep 1 peak).
+- Coastal starts: cap mountains to <=1 in r1 and <=4 within r4 (excess -> hills).
+- Inland seas: thicken paint 70%; island spray chance 85%.
+- Slightly fewer base mountains (extra_mountains 4).
+- Natural wonders: no longer ban strategic/luxury/bonus resources in r1.
+- Barringer geothermal: more ocean splash in outer rings.
+- Strat audit: coal/alum + CS-center labels; island placement coords in logs.
+
+Carried from Changelog_v6.0
+---------------------------
+Version bump from the v5.2/v5.3 line. Player-facing map name and script file were v6.0.
+
+Notable since late v5.3
+-----------------------
+- RS5 strategic oil/uranium start bands; Force-2 coastal random picks; post-BA coastal reseed.
+- Sea regional lux shortfall repair: shuffle within hard max dist 7; soft spacing then fill (count over clump-avoidance).
+- Inland seas: enforce >=5 land tiles between inland sea and main ocean (thicken gate + land-fill repair).
+
+Carried from Changelog_v5.3
+---------------------------
+Fractal / pipeline (LekmapPangaeaFractal.lua)
+- plotTypes writes use 1-based indices (y*iW+x+1) wherever they must match 4_HBMapGenerator.SetPlotTypes.
+- Inland sea spray: after rounding, eligible tiles are rebuilt from the full connected component, not only the last rounding pass.
+
+Islands (3_PangaeaIslands.lua + XX_island_*.lua)
+- Added and extended several island type modules; each paints into the shared plotTypes table before SetPlotTypes (terrain pass still runs after).
+- Rough flow: build a draft queue of rare + uncommon types (random how many per tier) using per-type odds and a running estimated budget under one total cap; run a short shoreline micro-pass (counts toward budget); place each drafted type with capped retries; then repeatedly draft common types and place until real spend reaches the budget. tryOneSpot picks ocean seeds and checks ring distance to land (pullBack + effMin/effMax), then calls that type’s TryPlace* handler.
+- Island scripts use the same 1-based plotTypes indexing as the fractal pipeline.
+
+Starts / NW (4a_HBAssignStartingPlots.lua)
+- Natural wonders that belong on island-spawn plots use one shared wiring path (reserve where applicable, eligibility, candidates, forced plot–type pairs).
+- Coastal capitals: optional small near-shore bonus island; rolls back if the start would stop being coastal.

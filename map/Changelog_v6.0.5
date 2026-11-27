@@ -1,0 +1,53 @@
+Lekmap v6.0.5 (since v6.0.4)
+============================
+
+Landmass
+--------
+- Landmass choke check restored (removing it produced pinched pangaeas); it is fast again now that the
+  island crashes are fixed. Water 56 kept.
+- Bays must open broadly to the sea: bay tiles more than 3 steps (through the bay) from its sea mouth are
+  refilled. Removes long canals behind thin peninsulas; wide shallow bays are unchanged.
+- Straight horizontal mountain ridges (3+ tiles in one row, nothing above/below) are bent: an end moves one
+  step diagonally (both ends on 4+ runs), or becomes hills if it cannot move.
+- Medium mountain ridges pass (3-5 ridges of 3-4, sometimes one 5-6 clump).
+- Polar rows: 2 rows forced snow with a tundra buffer next to the snow.
+
+Islands (both maps unless noted)
+--------------------------------
+- Every island keeps exactly one water tile to the mainland (fragile multi-piece types - splintered
+  cliffs, shattered ring, volcanic ring - may sit one tile further out). Islands keep 2 water tiles from
+  each other; only polar merge and the wrap land bridge may touch the mainland (and they also keep the
+  island spacing).
+- Coastal bonus islands next to capitals: start exactly one water tile off the coast and can no longer
+  grow into the mainland.
+- New types: drowned ridge (replaces ridge peak: a coastal mainland mountain continued out to sea as
+  shrinking islets 3-2-1), hotspot trail, atoll ring (planned whole, nearest islet one tile off the coast).
+- Snake rebuilt: one tile thin, follows the coast one water tile out, split in two by a 1-2 tile cut.
+- Sea stacks (splintered cliffs tiny): one row of single mountains one water tile off the coast; 10% get
+  one wider gap; two rows on a map never use the same number of stacks.
+- Mountain wall is a normal island now; Sinai island 2 tiles smaller (wonder centre, extra peaks >= 2
+  away); crescent disabled; cluster of tiny has no mountains; shore specks (tiny islands and strips one
+  water tile off the mainland).
+- Islands get 80% vegetation (jungle in the tropics, forest elsewhere).
+- Fixed 0-based plot indexing in 15 island files.
+
+Central volcano (Fractal Pangaea, 5% of maps)
+---------------------------------------------
+- A jungle island stamped into the middle of the pangaea inside a small sea. 20%: Krakatoa or Sri Pada on
+  the peak; 80%: a jungle hill/flat tile. Capitals stay >= 5 tiles from the peak.
+- No second JunglePeak island on that map; a geothermal island rolls Barringer Crater if the volcano holds
+  Krakatoa, so no natural wonder is lost.
+
+Resources
+---------
+- Sheep never sit under forest or jungle.
+- Sea regional luxuries: the 3 start copies stay within 3 of the capital; the other regional copies go on
+  the mainland coast 4-6 tiles out, split between both coast directions (3 -> 2 + 1), island shores only
+  as a fallback. Their spacing radius is 1, so they block fewer tiles for random luxuries.
+- Regional luxury max distance 6 (was 7).
+- Fish ring rates 3.5 / 7 / 16; tropical luxuries banned within 8 rows of the map edges.
+
+Logging (testing only; off in release)
+--------------------------------------
+- LekmapIslandMap.log (every island/bay tile with its source type), LekmapPipelineFlow.log stages,
+  LekmapLandStats.log lines for bays, flat ridges, central volcano and a per-map luxury summary.

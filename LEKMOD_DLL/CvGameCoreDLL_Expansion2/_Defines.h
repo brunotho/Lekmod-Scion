@@ -940,6 +940,12 @@
 // deal is completed (a deal it can't pay fails for both, LEKMOD_MULTIPLE_DEAL_PROPOSALS notification). Before, the
 // amount check while building the offer showed the hidden treasury. (user, 2026-11-26)
 #define LEKMOD_HIDDEN_GOLD_ASK_ANY
+// Lekmap Scion ships inside the mod (LEKMOD\Maps\*.lua). The game lists map scripts only from Assets\Maps (and
+// Documents' Maps) and Firaxis' own DLC, so DllMain copies every Maps\*.lua that is missing or differs into
+// Assets\Maps\Lekmap Scion\ and deletes .lua files there the mod no longer has (after snowve's SnowveSyncMapScripts,
+// megawac). The game scanned the map scripts before the DLL loaded, so when this changed anything the define
+// LEKMOD_MAPS_CHANGED > 0 tells the main menu to ask for one restart. xml.log: "Lekmap Scion maps: ...". (user, 2026-11-27)
+#define LEKMOD_BUNDLED_MAPS
 // Resource columns: ImprovementBuildTimeChange (extra build time for the improvement that connects the resource),
 // FoundCity* (one-time effects for a city founded on the resource, with FoundCityTech known) and
 // CityCenter* (production bonuses while a city stands on the resource)
