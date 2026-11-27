@@ -820,9 +820,7 @@
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_MALI_COMPOSITE_BOWMAN">
-			<Text>
-				Has +1 [ICON_STRENGTH] Melee Strength compared to the [ICON_UNIT_COMPOSITE_BOWMAN] [COLOR_YELLOW]Composite Bowman[ENDCOLOR] that it replaces. Arrives with [COLOR_GREEN]Skirmisher Tactics[ENDCOLOR] Promotion.
-			</Text>
+			<Text>Replaces the Composite Bowman. Slightly stronger in melee.[NEWLINE]Skirmisher Tactics: after attacking, +1 [ICON_MOVES] Movement next turn; after a kill, all [ICON_MOVES] Movement back and +1. Kept on upgrade.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_MALI_SKIRMISHER_TACTICS">
 			<Text>
@@ -1080,9 +1078,7 @@
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_BUGANDA_EXPEDITIONARY_FORCE_HELP">
-			<Text>
-				While weaker than the Expeditionary Force that it replaces, it arrives at [ICON_TECH_MILITARY_SCIENCE] [COLOR_CYAN]Military Science[ENDCOLOR] instead of [ICON_TECH_BIOLOGY] [COLOR_CYAN]Biology[ENDCOLOR] and recieves a [COLOR_GREEN]+25%[ENDCOLOR] combat bonus when on or adjacent to Coast, Ocean, Lake or River tile. Additionally, gains [COLOR_XP_BLUE]+5[ENDCOLOR] XP upon [ICON_MISSION_PILLAGE] pillaging an Improvement.
-			</Text>
+			<Text>Replaces the Expeditionary Force. Available earlier (with Military Science), but weaker.[NEWLINE]+25% [ICON_STRENGTH] Combat Strength on or next to Coast, Ocean, Lake or River tiles.[NEWLINE]+5 XP when it pillages.</Text>
 		</Row>
 		<!-- Buganda Improvement -->
 		<Row Tag="TXT_KEY_BUGANDA_LAKE">
@@ -1421,9 +1417,7 @@
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_BURMA_SETTLER_HELP"> 
-			<Text>
-				Replaces the [ICON_UNIT_SETTLER] Settler. Unique to [COLOR_POSITIVE_TEXT]Burma[ENDCOLOR]. Costs 40% less [ICON_PRODUCTION] Production, but [COLOR_WARNING_TEXT]removes a [ICON_CITIZEN] Population[ENDCOLOR] from the City wherever one is trained.[NEWLINE][NEWLINE]Requires the City to have at least 3 [ICON_CITIZEN] Population.
-			</Text>
+			<Text>Replaces the Settler. 40% cheaper, but the city loses 1 [ICON_CITIZEN] Population when it is trained.[NEWLINE]The city needs at least 3 [ICON_CITIZEN] Population.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NO_ACTION_UNIT_SIZE_LIMIT"> 
 			<Text>
@@ -1567,7 +1561,7 @@
 			<Text>Czechoslovak Legion</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_CZECHIA_FOREIGN_LEGION_HELP">			
-			<Text>Czech replacement for the Foreign Legion. In addition to the usual abilities of a Foreign Legion, the Czechoslovak Legion is stronger, does not require a specific [COLOR_POSITIVE_TEXT]Policy[ENDCOLOR] to be unlocked, and gains a 33% [ICON_STRENGTH] Combat bonus against civilizations with a different [COLOR_POSITIVE_TEXT]Ideology[ENDCOLOR]. Costs 33% less [ICON_GOLD] Gold to purchase and may move immediately after doing so.</Text>
+			<Text>Replaces the Foreign Legion. Stronger and cheaper, needs no policy and can move right after being bought.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength against civilizations with a different Ideology.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_CZECHIA_FOREIGN_LEGION_STRATEGY">			
 			<Text>The Czechoslovak Legion represents the famous fighting force that distinguished itself during World War I. Unlike the standard Foreign Legion, it doesn't require the Volunteer Army policy to be purchased, and costs 33% less [ICON_GOLD] Gold when bought. It retains the 20% [ICON_STRENGTH] Combat bonus when fighting outside friendly territory and gains an additional 33% bonus when fighting civilizations with different ideologies, making it particularly powerful in ideological conflicts during the late game.</Text>
@@ -1740,7 +1734,7 @@
 			<Text>The Zafarbaksh, meaning "victory bestower" in Persian, was an advanced artillery piece developed during the Mughal Empire's military prime. Mughal artillery benefited from a combination of Ottoman, Persian, and indigenous Indian engineering traditions, creating weapons that were both mobile and powerful. While European cannons of the period were often unwieldy in the varied terrain of the subcontinent, Mughal engineers modified their designs with lighter materials and improved carriage systems. Under Emperor Akbar's military reforms, these cannons became a cornerstone of Mughal battlefield supremacy, with specialized crews trained to rapidly deploy and reposition them during battles. The Zafarbaksh cannons were particularly feared for their effective range and mobility, allowing Mughal forces to outmaneuver opponents while maintaining superior firepower. The Mughal's mastery of metallurgy also enabled them to cast more uniform and reliable cannon barrels that could withstand repeated firing.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_HELP">			
-			<Text>Mughal replacement for the [ICON_UNIT_CANNON] Cannon. Has a higher [ICON_STRENGTH] Combat Strength (18 vs 14), higher [ICON_RANGE_STRENGTH] Ranged Strength (23 vs 21), improved [ICON_MOVES] Movement (3 vs 2), and has no sight penalty.</Text>
+			<Text>Replaces the Cannon. Stronger and faster, and has normal sight.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MUGHALS_CANNON_STRATEGY">			
 			<Text>The Zafarbaksh is a powerful and mobile siege weapon that excels at taking cities. With higher combat and ranged strength than the standard Cannon, plus an extra movement point and no sight penalties, it can position effectively for attacks. While more expensive to produce, its superior mobility and firepower make it a worthy investment for expanding your empire through conquest. Unlike other unique units however, the Zafarbaksh's special abilities do not carry over when it upgrades to Artillery.</Text>
@@ -1915,7 +1909,7 @@
 			<Text>The Xebec was a Mediterranean sailing ship with a distinctive hull and complex sail arrangement that made it both fast and maneuverable. It was the preferred vessel of the Barbary corsairs who operated from North Africa, including Tunisia. Tunisian corsairs used these specialized vessels to become a formidable naval power in the Mediterranean from the 16th to 19th centuries. The Xebec's shallow draft allowed it to navigate coastal waters while evading larger warships, and its speed made it perfect for capturing merchant vessels. With a combination of lateen and square sails, it could sail closer to the wind than square-rigged vessels. The Tunisian Xebecs, commanded by corsairs like Dragut and Uluj Ali, were particularly feared for their raids on European shipping and coastal settlements from Italy to Iceland.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_TUNISIA_PRIVATEER_HELP">			
-			<Text>Tunisian replacement for the [ICON_UNIT_PRIVATEER] Privateer. Has a higher [ICON_STRENGTH] Combat Strength, may capture [COLOR_POSITIVE_TEXT]Enemy[ENDCOLOR] ships (50% chance), and spends no [ICON_MOVES] movement pilaging tiles. Is more expensive to build.</Text>
+			<Text>Replaces the Privateer.[NEWLINE]Starts with Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).[NEWLINE][NEWLINE]Coast tiles cost 33% less movement.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when attacking a target on a Coast tile.[NEWLINE]Both are lost on upgrade.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_TUNISIA_PRIVATEER_STRATEGY">			
 			<Text>The Xebec is Tunisia's unique naval unit, replacing the Privateer. With higher combat strength and the ability to capture defeated enemy ships, the Xebec allows you to quickly build a powerful fleet. Use them to raid coastal routes and cities, as they can pillage without spending movement points. While they cost more than standard Privateers, their advantages in combat and mobility make them worthwhile investments for a naval power.</Text>
@@ -2668,7 +2662,7 @@
 			<Text>Naval Targeting III</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_CAROLEAN">
-			<Text>Unique Swedish Unit. Replaces the Musketman. Comes with the March promotion and one addition [ICON_MOVES] Movement.</Text>
+			<Text>Replaces the Musketman. +1 [ICON_MOVES] Movement.[NEWLINE]Starts with March (heals every turn, even after acting).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_MOVEMENT_TO_LAND">
 			<Text>Overseer</Text>
@@ -2864,17 +2858,13 @@
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_EXPEDITIONARY_FORCE"> 
-			<Text>
-				Late-industrial infantry unit designed for quick surprise-attacks accross the seas.
-			</Text>
+			<Text>Gunpowder melee unit for landings.[NEWLINE]Starts with Amphibious I and II: embarking and disembarking cost only 1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HEAVY_CRUISER"> 
-			<Text>
-				Strongest Naval Melee unit in the game. Provides air-cover and has a Combat Bonus against Submarines.
-			</Text>
+			<Text>Naval melee unit.[NEWLINE]Sees Submarines and gets +100% [ICON_STRENGTH] Combat Strength when attacking them.[NEWLINE]Intercepts enemy aircraft at half strength.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DREADNOUGHT"> 
-			<Text>Industrial Era ranged naval unit, stronger than the Frigate and the Ship of the Line.[NEWLINE]Moves twice as fast along the Coast.</Text>
+			<Text>Ranged naval unit, stronger than the Frigate and the Ship of the Line.[NEWLINE]Moves twice as fast along the Coast.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_EXPLORER_STRATEGY"> 
 			<Text>
@@ -3181,7 +3171,7 @@
 		<Text>Swiss mercenaries (Reisläufer) were notable for their service in foreign armies, especially the armies of the Kings of France, throughout the Early Modern period of European history, from the Later Middle Ages into the Age of Enlightenment. Their service as mercenaries was at its peak during the Renaissance, when their proven battlefield capabilities made them sought-after mercenary troops. There followed a period of decline, as technological and organizational advances counteracted the Swiss' advantages. Switzerland's military isolationism largely put an end to organized mercenary activity; the principal remnant of the practice is the Pontifical Swiss Guard at the Vatican. (Wikipedia)</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_SWISS_REISLAUFER_HELP">			
-		<Text>Unique unit for Switzerland. Cannot be constructed, instead available only as a bonus for completing a Reisläufer Post. Comparable in [ICON_STRENGTH] Strength to a Longswordsman, but moves further and generates [ICON_GOLD] Gold equal to twice the strength of defeated foes. Upgrades into Riflemen.</Text>
+		<Text>Can't be trained: completing a Reisläufer Post gives one.[NEWLINE]About as strong as a Longswordsman, but faster.[NEWLINE]Kills yield [ICON_GOLD] Gold equal to twice the enemy's [ICON_STRENGTH] Combat Strength.[NEWLINE]Starts with Mountaineer (+15% [ICON_STRENGTH] Combat Strength and +1 [ICON_MOVES] Movement near mountains).[NEWLINE]Upgrades to the Rifleman.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_SWISS_REISLAUFER_STRATEGY">			
 		<Text>Your supply of Reisläufers is tied to the amount of Posts you can build, but are not necessarily so special or valuable to warrant preserving throughout an entire war, instead shining as an expendable front line force, burning bright instead of fizzling out as technology progresses (unless you like Riflemen).</Text>
@@ -3367,7 +3357,7 @@
 		<Text>The Clibanarii or Klibanophoroi were a Sasanian Persian, late Roman and Byzantine military unit of armored heavy cavalry. Similar to the cataphracti, the horsemen themselves and their horses were fully armoured. There are several theories to the origins of this name, one being that the men were literally nicknamed "camp oven-bearers", due to the amount of armour they wore causing them to heat up very quickly in battle, or that the name is derived from Persian word griwbanwar or griva-pana-bara meaning "neck-guard wearer".[1]</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_PALMYRA_CLIBANARIUS_HELP">			
-		<Text>Unique Unit for Palmyra. Replaces Horsemen. Stronger than its counterpart and, when initiating combat, will force foes to retreat if they take more damage than this Unit, dealing additional damage to defenders incapable of retreat.</Text>
+		<Text>Replaces the Horseman. Stronger.[NEWLINE]Heavy Charge: a defender that takes more damage than it must retreat; one that can't retreat takes extra damage.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_PALMYRA_CLIBANARIUS_STRATEGY">			
 		<Text>This unit is stronger than the normal horseman. It is probably good on defense.</Text>
@@ -3561,7 +3551,7 @@
 		<Text>Historically, Georgian highlander communities enjoyed a degree of autonomy. Khevsurs never accepted local lords; they elected their leaders or Khevisberi (ხევისბერი, elder) and council of elders and submitted themselves only to the monarch (see List of the Kings of Georgia). They were exceptional warriors with traditional Georgian qualities of courage, openness and honesty, fraternity, independence and love of freedom, who were often promoted as royal bodyguards. Kings regarded them as reliable guardians of the Caucasus Mountains and the northern border of the kingdom. In the battles Khevsurs wore flags adorned with crosses and considered themselves permanent members of the army of the sacred flags and guardians of Georgian Kings.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_GEORGIA_KHEVSUR_HELP">			
-		<Text>Unique Unit for Georgia. Available at Guilds (instead of Iron Working). Receives a significant Combat Bonus during [ICON_GOLDEN_AGE] Golden Ages and also ignores terrain movement penalties as a Scout may.</Text>
+		<Text>Replaces the Swordsman. Available later (with Guilds).[NEWLINE]Ignores terrain movement costs.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength during a [ICON_GOLDEN_AGE] Golden Age.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_GEORGIA_KHEVSUR_STRATEGY">			
 		<Text>While the Khevsur arrives later than the typical Swordsman, its unique bonuses are more than enough to compensate, and its required technology makes it a more natural component of wars fought with Composite and Crossbowmen. When planning to use the Khevsur, consider raising a force of Warriors to upgrade when the time is right; despite being stronger than its counterpart, the Khevsur is no more costly to upgrade into.</Text>
@@ -3792,7 +3782,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Replaces the Granary. Costs a bit more.[NEWLINE][NEWLINE]Like the Granary:[NEWLINE]+2 [ICON_FOOD] Food.[NEWLINE][ICON_RES_WHEAT] Wheat, [ICON_RES_BANANA] Bananas, [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE]Allows [ICON_FOOD] Food trade routes from this city to your other cities.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_PRODUCTION] Production.[NEWLINE]Allows [ICON_PRODUCTION] Production trade routes from this city to your other cities.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_HELP_COLOMBIAN_CAVALRY">
-			<Text>Unique Unit for Colombia. Receives Defensive Terrain combat bonuses and may fortify.</Text>
+			<Text>Replaces the Cavalry.[NEWLINE]Starts with Shock I and Shock II (+30% [ICON_STRENGTH] Combat Strength on open terrain).</Text>
 	</Row>
 	
 	<Row Tag="TXT_KEY_TRAIT_INDEPENDENCE">
@@ -3918,7 +3908,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Fast Worker</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_FAST_WORKER_HELP">
-			<Text>Unique Unit for the Mauryans. Unlike the worker that it replaces, it ignores terrain cost and is 25% cheaper</Text>
+			<Text>Replaces the Worker.[NEWLINE]Ignores terrain movement costs.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_PROMOTION_INSCRIPTIONS">
 			<Text>Inscriptions of Dharma</Text>
@@ -3958,7 +3948,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Mysorean rockets were an Indian military weapon, the first iron-cased rockets successfully deployed for military use. The Mysorean army, under Hyder Ali and his son Tipu Sultan, used the rockets effectively against the British East India Company during the 1780s and 1790s. Their conflicts with the company exposed the British to this technology, which was then used to advance European rocketry with the development of the Congreve rocket in 1805.</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_ROCKET_CORPS_HELP">
-			<Text>Unique unit for the Mysoreans. Unlike the Artillery that it replaces, this unit does have to be set-up prior to firing and has increased [ICON_STRENGTH] Melee strength.</Text>
+			<Text>Replaces the Artillery. Slightly stronger in melee and does not need to set up before firing.</Text>
 	</Row>
 	
 	<Row Tag="TXT_KEY_BUILDING_ASHOKA_DESC">
@@ -4409,7 +4399,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		<Text>Gerilya</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_PHILIPINO_MARINE_HELP">
-		<Text>Unique Unit for the Philippines. Unlike the Expeditionary Force that it replaces, the Gerilya receives +3 [ICON_MOVES] Movement when Embarked and is much stronger.</Text>
+		<Text>Replaces the Expeditionary Force. Stronger.[NEWLINE]Can move after attacking.[NEWLINE]Starts with Woodsman and Fast Swimmer (+2 [ICON_MOVES] Movement while embarked).</Text>
 	</Row>
 	<Row Tag="TXT_KEY_BUILDING_NATIONALCHURCH">
 		<Text>National Church</Text>
@@ -4817,7 +4807,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>The Zabonah is the Nabataean Scout replacement. While unable to fight and defend itself, the Zabonah discovers Cities faster, earning Gold and experience When this City is a [ICON_CAPITAL] Capital.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_ZABONAH_HELP">
-			<Text>Unique Unit for the Nabataeans. Unlike the Scout that it replaces, this unit may not attack, and the Nabataeans can still train the Scout as well. However, it sees Cities much further away and earns 10 [ICON_GOLD] Gold whenever it discovers a [ICON_CAPITAL] Capital or [ICON_CITY_STATE] City State.</Text>
+			<Text>Replaces the Scout, which the Nabataeans can still train. Faster, but cannot attack.[NEWLINE]Sees cities from much farther away.[NEWLINE]+10 [ICON_GOLD] Gold when it discovers a [ICON_CAPITAL] Capital or a City-State.</Text>
 		</Row>
 	
 	<!-- v28 Moors -->
@@ -5019,7 +5009,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Unique Unit for the Moors. Unlike the Lancer that it replaces, this Unit is considered a Ranged Unit with a very high Ranged Combat Strength, sees not Combat Bonus against other Mounted units and may not move after it attacked. However, this unit also does not have a Combat Penalty against Cities.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_LITE_GRANADINE_CAVALRY_HELP">
-			<Text>Unique Unit for the Moors. Unlike the Lancer that it replaces, this Unit is considered a Ranged Unit with a very high Ranged Combat Strength, sees not Combat Bonus against other Mounted units and may not move after it attacked. However, this unit also does not have a Combat Penalty against Cities.</Text>
+			<Text>Replaces the Lancer: a mounted ranged unit with a strong [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]No penalty when attacking cities, but cannot move after attacking and has no bonus against mounted units.</Text>
 		</Row>
 		
 	<!-- v28 UAE -->
@@ -5320,7 +5310,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Baghlah</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_HELP">
-			<Text>Unique Unit for Oman. In addition to the Dromon that it replaces, this unit is cheaper and receives +1 [ICON_MOVES] Movement, has additional Melee strength and receives [ICON_PEACE] Faith from Kills.</Text>
+			<Text>Replaces the Galley. Slightly stronger and faster.[NEWLINE]Starts with Troopship (embarked units on its tile sail with it), Supply Ship (adjacent naval units can heal outside friendly territory) and Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_STRATEGY">
 			<Text>Unique Unit for Oman. In addition to the Dromon that it replaces, this unit is cheaper and receives +1 [ICON_MOVES] Movement, has additional Melee strength and receives [ICON_PEACE] Faith from Kills.</Text>
@@ -5862,7 +5852,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Guerrillero</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_GUERRILLERO">
-			<Text>Unique unit for Cuba. Different from the standard Great War Infantry that this Unit replaces, it unlocks and immediately receive 2 the moment you have selected your first Tenet in an ideology. It is much weaker, but is 20% cheaper and receives +1 [ICON_MOVES] Movement.</Text>
+			<Text>Replaces the Great War Infantry. Weaker, but cheaper and faster.[NEWLINE]Available from your first Ideology tenet, which also gives you 2 of them.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_GUERRILLERO_STRATEGY">
 			<Text>This unit comes the moment you pick your first Tenet in an ideology, which can be much earlier than the Unit that it replaces. It may be weaker, but if unlocked early enough, might just make up for it. Use this unit as a deterrend for Industrial Era or earlier attacks, or as a powerfull attack, with combat strength towering above any other unit before the Modern Era.</Text>
@@ -6268,7 +6258,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Comparsa Folklórica</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEU_COMPARSA_FOLKLORICA_HELP">
-			<Text>Unique unit for Bolivia. This unit may be used to Either start a Golden age, to generate culture in addition to the usual abilities of the Great Musician that it replaces.</Text>
+			<Text>Replaces the Great Musician. Faster.[NEWLINE]Can also start a [ICON_GOLDEN_AGE] Golden Age or generate [ICON_CULTURE] Culture.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEU_COMPARSA_FOLKLORICA_STRATEGY">
 			<Text>Unique unit for Bolivia. This unit may be used to Either start a Golden age, to generate culture in addition to the usual abilities of the Great Musician that it replaces.</Text>
@@ -6280,7 +6270,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Colorado</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEU_COLORADO_HELP">
-			<Text>Unique unit for Bolivia. Available earlier and much weaker against armored units than the Anti-Tank Rifle that it replaces, but has a significant higher base [ICON_STRENGTH] Combat Strength. +2 [ICON_STRENGTH] Combat Strength for every 5 excess [ICON_HAPPINESS_1] Happiness in the Empire.</Text>
+			<Text>Replaces the Anti-Tank Rifle. Available earlier (with Dynamite) and stronger, but only +100% [ICON_STRENGTH] Combat Strength against armored units.[NEWLINE]+2 [ICON_STRENGTH] Combat Strength for every 5 excess [ICON_HAPPINESS_1] Happiness in your empire.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEU_COLORADO_STRATEGY">
 			<Text>Unique unit for Bolivia. Much weaker against armored units than the Anti-Tank Rifle (100% versus 200%) that it replaces, but has a significant higher base [ICON_STRENGTH] Combat Strength of 38. +2 [ICON_STRENGTH] Combat Strength for every 5 excess [ICON_HAPPINESS_1] Happiness in the Empire.</Text>
@@ -6311,7 +6301,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Unique Unit for Chile. Overall similar to the Helicopter Gunship that it replaces, but receives a major Combat Bonus against Ranged attacks (+100%).</Text>
 	</Row>
 	<Row Tag="TXT_KEY_UNIT_HELP_CARDOEN">
-			<Text>Unique Unit for Chile. Much stronger than the helicopter it replaces, receives additional movement and has a major Combat Bonus against Ranged attacks (+100%).</Text>
+			<Text>Replaces the Helicopter Gunship.[NEWLINE]Starts with 30 XP.</Text>
 	</Row>
 	
 	<Row Tag="TXT_KEY_BUILDING_COOPERATIVE">
@@ -7494,7 +7484,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Defender</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
-			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].</Text>
+			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside friendly territory.[NEWLINE]Starts with Cover I.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_JFD_DEFENDER_STRATEGY">
 			<Text>A powerful, Industrial Era Naval Melee Unit, the Defender is much stronger and resists ranged attacks better and has a combat bonus inside friendly lands. Ignores enemy Zone of Control when it starts its turn within 2 tiles of a friendly city. </Text>
@@ -8038,7 +8028,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Shona Warrior</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_SHONA">
-			<Text>Replaces the Warrior. This unit is slightly stronger and may build farms and quarries</Text>
+			<Text>Replaces the Warrior. Stronger and becomes obsolete later (with Metal Casting).[NEWLINE]Can build Farms and Quarries.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRAIT_GREAT_ZIMBABWE">
 			<Text>+25% [ICON_PRODUCTION] Production towards [COLOR_GREEN]buildings[ENDCOLOR] and [COLOR_GREEN]military units[ENDCOLOR] in the [ICON_CAPITAL] Capital.</Text>
@@ -8287,7 +8277,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Dhow</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_DHOW_HELP">
-			<Text>Fast Medieval exploration Unit. Weaker, but available earlier, cheaper to produce and fights better against other naval units.</Text>
+			<Text>Replaces the Caravel. Available earlier (with Compass), slightly stronger, but slower and sees less far.[NEWLINE]Starts with Boarding Party I (+25% [ICON_STRENGTH] Combat Strength when attacking naval units).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_DHOW_STRATEGY">
 			<Text>The Dhow, the Kilwa replacement for the Caravel, is a significant upgrade to a civilization's exploration capabilities. As a Medieval era unit, it grants an appreciable leg up in naval exploration against all civilizations except Polynesia. It is also cheaper to produce than the standard Caravel.</Text>
@@ -8576,7 +8566,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Kuva-yi Milliye</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_TURKISH_GWI_HELP">
-			<Text>This Unit replaces the Great War Infantry. It is weaker, but receives +1 [ICON_MOVES] Movement and a major combat bonus when near a [ICON_GREAT_GENERAL] Great General and when Attacking. May Upgrade for Free.</Text>
+			<Text>Replaces the Great War Infantry. Weaker, but +1 [ICON_MOVES] Movement.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength when attacking.[NEWLINE]Upgrades for free.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_UNIT_TURKISH_GWI">
 			<Text>Empowered (+25% Strength)</Text>
@@ -8800,7 +8790,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Fenian</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_IRISH_RIFLEMAN_HELP">
-			<Text>Unique Unit for the Irish. This unit is cheaper and is much stronger than the Rifleman that it replaces.</Text>
+			<Text>Replaces the Rifleman. Much stronger and cheaper.</Text>
 		</Row>
 		<!-- City names -->
 		<Row Tag="TXT_KEY_CITY_NAME_CIVILIZATION_US_IRELAND_1">
@@ -9021,7 +9011,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		</Row>
 		<!-- ukraine rework v24 -->
 		<Row Tag ="TXT_KEY_UNIT_HELP_UKRAINE_COSSACK">
-			<Text>This Unit replaces the Gatling Gun. Is Considered a Mounted Ranged unit. It has 2 Range and 4 Movement and a Combat Bonus against other mounted units. However, it loses all Movement upon entering Rough Terrain and has no defensive terrain benefits.</Text>
+			<Text>Replaces the Gatling Gun: a mounted ranged unit. Faster and +1 Range.[NEWLINE]Entering rough terrain ends its move; gets no defensive terrain bonuses.</Text>
 		</Row>
 		<Row Tag ="TXT_KEY_UKRAINE_COSSACK_CIVIL">
 			<Text>KaTCHOWKa amiright kids</Text>
@@ -9349,7 +9339,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Gallowglass</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_SCOTTISH_GALLOWGLASS_HELP">
-			<Text>Unique Scottish Riflemen. Available earlier, cheaper but slightly weaker. Receives the Altitude Training Promotion for Free and receives a bonus when fighting against fortified units and Cities.</Text>
+			<Text>Replaces the Rifleman. Available earlier (with Metallurgy) and cheaper, but slightly weaker.[NEWLINE]Starts with Volley (+50% [ICON_STRENGTH] Combat Strength against fortified units and cities) and Altitude Training.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_MC_SCOTTISH_GALLOWGLASS_STRATEGY">
 			<Text>The Gallowglass is a unique Scottish version of the Riflemen. It moves quickly trough hills. It also receives a bonus when fighting against fortified units and cities, allowing it to do serious damage to enemy defenses.</Text>
@@ -10857,7 +10847,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
             <Text>Square Sail Ship</Text>
         </Replace>
         <Replace Tag="TXT_KEY_UNIT_SQUARE_SAIL_SHIP_HELP">
-            <Text>Unique Unit for Phoenicia. Replaces the Trireme. May heal outside of Friendly Territory and has +1 Sight. Slightly cheaper to construct.</Text>
+            <Text>Replaces the Trireme. Cheaper.[NEWLINE]+1 Sight.[NEWLINE]Heals outside friendly territory (Supply).</Text>
         </Replace>
 		<Replace Tag="TXT_KEY_UNIT_SQUARE_SAIL_SHIP_STRATEGY">
 			<Text>The Square Sail Ship is the Phoenician unique unit, replacing the Trireme. It is a melee attack unit, engaging units at sea or cities (but it has no ranged attack). It may heal outside of Friendly Territory, has +1 Sight and is cheaper than normal Trireme.</Text>
@@ -11131,7 +11121,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>Vanator</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_ROMANIAN_VINATOR_HELP">
-			<Text>Unique Romanian Gatling Gun. Has a higher [ICON_STRENGTH] Combat strength, is cheaper and has 1 additional range.</Text>
+			<Text>Replaces the Gatling Gun. Slightly stronger and +1 Range.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_ROMANIAN_VINATOR_STRATEGY">
 			<Text>Unique Romanian Gatling Gun. Has a higher [ICON_STRENGTH] Combat strength, is cheaper and has 1 additional range..</Text>
@@ -11675,7 +11665,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 		</Replace>
 		
 		<Replace Tag="TXT_KEY_UNIT_ARGENTINA_KNIGHT_HELP">
-			<Text>Unique Unit replacing the Knight. Has a massively increased flanking combat bonus (200%). It may also withdraw from melee combat (50%) and can build farms and pastures.</Text>
+			<Text>Replaces the Knight.[NEWLINE]Montoneras: +200% flanking bonus and a 50% higher chance to withdraw from melee attacks.[NEWLINE]Builds Farms and Pastures twice as fast as a Worker.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_ARGENTINA_KNIGHT_STRATEGY">
 			<Text>With the extra withdraw chance, the Gaucho is a very versatile unit. It is a fantastic flanker unit. Its worker abilities can help newly found cities be more productive quickly</Text>
@@ -11961,7 +11951,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>One of the most remarkable qualities of the Akkadian Empire was its level of organization. The empire was bound together by roads and cadastral surveys, while the year was measured with advanced astronomical observations and calendric systems. This organization extended to both Akkad's military and domestic workforce. The term "laputtu" was used to designate the position of overseer, both in regard to civilian work projects and military campaigns. The laputtu, then, represented an experienced military captain that would command a company of "redu" (soldiers). In fact, the Akkadian Empire was amongst the first to organize military expeditions (both on land and sea) in history. The end result was one of the most well trained armies of the period, ready to support Akkad's campaigns of expansion.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_AKKAD_SPEARMAN_HELP">
-			<Text>Replaces the [COLOR_YELLOW]Spearmen[ENDCOLOR]. Unique to Akkad. In addition to the usual properties of a [COLOR_YELLOW]Spearmen[ENDCOLOR], this unit has 1 additional [ICON_MOVES] Movement and transfers its [ICON_MOVES] Movement to [COLOR_POSITIVE_TEXT]Civilian[ENDCOLOR] units stationed on the same tile.</Text>
+			<Text>Replaces the Spearman. +1 [ICON_MOVES] Movement.[NEWLINE]Civilian units on its tile get its [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<!-- -->
 		<Replace Tag="TXT_KEY_TRAIT_AKKAD_SHORT">
@@ -12493,7 +12483,7 @@ Many individual cacicazgos have been studied in colonial Mexico, showing that en
 			<Text>The Sissi is a fast late-game unit best used to wreak havoc behind enemy borders and destroying their armor units. It operates as a ranged unit with a range of 2 tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_FINNISH_FOREST_PATROL_HELP">
-			<Text>A Finnish Machine Gun replacement that ignores terrain cost and may pillage with no movement penalty. In addition, it gets a combat bonus fighting against armored units.</Text>
+			<Text>Replaces the Machine Gun. Stronger [ICON_RANGE_STRENGTH] Ranged attack and +1 Range, but attacks only once per turn.[NEWLINE]+1 [ICON_MOVES] Movement, ignores terrain movement costs and pillages without spending movement.[NEWLINE]+25% [ICON_STRENGTH] Combat Strength against armored units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_DAWN_FINLAND_TEXT">
 			<Text>Honor and glory be yours, Baron Carl Gustaf Emil Mannerheim, Marshal of Finland. Your nation lies in the vast, cold North, surrounded by the great wilderness of forests and thousands of lakes. After being under Swedish rule, then Russian rule, Finland declared its independence in 1917 but was soon embroiled in a bloody civil war. Two decades later you united your war-torn nation to protect its independence against overwhelming Soviet attack. Despite all the odds, Finland remained independent in the torments of World War II by its stalwart united spirit, and from ashes of war your small agrarian country developed into a modern industrious welfare state the quality of life of which now stands on the top of the world.[NEWLINE][NEWLINE]Honoured marshal Mannerheim, your people calls for you once more time! You are called to unite Finland once again standing strong against her enemies! Will you lead your nation to greatness? Will you build a civilization to stand the test of time?</Text>
@@ -42761,9 +42751,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_DENMARK_SKI_INFANTRY_HELP"> 
-			<Text>
-				Strong, front-line land Unit of the mid-game that specializes in operating in Snow, Tundra and Hills. Only Denmark may build it. Replaces the Rifleman.
-			</Text>
+			<Text>Replaces the Rifleman.[NEWLINE]In Snow, Tundra and Hills: +25% [ICON_STRENGTH] Combat Strength (without Forest or Jungle) and double movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_DENMARK_SKI_INFANTRY_STRATEGY"> 
 			<Text>
@@ -46687,9 +46675,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_TURTLESHIP_HELP"> 
-			<Text>
-				Heavily-armored naval unit of the Renaissance Era that is extremely difficult to kill. However Turtle Ships cannot enter deep ocean hexes outside of the city borders. Only Korea may build it. Replaces the Caravel.
-			</Text>
+			<Text>Replaces the Caravel. Much stronger, but slower, more expensive and sees less far.[NEWLINE]Cannot enter Ocean and does not withdraw before melee attacks.[NEWLINE]Starts with Cover I and Sambuca (friendly units within 2 tiles get +50% [ICON_STRENGTH] Combat Strength when attacking the enemy city next to it).[NEWLINE]Becomes obsolete later (with Replaceable Parts).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_TURTLESHIP_STRATEGY"> 
 			<Text>
@@ -47042,9 +47028,7 @@ strongest around the Gulf of Bothnia, where land steadily rises about 1 cm a yea
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_MONGOLIA_KHAN_HELP"> 
-			<Text>
-				This Mongolian Unique Great Person replaces the Great General. While providing the same combat bonuses as a normal Great General, the Khan moves at an increased rate and can heal adjacent units.
-			</Text>
+			<Text>Replaces the Great General. Faster.[NEWLINE]It and units next to it heal 15 more HP per turn.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_MONGOLIA_KHAN_INFO"> 
 			<Text>
@@ -48379,9 +48363,7 @@ Nebuchadnezzar II died in Babylon in 562 BC. He is remembered as a successful mi
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_POLYNESIAN_MAORI_WARRIOR_HELP"> 
-			<Text>
-				Ancient Era unit that strikes fear into nearby enemies making them less effective in combat. Replaces the Warrior.
-			</Text>
+			<Text>Replaces the Warrior. Stronger.[NEWLINE]Starts with Haka War Dance (adjacent enemies -10% [ICON_STRENGTH] Combat Strength).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_POLYNESIAN_MAORI_WARRIOR_STRATEGY"> 
 			<Text>
@@ -50690,9 +50672,7 @@ Nebuchadnezzar II died in Babylon in 562 BC. He is remembered as a successful mi
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_TERCIO_HELP"> 
-			<Text>
-				Dominant military Unit of the Renaissance Era. Only Spain may build it. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Musketman which it replaces, as well as the Bonus vs Mounted (50) promotion. However it is also more expensive to build.
-			</Text>
+			<Text>Replaces the Musketman. Stronger.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against mounted units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_TERCIO_STRATEGY"> 
 			<Text>
@@ -101538,7 +101518,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Rowboat</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_SKIFF">
-			<Text>Early scouting boat.[NEWLINE]Cannot enter Ocean tiles before Astronomy and cannot be gifted to City-States.[NEWLINE][NEWLINE]Can be used up to build Fishing Boats (with Sailing) or a Pontoon Bridge (with Construction) at once.</Text>
+			<Text>Scouting boat.[NEWLINE]Cannot enter Ocean before Astronomy and cannot be gifted to City-States.[NEWLINE][NEWLINE]Can be used up to build Fishing Boats (with Sailing) or a Pontoon Bridge (with Construction) at once.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_SKIFF_STRATEGY">
 			<Text>The Rowboat explores the coast from the start of the game.[NEWLINE]It has 3 [ICON_MOVES] Movement, 2 sight, 3 [ICON_STRENGTH] Combat Strength and gets the same promotions as the Scout.[NEWLINE]It cannot enter Ocean tiles before Astronomy.[NEWLINE][NEWLINE]Once you know Sailing it can build Fishing Boats, and with Construction a Pontoon Bridge; the improvement is finished at once and the Rowboat is used up.[NEWLINE][NEWLINE]It never becomes obsolete and cannot be gifted to City-States.</Text>
@@ -101550,7 +101530,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Self-Propelled Artillery</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_HELP_SELF_PROPELLED_ARTILLERY">
-			<Text>Mobile siege unit with a range of 3 that does not need to set up before firing.[NEWLINE]Can fire over obstacles.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
+			<Text>Siege unit that does not need to set up before firing.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Can fire over obstacles.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_SELF_PROPELLED_ARTILLERY_STRATEGY">
 			<Text>The Self-Propelled Artillery arrives with Ballistics and needs 1 Iron and 1 Oil.[NEWLINE]It has 30 [ICON_STRENGTH] Combat Strength, 40 [ICON_RANGE_STRENGTH] Ranged Combat Strength, 2 [ICON_MOVES] Movement and a range of 3.[NEWLINE][NEWLINE]Unlike the Artillery it does not need to set up before firing.[NEWLINE]It can fire over obstacles (Indirect Fire) and has +200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Sitting Ducks: +33% when attacking Naval Melee, Naval Ranged and embarked units.[NEWLINE][NEWLINE]It cannot melee attack, gets no defensive terrain bonuses and has limited sight, so protect it with other units.</Text>
@@ -140507,9 +140487,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Gender>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_AIRSHIP_HELP"> 
-			<Text>
-				First airship unit, able to move over land and sea.  Powerful against land targets, but vulnerable to Flyers.
-			</Text>
+			<Text>Scouting airship. Flies over land and water: every tile costs 1 [ICON_MOVES] Movement.[NEWLINE]Cannot attack or capture cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_AIRSHIP_STRATEGY"> 
 			<Text>
@@ -140606,9 +140584,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_ARQUEBUS_HELP"> 
-			<Text>
-				Unique unit which replaces the Musketman. This unit can peform both [ICON_RANGE_STRENGTH] Ranged and Melee attacks. Must be set up prior to firing. Has a combat bonus in open terrain.
-			</Text>
+			<Text>Replaces the Musketman. Cheaper.[NEWLINE]Can attack in melee or at range; must set up before a ranged attack.[NEWLINE]Starts with Accuracy I (+15% [ICON_RANGE_STRENGTH] Ranged Combat Strength against units on open terrain).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_ARTILLERY"> 
 			<Text>
@@ -141209,9 +141185,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_GALLEY_HELP"> 
-			<Text>
-				Classical Era Ranged Naval unit used to control naval battles at a distance.
-			</Text>
+			<Text>Ranged naval unit.[NEWLINE]Cannot enter Ocean.[NEWLINE][NEWLINE]First ship with Blind Spot (-20% [ICON_RANGE_STRENGTH] Ranged Combat Strength against adjacent targets) and Docked (cannot attack from inside a city), like every ranged ship after it.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_GATLINGGUN"> 
 			<Text>
@@ -141397,39 +141371,25 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ANTI_AIRCRAFT_GUN"> 
-			<Text>
-				Will intercept enemy aircraft which try to bomb nearby Units.
-			</Text>
+			<Text>Anti-air unit.[NEWLINE]Intercepts enemy aircraft attacking nearby.[NEWLINE]+150% [ICON_STRENGTH] Combat Strength against aircraft and helicopters.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ANTI_TANK_GUN"> 
-			<Text>
-				Relatively cheap Unit specialized in fighting Tanks.
-			</Text>
+			<Text>Gunpowder melee unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against armored units.[NEWLINE]Upgrades to the Helicopter Gunship.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ANTI_TANK_RIFLE"> 
-			<Text>
-				Relatively weak Unit, but strong against armored units.
-			</Text>
+			<Text>Gunpowder melee unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against armored units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ARCHAEOLOGIST"> 
-			<Text>
-				Archaeologists are a special subtype of Worker that are used to excavate Antiquity Sites to either create Landmark improvements or to extract Artifacts to fill in Great Work of Art slots in Museums, Palaces, Hermitages, and selected Wonders. Archaeologists may work in territory owned by any player. They are consumed once they complete an Archaeological Dig at an Antiquity Site. Archaeologists may not be purchased with [ICON_GOLD] Gold and may only be built in a city with a University.
-			</Text>
+			<Text>Excavates Antiquity Sites, also in other civilizations' territory: creates a Landmark or an Artifact for a Great Work of Art slot.[NEWLINE]Used up by the dig.[NEWLINE]Needs a University in the city and cannot be bought with [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ARCHER"> 
-			<Text>
-				Powerful Ancient Era ranged Unit that can strike foes from afar.
-			</Text>
+			<Text>Ranged unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ARTILLERY"> 
-			<Text>
-				The first Siege Unit in the game capable of firing 3 tiles away. Must set up prior to firing.
-			</Text>
+			<Text>Siege unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Must set up before firing.[NEWLINE]Can fire over obstacles.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ASSYRIAN_SIEGE_TOWER"> 
-			<Text>
-				Powerful melee siege unit which grants a city attack bonus to nearby units when next to an enemy city.
-			</Text>
+			<Text>Replaces the Catapult: a melee siege unit that can only attack cities.[NEWLINE]While it is next to an enemy city, your other units within 2 tiles get +50% [ICON_STRENGTH] Combat Strength when attacking that city (Sapper).[NEWLINE]Starts with Cover I and +1 Sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ATOMIC_BOMB"> 
 			<Text>
@@ -141447,14 +141407,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_B17"> 
-			<Text>
-				Air Unit that rains death from above onto enemy Units and Cities. Only the Americans may build it. This Unit has a chance of evading interception, and does additional damage to Cities compared to the Bomber, which it replaces.
-			</Text>
+			<Text>Replaces the Bomber.[NEWLINE]Starts with Evasion (-50% damage when intercepted) and Siege I (Air) (+33% [ICON_STRENGTH] Combat Strength against cities).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BALLISTA"> 
-			<Text>
-				Replaces the [ICON_UNIT_CATAPULT] Catapult. Unique to [ICON_CIV_ROME] Rome. Has a higher [ICON_RANGE_STRENGTH] Ranged Combat Strength and does not need to set-up in order to fire, but has a reduced [ICON_STRENGTH] Combat Bonus when attacking Cities (100%, vs 200%)
-			</Text>
+			<Text>Replaces the Catapult. Stronger [ICON_RANGE_STRENGTH] Ranged attack and does not need to set up, but only +100% [ICON_STRENGTH] Combat Strength against cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BARBARIAN_WARRIOR"> 
 			<Text>
@@ -141462,14 +141418,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BATTLESHIP"> 
-			<Text>
-				Most powerful ranged Naval unit in the game until the Missile Cruiser
-			</Text>
+			<Text>Ranged naval unit.[NEWLINE]Can fire over obstacles.[NEWLINE]Cannot attack adjacent targets.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BAZOOKA"> 
-			<Text>
-				Atomic era ranged Unit that must be adjacent to an enemy to strike.
-			</Text>
+			<Text>Ranged unit.[NEWLINE]Must be next to its target to attack.[NEWLINE]Can attack twice per turn (Logistics).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BERBER_CAVALRY"> 
 			<Text>
@@ -141477,9 +141429,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BOMBER"> 
-			<Text>
-				Air Unit that rains death from above onto enemy Units and Cities.
-			</Text>
+			<Text>Bomber: attacks units and cities from the air.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BRANDENBURG_CLASS"> 
 			<Text>
@@ -141487,9 +141437,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BRAZILIAN_PRACINHA"> 
-			<Text>
-				Replaces the [ICON_UNIT_INFANTRY] Infantry. Unique to Brazil. In addition, this unit has a much higher [ICON_STRENGTH] Combat Strength, may move after attacking, and has a 20% [ICON_STRENGTH] Combat Bonus outside of [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.
-			</Text>
+			<Text>Replaces the Infantry. Can move after attacking.[NEWLINE]+30% [ICON_STRENGTH] Combat Strength outside friendly territory.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BYZANTINE_CATAPHRACT"> 
 			<Text>
@@ -141507,14 +141455,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CAMEL_ARCHER"> 
-			<Text>
-				Replaces the [COLOR_YELLOW]Knight[ENDCOLOR]. Unique to Arabia. Besides the usual properties of a [COLOR_YELLOW]Knight[ENDCOLOR], this unit is considered a [COLOR_POSITIVE_TEXT]Mounted Ranged[ENDCOLOR] unit, with similar [ICON_RANGE_STRENGTH] Ranged Strength, but much lower [ICON_STRENGTH] Melee Strength and receives no penalty when initiating combat with an enemy city.
-			</Text>
+			<Text>Replaces the Knight: a mounted ranged unit with a strong [ICON_RANGE_STRENGTH] Ranged attack, but weak in melee.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CANNON"> 
-			<Text>
-				Powerful Renaissance Era Siege Unit. Must set up prior to firing.
-			</Text>
+			<Text>Siege unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Must set up before firing.[NEWLINE]Can fire over obstacles.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).[NEWLINE]Ranged attacks on targets 3 tiles away deal 50% less damage (Long Range, lost on upgrade).[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARAVAN"> 
 			<Text>
@@ -141522,9 +141466,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARAVEL"> 
-			<Text>
-				Fast Renaissance exploration Unit with an enhanced sight radius that can enter Ocean. Fights as a naval melee unit.
-			</Text>
+			<Text>Naval melee unit for exploring: sees farther than other ships.[NEWLINE]Withdraws before melee attacks.[NEWLINE]-25% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARGO_SHIP"> 
 			<Text>
@@ -141532,9 +141474,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARRIER"> 
-			<Text>
-				Initially carries 2 Aircraft; capacity may be boosted through promotions.
-			</Text>
+			<Text>Carries 3 aircraft; promotions can raise this.[NEWLINE]Cannot attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARTHAGINIAN_FOREST_ELEPHANT"> 
 			<Text>
@@ -141542,9 +141482,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARTHAGINIAN_QUINQUEREME"> 
-			<Text>
-				Naval melee unit that cannot enter Ocean.[NEWLINE]Carries troops: land units embarked on its tile at the start of a turn sail with it, using its movement.
-			</Text>
+			<Text>Naval melee unit.[NEWLINE]Cannot enter Ocean.[NEWLINE]-25% [ICON_STRENGTH] Combat Strength when attacking cities.[NEWLINE][NEWLINE]First ship with Troopship (embarked units on its tile sail with it).[NEWLINE]Starts with Boarding Party I (+25% [ICON_STRENGTH] Combat Strength when attacking naval units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_QUINQ"> 
 			<Text>
@@ -141552,14 +141490,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CATAPULT"> 
-			<Text>
-				First siege Unit of the game. Does major damage to Units and Cities from a distance, but must set up prior to firing.
-			</Text>
+			<Text>Siege unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Must set up before firing.[NEWLINE]Can fire over obstacles.[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CAVALRY"> 
-			<Text>
-				Mounted Unit capable of fighting toe-to-toe with contemporary infantry units.
-			</Text>
+			<Text>Mounted unit.[NEWLINE]Can move after attacking.[NEWLINE]Gets no defensive terrain bonuses and -33% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CELT_PICTISH_WARRIOR"> 
 			<Text>
@@ -141567,14 +141501,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CHARIOR_ARCHER"> 
-			<Text>
-				A fast Ranged Unit highly effective on flat ground.
-			</Text>
+			<Text>Mounted ranged unit.[NEWLINE]Entering rough terrain ends its move.[NEWLINE]Gets no defensive terrain bonuses.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CHUKONU"> 
-			<Text>
-				Medieval ranged infantry Unit. Slightly more expensive. This Unit may fire twice in one turn, unlike the Crossbowman which it replaces.
-			</Text>
+			<Text>Replaces the Crossbowman. Weaker [ICON_RANGE_STRENGTH] Ranged attack, but attacks twice per turn.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COMPANION_CAVALRY"> 
 			<Text>
@@ -141582,24 +141512,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COMPOSITE_BOWMAN"> 
-			<Text>
-				Classical ranged infantry Unit.
-			</Text>
+			<Text>Ranged unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COSSACK"> 
-			<Text>
-				Mounted Unit capable of fighting toe-to-toe with contemporary infantry units. This Unit has a combat bonus when fighting enemies that have already taken damage.
-			</Text>
+			<Text>Replaces the Cavalry.[NEWLINE]+25% [ICON_STRENGTH] Combat Strength against wounded units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CROSSBOWMAN"> 
-			<Text>
-				Medieval ranged infantry Unit.
-			</Text>
+			<Text>Ranged unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DANISH_LONGSHIP"> 
-			<Text>
-				Ancient Era Naval Unit that is faster than the Trireme it replaces and also transfers its movement to any embarked units it escorts. Only Denmark may build it.
-			</Text>
+			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Troopship (embarked units on its tile sail with it) and Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DERVISH_CAVALRY"> 
 			<Text>
@@ -141607,9 +141529,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DESTROYER"> 
-			<Text>
-				Fast late game ship making it highly effective at recon. Also used to hunt down and destroy enemy Submarines. Fights as a naval melee unit.
-			</Text>
+			<Text>Naval melee unit that hunts Submarines: sees them and gets +100% [ICON_STRENGTH] Combat Strength when attacking them.[NEWLINE]Intercepts enemy aircraft at half strength.[NEWLINE]Withdraws before melee attacks.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_EGYPTIAN_WAR_CHARIOT"> 
 			<Text>
@@ -141622,19 +141542,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_FIGHTER"> 
-			<Text>
-				Air Unit designed to wrest control of the skies and intercept incoming enemy aircraft.
-			</Text>
+			<Text>Fighter: intercepts enemy aircraft and can Air Sweep.[NEWLINE]+150% [ICON_STRENGTH] Combat Strength against bombers and helicopters.[NEWLINE]Sees 6 tiles around its base (Air Recon).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_FORCE_PUBLIQUE"> 
-			<Text>
-				Belgian unique unit. Replaces the Great war infantry. Receives the Rough Terrain Promotion which allows it to fight better in difficult terrain. This unit also has a promotion that increases its strength against wounded units.
-			</Text>
+			<Text>Replaces the Great War Infantry. Slightly stronger.[NEWLINE]Starts with Drill I (+15% [ICON_STRENGTH] Combat Strength in rough terrain) and Charge (+33% against wounded units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_FOREIGN_LEGION"> 
-			<Text>
-				Special Infantry Unit of the Modern Era. May only be received through adopting the Volunteer Army tenet of the Freedom Ideology. This Unit has a combat bonus outside of friendly territory but is otherwise very similar to Great War Infantry.
-			</Text>
+			<Text>Gunpowder melee unit bought with [ICON_GOLD] Gold only, after adopting Mercenary Army.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength outside friendly territory.[NEWLINE]Starts with Ambush Formation I (+25% [ICON_STRENGTH] Combat Strength against mounted and armored units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_FOREIGN_LEGION2"> 
 			<Text>
@@ -141652,19 +141566,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_FRIGATE"> 
-			<Text>
-				Powerful Renaissance Era naval Unit used to wrest control of the seas.
-			</Text>
+			<Text>Ranged naval unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GALLEASS"> 
-			<Text>
-				Medieval Era Naval Unit used to wrest control of the seas with its ranged attack.
-			</Text>
+			<Text>Ranged naval unit.[NEWLINE]Cannot enter Ocean.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GATLINGGUN"> 
-			<Text>
-				Ranged infantry Unit of the mid-game that must be adjacent to an enemy to strike.
-			</Text>
+			<Text>Ranged unit.[NEWLINE]Must be next to its target to attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GOTH_GADRAUGHT"> 
 			<Text>
@@ -141672,9 +141580,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GREAT_WAR_INFANTRY"> 
-			<Text>
-				Basic Infantry Unit of the Modern Era.
-			</Text>
+			<Text>Gunpowder melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_GUIDED_MISSILE"> 
 			<Text>
@@ -141682,19 +141588,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HELICOPTER_GUNSHIP"> 
-			<Text>
-				Unit specialized in fighting Modern Armor and Tanks. It is capable of hovering over mountains, but takes damage if ending its turn on one.
-			</Text>
+			<Text>Flies over land and water: every tile costs 1 [ICON_MOVES] Movement.[NEWLINE]Can cross Mountains, but takes damage when ending its turn on one.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against armored units.[NEWLINE]Can move after attacking; cannot capture cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HOPLITE"> 
-			<Text>
-				Ancient Era Unit which specializes in defeating Mounted Units. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Spearman which it replaces.
-			</Text>
+			<Text>Replaces the Spearman. Stronger.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HORSEMAN"> 
-			<Text>
-				Fast and powerful early game Mounted Unit. Weak to Spearmen.
-			</Text>
+			<Text>Fast mounted unit.[NEWLINE]Can move after attacking.[NEWLINE]Gets no defensive terrain bonuses and -33% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HUN_BATTERING_RAM"> 
 			<Text>
@@ -141702,9 +141602,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HUN_HORSE_ARCHER"> 
-			<Text>
-				A fast Ranged Unit used for hit-and-run attacks. Only the Huns may build it.
-			</Text>
+			<Text>Replaces the Chariot Archer.[NEWLINE]Not slowed by rough terrain.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HUN_SCOURGE_OF_GOD"> 
 			<Text>
@@ -141717,32 +141615,22 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDIAN_WAR_ELEPHANT"> 
-			<Text>
-				A fast Ranged Unit highly effective on flat ground. Only the Indians may build it. This Unit has a higher [ICON_STRENGTH] Combat and Ranged Strength than the Chariot Archer, which it replaces.
-			</Text>
+			<Text>Replaces the Chariot Archer. Stronger, but slower and more expensive.[NEWLINE]Not slowed by rough terrain.[NEWLINE]Starts with Feared Elephant (adjacent enemies -10% [ICON_STRENGTH] Combat Strength) and Swift Charge (+50% against melee and +25% against gunpowder units).[NEWLINE]Upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDONESIAN_KRIS_SWORDSMAN"> 
 			<Text>Replaces the Swordsman. Obsolete with Gunpowder.[NEWLINE][NEWLINE]Starts with one random blade promotion: Restlessness, Sneak Attack, Ambition, Invulnerability or Cursed Blade.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INFANTRY"> 
-			<Text>
-				Most powerful Infantry Unit in the game until Mechanized Infantry.
-			</Text>
+			<Text>Gunpowder melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INQUISITOR"> 
-			<Text>
-				Used to remove other religions from cities. May only be obtained by purchasing with [ICON_PEACE] Faith.
-			</Text>
+			<Text>Removes other religions from a city.[NEWLINE]Bought with [ICON_PEACE] Faith only.[NEWLINE]+1 Sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_IRONCLAD"> 
-			<Text>
-				A very powerful naval melee unit, the Ironclad pays for its strength by being slower in ocean tiles.
-			</Text>
+			<Text>Naval melee unit.[NEWLINE]Moves twice as fast along the Coast.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JAGUAR"> 
-			<Text>
-				Fairly weak early-game military Unit. This Unit fights more effectively in Jungle and heals damage when it kills an enemy Unit, unlike the Warrior which it replaces.
-			</Text>
+			<Text>Replaces the Warrior and becomes obsolete later (with Metal Casting).[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle; starts with Woodsman.[NEWLINE]Heals 25 HP when it kills a unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JANISSARY"> 
 			<Text>
@@ -141750,29 +141638,19 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JET_FIGHTER"> 
-			<Text>
-				Air Unit designed to wrest control of the skies and intercept incoming enemy aircraft.
-			</Text>
+			<Text>Fighter: intercepts enemy aircraft and can Air Sweep.[NEWLINE]+150% [ICON_STRENGTH] Combat Strength against bombers and helicopters.[NEWLINE]Sees 6 tiles around its base (Air Recon).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_KNIGHT"> 
-			<Text>
-				Powerful Medieval Mounted Unit, weak to Pikemen.
-			</Text>
+			<Text>Mounted unit.[NEWLINE]Can move after attacking.[NEWLINE]Gets no defensive terrain bonuses and -33% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANCER"> 
-			<Text>
-				Mounted Unit specialized in defeating enemy Mounted Units.
-			</Text>
+			<Text>Mounted unit.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength against mounted units.[NEWLINE]Can move after attacking.[NEWLINE]Gets no defensive terrain bonuses and -33% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANDSKNECHT"> 
-			<Text>
-				Can pillage without using any movement points. Steals gold when attacking a city.[NEWLINE]Unlocked through the Mercenary Army social policy; it cannot be built and must be bought with gold.[NEWLINE]May move immediately after purchase.
-			</Text>
+			<Text>Gunpowder melee unit bought with [ICON_GOLD] Gold only, after adopting Mercenary Army.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against mounted units.[NEWLINE]Pillages without spending movement.[NEWLINE]Steals [ICON_GOLD] Gold equal to the damage it deals to a city.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LANDWHER"> 
-			<Text>
-				Unique Unit for Prussia Replacing the Riflemen. Available at Military Science. Receives a second attack, 1 additional [ICON_MOVES] Movement. 
-			</Text>
+			<Text>Replaces the Rifleman. Available earlier (with Military Science).[NEWLINE]+1 [ICON_MOVES] Movement and 1 extra attack per turn (Blitz).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGBOWMAN"> 
 			<Text>
@@ -141780,19 +141658,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_LONGSWORDSMAN"> 
-			<Text>
-				Powerful Medieval infantry Unit.
-			</Text>
+			<Text>Melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MACHINE_GUN"> 
-			<Text>
-				Late-game ranged Unit that must be adjacent to an enemy to strike.
-			</Text>
+			<Text>Ranged unit.[NEWLINE]Must be next to its target to attack.[NEWLINE]Can attack twice per turn (Logistics).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MARINE"> 
-			<Text>
-				Atomic Era Unit especially useful for embarking and invading across the sea.
-			</Text>
+			<Text>Gunpowder melee unit for landings.[NEWLINE]Starts with Amphibious I and II: embarking and disembarking cost only 1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MAYAN_ATLATLIST"> 
 			<Text>
@@ -141800,60 +141672,40 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MECH">
-			<Text>Gets no defensive terrain bonuses.[NEWLINE]Can move after attacking.[NEWLINE][NEWLINE]Nuke Resistance: takes only 20 damage from nuclear weapons.[NEWLINE][NEWLINE]Starts with Fear Aura, Charge, Armor Plating I and Repair.</Text>
+			<Text>Armored unit.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against land units.[NEWLINE]Can move after attacking and gets no defensive terrain bonuses.[NEWLINE][NEWLINE]Nuke Resistance: takes only 20 damage from nuclear weapons.[NEWLINE][NEWLINE]Starts with Fear Aura, Charge, Armor Plating I and Repair.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MECHANIZED_INFANTRY"> 
-			<Text>
-				Fast, basic Unit of the late-game that requires no special resources to build.
-			</Text>
+			<Text>Fast gunpowder melee unit.[NEWLINE]Needs no resources.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MEHAL_SEFARI"> 
-			<Text>
-				Unique Unit which replaces the Riflemen. Has a combat bonus when fighting in rough terrain and defending near the Ethiopian capital. 
-			</Text>
+			<Text>Replaces the Rifleman. Cheaper and slightly stronger.[NEWLINE]Starts with Drill I (+15% [ICON_STRENGTH] Combat Strength in rough terrain).[NEWLINE]Up to +30% [ICON_STRENGTH] Combat Strength near your [ICON_CAPITAL] Capital, less the farther away it is.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MINUTEMAN"> 
-			<Text>
-				Replaces the [ICON_UNIT_MUSKETMAN] Musketman. Unique to [ICON_CIV_AMERICA] America. Ignores terrain cost. Arrives trained with the [ICON_PROMOTION_DRILL_1] Drill I promotion (+15% [ICON_STRENGTH] Combat bonus fighting in [COLOR_POSITIVE_TEXT]Rough[ENDCOLOR] terrain). Earns 100% of a foe's [ICON_STRENGTH] Combat Strength towards a [ICON_GOLDEN_AGE] Golden Age on kills.
-			</Text>
+			<Text>Replaces the Musketman.[NEWLINE]Ignores terrain movement costs.[NEWLINE]Starts with Drill I (+15% [ICON_STRENGTH] Combat Strength in rough terrain).[NEWLINE]Kills earn [ICON_GOLDEN_AGE] Golden Age points equal to the enemy's [ICON_STRENGTH] Combat Strength.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MISSILE_CRUISER"> 
-			<Text>
-				Naval Unit specialized in warding off enemy aircraft. Can hold 3 Missiles.
-			</Text>
+			<Text>Ranged naval unit.[NEWLINE]Carries 3 missiles.[NEWLINE]Can fire over obstacles.[NEWLINE]Cannot attack adjacent targets.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MISSIONARY"> 
-			<Text>
-				Used to spread a religion to cities. May only be obtained by purchasing with [ICON_PEACE] Faith.
-			</Text>
+			<Text>Spreads your religion to cities.[NEWLINE]Bought with [ICON_PEACE] Faith only.[NEWLINE]Can enter other civilizations' territory, but loses strength each turn it ends there.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MOBILE_SAM"> 
-			<Text>
-				Will intercept enemy aircraft which try to bomb nearby Units.
-			</Text>
+			<Text>Anti-air unit.[NEWLINE]Intercepts enemy aircraft attacking nearby.[NEWLINE]+150% [ICON_STRENGTH] Combat Strength against aircraft and helicopters.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MODERN_ARMOR"> 
-			<Text>
-				Fast and powerful late-game Unit.
-			</Text>
+			<Text>Armored unit.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against land units.[NEWLINE]Can move after attacking and gets no defensive terrain bonuses.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MOHAWK_WARRIOR"> 
-			<Text>
-				 Replaces the Swordsman. This Unit is stronger an receives a major bonus when fighting on Forest and Jungle.
-			</Text>
+			<Text>Replaces the Swordsman. Stronger and needs no [ICON_RES_IRON] Iron.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MPIAMBINA"> 
 			<Text>Replaces the Great General.[NEWLINE][NEWLINE]Besides the Great General's abilities, it can build a Holy Site, found a religion or enhance your religion.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSKETEER"> 
-			<Text>
-				One of the first gunpowder units of the game. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Musketman, which it replaces.
-			</Text>
+			<Text>Replaces the Musketman. Stronger.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSKETMAN"> 
-			<Text>
-				First gunpowder Unit of the game. Fairly cheap and powerful.
-			</Text>
+			<Text>Gunpowder melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_MUSLIM_CAVALRY"> 
 			<Text>
@@ -141871,42 +141723,28 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NUCLEAR_MISSILE"> 
-			<Text>
-				Unleash nuclear destruction upon your foes. Does great damage to Cities and damages any Unit caught in the blast radius.[NEWLINE][NEWLINE]Requires Manhattan Project and two Uranium resources.
-			</Text>
+			<Text>Used up to destroy units and damage cities around its target.[NEWLINE]Cannot be intercepted.[NEWLINE]Needs the Manhattan Project.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NUCLEAR_SUBMARINE"> 
-			<Text>
-				Invisible to all Units except Destroyers, Missile Cruisers and other Submarines, or until it attacks or is adjacent to another unit. Can carry 2 Missiles, and is specialized in attacking Naval Units.
-			</Text>
+			<Text>Like the Submarine: hidden from all but Destroyers, Heavy Cruisers, other Submarines and units next to it; +75% [ICON_STRENGTH] Combat Strength when attacking; can enter Ice.[NEWLINE]Carries 2 missiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PANZER"> 
-			<Text>
-				Unique unit which replaces the Tank. Has a lot higher [ICON_STRENGTH] Combat strength and +1 [ICON_MOVES] Movement.
-			</Text>
+			<Text>Replaces the Tank. Stronger and +1 [ICON_MOVES] Movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PARATROOPER"> 
-			<Text>
-				Strong infantry Unit capable of paradropping up to 9 tiles from friendly territory. Paratrooper can also move and pillage after paradropping, but cannot enter combat until the following turn.
-			</Text>
+			<Text>Gunpowder melee unit that can paradrop up to 9 tiles from friendly territory.[NEWLINE]After a drop it can still move and pillage, but not attack until the next turn.[NEWLINE]Pillages without spending movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PIKEMAN"> 
-			<Text>
-				Specialized in defeating Knights and other mounted Units.
-			</Text>
+			<Text>Melee unit.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength against mounted units (+66% when attacking mounted ranged units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PIONEER"> 
-			<Text>
-				Replaces the [COLOR_YELLOW]Settler[ENDCOLOR]. Unique to America. In addition to the regular properties of a [COLOR_YELLOW]Settler[ENDCOLOR], this unit ignores terrain cost and is considered a [COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] unit with low [ICON_STRENGTH] Combat Strength.
-			</Text>
+			<Text>Replaces the Settler.[NEWLINE]Ignores terrain movement costs.[NEWLINE]A weak melee unit that can defend itself.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PORTUGUESE_NAU"> 
-			<Text>
-				Melee naval unit which excels at sea exploration. It has more [ICON_MOVES] Movement than the Caravel, which it replaces, and can perform a one-time ability next to foreign lands to earn [ICON_GOLD] Gold and XP. May only be built by the Portuguese.
-			</Text>
+			<Text>Replaces the Caravel. Stronger, but more expensive.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PRIVATEER"> 
-			<Text>Renaissance naval melee unit for raiding: pillages for more [ICON_GOLD] Gold.[NEWLINE]Weak against cities.</Text>
+			<Text>Naval melee unit for raiding.[NEWLINE]+50% [ICON_GOLD] Gold from pillaging (Marauder).[NEWLINE]-25% [ICON_STRENGTH] Combat Strength when attacking cities.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_RIFLED_CANNON"> 
 			<Text>
@@ -141914,19 +141752,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_RIFLEMAN"> 
-			<Text>
-				Strong, front-line land Unit of the mid-game.
-			</Text>
+			<Text>Gunpowder melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ROCKET_ARTILLERY"> 
-			<Text>
-				Fast Siege Unit of the late-game. Unlike other Siege Units, it does not need to set up prior to firing.
-			</Text>
+			<Text>Siege unit that does not need to set up before firing.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Can fire over obstacles.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ROMAN_LEGION"> 
-			<Text>
-				Strong, front-line land Unit of the Classical Era. This Unit has a higher [ICON_STRENGTH] Combat Strength than the Swordsman, which it replaces.
-			</Text>
+			<Text>Replaces the Swordsman. Stronger and becomes obsolete later (with Gunpowder).[NEWLINE]Can build Roads and Forts.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SAMURAI"> 
 			<Text>
@@ -141944,24 +141776,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SCOUT"> 
-			<Text>
-				Excellent at exploring, this Unit is not slowed by rough terrain, but is vulnerable to attack.
-			</Text>
+			<Text>Explorer: ignores terrain movement costs.[NEWLINE]Upgrades to the Airship.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SEA_BEGGAR"> 
-			<Text>
-				Slightly weaker at attacking Cities than the Privateer which it replaces, however, this unit is much stronger against other Naval units.
-			</Text>
+			<Text>Replaces the Privateer.[NEWLINE]Starts with Boarding Party I (+25% [ICON_STRENGTH] Combat Strength when attacking naval units), Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities) and Supply (heals outside friendly territory).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SETTLER"> 
-			<Text>
-				Founds new Cities to expand your empire.[NEWLINE][NEWLINE][ICON_FOOD] Growth of the City is stopped while this Unit is being built.
-			</Text>
+			<Text>Founds a new city.[NEWLINE]The city stops growing while it builds this unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SHIPOFTHELINE"> 
-			<Text>
-				Renaissance ranged naval unit, stronger and slower than the Frigate.[NEWLINE]+33% when attacking cities (lost on upgrade).
-			</Text>
+			<Text>Ranged naval unit, stronger and slower than the Frigate.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking cities (Broadside, lost on upgrade).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SHOSHONE_COMANCHE_RIDERS"> 
 			<Text>
@@ -141984,27 +141808,19 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SPEARMAN"> 
-			<Text>
-				Ancient Era Unit which specializes in defeating Mounted Units.
-			</Text>
+			<Text>Melee unit.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength against mounted units (+66% when attacking mounted ranged units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SS_BOOSTER"> 
-			<Text>
-				One of the Spaceship parts that must be built and sent to the capital to win a [COLOR_POSITIVE_TEXT]Science Victory[ENDCOLOR]. Unlike other parts, three SS Boosters are needed to complete the spaceship.
-			</Text>
+			<Text>Spaceship part: build it and bring it to your [ICON_CAPITAL] Capital to win a Science Victory.[NEWLINE]Military unit; cannot melee attack and has limited sight.[NEWLINE][NEWLINE]Can earn Mobility I-III and Armor Plating I-III; level III of either unlocks Repair and Nuke Resistance.[NEWLINE][NEWLINE]The spaceship needs three Boosters.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SS_PART">
-			<Text>One of the Spaceship parts that must be built and sent to the capital to win a [COLOR_POSITIVE_TEXT]Science Victory[ENDCOLOR].[NEWLINE][NEWLINE]A military unit with 80 [ICON_STRENGTH] Combat Strength and 1 [ICON_MOVES] Movement; needs 10 Aluminum.[NEWLINE]Cannot melee attack and has limited sight.[NEWLINE][NEWLINE]Can earn Mobility I-III and Armor Plating I-III; level III of either unlocks Repair and Nuke Resistance.</Text>
+			<Text>Spaceship part: build it and bring it to your [ICON_CAPITAL] Capital to win a Science Victory.[NEWLINE]Military unit; cannot melee attack and has limited sight.[NEWLINE][NEWLINE]Can earn Mobility I-III and Armor Plating I-III; level III of either unlocks Repair and Nuke Resistance.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_STEALTH_BOMBER"> 
-			<Text>
-				A long-range Air Unit that rains death from above onto enemy Units and Cities.
-			</Text>
+			<Text>Long-range bomber.[NEWLINE]Takes 80% less damage when intercepted (Stealth).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SUBMARINE"> 
-			<Text>
-				Invisible to all Units except Destroyers, Missile Cruisers and other Submarines, or until it attacks or is adjacent to another unit. Can cause major damage to other ships if they get into range without being seen.
-			</Text>
+			<Text>Ranged naval unit that stays hidden: only Destroyers, Heavy Cruisers, other Submarines and units next to it can see it.[NEWLINE]+75% [ICON_STRENGTH] Combat Strength when attacking.[NEWLINE]Can enter Ice.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWEDISH_CAROLEAN"> 
 			<Text>
@@ -142012,9 +141828,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWEDISH_HAKKAPELIITTA"> 
-			<Text>
-				Elite mounted Unit that specializes in working with Great Generals. It starts with extra movement compared to the Lancer it replaces and it deals extra damage to units that are already wounded. Only the Swedish may build it.
-			</Text>
+			<Text>Replaces the Lancer for Sweden and Finland.[NEWLINE]Starts with Envelopment and Great Generals II.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWEDISH_HUMANITARIAN"> 
 			<Text>
@@ -142022,14 +141836,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWORDSMAN"> 
-			<Text>
-				Strong, front-line land Unit of the Classical Era.
-			</Text>
+			<Text>Melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_TANK"> 
-			<Text>
-				Fast and powerful late game Unit.
-			</Text>
+			<Text>Armored unit.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against land units.[NEWLINE]Can move after attacking and gets no defensive terrain bonuses.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_TOTENKOPF"> 
 			<Text>
@@ -142037,24 +141847,16 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_TREBUCHET"> 
-			<Text>
-				Powerful Medieval Siege Unit, good at reducing the defenses of enemy Cities. Must set up prior to firing.
-			</Text>
+			<Text>Siege unit.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Must set up before firing.[NEWLINE]Can fire over obstacles.[NEWLINE][NEWLINE]Cannot melee attack, gets no defensive terrain bonuses and has limited sight.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_TRIPLANE"> 
-			<Text>
-				Early Air Unit designed to intercept incoming enemy aircraft.
-			</Text>
+			<Text>Fighter: intercepts enemy aircraft and can Air Sweep.[NEWLINE]+150% [ICON_STRENGTH] Combat Strength against bombers and helicopters.[NEWLINE]Sees 6 tiles around its base (Air Recon).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_TRIREME"> 
-			<Text>
-				Ancient Era Naval Unit used to wrest control of the seas through melee attacks on naval units and cities.
-			</Text>
+			<Text>Naval melee unit.[NEWLINE]Cannot enter Ocean.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ULAN"> 
-			<Text>
-				Unique unit which replaces the Pikeman. Behaves like a regular mounted unit but has no combat penalty against cities.
-			</Text>
+			<Text>Replaces the Pikeman: a fast mounted unit.[NEWLINE]Can move after attacking and has no penalty when attacking cities; gets no defensive terrain bonuses.[NEWLINE]Starts with Charge (+33% [ICON_STRENGTH] Combat Strength against wounded units).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VANDAL_AXEMAN"> 
 			<Text>
@@ -142067,19 +141869,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_GALLEASS"> 
-			<Text>
-				A brutally powerful Medieval Era Naval Unit used to wrest control of the seas with its ranged attack. Better at attacking and defending than the normal Galleass it replaces, but more expensive.
-			</Text>
+			<Text>Replaces the Galleass. Stronger, but more expensive.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_MERCHANT"> 
-			<Text>
-				This Venetian unique Great Person replaces the [ICON_GREAT_MERCHANT] Great Merchant. [ICON_MISSION_TRADE] Trade Missions conducted by Venetian Merchants provide 100% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence. Can Purchase [ICON_CITY_STATE] City States that have not been allied to any other Major Civilization for [COLOR_WARNING_TEXT]5[ENDCOLOR] turns.
-			</Text>
+			<Text>Replaces the Great Merchant. +2 [ICON_MOVES] Movement.[NEWLINE]Its Trade Missions give 20% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence.[NEWLINE][NEWLINE]Can buy a City-State that has not been allied to another civilization for 5 turns.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WARRIOR"> 
-			<Text>
-				Fairly weak early-game military Unit.
-			</Text>
+			<Text>Melee unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WELSH_LONGBOWMAN"> 
 			<Text>
@@ -142087,44 +141883,28 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WINGED_HUSSAR"> 
-			<Text>
-				Heavy Mounted Unit specialized in defeating enemy mounted units. This unit is faster and more powerful than the Lancer, which it replaces. Forces defenders to retreat when it inflicts more damage than it receives.
-			</Text>
+			<Text>Replaces the Lancer. Stronger and faster, and becomes obsolete later.[NEWLINE]Heavy Charge: a defender that takes more damage than it must retreat; one that can't retreat takes extra damage.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WORKBOAT"> 
-			<Text>
-				May only be contructed by AI players. Creates Improvements on water resources like [ICON_RES_FISH] Fish. The Work Boat is consumed in the process. It is defenseless, and will be killed if it comes into contact with an enemy.
-			</Text>
+			<Text>Only AI players can build it.[NEWLINE]Used up to build an improvement on a water resource such as [ICON_RES_FISH] Fish.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WORKER"> 
-			<Text>
-				Improves [ICON_FOOD] Food [ICON_PRODUCTION] Production and [ICON_GOLD] Gold by constructing Improvements on map tiles outside of Cities.
-			</Text>
+			<Text>Builds improvements, roads and railroads on tiles.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WWI_BOMBER"> 
-			<Text>
-				Early Air Unit that can bombard enemy Units and Cities from the skies.
-			</Text>
+			<Text>Bomber: attacks units and cities from the air.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength when attacking naval and embarked units (Sitting Ducks).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_WWI_TANK"> 
-			<Text>
-				The first of its kind, this powerful late game unit can move after attacking.
-			</Text>
+			<Text>Armored unit.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against land units.[NEWLINE]Can move after attacking and gets no defensive terrain bonuses.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_XCOM_SQUAD"> 
-			<Text>
-				Futuristic infantry unit skilled at dropping into danger from far across the world. Squad can move and pillage after landing but cannot enter combat until the following turn.[NEWLINE][NEWLINE][COLOR_CYAN]Good Luck, Commander![ENDCOLOR]
-			</Text>
+			<Text>Gunpowder melee unit that can paradrop up to 100 tiles from friendly territory.[NEWLINE]After a drop it can still move and pillage, but not attack until the next turn.[NEWLINE]Pillages without spending movement.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZERO"> 
-			<Text>
-				Air Unit designed to wrest control of the skies and intercept incoming enemy aircraft. Only the Japanese may build it. This Unit has a bonus against other Fighters and does not require Oil.
-			</Text>
+			<Text>Replaces the Fighter. Weaker, but needs no [ICON_RES_OIL] Oil.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength against Fighters.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI"> 
-			<Text>
-				Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack before combat and has a bonus against gunpowder units.
-			</Text>
+			<Text>Replaces the Pikeman.[NEWLINE]Performs a ranged attack (40% of its [ICON_STRENGTH] Strength) before each melee attack (Spear Throw).[NEWLINE]Becomes obsolete later and upgrades to the Rifleman.</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_UNIT_HETAIROI"> 
 			<Text>
@@ -142142,9 +141922,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HITTITE_WARCHARIOT_HELP"> 
-			<Text>
-				Powerful Ancient Melee Unit, strong in open terrain. Possesses the Shock I promotion.  Only the Hittites may build it. Replaces the Chariot Archer.
-			</Text>
+			<Text>Replaces the Chariot Archer. Stronger, but slower and more expensive.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when defending.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HITTITE_WARCHARIOT_STRATEGY"> 
 			<Text>
@@ -142324,9 +142102,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 			<Replace Tag="TXT_KEY_UNIT_KHMER_WARELEPHANT_HELP"> 
-			<Text>
-				Replaces the Trebuchet. Available at Machinery. Has a much Higher Melee and Ranged strength, receives an additional [ICON_MOVES] Movement, no vision penalty and has the Feared Elephant promotion. However, it has a weaker combat bonus against Cities and is more expensive to train.
-			</Text>
+			<Text>Replaces the Trebuchet. Available earlier (with Machinery).[NEWLINE]Stronger, has normal sight and starts with Feared Elephant (adjacent enemies -10% [ICON_STRENGTH] Combat Strength).[NEWLINE]Only +100% [ICON_STRENGTH] Combat Strength against cities, and more expensive.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KNIGHT"> 
 			<Text>
@@ -142658,7 +142434,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NELAYAN_HELP">
-			<Text>Unique Rowboat of Brunei, Polynesia, the Maori, Tonga, Indonesia and the Philippines.[NEWLINE]Unlike the Rowboat, it builds Fishing Boats like a Worker and is not used up.[NEWLINE][NEWLINE]Cannot enter Ocean tiles before Astronomy and cannot be gifted to City-States.[NEWLINE]Can be used up to build a Pontoon Bridge (with Construction) at once.</Text>
+			<Text>Replaces the Rowboat (Brunei, Indonesia, the Maori, the Philippines, Polynesia and Tonga).[NEWLINE]Builds Fishing Boats like a Worker instead of being used up for them.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NEWWORLD_SCENARIO_HELP_INQUISITOR"> 
 			<Text>
@@ -142676,9 +142452,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NGANGKARI"> 
-			<Text>
-				Unique unit which replaces the Worker. Has +1 [ICON_MOVES] Movement.
-			</Text>
+			<Text>Replaces the Worker. +1 [ICON_MOVES] Movement and +1 [ICON_MOVES] Movement while embarked.[NEWLINE]Starts with Medic and Medic II (units next to it heal 10 more HP per turn).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NGAO"> 
 			<Text>
@@ -142706,9 +142480,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 			<Replace Tag="TXT_KEY_UNIT_HELP_NUBIAN_BOW"> 
-			<Text>
-				Replaces the Scout. Has identical Strength, but is classified as a Ranged unit and may attack with 3 Range. Will not upgrade from Ruins, but may upgrade into Airships like the Scout when appropriate.
-			</Text>
+			<Text>Replaces the Scout: a ranged unit.[NEWLINE]Ancient Ruins don't upgrade it, but it upgrades to the Airship like the Scout.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_NUCLEAR_MISSILE"> 
 			<Text>
@@ -142766,7 +142538,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PEDITE"> 
-			<Text>Replaces the Longswordsman. Available with Metal Casting (instead of Steel) and cheaper.[NEWLINE]20 [ICON_STRENGTH] Combat Strength (Longswordsman: 21).[NEWLINE]Starts with Shock I (+15% [ICON_STRENGTH] Combat Strength on open terrain).[NEWLINE]Can build Motte and Baileys.</Text>
+			<Text>Replaces the Longswordsman. Available earlier (with Metal Casting) and cheaper, but slightly weaker.[NEWLINE]Starts with Shock I (+15% [ICON_STRENGTH] Combat Strength on open terrain).[NEWLINE]Can build Motte and Baileys.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PERSIAN_IMMORTAL"> 
 			<Text>
@@ -142880,9 +142652,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_RANCHERO_STRATEGY"> 
-			<Text>
-				Unlike the Settler it replaces, the Ranchero does not stop growth while being built.
-			</Text>
+			<Text>Replaces the Settler.[NEWLINE]The city keeps growing while it builds this unit.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_RCE"> 
 			<Text>
@@ -143035,9 +142805,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Row Tag="TXT_KEY_UNIT_SKINFANTRY_HELP"> 
-			<Text>
-				Strong, front-line land Unit of the mid-game that specializes in operating in Snow, Tundra and Hills. Arrives Trained with [ICON_PROMOTION_DRILL_1] [COLOR_GREEN]Drill I[ENDCOLOR] and [ICON_PROMOTION_DRILL_2] [COLOR_GREEN]Drill II[ENDCOLOR]. Replaces the [ICON_UNIT_GREAT_WAR_INFANTRY] [COLOR_YELLOW]Great War Infantry[ENDCOLOR].
-			</Text>
+			<Text>Replaces the Great War Infantry.[NEWLINE]In Snow, Tundra and Hills: +25% [ICON_STRENGTH] Combat Strength (without Forest or Jungle) and double movement.[NEWLINE]Starts with Drill I and Drill II (+30% [ICON_STRENGTH] Combat Strength in rough terrain).</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_UNIT_SKY_FORTRESS"> 
 			<Text>
@@ -143195,9 +142963,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_SWITZ_HELP"> 
-			<Text>
-				Unlike the Landsknecht it replaces, does not require a policy and receives Medic, Medic II and Faith and Gold from kills.
-			</Text>
+			<Text>Replaces the Landsknecht. Stronger and needs no policy.[NEWLINE]Starts with Medic and Medic II (units next to it heal 10 more HP per turn).[NEWLINE]Kills yield [ICON_GOLD] Gold and [ICON_PEACE] Faith equal to the enemy's [ICON_STRENGTH] Combat Strength.[NEWLINE]Upgrades to the Rifleman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_SWORDSMAN"> 
 			<Text>
@@ -143316,9 +143082,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Infantry.[NEWLINE]+1 [ICON_MOVES] Movement.[NEWLINE]Performs a ranged attack (40% of its [ICON_STRENGTH] Strength) before each melee attack.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VOORTREKKER"> 
-			<Text>
-				Unique unit for the Boers Republic. Replaces the Great War Infantry. Marginally cheaper and can build farms fast. Has a combat bonus when defending and heals completely upon killing a unit.
-			</Text>
+			<Text>Replaces the Great War Infantry. Cheaper.[NEWLINE]+25% [ICON_STRENGTH] Combat Strength when defending.[NEWLINE]Heals completely when it kills a unit.[NEWLINE]Builds Farms twice as fast as a Worker.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_BOERS_GREAT_WAR_INFANTRY"> 
 			<Text>
@@ -147320,7 +147084,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Horseman. Much stronger, but more expensive.[NEWLINE]Adjacent units receive the Great General combat bonus.[NEWLINE]Does not become obsolete.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HITTITE_WARCHARIOT_HELP">
-			<Text>Replaces the Chariot Archer. Stronger [ICON_RANGE_STRENGTH] Ranged attack, but costs more.</Text>
+			<Text>Replaces the Chariot Archer. Stronger, but slower and more expensive.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when defending.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_ZIGGURAT_HELP">
 			<Text>Replaces the Temple. Costs no [ICON_GOLD] Gold maintenance.[NEWLINE]+10% [ICON_RESEARCH] Science in the city.</Text>
@@ -147338,7 +147102,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Chariot Archer. Faster and 10% cheaper, and needs only 1 [ICON_RES_HORSE] Horse.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_HUN_HORSE_ARCHER">
-			<Text>Replaces the Chariot Archer. A fast ranged unit for hit-and-run attacks that is not slowed down by rough terrain.</Text>
+			<Text>Replaces the Chariot Archer.[NEWLINE]Not slowed by rough terrain.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HUN_HORSE_ARCHER_STRATEGY">
 			<Text>Horse Archers are fast ranged units, deadly on open terrain. Unlike the Chariot Archer they move through rough terrain without losing their movement. As a mounted unit, the Horse Archer is vulnerable to Spearmen.</Text>
@@ -147350,7 +147114,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>+1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from [ICON_BUILD_LUMBERMILL] Lumbermills.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_COLOMBIAN_CAVALRY">
-			<Text>Replaces the Cavalry. Starts with Shock I and Shock II.</Text>
+			<Text>Replaces the Cavalry.[NEWLINE]Starts with Shock I and Shock II (+30% [ICON_STRENGTH] Combat Strength on open terrain).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_AUSTRIAN_HUSSAR">
 			<Text>Replaces the Cavalry. +1 Sight and +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Envelopment.</Text>
@@ -147408,7 +147172,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Walls. Costs less.[NEWLINE][NEWLINE]Like the Walls:[NEWLINE]Makes the city harder to capture: more Defense and Hit Points, faster healing, and damage to enemy units next to the city.[NEWLINE]Strongest on a Hill or next to a Mountain.[NEWLINE][NEWLINE]In addition:[NEWLINE]+5 Defense (instead of +4).[NEWLINE]+1 [ICON_PEACE] Faith and +1 [ICON_RESEARCH] Science.[NEWLINE]Buying tiles in this city costs 25% less [ICON_GOLD] Gold.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_KHMER_WARELEPHANT_HELP">
-			<Text>Replaces the Trebuchet. Available at Machinery.[NEWLINE]Higher [ICON_STRENGTH] Combat Strength and [ICON_RANGE_STRENGTH] Ranged Strength, no vision penalty, and the Feared Elephant promotion.[NEWLINE]Weaker bonus against Cities, and more expensive.</Text>
+			<Text>Replaces the Trebuchet. Available earlier (with Machinery).[NEWLINE]Stronger, has normal sight and starts with Feared Elephant (adjacent enemies -10% [ICON_STRENGTH] Combat Strength).[NEWLINE]Only +100% [ICON_STRENGTH] Combat Strength against cities, and more expensive.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_BARAY_HELP">
 			<Text>Replaces the Garden. Needs no river or lake.[NEWLINE][NEWLINE]In addition:[NEWLINE]+25% [ICON_GREAT_PEOPLE] Great People generation in this city (instead of +20%).[NEWLINE]+2 [ICON_FOOD] Food and +2 [ICON_PEACE] Faith.[NEWLINE]10% of [ICON_FOOD] Food is carried over after a new [ICON_CITIZEN] Citizen is born.</Text>
@@ -147465,7 +147229,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>The Keshik is a unique replacement for the Knight, available to the Mongols starting in the Medieval Era. Keshiks have a strong ranged attack and, with the Mongol bonus, 5 movement points, which makes them excellent at hit and run attacks. They also earn Great General points twice as fast.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CAMEL_ARCHER">
-			<Text>Replaces the Knight. A [COLOR_POSITIVE_TEXT]Mounted Ranged[ENDCOLOR] unit with a strong [ICON_RANGE_STRENGTH] Ranged attack, but much lower [ICON_STRENGTH] Melee Strength.</Text>
+			<Text>Replaces the Knight: a mounted ranged unit with a strong [ICON_RANGE_STRENGTH] Ranged attack, but weak in melee.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_IMPROVEMENTS_TEPE_HELP">
 			<Text>+1 [ICON_FOOD] Food, +1 [ICON_PEACE] Faith.[NEWLINE]+1 [ICON_CULTURE] Culture when adjacent to a city.[NEWLINE]+1 [ICON_FOOD] Food with Civil Service.[NEWLINE]+1 [ICON_GOLD] Gold with Economics when next to a river.[NEWLINE][NEWLINE]Can only be built on flat plains or flat [ICON_RES_DEER] Deer and [ICON_RES_BISON] Bison, and must be adjacent to a luxury.</Text>
@@ -147474,7 +147238,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Amphitheater. Available with Writing (instead of Drama).[NEWLINE][NEWLINE]Like the Amphitheater:[NEWLINE]1 slot for a Great Work of Art or an Artifact.[NEWLINE]Great Works in this city yield +1 [ICON_TOURISM] Tourism.[NEWLINE]City must have a [ICON_BUILDING_MONUMENT] Monument.[NEWLINE][NEWLINE]In addition:[NEWLINE]+4 [ICON_CULTURE] Culture (instead of +2).[NEWLINE]1 Writer specialist slot.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_CIV5_SPAIN_TERCIO_HELP">
-			<Text>Replaces the Musketman. Higher [ICON_STRENGTH] Combat Strength and the Bonus vs Mounted (50) promotion.</Text>
+			<Text>Replaces the Musketman. Stronger.[NEWLINE]+50% [ICON_STRENGTH] Combat Strength against mounted units.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JANISSARY">
 			<Text>Replaces the Musketman. Cheaper to train.[NEWLINE]Starts with Charge and Zealot.[NEWLINE]Can be bought with [ICON_PEACE] Faith.</Text>
@@ -147508,7 +147272,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Shrine. Costs more.[NEWLINE][NEWLINE]In addition:[NEWLINE]+2 [ICON_PEACE] Faith (instead of +1).[NEWLINE]Units trained in this city start with +5 XP.</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_CIV5_KOREA_TURTLESHIP_HELP">
-			<Text>Replaces the Caravel. Much stronger, but slower and cannot enter Ocean tiles.[NEWLINE]Starts with Cover I and Sambuca.[NEWLINE]Costs more.</Text>
+			<Text>Replaces the Caravel. Much stronger, but slower, more expensive and sees less far.[NEWLINE]Cannot enter Ocean and does not withdraw before melee attacks.[NEWLINE]Starts with Cover I and Sambuca (friendly units within 2 tiles get +50% [ICON_STRENGTH] Combat Strength when attacking the enemy city next to it).[NEWLINE]Becomes obsolete later (with Replaceable Parts).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_NGAO">
 			<Text>Replaces the Swordsman. Stronger.[NEWLINE]+33% [ICON_STRENGTH] Combat Strength in Forest and Jungle.[NEWLINE]Starts with Cover I, Amphibious I, Woodsman and Native Tongue.</Text>
@@ -147529,7 +147293,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Longswordsman and is available earlier, at Metal Casting. Weaker, but has +1 [ICON_MOVES] Movement.[NEWLINE]Starts with Fear Aura (enemies within 1 tile are weaker).[NEWLINE]Cannot fortify.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_DANISH_LONGSHIP">
-			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Troopship and Coastal Raider I.</Text>
+			<Text>Replaces the Trireme. Faster.[NEWLINE]Starts with Troopship (embarked units on its tile sail with it) and Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_WAYFINDING">
 			<Text>Can embark and move over Oceans immediately.[NEWLINE]Embarked units have +2 [ICON_PROMOTION_SCOUTING_1] Sight and +1 [ICON_MOVES] Movement.</Text>
@@ -147547,7 +147311,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Pikeman.[NEWLINE]Starts with Envelopment and Mobility.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_VENETIAN_MERCHANT">
-			<Text>This Venetian unique Great Person replaces the [ICON_GREAT_MERCHANT] Great Merchant. +2 [ICON_MOVES] Movement.[NEWLINE][ICON_MISSION_TRADE] Trade Missions conducted by Venetian Merchants provide 20% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence.[NEWLINE][NEWLINE]Can Purchase [ICON_CITY_STATE] City States that have not been allied to any other Major Civilization for [COLOR_WARNING_TEXT]5[ENDCOLOR] turns.</Text>
+			<Text>Replaces the Great Merchant. +2 [ICON_MOVES] Movement.[NEWLINE]Its Trade Missions give 20% more [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence.[NEWLINE][NEWLINE]Can buy a City-State that has not been allied to another civilization for 5 turns.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_TRADE_MISSION_BONUS_HELP">
 			<Text>+20% [ICON_GOLD] Gold and [ICON_INFLUENCE] Influence from Trade Missions.</Text>
@@ -147559,10 +147323,10 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>[ICON_BUILD_FISHING_BOATS] Fishing Boats instantly claim all surrounding Neutral Tiles.[NEWLINE][NEWLINE]Receive a free [ICON_GREAT_ADMIRAL] Great Admiral at the [ICON_TECH_COMPASS] [COLOR_CYAN]Compass[ENDCOLOR] technology.[NEWLINE][NEWLINE]Cities next to the coast and a mountain yield +1 [ICON_CULTURE] Culture.[NEWLINE]Units trained in a city next to a mountain start with Stargazing (+1 Sight).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_CARDOEN">
-			<Text>Unique Unit for Chile. Replaces the Helicopter Gunship.[NEWLINE]Starts with +30 XP.</Text>
+			<Text>Replaces the Helicopter Gunship.[NEWLINE]Starts with 30 XP.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_BRAZILIAN_PRACINHA">
-			<Text>Replaces the [ICON_UNIT_INFANTRY] Infantry. Can move after attacking.[NEWLINE]+30% [ICON_STRENGTH] Combat Strength outside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.</Text>
+			<Text>Replaces the Infantry. Can move after attacking.[NEWLINE]+30% [ICON_STRENGTH] Combat Strength outside friendly territory.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_TRAIT_OCEAN_MOVEMENT">
 			<Text>+2 [ICON_MOVES] Movement for all naval units.[NEWLINE][NEWLINE]Your first [ICON_GREAT_WRITER] Great Writer to Write a Political Treatise gives double [ICON_CULTURE] Culture.</Text>
@@ -147604,7 +147368,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>All [COLOR_GREEN]Civilian[ENDCOLOR] units have +1 [ICON_MOVES] Movement in your own Territory.[NEWLINE]Your first 2 Expands Receive +1 [ICON_CITIZEN] Population.[NEWLINE]Land units start with Amphibious I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_PHILIPINO_MARINE_HELP">
-			<Text>Unique Unit for the Philippines. Replaces the Expeditionary Force. Stronger and +2 [ICON_MOVES] Movement when Embarked.[NEWLINE]Can move after attacking and starts with Woodsman.</Text>
+			<Text>Replaces the Expeditionary Force. Stronger.[NEWLINE]Can move after attacking.[NEWLINE]Starts with Woodsman and Fast Swimmer (+2 [ICON_MOVES] Movement while embarked).</Text>
 		</Replace>
 		<!-- Phase 6 batch 4 -->
 		<Row Tag="TXT_KEY_UNIT_HELP_LEKMOD_RCE">
@@ -147632,13 +147396,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Knight. Stronger, but costs more.[NEWLINE]Starts with Blitz (attacks more than once per turn).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_MC_OMANI_BAGHLAH_HELP">
-			<Text>Replaces the Galley. Slightly stronger.[NEWLINE]Starts with Supply Ship, Troopship and Coastal Raider I.</Text>
+			<Text>Replaces the Galley. Slightly stronger and faster.[NEWLINE]Starts with Troopship (embarked units on its tile sail with it), Supply Ship (adjacent naval units can heal outside friendly territory) and Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_FALU_GRUVA_HELP">
 			<Text>Replaces the Ironworks. Available with Metal Casting (instead of Machinery).[NEWLINE][NEWLINE]Like the Ironworks:[NEWLINE]+8 [ICON_PRODUCTION] Production.[NEWLINE]Provides 8 [ICON_RES_IRON] Iron.[NEWLINE]Mountains worked by this city yield +2 [ICON_PRODUCTION] Production (not Natural Wonders).[NEWLINE]Must have built a Workshop in all cities.[NEWLINE]The cost goes up the more cities there are in the empire.[NEWLINE][NEWLINE]In addition:[NEWLINE]Hills worked by this city yield +1 [ICON_PRODUCTION] Production.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_JFD_DEFENDER">
-			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside [COLOR_POSITIVE_TEXT]Friendly[ENDCOLOR] territory.[NEWLINE]Starts with [COLOR_POSITIVE_TEXT]Cover I[ENDCOLOR].</Text>
+			<Text>Replaces the Ironclad. Stronger.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength inside friendly territory.[NEWLINE]Starts with Cover I.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_PROMOTION_DEFENDER_HELP">
 			<Text>+15% Combat bonus inside friendly territory.</Text>
@@ -147762,13 +147526,13 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Gajasena</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_INDIAN_WAR_ELEPHANT">
-			<Text>Replaces the Chariot Archer. Stronger [ICON_STRENGTH] Combat and [ICON_RANGE_STRENGTH] Ranged Strength.[NEWLINE]Starts with Feared Elephant (adjacent enemies are weaker).[NEWLINE]Upgrades to the Gajarohi.</Text>
+			<Text>Replaces the Chariot Archer. Stronger, but slower and more expensive.[NEWLINE]Not slowed by rough terrain.[NEWLINE]Starts with Feared Elephant (adjacent enemies -10% [ICON_STRENGTH] Combat Strength) and Swift Charge (+50% against melee and +25% against gunpowder units).[NEWLINE]Upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_INDIAN_WARELEPHANT_STRATEGY">
 			<Text>The Gajasena is the Indian unique unit, replacing the Chariot Archer. It is more powerful than the Chariot Archer and weakens adjacent enemies. As a mounted unit it is vulnerable to Spearmen. It later upgrades to the Gajarohi.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_ZULU_IMPI">
-			<Text>Unique Unit that replaces the Pikemen. Performs a first-strike ranged attack (40% of its [ICON_STRENGTH] Strength) before combat.</Text>
+			<Text>Replaces the Pikeman.[NEWLINE]Performs a ranged attack (40% of its [ICON_STRENGTH] Strength) before each melee attack (Spear Throw).[NEWLINE]Becomes obsolete later and upgrades to the Rifleman.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_BUILDING_COTHON_HELP">
 			<Text>Replaces the Lighthouse. Costs less. Can also be built in a city next to a lake.[NEWLINE][NEWLINE]Like the Lighthouse:[NEWLINE][ICON_RES_FISH] Fish worked by this city yield +1 [ICON_FOOD] Food.[NEWLINE][ICON_RES_AMBER] Amber and Atolls worked by this city yield +1 [ICON_CULTURE] Culture.[NEWLINE]Coast tiles worked by this city yield +1 [ICON_PRODUCTION] Production.[NEWLINE]Buying tiles in this city costs 20% less [ICON_GOLD] Gold.[NEWLINE][NEWLINE]In addition:[NEWLINE]Its +1 [ICON_PRODUCTION] Production on Coast tiles needs no Construction.</Text>
@@ -148128,7 +147892,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Attacking on the Coast</Text>
 		</Row>
 		<Replace Tag="TXT_KEY_UNIT_TUNISIA_PRIVATEER_HELP">
-			<Text>Replaces the Privateer.[NEWLINE][NEWLINE]Coast tiles cost 33% less movement.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when attacking a target on a Coast tile.[NEWLINE]Both are lost on upgrade.</Text>
+			<Text>Replaces the Privateer.[NEWLINE]Starts with Coastal Raider I (+25% [ICON_STRENGTH] Combat Strength when attacking cities).[NEWLINE][NEWLINE]Coast tiles cost 33% less movement.[NEWLINE]+20% [ICON_STRENGTH] Combat Strength when attacking a target on a Coast tile.[NEWLINE]Both are lost on upgrade.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_TUNISIA_PRIVATEER_STRATEGY">
 			<Text>Tunisia's Privateer moves faster along the Coast and hits harder there. Use it to raid coastal waters and trade routes close to land.</Text>
@@ -148164,7 +147928,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Desert Falcon</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_HELP">
-			<Text>Replaces the Jet Fighter.[NEWLINE]Starts with Range (+2 range), Charge (+33% [ICON_STRENGTH] Combat Strength against wounded units) and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
+			<Text>Replaces the Jet Fighter. Needs no [ICON_RES_OIL] Oil.[NEWLINE]Starts with Range (+2 range), Charge (+33% [ICON_STRENGTH] Combat Strength against wounded units) and Evasion (-50% damage when intercepted).[NEWLINE]Upgrades to the Stealth Bomber.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_DESERT_FALCON_PEDIA">
 			<Text>The U.A.E.'s unique Jet Fighter: longer range, stronger against wounded units and harder to intercept.</Text>
@@ -148279,7 +148043,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Replaces the Harbor. Costs less and needs no coast.[NEWLINE][NEWLINE]Like the Harbor:[NEWLINE]In a coastal city: forms a [ICON_CONNECTED] City Connection over water, and sea trade routes from this city reach 50% farther.[NEWLINE][NEWLINE]In addition:[NEWLINE]+1 [ICON_GOLD] Gold on your [ICON_CAPITAL] Capital's city tile.[NEWLINE]With a [ICON_BUILDING_COURTHOUSE] Courthouse in the city:[NEWLINE]Luxury resources worked by the city yield +2 [ICON_GOLD] Gold.[NEWLINE]Trade routes from this city to your [ICON_CAPITAL] Capital give +1 [ICON_GOLD] Gold per era.[NEWLINE]Trade routes from your [ICON_CAPITAL] Capital to this city give +3 [ICON_FOOD] Food.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_UNIT_HELP_PORTUGUESE_NAU">
-			<Text>Replaces the Caravel: 19 [ICON_STRENGTH] Combat Strength, 6 [ICON_MOVES] Movement.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
+			<Text>Replaces the Caravel. Stronger, but more expensive.[NEWLINE]Starts with Exploration (+1 [ICON_MOVES] Movement, +1 Sight) and Supply Ship, both kept on upgrade.[NEWLINE][NEWLINE]Embarked units on its tile heal 15 HP every turn, even after acting.[NEWLINE]Land units on its tile disembark like with Amphibious I.</Text>
 		</Replace>
 		<!-- POST: simpler ruin choice texts, Gain/Lose marks (2026-10-15) -->
 		<Replace Tag="TXT_KEY_LEKMOD_RUIN_OFFER_TRADE">
@@ -148329,7 +148093,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<!-- POST: Hakkapeliitta (2026-10-15) -->
 		<Replace Tag="TXT_KEY_UNIT_HELP_SWEDISH_HAKKAPELIITTA">
-			<Text>Replaces the Lancer for Sweden and Finland: same cost, [ICON_STRENGTH] Strength and [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Starts with Envelopment and Great Generals II.</Text>
+			<Text>Replaces the Lancer for Sweden and Finland.[NEWLINE]Starts with Envelopment and Great Generals II.</Text>
 		</Replace>
 		<!-- POST: Expanded ZOC (2026-10-15) -->
 		<Row Tag="TXT_KEY_PROMOTION_LEKMOD_EXPANDED_ZOC">
@@ -148591,7 +148355,7 @@ The ship has weather'd every rack; the prize we sought is won."
 			<Text>Battering Ram</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_HELP">
-			<Text>Siege unit that attacks cities in melee.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Needs 4 [ICON_RES_IRON] Iron.</Text>
+			<Text>Siege unit that attacks cities in melee.[NEWLINE]+200% [ICON_STRENGTH] Combat Strength against cities.[NEWLINE]Starts with Cover I.[NEWLINE][NEWLINE]-33% [ICON_STRENGTH] Combat Strength when defending and limited sight.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BATTERING_RAM_STRATEGY">
 			<Text>The Battering Ram breaks city walls in melee. It is weak on defense and sees less far than other units, so keep it behind your front line until the city is in reach.</Text>
@@ -149076,6 +148840,13 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_CITADEL_TURN_END_LOCK">
 			<Text>Can't be used in the last {1_Num} seconds of a turn outside your territory, or in the last {2_Num} seconds inside it.</Text>
+		</Row>
+		<!-- LEKMOD: New Specs 16 (2026-11-27): unit tooltips -->
+		<Row Tag="TXT_KEY_UNIT_LEKMOD_BUFFALO_HUNTER_HELP">
+			<Text>Replaces the Composite Bowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Can build the Tipi.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_UNIT_LEKMOD_QIANLONG_HELP">
+			<Text>Replaces the Cavalry. Stronger and faster.[NEWLINE]Starts with Great Generals I.</Text>
 		</Row>
 	</Language_en_US>
 	<Language_de_DE>

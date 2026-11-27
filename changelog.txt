@@ -799,6 +799,11 @@ UNIT AND PROJECT TOOLTIPS
 -------------------------
 Tags: ui
 Weight: minor
+- Changed: unit tooltips say plainly what each unit does (its role, starting promotions with their effects, limits such as Ocean or setting up) instead of flavor text; unique units list only how they differ from the unit they replace
+- Dev: (user, 2026-11-27) rewritten from the loaded data (free promotions, unique vs base unit stats); stats the tooltip already shows (cost, strength, movement, range, resources) are not repeated, no era words
+- Dev: Troopship is named only on the Quinquereme (the first ship with it) and on early unique ships that add it; Blind Spot and Docked only on the Galley (the first ranged ship); Ocean limits on every ship that has them
+- Dev: wrong claims corrected: Dhow (stronger, not weaker), Carrier (3 aircraft, not 2), Rocket Corps (no setup), Sea Beggar (Coastal Raider, not weaker against cities), Foreign Legion (Mercenary Army, not Volunteer Army), Chu-Ko-Nu (same cost), Vanator and Fast Worker (not cheaper), Tachanka (no bonus vs mounted), Missile Cruiser (no interception), Turkish Kuva-yi Milliye (no Great General bonus in the data), Imprenditore texts unchanged (no civilization trains it)
+- Dev: Buffalo Hunter and Banner Cavalry get their own tooltips (they showed the Composite Bowman's and the Cavalry's)
 - Dev: (user, 2026-11-27) Battering Ram tooltip no longer says Medieval (it comes with Engineering, Classical); Privateer tooltip no longer mentions carrying units (every ship of its era does); Manhattan Project and Nuclear Fission tooltips no longer mention Atomic Bombs (not in the mod); Radio/Refrigeration tech texts name the Stadium at Radio
 
 EUI SUPPORT REMOVED

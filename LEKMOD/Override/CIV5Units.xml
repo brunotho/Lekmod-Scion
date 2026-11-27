@@ -293407,4 +293407,15 @@
 			<Set PrereqTech="TECH_GUILDS"/>
 		</Update>
 	</Builds>
+	<!-- LEKMOD: New Specs 16 (2026-11-27): own tooltips for unique units that showed their base unit's -->
+	<Units>
+		<Update>
+			<Where Type="UNIT_BUFFALO_HUNTER"/>
+			<Set Help="TXT_KEY_UNIT_LEKMOD_BUFFALO_HUNTER_HELP"/>
+		</Update>
+		<Update>
+			<Where Type="UNIT_QIANLONG"/>
+			<Set Help="TXT_KEY_UNIT_LEKMOD_QIANLONG_HELP"/>
+		</Update>
+	</Units>
 </GameData>
