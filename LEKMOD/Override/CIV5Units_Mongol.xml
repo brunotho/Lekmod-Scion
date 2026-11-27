@@ -147797,6 +147797,15 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_PEDIA_BELIEF_REFORMATION">
 			<Text>Reformation belief</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_MAPS_OLD_FOLDER">
+			<Text>An old Lekmap Scion download is still installed: {1_Folder}[NEWLINE]Delete that folder (Lekmod Scion brings its own copy in Assets/Maps/Lekmap Scion), then restart the game.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_TOPBAR">
+			<Text>Panel buttons in the top bar</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_TOPBAR_TT">
+			<Text>Three buttons next to Faith open Research Info, the Unit List and the Great Person List with one click.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE">
 			<Text>EUI-style interface</Text>
 		</Row>
@@ -148873,7 +148882,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Row>
 		<!-- LEKMOD: New Specs 16 (2026-11-27): unit tooltips -->
 		<Row Tag="TXT_KEY_LEKMOD_MAPS_UPDATED">
-			<Text>Lekmap Scion was installed or updated: restart Civilization V once so the game lists it.[NEWLINE][NEWLINE]If you have an old Lekmap Scion folder from a separate map download in Assets/Maps, delete it.</Text>
+			<Text>Lekmap Scion was installed or updated: restart Civilization V once so the game lists it.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_UNIT_LEKMOD_BUFFALO_HUNTER_HELP">
 			<Text>Replaces the Composite Bowman. Stronger [ICON_RANGE_STRENGTH] Ranged attack.[NEWLINE]Can build the Tipi.</Text>

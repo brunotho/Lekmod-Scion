@@ -188,10 +188,35 @@ function LekmodShowMapsNotice()
 		return;
 	end
 	g_LekmodMapsNoticeShown = true;
+	-- (2026-11-27, user: only say something when something is wrong) the state as the game sees it:
+	--  * the DLL copied or removed files this launch (LEKMOD_MAPS_CHANGED): the map list is out of date -> restart
+	--  * the map list has no Lekmap Scion in Assets\Maps\Lekmap Scion (copy failed or not scanned yet) -> restart
+	--  * the map list has Lekmap Scion in another folder (an old standalone download) -> name it, ask to delete it
 	local row = GameInfo.Defines{ Name = "LEKMOD_MAPS_CHANGED" }();
-	if row ~= nil and tonumber(row.Value) ~= nil and tonumber(row.Value) > 0 then
-		print("Lekmap Scion: " .. row.Value .. " map files copied or removed; asking for a restart");
-		Events.FrontEndPopup.CallImmediate( "TXT_KEY_LEKMOD_MAPS_UPDATED" );
+	local iChanged = (row ~= nil and tonumber(row.Value)) or 0;
+	local bListed = false;
+	local oldFolders = {};
+	for script in GameInfo.MapScripts() do
+		local fileName = script.FileName or "";
+		local lower = string.lower( fileName );
+		if string.match( lower, "([^\\/]+)%.lua$" ) == "lekmapscion_fractalpangaea" then
+			if string.find( lower, "maps[\\/]lekmap scion[\\/]" ) ~= nil then
+				bListed = true;
+			else
+				table.insert( oldFolders, string.match( fileName, "^(.*)[\\/][^\\/]+$" ) or fileName );
+			end
+		end
+	end
+	local parts = {};
+	if iChanged > 0 or not bListed then
+		table.insert( parts, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAPS_UPDATED" ) );
+	end
+	if #oldFolders > 0 then
+		table.insert( parts, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_MAPS_OLD_FOLDER", table.concat( oldFolders, ", " ) ) );
+	end
+	print( "Lekmap Scion: " .. iChanged .. " files copied or removed this launch, listed: " .. tostring( bListed ) .. ", old folders: " .. #oldFolders );
+	if #parts > 0 then
+		Events.FrontEndPopup.CallImmediate( table.concat( parts, "[NEWLINE][NEWLINE]" ) );
 	end
 end
 

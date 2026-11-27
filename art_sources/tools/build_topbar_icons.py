@@ -2,7 +2,7 @@
 
 The top-left panel buttons (InfoCorner) are 45 px textures inside the game's .fpk archives. Civ V can't scale a
 texture down (only crop it), so this extracts the three base textures and writes 24 px copies:
-    LEKMOD/Art/Lekmod (v 1)/Art/TopBar/LekmodTopBar{Tech,Units,GP}24.dds   (B8G8R8A8, one mip)
+    LEKMOD/Art/Lekmod (v 1)/Art/TopBar/LekmodTopBar{Tech,Units,GP}[HL]24.dds   (B8G8R8A8, one mip; HL = mouse-over glow)
 The 45 px sources are kept in art_sources/topbar/ as PNG. Rerunnable: python art_sources/tools/build_topbar_icons.py
 """
 import glob, os, struct, subprocess
@@ -13,7 +13,9 @@ RES = r"C:/Program Files (x86)/Steam/steamapps/common/Sid Meier's Civilization V
 TEXCONV = r"C:/Users/bbruno/civ-tools/texconv.exe"
 SRC = os.path.join(REPO, "art_sources", "topbar")
 OUT = os.path.join(REPO, "LEKMOD", "Art", "Lekmod (v 1)", "Art", "TopBar")
-ICONS = {"maintechbutton.dds": "Tech", "mainunitbutton.dds": "Units", "maingreatpersonbutton.dds": "GP"}
+ICONS = {"maintechbutton.dds": "Tech", "mainunitbutton.dds": "Units", "maingreatpersonbutton.dds": "GP",
+         # the glowing versions, shown while the mouse is over a button
+         "maintechbuttonhl.dds": "TechHL", "mainunitbuttonhl.dds": "UnitsHL", "maingreatpersonbuttonhl.dds": "GPHL"}
 SIZE = 24
 
 

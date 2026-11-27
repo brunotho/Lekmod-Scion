@@ -1273,6 +1273,20 @@ for id, which in pairs( { LekmodTopTechButton = "Tech", LekmodTopUnitsButton = "
 		Controls[id]:RegisterCallback( Mouse.eLClick, function() LekmodTopCornerToggle( which ); end );
 	end
 end
+-- Lek Options "Panel buttons in the top bar" (on unless switched off)
+local g_LekmodTopBarOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+function LekmodApplyTopBarButtons()
+	local bShow = g_LekmodTopBarOptions == nil or g_LekmodTopBarOptions.GetValue( "LEK_TopBarPanelButtons" ) ~= 0;
+	for _, id in ipairs( { "LekmodTopTechButton", "LekmodTopUnitsButton", "LekmodTopGPButton" } ) do
+		if Controls[id] ~= nil then
+			Controls[id]:SetHide( not bShow );
+		end
+	end
+	Controls.TopPanelInfoStack:CalculateSize();
+	Controls.TopPanelInfoStack:ReprocessAnchoring();
+end
+LekmodApplyTopBarButtons();
+LuaEvents.LekmodTopBarButtonsChanged.Add( LekmodApplyTopBarButtons );
 
 -- Update data at initialization
 UpdateData();

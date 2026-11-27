@@ -21,10 +21,27 @@
 
     <TextButton Anchor="C,T" String="FAITH!" ColorLayer0="255,255,200,255"  ID="FaithString" ToolTipType="TooltipTypeTopPanel"/>
 
-    <!-- LEKMOD (2026-11-27): one click opens Research Info, the Unit List or the Great Person List (top-left panels) -->
-    <Button Anchor="C,T" Offset="0,-3" Size="24,24" Texture="LekmodTopBarTech24.dds" ID="LekmodTopTechButton" ToolTip="TXT_KEY_IC_RESEARCH" />
-    <Button Anchor="C,T" Offset="0,-3" Size="24,24" Texture="LekmodTopBarUnits24.dds" ID="LekmodTopUnitsButton" ToolTip="TXT_KEY_IC_UNIT" />
-    <Button Anchor="C,T" Offset="0,-3" Size="24,24" Texture="LekmodTopBarGP24.dds" ID="LekmodTopGPButton" ToolTip="TXT_KEY_IC_GP" />
+    <!-- LEKMOD (2026-11-27): one click opens Research Info, the Unit List or the Great Person List (top-left panels).
+         The icon is an Image inside the Button: a Button's own Texture is read as a sprite sheet and showed an empty
+         frame on mouse-over. Lek Options can hide them (LEK_TopBarPanelButtons). -->
+    <Button Anchor="C,T" Offset="0,-3" Size="24,24" ID="LekmodTopTechButton" ToolTip="TXT_KEY_IC_RESEARCH">
+      <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarTech24.dds" />
+      <ShowOnMouseOver>
+        <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarTechHL24.dds" />
+      </ShowOnMouseOver>
+    </Button>
+    <Button Anchor="C,T" Offset="0,-3" Size="24,24" ID="LekmodTopUnitsButton" ToolTip="TXT_KEY_IC_UNIT">
+      <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarUnits24.dds" />
+      <ShowOnMouseOver>
+        <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarUnitsHL24.dds" />
+      </ShowOnMouseOver>
+    </Button>
+    <Button Anchor="C,T" Offset="0,-3" Size="24,24" ID="LekmodTopGPButton" ToolTip="TXT_KEY_IC_GP">
+      <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarGP24.dds" />
+      <ShowOnMouseOver>
+        <Image Anchor="C,C" Size="24,24" Texture="LekmodTopBarGPHL24.dds" />
+      </ShowOnMouseOver>
+    </Button>
   
     <TextButton Anchor="C,T" String="RESOURCES!" ColorLayer0="255,0,255,255"  ID="ResourceString" ToolTipType="TooltipTypeTopPanel"/>
 

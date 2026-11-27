@@ -827,6 +827,8 @@ TOP BAR PANEL BUTTONS
 Tags: ui
 - Added: three buttons in the top bar, next to Faith, open Research Info, the Unit List and the Great Person List with one click (a second click closes them)
 - Dev: (user, 2026-11-27) 24 px copies of the top-left panel icons, built by art_sources/tools/build_topbar_icons.py from the game's .fpk textures (Civ V can't scale textures down); TopPanel.xml/.lua (Events.OpenInfoCorner, like the Shift+F hotkeys)
+- Changed: they can be hidden in Lek Options ("Panel buttons in the top bar")
+- Dev: smoke test 2026-11-27: the hovered button vanished (a Button's Texture is a sprite sheet; mouse-over showed an empty frame); the icon is now an Image inside the Button, the base panel's glow (…HL) shows on mouse-over
 
 MAP INCLUDED IN THE MOD
 -----------------------
@@ -836,6 +838,8 @@ Tags: ui
 - Dev: (user, 2026-11-27) the map source moved from brunotho/lekmap-scion into this repo (scripts in LEKMOD/Maps, changelog and notes in map/); release.py packages one zip, the website reads map/CHANGELOG.txt and has no map download button
 - Dev: Multiplayer > New Game prefers the copy in Assets/Maps/Lekmap Scion when several Lekmap Scion folders are listed (before: the first one in the game's list, possibly an old download); without any, the lobby keeps its default map (Lua.log line)
 - Dev: the map's lobby name and options are light blue (COLOR_HIGHLIGHT_TEXT, like Weevee 11.1.0; was purple), user 2026-11-27
+- Dev: (user, 2026-11-27) the main menu message only appears when needed: "restart once" after the DLL copied or removed files this launch or when the map list has no Lekmap Scion in Assets/Maps/Lekmap Scion; "delete this old folder" (named) when the map list has a Lekmap Scion map in another folder
+- Dev: smoke test 2026-11-27 (DB-verified): the DLL copied the changed map script once (xml.log logs the same line for both database passes of one launch), the map generated, costs/Textile Mill/Solar/Nuclear Plant/Hero Cult/Stadium/Trebuchet/Simbahan rows are as intended
 
 EUI SUPPORT REMOVED
 -------------------
