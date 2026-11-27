@@ -302,7 +302,8 @@
 
     <!-- LEKMOD: Lek Options (2026-10-21): every Lekmod setting in one tab -->
     <Container Size="971,500" Offset="0,44" ID="LekmodPanel" Hidden="1" >
-      <Stack Anchor="C,T" Offset="0,90" Padding="15" >
+      <Stack Anchor="C,T" Offset="0,90" Padding="11" >
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_EUI_STYLE" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodEuiStyleCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_EUI_STYLE_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodPromoHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_PROMO_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodBuildHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_BUILD_HOTKEYS_TT"  />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodActionHotkeysCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_ACTION_HOTKEYS_TT"  />

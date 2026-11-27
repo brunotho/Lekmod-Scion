@@ -336,6 +336,8 @@ Tags: ui
 - Dev: the City-State screen's unique unit and trait building icons were made larger during development
 - Changed: a greyed-out build button says when the improvement can only be built on Hills (Malagasy Holy Site)
 - Changed: the map options next to the minimap show each option's hotkey; tile recommendations are off by default and switched in Lek Options instead
+- Added: an "EUI-style interface" setting in Lek Options (on by default): switched off, the city banners, the Great People meters and the aircraft flags look like the base game's
+- Dev: (user, 2026-11-27) LEK_EuiStyleUI in EUI's options store; CityBannerManager, CityView and UnitFlagManager read it (LekmodEuiStyle); LuaEvents.LekmodEuiStyleChanged hides AirCraftFlags and resets aircraft offsets at once
 - Dev: UnitFlagManager (standard UI) LekmodPromoStack, 32 px icons; option LEK_FlagPromotions, unset = on; the row sits 6 px higher when the crossed swords (attacked this turn) aren't shown; LuaEvents.LekmodFlagPromotionsChanged; option LEK_ShowTileRecommendations (unset = hidden; InGame g_ShowWorkerRecommendation and the minimap defaults read it)
 - Dev: (development step, covered by the line or tooltip above) the Options screen loads fully again; its setup stopped at the tile recommendations switch, so that switch and the settings after it didn't work
 - Dev: the checkbox ID LekmodTileRecommendationsCheckbox had 33 characters; Civ V creates no control for IDs that long (base game IDs stay at 31 or fewer), renamed LekmodTileRecsCheckbox
@@ -805,6 +807,7 @@ Weight: minor
 - Dev: wrong claims corrected: Dhow (stronger, not weaker), Carrier (3 aircraft, not 2), Rocket Corps (no setup), Sea Beggar (Coastal Raider, not weaker against cities), Foreign Legion (Mercenary Army, not Volunteer Army), Chu-Ko-Nu (same cost), Vanator and Fast Worker (not cheaper), Tachanka (no bonus vs mounted), Missile Cruiser (no interception), Turkish Kuva-yi Milliye (no Great General bonus in the data), Imprenditore texts unchanged (no civilization trains it)
 - Dev: Buffalo Hunter and Banner Cavalry get their own tooltips (they showed the Composite Bowman's and the Cavalry's)
 - Dev: (user, 2026-11-27) Battering Ram tooltip no longer says Medieval (it comes with Engineering, Classical); Privateer tooltip no longer mentions carrying units (every ship of its era does); Manhattan Project and Nuclear Fission tooltips no longer mention Atomic Bombs (not in the mod); Radio/Refrigeration tech texts name the Stadium at Radio
+- Dev: (user, 2026-11-27, second round) no intensifiers in unique unit and building tooltips (slightly, much, a bit: just stronger, cheaper, ...); Conquistadors found cities without the "also on other continents" aside; Dalai Lama lists every use as "effect: cost" (city and religion: all its spreads); UAE drops "your Oil counts"; Brunei refinery and M-84 drop "Unique ... for X"
 
 MAP INCLUDED IN THE MOD
 -----------------------
@@ -812,6 +815,7 @@ Tags: ui
 - Changed: Lekmap Scion comes with the mod: no separate map download; the first start after installing or updating asks for one restart so the game lists the map
 - DLL: LEKMOD_BUNDLED_MAPS: DllMain copies LEKMOD/Maps/*.lua into Assets/Maps/Lekmap Scion (missing or changed files; removes files the mod no longer has); define LEKMOD_MAPS_CHANGED for the main menu notice; after snowve's SnowveSyncMapScripts (megawac)
 - Dev: (user, 2026-11-27) the map source moved from brunotho/lekmap-scion into this repo (scripts in LEKMOD/Maps, changelog and notes in map/); release.py packages one zip, the website reads map/CHANGELOG.txt and has no map download button
+- Dev: Multiplayer > New Game prefers the copy in Assets/Maps/Lekmap Scion when several Lekmap Scion folders are listed (before: the first one in the game's list, possibly an old download); without any, the lobby keeps its default map (Lua.log line)
 
 EUI SUPPORT REMOVED
 -------------------
@@ -1562,7 +1566,7 @@ Tags: units
 UNIT STAT AND COST CHANGES
 --------------------------
 Tags: units, combat
-- Changed: Trebuchet: 11 Strength, 13 Ranged Strength (was 12 / 14), cost 80 -> 76
+- Changed: Trebuchet: 11 Strength, 12 Ranged Strength (was 12 / 14), cost 80 -> 76
 - Changed: Lancer: 26 Strength (was 25)
 - Changed: Cannon: 21 Ranged Strength (was 20)
 - Changed: Galley: 6 Strength, 8 Ranged Strength (was 8 / 10), cost 40 -> 32
@@ -4157,10 +4161,10 @@ Unique buildings cost the same Gold maintenance as the building they replace, so
   - Pillar of Ashoka (Monument): 1 Gold
   - Reisläufer Post (Armory): 1 Gold
   - Sauna (Shrine): 1 Gold
-  - Simbahan (Colosseum): 2 Gold
   - Wat (University): 2 Gold
 - Note: kept on purpose (user, 2026-11-18): Kongo's Slave Market, the free temples (Burial Tomb, Jongmyo Shrine, Stave Church, Mud Pyramid Mosque), buildings with Gold of their own (Paper Maker, Minaa', Palmyrene Theater, Stade), and the stated trade-offs Ribat, Krepost, Orszaggyules and Ski Resort
 - Dev: a building given for free (policies, wonders) still costs no maintenance (base game)
+- Dev: the Simbahan was wrongly set to 2 Gold here (its v35.4 base, the Zoo); since its rework it replaces the Colosseum and costs 1 Gold like it (user, 2026-11-27)
 
 UNIQUE BUILDING TOOLTIPS (Civilization_BuildingClassOverrides)
 --------------------------------------------------------------

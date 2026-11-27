@@ -136,7 +136,9 @@ function OnOK()
     EUI_options.SetValue( "LEK_FlagPromotions", Controls.LekmodFlagPromotionsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_ShowTileRecommendations", Controls.LekmodTileRecsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_KeyboardLayout", g_LekmodKeyboardLayout or 0 )
+    EUI_options.SetValue( "LEK_EuiStyleUI", Controls.LekmodEuiStyleCheckbox:IsChecked() and 1 or 0 )
     LuaEvents.LekmodFlagPromotionsChanged()
+    LuaEvents.LekmodEuiStyleChanged()
     LuaEvents.OnRecommendationCheckChanged( not Controls.LekmodTileRecsCheckbox:IsChecked() )
 
 	OptionsManager.CommitGameOptions();
@@ -715,6 +717,7 @@ function UpdateGameOptionsDisplay()
     Controls.LekmodImportantNotifsCheckbox:SetCheck( EUI_options.GetValue( "LEK_ImportantNotificationsOnly" ) == 1 )
     Controls.LekmodFlagPromotionsCheckbox:SetCheck( EUI_options.GetValue( "LEK_FlagPromotions" ) ~= 0 )
     Controls.LekmodTileRecsCheckbox:SetCheck( EUI_options.GetValue( "LEK_ShowTileRecommendations" ) == 1 )
+    Controls.LekmodEuiStyleCheckbox:SetCheck( EUI_options.GetValue( "LEK_EuiStyleUI" ) ~= 0 )
     g_LekmodKeyboardLayout = tonumber( EUI_options.GetValue( "LEK_KeyboardLayout" ) ) or 0
     LekmodShowKeyboardLayout()
     --Controls.NoCitizenWarningCheckbox:SetCheck( OptionsManager.IsNoCitizenWarning() );

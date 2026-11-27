@@ -940,7 +940,7 @@ local g_UnitFlagClass =
         local offset = Vector2( 0, 0 );
 
         -- LEKMOD: aircraft sit in an arc above their base (LekmodLayoutAir)
-        if( self.m_IsAirCraft ) then
+        if( self.m_IsAirCraft and LekmodEuiStyle() ) then
             LekmodLayoutAir( plot );
             return;
         end
@@ -1310,9 +1310,27 @@ local function LekmodArcPoint( i, n, radius, cx, cy )
     return cx + math.cos( step * i + start ) * radius, cy + math.sin( step * i + start ) * radius;
 end
 
+-- LEKMOD (2026-11-27): Lek Options "EUI-style interface" (on unless switched off). Off = the base game: aircraft
+-- flags hidden (only the count above the city banner / carrier and its list), a selected one at the usual offset.
+local g_LekmodEuiStyleOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+function LekmodEuiStyle()
+    return g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" ) ~= 0;
+end
+function LekmodApplyEuiStyle()
+    Controls.AirCraftFlags:SetHide( not LekmodEuiStyle() );
+    for _, list in pairs( g_MasterList ) do
+        for _, flag in pairs( list ) do
+            if( flag.m_IsAirCraft and flag.m_Instance ~= nil ) then
+                flag:UpdateFlagOffset();
+            end
+        end
+    end
+end
+LuaEvents.LekmodEuiStyleChanged.Add( LekmodApplyEuiStyle );
+
 -- recompute the arc offsets of every aircraft on this plot (grouped by their base: the tile or each carrier)
 function LekmodLayoutAir( pPlot )
-    if( pPlot == nil ) then
+    if( pPlot == nil or not LekmodEuiStyle() ) then
         return;
     end
     local groups = {};      -- key: "tile" or carrier "owner:id"
@@ -2018,3 +2036,6 @@ Events.SerialEventUnitInfoDirty.Add( LekmodUpdateAllFlagPromotions );
 Events.ActivePlayerTurnStart.Add( LekmodUpdateAllFlagPromotions );
 -- the option was switched (Lek Options, map options panel or Alt+P)
 LuaEvents.LekmodFlagPromotionsChanged.Add( LekmodUpdateAllFlagPromotions );
+
+-- LEKMOD: apply the EUI-style setting at load
+Controls.AirCraftFlags:SetHide( not LekmodEuiStyle() );

@@ -280028,7 +280028,7 @@
 		</Update>
 		<Update>
 			<Where Type="UNIT_TREBUCHET"/>
-			<Set Combat="11" Cost="114" RangedCombat="13"/>
+			<Set Combat="11" Cost="114" RangedCombat="12"/>
 		</Update>
 		<Update>
 			<Where Type="UNIT_TRIPLANE"/>
@@ -293319,10 +293319,6 @@
 		<Update>
 			<Where Type="BUILDING_COOPERATIVE"/>
 			<Set GoldMaintenance="3"/>
-		</Update>
-		<Update>
-			<Where Type="BUILDING_NATIONALCHURCH"/>
-			<Set GoldMaintenance="2"/>
 		</Update>
 		<Update>
 			<Where Type="BUILDING_ASHOKA"/>

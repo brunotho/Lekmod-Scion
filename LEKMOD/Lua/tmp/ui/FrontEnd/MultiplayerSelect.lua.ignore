@@ -39,15 +39,24 @@ end
 -- The map: Lekmap Scion's Fractal Pangaea script, found by its file name wherever the map folder is.
 -- Older Lekmap versions (other names) are never picked, so players can't start on the wrong one by accident.
 local LEKMOD_MAP_SCRIPT_NAME = "lekmapscion_fractalpangaea";
+-- Since 2026-11-27 the map ships with the mod and the DLL copies it into Assets\Maps\Lekmap Scion: that copy wins over
+-- an old standalone download with the same file name (before, the first one in the game's list was taken).
 function LekmodFindDefaultMapScript()
+	local found = nil;
 	for row in GameInfo.MapScripts{SupportsMultiplayer = 1} do
 		local fileName = string.lower(row.FileName or "");
 		local base = string.match(fileName, "([^\\/]+)%.lua$");
 		if base == LEKMOD_MAP_SCRIPT_NAME then
-			return row.FileName;
+			if string.find(fileName, "maps[\\/]lekmap scion[\\/]") ~= nil then
+				return row.FileName;
+			end
+			found = found or row.FileName;
 		end
 	end
-	return nil;
+	if found == nil then
+		print("Lekmod: Lekmap Scion is not in the map list; the lobby keeps its default map");
+	end
+	return found;
 end
 
 local function LekmodPrepareInternetGame()

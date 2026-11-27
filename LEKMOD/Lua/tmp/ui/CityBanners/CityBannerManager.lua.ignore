@@ -365,6 +365,11 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 			if (city:IsFoodProduction() or city:FoodDifferenceTimes100() == 0) then
 				cityGrowth = "-";
 				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_STOPPED_GROWING_TT", localizedCityName, cityPopulation));
+			elseif city:FoodDifferenceTimes100() < 0 and not LekmodEuiStyle() then
+				cityGrowth = "[COLOR_WARNING_TEXT]-[ENDCOLOR]";
+				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_STARVING_TT", localizedCityName));
+			elseif not LekmodEuiStyle() then
+				controls.CityBannerRightBackground:SetToolTipString(Locale.ConvertTextKey("TXT_KEY_CITY_WILL_GROW_TT", localizedCityName, cityPopulation, cityPopulation+1, cityGrowth));
 			elseif city:FoodDifferenceTimes100() < 0 then
 				-- LEKMOD: turns until the city loses a citizen. The game takes one once the stored Food, counted in whole
 				-- Food cut towards zero, is below 0 (so at -1.00 or less); a size 1 city never starves.
@@ -468,7 +473,9 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 						-- (stored as in EUI's banner: the overflow part counts as stored)
 						local iProdRate100 = city:GetCurrentProductionDifferenceTimes100(false, false);
 						local iProdStored100 = city:GetProductionTimes100() + city:GetCurrentProductionDifferenceTimes100(false, true) - iProdRate100;
-						tooltipString = tooltipString .. LekmodTurnStepText(iProdStored100, iProdRate100, city:GetProductionNeeded() * 100, productionTurnsLeft, "[ICON_PRODUCTION]", "BUILD");
+						if LekmodEuiStyle() then
+							tooltipString = tooltipString .. LekmodTurnStepText(iProdStored100, iProdRate100, city:GetProductionNeeded() * 100, productionTurnsLeft, "[ICON_PRODUCTION]", "BUILD");
+						end
 						controls.CityBannerLeftBackground:SetToolTipString(tooltipString);
 					end
 				end	
@@ -605,6 +612,11 @@ end
 --   stored100, rate100: current stock and gain per turn; need100: the total needed; turns: the game's turn count
 function LekmodFmt(i100)
 	return string.format("%g", math.floor(i100 + 0.5) / 100);
+end
+-- LEKMOD (2026-11-27): Lek Options "EUI-style interface" (on unless switched off): off = the base game's banner texts
+local g_LekmodEuiStyleOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+function LekmodEuiStyle()
+	return g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" ) ~= 0;
 end
 -- turns until a starving city loses a citizen: the first turn the stock is at -1.00 or less
 function LekmodStarveTurns(stored100, rate100)

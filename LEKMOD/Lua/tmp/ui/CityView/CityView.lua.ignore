@@ -38,6 +38,12 @@ local InterfaceModeMessageHandler =
 	--[InterfaceModeTypes.INTERFACEMODE_CITY_PLOT_SELECTION] = {},
 	[InterfaceModeTypes.INTERFACEMODE_PURCHASE_PLOT] = {}
 }
+-- LEKMOD (2026-11-27): Lek Options "EUI-style interface" (on unless switched off): off = no turns on the Great People meters
+local g_LekmodEuiStyleOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+function LekmodEuiStyle()
+	return g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" ) ~= 0;
+end
+
 -- LEKMOD: great person points with up to two decimals (trailing zeros dropped)
 function LekmodFormatGPPoints( fValue )
 	local s = string.format( "%.2f", fValue );
@@ -1129,7 +1135,7 @@ function OnCityViewUpdate()
 					iLekmodBaseRate = iLekmodBaseRate + building.GreatPeopleRateChange;
 				end
 			end
-			if (iProgress > 0 or iLekmodBaseRate > 0) then
+			if (iProgress > 0 or (iLekmodBaseRate > 0 and LekmodEuiStyle())) then
 				numGPs = numGPs + 1;		
 			
 				local unitClass = GameInfo.UnitClasses[pSpecialistInfo.GreatPeopleUnitClass];
@@ -1225,9 +1231,11 @@ function OnCityViewUpdate()
 						iGPPChange = (iGPPChange * (100 + iMod)) / 100;
 						strToolTipText = strToolTipText .. " (+" .. LekmodFormatGPPoints(iGPPChange/100) .. "[ICON_GREAT_PEOPLE])";
 						-- LEKMOD: turns until the great person appears, on the meter (like EUI)
-						local iLekmodTurns = math.ceil( math.max(0, threshold - iProgress) / (iGPPChange / 100) );
-						controlTable.GreatPersonLabel:SetText( labelText .. ": " .. Locale.ToLower( Locale.ConvertTextKey("TXT_KEY_STR_TURNS", iLekmodTurns) ) );
-						strToolTipText = strToolTipText .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_GP_APPEARS_IN", iLekmodTurns);
+						if LekmodEuiStyle() then
+							local iLekmodTurns = math.ceil( math.max(0, threshold - iProgress) / (iGPPChange / 100) );
+							controlTable.GreatPersonLabel:SetText( labelText .. ": " .. Locale.ToLower( Locale.ConvertTextKey("TXT_KEY_STR_TURNS", iLekmodTurns) ) );
+							strToolTipText = strToolTipText .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_GP_APPEARS_IN", iLekmodTurns);
+						end
 						if (iPlayerMod > 0) then
 							strToolTipText = strToolTipText .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_PLAYER_GP_MOD", iPlayerMod);
 						end
