@@ -1,4 +1,4 @@
-# Lekmap Scion 0.1.8 (compared with Lekmap 5.2)
+# Lekmap Scion 0.1.9 (compared with Lekmap 5.2)
 
 Test builds are numbered 0.1.x; this list always shows everything that differs from Lekmap 5.2.
 

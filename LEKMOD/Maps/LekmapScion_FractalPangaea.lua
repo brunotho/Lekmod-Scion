@@ -42,7 +42,7 @@ function GetMapScriptInfo()
 	LekPipelineFlow("GetMapScriptInfo_call");
 	local world_age, temperature, rainfall, sea_level, resources = GetCoreMapOptions()
 	return {
-		Name = "[COLOR_HIGHLIGHT_TEXT]Lekmap Scion 0.1.8[ENDCOLOR]",
+		Name = "[COLOR_HIGHLIGHT_TEXT]Lekmap Scion 0.1.9[ENDCOLOR]",
 		Description = "Lekmap pangaea — fractal supercontinent with tectonic islands.",
 		IsAdvancedMap = false,
 		IconIndex = 0,
