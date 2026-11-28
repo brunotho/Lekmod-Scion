@@ -207,7 +207,7 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 		elseif (not Teams[Game.GetActiveTeam()]:IsHasMet(player:GetTeam())) then
 			strToolTip = Locale.ConvertTextKey("TXT_KEY_HAVENT_MET");
 		else
-			strToolTip = Locale.ConvertTextKey("TXT_KEY_TALK_TO_PLAYER");
+			strToolTip = LekmodForeignCityInfo(city, player) .. Locale.ConvertTextKey("TXT_KEY_TALK_TO_PLAYER");
 		end
 		
 		if (Teams[Game.GetActiveTeam()]:IsAtWar(player:GetTeam())) then
@@ -615,8 +615,93 @@ function LekmodFmt(i100)
 end
 -- LEKMOD (2026-11-27): Lek Options "EUI-style interface" (on unless switched off): off = the base game's banner texts
 local g_LekmodEuiStyleOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+-- LEKMOD (2026-11-28): one Lek Options setting per EUI-style piece (on unless switched off); a setting never saved
+-- falls back to the old single "EUI-style interface" setting
+function LekmodUiOption( key )
+	local v = g_LekmodEuiStyleOptions.GetValue( key );
+	if v == nil then
+		v = g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" );
+	end
+	return v ~= 0;
+end
 function LekmodEuiStyle()
-	return g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" ) ~= 0;
+	return LekmodUiOption( "LEK_UiBannerNumbers" );
+end
+-- LEKMOD (2026-11-28, short version of EUI's hover): resources in the city's tiles and a summary of the civilization
+function LekmodForeignCityInfo( city, player )
+	if not LekmodUiOption( "LEK_UiForeignCityInfo" ) then
+		return "";
+	end
+	local iActiveTeam = Game.GetActiveTeam();
+	local lines = {};
+	-- strategic and luxury resources on the city's tiles: green = connected, red = not
+	local have, notHave, order = {}, {}, {};
+	for i = 0, city:GetNumCityPlots() - 1 do
+		local plot = city:GetCityIndexPlot( i );
+		if plot ~= nil and plot:IsRevealed( iActiveTeam, false ) and plot:GetOwner() == city:GetOwner() then
+			local workingCity = plot:GetWorkingCity();
+			local eResource = plot:GetResourceType( iActiveTeam );
+			if eResource ~= -1 and workingCity ~= nil and workingCity:GetID() == city:GetID() then
+				local info = GameInfo.Resources[eResource];
+				local iUsage = Game.GetResourceUsageType( eResource );
+				if info ~= nil and (iUsage == ResourceUsageTypes.RESOURCEUSAGE_STRATEGIC or iUsage == ResourceUsageTypes.RESOURCEUSAGE_LUXURY) then
+					local n = math.max( 1, plot:GetNumResource() );
+					if have[eResource] == nil then
+						have[eResource] = 0; notHave[eResource] = 0;
+						table.insert( order, eResource );
+					end
+					if plot:IsCity() or (not plot:IsImprovementPillaged() and plot:IsResourceConnectedByImprovement( plot:GetImprovementType() )) then
+						have[eResource] = have[eResource] + n;
+					else
+						notHave[eResource] = notHave[eResource] + n;
+					end
+				end
+			end
+		end
+	end
+	if #order > 0 then
+		local s = "";
+		for _, eResource in ipairs( order ) do
+			local icon = GameInfo.Resources[eResource].IconString;
+			if have[eResource] > 0 then s = s .. " [COLOR_POSITIVE_TEXT]" .. have[eResource] .. "[ENDCOLOR]" .. icon; end
+			if notHave[eResource] > 0 then s = s .. " [COLOR_WARNING_TEXT]" .. notHave[eResource] .. "[ENDCOLOR]" .. icon; end
+		end
+		table.insert( lines, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_RESOURCES" ) .. s );
+	end
+	-- the civilization: era, technologies, policies, population, cities, wonders, Gold
+	local era = GameInfo.Eras[player:GetCurrentEra()];
+	table.insert( lines, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_HEAD", player:GetCivilizationShortDescriptionKey(), player:GetName(), era and era.Description or "" ) );
+	local parts = { Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_TECHS", Teams[player:GetTeam()]:GetTeamTechs():GetNumTechsKnown() ) };
+	for branch in GameInfo.PolicyBranchTypes() do
+		local n = 0;
+		for policy in GameInfo.Policies{ PolicyBranchType = branch.Type } do
+			if player:HasPolicy( policy.ID ) then n = n + 1; end
+		end
+		if n > 0 then
+			table.insert( parts, n .. " " .. Locale.ConvertTextKey( branch.Description ) );
+		end
+	end
+	table.insert( lines, table.concat( parts, ", " ) );
+	local s = player:GetTotalPopulation() .. " [ICON_CITIZEN]";
+	if player:GetLateGamePolicyTree() ~= -1 then
+		local iHappy = player:GetExcessHappiness();
+		s = s .. ", " .. iHappy .. (iHappy >= 0 and " [ICON_HAPPINESS_1]" or " [ICON_HAPPINESS_4]");
+	end
+	s = s .. ", " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_CITIES", player:GetNumCities() );
+	local wonders = {};
+	for building in GameInfo.Buildings() do
+		local class = GameInfo.BuildingClasses[building.BuildingClass];
+		if class ~= nil and class.MaxGlobalInstances > 0 and player:CountNumBuildings( building.ID ) > 0 then
+			table.insert( wonders, Locale.ConvertTextKey( building.Description ) );
+		end
+	end
+	s = s .. ", " .. Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_WONDERS", #wonders );
+	if #wonders > 0 then
+		s = s .. ": " .. table.concat( wonders, ", " );
+	end
+	table.insert( lines, s );
+	table.insert( lines, Locale.ConvertTextKey( "TXT_KEY_LEKMOD_BANNER_CIV_GOLD", player:GetGold(), string.format( "%+d", player:CalculateGoldRate() ) ) );
+	return table.concat( lines, "[NEWLINE]" ) .. "[NEWLINE][NEWLINE]";
 end
 -- turns until a starving city loses a citizen: the first turn the stock is at -1.00 or less
 function LekmodStarveTurns(stored100, rate100)

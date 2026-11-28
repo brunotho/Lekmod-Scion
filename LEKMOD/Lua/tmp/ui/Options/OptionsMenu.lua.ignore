@@ -123,6 +123,22 @@ if Controls.LekmodKeyboardPullDown ~= nil then
     end )
 end
 
+-- LEKMOD (2026-11-28): the EUI-style pieces, one setting each (on unless switched off), and a button that
+-- unticks every setting that changes the base game's look (saved with OK like the others)
+g_LekmodUiPieces = {
+    { "LEK_UiBannerNumbers", "LekmodUiBannerNumbersCheckbox" },
+    { "LEK_UiForeignCityInfo", "LekmodUiForeignCityCheckbox" },
+    { "LEK_UiGreatPersonTurns", "LekmodUiGreatPersonCheckbox" },
+    { "LEK_UiAircraftArc", "LekmodUiAircraftCheckbox" },
+}
+Controls.LekmodBaseUIButton:RegisterCallback( Mouse.eLClick, function()
+    for _, entry in ipairs( g_LekmodUiPieces ) do
+        Controls[entry[2]]:SetCheck( false )
+    end
+    Controls.LekmodTopBarCheckbox:SetCheck( false )
+    Controls.LekmodFlagPromotionsCheckbox:SetCheck( false )
+end )
+
 -------------------------------------------------
 -------------------------------------------------
 function OnOK()
@@ -135,7 +151,9 @@ function OnOK()
     EUI_options.SetValue( "LEK_ImportantNotificationsOnly", Controls.LekmodImportantNotifsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_FlagPromotions", Controls.LekmodFlagPromotionsCheckbox:IsChecked() and 1 or 0 )
     EUI_options.SetValue( "LEK_KeyboardLayout", g_LekmodKeyboardLayout or 0 )
-    EUI_options.SetValue( "LEK_EuiStyleUI", Controls.LekmodEuiStyleCheckbox:IsChecked() and 1 or 0 )
+    for _, entry in ipairs( g_LekmodUiPieces ) do
+        EUI_options.SetValue( entry[1], Controls[entry[2]]:IsChecked() and 1 or 0 )
+    end
     EUI_options.SetValue( "LEK_TopBarPanelButtons", Controls.LekmodTopBarCheckbox:IsChecked() and 1 or 0 )
     LuaEvents.LekmodFlagPromotionsChanged()
     LuaEvents.LekmodEuiStyleChanged()
@@ -716,7 +734,11 @@ function UpdateGameOptionsDisplay()
     Controls.LekmodMuteChatCheckbox:SetCheck( EUI_options.GetValue( "LEK_MuteChatSound" ) == 1 )
     Controls.LekmodImportantNotifsCheckbox:SetCheck( EUI_options.GetValue( "LEK_ImportantNotificationsOnly" ) == 1 )
     Controls.LekmodFlagPromotionsCheckbox:SetCheck( EUI_options.GetValue( "LEK_FlagPromotions" ) ~= 0 )
-    Controls.LekmodEuiStyleCheckbox:SetCheck( EUI_options.GetValue( "LEK_EuiStyleUI" ) ~= 0 )
+    for _, entry in ipairs( g_LekmodUiPieces ) do
+        local v = EUI_options.GetValue( entry[1] )
+        if v == nil then v = EUI_options.GetValue( "LEK_EuiStyleUI" ) end   -- the old single setting
+        Controls[entry[2]]:SetCheck( v ~= 0 )
+    end
     Controls.LekmodTopBarCheckbox:SetCheck( EUI_options.GetValue( "LEK_TopBarPanelButtons" ) ~= 0 )
     g_LekmodKeyboardLayout = tonumber( EUI_options.GetValue( "LEK_KeyboardLayout" ) ) or 0
     LekmodShowKeyboardLayout()

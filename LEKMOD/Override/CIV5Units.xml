@@ -50914,7 +50914,7 @@
 			<RemoveRoute>false</RemoveRoute> 
 			<Water>false</Water> 
 			<CanBeEmbarked>false</CanBeEmbarked> 
-			<PrereqTech>TECH_ARCHAEOLOGY</PrereqTech> 
+			<!-- LEKMOD (2026-11-28): no tech; Archaeologists come only from Archaeology or the Aesthetics finisher -->
 			<ImprovementType>IMPROVEMENT_ARCHAEOLOGICAL_DIG</ImprovementType> 
 			<EntityEvent>ENTITY_EVENT_MINE</EntityEvent> 
 			<IconIndex>0</IconIndex> 

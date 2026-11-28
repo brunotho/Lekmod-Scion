@@ -147806,11 +147806,53 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPT_TOPBAR_TT">
 			<Text>Three buttons next to Faith open Research Info, the Unit List and the Great Person List with one click.</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE">
-			<Text>EUI-style interface</Text>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_BANNER_NUMBERS">
+			<Text>City banners: growth and production numbers</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_OPT_EUI_STYLE_TT">
-			<Text>The interface pieces taken from EUI:[NEWLINE][ICON_BULLET]City banners: Food and Production stored, per turn and what changes the turn count, turns until a starving city shrinks[NEWLINE][ICON_BULLET]City screen: turns until each Great Person on its meter[NEWLINE][ICON_BULLET]Aircraft shown around their city or carrier[NEWLINE][NEWLINE]Switch it off for the base game's versions.</Text>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_BANNER_NUMBERS_TT">
+			<Text>Hovering growth or production on your city banner shows what is stored, the turns with the excess, and what is missing for one turn less.[NEWLINE]A starving city shows the turns until it shrinks.[NEWLINE][NEWLINE]Off: the base game's texts.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_FOREIGN_CITY">
+			<Text>City banners: other civilizations</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_FOREIGN_CITY_TT">
+			<Text>Hovering the banner of another civilization's city shows the resources on its tiles and a summary of that civilization: era, technologies, policies, population, cities, wonders and Gold.[NEWLINE][NEWLINE]Off: the base game's text.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_GP_TURNS">
+			<Text>City screen: Great People turns</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_GP_TURNS_TT">
+			<Text>Each Great Person meter on the city screen shows the turns until the Great Person.[NEWLINE][NEWLINE]Off: the base game's meters.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_AIRCRAFT">
+			<Text>Aircraft shown around their base</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_AIRCRAFT_TT">
+			<Text>Aircraft flags are shown in a fan around their city or carrier.[NEWLINE][NEWLINE]Off: the base game's aircraft count above the city banner.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_BASE_UI">
+			<Text>Set all to base UI</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_BASE_UI_TT">
+			<Text>Unticks every setting above that changes the base game's interface.[NEWLINE]Press OK to keep it.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_RESOURCES">
+			<Text>Resources here:</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_HEAD">
+			<Text>{1_Civ} ({2_Leader}), {3_Era}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_TECHS">
+			<Text>{1_Num} {1_Num: plural 1?technology; other?technologies;}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_CITIES">
+			<Text>{1_Num} {1_Num: plural 1?city; other?cities;}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_WONDERS">
+			<Text>{1_Num} World {1_Num: plural 1?Wonder; other?Wonders;}</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_CIV_GOLD">
+			<Text>{1_Num} [ICON_GOLD] Gold ({2_Rate} per turn)</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS">
 			<Text>Show picked promotions under your units' flags</Text>

@@ -40,8 +40,17 @@ local InterfaceModeMessageHandler =
 }
 -- LEKMOD (2026-11-27): Lek Options "EUI-style interface" (on unless switched off): off = no turns on the Great People meters
 local g_LekmodEuiStyleOptions = Modding.OpenUserData( "Enhanced User Interface Options", 1 );
+-- LEKMOD (2026-11-28): one Lek Options setting per EUI-style piece (on unless switched off); a setting never saved
+-- falls back to the old single "EUI-style interface" setting
+function LekmodUiOption( key )
+	local v = g_LekmodEuiStyleOptions.GetValue( key );
+	if v == nil then
+		v = g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" );
+	end
+	return v ~= 0;
+end
 function LekmodEuiStyle()
-	return g_LekmodEuiStyleOptions.GetValue( "LEK_EuiStyleUI" ) ~= 0;
+	return LekmodUiOption( "LEK_UiGreatPersonTurns" );
 end
 
 -- LEKMOD: great person points with up to two decimals (trailing zeros dropped)
