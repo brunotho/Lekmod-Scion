@@ -474,7 +474,14 @@ function RefreshCityBanner(cityBanner, iActiveTeam, iActivePlayer)
 						local iProdRate100 = city:GetCurrentProductionDifferenceTimes100(false, false);
 						local iProdStored100 = city:GetProductionTimes100() + city:GetCurrentProductionDifferenceTimes100(false, true) - iProdRate100;
 						if LekmodEuiStyle() then
-							tooltipString = tooltipString .. LekmodTurnStepText(iProdStored100, iProdRate100, city:GetProductionNeeded() * 100, productionTurnsLeft, "[ICON_PRODUCTION]", "BUILD");
+							-- overflow above max(cost, Production per turn) turns into Gold (CvCity::doProduction): 100% units/buildings, 300% projects
+							local iGoldPercent = GameDefines.MAXED_BUILDING_GOLD_PERCENT;
+							if city:GetProductionUnit() ~= -1 then
+								iGoldPercent = GameDefines.MAXED_UNIT_GOLD_PERCENT;
+							elseif city:GetProductionProject() ~= -1 then
+								iGoldPercent = GameDefines.MAXED_PROJECT_GOLD_PERCENT;
+							end
+							tooltipString = tooltipString .. LekmodTurnStepText(iProdStored100, iProdRate100, city:GetProductionNeeded() * 100, productionTurnsLeft, "[ICON_PRODUCTION]", "BUILD", iGoldPercent);
 						end
 						controls.CityBannerLeftBackground:SetToolTipString(tooltipString);
 					end
@@ -710,15 +717,23 @@ function LekmodStarveTurns(stored100, rate100)
 	end
 	return math.max(1, math.ceil((stored100 + 100) / -rate100));
 end
-function LekmodTurnStepText(stored100, rate100, need100, turns, icon, kind)
+function LekmodTurnStepText(stored100, rate100, need100, turns, icon, kind, goldPercent)
 	if rate100 == nil or rate100 <= 0 or need100 == nil or need100 <= 0 or turns == nil or type(turns) ~= "number" or turns < 1 then
 		return "";
 	end
 	local remaining100 = math.max(0, need100 - stored100);
 	local s = "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK", LekmodFmt(stored100), LekmodFmt(need100), icon, LekmodFmt(rate100));
 	-- (user 2026-11-28) what is left / per turn = turns; excess: what is over when it is done
-	local excess100 = stored100 + rate100 * turns - need100;
-	s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STEP_NOW", LekmodFmt(remaining100), LekmodFmt(rate100), icon, turns, LekmodFmt(math.max(0, excess100)));
+	local excess100 = math.max(0, stored100 + rate100 * turns - need100);
+	-- Production only (goldPercent given): the game keeps at most max(cost, per turn) and pays Gold for the rest
+	local lost100 = 0;
+	if goldPercent ~= nil then
+		lost100 = math.max(0, excess100 - math.max(need100, rate100));
+	end
+	s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STEP_NOW", LekmodFmt(remaining100), LekmodFmt(rate100), icon, turns, LekmodFmt(excess100 - lost100));
+	if lost100 > 0 then
+		s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STEP_LOST", LekmodFmt(lost100), icon, LekmodFmt(math.floor(lost100 * goldPercent / 100)));
+	end
 	-- one turn faster: the rate must reach what is left / (turns-1); missing: how much more per turn that is
 	if turns > 1 then
 		local faster100 = math.ceil(remaining100 / (turns - 1));

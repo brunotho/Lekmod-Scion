@@ -785,7 +785,7 @@ Tags: bugfix, buildings
 CITY BANNER: GROWTH AND PRODUCTION NUMBERS
 ------------------------------------------
 Tags: ui
-- Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, then two lines: what is left divided by the amount per turn with the turns and the excess when it is done, and the amount per turn needed for one turn less with how much is missing for it (with decimals)
+- Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, then two lines: what is left divided by the amount per turn with the turns and the excess when it is done, and the amount per turn needed for one turn less with how much is missing for it (with decimals); when more Production would be left over than the game carries over (the item's cost or one turn's Production, whichever is more), it shows how much is over and the Gold it becomes
 - Added: a starving city's banner shows the turns until it loses a citizen (it happens once the stored Food is at -1 or less, so a deficit below 1 Food takes a few turns; a size 1 city never starves)
 - Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _STEP_NOW / _STEP_FASTER
 - Dev: 2026-11-28 (user): the "+N per turn: one turn sooner / -N per turn: one turn later" lines became "left/rate = turns; excess" and "left/needed rate = turns - 1; missing"

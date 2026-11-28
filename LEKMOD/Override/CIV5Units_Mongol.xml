@@ -121015,6 +121015,9 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_STEP_NOW">
 			<Text>{1_Left}/{2_Rate} {3_Icon} = {4_Num} {4_Num: plural 1?turn; other?turns;}; excess: {5_Excess} {3_Icon}</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_STEP_LOST">
+			<Text>[COLOR_WARNING_TEXT]{1_Num} {2_Icon} over the limit[ENDCOLOR] (the cost or one turn's Production) become {3_Gold} [ICON_GOLD] Gold</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_STEP_FASTER">
 			<Text>{1_Left}/{2_Rate} {3_Icon} = {4_Num} {4_Num: plural 1?turn; other?turns;}; missing: {5_Missing} {3_Icon}</Text>
 		</Row>
