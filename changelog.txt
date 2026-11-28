@@ -2792,8 +2792,8 @@ Tags: policies
 - Reworked: POLICY_IRON_FIST
   | [COLOR_POSITIVE_TEXT]Iron Fist[ENDCOLOR][NEWLINE]All non-air military units get the Discipline promotion (+50% Experience).[NEWLINE]Kills give [ICON_GOLD] Gold and [ICON_CULTURE] Culture equal to the killed unit's [ICON_STRENGTH] Strength, max. 40 each.
 - Reworked: POLICY_GUNBOAT_DIPLOMACY
-  | [COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence, does not break your pledge to protect it and works at any Influence level, once every 10 turns per City-State.
-- Dev: 2026-11-28 (user): the tribute check is the normal one again (military strength near the City-State, low Influence, tributes in the last 20 turns); only the Influence loss and the broken pledge are gone. The frozen tooltip above updates at the next refreeze
+  | [COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence and does not break your pledge to protect it.
+- Dev: 2026-11-28 (user): the tribute check is the normal one again (military strength near the City-State, low Influence, tributes in the last 20 turns); only the Influence loss and the broken pledge are gone
 - Added: Cult of Personality: +2 Happiness from each Great Work
 - Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't)
 - DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty): tribute costs no Influence and keeps the pledge, the tribute score is the normal one (LEKMOD_POLICY_REWORK)
