@@ -308,6 +308,7 @@
         <CheckBox String="TXT_KEY_LEKMOD_OPT_UI_BANNER_NUMBERS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodUiBannerNumbersCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_UI_BANNER_NUMBERS_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_UI_FOREIGN_CITY" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodUiForeignCityCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_UI_FOREIGN_CITY_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_UI_GP_TURNS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodUiGreatPersonCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_UI_GP_TURNS_TT" />
+        <CheckBox String="TXT_KEY_LEKMOD_OPT_UI_CITY_SCREEN" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodUiCityScreenCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_UI_CITY_SCREEN_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_UI_AIRCRAFT" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodUiAircraftCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_UI_AIRCRAFT_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_TOPBAR" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodTopBarCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_TOPBAR_TT" />
         <CheckBox String="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS" LeadingOffset="-10" WrapWidth="350" Anchor="R,C" ID="LekmodFlagPromotionsCheckbox" ToolTip="TXT_KEY_LEKMOD_OPT_FLAG_PROMOTIONS_TT" />

@@ -130,6 +130,7 @@ g_LekmodUiPieces = {
     { "LEK_UiForeignCityInfo", "LekmodUiForeignCityCheckbox" },
     { "LEK_UiGreatPersonTurns", "LekmodUiGreatPersonCheckbox" },
     { "LEK_UiAircraftArc", "LekmodUiAircraftCheckbox" },
+    { "LEK_UiCityScreen", "LekmodUiCityScreenCheckbox" },
 }
 Controls.LekmodBaseUIButton:RegisterCallback( Mouse.eLClick, function()
     for _, entry in ipairs( g_LekmodUiPieces ) do

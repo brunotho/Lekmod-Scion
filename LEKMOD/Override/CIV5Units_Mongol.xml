@@ -147827,6 +147827,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_GP_TURNS_TT">
 			<Text>Each Great Person meter on the city screen shows the turns until the Great Person.[NEWLINE][NEWLINE]Off: the base game's meters.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_CITY_SCREEN">
+			<Text>City screen: specialists</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_CITY_SCREEN_TT">
+			<Text>Specialist buildings are grouped by specialist (Engineer, Merchant, Scientist, Writer, Artist, Musician), then by name.[NEWLINE]Empty slots show their specialist faintly.[NEWLINE]Slot tooltips show what a specialist adds after the city's modifiers.[NEWLINE][NEWLINE]Off: the base game's list.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_OPT_UI_AIRCRAFT">
 			<Text>Aircraft shown around their base</Text>
 		</Row>

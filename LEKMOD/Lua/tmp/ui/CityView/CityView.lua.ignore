@@ -219,6 +219,14 @@ local scientistTexture = "citizenScientist.dds";
 local unemployedTexture = "citizenUnemployed.dds";
 local workerTexture = "citizenWorker.dds";
 local emptySlotString = Locale.ConvertTextKey("TXT_KEY_CITYVIEW_EMPTY_SLOT");
+-- LEKMOD (2026-11-28, Lek Options "City screen"): specialist buildings grouped by specialist in this order, then by name
+local g_LekmodSpecialistOrder = { SPECIALIST_ENGINEER = 1, SPECIALIST_MERCHANT = 2, SPECIALIST_SCIENTIST = 3, SPECIALIST_WRITER = 4, SPECIALIST_ARTIST = 5, SPECIALIST_MUSICIAN = 6 };
+local g_LekmodSpecialistTextures = { SPECIALIST_SCIENTIST = scientistTexture, SPECIALIST_MERCHANT = merchantTexture, SPECIALIST_ARTIST = artistTexture,
+	SPECIALIST_MUSICIAN = artistTexture, SPECIALIST_WRITER = artistTexture, SPECIALIST_ENGINEER = engineerTexture };
+local LEKMOD_EMPTY_SLOT_ALPHA = 0.3;
+function LekmodFmtYield( f )
+	return string.format( "%g", math.floor( f * 100 + 0.5 ) / 100 );
+end
 
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
@@ -504,19 +512,30 @@ function AddBuildingButton( pCity, building )
 			local ToolTipString = specialistName .. " ";						
 			-- Culture
 			local iCultureFromSpecialist = pCity:GetCultureFromSpecialist(iSpecialistID);
+			-- LEKMOD (City screen setting): what one specialist adds after the city's modifiers, as in EUI
+			local bLekmodModded = LekmodUiOption("LEK_UiCityScreen");
 			if (iCultureFromSpecialist > 0) then
-				ToolTipString = ToolTipString .. " +" .. iCultureFromSpecialist .. "[ICON_CULTURE]";
+				local fCulture = iCultureFromSpecialist;
+				if bLekmodModded then
+					local pOwner = Players[pCity:GetOwner()];
+					fCulture = fCulture * (100 + pCity:GetCultureRateModifier() + pOwner:GetCultureCityModifier() + ((pCity:GetNumWorldWonders() > 0) and pOwner:GetCultureWonderMultiplier() or 0)) / 100;
+				end
+				ToolTipString = ToolTipString .. " +" .. LekmodFmtYield(fCulture) .. "[ICON_CULTURE]";
 			end
 			-- Yield
 			for pYieldInfo in GameInfo.Yields() do
 				local iYieldID = pYieldInfo.ID;
 				local iYieldAmount = pCity:GetSpecialistYield(iSpecialistID, iYieldID);
-				
+
 				--Specialist Yield included in pCity:GetSpecialistYield();
 				--iYieldAmount = iYieldAmount + Players[pCity:GetOwner()]:GetSpecialistExtraYield(iSpecialistID, iYieldID);
-				
+
 				if (iYieldAmount > 0) then
-					ToolTipString = ToolTipString .. " +" .. iYieldAmount .. pYieldInfo.IconString;
+					local fAmount = iYieldAmount;
+					if bLekmodModded and iYieldID ~= YieldTypes.YIELD_CULTURE then
+						fAmount = iYieldAmount * pCity:GetBaseYieldRateModifier(iYieldID) / 100;
+					end
+					ToolTipString = ToolTipString .. " +" .. LekmodFmtYield(fAmount) .. pYieldInfo.IconString;
 				end
 			end
 			if pSpecialistInfo.GreatPeopleRateChange > 0 then
@@ -559,6 +578,16 @@ function AddBuildingButton( pCity, building )
 				controlTable.BuildingFilledSpecialistSlot2:SetTexture(workerTexture);
 				controlTable.BuildingFilledSpecialistSlot3:SetTexture(workerTexture);
 			end
+		end
+		-- LEKMOD (City screen setting): an empty slot shows its specialist faintly instead of the grey placeholder
+		local strLekmodFaint = nil;
+		if LekmodUiOption("LEK_UiCityScreen") and building.SpecialistType then
+			strLekmodFaint = g_LekmodSpecialistTextures[building.SpecialistType];
+		end
+		for i = 1, 3 do
+			local emptySlot = controlTable["BuildingEmptySpecialistSlot" .. i];
+			emptySlot:SetTexture(strLekmodFaint or "CitizenEmpty.dds");
+			emptySlot:SetAlpha(strLekmodFaint and LEKMOD_EMPTY_SLOT_ALPHA or 1);
 		end
 
 		if (UI.IsCityScreenViewingMode()) then
@@ -1395,13 +1424,18 @@ function OnCityViewUpdate()
 						local name = Locale.ConvertTextKey( building.Description )
 						element.name = name;
 						element.ID = building.ID;
+						element.group = (building.SpecialistType and g_LekmodSpecialistOrder[building.SpecialistType]) or 99;
 						sortedList[thisId] = element;
 						thisId = thisId + 1;
 					end
 				end
 			end
 		end
-		table.sort(sortedList, function(a, b) return a.name < b.name end);
+		if LekmodUiOption("LEK_UiCityScreen") then
+			table.sort(sortedList, function(a, b) if a.group ~= b.group then return a.group < b.group end return a.name < b.name end);
+		else
+			table.sort(sortedList, function(a, b) return a.name < b.name end);
+		end
 		if numSpecialBuildingsInThisCity > 0 then
 			--if header is not hidden and is open
 			Controls.SpecialBuildingsHeader:SetHide( false );
