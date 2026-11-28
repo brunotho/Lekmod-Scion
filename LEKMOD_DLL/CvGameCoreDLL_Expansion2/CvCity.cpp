@@ -7964,6 +7964,11 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 	if(pBuildingInfo == NULL)
 		return;
 
+#ifdef LEKMOD_MIDTURN_IDEOLOGY_NOTIFICATION
+	// A Factory (or another ideology building) during the turn: the ideology prompt appears now, not at the next turn
+	const bool bLekmodIdeologyBuilding = iChange > 0 && !bObsolete && pBuildingInfo->GetXBuiltTriggersIdeologyChoice() > 0
+		&& GC.getGame().isFinalInitialized();
+#endif
 #ifdef LEKMOD_CIV_TRAIT_FLAGS
 	// Malagasy: completing the Heroic Epic gives a Mpiambina
 	if (iChange > 0 && bFirst && !bObsolete && GET_PLAYER(getOwner()).GetPlayerTraits()->GetLekmodTraitType(LTI_BUILDING_FREE_UNIT_BUILDING) == pBuildingInfo->GetBuildingClassType())
@@ -9248,6 +9253,10 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 
 		owningTeam.changeBuildingClassCount(eBuildingClass, iChange);
 		owningPlayer.changeBuildingClassCount(eBuildingClass, iChange);
+#ifdef LEKMOD_MIDTURN_IDEOLOGY_NOTIFICATION
+		if (bLekmodIdeologyBuilding)
+			owningPlayer.LekmodTestMidTurnIdeologyNotification();
+#endif
 	}
 
 	UpdateReligion(GetCityReligions()->GetReligiousMajority());

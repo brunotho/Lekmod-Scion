@@ -17,11 +17,35 @@ g_DLCAllowedManager = InstanceManager:new("GameOptionInstance", "GameOptionRoot"
 g_LekmodModeDropDown = {
 	Name = "TXT_KEY_LEKMOD_LOBBY_MODE",
 	Values = {
-		{ Name = "TXT_KEY_LEKMOD_LOBBY_MODE_TOURNAMENT", Help = "TXT_KEY_LEKMOD_LOBBY_MODE_TOURNAMENT_HELP", Options = { GAMEOPTION_LEKMOD_MODE_CASUAL = false } },
-		{ Name = "TXT_KEY_LEKMOD_LOBBY_MODE_CASUAL", Help = "TXT_KEY_LEKMOD_LOBBY_MODE_CASUAL_HELP", Options = { GAMEOPTION_LEKMOD_MODE_CASUAL = true } },
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_MODE_TOURNAMENT", Help = "TXT_KEY_LEKMOD_LOBBY_MODE_TOURNAMENT_HELP", Options = { GAMEOPTION_LEKMOD_MODE_CASUAL = false, GAMEOPTION_LEKMOD_MODE_CUSTOM = false } },
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_MODE_CASUAL", Help = "TXT_KEY_LEKMOD_LOBBY_MODE_CASUAL_HELP", Options = { GAMEOPTION_LEKMOD_MODE_CASUAL = true, GAMEOPTION_LEKMOD_MODE_CUSTOM = false } },
+		-- Custom keeps the current settings and shows every setting the other modes hide
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_MODE_CUSTOM", Help = "TXT_KEY_LEKMOD_LOBBY_MODE_CUSTOM_HELP", Options = { GAMEOPTION_LEKMOD_MODE_CUSTOM = true } },
 	},
-	OnSelect = function( value ) LekmodApplyModePreset( value.Options.GAMEOPTION_LEKMOD_MODE_CASUAL ); end,
+	OnSelect = function( value )
+		if value.Options.GAMEOPTION_LEKMOD_MODE_CUSTOM then
+			UpdateGameOptionsDisplay();
+		else
+			LekmodApplyModePreset( value.Options.GAMEOPTION_LEKMOD_MODE_CASUAL );
+		end
+	end,
 };
+
+-- Same-turn wonders, shown as a setting in Custom mode (neither option = Random)
+g_LekmodWonderTieDropDown = {
+	Name = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE",
+	Help = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_HELP",
+	Values = {
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_NEITHER", Help = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_NEITHER_HELP", Options = { GAMEOPTION_LEKMOD_WONDER_TIE_NEITHER = true, GAMEOPTION_LEKMOD_WONDER_TIE_BOTH = false } },
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_BOTH", Help = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_BOTH_HELP", Options = { GAMEOPTION_LEKMOD_WONDER_TIE_NEITHER = false, GAMEOPTION_LEKMOD_WONDER_TIE_BOTH = true } },
+		{ Name = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_RANDOM", Help = "TXT_KEY_LEKMOD_LOBBY_WONDER_TIE_RANDOM_HELP", Options = { GAMEOPTION_LEKMOD_WONDER_TIE_NEITHER = false, GAMEOPTION_LEKMOD_WONDER_TIE_BOTH = false } },
+	},
+};
+
+function LekmodIsCustomMode()
+	local v = PreGame.GetGameOption( "GAMEOPTION_LEKMOD_MODE_CUSTOM" );
+	return v ~= nil and v > 0;
+end
 
 g_LekmodCivColorsDropDown = {
 	Name = "TXT_KEY_LEKMOD_LOBBY_CIV_COLORS",
@@ -41,8 +65,25 @@ g_LekmodModeInfoLines = {
 -- Checkbox game options the lobby still lists (the modes decide all others)
 g_LekmodLobbyShownOptions = {};
 
--- Hide every setting the modes decide (user decision 2026-10-08)
+-- Hide every setting the modes decide (user decision 2026-10-08); Custom shows them all (2026-11-28)
+local g_LekmodModeContainers = {
+	"LekmodCityStateBox", "LekmodMapSizeRoot", "LekmodGameSpeedRoot", "LekmodEraRoot",
+	"LekmodVictoryHeader", "VictoryConditionsStack", "LekmodAdvancedHeader", "LekmodMaxTurnsBox", "LekmodTurnTimerBox",
+	"LekmodAIOptionsBox", "LekmodAdditionalOptionsBox", "LekmodDLCHeader", "DLCAllowedStack",
+};
 function LekmodApplyLobbyVisibility()
+	if LekmodIsCustomMode() then
+		-- The inner boxes (AI options, additional options, turn mode) are shown or hidden by the base code above
+		for _, id in ipairs( g_LekmodModeContainers ) do
+			if Controls[id] ~= nil then
+				Controls[id]:SetHide( false );
+			end
+		end
+		Controls.GameOptionsFullStack:CalculateSize();
+		Controls.GameOptionsFullStack:ReprocessAnchoring();
+		Controls.OptionsScrollPanel:CalculateInternalSize();
+		return;
+	end
 	local hidden = {
 		"LekmodCityStateBox", "LekmodMapSizeRoot", "LekmodGameSpeedRoot", "LekmodEraRoot", "TurnModeRoot",
 		"LekmodVictoryHeader", "VictoryConditionsStack", "LekmodAdvancedHeader", "LekmodMaxTurnsBox", "LekmodTurnTimerBox",
@@ -137,6 +178,7 @@ function LekmodApplyModePreset( bCasual )
 		return;
 	end
 	PreGame.SetGameOption( "GAMEOPTION_LEKMOD_MODE_CASUAL", bCasual );
+	PreGame.SetGameOption( "GAMEOPTION_LEKMOD_MODE_CUSTOM", false );
 	PreGame.SetGameOption( "GAMEOPTION_LEKMOD_PRESET_APPLIED", true );
 
 	-- Turns: simultaneous, pitboss, relative turn timer at 70
@@ -1932,9 +1974,14 @@ function RefreshDropDownOptions()
 
 	-- LEKMOD: the mode comes first, above the map options
 	LekmodBuildDropDown(g_DropDownOptionsManager, g_LekmodModeDropDown, CanEditGameOptions());
-	for _, line in ipairs(g_LekmodModeInfoLines) do
-		local bOn = PreGame.GetGameOption(line[1]) == 1;
-		LekmodBuildInfoLine(g_DropDownOptionsManager, bOn and line[2] or line[3], line[4]);
+	if LekmodIsCustomMode() then
+		-- Chat and Start at War are checkboxes then
+		LekmodBuildDropDown(g_DropDownOptionsManager, g_LekmodWonderTieDropDown, CanEditGameOptions());
+	else
+		for _, line in ipairs(g_LekmodModeInfoLines) do
+			local bOn = PreGame.GetGameOption(line[1]) == 1;
+			LekmodBuildInfoLine(g_DropDownOptionsManager, bOn and line[2] or line[3], line[4]);
+		end
 	end
 	LekmodBuildDropDown(g_DropDownOptionsManager, g_LekmodCivColorsDropDown, CanEditGameOptions());
 	
@@ -2125,7 +2172,7 @@ function RefreshGameOptions()
 			-- The turn timer ends up being an exception to this because we manually add the UI for that option.
 			local DontDisplay = (PreGame.IsHotSeatGame() and not option.SupportsSinglePlayer) 
 											 or (not PreGame.IsHotSeatGame() and not option.SupportsMultiplayer)
-											 or g_LekmodLobbyShownOptions[option.Type] == nil; -- LEKMOD: the modes decide the rest
+											 or (g_LekmodLobbyShownOptions[option.Type] == nil and not LekmodIsCustomMode()); -- LEKMOD: the modes decide the rest (Custom shows all)
 			if( not DontDisplay ) then
 				table.insert(options, option);
 			end

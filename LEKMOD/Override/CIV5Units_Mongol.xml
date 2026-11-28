@@ -101736,6 +101736,12 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_LOBBY_MODE_CASUAL_HELP">
 			<Text>Relaxed settings: private chat allowed, peace from the start, wonders finished in the same turn go to everyone who finished them.</Text>
 		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_LOBBY_MODE_CUSTOM">
+			<Text>Custom</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEKMOD_LOBBY_MODE_CUSTOM_HELP">
+			<Text>Keeps the current settings and shows every lobby setting, also the ones Tournament and Casual decide.</Text>
+		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_LOBBY_WONDER_TIE">
 			<Text>Same-Turn Wonders</Text>
 		</Row>
@@ -116869,7 +116875,7 @@ The ship has weather'd every rack; the prize we sought is won."
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_GUNBOAT_DIPLOMACY_HELP"> 
 			<Text>
-				[COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence, does not break your pledge to protect it and works at any Influence level, once every 10 turns per City-State.
+				[COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence and does not break your pledge to protect it.
 			</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_POLICY_GUNBOAT_DIPLOMACY_TEXT"> 
@@ -121006,17 +121012,11 @@ The ship has weather'd every rack; the prize we sought is won."
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_STOCK">
 			<Text>{1_Have}/{2_Need} {3_Icon} (+{4_Rate} per turn)</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_BANNER_GROW_FASTER">
-			<Text>+{1_Num} {2_Icon} per turn: {3_Num} {3_Num: plural 1?turn; other?turns;}</Text>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_STEP_NOW">
+			<Text>{1_Left}/{2_Rate} {3_Icon} = {4_Num} {4_Num: plural 1?turn; other?turns;}; excess: {5_Excess} {3_Icon}</Text>
 		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_BANNER_GROW_SLOWER">
-			<Text>-{1_Num} {2_Icon} per turn: {3_Num} {3_Num: plural 1?turn; other?turns;}</Text>
-		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_BANNER_BUILD_FASTER">
-			<Text>+{1_Num} {2_Icon} per turn: {3_Num} {3_Num: plural 1?turn; other?turns;}</Text>
-		</Row>
-		<Row Tag="TXT_KEY_LEKMOD_BANNER_BUILD_SLOWER">
-			<Text>-{1_Num} {2_Icon} per turn: {3_Num} {3_Num: plural 1?turn; other?turns;}</Text>
+		<Row Tag="TXT_KEY_LEKMOD_BANNER_STEP_FASTER">
+			<Text>{1_Left}/{2_Rate} {3_Icon} = {4_Num} {4_Num: plural 1?turn; other?turns;}; missing: {5_Missing} {3_Icon}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEKMOD_BANNER_WLTKD">
 			<Text>{1_City} celebrates We Love the King Day: {2_Num} turns left.</Text>

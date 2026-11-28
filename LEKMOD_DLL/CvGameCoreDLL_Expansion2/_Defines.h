@@ -912,6 +912,9 @@
 #define LEKMOD_OPEN_BORDERS_INDEFINITE
 // Policy and pantheon notifications appear as soon as culture/faith gains make them affordable during the turn
 #define LEKMOD_MIDTURN_PICK_NOTIFICATIONS
+// The ideology prompt appears during the turn as soon as the choice opens (ideology building bought or built mid-turn, new era),
+// CvPlayer::LekmodTestMidTurnIdeologyNotification; before, it came only at the next turn while the freeze already applied.
+#define LEKMOD_MIDTURN_IDEOLOGY_NOTIFICATION
 // City names after the capital (2nd city too for America, Russia, Aksum, Timurids) come in a shuffled order per player and game
 #define LEKMOD_RANDOMIZE_CITY_NAMES
 // Floating damage numbers for air strikes and sweeps without combat animation, and 'No resistance' for empty sweeps
@@ -1662,10 +1665,13 @@ Diversify Spain and Australia's NW Discovery bonus
 // 2 Great Works in empty slots, via DoGreatWorkFromCityConquer; only buildings completed after adopting; no empty slot = lost).
 // Autocracy: Policies.TourismPerCapturedWonder, CaptureGoldModifier (added to the trait's PlunderModifier), SpoilsOfWarModifier
 // (+% on the spoils-of-war share, max 100); Policy_ResourceQuantityModifiers (Third Alternative: Oil, Aluminum, Uranium x2);
-// MinorBullyNoPenalty also ignores the low-Influence block and the 10-20 turn tribute penalty (Gunboat Diplomacy).
+// MinorBullyNoPenalty (Gunboat Diplomacy): tribute costs no Influence and keeps the pledge; the tribute score is the normal one (2026-11-28).
 // Policies.ExternalTradeRouteRangeModifier (% range of routes to other civs/City-States, CvGameTrade::IsValidTradeRoutePath; Silk Road);
 // Policy_BuildingClassNoMaintenance (CvTreasury::GetBuildingGoldMaintenance; Sacred Duty: Temples).
 #define LEKMOD_GOLD_GREAT_PERSON_BASE_COST 1000
+// Adopting a policy that reveals Antiquity Sites (Aesthetics finisher) creates the sites when nobody has Archaeology yet
+// (CvPlayer::processPolicies -> CvGame::TriggerArchaeologySiteCreation; before, they only existed from the first Archaeology).
+#define LEKMOD_POLICY_CREATES_ANTIQUITY_SITES
 // A human player with a pending policy pick (enough Culture, a free policy or tenet, or an ideology to choose) is never forced
 // to pick, but while the pick is pending at turn processing the empire's yields freeze: no positive Food (starvation still
 // happens), no Production, no Science, no Culture, no Faith, no Gold income (upkeep is still paid). Replaces the forced pick

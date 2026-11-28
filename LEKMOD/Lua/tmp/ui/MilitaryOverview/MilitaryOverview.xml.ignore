@@ -18,12 +18,8 @@
 		<!-- Main Container -->
 		<Box Offset="18,43" Anchor="L,T" Size="805,565" Color="255.255.200.0">
 			<!-- Column Headers -->
-			<Stack Anchor="L,T" StackGrowth="Right" Offset="0,0" Padding="0" ID="HeaderStack">
-				<Box Anchor="C,C" Size="200,24" Offset="0.-3" String="TXT_KEY_SUPPLY_TITLE" Color="White.0">
-					<Label Anchor="C,C" String="TXT_KEY_SUPPLY_TITLE"/>
-					<Image Anchor="R,T" Offset="0,0" Texture="VerticalTrim.dds" Size="5.24"/>
-					<Image Anchor="R,T" Offset="0,0" Texture="VerticalTrim.dds" Size="5.500"/>
-				</Box>
+			<!-- LEKMOD: no supply column (every difficulty supplies 99999 units); the list moves 100 px left to sit centred -->
+			<Stack Anchor="L,T" StackGrowth="Right" Offset="100,0" Padding="0" ID="HeaderStack">
 				<Button Anchor="C,C" Size="200,27" Offset="0.-3" String="TXT_KEY_NAME" ToolTip="TXT_KEY_MO_SORT_NAME" ID="SortName">
 					<ShowOnMouseOver>
 						<AlphaAnim Anchor="C,C" Offset="0,0" Size="220,27" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
@@ -88,7 +84,7 @@
 				</Button>
 			</Stack>
 			<!-- Supply Information -->
-			<Stack Growth="Bottom" Offset="0,29" Padding="1" ID="SupplyStack">
+			<Stack Growth="Bottom" Offset="0,29" Padding="1" Hidden="1" ID="SupplyStack">
 				<Box Size="200,24" Color="0.0.0.0" ID="HandicapSupply" ToolTip="TXT_KEY_HANDICAP_SUPPLY_TT">
 					<Label Offset="10,0" Font="TwCenMT18" Anchor="L,C" String="TXT_KEY_HANDICAP_SUPPLY"/>
 					<Label Offset="10,0" Font="TwCenMT18" Anchor="R,C" ID="HandicapSupplyValue"/>
@@ -125,7 +121,7 @@
 				</Box>
 			</Stack>
 			<!-- Unit Information -->
-			<ScrollPanel Anchor="L,T" Offset="200,29" Size="724,474" Vertical="1" ID="ScrollPanel">
+			<ScrollPanel Anchor="L,T" Offset="100,29" Size="724,474" Vertical="1" ID="ScrollPanel">
 				<ScrollBar Offset="0,18" Style="VertSlider" Anchor="R,T" Length="434" ID="ScrollBar"/>
 				<UpButton Offset="0,0" Style="ScrollBarUp" Anchor="R,T" ID="UpButton"/>
 				<DownButton Offset="0,452" Style="ScrollBarDown" Anchor="R,T" ID="DownButton"/>

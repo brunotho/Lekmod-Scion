@@ -110736,6 +110736,15 @@
 			<SupportsSinglePlayer>true</SupportsSinglePlayer>
 			<SupportsMultiplayer>true</SupportsMultiplayer>
 		</Row>
+		<Row>
+			<ID>74</ID>
+			<Type>GAMEOPTION_LEKMOD_MODE_CUSTOM</Type>
+			<Description>TXT_KEY_LEKMOD_LOBBY_MODE_CUSTOM</Description>
+			<Default>false</Default>
+			<Visible>false</Visible>
+			<SupportsSinglePlayer>true</SupportsSinglePlayer>
+			<SupportsMultiplayer>true</SupportsMultiplayer>
+		</Row>
 	</GameOptions> 
 
 	<Table name="GameSpeed_Turns">

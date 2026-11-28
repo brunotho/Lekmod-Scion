@@ -631,20 +631,13 @@ function LekmodTurnStepText(stored100, rate100, need100, turns, icon, kind)
 	end
 	local remaining100 = math.max(0, need100 - stored100);
 	local s = "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STOCK", LekmodFmt(stored100), LekmodFmt(need100), icon, LekmodFmt(rate100));
-	-- one turn faster: finish in turns-1, so the rate must reach remaining / (turns-1)
+	-- (user 2026-11-28) what is left / per turn = turns; excess: what is over when it is done
+	local excess100 = stored100 + rate100 * turns - need100;
+	s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STEP_NOW", LekmodFmt(remaining100), LekmodFmt(rate100), icon, turns, LekmodFmt(math.max(0, excess100)));
+	-- one turn faster: the rate must reach what is left / (turns-1); missing: how much more per turn that is
 	if turns > 1 then
-		local faster100 = math.ceil(remaining100 / (turns - 1)) - rate100;
-		local fasterWhole = math.ceil(faster100 / 100);
-		if fasterWhole > 0 then
-			s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_" .. kind .. "_FASTER", fasterWhole, icon, turns - 1);
-		end
-	end
-	-- one turn slower: below remaining / turns per turn it takes turns+1
-	local min100 = math.ceil(remaining100 / turns);
-	local slack100 = rate100 - min100;
-	local slowerWhole = math.floor(slack100 / 100) + 1;
-	if slowerWhole > 0 then
-		s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_" .. kind .. "_SLOWER", slowerWhole, icon, turns + 1);
+		local faster100 = math.ceil(remaining100 / (turns - 1));
+		s = s .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_LEKMOD_BANNER_STEP_FASTER", LekmodFmt(remaining100), LekmodFmt(faster100), icon, turns - 1, LekmodFmt(math.max(0, faster100 - rate100)));
 	end
 	return s;
 end

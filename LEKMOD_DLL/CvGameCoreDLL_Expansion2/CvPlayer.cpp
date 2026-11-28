@@ -15945,6 +15945,27 @@ void CvPlayer::TestMidTurnPolicyNotification()
 	}
 }
 #endif
+#ifdef LEKMOD_MIDTURN_IDEOLOGY_NOTIFICATION
+/// The ideology choice became possible during the turn (a Factory bought or built, a new era): show the prompt at once,
+/// so the policy-pick freeze at the end of the turn never hits a player who couldn't see the choice yet
+void CvPlayer::LekmodTestMidTurnIdeologyNotification()
+{
+	if (!isAlive() || !isHuman() || isMinorCiv() || getNumCities() == 0)
+		return;
+	if (!GetPlayerPolicies()->IsTimeToChooseIdeology() || GetPlayerPolicies()->GetLateGamePolicyTree() != NO_POLICY_BRANCH_TYPE)
+		return;
+	CvNotifications* pNotifications = GetNotifications();
+	if (pNotifications == NULL)
+		return;
+	CvString strBuffer;
+	if (GetCurrentEra() > GC.getInfoTypeForString("ERA_INDUSTRIAL"))
+		strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_CHOOSE_IDEOLOGY_ERA");
+	else
+		strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_CHOOSE_IDEOLOGY_FACTORIES");
+	CvString strSummary = GetLocalizedText("TXT_KEY_NOTIFICATION_SUMMARY_CHOOSE_IDEOLOGY");
+	pNotifications->Add(NOTIFICATION_CHOOSE_IDEOLOGY, strBuffer, strSummary, -1, -1, GetID());
+}
+#endif
 void CvPlayer::TestMidTurnPopGrowth(CvCity* pCity, bool bAlwaysShowNotification)
 {
 	CvAssertMsg(pCity != NULL, "pCity in CvPlayer::TestMidTurnPopGrowth is not assigned a valid value");
@@ -31513,6 +31534,24 @@ void CvPlayer::processPolicies(PolicyTypes ePolicy, int iChange)
 	{
 		GetEspionage()->UpdateSpies();
 	}
+
+#ifdef LEKMOD_POLICY_CREATES_ANTIQUITY_SITES
+	// A policy that reveals Antiquity Sites (Aesthetics finisher) creates them if nobody has Archaeology yet
+	if(iChange > 0 && !GC.getGame().IsArchaeologyTriggered())
+	{
+		for(int iRes = 0; iRes < GC.getNumResourceInfos(); iRes++)
+		{
+			CvResourceInfo* pkRes = GC.getResourceInfo((ResourceTypes)iRes);
+			if(pkRes == NULL || (pkRes->getPolicyReveal() != (int)ePolicy && pkRes->getPolicyRevealOr() != (int)ePolicy))
+				continue;
+			if(strcmp(pkRes->GetType(), "RESOURCE_ARTIFACTS") == 0 || strcmp(pkRes->GetType(), "RESOURCE_HIDDEN_ARTIFACTS") == 0)
+			{
+				GC.getGame().TriggerArchaeologySiteCreation(true /*bCheckInitialized*/);
+				break;
+			}
+		}
+	}
+#endif
 
 	CvPlot *pLoopPlot;
 	ResourceTypes eResource;

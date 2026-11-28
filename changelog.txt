@@ -736,11 +736,13 @@ Tags: diplomacy and trade, ui
 - Added: if an accepted deal can no longer be completed (e.g. the luxury was already traded to someone else, or the Gold per turn can no longer be paid), it fails and both players get a notification
 - Dev: LEKMOD_MULTIPLE_DEAL_PROPOSALS: UI checks removed in TradeLogic (ui), DiploCorner (ui, eui) and an override of DiploList (standard UI); the DLL already keeps one proposal per player pair and re-validates items in CvGameDeals::FinalizeDeal, which now notifies. Untested whether the game executable itself accepts a second open proposal
 
-LOBBY: MODES (TOURNAMENT / CASUAL)
-----------------------------------
+LOBBY: MODES (TOURNAMENT / CASUAL / CUSTOM)
+--------------------------------------------
 Tags: ui, game mechanics
 The multiplayer lobby has a Mode choice that sets all game options at once.
 - Added: Mode in the lobby: Tournament or Casual; the lobby only shows the map, Mode and Civ Colors
+- Added: a third Mode, Custom: it keeps the current settings and shows every lobby setting again (map size, speed, era, victories, turn timer, all game options and same-turn wonders)
+- Dev: Custom = hidden GameOptions ID 74 GAMEOPTION_LEKMOD_MODE_CUSTOM; LekmodIsCustomMode in MPGameOptions.lua skips LekmodApplyLobbyVisibility's hiding (the inner AI/additional option boxes keep the base code's visibility) and the g_LekmodLobbyShownOptions filter; same-turn wonders as a dropdown (Neither / Both / Random = neither option set)
 - Added: both modes play on quick speed from the Ancient Era with simultaneous turns, a turn timer and no combat randomness
 - Added: Tournament: no private chat, players start at war, same-turn wonders go to nobody; Casual: private chat, no start at war, same-turn wonders go to everyone who finished them
 - Note: map options (resources, legendary start) are enforced by the map script; map size waits for the 6/7/8-player lobby work
@@ -782,9 +784,10 @@ Tags: bugfix, buildings
 CITY BANNER: GROWTH AND PRODUCTION NUMBERS
 ------------------------------------------
 Tags: ui
-- Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, and how much more per turn would finish it a turn sooner and how much less would make it a turn later
+- Added: hovering the growth or production part of your city banner shows the Food or Production stored and needed, then two lines: what is left divided by the amount per turn with the turns and the excess when it is done, and the amount per turn needed for one turn less with how much is missing for it (with decimals)
 - Added: a starving city's banner shows the turns until it loses a citizen (it happens once the stored Food is at -1 or less, so a deficit below 1 Food takes a few turns; a size 1 city never starves)
-- Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _GROW_* / _BUILD_*
+- Dev: LekmodTurnStepText in Lua/tmp/ui/CityBanners/CityBannerManager.lua (standard UI; EUI support is being dropped, user 2026-11-26); stored Production counted as in EUI's banner (with the overflow part); texts TXT_KEY_LEKMOD_BANNER_STOCK / _STEP_NOW / _STEP_FASTER
+- Dev: 2026-11-28 (user): the "+N per turn: one turn sooner / -N per turn: one turn later" lines became "left/rate = turns; excess" and "left/needed rate = turns - 1; missing"
 
 CITY SCREEN: GREAT PEOPLE TURNS
 -------------------------------
@@ -907,6 +910,7 @@ UNIT LIST AND MILITARY OVERVIEW
 Tags: ui, promotions
 - Changed: the unit list and the Military Overview show the promotions you picked for each unit instead of its status
 - Added: the Military Overview shows each unit's health
+- Removed: the supply numbers in the Military Overview (every difficulty supplies 99999 units, so they never mattered); the unit list moved into their place
 - Added: Alt + click a tile to tag it as a target: both screens then list your air units by their distance to it, those in strike range first (farthest first), then the ones out of range (closest first, dimmed), and units that can't move or attack any more at the bottom; Alt + click it again to clear it
 - Added: while a tile is tagged, Tab selects the next plane in strike range that can still attack this turn, in the list's order (at most one every 0.45 seconds, and not within half a second after one of your air strikes)
 - Added: an "Air units only" checkbox in both screens
@@ -2784,9 +2788,10 @@ Tags: policies
   | [COLOR_POSITIVE_TEXT]Iron Fist[ENDCOLOR][NEWLINE]All non-air military units get the Discipline promotion (+50% Experience).[NEWLINE]Kills give [ICON_GOLD] Gold and [ICON_CULTURE] Culture equal to the killed unit's [ICON_STRENGTH] Strength, max. 40 each.
 - Reworked: POLICY_GUNBOAT_DIPLOMACY
   | [COLOR_POSITIVE_TEXT]Gunboat Diplomacy[ENDCOLOR][NEWLINE]+2 World Congress votes.[NEWLINE]Demanding tribute from a City-State costs no [ICON_INFLUENCE] Influence, does not break your pledge to protect it and works at any Influence level, once every 10 turns per City-State.
+- Dev: 2026-11-28 (user): the tribute check is the normal one again (military strength near the City-State, low Influence, tributes in the last 20 turns); only the Influence loss and the broken pledge are gone. The frozen tooltip above updates at the next refreeze
 - Added: Cult of Personality: +2 Happiness from each Great Work
 - Changed: Clausewitz's Legacy: the +25% attack bonus counts for melee attacks only (fighters' air sweeps no longer get it; ranged attacks and bombing already didn't)
-- DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty) ignores the Influence block and the 10-20 turn tribute penalty (LEKMOD_POLICY_REWORK)
+- DLL: Policies.TourismPerCapturedWonder, CaptureGoldModifier, SpoilsOfWarModifier, StealTechOnSpyCatch (LEKMOD_SPY_WONDERS); Policy_ResourceQuantityModifiers; Gunboat (MinorBullyNoPenalty): tribute costs no Influence and keeps the pledge, the tribute score is the normal one (LEKMOD_POLICY_REWORK)
 - Dev: LEKMOD_CLAUSEWITZ_MELEE_ONLY in CvUnit::GetMaxAttackStrength(kInfo) also excludes air sweeps. The combat preview uses the same function (LEKMOD_COMBAT_PREDICTOR_IMPROVEMENTS), so it matches.
 - Dev: the combat preview line TXT_KEY_ATTACKMOD_CLAUZWITZ says "Clausewitz's Legacy (turns)" instead of "Temporary Attack Bonus" for every source (policy, Berlin, user 2026-10-28)
 
@@ -2865,7 +2870,9 @@ Tags: policies, game mechanics, ui
 - Changed: you are never forced to pick a policy, ideology or free tenet before ending the turn, and nothing is picked for you at random
 - Added: while a pick is waiting at the end of a turn, your empire's yields freeze: no growth, Production, Science, Gold income, Culture or Faith (upkeep is still paid, and cities working too little Food still starve); Golden Age progress, Great Person points and Tourism keep running
 - Added: the top panel warns while a pick is waiting
+- Added: the "choose an ideology" prompt appears as soon as you can choose one, also in the middle of a turn (e.g. after buying your third Factory)
 - DLL: LEKMOD_POLICY_PICK_FREEZE (human players only); Lua Player:LekmodIsPolicyPickPending()
+- Dev: 2026-11-28 (test game report): a Factory bought mid-turn froze the yields at the end of that turn although the ideology prompt only came the turn after (the notification was added at the turn change, after the freeze check). LEKMOD_MIDTURN_IDEOLOGY_NOTIFICATION: CvPlayer::LekmodTestMidTurnIdeologyNotification from CvCity::processBuilding (buildings with XBuiltTriggersIdeologyChoice) and CvTeam::SetCurrentEra
 - Dev: fixed: Culture still accumulated during a pending pick in games without a turn timer (the hook sat in a compiled-out branch: NQM_PRUNING is only inside a comment in _Defines.h)
 
 POLICY RESOURCES (Policy_ResourceQuantity)
@@ -2891,6 +2898,7 @@ Tags: policies
 - Dev: Aesthetics tooltips say "culture buildings" (Monument, Amphitheater, Opera House, Museum, Broadcast Tower) instead of listing them
 - Note: Flourishing of the Arts' World Wonder Culture and Tourism were 34.11 effects missing in 35.x (its tooltip already promised them)
 - DLL: Policies.GreatWorkYieldModifier, Resources.PolicyRevealOr (LEKMOD_POLICY_REWORK)
+- Dev: 2026-11-28 (test game report): finishing Aesthetics before anyone had Archaeology showed no Antiquity Sites, because the game only creates them when the first player learns Archaeology. LEKMOD_POLICY_CREATES_ANTIQUITY_SITES: adopting a policy that reveals them creates them (CvPlayer::processPolicies -> CvGame::TriggerArchaeologySiteCreation)
 - Dev: Cultural Centers: +1 Happiness from each Guild is gone (not a player line: Aesthetics is rebuilt from scratch, user 2026-10-29)
 - Dev: opener 25% -> 20% and the finisher text without "even before Archaeology" (2026-10-22) show in the branch text above
 - Dev: (development step, covered by the line or tooltip above) adopting Aesthetics creates a Great Work in an empty slot (closest to the capital first; none if no slot is free)
